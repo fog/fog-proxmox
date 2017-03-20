@@ -1,6 +1,6 @@
 # Fog::Proxmox
 
-This a [FOG](http://fog.io/) plugin with provider [Proxmox](https://www.proxmox.com/en/proxmox-ve)
+This a [FOG](http://fog.io/) module gem to support [Proxmox VE](https://www.proxmox.com/en/proxmox-ve)
 
 ## Installation
 

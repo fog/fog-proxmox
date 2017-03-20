@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["tristan.robert.44@gmail.com"]
 
   spec.summary       = %q{Module for the 'Fog' gem to support Proxmox VE}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "This library can be used as a module for `fog`."
+  spec.description   = %q{This library can be used as a module for `fog`.}
+  spec.homepage      = "http://github.com/tristanrobert/fog-proxmox"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -25,7 +25,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'fog-core',  '~> 1.38'
   spec.add_dependency 'fog-json',  '~> 1.0'
-  spec.add_dependency 'fog-xml',   '~> 0.1'
   spec.add_dependency 'ipaddress', '~> 0.8'
 
 end
