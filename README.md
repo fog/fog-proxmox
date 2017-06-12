@@ -20,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This is not yet a stable version. I recommend you not to use it in production.
+
+Work is still in progress...
 
 ## Development
 

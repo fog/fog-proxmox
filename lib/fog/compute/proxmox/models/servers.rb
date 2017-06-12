@@ -1,4 +1,4 @@
-require 'fog/proxmox/models/compute/server'
+require 'fog/compute/proxmox/models/server'
 
 module Fog
     module Compute

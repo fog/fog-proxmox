@@ -1,11 +1,13 @@
 require 'fog/compute/models/server'
+require 'fog/storage/proxmox/models'
+require 'fog/network/proxmox/models'
 
 module Fog
     module Compute
         class Proxmox
             class Server < Fog::Compute::Server
                 identity :id, :aliases => 'vmid'
-                attribute :acpi
+                attr :acpi
                 attribute :agent
                 attribute :archive
                 attribute :args
@@ -60,13 +62,12 @@ module Fog
                 attribute :tdf
                 attribute :template
                 attribute :unique
-                attribute :template
-                attribute :template
-                attribute :template
-                attribute :template
-                attribute :template
-                attribute :template
-                attribute :template
+                attribute :unused
+                attribute :usb
+                attribute :vcpus
+                attribute :vga
+                model      Fog::Storage::Virtio
+                attribute :watchdog
             end
         end
     end
