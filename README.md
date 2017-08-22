@@ -2,6 +2,8 @@
 
 This a [FOG](http://fog.io/) module gem to support [Proxmox VE](https://www.proxmox.com/en/proxmox-ve)
 
+It is intended to satisfy partially (Proxmox only) this [feature](https://github.com/fog/fog/issues/3644)
+
 ## Installation
 
 Add this line to your application's Gemfile:
