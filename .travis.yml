@@ -20,6 +20,8 @@ matrix:
     gemfile: Gemfile
   - rvm: 2.3.0
     gemfile: Gemfile
+  - rvm: 2.4.0
+    gemfile: Gemfile
   - rvm: jruby-19mode
     gemfile: gemfiles/Gemfile-1.9
   - rvm: jruby-head
