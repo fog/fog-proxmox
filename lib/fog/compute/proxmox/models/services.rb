@@ -6,7 +6,7 @@ module Fog
       # Services class
       class Services
         include Enumerable
-        def pve
+        def each
           yield 'pveproxy'
           yield 'pvedaemon'
           yield 'pvestatd'
@@ -15,9 +15,6 @@ module Fog
           yield 'pvefw-logger'
           yield 'pve-ha-crm'
           yield 'pve-ha-lrm'
-        end
-
-        def system
           yield 'corosync'
           yield 'spiceproxy'
           yield 'sshd'
