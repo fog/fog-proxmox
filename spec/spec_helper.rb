@@ -1,5 +1,7 @@
-require "fog/core"
-require "fog/proxmox"
+# frozen_string_literal: true
+
+require 'fog/core'
+require 'fog/proxmox'
 require 'minitest/autorun'
 require 'vcr'
 

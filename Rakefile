@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'bundler/gem_tasks'
 require 'rubocop/rake_task'
 require 'rake/testtask'
 
 RuboCop::RakeTask.new
 
-task :default => :test
+task default: :test
 
 desc 'Run fog-proxmox unit tests with Minitest'
 task :test do
@@ -13,21 +15,21 @@ task :test do
 end
 
 desc 'Run fog-proxmox spec/ tests (VCR)'
-task :spec => "tests:spec"
+task spec: 'tests:spec'
 
 namespace :tests do
-  desc "Run fog-proxmox test/"
+  desc 'Run fog-proxmox test/'
   Rake::TestTask.new do |t|
     t.name = 'unit'
-    t.libs.push [ "lib", "test" ]
+    t.libs.push %w[lib test]
     t.test_files = FileList['test/**/*.rb']
     t.verbose = true
   end
 
-  desc "Run fog-proxmox spec/"
+  desc 'Run fog-proxmox spec/'
   Rake::TestTask.new do |t|
     t.name = 'spec'
-    t.libs.push [ "lib", "spec" ]
+    t.libs.push %w[lib spec]
     t.pattern = 'spec/**/*_spec.rb'
     t.verbose = true
   end
