@@ -8,6 +8,7 @@ module Fog
     class Proxmox < Fog::Service
       requires :proxmox_url
       recognizes :ticket, :csrf_token
+      PROXMOX_COMPUTE_BASE_PATH = '/api2/json'
 
       # Models
       model_path 'fog/compute/proxmox/models'
@@ -27,6 +28,8 @@ module Fog
       request :shutdown
       request :suspend
       request :resume
+      request :reset
+      request :current
 
       # Mock class
       class Mock

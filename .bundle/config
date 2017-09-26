@@ -1,2 +1,4 @@
 ---
 BUNDLE_BIN: "bin"
+BUNDLE_PATH: "vendor/bundle"
+BUNDLE_CACHE_ALL: "true"

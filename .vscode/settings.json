@@ -9,10 +9,10 @@
         "ruby": true, //Runs ruby -wc
         "fasterer": true,
         "debride": true,
-        "ruby-lint": true
+        "ruby-lint": false
     },
     "ruby.locate": {
-        "include": "**/*.rb",
+        "include": "**/*.erb,**/*.rb,**/vendor/*.*",
         "exclude": "{**/@(test|spec|tmp|.*),**/@(test|spec|tmp|.*)/**,**/*_spec.rb}"
     }
     

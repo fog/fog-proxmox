@@ -8,33 +8,41 @@ module Fog
       class Real
         def create(node, vmid, options = {}); end
 
-        def delete(node, vmid); end
+        def delete(node, vmid, options = {}); end
 
-        def start(node, vmid); end
+        def start(node, vmid, options = {}); end
 
-        def stop(node, vmid); end
+        def stop(node, vmid, options = {}); end
 
-        def suspend(node, vmid); end
+        def suspend(node, vmid, options = {}); end
 
-        def resume(node, vmid); end
+        def resume(node, vmid, options = {}); end
 
-        def shutdown(node, vmid); end
+        def shutdown(node, vmid, options = {}); end
+
+        def reset(node, vmid, options = {}); end
+
+        def current(node, vmid); end
       end
       # Mock create_vm class
       class Mock
         def create(node, vmid, options = {}); end
 
-        def delete(node, vmid); end
+        def delete(node, vmid, options = {}); end
 
-        def start(node, vmid); end
+        def start(node, vmid, options = {}); end
 
-        def stop(node, vmid); end
+        def stop(node, vmid, options = {}); end
 
-        def suspend(node, vmid); end
+        def suspend(node, vmid, options = {}); end
 
-        def resume(node, vmid); end
+        def resume(node, vmid, options = {}); end
 
-        def shutdown(node, vmid); end
+        def shutdown(node, vmid, options = {}); end
+
+        def reset(node, vmid, options = {}); end
+
+        def current(node, vmid); end
       end
     end
   end

@@ -4,6 +4,8 @@ This a [FOG](http://fog.io/) module gem to support [Proxmox VE](https://www.prox
 
 It is intended to satisfy partially (Proxmox only) this [feature](https://github.com/fog/fog/issues/3644)
 
+It is inspired by the great [fog-openstack](https://github.com/fog/fog-openstack) module
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -36,8 +38,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at [Fog-Proxmox](https://github.com/tristanrobert/fog-proxmox). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
