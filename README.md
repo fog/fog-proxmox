@@ -40,4 +40,4 @@ Bug reports and pull requests are welcome on GitHub at [Fog-Proxmox](https://git
 
 ## License
 
-The gem is available as open source under the terms of the [GPL v3 License](LICENSE.md).
+The gem is available as open source under the terms of the [GPL v3 License](LICENSE).
