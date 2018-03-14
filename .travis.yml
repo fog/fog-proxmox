@@ -1,6 +1,5 @@
 language: ruby
 sudo: false
-script: bundle exec rake travis
 rvm:
   - 2.5
   - jruby-head
