@@ -1,38 +1,15 @@
 language: ruby
 sudo: false
-script:
-  - bundle exec rake test
-  - bundle exec rake spec
-env:
-  - JRUBY_OPTS=--debug
+script: bundle exec rake travis
+rvm:
+  - 2.5
+  - jruby-head
 matrix:
   fast_finish: true
   include:
-  - rvm: 1.9.3
-    gemfile: gemfiles/Gemfile-1.9
-  - rvm: 2.0.0
-    gemfile: Gemfile
-  - rvm: 2.1.0
-    gemfile: Gemfile
-  - rvm: 2.1.1
-    gemfile: Gemfile
-  - rvm: 2.2.0
-    gemfile: Gemfile
-  - rvm: 2.3.0
-    gemfile: Gemfile
-  - rvm: 2.4.0
-    gemfile: Gemfile
-  - rvm: jruby-19mode
-    gemfile: gemfiles/Gemfile-1.9
-  - rvm: jruby-head
+  - rvm: 2.5
     gemfile: Gemfile
   allow_failures:
   - rvm: jruby-head
 notifications:
-  webhooks:
-    urls:
-    - https://webhooks.gitter.im/e/af95aadff4470a9732b9
-    on_success: change
-    on_failure: always
-    on_start: never
   email: false

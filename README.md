@@ -1,5 +1,7 @@
 # Fog::Proxmox
 
+[![Build Status](https://travis-ci.org/tristanrobert/fog-proxmox.svg?branch=develop)](https://travis-ci.org/tristanrobert/fog-proxmox)[![Code Climate](https://codeclimate.com/github/tristanrobert/fog-proxmox.svg)](https://codeclimate.com/github/tristanrobert/fog-proxmox)
+
 This a [FOG](http://fog.io/) module gem to support [Proxmox VE](https://www.proxmox.com/en/proxmox-ve)
 
 It is intended to satisfy partially (Proxmox only) this [feature](https://github.com/fog/fog/issues/3644)
@@ -16,11 +18,13 @@ gem 'fog-proxmox'
 
 And then execute:
 
-    $ bundle
+$ bundle
 
 Or install it yourself as:
 
-    $ gem install fog-proxmox
+```ruby
+gem install fog-proxmox
+```
 
 ## Usage
 
