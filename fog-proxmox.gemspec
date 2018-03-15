@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'fasterer', '~> 0.3'
   spec.add_development_dependency 'fastri', '~> 0.3'
   spec.add_development_dependency 'rcodetools', '~> 0.3'
+  spec.add_development_dependency 'minitest', '~> 5.11'
 
   spec.add_dependency 'fog-core',  '~> 2.1'
   spec.add_dependency 'fog-json',  '~> 1.1'
