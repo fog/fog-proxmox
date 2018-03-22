@@ -1,8 +1,8 @@
-## Getting Involved
+# Getting Involved
 
 New contributors are always welcome, when it doubt please ask questions. We strive to be an open and welcoming community. Please be nice to one another.
 
-### Coding
+## Coding
 
 * Pick a task:
   * Offer feedback on open [pull requests](https://github.com/tristanrobert/fog-proxmox/pulls).
@@ -12,7 +12,7 @@ New contributors are always welcome, when it doubt please ask questions. We stri
 * Commit your changes and rebase against `fog/fog-proxmox` to ensure everything is up to date.
 * [Submit a pull request](https://github.com/tristanrobert/fog-proxmox/compare/).
 
-### Non-Coding
+## Non-Coding
 
 * Offer feedback on open [issues](https://github.com/tristanrobert/fog-proxmox/issues).
 * Organize or volunteer at events.
