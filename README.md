@@ -1,6 +1,6 @@
 # Fog::Proxmox
 
-[![Build Status](https://travis-ci.org/tristanrobert/fog-proxmox.svg?branch=develop)](https://travis-ci.org/tristanrobert/fog-proxmox)[![Code Climate](https://codeclimate.com/github/tristanrobert/fog-proxmox.svg)](https://codeclimate.com/github/tristanrobert/fog-proxmox)
+[![Build Status](https://travis-ci.org/tristanrobert/fog-proxmox.svg?branch=develop)](https://travis-ci.org/tristanrobert/fog-proxmox) [![Code Climate](https://codeclimate.com/github/tristanrobert/fog-proxmox.svg)](https://codeclimate.com/github/tristanrobert/fog-proxmox) [![CodeFactor](https://www.codefactor.io/repository/github/tristanrobert/fog-proxmox/badge/develop)](https://www.codefactor.io/repository/github/tristanrobert/fog-proxmox/overview/develop)
 
 This a [FOG](http://fog.io/) module gem to support [Proxmox VE](https://www.proxmox.com/en/proxmox-ve)
 

@@ -14,6 +14,10 @@
     "ruby.locate": {
         "include": "**/*.erb,**/*.rb,**/vendor/*.*",
         "exclude": "{**/@(test|spec|tmp|.*),**/@(test|spec|tmp|.*)/**,**/*_spec.rb}"
-    }
-    
+    },
+    "spellright.language": "French",
+    "spellright.documentTypes": [
+        "latex",
+        "plaintext"
+    ]
 }

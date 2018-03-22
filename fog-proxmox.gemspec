@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "Module for the 'Fog' gem to support Proxmox VE"
   spec.description   = 'This library can be used as a module for `fog`.'
   spec.homepage      = 'http://github.com/tristanrobert/fog-proxmox'
-  spec.license       = 'MIT'
+  spec.license       = 'GPL-3.0'
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
