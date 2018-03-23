@@ -29,15 +29,15 @@ class IdentityVCRTest < Test::Unit::TestCase
     def test_identity_get_ticket
       VCR.use_cassette("identity_ticket") do
         uri = URI('https://172.26.49.155:8006/api2/json/access/ticket')
-        params = { :username => 'root@pam', :password => 'proxmox01' }
         p_addr = nil # no proxy     
         http = Net::HTTP.new(uri.host, uri.port, p_addr)
         http.use_ssl = true   
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE # invalid default proxmox certificate 
-        request = Net::HTTP::Get.new uri
+        request = Net::HTTP::Post.new uri
+        request.set_form_data(:username => 'root@pam', :password => 'proxmox01')
         response = http.request request # Net::HTTPResponse object
         puts response.body if response.is_a?(Net::HTTPSuccess)
-        assert_match(/CSRFPreventionToken ticket username/, response.body)
+        assert_match(/(.*)CSRFPreventionToken(.*)username(.*)ticket(.*)/, response.body)
       end
     end
   end

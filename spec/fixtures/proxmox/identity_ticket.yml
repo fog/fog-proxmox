@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: get
+    method: post
     uri: https://172.26.49.155:8006/api2/json/access/ticket
     body:
       encoding: US-ASCII
-      string: ''
+      string: username=root%40pam&password=proxmox01
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -13,6 +13,8 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
   response:
     status:
       code: 200
@@ -22,21 +24,22 @@ http_interactions:
       - max-age=0
       Connection:
       - Keep-Alive
+      - close
       Date:
-      - Thu, 22 Mar 2018 16:40:30 GMT
+      - Fri, 23 Mar 2018 07:58:02 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '13'
+      - '650'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 22 Mar 2018 16:40:30 GMT
+      - Fri, 23 Mar 2018 07:58:02 GMT
     body:
-      encoding: UTF-8
-      string: '{"data":null}'
+      encoding: ASCII-8BIT
+      string: '{"data":{"cap":{"vms":{"VM.Config.HWType":1,"VM.Migrate":1,"VM.Config.Memory":1,"VM.PowerMgmt":1,"VM.Clone":1,"VM.Console":1,"VM.Monitor":1,"VM.Config.Disk":1,"VM.Snapshot":1,"VM.Allocate":1,"VM.Config.Options":1,"Permissions.Modify":1,"VM.Backup":1,"VM.Audit":1,"VM.Config.Network":1,"VM.Config.CPU":1,"VM.Snapshot.Rollback":1,"VM.Config.CDROM":1},"access":{"Permissions.Modify":1,"User.Modify":1,"Group.Allocate":1},"dc":{"Sys.Audit":1},"nodes":{"Sys.Syslog":1,"Sys.Console":1,"Sys.Audit":1,"Sys.Modify":1,"Sys.PowerMgmt":1,"Permissions.Modify":1},"storage":{"Datastore.Allocate":1,"Datastore.AllocateTemplate":1,"Datastore.AllocateSpace":1,"Datastore.Audit":1}},"CSRFPreventionToken":"5AB4B38A:J+3XBmYsJqR7F+18kqbMhj6I/SM","username":"root@pam","ticket":"PVE:root@pam:5AB4B38A::m5asyATnV66Htv+Z2QYNu+KuqZDsR1t3fCViuu0bTAWYfU85zdUY2dF9lJXa7soWlaZ3tZriTxC7d+nhMq9Fq8hCRlNG4ntsEw/CzeuS50phSvq4Phx1uZVV0KjkdcVP1X0J50e42Zfr5hzptiO+cD68OF2GG0GaboQ/MV+PA5IxojYojQe1w6yjjzreZhiZYy9zq1W5CW23yIt5pPWk9oFxLNUHU1I2+jqMCOeE40VhivCUEslusD0ZdoA3tkIWJ504rKQJrJIsq1zi6LIpGsktkbUPxHwSgnftQs0IPRuP5HGaz1g9FSW1IUpC8iCHqEV6re+Pb9Yz+G1G7+G0TQ=="}}'
     http_version: 
-  recorded_at: Thu, 22 Mar 2018 16:40:31 GMT
+  recorded_at: Fri, 23 Mar 2018 07:58:04 GMT
 recorded_with: VCR 4.0.0
