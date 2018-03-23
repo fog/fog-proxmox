@@ -23,25 +23,37 @@ module Fog
   module Identity
     # Identity and authentication proxmox class
     class Proxmox < Fog::Service
-      requires :proxmox_auth_path
-      recognizes :proxmox_auth_token, :proxmox_csrf_token, :ticket, :username,
-                 :password
+      requires :pve_url, :username, :password
+      recognizes :ticket, :csrftoken
     end
 
     request_path 'fog/identity/proxmox/requests'
     request :token_authenticate
-
+    def self.new(args = {})
+      url = Fog.credentials[:pve_url] || args[:pve_url]
+      if url
+        uri = URI(url)
+      end
+      service = Fog::Identity::OpenStack.new(args)
+end
     # Mock class
     class Mock
-      def initialize(options = {}); end
+      attr_reader :config
+
+        def initialize(options = {})
+          @openstack_auth_uri = URI.parse(options[:pve_url])
+          @config = options
+        end
     end
     # Real class
     class Real
       include Fog::Proxmox::Core
       def initialize(options = {})
-        @path = Fog.credentials[:proxmox_auth_path] || options[:proxmox_auth_path]
-        @url = "#{@scheme}://#{@host}:#{@port}/#{@path}"
-        @connection = Fog::Core::Connection.new(@url, @connection_options)
+          initialize_identity(options)
+          @connection_options       = options[:connection_options] || {}
+          authenticate
+          @persistent = options[:persistent] || false
+          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
       end
     end
   end

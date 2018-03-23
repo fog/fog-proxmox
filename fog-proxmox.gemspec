@@ -40,10 +40,10 @@ Gem::Specification.new do |spec|
   spec.rubygems_version = '~> 2.6'
 
   spec.add_development_dependency 'bundler', '~> 1.16'
-  spec.add_development_dependency 'rake', '~> 12.1'
-  spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'rake', '~> 12.3'
+  spec.add_development_dependency 'rspec', '~> 3.7'
   spec.add_development_dependency 'ruby-debug-ide', '~> 0.6'
-  spec.add_development_dependency 'rubocop', '~> 0.50'
+  spec.add_development_dependency 'rubocop', '~> 0.54'
   spec.add_development_dependency 'pry', '~> 0.11'
   spec.add_development_dependency 'debase', '~> 0.2.2'
   spec.add_development_dependency 'reek', '~> 4.7'
@@ -52,6 +52,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'fastri', '~> 0.3'
   spec.add_development_dependency 'rcodetools', '~> 0.3'
   spec.add_development_dependency 'minitest', '~> 5.11'
+  spec.add_development_dependency 'vcr', '~> 4.0'
+  spec.add_development_dependency 'webmock', '~> 3.3'
 
   spec.add_dependency 'fog-core',  '~> 2.1'
   spec.add_dependency 'fog-json',  '~> 1.1'

@@ -15,12 +15,26 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
+require 'spec_helper'
+require_relative './proxmox_vcr'
 
-require 'vcr'
+describe Fog::Identity::Proxmox::V3 do
+  before :all do
+    @proxmox_vcr = ProxmoxVCR.new(
+      :vcr_directory => 'spec/fixtures/proxmox/identity',
+      :service_class => Fog::Identity::Proxmox
+    )
+    @service = @proxmox_vcr.service
+    @pve_url = @proxmox_vcr.pve_url
+  end
 
-VCR.configure do |c|
-  c.cassette_library_dir = 'spec/fixtures/proxmox'
-  c.hook_into :webmock
-  c.debug_logger = nil # use $stderr to debug
+  it 'authenticates with username and password' do
+    VCR.use_cassette('auth') do
+      Fog::Identity::Proxmox.new(
+        :username => @proxmox_vcr.username,
+        :password   => @proxmox_vcr.password,
+        :pve_url  => "#{@pve_url}/access/ticket"
+      )
+    end
+end
 end

@@ -8,7 +8,8 @@
             "cwd": "${workspaceRoot}",
             "program": "${workspaceRoot}/main.rb",
             "useBundler": true,
-            "pathToBundler": "/home/tristan/.rbenv/shims/bundler" // linux rbenv
+            "pathToBundler": "/home/tristan/.rbenv/shims/bundler", // linux rbenv
+            "pathToRDebugIDE": "/home/tristan/.rbenv/shims/rdebug-ide",
         },
         {
             "name": "Listen for rdebug-ide",

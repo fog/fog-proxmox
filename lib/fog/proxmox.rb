@@ -1,4 +1,4 @@
-# Copyright 2018 Tristan Robert  
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -48,5 +48,32 @@ module Fog
     service(:compute, 'Compute')
     service(:storage, 'Storage')
     service(:network, 'Network')
+
+    @token_cache = {}
+
+    class << self
+      attr_accessor :token_cache
+    end
+
+    def self.clear_token_cache
+      Fog::Proxmox.token_cache = {}
+    end
+
+    def self.authenticate(options, connection_options = {})
+      uri = options[:pve_url]
+      connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
+      @username = options[:pve_username]
+      response = connection.request({
+        :expects  => [200, 204],
+        :method   => 'POST',
+        :path     =>  (uri.path and not uri.path.empty?) ? uri.path : 'api2/json'
+      })
+      body = Fog::JSON.decode(response.body)
+      return {
+        :ticket => body['ticket'],
+        :csrftoken => body['CSRFPreventionToken'],
+      }
+    end
+
   end
 end
