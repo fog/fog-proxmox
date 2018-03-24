@@ -60,7 +60,7 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     parallel (1.12.1)
-    parser (2.5.0.4)
+    parser (2.5.0.5)
       ast (~> 2.4.0)
     path_expander (1.0.3)
     powerpack (0.1.1)
