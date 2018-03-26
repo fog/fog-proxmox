@@ -18,7 +18,7 @@
 require 'spec_helper'
 require_relative './proxmox_vcr'
 
-describe Fog::Identity::Proxmox::V3 do
+describe Fog::Identity::Proxmox do
   before :all do
     @proxmox_vcr = ProxmoxVCR.new(
       :vcr_directory => 'spec/fixtures/proxmox/identity',

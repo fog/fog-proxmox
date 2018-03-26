@@ -34,14 +34,14 @@ module Fog
       if url
         uri = URI(url)
       end
-      service = Fog::Identity::OpenStack.new(args)
+      service = Fog::Identity::Proxmox.new(args)
 end
     # Mock class
     class Mock
       attr_reader :config
 
         def initialize(options = {})
-          @openstack_auth_uri = URI.parse(options[:pve_url])
+          @proxmox_auth_uri = URI.parse(options[:pve_url])
           @config = options
         end
     end
