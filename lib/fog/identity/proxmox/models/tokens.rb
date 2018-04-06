@@ -23,12 +23,9 @@ module Fog
 
           def authenticate(auth)
             response = service.token_authenticate(auth)
-            Fog::Identity::Proxmox::Token.new(:user => {:name => response.body['username']}, 
-            :value => response.body['ticket'], :csrf => response.body['CSRFPreventionToken'])
-            )
+            Fog::Identity::Proxmox::Token.new(:user => {:name => response.body['username']}, :value => response.body['ticket'], :csrf => response.body['CSRFPreventionToken'])
           end
         end
-      end
     end
   end
 end

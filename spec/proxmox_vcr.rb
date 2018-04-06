@@ -29,22 +29,26 @@ require 'fog/core'
 
 class ProxmoxVCR
 
-  attr_reader :username
-              :password
-              :ticket
-              :csrftoken
+  attr_reader :username,
+              :password,
+              :ticket,
+              :csrftoken,
+              :service,
+              :pve_url
 
   def initialize(options)
      @vcr_directory = options[:vcr_directory]
      @with_ticket = options[:ticket]
      @service_class = options[:service_class]
+
+      puts @service_class.to_s # debug
   end
 
   use_recorded = !ENV.key?('PVE_URL') || ENV['USE_VCR'] == 'true'
 
   if use_recorded
     Fog.interval = 0
-    @pve_url = 'https://172.26.49.155:8006/api2/json'
+    @pve_url = 'https://172.26.49.146:8006/api2/json'
   else 
     @pve_url = ENV['PVE_URL']
   end
@@ -63,11 +67,13 @@ class ProxmoxVCR
     config.debug_logger = nil # use $stderr to debug
   end
 
-  # allow us to ignore dev certificates on servers
+  # ignore dev certificates on servers
   Excon.defaults[:ssl_verify_peer] = false if ENV['SSL_VERIFY_PEER'] == 'false'
 
   VCR.use_cassette('identity_ticket') do
     Fog::Proxmox.clear_token_cache
+
+    puts "@service_class:" + @service_class.to_s # debug
     @username = 'root@pam'
     @password = 'proxmox01'
     @ticket = 'PVE:root@pam:5AB4B38A::m5asyATnV66Htv+Z2QYNu+KuqZDsR1t3fCViuu0bTAWYfU85zdUY2dF9lJXa7soWlaZ3tZriTxC7d+nhMq9Fq8hCRlNG4ntsEw/CzeuS50phSvq4Phx1uZVV0KjkdcVP1X0J50e42Zfr5hzptiO+cD68OF2GG0GaboQ/MV+PA5IxojYojQe1w6yjjzreZhiZYy9zq1W5CW23yIt5pPWk9oFxLNUHU1I2+jqMCOeE40VhivCUEslusD0ZdoA3tkIWJ504rKQJrJIsq1zi6LIpGsktkbUPxHwSgnftQs0IPRuP5HGaz1g9FSW1IUpC8iCHqEV6re+Pb9Yz+G1G7+G0TQ=='

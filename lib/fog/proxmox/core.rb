@@ -54,7 +54,7 @@ module Fog
           @proxmox_can_reauthenticate = true
         end
 
-        @current_user    = options[:current_user]
+        @current_user = options[:current_user]
       end
 
       def credentials
