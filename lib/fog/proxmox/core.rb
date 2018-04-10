@@ -39,9 +39,9 @@ module Fog
           instance_variable_set "@#{proxmox_param}".to_sym, value
         end
 
-        @auth_token ||= options[:proxmox_auth_token]
+        @auth_token ||= options[:proxmox_ticket]
 
-        @proxmox_auth_uri = URI.parse(options[:proxmox_auth_url])
+        @proxmox_auth_uri = URI.parse(options[:proxmox_url])
 
         if @auth_token
           @proxmox_can_reauthenticate = false
@@ -60,7 +60,7 @@ module Fog
       def credentials
         options = {
           :provider                    => 'proxmox',
-          :proxmox_auth_url            => @proxmox_auth_uri.to_s,
+          :proxmox_url                 => @proxmox_auth_uri.to_s,
           :proxmox_auth_token          => @auth_token,
           :current_user                => @current_user
         }
@@ -73,7 +73,7 @@ module Fog
 
       private
 
-      def request(params)
+      def request(params, parse_json = true)
         retried = false
         begin
           response = @connection.request(params.merge(
@@ -101,7 +101,7 @@ module Fog
         end
 
         if !response.body.empty? && response.get_header('Content-Type').match('application/json')
-          response.body = Fog::JSON.decode(response.body)
+          response.body = Fog::JSON.decode(response.body) if parse_json && !params[:raw_body]
         end
 
         response
@@ -147,19 +147,19 @@ module Fog
           @auth_token = @proxmox_auth_token
         end
 
-        @host   = @proxmox_uri.host
-        @path   = @proxmox_uri.path
+        @host   = @proxmox_auth_uri.host
+        @path   = @proxmox_auth_uri.path
         @path.sub!(%r{/$}, '')
-        @port   = @proxmox_uri.port
-        @scheme = @proxmox_uri.scheme
+        @port   = @proxmox_auth_uri.port
+        @scheme = @proxmox_auth_uri.scheme
 
         # Not all implementations have identity service in the catalog
-        if @proxmox_uri
-          @identity_connection = Fog::Core::Connection.new(
-            @proxmox_uri,
-            false, @connection_options
-          )
-        end
+        # if @proxmox_auth_uri
+        #   @identity_connection = Fog::Core::Connection.new(
+        #     @proxmox_auth_uri,
+        #     false, @connection_options
+        #   )
+        # end
 
         true
       end

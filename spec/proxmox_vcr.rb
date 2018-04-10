@@ -21,11 +21,10 @@
 #
 # 1. ENV[PVE_URL] exists: talk to an actual Proxmox server and record HTTP
 #    traffic in VCRs at "spec/debug" (credentials are read from the conventional
-#    environment variables: PVE_URL, PVE_USERNAME, PVE_PASSWORD, PVE_TICKET, PVE_CSRFTOKEN etc.)
+#    environment variables: PVE_URL, PVE_USERNAME, PVE_PASSWORD, PVE_TICKET, PVE_CSRFTOKEN)
 # 2. otherwise (under Travis etc.): use VCRs at "spec/fixtures/proxmox/#{service}"
 
 require 'vcr'
-require 'fog/core'
 
 class ProxmoxVCR
 
@@ -34,23 +33,20 @@ class ProxmoxVCR
               :ticket,
               :csrftoken,
               :service,
-              :pve_url
+              :proxmox_url
 
   def initialize(options)
      @vcr_directory = options[:vcr_directory]
-     @with_ticket = options[:ticket]
      @service_class = options[:service_class]
-
-      puts @service_class.to_s # debug
-  end
+     @with_ticket = options[:ticket]
 
   use_recorded = !ENV.key?('PVE_URL') || ENV['USE_VCR'] == 'true'
 
   if use_recorded
     Fog.interval = 0
-    @pve_url = 'https://172.26.49.146:8006/api2/json'
+    @proxmox_url = 'https://172.26.49.146:8006/api2/json'
   else 
-    @pve_url = ENV['PVE_URL']
+    @proxmox_url = ENV['PVE_URL']
   end
 
   VCR.configure do |config|
@@ -72,10 +68,10 @@ class ProxmoxVCR
 
   VCR.use_cassette('identity_ticket') do
     Fog::Proxmox.clear_token_cache
-
-    puts "@service_class:" + @service_class.to_s # debug
+    
     @username = 'root@pam'
     @password = 'proxmox01'
+    # ticket recorded in identity_ticket.yml
     @ticket = 'PVE:root@pam:5AB4B38A::m5asyATnV66Htv+Z2QYNu+KuqZDsR1t3fCViuu0bTAWYfU85zdUY2dF9lJXa7soWlaZ3tZriTxC7d+nhMq9Fq8hCRlNG4ntsEw/CzeuS50phSvq4Phx1uZVV0KjkdcVP1X0J50e42Zfr5hzptiO+cD68OF2GG0GaboQ/MV+PA5IxojYojQe1w6yjjzreZhiZYy9zq1W5CW23yIt5pPWk9oFxLNUHU1I2+jqMCOeE40VhivCUEslusD0ZdoA3tkIWJ504rKQJrJIsq1zi6LIpGsktkbUPxHwSgnftQs0IPRuP5HGaz1g9FSW1IUpC8iCHqEV6re+Pb9Yz+G1G7+G0TQ=='
     @csrftoken = '5AB4B38A:J+3XBmYsJqR7F+18kqbMhj6I/SM'
 
@@ -87,19 +83,20 @@ class ProxmoxVCR
     end
 
     connection_options = {
-      :pve_url => "#{@pve_url}/access/ticket"
+      :proxmox_url => "#{@proxmox_url}/access/ticket"
     }
 
       if @with_ticket
-        connection_options[:pve_ticket]     = @ticket
-        connection_options[:pve_csrftoken]  = @csrftoken
+        connection_options[:proxmox_ticket]     = @ticket
+        connection_options[:proxmox_csrftoken]  = @csrftoken
       else
-        connection_options[:pve_username]   = @username
-        connection_options[:pve_password]   = @password
+        connection_options[:proxmox_username]   = @username
+        connection_options[:proxmox_password]   = @password
       end
 
-      @service = @service_class.new(connection_options)
+      @service = @service_class.new(connection_options)   
 
+    end
   end
 
 end

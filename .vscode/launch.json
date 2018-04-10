@@ -36,6 +36,7 @@
             "request": "launch",
             "cwd": "${workspaceRoot}",
             "program": "${workspaceRoot}/bin/rspec",
+            "useBundler": true,
             "args": [
                 "-I",
                 "${workspaceRoot}"
@@ -47,6 +48,7 @@
             "request": "launch",
             "cwd": "${workspaceRoot}",
             "program": "${workspaceRoot}/bin/rspec",
+            "useBundler": true,
             "args": [
                 "-I",
                 "${workspaceRoot}",

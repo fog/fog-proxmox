@@ -19,22 +19,24 @@ require 'spec_helper'
 require_relative './proxmox_vcr'
 
 describe Fog::Identity::Proxmox do
+
   before :all do
     @proxmox_vcr = ProxmoxVCR.new(
-      :vcr_directory => 'spec/fixtures/proxmox/identity',
-      :service_class => Fog::Identity::Proxmox
+      {:vcr_directory => 'spec/fixtures/proxmox/identity',
+      :service_class => Fog::Identity::Proxmox}
     )
     @service = @proxmox_vcr.service
-    @pve_url = @proxmox_vcr.pve_url
+    @proxmox_url = @proxmox_vcr.proxmox_url
   end
 
   it 'authenticates with username and password' do
     VCR.use_cassette('auth') do
-      Fog::Identity::Proxmox.new(
-        :username => @proxmox_vcr.username,
-        :password   => @proxmox_vcr.password,
-        :pve_url  => "#{@pve_url}/access/ticket"
+      Fog::Identity::Proxmox.new({
+        :proxmox_username => @proxmox_vcr.username,
+        :proxmox_password   => @proxmox_vcr.password,
+        :proxmox_url  => "#{@proxmox_url}/access/ticket"}
       )
     end
-end
+  end
+
 end
