@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://172.26.49.155:8006/api2/json/access/ticket
+    uri: https://172.26.49.146:8006/api2/json/access/ticket
     body:
       encoding: US-ASCII
       string: username=root%40pam&password=proxmox01

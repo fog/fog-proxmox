@@ -1,8 +1,7 @@
 // Placez vos paramètres dans ce fichier pour remplacer les paramètres par défaut et les paramètres utilisateur.
 {
-    "spellright.language": "French",
-    "spellright.documentTypes": [
-        "latex",
-        "plaintext"
-    ]
+    "ruby.pathToBundler": "/home/tristan/.rbenv/shims/bundle",
+    "ruby.useBundler": true,
+    "solargraph.commandPath": "/home/tristan/.rbenv/shims/solargraph",
+    "solargraph.bundlerPath": "/home/tristan/.rbenv/shims/bundle"
 }

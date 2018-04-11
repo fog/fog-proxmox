@@ -23,6 +23,7 @@ describe Fog::Identity::Proxmox do
   before :all do
     @proxmox_vcr = ProxmoxVCR.new(
       {:vcr_directory => 'spec/fixtures/proxmox/identity',
+        :ticket => false,
       :service_class => Fog::Identity::Proxmox}
     )
     @service = @proxmox_vcr.service

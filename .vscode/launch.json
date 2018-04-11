@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "Debug Local File",
             "type": "Ruby",
@@ -37,6 +38,17 @@
             "cwd": "${workspaceRoot}",
             "program": "${workspaceRoot}/bin/rspec",
             "useBundler": true,
+            "showDebuggerOutput": true,
+            "env": {
+                "DISABLE_PROXY": true,
+                "SSL_VERIFY_PEER": false,
+                "USE_VCR": false,
+                "PVE_URL": "https://172.26.49.146:8006/api2/json",
+                "PVE_USERNAME": "root@pam",
+                "PVE_PASSWORD": "proxmox01",
+                "PVE_TICKET": "",
+                "PVE_CSRFTOKEN": ""
+            },
             "args": [
                 "-I",
                 "${workspaceRoot}"
@@ -49,6 +61,17 @@
             "cwd": "${workspaceRoot}",
             "program": "${workspaceRoot}/bin/rspec",
             "useBundler": true,
+            "showDebuggerOutput": true,
+            "env": {
+                "DISABLE_PROXY": true,
+                "SSL_VERIFY_PEER": false,
+                "USE_VCR": false,
+                "PVE_URL": "https://172.26.49.146:8006/api2/json",
+                "PVE_USERNAME": "root@pam",
+                "PVE_PASSWORD": "proxmox01",
+                "PVE_TICKET": "",
+                "PVE_CSRFTOKEN": ""
+            },
             "args": [
                 "-I",
                 "${workspaceRoot}",

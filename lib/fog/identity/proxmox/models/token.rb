@@ -15,10 +15,14 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
+# frozen_string_literal: true
+
+require 'fog/proxmox/models/model'
+
 module Fog
   module Identity
     class Proxmox
-        class Token < Fog::Core::Model
+        class Token < Fog::Proxmox::Model
           attribute :value
           attribute :user
           attribute :csrf

@@ -15,15 +15,37 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
+require 'fog/proxmox/models/collection'
+require 'fog/identity/proxmox/models/token'
+
 module Fog
   module Identity
     class Proxmox
-        class Tokens < Fog::Core::Collection
-          model Fog::Identity::Proxmox:Token
+        class Tokens < Fog::Proxmox::Collection
+          model Fog::Identity::Proxmox::Token
 
           def authenticate(auth)
             response = service.token_authenticate(auth)
-            Fog::Identity::Proxmox::Token.new(:user => {:name => response.body['username']}, :value => response.body['ticket'], :csrf => response.body['CSRFPreventionToken'])
+            Fog::Identity::Proxmox::Token.new(
+              :user => {:name => response.body['username'],:password => response.body['password']}, :value => response.body['ticket'], :csrf => response.body['CSRFPreventionToken']
+            )
+          end
+
+          def validate(subject_token)
+            response = service.token_validate(subject_token)
+            Fog::Identity::Proxmox::Token.new(
+              :user => {:name => response.body['username'],:password => response.body['password']}, :value => response.body['ticket'], :csrf => response.body['CSRFPreventionToken']
+            )
+          end
+
+          def check(subject_token)
+            service.token_check(subject_token)
+            true
+          end
+
+          def revoke(subject_token)
+            service.token_revoke(subject_token)
+            true
           end
         end
     end

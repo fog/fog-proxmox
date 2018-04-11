@@ -44,14 +44,14 @@ module Fog
         @proxmox_auth_uri = URI.parse(options[:proxmox_url])
 
         if @auth_token
-          @proxmox_can_reauthenticate = false
+          @proxmox_must_reauthenticate = false
         else
           missing_credentials = []
 
           missing_credentials << :proxmox_username unless @proxmox_username
           missing_credentials << :proxmox_password unless @proxmox_password
           raise ArgumentError, "Missing required arguments: #{missing_credentials.join(', ')}" unless missing_credentials.empty?
-          @proxmox_can_reauthenticate = true
+          @proxmox_must_reauthenticate = true
         end
 
         @current_user = options[:current_user]
@@ -115,7 +115,7 @@ module Fog
         }
         # CSRF token is required to PUT, POST and DELETE http requests
         if ['PUT','POST','DELETE'].include? method
-          headers_hash.merge({'CSRFPreventionToken' => @csrf_token})
+          headers_hash.merge({'PVEAuthCookie' => @csrf_token})
         end
         headers_hash.merge!(additional_headers)
       end
@@ -152,14 +152,6 @@ module Fog
         @path.sub!(%r{/$}, '')
         @port   = @proxmox_auth_uri.port
         @scheme = @proxmox_auth_uri.scheme
-
-        # Not all implementations have identity service in the catalog
-        # if @proxmox_auth_uri
-        #   @identity_connection = Fog::Core::Connection.new(
-        #     @proxmox_auth_uri,
-        #     false, @connection_options
-        #   )
-        # end
 
         true
       end

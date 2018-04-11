@@ -6,4 +6,5 @@ exclude:
 - test/**/*
 domains: []
 required: []
-plugins: []
+plugins:
+  -runtime

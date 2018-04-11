@@ -60,13 +60,17 @@ module Fog
     end
 
     def self.authenticate(options, connection_options = {})
-      uri = options[:pve_url]
+      url = options[:proxmox_url]
+      username = options[:proxmox_username]
+      password = options[:proxmox_password]
+      uri = URI.parse(url)
       connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
-      @username = options[:pve_username]
+      path = uri.path
       response = connection.request({
         :expects  => [200, 204],
         :method   => 'POST',
-        :path     =>  (uri.path and not uri.path.empty?) ? uri.path : 'api2/json'
+        :path     =>  (path and not path.empty?) ? path : 'api2/json/access/ticket',
+        :body => "username=#{username}&password=#{password}"
       })
       body = Fog::JSON.decode(response.body)
       return {

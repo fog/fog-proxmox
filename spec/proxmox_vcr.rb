@@ -58,10 +58,14 @@ class ProxmoxVCR
     else
       config.cassette_library_dir = "spec/debug"
       config.default_cassette_options = {:record => :all}
+      #config.configure_rspec_metadata!
     end
     config.hook_into :webmock
-    config.debug_logger = nil # use $stderr to debug
+    config.debug_logger = $stderr # use $stderr to debug
   end
+
+  # ignore enterprise proxy
+  Excon.defaults[:disable_proxy] = true if ENV['DISABLE_PROXY'] == 'true'
 
   # ignore dev certificates on servers
   Excon.defaults[:ssl_verify_peer] = false if ENV['SSL_VERIFY_PEER'] == 'false'

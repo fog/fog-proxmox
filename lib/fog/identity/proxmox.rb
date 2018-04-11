@@ -24,8 +24,12 @@ module Fog
     # Identity and authentication proxmox class
     class Proxmox < Fog::Service
       requires :proxmox_url, :proxmox_username, :proxmox_password
-      recognizes :ticket, :csrftoken, :persistent
+      recognizes :ticket, :csrftoken, :persistent, :current_user
 
+      model_path 'fog/identity/proxmox/models'
+      model :token
+      collection :tokens
+      model :user
       request_path 'fog/identity/proxmox/requests'
       request :token_authenticate
 
