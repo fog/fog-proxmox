@@ -28,11 +28,16 @@ module Fog
 
       def load_response(response, index = nil)
         # Delete it index if it's there, so we don't store response with data twice, but we store only metadata
-        objects = index ? response.body.delete(index) : response.body
+        body = response.body
+        objects = index ? body.delete(index) : body
 
         clear && objects.each { |object| self << new(object) }
         self.response = response
         self
+      end
+
+      def get(response, attribute)
+        return response.body[attribute]
       end
 
       ##################################################################################################################
@@ -40,18 +45,18 @@ module Fog
 
       # Returns detailed list of records
       def all(options = {})
-        raise Fog::OpenStack::Errors::InterfaceNotImplemented.new('Method :all is not implemented')
+        raise Fog::Proxmox::Errors::InterfaceNotImplemented.new('Method :all is not implemented')
       end
 
       # Returns non detailed list of records, usually just subset of attributes, which makes this call more effective.
-      # Not all openstack services support non detailed list, so it delegates to :all by default.
+      # Not all Proxmox services support non detailed list, so it delegates to :all by default.
       def summary(options = {})
         all(options)
       end
 
       # Gets record given record's UUID
       def get(uuid)
-        raise Fog::OpenStack::Errors::InterfaceNotImplemented.new('Method :get is not implemented')
+        raise Fog::Proxmox::Errors::InterfaceNotImplemented.new('Method :get is not implemented')
       end
 
       def find_by_id(uuid)
@@ -60,7 +65,7 @@ module Fog
 
       # Destroys record given record's UUID
       def destroy(uuid)
-        raise Fog::OpenStack::Errors::InterfaceNotImplemented.new('Method :destroy is not implemented')
+        raise Fog::Proxmox::Errors::InterfaceNotImplemented.new('Method :destroy is not implemented')
       end
     end
   end

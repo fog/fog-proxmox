@@ -45,9 +45,7 @@
                 "USE_VCR": false,
                 "PVE_URL": "https://172.26.49.146:8006/api2/json",
                 "PVE_USERNAME": "root@pam",
-                "PVE_PASSWORD": "proxmox01",
-                "PVE_TICKET": "",
-                "PVE_CSRFTOKEN": ""
+                "PVE_PASSWORD": "proxmox01"
             },
             "args": [
                 "-I",
@@ -68,9 +66,7 @@
                 "USE_VCR": false,
                 "PVE_URL": "https://172.26.49.146:8006/api2/json",
                 "PVE_USERNAME": "root@pam",
-                "PVE_PASSWORD": "proxmox01",
-                "PVE_TICKET": "",
-                "PVE_CSRFTOKEN": ""
+                "PVE_PASSWORD": "proxmox01"
             },
             "args": [
                 "-I",

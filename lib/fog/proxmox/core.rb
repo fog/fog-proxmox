@@ -39,19 +39,21 @@ module Fog
           instance_variable_set "@#{proxmox_param}".to_sym, value
         end
 
-        @auth_token ||= options[:proxmox_ticket]
+        ticket = options[:proxmox_ticket]
+        @with_auth_token = !ticket.to_s.empty?
+        @auth_token = ticket
 
         @proxmox_auth_uri = URI.parse(options[:proxmox_url])
 
-        if @auth_token
-          @proxmox_must_reauthenticate = false
+        if @with_auth_token
+          @proxmox_can_reauthenticate = false
         else
           missing_credentials = []
 
           missing_credentials << :proxmox_username unless @proxmox_username
           missing_credentials << :proxmox_password unless @proxmox_password
           raise ArgumentError, "Missing required arguments: #{missing_credentials.join(', ')}" unless missing_credentials.empty?
-          @proxmox_must_reauthenticate = true
+          @proxmox_can_reauthenticate = true
         end
 
         @current_user = options[:current_user]
@@ -78,12 +80,13 @@ module Fog
         begin
           response = @connection.request(params.merge(
                                            :headers => headers(params.delete(:headers)),
+                                           :cookies => cookies,
                                            :path    => "#{@path}/#{params[:path]}"
           ))
         rescue Excon::Errors::Unauthorized => error
           # token expiration and token renewal possible
-          if error.response.body != 'Bad username or password' && @proxmox_can_reauthenticate && !retried
-            @proxmox_can_reauthenticate = true
+          if error.response.body != 'Bad username or password' && @proxmox_must_reauthenticate && !retried
+            @proxmox_must_reauthenticate = true
             authenticate
             retried = true
             retry
@@ -100,8 +103,10 @@ module Fog
                 end
         end
 
-        if !response.body.empty? && response.get_header('Content-Type').match('application/json')
-          response.body = Fog::JSON.decode(response.body) if parse_json && !params[:raw_body]
+        body = response.body
+
+        if !body.empty? && response.get_header('Content-Type').match('application/json')
+          body = Fog::JSON.decode(body) if parse_json && !params[:raw_body]
         end
 
         response
@@ -115,9 +120,18 @@ module Fog
         }
         # CSRF token is required to PUT, POST and DELETE http requests
         if ['PUT','POST','DELETE'].include? method
-          headers_hash.merge({'PVEAuthCookie' => @csrf_token})
+          headers_hash.merge({'CSRFPreventionToken' => @csrf_token})
         end
         headers_hash.merge!(additional_headers)
+      end
+
+      def cookies
+        cookies_hash = {}
+        # if authenticated ticket must be present in cookie
+        if @with_auth_token
+          cookies_hash = {'PVEAuthCookie' => @ticket}
+        end
+        cookies_hash
       end
 
       def proxmox_options
@@ -142,9 +156,8 @@ module Fog
           @current_user = credentials[:user]
 
           @proxmox_must_reauthenticate = false
-          @auth_token = credentials[:token]
-        else
-          @auth_token = @proxmox_auth_token
+          @auth_token = credentials[:ticket]
+          @csrf_token = credentials[:csrftoken]
         end
 
         @host   = @proxmox_auth_uri.host
@@ -155,6 +168,7 @@ module Fog
 
         true
       end
+
     end
   end
 end

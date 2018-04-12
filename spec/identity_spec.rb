@@ -23,18 +23,29 @@ describe Fog::Identity::Proxmox do
   before :all do
     @proxmox_vcr = ProxmoxVCR.new(
       {:vcr_directory => 'spec/fixtures/proxmox/identity',
-        :ticket => false,
       :service_class => Fog::Identity::Proxmox}
     )
     @service = @proxmox_vcr.service
     @proxmox_url = @proxmox_vcr.proxmox_url
+    @ticket = @proxmox_vcr.ticket
+    @csrftoken = @proxmox_vcr.csrftoken
   end
 
   it 'authenticates with username and password' do
     VCR.use_cassette('auth') do
       Fog::Identity::Proxmox.new({
-        :proxmox_username => @proxmox_vcr.username,
-        :proxmox_password   => @proxmox_vcr.password,
+        :proxmox_username => 'root@pam',
+        :proxmox_password => 'proxmox01',
+        :proxmox_url  => "#{@proxmox_url}/access/ticket"}
+      )
+    end
+  end
+
+  it 'authenticates with ticket' do
+    VCR.use_cassette('ticket') do
+      Fog::Identity::Proxmox.new({
+        :proxmox_ticket => @ticket,
+        :proxmox_csrftoken => @csrftoken,
         :proxmox_url  => "#{@proxmox_url}/access/ticket"}
       )
     end

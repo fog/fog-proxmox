@@ -24,18 +24,20 @@ module Fog
         class Tokens < Fog::Proxmox::Collection
           model Fog::Identity::Proxmox::Token
 
+          def add(response)
+            Fog::Identity::Proxmox::Token.new(
+              :user => {:name => get(response,'username'),:password => get(response,'password')}, :value => get(response,'ticket'), :csrf => get(response,'CSRFPreventionToken')
+            )
+          end
+
           def authenticate(auth)
             response = service.token_authenticate(auth)
-            Fog::Identity::Proxmox::Token.new(
-              :user => {:name => response.body['username'],:password => response.body['password']}, :value => response.body['ticket'], :csrf => response.body['CSRFPreventionToken']
-            )
+            add(response)
           end
 
           def validate(subject_token)
             response = service.token_validate(subject_token)
-            Fog::Identity::Proxmox::Token.new(
-              :user => {:name => response.body['username'],:password => response.body['password']}, :value => response.body['ticket'], :csrf => response.body['CSRFPreventionToken']
-            )
+            add(response)        
           end
 
           def check(subject_token)

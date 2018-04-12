@@ -37,17 +37,17 @@ module Fog
 
       # Updates a record
       def update
-        # raise Fog::OpenStack::Errors::InterfaceNotImplemented.new('Method :get is not implemented')
+        # raise Fog::Proxmox::Errors::InterfaceNotImplemented.new('Method :get is not implemented')
       end
 
       # Creates a record
       def create
-        # raise Fog::OpenStack::Errors::InterfaceNotImplemented.new('Method :get is not implemented')
+        # raise Fog::Proxmox::Errors::InterfaceNotImplemented.new('Method :get is not implemented')
       end
 
       # Destroys a record
       def destroy
-        # raise Fog::OpenStack::Errors::InterfaceNotImplemented.new('Method :get is not implemented')
+        # raise Fog::Proxmox::Errors::InterfaceNotImplemented.new('Method :get is not implemented')
       end
     end
   end
