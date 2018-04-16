@@ -40,9 +40,6 @@ module Fog
         return response.body[attribute]
       end
 
-      ##################################################################################################################
-      # Abstract base class methods, please keep the consistent naming in all subclasses of the Collection class
-
       # Returns detailed list of records
       def all(options = {})
         raise Fog::Proxmox::Errors::InterfaceNotImplemented.new('Method :all is not implemented')

@@ -44,6 +44,7 @@ describe Fog::Identity::Proxmox do
   it 'authenticates with ticket' do
     VCR.use_cassette('ticket') do
       Fog::Identity::Proxmox.new({
+        :proxmox_username => 'root@pam',
         :proxmox_ticket => @ticket,
         :proxmox_csrftoken => @csrftoken,
         :proxmox_url  => "#{@proxmox_url}/access/ticket"}

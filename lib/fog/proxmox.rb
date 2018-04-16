@@ -72,6 +72,13 @@ module Fog
       }
     end
 
+    def self.set_password(options)
+      auth_token = options[:proxmox_auth_token]
+      if auth_token!=nil
+        options[:proxmox_password] = auth_token
+      end
+    end
+
     def self.retrieve_tokens(options, connection_options = {})
 
       username          = options[:proxmox_username].to_s
@@ -81,18 +88,23 @@ module Fog
 
       uri = URI.parse(url)
 
+      set_password(options)
+
       connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
 
       response, expires = Fog::Proxmox.token_cache[{:user => username}] if @token_lifetime > 0
 
       unless response && expires > Time.now
-        request = {
-          :expects  => [200, 204],
-          :headers  => {'Accept' => 'application/json'},
-          :body     => "username=#{username}&password=#{password}",
-          :method   => 'POST',
-          :path     =>  'api2/json/access/ticket',
-        }
+        if auth_token
+          password = auth_token
+        end
+          request = {
+            :expects  => [200, 204],
+            :headers  => {'Accept' => 'application/json'},
+            :body     => "username=#{username}&password=#{password}",
+            :method   => 'POST',
+            :path     =>  'api2/json/access/ticket',
+          }
 
         response = connection.request(request)
 

@@ -42,8 +42,10 @@ module Fog
         ticket = options[:proxmox_ticket]
         @with_auth_token = !ticket.to_s.empty?
         @auth_token = ticket
+        @proxmox_must_reauthenticate = false
 
-        @proxmox_auth_uri = URI.parse(options[:proxmox_url])
+        @proxmox_uri = URI.parse(options[:proxmox_url])
+        path_auth = '/api2/json/access/ticket'
 
         if @with_auth_token
           @proxmox_can_reauthenticate = false
@@ -57,12 +59,13 @@ module Fog
         end
 
         @current_user = options[:current_user]
+        @is_authenticated = @current_user!=nil
       end
 
       def credentials
         options = {
           :provider                    => 'proxmox',
-          :proxmox_url                 => @proxmox_auth_uri.to_s,
+          :proxmox_url                 => @proxmox_uri.to_s,
           :proxmox_auth_token          => @auth_token,
           :current_user                => @current_user
         }
@@ -85,7 +88,7 @@ module Fog
           ))
         rescue Excon::Errors::Unauthorized => error
           # token expiration and token renewal possible
-          if error.response.body != 'Bad username or password' && @proxmox_must_reauthenticate && !retried
+          if error.response.body != 'Bad username or password' && @proxmox_can_reauthenticate && !retried
             @proxmox_must_reauthenticate = true
             authenticate
             retried = true
@@ -144,8 +147,9 @@ module Fog
         options
       end
 
+
       def authenticate
-        if @proxmox_must_reauthenticate
+        if !@is_authenticated
 
           options = proxmox_options
 
@@ -160,11 +164,11 @@ module Fog
           @csrf_token = credentials[:csrftoken]
         end
 
-        @host   = @proxmox_auth_uri.host
-        @path   = @proxmox_auth_uri.path
+        @host   = @proxmox_uri.host
+        @path   = @proxmox_uri.path
         @path.sub!(%r{/$}, '')
-        @port   = @proxmox_auth_uri.port
-        @scheme = @proxmox_auth_uri.scheme
+        @port   = @proxmox_uri.port
+        @scheme = @proxmox_uri.scheme
 
         true
       end
