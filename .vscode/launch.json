@@ -44,6 +44,7 @@
                 "SSL_VERIFY_PEER": false,
                 "USE_VCR": false,
                 "PVE_URL": "https://172.26.49.146:8006/api2/json",
+                "PVE_PATH": "/access/ticket",
                 "PVE_USERNAME": "root@pam",
                 "PVE_PASSWORD": "proxmox01"
             },
@@ -65,6 +66,7 @@
                 "SSL_VERIFY_PEER": false,
                 "USE_VCR": false,
                 "PVE_URL": "https://172.26.49.146:8006/api2/json",
+                "PVE_PATH": "/access/ticket",
                 "PVE_USERNAME": "root@pam",
                 "PVE_PASSWORD": "proxmox01"
             },

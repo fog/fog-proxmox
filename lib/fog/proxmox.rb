@@ -52,10 +52,11 @@ module Fog
     @token_cache = {}
 
     # Default lifetime token is 2 hours
-    @token_lifetime = 3600
+    @token_lifetime = 2*60*60
 
     class << self
-      attr_accessor :token_cache
+      attr_accessor :token_cache, :token_lifetime
+      attr_reader :version
     end
 
     def self.clear_token_cache
@@ -64,11 +65,12 @@ module Fog
 
     def self.authenticate(options, connection_options = {})
       
-      username, body = retrieve_tokens(options, connection_options)
+      ticket, token_expires, username, csrf_token = retrieve_tokens(options, connection_options)
       return {
-        :user   => {:name => username, :token_cache => @token_cache},
-        :ticket => body['data']['ticket'],
-        :csrftoken => body['data']['CSRFPreventionToken']
+        :user       => {:name => username, :token_cache => @token_cache},
+        :ticket     => ticket,
+        :csrftoken  => csrf_token,
+        :expires    => token_expires
       }
     end
 
@@ -85,16 +87,21 @@ module Fog
       password          = options[:proxmox_password].to_s
       auth_token        = options[:proxmox_auth_token]
       url               = options[:proxmox_url]
+      path              = options[:proxmox_path]
 
-      uri = URI.parse(url)
+      uri = URI.parse(url+path)
 
       set_password(options)
 
       connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
 
-      response, expires = Fog::Proxmox.token_cache[{:user => username}] if @token_lifetime > 0
+      unless @token_lifetime <= 0
+        token_cache, expires = Fog::Proxmox.token_cache[{:user => username}]
+      end
 
-      unless response && expires > Time.now
+      now = Time.now
+
+      unless token_cache && Time.now <= now
         if auth_token
           password = auth_token
         end
@@ -103,44 +110,25 @@ module Fog
             :headers  => {'Accept' => 'application/json'},
             :body     => "username=#{username}&password=#{password}",
             :method   => 'POST',
-            :path     =>  'api2/json/access/ticket',
+            :path     =>  uri.path,
           }
 
-        response = connection.request(request)
+        response   = connection.request(request)
+        body       = JSON.decode(response.body)
+        data       = body['data']
+        ticket     = data['ticket']
+        username   = data['username']
+        csrf_token = data['CSRFPreventionToken']
 
         if @token_lifetime > 0
-          cache = Fog::Proxmox.token_cache
-          cache[{:user => username}] = response, Time.now + @token_lifetime
-          Fog::Proxmox.token_cache = cache
+          cache                      = {}
+          token_expires              = Time.at(now.to_i + @token_lifetime)
+          cache[{:user => username}] = ticket, csrf_token, token_expires
+          Fog::Proxmox.token_cache   = cache
         end
       end
 
-      [username, Fog::JSON.decode(response.body)]
+      [ticket, token_expires, username, csrf_token]
     end
-
-    def self.get_version(uri, auth_token, connection_options = {})
-      version_cache = "#{uri}"
-      return @version[version_cache] if @version && @version[version_cache]
-      connection = Fog::Core::Connection.new("#{uri.scheme}://#{uri.host}:#{uri.port}", false, connection_options)
-      response = connection.request(
-        :expects => [200, 204, 300],
-        :headers  => {'Accept' => 'application/json'},
-        :cookies => [{'PVEAuthCookie'=> auth_token}],
-        :method  => 'GET',
-        :path    => 'api2/json/version'
-      )
-
-      body = Fog::JSON.decode(response.body)
-
-      @version                = {} unless @version
-      @version[version_cache] = extract_version_from_body(body)
-    end
-
-    def self.extract_version_from_body(body)
-      return nil if body['version'].empty?
-      version = body['version']
-      version
-    end
-
   end
 end

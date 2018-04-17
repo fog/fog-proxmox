@@ -26,6 +26,7 @@ module Fog
       attr_accessor :auth_token
       attr_reader :csrf_token
       attr_reader :current_user
+      attr_reader :auth_token_expiration
 
       # fallback
       def self.not_found_class
@@ -39,13 +40,10 @@ module Fog
           instance_variable_set "@#{proxmox_param}".to_sym, value
         end
 
-        ticket = options[:proxmox_ticket]
-        @with_auth_token = !ticket.to_s.empty?
-        @auth_token = ticket
+        @with_auth_token = !@proxmox_ticket.to_s.empty?
         @proxmox_must_reauthenticate = false
 
-        @proxmox_uri = URI.parse(options[:proxmox_url])
-        path_auth = '/api2/json/access/ticket'
+        @proxmox_uri = URI.parse(@proxmox_url+@proxmox_path)
 
         if @with_auth_token
           @proxmox_can_reauthenticate = false
@@ -82,7 +80,7 @@ module Fog
         retried = false
         begin
           response = @connection.request(params.merge(
-                                           :headers => headers(params.delete(:headers)),
+                                           :headers => headers(params[:method],params[:headers]),
                                            :cookies => cookies,
                                            :path    => "#{@path}/#{params[:path]}"
           ))

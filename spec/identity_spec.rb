@@ -19,11 +19,11 @@ require 'spec_helper'
 require_relative './proxmox_vcr'
 
 describe Fog::Identity::Proxmox do
-
+  
   before :all do
     @proxmox_vcr = ProxmoxVCR.new(
       {:vcr_directory => 'spec/fixtures/proxmox/identity',
-      :service_class => Fog::Identity::Proxmox}
+      :service_class  => Fog::Identity::Proxmox}
     )
     @service = @proxmox_vcr.service
     @proxmox_url = @proxmox_vcr.proxmox_url
@@ -36,18 +36,26 @@ describe Fog::Identity::Proxmox do
       Fog::Identity::Proxmox.new({
         :proxmox_username => 'root@pam',
         :proxmox_password => 'proxmox01',
-        :proxmox_url  => "#{@proxmox_url}/access/ticket"}
+        :proxmox_url      => "#{@proxmox_url}",
+        :proxmox_path     => "/access/ticket"}
       )
     end
   end
 
-  it 'authenticates with ticket' do
+  it 'reauthenticates with ticket' do
     VCR.use_cassette('ticket') do
+      @service.ticket_authenticate @ticket, @csrftoken
+    end
+  end
+    
+  it 'gets server version' do
+    VCR.use_cassette('version') do      
       Fog::Identity::Proxmox.new({
-        :proxmox_username => 'root@pam',
-        :proxmox_ticket => @ticket,
-        :proxmox_csrftoken => @csrftoken,
-        :proxmox_url  => "#{@proxmox_url}/access/ticket"}
+        :proxmox_username   => 'root@pam',
+        :proxmox_ticket     => @ticket,
+        :proxmox_csrftoken  => @csrftoken,
+        :proxmox_url        => "#{@proxmox_url}",
+        :proxmox_path       => "/version"}
       )
     end
   end

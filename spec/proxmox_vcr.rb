@@ -33,7 +33,8 @@ class ProxmoxVCR
               :ticket,
               :csrftoken,
               :service,
-              :proxmox_url
+              :proxmox_url,
+              :proxmox_path
 
   def initialize(options)
      @vcr_directory = options[:vcr_directory]
@@ -42,10 +43,12 @@ class ProxmoxVCR
     use_recorded = !ENV.key?('PVE_URL') || ENV['USE_VCR'] == 'true'
 
     if use_recorded
-      Fog.interval = 0
-      @proxmox_url = 'https://172.26.49.146:8006/api2/json'
+      Fog.interval  = 0
+      @proxmox_url  = 'https://172.26.49.146:8006/api2/json'
+      @proxmox_path = '/access/ticket'
     else 
-      @proxmox_url = ENV['PVE_URL']
+      @proxmox_url  = ENV['PVE_URL']
+      @proxmox_path = ENV['PVE_PATH']
     end
 
     VCR.configure do |config|
@@ -85,7 +88,8 @@ class ProxmoxVCR
       end
 
       connection_options = {
-        :proxmox_url => "#{@proxmox_url}/access/ticket", 
+        :proxmox_url      => @proxmox_url,
+        :proxmox_path     => @proxmox_path, 
         :proxmox_username => @username, 
         :proxmox_password => @password
       }

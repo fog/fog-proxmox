@@ -23,7 +23,7 @@ module Fog
   module Identity
     # Identity and authentication proxmox class
     class Proxmox < Fog::Service
-      requires :proxmox_url
+      requires :proxmox_url, :proxmox_path
       recognizes :proxmox_ticket, :proxmox_csrftoken, :persistent, :current_user, :proxmox_username, :proxmox_password
 
       model_path 'fog/identity/proxmox/models'
@@ -31,6 +31,8 @@ module Fog
       collection :tokens
       model :user
       request_path 'fog/identity/proxmox/requests'
+      request :get_version
+      request :ticket_authenticate
 
       # Mock class
       class Mock
@@ -52,6 +54,7 @@ module Fog
           @persistent = options[:persistent] || false
           @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
         end
+        
         def config
           self
         end
