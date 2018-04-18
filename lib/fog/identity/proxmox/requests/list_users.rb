@@ -21,11 +21,11 @@ module Fog
     module Identity
       class Proxmox
           class Real
-            def ticket_authenticate
+            def list_users
               request(
                 :expects => [200],
-                :method  => 'POST',
-                :path    => "access/ticket"
+                :method  => 'GET',
+                :path    => "access/users"
               )
             end
           end

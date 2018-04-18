@@ -55,7 +55,7 @@ module Fog
     @token_lifetime = 2*60*60
 
     class << self
-      attr_accessor :token_cache, :token_lifetime
+      attr_accessor :token_cache
       attr_reader :version
     end
 
@@ -63,72 +63,68 @@ module Fog
       Fog::Proxmox.token_cache = {}
     end
 
-    def self.authenticate(options, connection_options = {})
-      
-      ticket, token_expires, username, csrf_token = retrieve_tokens(options, connection_options)
-      return {
-        :user       => {:name => username, :token_cache => @token_cache},
-        :ticket     => ticket,
-        :csrftoken  => csrf_token,
-        :expires    => token_expires
-      }
+    def self.authenticate(options, connection_options = {})      
+      get_tokens(options, connection_options)
+      return @token_cache
     end
 
     def self.set_password(options)
-      auth_token = options[:proxmox_auth_token]
-      if auth_token!=nil
-        options[:proxmox_password] = auth_token
+      ticket = options[:proxmox_ticket]
+      if !ticket.nil?
+        options[:proxmox_password] = ticket
       end
     end
 
-    def self.retrieve_tokens(options, connection_options = {})
+    def self.get_tokens(options, connection_options = {})
 
       username          = options[:proxmox_username].to_s
       password          = options[:proxmox_password].to_s
-      auth_token        = options[:proxmox_auth_token]
+      ticket            = options[:proxmox_ticket]
+      csrf_token        = options[:proxmox_csrftoken]
+      ticket_expires    = options[:proxmox_ticket_expires]
       url               = options[:proxmox_url]
-      path              = options[:proxmox_path]
-
-      uri = URI.parse(url+path)
 
       set_password(options)
 
-      connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
+      uri = URI.parse(url)
+      @api_path = uri.path
+      @is_authenticated = !ticket.nil? && ticket_expires > Time.now
 
-      unless @token_lifetime <= 0
-        token_cache, expires = Fog::Proxmox.token_cache[{:user => username}]
+      if @is_authenticated
+        set_token_cache(username,ticket,csrf_token,token_expires)
+      else
+        connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
+        retrieve_tokens(connection,username,password)
       end
+      
+    end
+
+    def self.retrieve_tokens(connection,username,password)
+      request = {
+        :expects  => [200, 204],
+        :headers  => {'Accept' => 'application/json'},
+        :body     => "username=#{username}&password=#{password}",
+        :method   => 'POST',
+        :path     =>  "#{@api_path}/access/ticket",
+      }
+
+      response   = connection.request(request)
+      body       = JSON.decode(response.body)
+      data       = body['data']
+      ticket     = data['ticket']
+      username   = data['username']
+      csrf_token = data['CSRFPreventionToken']
 
       now = Time.now
+      token_expires = Time.at(now.to_i + @token_lifetime)
+      set_token_cache(username,ticket,csrf_token,token_expires)
 
-      unless token_cache && Time.now <= now
-        if auth_token
-          password = auth_token
-        end
-          request = {
-            :expects  => [200, 204],
-            :headers  => {'Accept' => 'application/json'},
-            :body     => "username=#{username}&password=#{password}",
-            :method   => 'POST',
-            :path     =>  uri.path,
-          }
-
-        response   = connection.request(request)
-        body       = JSON.decode(response.body)
-        data       = body['data']
-        ticket     = data['ticket']
-        username   = data['username']
-        csrf_token = data['CSRFPreventionToken']
-
-        if @token_lifetime > 0
-          cache                      = {}
-          token_expires              = Time.at(now.to_i + @token_lifetime)
-          cache[{:user => username}] = ticket, csrf_token, token_expires
-          Fog::Proxmox.token_cache   = cache
-        end
-      end
-
-      [ticket, token_expires, username, csrf_token]
     end
+
+    def self.set_token_cache(username,ticket,csrf_token,token_expires)
+      @token_cache = {:username => username,  :ticket => ticket, :csrf_token => csrf_token, :token_expires => token_expires}
+      Fog::Proxmox.token_cache = @token_cache
+    end
+
   end
 end

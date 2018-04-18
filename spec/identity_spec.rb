@@ -29,6 +29,7 @@ describe Fog::Identity::Proxmox do
     @proxmox_url = @proxmox_vcr.proxmox_url
     @ticket = @proxmox_vcr.ticket
     @csrftoken = @proxmox_vcr.csrftoken
+    @expires = @proxmox_vcr.expires
   end
 
   it 'authenticates with username and password' do
@@ -41,22 +42,10 @@ describe Fog::Identity::Proxmox do
       )
     end
   end
-
-  it 'reauthenticates with ticket' do
-    VCR.use_cassette('ticket') do
-      @service.ticket_authenticate @ticket, @csrftoken
-    end
-  end
     
   it 'gets server version' do
     VCR.use_cassette('version') do      
-      Fog::Identity::Proxmox.new({
-        :proxmox_username   => 'root@pam',
-        :proxmox_ticket     => @ticket,
-        :proxmox_csrftoken  => @csrftoken,
-        :proxmox_url        => "#{@proxmox_url}",
-        :proxmox_path       => "/version"}
-      )
+      @service.get_version
     end
   end
 

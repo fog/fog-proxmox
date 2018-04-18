@@ -21,11 +21,12 @@ module Fog
     module Identity
       class Proxmox
           class Real
-            def ticket_authenticate
+            def change_password(userid,password)
               request(
                 :expects => [200],
-                :method  => 'POST',
-                :path    => "access/ticket"
+                :method  => 'PUT',
+                :path    => "access/password",
+                :body    => "userid=#{userid}&password=#{password}"
               )
             end
           end

@@ -31,10 +31,16 @@ module Fog
     module Identity
       class Proxmox
         class User < Fog::Proxmox::Model
-  
-            attribute :name
-            attribute :password
-  
+            attribute :id
+            attribute :firstname
+            attribute :lastname
+            attribute :password 
+            attribute :email 
+            attribute :expires 
+            attribute :comment 
+            attribute :enable
+            attribute :groups 
+            attribute :keys 
             def to_s
               name
             end

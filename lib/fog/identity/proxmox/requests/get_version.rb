@@ -21,12 +21,11 @@ module Fog
     module Identity
       class Proxmox
           class Real
-            def get_version(ticket)
+            def get_version
               request(
                 :expects => [200],
                 :method  => 'GET',
-                :path    => "version",
-                :cookies => {:PVEAuthCookie => ticket}
+                :path    => "version"
               )
             end
           end

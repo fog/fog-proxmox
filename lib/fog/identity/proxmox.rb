@@ -24,7 +24,7 @@ module Fog
     # Identity and authentication proxmox class
     class Proxmox < Fog::Service
       requires :proxmox_url, :proxmox_path
-      recognizes :proxmox_ticket, :proxmox_csrftoken, :persistent, :current_user, :proxmox_username, :proxmox_password
+      recognizes :proxmox_ticket, :proxmox_ticket_expires, :proxmox_csrftoken, :persistent, :current_user, :proxmox_username, :proxmox_password
 
       model_path 'fog/identity/proxmox/models'
       model :token
@@ -33,13 +33,14 @@ module Fog
       request_path 'fog/identity/proxmox/requests'
       request :get_version
       request :ticket_authenticate
+      request :list_users
 
       # Mock class
       class Mock
         attr_reader :config
 
         def initialize(options = {})
-          @proxmox_auth_uri = URI.parse(options[:proxmox_url])
+          @proxmox_uri = URI.parse(options[:proxmox_url])
           @config = options
         end
       end

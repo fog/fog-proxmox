@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/version
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AD738C9::LL21p721kn67rjMEFs/DZGmklkinUrr6xnwybha1lWlwQnf85McjmwF93fWsC3TYAUtvm8HFxag4VDm1INcX28LhfBygt6enbSt/aug1nhpV7J7PEuXC1Bx+6kyKVYiPxQY/5Ew3IzzEyLxsuI82x6yVgpzbvhKzGANd1QD2QMHd+G7IIBzRV7uxmNQeaB8gza33J5N3WSdPBc6RDsqch3LD7jRo68WRcbicFJMFRe9ZyCFz41dMjaXYGtk9H1a0r/SjHdsLgLT/QrmTkAoKdzlaSjlZPwkVucDz5tB6yQJTDk7UKlAsGdWtlYe98s+NYVV5smK8TPYTo3j8tUQb1w==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Wed, 18 Apr 2018 12:24:47 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '77'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 18 Apr 2018 12:24:47 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"release":"41","keyboard":"fr","repoid":"0b958203","version":"5.1"}}'
+    http_version: 
+  recorded_at: Wed, 18 Apr 2018 12:24:41 GMT
+recorded_with: VCR 3.0.3

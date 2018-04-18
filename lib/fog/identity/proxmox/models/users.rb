@@ -1,4 +1,4 @@
-# Copyright 2018 Tristan Robert
+# Copyright 2018 Tristan Robert  
 
 # This file is part of Fog::Proxmox.
 
@@ -15,23 +15,27 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
+require 'fog/proxmox/models/collection'
+require 'fog/identity/proxmox/models/user'
 
 module Fog
-    module Identity
-      class Proxmox
-          class Real
-            def ticket_authenticate
-              request(
-                :expects => [200],
-                :method  => 'POST',
-                :path    => "access/ticket"
-              )
-            end
-          end
-  
-          class Mock
+  module Identity
+    class Proxmox
+        class Tokens < Fog::Proxmox::Collection
+          model Fog::Identity::Proxmox::User
+
+          def create(user)
+            Fog::Identity::Proxmox::User.new(
+              {
+                :id => user[:id],
+                :firstname => user[:firstname],
+                :lastname => user[:lastname],
+                :email => user[:email],
+                :comment => user[:comment]
+              }
+            )
           end
         end
     end
   end
+end
