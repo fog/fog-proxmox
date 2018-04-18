@@ -21,16 +21,19 @@ module Fog
     module Identity
       class Proxmox
           class Real
-            def list_users
+            def list_users(options = {})
               request(
                 :expects => [200],
                 :method  => 'GET',
-                :path    => "access/users"
+                :path    => "access/users",
+                :query   => options
               )
             end
           end
   
           class Mock
+            def list_users(options = {})
+            end
           end
         end
     end

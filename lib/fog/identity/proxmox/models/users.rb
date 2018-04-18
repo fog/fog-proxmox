@@ -25,7 +25,7 @@ module Fog
           model Fog::Identity::Proxmox::User
 
           def all(options = {})
-            load_response(service.list_users, 'users')
+            load_response(service.list_users(options), 'users')
           end
         end
     end
