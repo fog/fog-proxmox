@@ -30,6 +30,7 @@ module Fog
       model :token
       collection :tokens
       model :user
+      collection :users
       request_path 'fog/identity/proxmox/requests'
       request :get_version
       request :ticket_authenticate

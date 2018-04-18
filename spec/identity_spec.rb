@@ -29,7 +29,7 @@ describe Fog::Identity::Proxmox do
     @proxmox_url = @proxmox_vcr.proxmox_url
     @ticket = @proxmox_vcr.ticket
     @csrftoken = @proxmox_vcr.csrftoken
-    @expires = @proxmox_vcr.expires
+    @ticket_deadline = @proxmox_vcr.ticket_deadline
   end
 
   it 'authenticates with username and password' do
@@ -44,8 +44,16 @@ describe Fog::Identity::Proxmox do
   end
     
   it 'gets server version' do
-    VCR.use_cassette('version') do      
+    VCR.use_cassette('get_version') do      
       @service.get_version
+    end
+  end
+    
+  it 'lists users' do
+    VCR.use_cassette('list_users') do
+      users_all = @service.users.all
+      users_all.wont_be_nil
+      users_all.wont_be_empty
     end
   end
 

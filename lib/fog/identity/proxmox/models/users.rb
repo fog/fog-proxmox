@@ -21,19 +21,11 @@ require 'fog/identity/proxmox/models/user'
 module Fog
   module Identity
     class Proxmox
-        class Tokens < Fog::Proxmox::Collection
+        class Users < Fog::Proxmox::Collection
           model Fog::Identity::Proxmox::User
 
-          def create(user)
-            Fog::Identity::Proxmox::User.new(
-              {
-                :id => user[:id],
-                :firstname => user[:firstname],
-                :lastname => user[:lastname],
-                :email => user[:email],
-                :comment => user[:comment]
-              }
-            )
+          def all(options = {})
+            load_response(service.list_users, 'users')
           end
         end
     end

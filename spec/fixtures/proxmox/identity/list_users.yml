@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/access/users
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AD73AA3::OcfrxN2NtVVuTLi+quRx9EnmaqjqJmllhGF38Qu+2ZkwEOOptYbwOuKqOBbMMtNdFB3ToWwWMq9qqBGNDnvFFBast7+mAM3mOQ+iax5yAWfG+bW4OtCC+4V00JrUJMqtdHfunz6KOxNYrdaaaVMxcV5WUayjPkH9W8juQ/jp6+ExN23F57xANFO0HnumiaaFn0FY3+zlRDfLUNgVRNyxnajYB/oHRxIkewe9546GuQ9/2qsnhVaycqNOLX9ptpEZpxkYUOuYtlnh2Wx5XnUlhotbjos1UIIIOFAAFvlYxZLZA6q1oNSYw6f0EP1fcgNFpm2N/3bGKQoMKvWBpev9AQ==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Wed, 18 Apr 2018 12:31:31 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '84'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 18 Apr 2018 12:31:31 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"enable":1,"userid":"root@pam","expire":0,"email":"proxmox@proxmox.com"}]}'
+    http_version: 
+  recorded_at: Wed, 18 Apr 2018 12:31:25 GMT
+recorded_with: VCR 3.0.3

@@ -30,37 +30,37 @@ auth_url = "https://172.26.49.146:8006/api2/json/access/token"
 username = 'root@pam'
 password = 'proxmox01'
 
-proxmox = Fog::Identity::Proxmox.new(:proxmox_url => auth_url, :proxmox_username => username, :proxmox_password => password)
+identity = Fog::Identity::Proxmox.new(:proxmox_url => auth_url, :proxmox_username => username, :proxmox_password => password)
 
 # Get proxmox version
-proxmox.version
+identity.version
 
 # List users
-proxmox.users.each do |user|
+identity.users.each do |user|
     # user ...
 end
 
 # Create a new user
-user = proxmox.users.create :userid     => 'bobsinclar',
+user = identity.users.create :userid     => 'bobsinclar',
                             :firstname  => 'bob',
                             :lastname   => 'sinclar',
-                            :groups     => []
+                            :groups     => [],
                             :email      => 'bobsinclar@proxmox.com'
 
 # List groups
-proxmox.groups.each do |group|
+identity.groups.each do |group|
     # group ...
 end
 
 # List domains
-proxmox.domains.each do |domain|
+identity.domains.each do |domain|
     # domain ...
 end
 
 # Create a new domain (authentication server)
-domain = proxmox.domains.create :realm      => 'myrealm',
+domain = identity.domains.create :realm      => 'myrealm',
                                 :type       => 'pam',
                                 :domain     => 'mydomain'
 
 # Delete user
-poxmox.users.delete :userid => 'bobsinclar'
+identity.users.delete :userid => 'bobsinclar'

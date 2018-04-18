@@ -26,7 +26,7 @@ module Fog
       attr_accessor :ticket
       attr_reader :csrf_token
       attr_reader :current_user
-      attr_reader :ticket_expiration
+      attr_reader :ticket_deadline
 
       # fallback
       def self.not_found_class
@@ -45,11 +45,11 @@ module Fog
         end
 
         @with_ticket = !@proxmox_ticket.nil?
-        @ticket_valid = !@proxmox_ticket_expires.nil? && @proxmox_ticket_expires > Time.now
+        @is_ticket_valid = !@proxmox_ticket_deadline.nil? && @proxmox_ticket_deadline > Time.now
         @proxmox_must_reauthenticate = false
         @proxmox_uri = URI.parse(@proxmox_url)
 
-        if !@ticket_valid
+        if !@is_ticket_valid
           @proxmox_must_reauthenticate = true
         end
 
@@ -69,6 +69,7 @@ module Fog
           :provider                    => 'proxmox',
           :proxmox_url                 => @proxmox_uri.to_s,
           :proxmox_ticket              => @ticket,
+          :proxmox_ticket_deadline     => @ticket_deadline,
           :proxmox_csrftoken           => @csrf_token,
           :proxmox_username            => @current_user
         }
@@ -144,7 +145,7 @@ module Fog
           credentials = Fog::Proxmox.authenticate(options, @connection_options)
           @current_user                = credentials[:username]
           @ticket                      = credentials[:ticket]
-          @ticket_expiration           = credentials[:expires]
+          @ticket_deadline             = credentials[:ticket_deadline]
           @csrf_token                  = credentials[:csrf_token]
           @proxmox_must_reauthenticate = false
         end

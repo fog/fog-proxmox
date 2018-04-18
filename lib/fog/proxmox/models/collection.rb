@@ -28,9 +28,8 @@ module Fog
 
       def load_response(response, index = nil)
         # Delete it index if it's there, so we don't store response with data twice, but we store only metadata
-        body = response.body
-        objects = index ? body.delete(index) : body
-
+        body = JSON.decode(response.body)
+        objects = body['data']
         clear && objects.each { |object| self << new(object) }
         self.response = response
         self
