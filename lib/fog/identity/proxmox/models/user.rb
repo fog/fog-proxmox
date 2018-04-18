@@ -44,6 +44,12 @@ module Fog
             def to_s
               userid
             end
+            def create
+              merge_attributes(
+                service.create_user(attributes)
+              )
+              self
+            end
         end
       end
     end

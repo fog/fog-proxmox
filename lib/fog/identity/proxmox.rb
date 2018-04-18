@@ -27,14 +27,13 @@ module Fog
       recognizes :proxmox_ticket, :proxmox_ticket_expires, :proxmox_csrftoken, :persistent, :current_user, :proxmox_username, :proxmox_password
 
       model_path 'fog/identity/proxmox/models'
-      model :token
-      collection :tokens
       model :user
       collection :users
       request_path 'fog/identity/proxmox/requests'
       request :get_version
       request :ticket_authenticate
       request :list_users
+      request :create_user
 
       # Mock class
       class Mock

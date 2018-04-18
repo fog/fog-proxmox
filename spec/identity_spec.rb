@@ -49,16 +49,23 @@ describe Fog::Identity::Proxmox do
     end
   end
     
-  it 'lists users' do
-    VCR.use_cassette('list_users') do
-      # all users
-      users_all = @service.users.all
-      users_all.wont_be_nil
-      users_all.wont_be_empty
-      # disabled users
-      users_disabled = @service.users.all({'enabled' => 0})
-      users_disabled.wont_be_nil
-      users_disabled.must_be_empty
+  # it 'lists users' do
+  #   VCR.use_cassette('list_users') do
+  #     # all users
+  #     users_all = @service.users.all
+  #     users_all.wont_be_nil
+  #     users_all.wont_be_empty
+  #     # disabled users
+  #     users_disabled = @service.users.all({'enabled' => 0})
+  #     users_disabled.wont_be_nil
+  #     users_disabled.must_be_empty
+  #   end
+  # end
+    
+  it 'create user' do
+    VCR.use_cassette('create_user') do
+      user = {:userid => 'bobsinclar', :firstname => 'Bob', :lastname => 'Sinclar', :email => "bobsinclar@proxmox.com"}
+      @service.users.create(user)
     end
   end
 

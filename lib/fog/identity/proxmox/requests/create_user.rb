@@ -1,4 +1,4 @@
-# Copyright 2018 Tristan Robert  
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -17,20 +17,22 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
-  module Identity
-    class Proxmox
-        class Token < Fog::Proxmox::Model
-          attribute :value
-          attribute :user
-          attribute :csrf
-
-          def to_s
-            value
+    module Identity
+      class Proxmox
+          class Real
+            def create_user(user)
+              request(
+                :expects => [201],
+                :method  => 'POST',
+                :path    => "access/users",
+                :body    => URI.encode_www_form(user)
+              )
+            end
+          end
+  
+          class Mock
           end
         end
     end
   end
-end
