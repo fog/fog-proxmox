@@ -3,5 +3,43 @@
     "ruby.pathToBundler": "/home/tristan/.rbenv/shims/bundle",
     "ruby.useBundler": true,
     "solargraph.commandPath": "/home/tristan/.rbenv/shims/solargraph",
-    "solargraph.bundlerPath": "/home/tristan/.rbenv/shims/bundle"
+    "solargraph.bundlerPath": "/home/tristan/.rbenv/shims/bundle",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.iconTheme": "vscode-icons",
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "solargraph.useBundler": true,    
+    "ruby.lint": {
+        "reek": true,
+        "rubocop": {
+            "lint": true, //enable all lint cops.
+            "rails": true //Run extra rails cops
+        },
+        "ruby": true, //Runs ruby -wc
+        "fasterer": true,
+        "debride": true,
+        "ruby-lint": false
+    },
+    "ruby.locate": {
+        "include": "**/*.erb,**/*.rb,**/vendor/*.*",
+        "exclude": "{**/@(test|spec|tmp|.*),**/@(test|spec|tmp|.*)/**,**/*_spec.rb}"
+    },
+    "ruby.interpreter.commandPath": "/home/tristan/.rbenv/shims/ruby",
+    "ruby.pathToBundler": "/home/tristan/.rbenv/shims/bundle",
+    "ruby.useBundler": true,
+    "solargraph.commandPath": "/home/tristan/.rbenv/shims/solargraph",
+    "solargraph.bundlerPath": "/home/tristan/.rbenv/shims/bundle",
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true
+    },
+    "explorer.confirmDragAndDrop": false,
+    "ruby.format": "rubocop"
 }
