@@ -2,7 +2,7 @@
 
 New contributors are always welcome, when it doubt please ask questions. We strive to be an open and welcoming community. Please be nice to one another.
 
-BPlease read the [code of conduct](https://github.com/tristanrobert/fog-proxmox/blob/develop/CODE_OF_CONDUCT.md)
+Please read the [code of conduct](https://github.com/tristanrobert/fog-proxmox/blob/develop/CODE_OF_CONDUCT.md)
 
 ## Coding
 
