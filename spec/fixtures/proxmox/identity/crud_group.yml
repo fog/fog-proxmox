@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://172.26.49.146:8006/api2/json/access/users
+    uri: https://172.26.49.146:8006/api2/json/access/groups
     body:
       encoding: US-ASCII
-      string: userid=bobsinclar%40pve&firstname=Bob&lastname=Sinclar&email=bobsinclar%40proxmox.com
+      string: groupid=group1
     headers:
       User-Agent:
       - fog-core/2.1.0
@@ -43,7 +43,7 @@ http_interactions:
   recorded_at: Thu, 19 Apr 2018 15:31:54 GMT
 - request:
     method: get
-    uri: https://172.26.49.146:8006/api2/json/access/users
+    uri: https://172.26.49.146:8006/api2/json/access/groups
     body:
       encoding: US-ASCII
       string: ''
@@ -70,22 +70,22 @@ http_interactions:
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '206'
+      - '31'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
       - Thu, 19 Apr 2018 15:31:52 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"lastname":"Sinclar","email":"bobsinclar@proxmox.com","enable":1,"expire":0,"firstname":"Bob","userid":"bobsinclar@pve"},{"enable":1,"email":"proxmox@proxmox.com","userid":"root@pam","expire":0}]}'
+      string: '{"data":[{"groupid":"group1"}]}'
     http_version: 
   recorded_at: Thu, 19 Apr 2018 15:31:54 GMT
 - request:
     method: post
-    uri: https://172.26.49.146:8006/api2/json/access/users
+    uri: https://172.26.49.146:8006/api2/json/access/groups
     body:
       encoding: US-ASCII
-      string: userid=bobsinclar%40pve&firstname=Bob&lastname=Sinclar&email=bobsinclar%40proxmox.com
+      string: groupid=group1
     headers:
       User-Agent:
       - fog-core/2.1.0
@@ -98,8 +98,8 @@ http_interactions:
   response:
     status:
       code: 500
-      message: 'create user failed: error with cfs lock ''file-user_cfg'': user ''bobsinclar@pve''
-        already exists'
+      message: 'create group failed: error with cfs lock ''file-user_cfg'': group
+        ''group1'' already exists'
     headers:
       Cache-Control:
       - max-age=0
@@ -124,10 +124,10 @@ http_interactions:
   recorded_at: Thu, 19 Apr 2018 15:31:54 GMT
 - request:
     method: put
-    uri: https://172.26.49.146:8006/api2/json/access/users/bobsinclar@pve
+    uri: https://172.26.49.146:8006/api2/json/access/groups/group1
     body:
       encoding: US-ASCII
-      string: lastname=Sinclar&email=bobsinclar%40proxmox.com&enable=0&expire=0&firstname=Bob&comment=novelist
+      string: comment=Group+1
     headers:
       User-Agent:
       - fog-core/2.1.0
@@ -165,7 +165,7 @@ http_interactions:
   recorded_at: Thu, 19 Apr 2018 15:31:54 GMT
 - request:
     method: delete
-    uri: https://172.26.49.146:8006/api2/json/access/users/bobsinclar@pve
+    uri: https://172.26.49.146:8006/api2/json/access/groups/group1
     body:
       encoding: US-ASCII
       string: ''
@@ -206,7 +206,7 @@ http_interactions:
   recorded_at: Thu, 19 Apr 2018 15:31:54 GMT
 - request:
     method: get
-    uri: https://172.26.49.146:8006/api2/json/access/users
+    uri: https://172.26.49.146:8006/api2/json/access/groups
     body:
       encoding: US-ASCII
       string: ''
@@ -233,19 +233,19 @@ http_interactions:
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '84'
+      - '11'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
       - Thu, 19 Apr 2018 15:31:52 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"expire":0,"userid":"root@pam","enable":1,"email":"proxmox@proxmox.com"}]}'
+      string: '{"data":[]}'
     http_version: 
   recorded_at: Thu, 19 Apr 2018 15:31:54 GMT
 - request:
     method: get
-    uri: https://172.26.49.146:8006/api2/json/access/users/bobsinclar@pve
+    uri: https://172.26.49.146:8006/api2/json/access/groups/group1
     body:
       encoding: US-ASCII
       string: ''
@@ -259,7 +259,7 @@ http_interactions:
   response:
     status:
       code: 500
-      message: no such user ('bobsinclar@pve')
+      message: group 'group1' does not exist
     headers:
       Cache-Control:
       - max-age=0

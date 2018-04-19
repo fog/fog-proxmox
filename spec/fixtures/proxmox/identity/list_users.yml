@@ -2,47 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://172.26.49.146:8006/api2/json/access/users?enabled=
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.1.0
-      Content-Type:
-      - application/json
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD75C60::BLvOz7/Qhh4s7L/OkSSunfoc8qKCuHI1oLZJY15Kcg8P4pIduaRmdomCPnpconGXWYDZqwkgFJaJXn8+YjtrS7Tr+hxCvbs1Ek9Tu5GWLPfSwEg5Zvg5rywNpYTyENX6+x8K6Vfvl9W/5M85FdCFHInujDbK2tu2vMKWGH+HlgnTJnGlC5REiCggvQ6RGUNRxHq4L6bnq4fiS6s6Wchx8GwD/g5NXPNJIJIh/da09UA3WZE1j+UYTKka+tXDFHsKAwe/uFvIPqgHTK4yfkjGx0VZ54TI1uF7IHZBrT6IPU37aq5jIf1LRmJRHEWGJj4QW9Dp8H+2pEvwniPJ+JlpjA==
-  response:
-    status:
-      code: 400
-      message: Parameter verification failed.
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - close
-      Date:
-      - Wed, 18 Apr 2018 14:55:28 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '75'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Wed, 18 Apr 2018 14:55:28 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"errors":{"enabled":"type check (''boolean'') failed - got ''''"},"data":null}'
-    http_version: 
-  recorded_at: Wed, 18 Apr 2018 14:55:22 GMT
-- request:
-    method: get
     uri: https://172.26.49.146:8006/api2/json/access/users
     body:
       encoding: US-ASCII
@@ -50,12 +9,10 @@ http_interactions:
     headers:
       User-Agent:
       - fog-core/2.1.0
-      Content-Type:
-      - application/json
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD761B9::Nfivgslr1eq7gcv/twLuts1tzboCY/9S24+bo1PyIOEpND5SFlAFeS3041lvvm9P81Ho4hLhsbXLZFxk8+p7RuAIHzEqq3q8woK3IeY2czqRZU7MsN98q5WeFohKYCPPpiucQGIZoVrAKBxjF+iGFVdMq5sV3SqrzyalJx/mt/u8t1snadk+rNj0lGyj/wySfrm3PVMkIC1hn3RjDx5RC2wS+stG8cAMs7KDvFm85gyPtXbkkAMQhusgO2ld335UCp8eh02TPo1H1OxWuaFvRje2qNF4iNp+gQ7uh7m5voc8KaOldHGrpzvwlYgpdoCUn4/wmXutA9CYniGiahJYMw==
+      - PVEAuthCookie=PVE:root@pam:5AD8B668::RL69zD3cXfLYZVAreCuyKAUqFu20AmKnumxuNdn9NXzxRxBP1BAN3oAJkMsfu6hUAibEFGLZU7aX6pYIIRuHsiyFVNxJApvqaNwFDwTDSFYOBA3QKW2P0alCGGpU1zwhCnTxok9tEAMkRHg06nLI/VVhJXSUBluxyI8Ug3T06XLifLxtfmIa96ZGrHeIPY7pFr9CFUL3psGRkCZktfvP6zWWypU66kL+nmnDLOXpVc8Ktv3BKzpJnltmzYuFghz+TaerlA+dho9yJ0tPDD65zsyqh4uRjgScWPYkizt27X0ajBx+HXpGLAyf8x5ccYAN9Lhlnv/N/AfSxOYTaNGu/A==
   response:
     status:
       code: 200
@@ -66,7 +23,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Wed, 18 Apr 2018 15:18:17 GMT
+      - Thu, 19 Apr 2018 15:31:52 GMT
       Pragma:
       - no-cache
       Server:
@@ -76,53 +33,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 18 Apr 2018 15:18:17 GMT
+      - Thu, 19 Apr 2018 15:31:52 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"expire":0,"email":"proxmox@proxmox.com","userid":"root@pam","enable":1}]}'
+      string: '{"data":[{"enable":1,"email":"proxmox@proxmox.com","expire":0,"userid":"root@pam"}]}'
     http_version: 
-  recorded_at: Wed, 18 Apr 2018 15:18:11 GMT
-- request:
-    method: get
-    uri: https://172.26.49.146:8006/api2/json/access/users
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.1.0
-      Content-Type:
-      - application/json
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD76242::lhMboHDRbsSjUwFslQNQr4kzZ31v9lK+kF9w56Ye5CoX/a51KCu3ZarAD7ztv0NrcX2f91uAWIZfQ1yxWK0EtW4+ZwZKcGMwhtY/P9B3MJnPLTmoiLeF3XF5ySvO7R+UOnxtFrbB5sOFk7nfJ7JPnLoB8eDK315woZGHsIWZzsO+8keQ6Ai2tetsaii4Us7/dzA4abrRPuvbJVKLmjZ9ZMxNUPiAQ4HgXWEqpZ4aayhLfxIzKY/OV2YUd93AB7HgfDhkoimOFs2oO5Uu1WfXdEuTr6+/vYm9h5M/V47pEnJUA4cJzcyeIPuMCsAPeM8J/mzRugigHiIRt4TS9fxphA==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive
-      Date:
-      - Wed, 18 Apr 2018 15:20:34 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '84'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Wed, 18 Apr 2018 15:20:34 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[{"userid":"root@pam","enable":1,"email":"proxmox@proxmox.com","expire":0}]}'
-    http_version: 
-  recorded_at: Wed, 18 Apr 2018 15:20:28 GMT
+  recorded_at: Thu, 19 Apr 2018 15:31:54 GMT
 - request:
     method: get
     uri: https://172.26.49.146:8006/api2/json/access/users?enabled=0
@@ -132,12 +48,10 @@ http_interactions:
     headers:
       User-Agent:
       - fog-core/2.1.0
-      Content-Type:
-      - application/json
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD76242::lhMboHDRbsSjUwFslQNQr4kzZ31v9lK+kF9w56Ye5CoX/a51KCu3ZarAD7ztv0NrcX2f91uAWIZfQ1yxWK0EtW4+ZwZKcGMwhtY/P9B3MJnPLTmoiLeF3XF5ySvO7R+UOnxtFrbB5sOFk7nfJ7JPnLoB8eDK315woZGHsIWZzsO+8keQ6Ai2tetsaii4Us7/dzA4abrRPuvbJVKLmjZ9ZMxNUPiAQ4HgXWEqpZ4aayhLfxIzKY/OV2YUd93AB7HgfDhkoimOFs2oO5Uu1WfXdEuTr6+/vYm9h5M/V47pEnJUA4cJzcyeIPuMCsAPeM8J/mzRugigHiIRt4TS9fxphA==
+      - PVEAuthCookie=PVE:root@pam:5AD8B668::RL69zD3cXfLYZVAreCuyKAUqFu20AmKnumxuNdn9NXzxRxBP1BAN3oAJkMsfu6hUAibEFGLZU7aX6pYIIRuHsiyFVNxJApvqaNwFDwTDSFYOBA3QKW2P0alCGGpU1zwhCnTxok9tEAMkRHg06nLI/VVhJXSUBluxyI8Ug3T06XLifLxtfmIa96ZGrHeIPY7pFr9CFUL3psGRkCZktfvP6zWWypU66kL+nmnDLOXpVc8Ktv3BKzpJnltmzYuFghz+TaerlA+dho9yJ0tPDD65zsyqh4uRjgScWPYkizt27X0ajBx+HXpGLAyf8x5ccYAN9Lhlnv/N/AfSxOYTaNGu/A==
   response:
     status:
       code: 200
@@ -148,7 +62,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Wed, 18 Apr 2018 15:20:34 GMT
+      - Thu, 19 Apr 2018 15:31:52 GMT
       Pragma:
       - no-cache
       Server:
@@ -158,10 +72,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 18 Apr 2018 15:20:34 GMT
+      - Thu, 19 Apr 2018 15:31:52 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":[]}'
     http_version: 
-  recorded_at: Wed, 18 Apr 2018 15:20:28 GMT
+  recorded_at: Thu, 19 Apr 2018 15:31:54 GMT
 recorded_with: VCR 3.0.3

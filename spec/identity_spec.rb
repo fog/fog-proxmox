@@ -74,7 +74,6 @@ describe Fog::Identity::Proxmox do
       proc do
         @service.users.create(bob_hash)
       end.must_raise Excon::Errors::InternalServerError
-      #bob.email.must_be_equal bob_hash[:email]
       # Update
       bob.comment = 'novelist'
       bob.enable  = 0
@@ -82,6 +81,27 @@ describe Fog::Identity::Proxmox do
       # Delete
       bob.destroy
       proc { @service.users.find_by_id bob_hash[:userid] }.must_raise Excon::Errors::InternalServerError
+    end
+  end
+
+  it 'CRUD group' do
+    VCR.use_cassette('crud_group') do
+      group_hash = {:groupid => 'group1'}
+      # Create 1st time
+      @service.groups.create(group_hash) 
+      # Find by id
+      group = @service.groups.find_by_id group_hash[:groupid]
+      group.wont_be_nil
+      # Create 2nd time must fails
+      proc do
+        @service.groups.create(group_hash)
+      end.must_raise Excon::Errors::InternalServerError
+      # Update
+      group.comment = 'Group 1'
+      group.update
+      # Delete
+      group.destroy
+      proc { @service.groups.find_by_id group_hash[:groupid] }.must_raise Excon::Errors::InternalServerError
     end
   end
 
