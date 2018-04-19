@@ -30,10 +30,10 @@ module Fog
         super
       end
 
-      # Saves a record, call create or update based on identity, which marks if object was already created
-      def save
-        identity ? update : create
-      end
+      # Proxmox create object requires identity given by client
+      # def save
+      #   identity ? update : create
+      # end
 
       # Updates a record
       def update

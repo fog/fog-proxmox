@@ -35,6 +35,6 @@ module Fog
             def list_users(options = {})
             end
           end
-        end
+      end
     end
-  end
+end

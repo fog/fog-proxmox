@@ -39,6 +39,12 @@ module Fog
         return response.body[attribute]
       end
 
+      # Proxmox object creation is specific because it requires identity and return null
+      def create(attributes = {})
+        object = new(attributes)
+        object.create
+      end
+
       # Returns detailed list of records
       def all(options = {})
         raise Fog::Proxmox::Errors::InterfaceNotImplemented.new('Method :all is not implemented')

@@ -21,12 +21,11 @@ module Fog
     module Identity
       class Proxmox
           class Real
-            def create_user(user)
+            def delete_user(userid)
               request(
                 :expects => [200],
-                :method  => 'POST',
-                :path    => "access/users",
-                :body    => URI.encode_www_form(user)
+                :method  => 'DELETE',
+                :path    => "access/users/#{userid}"
               )
             end
           end

@@ -45,10 +45,17 @@ module Fog
               userid
             end
             def create
-              merge_attributes(
-                service.create_user(attributes)
-              )
-              self
+              service.create_user(attributes)
+            end
+            def destroy
+              requires :userid
+              service.delete_user(userid)
+              true
+            end  
+            def update
+              requires :userid
+              attr = attributes.reject {|k,v| k == :userid}
+              service.update_user(userid,attr)
             end
         end
       end

@@ -21,11 +21,12 @@ module Fog
     module Identity
       class Proxmox
           class Real
-            def ticket_authenticate
+            def update_user(userid,attributes)
               request(
                 :expects => [200],
-                :method  => 'POST',
-                :path    => "access/ticket"
+                :method  => 'PUT',
+                :path    => "access/users/#{userid}",
+                :body    => URI.encode_www_form(attributes)
               )
             end
           end

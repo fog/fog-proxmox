@@ -49,23 +49,39 @@ describe Fog::Identity::Proxmox do
     end
   end
     
-  # it 'lists users' do
-  #   VCR.use_cassette('list_users') do
-  #     # all users
-  #     users_all = @service.users.all
-  #     users_all.wont_be_nil
-  #     users_all.wont_be_empty
-  #     # disabled users
-  #     users_disabled = @service.users.all({'enabled' => 0})
-  #     users_disabled.wont_be_nil
-  #     users_disabled.must_be_empty
-  #   end
-  # end
+  it 'lists users' do
+    VCR.use_cassette('list_users') do
+      # all users
+      users_all = @service.users.all
+      users_all.wont_be_nil
+      users_all.wont_be_empty
+      # disabled users
+      users_disabled = @service.users.all({'enabled' => 0})
+      users_disabled.wont_be_nil
+      users_disabled.must_be_empty
+    end
+  end
     
-  it 'create user' do
-    VCR.use_cassette('create_user') do
-      user = {:userid => 'bobsinclar', :firstname => 'Bob', :lastname => 'Sinclar', :email => "bobsinclar@proxmox.com"}
-      @service.users.create(user)
+  it 'CRUD user' do
+    VCR.use_cassette('crud_user') do
+      bob_hash = {:userid => 'bobsinclar@pve', :firstname => 'Bob', :lastname => 'Sinclar', :email => "bobsinclar@proxmox.com"}
+      # Create 1st time
+      @service.users.create(bob_hash) 
+      # Find by id
+      bob = @service.users.find_by_id bob_hash[:userid]
+      bob.wont_be_nil
+      # Create 2nd time must fails
+      proc do
+        @service.users.create(bob_hash)
+      end.must_raise Excon::Errors::InternalServerError
+      #bob.email.must_be_equal bob_hash[:email]
+      # Update
+      bob.comment = 'novelist'
+      bob.enable  = 0
+      bob.update
+      # Delete
+      bob.destroy
+      proc { @service.users.find_by_id bob_hash[:userid] }.must_raise Excon::Errors::InternalServerError
     end
   end
 

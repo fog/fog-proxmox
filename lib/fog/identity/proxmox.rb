@@ -31,9 +31,11 @@ module Fog
       collection :users
       request_path 'fog/identity/proxmox/requests'
       request :get_version
-      request :ticket_authenticate
       request :list_users
+      request :get_user
       request :create_user
+      request :update_user
+      request :delete_user
 
       # Mock class
       class Mock
