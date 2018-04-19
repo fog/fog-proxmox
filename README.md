@@ -45,7 +45,10 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
+You can help the [contributors](https://github.com/tristanrobert/fog-proxmox/blob/develop/CONTRIBUTORS.md).
 Bug reports and pull requests are welcome on GitHub at [Fog-Proxmox](https://github.com/tristanrobert/fog-proxmox). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+Please read [how to contribute](https://github.com/tristanrobert/fog-proxmox/blob/develop/CONTRIBUTING.md).
 
 ## License
 
