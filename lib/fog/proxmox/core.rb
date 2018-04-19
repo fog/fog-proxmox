@@ -113,8 +113,7 @@ module Fog
       def headers(method, additional_headers)
         additional_headers ||= {}
         headers_hash = {
-          #'Content-Type'        => 'application/json',
-          'Accept'              => 'application/json'
+          'Accept' => 'application/json'
         }
         # CSRF token is required to PUT, POST and DELETE http requests
         if ['PUT','POST','DELETE'].include? method
