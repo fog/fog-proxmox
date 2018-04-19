@@ -1,3 +1,8 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=8852a644f5e7cf7a870b98c6568e6ff08b899e61e272529f6e9fbc10c6b663d3
+    - TASK=test
+    - TASK=spec
 language: ruby
 sudo: false
 cache: bundler
@@ -8,7 +13,10 @@ notifications:
 before_install:
   - gem update --system
   - gem update bundler
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script: bundle exec rake $TASK
-env:
-- TASK=test
-- TASK=spec
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
