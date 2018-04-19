@@ -2,3 +2,4 @@ vendor/
 bin/
 pkg/
 spec/debug/
+coverage/
