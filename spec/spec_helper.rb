@@ -17,15 +17,18 @@
 
 # frozen_string_literal: true
 
+require 'simplecov'
+
+SimpleCov.start do
+  add_filter "/spec/"
+  add_group "Identity", "lib/fog/identity"
+  add_group "Core", "lib/fog/proxmox"
+end
+
 require 'minitest/autorun'
 require 'vcr'
 require 'fog/core'
 require 'fog/proxmox'
-require 'simplecov'
-
-SimpleCov.start do
-  add_group "Identity", "lib/fog/identity"
-end
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/proxmox'
