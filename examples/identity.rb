@@ -41,11 +41,10 @@ identity.users.each do |user|
 end
 
 # Create a new user
-user = identity.users.create :userid     => 'bobsinclar',
-                            :firstname  => 'bob',
-                            :lastname   => 'sinclar',
-                            :groups     => [],
-                            :email      => 'bobsinclar@proxmox.com'
+identity.users.create :userid     => 'bobsinclar@pve',
+                      :firstname  => 'bob',
+                      :lastname   => 'sinclar',
+                      :email      => 'bobsinclar@proxmox.com'
 
 # List groups
 identity.groups.each do |group|
@@ -58,9 +57,14 @@ identity.domains.each do |domain|
 end
 
 # Create a new domain (authentication server)
-domain = identity.domains.create :realm      => 'myrealm',
-                                :type       => 'pam',
-                                :domain     => 'mydomain'
+identity.domains.create :realm  => 'myrealm',
+                        :type   => 'pam',
+                        :domain => 'mydomain'
 
+# Get user
+bob = identity.users.find_by_id 'bobsinclar@pve'
+# Update user
+bob.comment = 'novelist'
+bob.update
 # Delete user
-identity.users.delete :userid => 'bobsinclar'
+bob.destroy
