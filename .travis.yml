@@ -1,22 +1,25 @@
 env:
   global:
-    - CC_TEST_REPORTER_ID=8852a644f5e7cf7a870b98c6568e6ff08b899e61e272529f6e9fbc10c6b663d3
-    - TASK=test
-    - TASK=spec
+  - CC_TEST_REPORTER_ID=8852a644f5e7cf7a870b98c6568e6ff08b899e61e272529f6e9fbc10c6b663d3
+  - TASK=test
+  - TASK=spec
 language: ruby
 sudo: false
 cache: bundler
 rvm:
-  - 2.5.0
+- 2.5.0
 notifications:
   email: false
+  slack:
+    secure: e79Y7mFzf+DwnQVg9kniuk9qwtWt1S+7iT8chNMPkugEdsgGt5vKsWvMd0fNmPGsmmHqTaVd4m8Xf4+CpR7nB4oG5pWADrKc4p/syPYWBl/MlC7U3W214oZG5U06hAyJIhpdsC3+ufGHcp3pWUS/SjCUTZgMlp5fNZSh/wzmZe2yWWheFObE2Zj/UAWw0g6WFCmO7ST44Yvy2jhECSIKT9l8ChWr1jXD3h9eDWDJmybySHzO7Tsf/l0gMy92TzqZpjcrPHZsDs+BfVRMucHuO2D72t3WgyJzoVUolYs2nboDUm2IbWzx7Ut/RuvdlG6wv98BJmImzt4ickIZPNzxus56bFHsJQMZ0wSsJR/rAfzwuXqyLd2gQBuSmS352q4w7h4WAVH+i9xhcR5VIazS9tLLGYHEQ7Df/K4fN9+qnOAg+ngDaUU26ChmfsgjXc1fW+9ipzlg7L6OlUOkpypuOGGWKxz0K/gercyJy3DsHS9i1SstgiAEZJ3rJIUUgA9kynuCOEQ8Lv3YodZ+ezqB6HOtk6tZVBpZKDPkvHuapDZikKycvTvyNxD/BugfpRgMub6ac9Ub6aXC2S3xWbD8BHjGWZzRI21LYK6jWBuSu6r5ce2rXWACTWFQbRrNa5iWPXGiTd3sSRoGMZK9yrMdpWJfkhBPHf+6R7RMgiJ499M=
 before_install:
-  - gem update --system
-  - gem update bundler
+- gem update --system
+- gem update bundler
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 script: bundle exec rake $TASK
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
