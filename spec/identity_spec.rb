@@ -114,7 +114,7 @@ describe Fog::Identity::Proxmox do
       @service.roles.create(role_hash) 
       # Find by id
       role = @service.roles.find_by_id role_hash[:roleid]
-      # role.wont_be_nil
+      role.wont_be_nil
       # # Create 2nd time must fails
       proc do
         @service.roles.create(role_hash)
@@ -132,5 +132,42 @@ describe Fog::Identity::Proxmox do
       proc { @service.roles.find_by_id role_hash[:roleid] }.must_raise Excon::Errors::InternalServerError
     end
   end
+
+  it 'CRUD domains' do
+    VCR.use_cassette('crud_domains') do
+      domain_hash = {
+        :realm => 'LDAP',  
+        :type  => 'ldap',    
+        :base_dn => 'ou=People,dc=ldap-test,dc=com',
+        :user_attr => 'LDAP',
+        :server1 => 'localhost',
+        :port => 389,
+        :default => 0,
+        :secure => 0
+      }
+      # Create 1st time
+      @service.domains.create(domain_hash) 
+      # Find by id
+      domain = @service.domains.find_by_id domain_hash[:realm]
+      domain.wont_be_nil
+      # # Create 2nd time must fails
+      proc do
+        @service.domains.create(domain_hash)
+      end.must_raise Excon::Errors::InternalServerError
+      # # Update
+      domain.type.comment = 'Test domain LDAP'
+      # domain.type.tfa = 'oath' API lacks of documentation 
+      domain.update
+      # # all groups
+      domains_all = @service.domains.all
+      domains_all.wont_be_nil
+      domains_all.wont_be_empty
+      domains_all.must_include domain
+      # Delete
+      domain.destroy
+      proc { @service.domains.find_by_id domain_hash[:realm] }.must_raise Excon::Errors::InternalServerError
+    end
+  end
+
 
 end

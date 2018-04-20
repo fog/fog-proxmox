@@ -1,45 +1,6 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://172.26.49.146:8006/api2/json/access/groups
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.1.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9AEDF::dLO2E01D6b9jyA2LwdhBJuppEHBCsVPfiFCMrDOe45D8ZzKAFiirpBsa57od8oqNHowpFO9ZWtg5jJDTspchqgCQuTXnhQrG2e17T7yC1W1ukHmT4zVSVmsR0UGskR3iNFz4xFsfCwcBLcf7tIGLN9zAe29kAkabzlZrwU74T5/InZRi1yHcv9Czyk+aWHOJeeojeDBqh8LJhreh6bgp+5eGlg+2Ft5QwKAc6dGe5w3IhlFG6d1E3TQ0xUYJwE0RPpOCrdAgt7B/0q2eoLx6iseUqSkJulOW50ifwPBVrF+hlth7c2jctpWxR9yW9cDExiE+Ne9uUFpI/vumiNDmvg==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive
-      Date:
-      - Fri, 20 Apr 2018 09:11:59 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '11'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Fri, 20 Apr 2018 09:11:59 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[]}'
-    http_version: 
-  recorded_at: Fri, 20 Apr 2018 09:12:00 GMT
-- request:
     method: post
     uri: https://172.26.49.146:8006/api2/json/access/roles
     body:
@@ -51,9 +12,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AD9AF6E:kg9VeIqcT2CjFj2Bfwrok0p6h2s
+      - 5AD9F5B4:DvHN9FXgp1Gv8Tsf5tsJl8YySFY
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9AF6E::uUiLH64s5k8POoI6cFmr1fcVtn8WySQ7v23eXM63vISGRbBPgfVDvU015fJPFZHwm6JhbeCbc+ZC+u9pAJHsQrOOUXeGlv0JSnNgWgkHPMLj9r0V0uevDeEtuf8ux+3Y4HbvglDtmnVe6nB9J7vEdHgy3HSGIQeWHzeUimEMIzh+UrSnw8+7JoVbnrm5ryfyq496jkrj36dBX3Sx2v/IWcfqBDKlEMQpSFeZR7iwf602VGBqKn1qLmZcoYtXz8VFTdGkbWYpNYm+2MiRvNcx+Y65LRP129Pk2P27whAy++eo9PHy/YpKRoq4eCV3kA8PA6poLWKNGikAQPDrprqYQw==
+      - PVEAuthCookie=PVE:root@pam:5AD9F5B4::SDB4PKDMLvsGZ67yMz7lZaJhP6B6/BNM2mo6eCIl8Ak8Vcp/O8CaK+ac2VFYP+8rviaIJd34RCW8fUFPNp89JSHXBaEooZAEO/Iqa+ClwQM10eP3VRr2LlzsYj8U+SiJwsNhPIJxv+PA9fEf5nwK3Tz63HGFYDVbfvnlVt9vJuvG8+esDRJr4oXwMiITKe6gT5ZRtPF1ODYMi3C9JFgTsQRr4alcdBLduix1hv2RHjVzyklP5T6fhZcAn24j1UdyHePVpEbvhPYwig9pCytfRyQjaHDfXpW++iewpPH4XKQVbsEnfaYvGicRStM9FLpVY7jNxsSDA5MaAbI44YPHLA==
   response:
     status:
       code: 200
@@ -64,7 +25,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
@@ -74,12 +35,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 09:14:23 GMT
+  recorded_at: Fri, 20 Apr 2018 14:14:13 GMT
 - request:
     method: get
     uri: https://172.26.49.146:8006/api2/json/access/roles
@@ -92,7 +53,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9AF6E::uUiLH64s5k8POoI6cFmr1fcVtn8WySQ7v23eXM63vISGRbBPgfVDvU015fJPFZHwm6JhbeCbc+ZC+u9pAJHsQrOOUXeGlv0JSnNgWgkHPMLj9r0V0uevDeEtuf8ux+3Y4HbvglDtmnVe6nB9J7vEdHgy3HSGIQeWHzeUimEMIzh+UrSnw8+7JoVbnrm5ryfyq496jkrj36dBX3Sx2v/IWcfqBDKlEMQpSFeZR7iwf602VGBqKn1qLmZcoYtXz8VFTdGkbWYpNYm+2MiRvNcx+Y65LRP129Pk2P27whAy++eo9PHy/YpKRoq4eCV3kA8PA6poLWKNGikAQPDrprqYQw==
+      - PVEAuthCookie=PVE:root@pam:5AD9F5B4::SDB4PKDMLvsGZ67yMz7lZaJhP6B6/BNM2mo6eCIl8Ak8Vcp/O8CaK+ac2VFYP+8rviaIJd34RCW8fUFPNp89JSHXBaEooZAEO/Iqa+ClwQM10eP3VRr2LlzsYj8U+SiJwsNhPIJxv+PA9fEf5nwK3Tz63HGFYDVbfvnlVt9vJuvG8+esDRJr4oXwMiITKe6gT5ZRtPF1ODYMi3C9JFgTsQRr4alcdBLduix1hv2RHjVzyklP5T6fhZcAn24j1UdyHePVpEbvhPYwig9pCytfRyQjaHDfXpW++iewpPH4XKQVbsEnfaYvGicRStM9FLpVY7jNxsSDA5MaAbI44YPHLA==
   response:
     status:
       code: 200
@@ -103,7 +64,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
@@ -113,12 +74,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"privs":"Datastore.Audit,Sys.Audit,VM.Audit","special":"1","roleid":"PVEAuditor"},{"special":"1","privs":"Permissions.Modify,Sys.Audit,Sys.Console,Sys.Syslog","roleid":"PVESysAdmin"},{"privs":"","special":"","roleid":"PVETestAuditor"},{"special":"1","privs":"Datastore.AllocateSpace,Datastore.Audit","roleid":"PVEDatastoreUser"},{"roleid":"PVEUserAdmin","special":"1","privs":"Group.Allocate,Realm.AllocateUser,User.Modify"},{"roleid":"PVEVMAdmin","privs":"VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":"1"},{"roleid":"PVEVMUser","special":"1","privs":"VM.Audit,VM.Backup,VM.Config.CDROM,VM.Console,VM.PowerMgmt"},{"special":"1","privs":"Pool.Allocate","roleid":"PVEPoolAdmin"},{"special":"1","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.AllocateUser,Sys.Audit,Sys.Console,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","roleid":"PVEAdmin"},{"roleid":"PVEDatastoreAdmin","special":"1","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit"},{"roleid":"PVETemplateUser","special":"1","privs":"VM.Audit,VM.Clone"},{"roleid":"Administrator","special":"1","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.Allocate,Realm.AllocateUser,Sys.Audit,Sys.Console,Sys.Modify,Sys.PowerMgmt,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback"},{"special":"1","privs":"","roleid":"NoAccess"}]}'
+      string: '{"data":[{"roleid":"PVEVMUser","special":"1","privs":"VM.Audit,VM.Backup,VM.Config.CDROM,VM.Console,VM.PowerMgmt"},{"special":"1","privs":"Pool.Allocate","roleid":"PVEPoolAdmin"},{"roleid":"PVEVMAdmin","privs":"VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":"1"},{"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit","special":"1","roleid":"PVEDatastoreAdmin"},{"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.AllocateUser,Sys.Audit,Sys.Console,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":"1","roleid":"PVEAdmin"},{"special":"1","privs":"Datastore.Audit,Sys.Audit,VM.Audit","roleid":"PVEAuditor"},{"privs":"Permissions.Modify,Sys.Audit,Sys.Console,Sys.Syslog","special":"1","roleid":"PVESysAdmin"},{"special":"","privs":"","roleid":"PVETestAuditor"},{"special":"1","privs":"Group.Allocate,Realm.AllocateUser,User.Modify","roleid":"PVEUserAdmin"},{"roleid":"PVEDatastoreUser","privs":"Datastore.AllocateSpace,Datastore.Audit","special":"1"},{"special":"1","privs":"","roleid":"NoAccess"},{"roleid":"PVETemplateUser","privs":"VM.Audit,VM.Clone","special":"1"},{"roleid":"Administrator","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.Allocate,Realm.AllocateUser,Sys.Audit,Sys.Console,Sys.Modify,Sys.PowerMgmt,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":"1"}]}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 09:14:23 GMT
+  recorded_at: Fri, 20 Apr 2018 14:14:13 GMT
 - request:
     method: post
     uri: https://172.26.49.146:8006/api2/json/access/roles
@@ -131,9 +92,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AD9AF6E:kg9VeIqcT2CjFj2Bfwrok0p6h2s
+      - 5AD9F5B4:DvHN9FXgp1Gv8Tsf5tsJl8YySFY
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9AF6E::uUiLH64s5k8POoI6cFmr1fcVtn8WySQ7v23eXM63vISGRbBPgfVDvU015fJPFZHwm6JhbeCbc+ZC+u9pAJHsQrOOUXeGlv0JSnNgWgkHPMLj9r0V0uevDeEtuf8ux+3Y4HbvglDtmnVe6nB9J7vEdHgy3HSGIQeWHzeUimEMIzh+UrSnw8+7JoVbnrm5ryfyq496jkrj36dBX3Sx2v/IWcfqBDKlEMQpSFeZR7iwf602VGBqKn1qLmZcoYtXz8VFTdGkbWYpNYm+2MiRvNcx+Y65LRP129Pk2P27whAy++eo9PHy/YpKRoq4eCV3kA8PA6poLWKNGikAQPDrprqYQw==
+      - PVEAuthCookie=PVE:root@pam:5AD9F5B4::SDB4PKDMLvsGZ67yMz7lZaJhP6B6/BNM2mo6eCIl8Ak8Vcp/O8CaK+ac2VFYP+8rviaIJd34RCW8fUFPNp89JSHXBaEooZAEO/Iqa+ClwQM10eP3VRr2LlzsYj8U+SiJwsNhPIJxv+PA9fEf5nwK3Tz63HGFYDVbfvnlVt9vJuvG8+esDRJr4oXwMiITKe6gT5ZRtPF1ODYMi3C9JFgTsQRr4alcdBLduix1hv2RHjVzyklP5T6fhZcAn24j1UdyHePVpEbvhPYwig9pCytfRyQjaHDfXpW++iewpPH4XKQVbsEnfaYvGicRStM9FLpVY7jNxsSDA5MaAbI44YPHLA==
   response:
     status:
       code: 500
@@ -145,7 +106,7 @@ http_interactions:
       Connection:
       - close
       Date:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
@@ -155,12 +116,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 09:14:23 GMT
+  recorded_at: Fri, 20 Apr 2018 14:14:13 GMT
 - request:
     method: put
     uri: https://172.26.49.146:8006/api2/json/access/roles/PVETestAuditor
@@ -173,9 +134,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AD9AF6E:kg9VeIqcT2CjFj2Bfwrok0p6h2s
+      - 5AD9F5B4:DvHN9FXgp1Gv8Tsf5tsJl8YySFY
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9AF6E::uUiLH64s5k8POoI6cFmr1fcVtn8WySQ7v23eXM63vISGRbBPgfVDvU015fJPFZHwm6JhbeCbc+ZC+u9pAJHsQrOOUXeGlv0JSnNgWgkHPMLj9r0V0uevDeEtuf8ux+3Y4HbvglDtmnVe6nB9J7vEdHgy3HSGIQeWHzeUimEMIzh+UrSnw8+7JoVbnrm5ryfyq496jkrj36dBX3Sx2v/IWcfqBDKlEMQpSFeZR7iwf602VGBqKn1qLmZcoYtXz8VFTdGkbWYpNYm+2MiRvNcx+Y65LRP129Pk2P27whAy++eo9PHy/YpKRoq4eCV3kA8PA6poLWKNGikAQPDrprqYQw==
+      - PVEAuthCookie=PVE:root@pam:5AD9F5B4::SDB4PKDMLvsGZ67yMz7lZaJhP6B6/BNM2mo6eCIl8Ak8Vcp/O8CaK+ac2VFYP+8rviaIJd34RCW8fUFPNp89JSHXBaEooZAEO/Iqa+ClwQM10eP3VRr2LlzsYj8U+SiJwsNhPIJxv+PA9fEf5nwK3Tz63HGFYDVbfvnlVt9vJuvG8+esDRJr4oXwMiITKe6gT5ZRtPF1ODYMi3C9JFgTsQRr4alcdBLduix1hv2RHjVzyklP5T6fhZcAn24j1UdyHePVpEbvhPYwig9pCytfRyQjaHDfXpW++iewpPH4XKQVbsEnfaYvGicRStM9FLpVY7jNxsSDA5MaAbI44YPHLA==
   response:
     status:
       code: 200
@@ -186,7 +147,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
@@ -196,12 +157,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 09:14:23 GMT
+  recorded_at: Fri, 20 Apr 2018 14:14:13 GMT
 - request:
     method: get
     uri: https://172.26.49.146:8006/api2/json/access/roles
@@ -214,7 +175,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9AF6E::uUiLH64s5k8POoI6cFmr1fcVtn8WySQ7v23eXM63vISGRbBPgfVDvU015fJPFZHwm6JhbeCbc+ZC+u9pAJHsQrOOUXeGlv0JSnNgWgkHPMLj9r0V0uevDeEtuf8ux+3Y4HbvglDtmnVe6nB9J7vEdHgy3HSGIQeWHzeUimEMIzh+UrSnw8+7JoVbnrm5ryfyq496jkrj36dBX3Sx2v/IWcfqBDKlEMQpSFeZR7iwf602VGBqKn1qLmZcoYtXz8VFTdGkbWYpNYm+2MiRvNcx+Y65LRP129Pk2P27whAy++eo9PHy/YpKRoq4eCV3kA8PA6poLWKNGikAQPDrprqYQw==
+      - PVEAuthCookie=PVE:root@pam:5AD9F5B4::SDB4PKDMLvsGZ67yMz7lZaJhP6B6/BNM2mo6eCIl8Ak8Vcp/O8CaK+ac2VFYP+8rviaIJd34RCW8fUFPNp89JSHXBaEooZAEO/Iqa+ClwQM10eP3VRr2LlzsYj8U+SiJwsNhPIJxv+PA9fEf5nwK3Tz63HGFYDVbfvnlVt9vJuvG8+esDRJr4oXwMiITKe6gT5ZRtPF1ODYMi3C9JFgTsQRr4alcdBLduix1hv2RHjVzyklP5T6fhZcAn24j1UdyHePVpEbvhPYwig9pCytfRyQjaHDfXpW++iewpPH4XKQVbsEnfaYvGicRStM9FLpVY7jNxsSDA5MaAbI44YPHLA==
   response:
     status:
       code: 200
@@ -225,7 +186,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
@@ -235,12 +196,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"special":"1","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.Allocate,Realm.AllocateUser,Sys.Audit,Sys.Console,Sys.Modify,Sys.PowerMgmt,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","roleid":"Administrator"},{"roleid":"PVETemplateUser","special":"1","privs":"VM.Audit,VM.Clone"},{"special":"1","privs":"","roleid":"NoAccess"},{"roleid":"PVEUserAdmin","special":"1","privs":"Group.Allocate,Realm.AllocateUser,User.Modify"},{"roleid":"PVEDatastoreUser","special":"1","privs":"Datastore.AllocateSpace,Datastore.Audit"},{"roleid":"PVESysAdmin","privs":"Permissions.Modify,Sys.Audit,Sys.Console,Sys.Syslog","special":"1"},{"roleid":"PVEAuditor","special":"1","privs":"Datastore.Audit,Sys.Audit,VM.Audit"},{"roleid":"PVETestAuditor","special":"","privs":"Datastore.Audit,Sys.Audit,VM.Audit"},{"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit","special":"1","roleid":"PVEDatastoreAdmin"},{"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.AllocateUser,Sys.Audit,Sys.Console,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":"1","roleid":"PVEAdmin"},{"roleid":"PVEVMUser","privs":"VM.Audit,VM.Backup,VM.Config.CDROM,VM.Console,VM.PowerMgmt","special":"1"},{"roleid":"PVEPoolAdmin","privs":"Pool.Allocate","special":"1"},{"privs":"VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":"1","roleid":"PVEVMAdmin"}]}'
+      string: '{"data":[{"roleid":"NoAccess","special":"1","privs":""},{"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.Allocate,Realm.AllocateUser,Sys.Audit,Sys.Console,Sys.Modify,Sys.PowerMgmt,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":"1","roleid":"Administrator"},{"roleid":"PVETemplateUser","privs":"VM.Audit,VM.Clone","special":"1"},{"special":"1","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.AllocateUser,Sys.Audit,Sys.Console,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","roleid":"PVEAdmin"},{"roleid":"PVEDatastoreAdmin","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit","special":"1"},{"special":"1","privs":"VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","roleid":"PVEVMAdmin"},{"roleid":"PVEPoolAdmin","special":"1","privs":"Pool.Allocate"},{"privs":"VM.Audit,VM.Backup,VM.Config.CDROM,VM.Console,VM.PowerMgmt","special":"1","roleid":"PVEVMUser"},{"roleid":"PVEDatastoreUser","privs":"Datastore.AllocateSpace,Datastore.Audit","special":"1"},{"special":"1","privs":"Group.Allocate,Realm.AllocateUser,User.Modify","roleid":"PVEUserAdmin"},{"roleid":"PVEAuditor","special":"1","privs":"Datastore.Audit,Sys.Audit,VM.Audit"},{"roleid":"PVESysAdmin","special":"1","privs":"Permissions.Modify,Sys.Audit,Sys.Console,Sys.Syslog"},{"special":"","privs":"Datastore.Audit,Sys.Audit,VM.Audit","roleid":"PVETestAuditor"}]}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 09:14:23 GMT
+  recorded_at: Fri, 20 Apr 2018 14:14:13 GMT
 - request:
     method: delete
     uri: https://172.26.49.146:8006/api2/json/access/roles/PVETestAuditor
@@ -253,9 +214,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AD9AF6E:kg9VeIqcT2CjFj2Bfwrok0p6h2s
+      - 5AD9F5B4:DvHN9FXgp1Gv8Tsf5tsJl8YySFY
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9AF6E::uUiLH64s5k8POoI6cFmr1fcVtn8WySQ7v23eXM63vISGRbBPgfVDvU015fJPFZHwm6JhbeCbc+ZC+u9pAJHsQrOOUXeGlv0JSnNgWgkHPMLj9r0V0uevDeEtuf8ux+3Y4HbvglDtmnVe6nB9J7vEdHgy3HSGIQeWHzeUimEMIzh+UrSnw8+7JoVbnrm5ryfyq496jkrj36dBX3Sx2v/IWcfqBDKlEMQpSFeZR7iwf602VGBqKn1qLmZcoYtXz8VFTdGkbWYpNYm+2MiRvNcx+Y65LRP129Pk2P27whAy++eo9PHy/YpKRoq4eCV3kA8PA6poLWKNGikAQPDrprqYQw==
+      - PVEAuthCookie=PVE:root@pam:5AD9F5B4::SDB4PKDMLvsGZ67yMz7lZaJhP6B6/BNM2mo6eCIl8Ak8Vcp/O8CaK+ac2VFYP+8rviaIJd34RCW8fUFPNp89JSHXBaEooZAEO/Iqa+ClwQM10eP3VRr2LlzsYj8U+SiJwsNhPIJxv+PA9fEf5nwK3Tz63HGFYDVbfvnlVt9vJuvG8+esDRJr4oXwMiITKe6gT5ZRtPF1ODYMi3C9JFgTsQRr4alcdBLduix1hv2RHjVzyklP5T6fhZcAn24j1UdyHePVpEbvhPYwig9pCytfRyQjaHDfXpW++iewpPH4XKQVbsEnfaYvGicRStM9FLpVY7jNxsSDA5MaAbI44YPHLA==
   response:
     status:
       code: 200
@@ -266,7 +227,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
@@ -276,12 +237,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 09:14:23 GMT
+  recorded_at: Fri, 20 Apr 2018 14:14:13 GMT
 - request:
     method: get
     uri: https://172.26.49.146:8006/api2/json/access/roles
@@ -294,7 +255,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9AF6E::uUiLH64s5k8POoI6cFmr1fcVtn8WySQ7v23eXM63vISGRbBPgfVDvU015fJPFZHwm6JhbeCbc+ZC+u9pAJHsQrOOUXeGlv0JSnNgWgkHPMLj9r0V0uevDeEtuf8ux+3Y4HbvglDtmnVe6nB9J7vEdHgy3HSGIQeWHzeUimEMIzh+UrSnw8+7JoVbnrm5ryfyq496jkrj36dBX3Sx2v/IWcfqBDKlEMQpSFeZR7iwf602VGBqKn1qLmZcoYtXz8VFTdGkbWYpNYm+2MiRvNcx+Y65LRP129Pk2P27whAy++eo9PHy/YpKRoq4eCV3kA8PA6poLWKNGikAQPDrprqYQw==
+      - PVEAuthCookie=PVE:root@pam:5AD9F5B4::SDB4PKDMLvsGZ67yMz7lZaJhP6B6/BNM2mo6eCIl8Ak8Vcp/O8CaK+ac2VFYP+8rviaIJd34RCW8fUFPNp89JSHXBaEooZAEO/Iqa+ClwQM10eP3VRr2LlzsYj8U+SiJwsNhPIJxv+PA9fEf5nwK3Tz63HGFYDVbfvnlVt9vJuvG8+esDRJr4oXwMiITKe6gT5ZRtPF1ODYMi3C9JFgTsQRr4alcdBLduix1hv2RHjVzyklP5T6fhZcAn24j1UdyHePVpEbvhPYwig9pCytfRyQjaHDfXpW++iewpPH4XKQVbsEnfaYvGicRStM9FLpVY7jNxsSDA5MaAbI44YPHLA==
   response:
     status:
       code: 200
@@ -305,7 +266,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
@@ -315,12 +276,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"roleid":"NoAccess","special":"1","privs":""},{"special":"1","privs":"VM.Audit,VM.Clone","roleid":"PVETemplateUser"},{"roleid":"Administrator","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.Allocate,Realm.AllocateUser,Sys.Audit,Sys.Console,Sys.Modify,Sys.PowerMgmt,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":"1"},{"special":"1","privs":"VM.Audit,VM.Backup,VM.Config.CDROM,VM.Console,VM.PowerMgmt","roleid":"PVEVMUser"},{"roleid":"PVEPoolAdmin","special":"1","privs":"Pool.Allocate"},{"roleid":"PVEVMAdmin","privs":"VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":"1"},{"roleid":"PVEDatastoreAdmin","special":"1","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit"},{"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.AllocateUser,Sys.Audit,Sys.Console,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":"1","roleid":"PVEAdmin"},{"special":"1","privs":"Permissions.Modify,Sys.Audit,Sys.Console,Sys.Syslog","roleid":"PVESysAdmin"},{"roleid":"PVEAuditor","special":"1","privs":"Datastore.Audit,Sys.Audit,VM.Audit"},{"privs":"Group.Allocate,Realm.AllocateUser,User.Modify","special":"1","roleid":"PVEUserAdmin"},{"roleid":"PVEDatastoreUser","special":"1","privs":"Datastore.AllocateSpace,Datastore.Audit"}]}'
+      string: '{"data":[{"roleid":"PVESysAdmin","privs":"Permissions.Modify,Sys.Audit,Sys.Console,Sys.Syslog","special":"1"},{"special":"1","privs":"Datastore.Audit,Sys.Audit,VM.Audit","roleid":"PVEAuditor"},{"roleid":"PVEDatastoreUser","special":"1","privs":"Datastore.AllocateSpace,Datastore.Audit"},{"privs":"Group.Allocate,Realm.AllocateUser,User.Modify","special":"1","roleid":"PVEUserAdmin"},{"roleid":"PVEVMAdmin","privs":"VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":"1"},{"special":"1","privs":"Pool.Allocate","roleid":"PVEPoolAdmin"},{"roleid":"PVEVMUser","privs":"VM.Audit,VM.Backup,VM.Config.CDROM,VM.Console,VM.PowerMgmt","special":"1"},{"roleid":"PVEAdmin","special":"1","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.AllocateUser,Sys.Audit,Sys.Console,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback"},{"special":"1","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit","roleid":"PVEDatastoreAdmin"},{"privs":"VM.Audit,VM.Clone","special":"1","roleid":"PVETemplateUser"},{"special":"1","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.Allocate,Realm.AllocateUser,Sys.Audit,Sys.Console,Sys.Modify,Sys.PowerMgmt,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","roleid":"Administrator"},{"roleid":"NoAccess","special":"1","privs":""}]}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 09:14:23 GMT
+  recorded_at: Fri, 20 Apr 2018 14:14:13 GMT
 - request:
     method: get
     uri: https://172.26.49.146:8006/api2/json/access/roles/PVETestAuditor
@@ -333,7 +294,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9AF6E::uUiLH64s5k8POoI6cFmr1fcVtn8WySQ7v23eXM63vISGRbBPgfVDvU015fJPFZHwm6JhbeCbc+ZC+u9pAJHsQrOOUXeGlv0JSnNgWgkHPMLj9r0V0uevDeEtuf8ux+3Y4HbvglDtmnVe6nB9J7vEdHgy3HSGIQeWHzeUimEMIzh+UrSnw8+7JoVbnrm5ryfyq496jkrj36dBX3Sx2v/IWcfqBDKlEMQpSFeZR7iwf602VGBqKn1qLmZcoYtXz8VFTdGkbWYpNYm+2MiRvNcx+Y65LRP129Pk2P27whAy++eo9PHy/YpKRoq4eCV3kA8PA6poLWKNGikAQPDrprqYQw==
+      - PVEAuthCookie=PVE:root@pam:5AD9F5B4::SDB4PKDMLvsGZ67yMz7lZaJhP6B6/BNM2mo6eCIl8Ak8Vcp/O8CaK+ac2VFYP+8rviaIJd34RCW8fUFPNp89JSHXBaEooZAEO/Iqa+ClwQM10eP3VRr2LlzsYj8U+SiJwsNhPIJxv+PA9fEf5nwK3Tz63HGFYDVbfvnlVt9vJuvG8+esDRJr4oXwMiITKe6gT5ZRtPF1ODYMi3C9JFgTsQRr4alcdBLduix1hv2RHjVzyklP5T6fhZcAn24j1UdyHePVpEbvhPYwig9pCytfRyQjaHDfXpW++iewpPH4XKQVbsEnfaYvGicRStM9FLpVY7jNxsSDA5MaAbI44YPHLA==
   response:
     status:
       code: 500
@@ -344,7 +305,7 @@ http_interactions:
       Connection:
       - close
       Date:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
@@ -354,10 +315,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 09:14:22 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 09:14:23 GMT
+  recorded_at: Fri, 20 Apr 2018 14:14:13 GMT
 recorded_with: VCR 3.0.3

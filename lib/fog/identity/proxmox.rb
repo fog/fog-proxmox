@@ -33,6 +33,12 @@ module Fog
       collection :groups
       model :role
       collection :roles
+      model :domain
+      model :pam
+      model :pve
+      model :ldap
+      model :activedirectory
+      collection :domains
       request_path 'fog/identity/proxmox/requests'
       request :get_version
       request :list_users
@@ -50,6 +56,11 @@ module Fog
       request :create_role
       request :update_role
       request :delete_role
+      request :list_domains
+      request :get_domain
+      request :create_domain
+      request :update_domain
+      request :delete_domain
 
       # Mock class
       class Mock

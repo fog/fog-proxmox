@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://172.26.49.146:8006/api2/json/access/groups
+    uri: https://172.26.49.146:8006/api2/json/access/domains
     body:
       encoding: US-ASCII
-      string: groupid=group1
+      string: type=ldap&base_dn=ou%3DPeople%2Cdc%3Dldap-test%2Cdc%3Dcom&user_attr=LDAP&server1=localhost&port=389&default=0&secure=0&realm=LDAP
     headers:
       User-Agent:
       - fog-core/2.1.0
@@ -25,7 +25,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 14:14:11 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
@@ -35,7 +35,7 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 14:14:11 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
@@ -43,7 +43,7 @@ http_interactions:
   recorded_at: Fri, 20 Apr 2018 14:14:12 GMT
 - request:
     method: get
-    uri: https://172.26.49.146:8006/api2/json/access/groups
+    uri: https://172.26.49.146:8006/api2/json/access/domains/LDAP
     body:
       encoding: US-ASCII
       string: ''
@@ -64,28 +64,28 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 14:14:11 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '31'
+      - '193'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 14:14:11 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"groupid":"group1"}]}'
+      string: '{"data":{"user_attr":"LDAP","digest":"9dffaf1b48afc7c885630b10721fec861b3d486c","default":0,"secure":0,"base_dn":"ou=People,dc=ldap-test,dc=com","port":389,"server1":"localhost","type":"ldap"}}'
     http_version: 
   recorded_at: Fri, 20 Apr 2018 14:14:12 GMT
 - request:
     method: post
-    uri: https://172.26.49.146:8006/api2/json/access/groups
+    uri: https://172.26.49.146:8006/api2/json/access/domains
     body:
       encoding: US-ASCII
-      string: groupid=group1
+      string: type=ldap&base_dn=ou%3DPeople%2Cdc%3Dldap-test%2Cdc%3Dcom&user_attr=LDAP&server1=localhost&port=389&default=0&secure=0&realm=LDAP
     headers:
       User-Agent:
       - fog-core/2.1.0
@@ -98,15 +98,15 @@ http_interactions:
   response:
     status:
       code: 500
-      message: 'create group failed: error with cfs lock ''file-user_cfg'': group
-        ''group1'' already exists'
+      message: 'add auth server failed: error with cfs lock ''file-domains_cfg'':
+        domain ''LDAP'' already exists'
     headers:
       Cache-Control:
       - max-age=0
       Connection:
       - close
       Date:
-      - Fri, 20 Apr 2018 14:14:11 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
@@ -116,7 +116,7 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 14:14:11 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
@@ -124,10 +124,10 @@ http_interactions:
   recorded_at: Fri, 20 Apr 2018 14:14:12 GMT
 - request:
     method: put
-    uri: https://172.26.49.146:8006/api2/json/access/groups/group1
+    uri: https://172.26.49.146:8006/api2/json/access/domains/LDAP
     body:
       encoding: US-ASCII
-      string: comment=Group+1
+      string: user_attr=LDAP&default=0&secure=0&base_dn=ou%3DPeople%2Cdc%3Dldap-test%2Cdc%3Dcom&port=389&server1=localhost&comment=Test+domain+LDAP
     headers:
       User-Agent:
       - fog-core/2.1.0
@@ -147,7 +147,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 14:14:11 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
@@ -157,7 +157,7 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 14:14:11 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
@@ -165,7 +165,7 @@ http_interactions:
   recorded_at: Fri, 20 Apr 2018 14:14:12 GMT
 - request:
     method: get
-    uri: https://172.26.49.146:8006/api2/json/access/groups
+    uri: https://172.26.49.146:8006/api2/json/access/domains
     body:
       encoding: US-ASCII
       string: ''
@@ -186,25 +186,27 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 14:14:11 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '51'
+      - '219'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 14:14:11 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"groupid":"group1","comment":"Group 1"}]}'
+      string: '{"data":[{"type":"pam","comment":"Linux PAM standard authentication","realm":"pam"},{"type":"pve","comment":"Proxmox
+        VE authentication server","realm":"pve"},{"realm":"LDAP","comment":"Test domain
+        LDAP","type":"ldap"}]}'
     http_version: 
   recorded_at: Fri, 20 Apr 2018 14:14:12 GMT
 - request:
     method: delete
-    uri: https://172.26.49.146:8006/api2/json/access/groups/group1
+    uri: https://172.26.49.146:8006/api2/json/access/domains/LDAP
     body:
       encoding: US-ASCII
       string: ''
@@ -227,7 +229,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 14:14:11 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
@@ -237,54 +239,15 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 14:14:11 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 14:14:12 GMT
+  recorded_at: Fri, 20 Apr 2018 14:14:13 GMT
 - request:
     method: get
-    uri: https://172.26.49.146:8006/api2/json/access/groups
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.1.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9F5B3::o/OZYWsonkvyvnZ4sJAMbpbgHzmTawIoBuKmLvvAmqkPJgwtFuFkOwTDwjvhFNTaBBVXahDLLYVbCOIg14ZkAWCg1u5LPbnwd42kpMl9r0TQK1odD8ujoT99Z0v6+2TGnfJsRciOplllq4JuPwtZDcgNwhfblOaNTVLw1qmOXj8/VZQDJxGyLDu7QVC66sucme7eAur6i3gYX3bb6GTnYLYSlxuayE7wDMmncqTwIurCcIdcSdb74tPLMpQzhnwCxQq6xDY5o6KfD1GkxAIcB2xNUJ5tEv9s2MgXF3NxWk+yZ8eosiMRPmm91a8KILhPhDKH5VtYIZRZh4ZyF2D1IQ==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive
-      Date:
-      - Fri, 20 Apr 2018 14:14:11 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '11'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Fri, 20 Apr 2018 14:14:11 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[]}'
-    http_version: 
-  recorded_at: Fri, 20 Apr 2018 14:14:12 GMT
-- request:
-    method: get
-    uri: https://172.26.49.146:8006/api2/json/access/groups/group1
+    uri: https://172.26.49.146:8006/api2/json/access/domains/LDAP
     body:
       encoding: US-ASCII
       string: ''
@@ -298,14 +261,14 @@ http_interactions:
   response:
     status:
       code: 500
-      message: group 'group1' does not exist
+      message: domain 'LDAP' does not exist
     headers:
       Cache-Control:
       - max-age=0
       Connection:
       - close
       Date:
-      - Fri, 20 Apr 2018 14:14:11 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
       Pragma:
       - no-cache
       Server:
@@ -315,10 +278,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 14:14:11 GMT
+      - Fri, 20 Apr 2018 14:14:12 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 14:14:12 GMT
+  recorded_at: Fri, 20 Apr 2018 14:14:13 GMT
 recorded_with: VCR 3.0.3
