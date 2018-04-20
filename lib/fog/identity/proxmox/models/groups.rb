@@ -25,7 +25,7 @@ module Fog
           model Fog::Identity::Proxmox::Group
 
           def all(options = {})
-            load_response(service.list_groups(options), 'groups')
+            load_response(service.list_groups, 'groups')
           end
 
           def find_by_id(id)

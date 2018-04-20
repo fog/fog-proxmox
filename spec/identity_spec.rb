@@ -49,21 +49,8 @@ describe Fog::Identity::Proxmox do
     end
   end
     
-  it 'lists users' do
-    VCR.use_cassette('list_users') do
-      # all users
-      users_all = @service.users.all
-      users_all.wont_be_nil
-      users_all.wont_be_empty
-      # disabled users
-      users_disabled = @service.users.all({'enabled' => 0})
-      users_disabled.wont_be_nil
-      users_disabled.must_be_empty
-    end
-  end
-    
-  it 'CRUD user' do
-    VCR.use_cassette('crud_user') do
+  it 'CRUD users' do
+    VCR.use_cassette('crud_users') do
       bob_hash = {:userid => 'bobsinclar@pve', :firstname => 'Bob', :lastname => 'Sinclar', :email => "bobsinclar@proxmox.com"}
       # Create 1st time
       @service.users.create(bob_hash) 
@@ -74,18 +61,28 @@ describe Fog::Identity::Proxmox do
       proc do
         @service.users.create(bob_hash)
       end.must_raise Excon::Errors::InternalServerError
+      # all users
+      users_all = @service.users.all
+      users_all.wont_be_nil
+      users_all.wont_be_empty
+      users_all.must_include bob
       # Update
       bob.comment = 'novelist'
       bob.enable  = 0
       bob.update
+      # disabled users
+      users_disabled = @service.users.all({'enabled' => 0})
+      users_disabled.wont_be_nil
+      users_disabled.wont_be_empty
+      users_disabled.must_include bob
       # Delete
       bob.destroy
       proc { @service.users.find_by_id bob_hash[:userid] }.must_raise Excon::Errors::InternalServerError
     end
   end
 
-  it 'CRUD group' do
-    VCR.use_cassette('crud_group') do
+  it 'CRUD groups' do
+    VCR.use_cassette('crud_groups') do
       group_hash = {:groupid => 'group1'}
       # Create 1st time
       @service.groups.create(group_hash) 
@@ -99,6 +96,11 @@ describe Fog::Identity::Proxmox do
       # Update
       group.comment = 'Group 1'
       group.update
+      # all groups
+      groups_all = @service.groups.all
+      groups_all.wont_be_nil
+      groups_all.wont_be_empty
+      groups_all.must_include group
       # Delete
       group.destroy
       proc { @service.groups.find_by_id group_hash[:groupid] }.must_raise Excon::Errors::InternalServerError
