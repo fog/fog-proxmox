@@ -31,6 +31,8 @@ module Fog
       collection :users
       model :group
       collection :groups
+      model :role
+      collection :roles
       request_path 'fog/identity/proxmox/requests'
       request :get_version
       request :list_users
@@ -43,6 +45,11 @@ module Fog
       request :create_group
       request :update_group
       request :delete_group
+      request :list_roles
+      request :get_role
+      request :create_role
+      request :update_role
+      request :delete_role
 
       # Mock class
       class Mock

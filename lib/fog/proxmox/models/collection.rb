@@ -26,13 +26,19 @@ module Fog
       # page of data.
       attr_accessor :response
 
-      def load_response(response, index = nil)
+      def load_response(response, index = nil, attributes_ignored = [])
         # Delete it index if it's there, so we don't store response with data twice, but we store only metadata
         body = JSON.decode(response.body)
         objects = body['data']
-        clear && objects.each { |object| self << new(object) }
+        clear && objects.each { |object| self << new(clear_ignored_attributes(object,attributes_ignored)) }
         self.response = response
         self
+      end
+
+      # clear attributes non persistent
+      def clear_ignored_attributes(object, attributes_ignored = [])
+        attributes_ignored.each { |attribute| object.delete_if {|k,v| k == attribute}}
+        object
       end
 
       def get(response, attribute)

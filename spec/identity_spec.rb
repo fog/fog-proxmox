@@ -107,4 +107,30 @@ describe Fog::Identity::Proxmox do
     end
   end
 
+  it 'CRUD roles' do
+    VCR.use_cassette('crud_roles') do
+      role_hash = {:roleid => 'PVETestAuditor'}
+      # Create 1st time
+      @service.roles.create(role_hash) 
+      # Find by id
+      role = @service.roles.find_by_id role_hash[:roleid]
+      # role.wont_be_nil
+      # # Create 2nd time must fails
+      proc do
+        @service.roles.create(role_hash)
+      end.must_raise Excon::Errors::InternalServerError
+      # # Update
+      role.privs = 'Datastore.Audit Sys.Audit VM.Audit'
+      role.update
+      # # all groups
+      roles_all = @service.roles.all
+      roles_all.wont_be_nil
+      roles_all.wont_be_empty
+      roles_all.must_include role
+      # Delete
+      role.destroy
+      proc { @service.roles.find_by_id role_hash[:roleid] }.must_raise Excon::Errors::InternalServerError
+    end
+  end
+
 end
