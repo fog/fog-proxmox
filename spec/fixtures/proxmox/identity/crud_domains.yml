@@ -12,9 +12,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AD9F5B3:oJJylQ3cp7OZBygcKdMUCW6de/U
+      - 5ADD8EA9:wyfm9eb5tujeslidzQwkNAH54GU
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9F5B3::o/OZYWsonkvyvnZ4sJAMbpbgHzmTawIoBuKmLvvAmqkPJgwtFuFkOwTDwjvhFNTaBBVXahDLLYVbCOIg14ZkAWCg1u5LPbnwd42kpMl9r0TQK1odD8ujoT99Z0v6+2TGnfJsRciOplllq4JuPwtZDcgNwhfblOaNTVLw1qmOXj8/VZQDJxGyLDu7QVC66sucme7eAur6i3gYX3bb6GTnYLYSlxuayE7wDMmncqTwIurCcIdcSdb74tPLMpQzhnwCxQq6xDY5o6KfD1GkxAIcB2xNUJ5tEv9s2MgXF3NxWk+yZ8eosiMRPmm91a8KILhPhDKH5VtYIZRZh4ZyF2D1IQ==
+      - PVEAuthCookie=PVE:root@pam:5ADD8EA9::HsY/MHjAqFd8WuBL7hdL1v4qggB8sA4KYwZrePsv4PS8jM/RvCsiXUps8KZxx8dUzCgtcRnuM6CWdagz28HCiHEBQHj37B6BWrywBeEmVbJxbvtZEvWNBl761OiF+JqD8QH0cD4K3t+XHzaE4XEoO19jrlubVVsMxdFnLkI7HJV7VfPTxzjCu9CuyoF/RWiALLasCQPQ0ucQLd3oZkntcDNejsBtSKEsoFcVU74/51NX1/C+VFK6G9hXtJHGKoBedyoD0Gt/0AsG/Yjeq/Iw0htyA0xs/FYy4CNsA6hOhhsXYyqzHZEtrpb3PHLlrrLwB7ymPkBitgHEE4A7RaKr2Q==
   response:
     status:
       code: 200
@@ -25,7 +25,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 14:14:12 GMT
+      - Mon, 23 Apr 2018 07:43:37 GMT
       Pragma:
       - no-cache
       Server:
@@ -35,12 +35,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 14:14:12 GMT
+      - Mon, 23 Apr 2018 07:43:37 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 14:14:12 GMT
+  recorded_at: Mon, 23 Apr 2018 07:43:39 GMT
 - request:
     method: get
     uri: https://172.26.49.146:8006/api2/json/access/domains/LDAP
@@ -53,7 +53,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9F5B3::o/OZYWsonkvyvnZ4sJAMbpbgHzmTawIoBuKmLvvAmqkPJgwtFuFkOwTDwjvhFNTaBBVXahDLLYVbCOIg14ZkAWCg1u5LPbnwd42kpMl9r0TQK1odD8ujoT99Z0v6+2TGnfJsRciOplllq4JuPwtZDcgNwhfblOaNTVLw1qmOXj8/VZQDJxGyLDu7QVC66sucme7eAur6i3gYX3bb6GTnYLYSlxuayE7wDMmncqTwIurCcIdcSdb74tPLMpQzhnwCxQq6xDY5o6KfD1GkxAIcB2xNUJ5tEv9s2MgXF3NxWk+yZ8eosiMRPmm91a8KILhPhDKH5VtYIZRZh4ZyF2D1IQ==
+      - PVEAuthCookie=PVE:root@pam:5ADD8EA9::HsY/MHjAqFd8WuBL7hdL1v4qggB8sA4KYwZrePsv4PS8jM/RvCsiXUps8KZxx8dUzCgtcRnuM6CWdagz28HCiHEBQHj37B6BWrywBeEmVbJxbvtZEvWNBl761OiF+JqD8QH0cD4K3t+XHzaE4XEoO19jrlubVVsMxdFnLkI7HJV7VfPTxzjCu9CuyoF/RWiALLasCQPQ0ucQLd3oZkntcDNejsBtSKEsoFcVU74/51NX1/C+VFK6G9hXtJHGKoBedyoD0Gt/0AsG/Yjeq/Iw0htyA0xs/FYy4CNsA6hOhhsXYyqzHZEtrpb3PHLlrrLwB7ymPkBitgHEE4A7RaKr2Q==
   response:
     status:
       code: 200
@@ -64,7 +64,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 14:14:12 GMT
+      - Mon, 23 Apr 2018 07:43:37 GMT
       Pragma:
       - no-cache
       Server:
@@ -74,12 +74,53 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 14:14:12 GMT
+      - Mon, 23 Apr 2018 07:43:37 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"user_attr":"LDAP","digest":"9dffaf1b48afc7c885630b10721fec861b3d486c","default":0,"secure":0,"base_dn":"ou=People,dc=ldap-test,dc=com","port":389,"server1":"localhost","type":"ldap"}}'
+      string: '{"data":{"type":"ldap","default":0,"port":389,"base_dn":"ou=People,dc=ldap-test,dc=com","digest":"9dffaf1b48afc7c885630b10721fec861b3d486c","user_attr":"LDAP","secure":0,"server1":"localhost"}}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 14:14:12 GMT
+  recorded_at: Mon, 23 Apr 2018 07:43:39 GMT
+- request:
+    method: post
+    uri: https://172.26.49.146:8006/api2/json/access/domains
+    body:
+      encoding: US-ASCII
+      string: type=ad&domain=proxmox.com&server1=localhost&port=389&default=0&secure=0&realm=ActiveDirectory
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5ADD8EA9:wyfm9eb5tujeslidzQwkNAH54GU
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADD8EA9::HsY/MHjAqFd8WuBL7hdL1v4qggB8sA4KYwZrePsv4PS8jM/RvCsiXUps8KZxx8dUzCgtcRnuM6CWdagz28HCiHEBQHj37B6BWrywBeEmVbJxbvtZEvWNBl761OiF+JqD8QH0cD4K3t+XHzaE4XEoO19jrlubVVsMxdFnLkI7HJV7VfPTxzjCu9CuyoF/RWiALLasCQPQ0ucQLd3oZkntcDNejsBtSKEsoFcVU74/51NX1/C+VFK6G9hXtJHGKoBedyoD0Gt/0AsG/Yjeq/Iw0htyA0xs/FYy4CNsA6hOhhsXYyqzHZEtrpb3PHLlrrLwB7ymPkBitgHEE4A7RaKr2Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close, Keep-Alive
+      Date:
+      - Mon, 23 Apr 2018 07:43:37 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '13'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 23 Apr 2018 07:43:37 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":null}'
+    http_version: 
+  recorded_at: Mon, 23 Apr 2018 07:43:39 GMT
 - request:
     method: post
     uri: https://172.26.49.146:8006/api2/json/access/domains
@@ -92,9 +133,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AD9F5B3:oJJylQ3cp7OZBygcKdMUCW6de/U
+      - 5ADD8EA9:wyfm9eb5tujeslidzQwkNAH54GU
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9F5B3::o/OZYWsonkvyvnZ4sJAMbpbgHzmTawIoBuKmLvvAmqkPJgwtFuFkOwTDwjvhFNTaBBVXahDLLYVbCOIg14ZkAWCg1u5LPbnwd42kpMl9r0TQK1odD8ujoT99Z0v6+2TGnfJsRciOplllq4JuPwtZDcgNwhfblOaNTVLw1qmOXj8/VZQDJxGyLDu7QVC66sucme7eAur6i3gYX3bb6GTnYLYSlxuayE7wDMmncqTwIurCcIdcSdb74tPLMpQzhnwCxQq6xDY5o6KfD1GkxAIcB2xNUJ5tEv9s2MgXF3NxWk+yZ8eosiMRPmm91a8KILhPhDKH5VtYIZRZh4ZyF2D1IQ==
+      - PVEAuthCookie=PVE:root@pam:5ADD8EA9::HsY/MHjAqFd8WuBL7hdL1v4qggB8sA4KYwZrePsv4PS8jM/RvCsiXUps8KZxx8dUzCgtcRnuM6CWdagz28HCiHEBQHj37B6BWrywBeEmVbJxbvtZEvWNBl761OiF+JqD8QH0cD4K3t+XHzaE4XEoO19jrlubVVsMxdFnLkI7HJV7VfPTxzjCu9CuyoF/RWiALLasCQPQ0ucQLd3oZkntcDNejsBtSKEsoFcVU74/51NX1/C+VFK6G9hXtJHGKoBedyoD0Gt/0AsG/Yjeq/Iw0htyA0xs/FYy4CNsA6hOhhsXYyqzHZEtrpb3PHLlrrLwB7ymPkBitgHEE4A7RaKr2Q==
   response:
     status:
       code: 500
@@ -106,7 +147,7 @@ http_interactions:
       Connection:
       - close
       Date:
-      - Fri, 20 Apr 2018 14:14:12 GMT
+      - Mon, 23 Apr 2018 07:43:37 GMT
       Pragma:
       - no-cache
       Server:
@@ -116,27 +157,69 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 14:14:12 GMT
+      - Mon, 23 Apr 2018 07:43:37 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 14:14:12 GMT
+  recorded_at: Mon, 23 Apr 2018 07:43:39 GMT
 - request:
-    method: put
-    uri: https://172.26.49.146:8006/api2/json/access/domains/LDAP
+    method: post
+    uri: https://172.26.49.146:8006/api2/json/access/domains
     body:
       encoding: US-ASCII
-      string: user_attr=LDAP&default=0&secure=0&base_dn=ou%3DPeople%2Cdc%3Dldap-test%2Cdc%3Dcom&port=389&server1=localhost&comment=Test+domain+LDAP
+      string: type=ad&domain=proxmox.com&server1=localhost&port=389&default=0&secure=0&realm=ActiveDirectory
     headers:
       User-Agent:
       - fog-core/2.1.0
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AD9F5B3:oJJylQ3cp7OZBygcKdMUCW6de/U
+      - 5ADD8EA9:wyfm9eb5tujeslidzQwkNAH54GU
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9F5B3::o/OZYWsonkvyvnZ4sJAMbpbgHzmTawIoBuKmLvvAmqkPJgwtFuFkOwTDwjvhFNTaBBVXahDLLYVbCOIg14ZkAWCg1u5LPbnwd42kpMl9r0TQK1odD8ujoT99Z0v6+2TGnfJsRciOplllq4JuPwtZDcgNwhfblOaNTVLw1qmOXj8/VZQDJxGyLDu7QVC66sucme7eAur6i3gYX3bb6GTnYLYSlxuayE7wDMmncqTwIurCcIdcSdb74tPLMpQzhnwCxQq6xDY5o6KfD1GkxAIcB2xNUJ5tEv9s2MgXF3NxWk+yZ8eosiMRPmm91a8KILhPhDKH5VtYIZRZh4ZyF2D1IQ==
+      - PVEAuthCookie=PVE:root@pam:5ADD8EA9::HsY/MHjAqFd8WuBL7hdL1v4qggB8sA4KYwZrePsv4PS8jM/RvCsiXUps8KZxx8dUzCgtcRnuM6CWdagz28HCiHEBQHj37B6BWrywBeEmVbJxbvtZEvWNBl761OiF+JqD8QH0cD4K3t+XHzaE4XEoO19jrlubVVsMxdFnLkI7HJV7VfPTxzjCu9CuyoF/RWiALLasCQPQ0ucQLd3oZkntcDNejsBtSKEsoFcVU74/51NX1/C+VFK6G9hXtJHGKoBedyoD0Gt/0AsG/Yjeq/Iw0htyA0xs/FYy4CNsA6hOhhsXYyqzHZEtrpb3PHLlrrLwB7ymPkBitgHEE4A7RaKr2Q==
+  response:
+    status:
+      code: 500
+      message: 'add auth server failed: error with cfs lock ''file-domains_cfg'':
+        domain ''ActiveDirectory'' already exists'
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close
+      Date:
+      - Mon, 23 Apr 2018 07:43:37 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '13'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 23 Apr 2018 07:43:37 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":null}'
+    http_version: 
+  recorded_at: Mon, 23 Apr 2018 07:43:39 GMT
+- request:
+    method: put
+    uri: https://172.26.49.146:8006/api2/json/access/domains/LDAP
+    body:
+      encoding: US-ASCII
+      string: default=0&port=389&base_dn=ou%3DPeople%2Cdc%3Dldap-test%2Cdc%3Dcom&user_attr=LDAP&secure=0&server1=localhost&comment=Test+domain+LDAP&tfa=type%3Doath%2Cstep%3D30%2Cdigits%3D8
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5ADD8EA9:wyfm9eb5tujeslidzQwkNAH54GU
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADD8EA9::HsY/MHjAqFd8WuBL7hdL1v4qggB8sA4KYwZrePsv4PS8jM/RvCsiXUps8KZxx8dUzCgtcRnuM6CWdagz28HCiHEBQHj37B6BWrywBeEmVbJxbvtZEvWNBl761OiF+JqD8QH0cD4K3t+XHzaE4XEoO19jrlubVVsMxdFnLkI7HJV7VfPTxzjCu9CuyoF/RWiALLasCQPQ0ucQLd3oZkntcDNejsBtSKEsoFcVU74/51NX1/C+VFK6G9hXtJHGKoBedyoD0Gt/0AsG/Yjeq/Iw0htyA0xs/FYy4CNsA6hOhhsXYyqzHZEtrpb3PHLlrrLwB7ymPkBitgHEE4A7RaKr2Q==
   response:
     status:
       code: 200
@@ -147,7 +230,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 14:14:12 GMT
+      - Mon, 23 Apr 2018 07:43:37 GMT
       Pragma:
       - no-cache
       Server:
@@ -157,12 +240,92 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 14:14:12 GMT
+      - Mon, 23 Apr 2018 07:43:37 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 14:14:12 GMT
+  recorded_at: Mon, 23 Apr 2018 07:43:39 GMT
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/access/domains/ActiveDirectory
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADD8EA9::HsY/MHjAqFd8WuBL7hdL1v4qggB8sA4KYwZrePsv4PS8jM/RvCsiXUps8KZxx8dUzCgtcRnuM6CWdagz28HCiHEBQHj37B6BWrywBeEmVbJxbvtZEvWNBl761OiF+JqD8QH0cD4K3t+XHzaE4XEoO19jrlubVVsMxdFnLkI7HJV7VfPTxzjCu9CuyoF/RWiALLasCQPQ0ucQLd3oZkntcDNejsBtSKEsoFcVU74/51NX1/C+VFK6G9hXtJHGKoBedyoD0Gt/0AsG/Yjeq/Iw0htyA0xs/FYy4CNsA6hOhhsXYyqzHZEtrpb3PHLlrrLwB7ymPkBitgHEE4A7RaKr2Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Mon, 23 Apr 2018 07:43:37 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '153'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 23 Apr 2018 07:43:37 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"digest":"c46ee13ed53d44dfcdc5f3a51d05097dd50f6098","type":"ad","domain":"proxmox.com","server1":"localhost","secure":0,"port":389,"default":0}}'
+    http_version: 
+  recorded_at: Mon, 23 Apr 2018 07:43:39 GMT
+- request:
+    method: put
+    uri: https://172.26.49.146:8006/api2/json/access/domains/ActiveDirectory
+    body:
+      encoding: US-ASCII
+      string: domain=proxmox.com&server1=localhost&secure=0&port=389&default=0&tfa=type%3Dyubico%2Cid%3D1%2Ckey%3D2%2Curl%3Dhttp%3A%2F%2Flocalhost
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5ADD8EA9:wyfm9eb5tujeslidzQwkNAH54GU
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADD8EA9::HsY/MHjAqFd8WuBL7hdL1v4qggB8sA4KYwZrePsv4PS8jM/RvCsiXUps8KZxx8dUzCgtcRnuM6CWdagz28HCiHEBQHj37B6BWrywBeEmVbJxbvtZEvWNBl761OiF+JqD8QH0cD4K3t+XHzaE4XEoO19jrlubVVsMxdFnLkI7HJV7VfPTxzjCu9CuyoF/RWiALLasCQPQ0ucQLd3oZkntcDNejsBtSKEsoFcVU74/51NX1/C+VFK6G9hXtJHGKoBedyoD0Gt/0AsG/Yjeq/Iw0htyA0xs/FYy4CNsA6hOhhsXYyqzHZEtrpb3PHLlrrLwB7ymPkBitgHEE4A7RaKr2Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 23 Apr 2018 07:43:37 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '13'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 23 Apr 2018 07:43:37 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":null}'
+    http_version: 
+  recorded_at: Mon, 23 Apr 2018 07:43:39 GMT
 - request:
     method: get
     uri: https://172.26.49.146:8006/api2/json/access/domains
@@ -175,7 +338,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9F5B3::o/OZYWsonkvyvnZ4sJAMbpbgHzmTawIoBuKmLvvAmqkPJgwtFuFkOwTDwjvhFNTaBBVXahDLLYVbCOIg14ZkAWCg1u5LPbnwd42kpMl9r0TQK1odD8ujoT99Z0v6+2TGnfJsRciOplllq4JuPwtZDcgNwhfblOaNTVLw1qmOXj8/VZQDJxGyLDu7QVC66sucme7eAur6i3gYX3bb6GTnYLYSlxuayE7wDMmncqTwIurCcIdcSdb74tPLMpQzhnwCxQq6xDY5o6KfD1GkxAIcB2xNUJ5tEv9s2MgXF3NxWk+yZ8eosiMRPmm91a8KILhPhDKH5VtYIZRZh4ZyF2D1IQ==
+      - PVEAuthCookie=PVE:root@pam:5ADD8EA9::HsY/MHjAqFd8WuBL7hdL1v4qggB8sA4KYwZrePsv4PS8jM/RvCsiXUps8KZxx8dUzCgtcRnuM6CWdagz28HCiHEBQHj37B6BWrywBeEmVbJxbvtZEvWNBl761OiF+JqD8QH0cD4K3t+XHzaE4XEoO19jrlubVVsMxdFnLkI7HJV7VfPTxzjCu9CuyoF/RWiALLasCQPQ0ucQLd3oZkntcDNejsBtSKEsoFcVU74/51NX1/C+VFK6G9hXtJHGKoBedyoD0Gt/0AsG/Yjeq/Iw0htyA0xs/FYy4CNsA6hOhhsXYyqzHZEtrpb3PHLlrrLwB7ymPkBitgHEE4A7RaKr2Q==
   response:
     status:
       code: 200
@@ -186,24 +349,24 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 14:14:12 GMT
+      - Mon, 23 Apr 2018 07:43:37 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '219'
+      - '287'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 14:14:12 GMT
+      - Mon, 23 Apr 2018 07:43:37 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"type":"pam","comment":"Linux PAM standard authentication","realm":"pam"},{"type":"pve","comment":"Proxmox
-        VE authentication server","realm":"pve"},{"realm":"LDAP","comment":"Test domain
-        LDAP","type":"ldap"}]}'
+      string: '{"data":[{"comment":"Proxmox VE authentication server","realm":"pve","type":"pve"},{"comment":"Test
+        domain LDAP","tfa":"oath","realm":"LDAP","type":"ldap"},{"type":"ad","realm":"ActiveDirectory","tfa":"yubico"},{"type":"pam","realm":"pam","comment":"Linux
+        PAM standard authentication"}]}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 14:14:12 GMT
+  recorded_at: Mon, 23 Apr 2018 07:43:39 GMT
 - request:
     method: delete
     uri: https://172.26.49.146:8006/api2/json/access/domains/LDAP
@@ -216,9 +379,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AD9F5B3:oJJylQ3cp7OZBygcKdMUCW6de/U
+      - 5ADD8EA9:wyfm9eb5tujeslidzQwkNAH54GU
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9F5B3::o/OZYWsonkvyvnZ4sJAMbpbgHzmTawIoBuKmLvvAmqkPJgwtFuFkOwTDwjvhFNTaBBVXahDLLYVbCOIg14ZkAWCg1u5LPbnwd42kpMl9r0TQK1odD8ujoT99Z0v6+2TGnfJsRciOplllq4JuPwtZDcgNwhfblOaNTVLw1qmOXj8/VZQDJxGyLDu7QVC66sucme7eAur6i3gYX3bb6GTnYLYSlxuayE7wDMmncqTwIurCcIdcSdb74tPLMpQzhnwCxQq6xDY5o6KfD1GkxAIcB2xNUJ5tEv9s2MgXF3NxWk+yZ8eosiMRPmm91a8KILhPhDKH5VtYIZRZh4ZyF2D1IQ==
+      - PVEAuthCookie=PVE:root@pam:5ADD8EA9::HsY/MHjAqFd8WuBL7hdL1v4qggB8sA4KYwZrePsv4PS8jM/RvCsiXUps8KZxx8dUzCgtcRnuM6CWdagz28HCiHEBQHj37B6BWrywBeEmVbJxbvtZEvWNBl761OiF+JqD8QH0cD4K3t+XHzaE4XEoO19jrlubVVsMxdFnLkI7HJV7VfPTxzjCu9CuyoF/RWiALLasCQPQ0ucQLd3oZkntcDNejsBtSKEsoFcVU74/51NX1/C+VFK6G9hXtJHGKoBedyoD0Gt/0AsG/Yjeq/Iw0htyA0xs/FYy4CNsA6hOhhsXYyqzHZEtrpb3PHLlrrLwB7ymPkBitgHEE4A7RaKr2Q==
   response:
     status:
       code: 200
@@ -229,7 +392,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Fri, 20 Apr 2018 14:14:12 GMT
+      - Mon, 23 Apr 2018 07:43:37 GMT
       Pragma:
       - no-cache
       Server:
@@ -239,12 +402,53 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 14:14:12 GMT
+      - Mon, 23 Apr 2018 07:43:37 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 14:14:13 GMT
+  recorded_at: Mon, 23 Apr 2018 07:43:39 GMT
+- request:
+    method: delete
+    uri: https://172.26.49.146:8006/api2/json/access/domains/ActiveDirectory
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5ADD8EA9:wyfm9eb5tujeslidzQwkNAH54GU
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADD8EA9::HsY/MHjAqFd8WuBL7hdL1v4qggB8sA4KYwZrePsv4PS8jM/RvCsiXUps8KZxx8dUzCgtcRnuM6CWdagz28HCiHEBQHj37B6BWrywBeEmVbJxbvtZEvWNBl761OiF+JqD8QH0cD4K3t+XHzaE4XEoO19jrlubVVsMxdFnLkI7HJV7VfPTxzjCu9CuyoF/RWiALLasCQPQ0ucQLd3oZkntcDNejsBtSKEsoFcVU74/51NX1/C+VFK6G9hXtJHGKoBedyoD0Gt/0AsG/Yjeq/Iw0htyA0xs/FYy4CNsA6hOhhsXYyqzHZEtrpb3PHLlrrLwB7ymPkBitgHEE4A7RaKr2Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 23 Apr 2018 07:43:37 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '13'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 23 Apr 2018 07:43:37 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":null}'
+    http_version: 
+  recorded_at: Mon, 23 Apr 2018 07:43:39 GMT
 - request:
     method: get
     uri: https://172.26.49.146:8006/api2/json/access/domains/LDAP
@@ -257,7 +461,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AD9F5B3::o/OZYWsonkvyvnZ4sJAMbpbgHzmTawIoBuKmLvvAmqkPJgwtFuFkOwTDwjvhFNTaBBVXahDLLYVbCOIg14ZkAWCg1u5LPbnwd42kpMl9r0TQK1odD8ujoT99Z0v6+2TGnfJsRciOplllq4JuPwtZDcgNwhfblOaNTVLw1qmOXj8/VZQDJxGyLDu7QVC66sucme7eAur6i3gYX3bb6GTnYLYSlxuayE7wDMmncqTwIurCcIdcSdb74tPLMpQzhnwCxQq6xDY5o6KfD1GkxAIcB2xNUJ5tEv9s2MgXF3NxWk+yZ8eosiMRPmm91a8KILhPhDKH5VtYIZRZh4ZyF2D1IQ==
+      - PVEAuthCookie=PVE:root@pam:5ADD8EA9::HsY/MHjAqFd8WuBL7hdL1v4qggB8sA4KYwZrePsv4PS8jM/RvCsiXUps8KZxx8dUzCgtcRnuM6CWdagz28HCiHEBQHj37B6BWrywBeEmVbJxbvtZEvWNBl761OiF+JqD8QH0cD4K3t+XHzaE4XEoO19jrlubVVsMxdFnLkI7HJV7VfPTxzjCu9CuyoF/RWiALLasCQPQ0ucQLd3oZkntcDNejsBtSKEsoFcVU74/51NX1/C+VFK6G9hXtJHGKoBedyoD0Gt/0AsG/Yjeq/Iw0htyA0xs/FYy4CNsA6hOhhsXYyqzHZEtrpb3PHLlrrLwB7ymPkBitgHEE4A7RaKr2Q==
   response:
     status:
       code: 500
@@ -268,7 +472,7 @@ http_interactions:
       Connection:
       - close
       Date:
-      - Fri, 20 Apr 2018 14:14:12 GMT
+      - Mon, 23 Apr 2018 07:43:37 GMT
       Pragma:
       - no-cache
       Server:
@@ -278,10 +482,49 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 20 Apr 2018 14:14:12 GMT
+      - Mon, 23 Apr 2018 07:43:37 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Fri, 20 Apr 2018 14:14:13 GMT
+  recorded_at: Mon, 23 Apr 2018 07:43:39 GMT
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/access/domains/ActiveDirectory
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADD8EA9::HsY/MHjAqFd8WuBL7hdL1v4qggB8sA4KYwZrePsv4PS8jM/RvCsiXUps8KZxx8dUzCgtcRnuM6CWdagz28HCiHEBQHj37B6BWrywBeEmVbJxbvtZEvWNBl761OiF+JqD8QH0cD4K3t+XHzaE4XEoO19jrlubVVsMxdFnLkI7HJV7VfPTxzjCu9CuyoF/RWiALLasCQPQ0ucQLd3oZkntcDNejsBtSKEsoFcVU74/51NX1/C+VFK6G9hXtJHGKoBedyoD0Gt/0AsG/Yjeq/Iw0htyA0xs/FYy4CNsA6hOhhsXYyqzHZEtrpb3PHLlrrLwB7ymPkBitgHEE4A7RaKr2Q==
+  response:
+    status:
+      code: 500
+      message: domain 'ActiveDirectory' does not exist
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close
+      Date:
+      - Mon, 23 Apr 2018 07:43:37 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '13'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 23 Apr 2018 07:43:37 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":null}'
+    http_version: 
+  recorded_at: Mon, 23 Apr 2018 07:43:39 GMT
 recorded_with: VCR 3.0.3

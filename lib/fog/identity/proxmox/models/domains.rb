@@ -31,7 +31,9 @@ module Fog
             type_hash = hash.reject {|k,v| ['realm','type','tfa'].include? k}
             type = to_type(type_value,type_hash)
             tfa = to_tfa(tfa_value)
-            type.tfa = tfa
+            if tfa
+              type.tfa = tfa
+            end
             new({:realm => realm, :type => type})
           end
 
@@ -59,7 +61,10 @@ module Fog
             tfa_s = attributes[:tfa]
             attr = attributes.reject {|k,v| [:realm,:type,:tfa].include? k}
             domain.type = to_type(type_s,attr)
-            domain.type.tfa = to_tfa(tfa_s)
+            tfa = to_tfa(tfa_s)
+            if tfa 
+              domain.type.tfa = tfa
+            end
             domain.create
           end
 
@@ -68,16 +73,17 @@ module Fog
           end
 
           def to_tfa(tfa_s)
-            oath_attr = /type=oath,step=(\d+),digits=(\d+)/.match(tfa_s)
-            yubico_attr = /type=yubico,id=(\w+),key=(\w+),url=(.+)/.match(tfa_s)
-            if oath_attr 
-              tfa_class('oath').new(oath_attr)
-            elsif yubico_attr
-              tfa_class('yubico').new(yubico_attr)
-            else
-              if !tfa_s.nil? 
-                raise Fog::Proxmox::Errors::NotFound.new('domain type unknown')
-              end
+            oath_rxp = /type=oath,step=(?<step>\d+),digits=(?<digits>\d+)/
+            yubico_rxp = /type=yubico,id=(?<id>\w+),key=(?<key>\w+),url=(?<url>.+)/
+            if oath_rxp.match?(tfa_s)
+              attributes = oath_rxp.named_captures
+              type = 'oath'
+            elsif yubico_rxp.match?(tfa_s)
+              attributes = yubico_rxp.named_captures
+              type = 'yubico'
+            end
+            if type && attributes 
+              tfa_class(type).new(attributes)
             end
           end
 
@@ -100,7 +106,7 @@ module Fog
             if tfa == 'oath'
               tfa_class = Fog::Identity::Proxmox::Oath
             elsif tfa == 'yubico'
-              tfa_class = Fog::Identity::Proxmox::Oath
+              tfa_class = Fog::Identity::Proxmox::Yubico
             else
               raise Fog::Proxmox::Errors::NotFound.new('domain tfa unknown')
             end
