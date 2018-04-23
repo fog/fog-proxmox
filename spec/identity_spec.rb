@@ -69,6 +69,9 @@ describe Fog::Identity::Proxmox do
       # Update
       bob.comment = 'novelist'
       bob.enable  = 0
+      @service.groups.create({:groupid => 'group1'}) 
+      @service.groups.create({:groupid => 'group2'}) 
+      bob.groups = ['group1','group2']
       bob.update
       # disabled users
       users_disabled = @service.users.all({'enabled' => 0})
@@ -77,6 +80,10 @@ describe Fog::Identity::Proxmox do
       users_disabled.must_include bob
       # Delete
       bob.destroy
+      group1 = @service.groups.find_by_id 'group1'
+      group1.destroy
+      group2 = @service.groups.find_by_id 'group2'
+      group2.destroy
       proc { @service.users.find_by_id bob_hash[:userid] }.must_raise Excon::Errors::InternalServerError
     end
   end
