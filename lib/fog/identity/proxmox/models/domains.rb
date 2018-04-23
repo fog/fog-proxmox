@@ -104,6 +104,7 @@ module Fog
             else
               raise Fog::Proxmox::Errors::NotFound.new('domain tfa unknown')
             end
+            tfa_class
           end
 
         end
