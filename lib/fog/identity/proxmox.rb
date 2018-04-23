@@ -38,6 +38,8 @@ module Fog
       model :pve
       model :ldap
       model :activedirectory
+      model :oath
+      model :yubico
       collection :domains
       request_path 'fog/identity/proxmox/requests'
       request :get_version

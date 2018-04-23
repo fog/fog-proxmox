@@ -27,8 +27,11 @@ module Fog
           def to_domain(hash)
             realm = hash['realm']
             type_value = hash['type']
-            type_hash = hash.reject {|k,v| ['realm','type'].include? k}
+            tfa_value = hash['tfa']
+            type_hash = hash.reject {|k,v| ['realm','type','tfa'].include? k}
             type = to_type(type_value,type_hash)
+            tfa = to_tfa(tfa_value)
+            type.tfa = tfa
             new({:realm => realm, :type => type})
           end
 
@@ -53,13 +56,29 @@ module Fog
           def create(attributes = {})
             domain = new(attributes.slice(:realm))
             type_s = attributes[:type]
-            attr = attributes.reject {|k,v| [:realm,:type].include? k}
+            tfa_s = attributes[:tfa]
+            attr = attributes.reject {|k,v| [:realm,:type,:tfa].include? k}
             domain.type = to_type(type_s,attr)
+            domain.type.tfa = to_tfa(tfa_s)
             domain.create
           end
 
           def to_type(type,attributes)
             type_class(type).new(attributes)
+          end
+
+          def to_tfa(tfa_s)
+            oath_attr = /type=oath,step=(\d+),digits=(\d+)/.match(tfa_s)
+            yubico_attr = /type=yubico,id=(\w+),key=(\w+),url=(.+)/.match(tfa_s)
+            if oath_attr 
+              tfa_class('oath').new(oath_attr)
+            elsif yubico_attr
+              tfa_class('yubico').new(yubico_attr)
+            else
+              if !tfa_s.nil? 
+                raise Fog::Proxmox::Errors::NotFound.new('domain type unknown')
+              end
+            end
           end
 
           def type_class(type)
@@ -75,6 +94,16 @@ module Fog
               raise Fog::Proxmox::Errors::NotFound.new('domain type unknown')
             end
             type_class
+          end
+
+          def tfa_class(tfa)
+            if tfa == 'oath'
+              tfa_class = Fog::Identity::Proxmox::Oath
+            elsif tfa == 'yubico'
+              tfa_class = Fog::Identity::Proxmox::Oath
+            else
+              raise Fog::Proxmox::Errors::NotFound.new('domain tfa unknown')
+            end
           end
 
         end
