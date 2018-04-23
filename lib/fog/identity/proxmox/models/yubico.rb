@@ -1,4 +1,5 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -6,7 +7,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# Copyright 2018 Tristan Robert  
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -28,21 +29,22 @@
 require 'fog/proxmox/models/model'
 
 module Fog
-    module Identity
-      class Proxmox
-        class Yubico < Fog::Proxmox::Model
-          identity :type
-          attribute :id
-          attribute :key
-          attribute :url
-          def initialize(attributes)
-            self.type = 'yubico'
-            super
-          end
-          def to_s
-            "type=#{type},id=#{id},key=#{key},url=#{url}"
-          end
+  module Identity
+    class Proxmox
+      class Yubico < Fog::Proxmox::Model
+        identity :type
+        attribute :id
+        attribute :key
+        attribute :url
+        def initialize(attributes)
+          self.type = 'yubico'
+          super
+        end
+
+        def to_s
+          "type=#{type},id=#{id},key=#{key},url=#{url}"
         end
       end
     end
+  end
 end

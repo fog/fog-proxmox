@@ -1,4 +1,5 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 

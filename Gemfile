@@ -1,4 +1,5 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -14,8 +15,6 @@
 
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
-
-# frozen_string_literal: true
 
 source 'https://rubygems.org'
 

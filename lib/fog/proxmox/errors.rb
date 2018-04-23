@@ -1,4 +1,5 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -30,7 +31,7 @@ module Fog
           else
             data = Fog::JSON.decode(error.response.body)
             message = data['message']
-            if message.nil? and !data.values.first.nil?
+            if message.nil? && !data.values.first.nil?
               message = data.values.first['message']
             end
           end
@@ -48,7 +49,7 @@ module Fog
 
         def self.slurp(error)
           new_error = super(error)
-          unless new_error.response_data.nil? or new_error.response_data['badRequest'].nil?
+          unless new_error.response_data.nil? || new_error.response_data['badRequest'].nil?
             new_error.instance_variable_set(:@validation_errors, new_error.response_data['badRequest']['validationErrors'])
           end
           new_error

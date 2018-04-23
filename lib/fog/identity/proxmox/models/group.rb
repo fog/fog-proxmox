@@ -1,4 +1,5 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -6,7 +7,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# Copyright 2018 Tristan Robert  
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -28,28 +29,31 @@
 require 'fog/proxmox/models/model'
 
 module Fog
-    module Identity
-      class Proxmox
-        class Group < Fog::Proxmox::Model
-            identity  :groupid
-            attribute :comment
-            def to_s
-              groupid
-            end
-            def create
-              service.create_group(attributes)
-            end
-            def destroy
-              requires :groupid
-              service.delete_group(groupid)
-              true
-            end  
-            def update
-              requires :groupid
-              attr = attributes.reject {|k,v| k == :groupid}
-              service.update_group(groupid,attr)
-            end
+  module Identity
+    class Proxmox
+      class Group < Fog::Proxmox::Model
+        identity  :groupid
+        attribute :comment
+        def to_s
+          groupid
+        end
+
+        def create
+          service.create_group(attributes)
+        end
+
+        def destroy
+          requires :groupid
+          service.delete_group(groupid)
+          true
+        end
+
+        def update
+          requires :groupid
+          attr = attributes.reject { |k, _v| k == :groupid }
+          service.update_group(groupid, attr)
         end
       end
     end
+  end
 end

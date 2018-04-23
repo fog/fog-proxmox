@@ -1,4 +1,6 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -19,11 +21,10 @@ require 'spec_helper'
 require_relative './proxmox_vcr'
 
 describe Fog::Identity::Proxmox do
-  
   before :all do
     @proxmox_vcr = ProxmoxVCR.new(
-      {:vcr_directory => 'spec/fixtures/proxmox/identity',
-      :service_class  => Fog::Identity::Proxmox}
+      vcr_directory: 'spec/fixtures/proxmox/identity',
+      service_class: Fog::Identity::Proxmox
     )
     @service = @proxmox_vcr.service
     @proxmox_url = @proxmox_vcr.proxmox_url
@@ -34,26 +35,26 @@ describe Fog::Identity::Proxmox do
 
   it 'authenticates with username and password' do
     VCR.use_cassette('auth') do
-      Fog::Identity::Proxmox.new({
-        :proxmox_username => 'root@pam',
-        :proxmox_password => 'proxmox01',
-        :proxmox_url      => "#{@proxmox_url}",
-        :proxmox_path     => "/access/ticket"}
+      Fog::Identity::Proxmox.new(
+        proxmox_username: 'root@pam',
+        proxmox_password: 'proxmox01',
+        proxmox_url: @proxmox_url.to_s,
+        proxmox_path: '/access/ticket'
       )
     end
   end
-    
+
   it 'gets server version' do
-    VCR.use_cassette('get_version') do      
+    VCR.use_cassette('get_version') do
       @service.get_version
     end
   end
-    
+
   it 'CRUD users' do
     VCR.use_cassette('crud_users') do
-      bob_hash = {:userid => 'bobsinclar@pve', :firstname => 'Bob', :lastname => 'Sinclar', :email => "bobsinclar@proxmox.com"}
+      bob_hash = { userid: 'bobsinclar@pve', password: 'bobsinclar1', firstname: 'Bob', lastname: 'Sinclar', email: 'bobsinclar@proxmox.com' }
       # Create 1st time
-      @service.users.create(bob_hash) 
+      @service.users.create(bob_hash)
       # Find by id
       bob = @service.users.find_by_id bob_hash[:userid]
       bob.wont_be_nil
@@ -69,12 +70,15 @@ describe Fog::Identity::Proxmox do
       # Update
       bob.comment = 'novelist'
       bob.enable  = 0
-      @service.groups.create({:groupid => 'group1'}) 
-      @service.groups.create({:groupid => 'group2'}) 
-      bob.groups = ['group1','group2']
+      @service.groups.create(groupid: 'group1')
+      @service.groups.create(groupid: 'group2')
+      bob.groups = %w[group1 group2]
       bob.update
+      # change bob's password
+      bob.password = 'bobsinclar2'
+      bob.change_password
       # disabled users
-      users_disabled = @service.users.all({'enabled' => 0})
+      users_disabled = @service.users.all('enabled' => 0)
       users_disabled.wont_be_nil
       users_disabled.wont_be_empty
       users_disabled.must_include bob
@@ -84,7 +88,9 @@ describe Fog::Identity::Proxmox do
       group1.destroy
       group2 = @service.groups.find_by_id 'group2'
       group2.destroy
-      proc { @service.users.find_by_id bob_hash[:userid] }.must_raise Excon::Errors::InternalServerError
+      proc do
+        @service.users.find_by_id bob_hash[:userid]
+      end.must_raise Excon::Errors::InternalServerError
     end
   end
 
@@ -92,7 +98,7 @@ describe Fog::Identity::Proxmox do
     VCR.use_cassette('crud_groups') do
       group_hash = {:groupid => 'group1'}
       # Create 1st time
-      @service.groups.create(group_hash) 
+      @service.groups.create(group_hash)
       # Find by id
       group = @service.groups.find_by_id group_hash[:groupid]
       group.wont_be_nil
@@ -110,7 +116,9 @@ describe Fog::Identity::Proxmox do
       groups_all.must_include group
       # Delete
       group.destroy
-      proc { @service.groups.find_by_id group_hash[:groupid] }.must_raise Excon::Errors::InternalServerError
+      proc do
+        @service.groups.find_by_id group_hash[:groupid]
+      end.must_raise Excon::Errors::InternalServerError
     end
   end
 
@@ -118,7 +126,7 @@ describe Fog::Identity::Proxmox do
     VCR.use_cassette('crud_roles') do
       role_hash = {:roleid => 'PVETestAuditor'}
       # Create 1st time
-      @service.roles.create(role_hash) 
+      @service.roles.create(role_hash)
       # Find by id
       role = @service.roles.find_by_id role_hash[:roleid]
       role.wont_be_nil
@@ -143,8 +151,8 @@ describe Fog::Identity::Proxmox do
   it 'CRUD domains' do
     VCR.use_cassette('crud_domains') do
       ldap_hash = {
-        :realm => 'LDAP',  
-        :type  => 'ldap',    
+        :realm => 'LDAP',
+        :type  => 'ldap',
         :base_dn => 'ou=People,dc=ldap-test,dc=com',
         :user_attr => 'LDAP',
         :server1 => 'localhost',
@@ -153,8 +161,8 @@ describe Fog::Identity::Proxmox do
         :secure => 0
       }
       ad_hash = {
-        :realm => 'ActiveDirectory',  
-        :type  => 'ad',    
+        :realm => 'ActiveDirectory',
+        :type  => 'ad',
         :domain => 'proxmox.com',
         :server1 => 'localhost',
         :port => 389,
@@ -162,7 +170,7 @@ describe Fog::Identity::Proxmox do
         :secure => 0
       }
       # Create 1st time
-      @service.domains.create(ldap_hash) 
+      @service.domains.create(ldap_hash)
       # Find by id
       ldap = @service.domains.find_by_id ldap_hash[:realm]
       ldap.wont_be_nil
@@ -179,7 +187,7 @@ describe Fog::Identity::Proxmox do
       # # Update
       ldap.type.comment = 'Test domain LDAP'
       ldap.type.tfa = 'type=oath,step=30,digits=8'
-      ldap.update 
+      ldap.update
       # Find by id
       ad = @service.domains.find_by_id ad_hash[:realm]
       ad.wont_be_nil
@@ -198,6 +206,4 @@ describe Fog::Identity::Proxmox do
       proc { @service.domains.find_by_id ad_hash[:realm] }.must_raise Excon::Errors::InternalServerError
     end
   end
-
-
 end

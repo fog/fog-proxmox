@@ -1,4 +1,5 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -48,6 +49,7 @@ module Fog
       request :create_user
       request :update_user
       request :delete_user
+      request :change_password
       request :list_groups
       request :get_group
       request :create_group
@@ -73,7 +75,7 @@ module Fog
           @config = options
         end
       end
-    
+
       # Real class
       class Real
         include Fog::Proxmox::Core
@@ -84,7 +86,7 @@ module Fog
           @persistent = options[:persistent] || false
           @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
         end
-        
+
         def config
           self
         end

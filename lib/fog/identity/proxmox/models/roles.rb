@@ -1,4 +1,6 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -21,29 +23,28 @@ require 'fog/identity/proxmox/models/role'
 module Fog
   module Identity
     class Proxmox
-        class Roles < Fog::Proxmox::Collection
-          model Fog::Identity::Proxmox::Role
+      class Roles < Fog::Proxmox::Collection
+        model Fog::Identity::Proxmox::Role
 
-          def all(options = {})
-            # special attibute is volatile in role
-            load_response(service.list_roles, 'roles', ['special'])
-          end
-
-          def find_by_id(id)
-            cached_role = find { |role| role.roleid == id }
-            return cached_role if cached_role
-            role_hash = service.get_role(id)
-            Fog::Identity::Proxmox::Role.new(
-              role_hash.merge(:service => service)
-            )
-          end
-
-          def destroy(id)
-            role = find_by_id(id)
-            role.destroy
-          end
-
+        def all(_options = {})
+          # special attibute is volatile in role
+          load_response(service.list_roles, 'roles', ['special'])
         end
+
+        def find_by_id(id)
+          cached_role = find { |role| role.roleid == id }
+          return cached_role if cached_role
+          role_hash = service.get_role(id)
+          Fog::Identity::Proxmox::Role.new(
+            role_hash.merge(service: service)
+          )
+        end
+
+        def destroy(id)
+          role = find_by_id(id)
+          role.destroy
+        end
+      end
     end
   end
 end

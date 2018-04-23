@@ -1,4 +1,5 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -6,7 +7,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# Copyright 2018 Tristan Robert  
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -23,35 +24,36 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
 require 'fog/proxmox/models/model'
 
 module Fog
-    module Identity
-      class Proxmox
-        class Domain < Fog::Proxmox::Model
-            identity  :realm
-            attribute :type
-            def to_s
-              realm
-            end
-            def create
-              attr = type.attributes.merge({:realm => realm})
-              service.create_domain(attr)
-            end
-            def destroy
-              requires :realm
-              service.delete_domain(realm)
-              true
-            end  
-            def update
-              requires :realm
-              attr = type.attributes
-              attr.delete_if {|k,v| k == :type}
-              service.update_domain(realm,attr)
-            end
+  module Identity
+    class Proxmox
+      class Domain < Fog::Proxmox::Model
+        identity :realm
+        attribute :type
+        def to_s
+          realm
+        end
+
+        def create
+          attr = type.attributes.merge(realm: realm)
+          service.create_domain(attr)
+        end
+
+        def destroy
+          requires :realm
+          service.delete_domain(realm)
+          true
+        end
+
+        def update
+          requires :realm
+          attr = type.attributes
+          attr.delete_if { |k, _v| k == :type }
+          service.update_domain(realm, attr)
         end
       end
     end
+  end
 end

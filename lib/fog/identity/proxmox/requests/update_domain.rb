@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -18,21 +19,21 @@
 # frozen_string_literal: true
 
 module Fog
-    module Identity
-      class Proxmox
-          class Real
-            def update_domain(realm,attributes)
-              request(
-                :expects => [200],
-                :method  => 'PUT',
-                :path    => "access/domains/#{realm}",
-                :body    => URI.encode_www_form(attributes)
-              )
-            end
-          end
-  
-          class Mock
-          end
+  module Identity
+    class Proxmox
+      class Real
+        def update_domain(realm, attributes)
+          request(
+            expects: [200],
+            method: 'PUT',
+            path: "access/domains/#{realm}",
+            body: URI.encode_www_form(attributes)
+          )
         end
-    end
+      end
+
+      class Mock
+      end
+      end
+  end
   end

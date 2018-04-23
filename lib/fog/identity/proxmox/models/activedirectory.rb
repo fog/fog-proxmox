@@ -1,4 +1,5 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -6,7 +7,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# Copyright 2018 Tristan Robert  
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -28,29 +29,29 @@
 require 'fog/proxmox/models/model'
 
 module Fog
-    module Identity
-      class Proxmox
-        class Activedirectory < Fog::Proxmox::Model
-            identity :type
-            attribute :base_dn
-            attribute :bind_dn
-            attribute :capath
-            attribute :cert
-            attribute :certkey
-            attribute :comment
-            attribute :default
-            attribute :domain
-            attribute :port
-            attribute :secure
-            attribute :server1
-            attribute :server2
-            attribute :tfa
-            attribute :verify
-            def initialize(attributes)
-              self.type = 'ad'
-              super
-            end
+  module Identity
+    class Proxmox
+      class Activedirectory < Fog::Proxmox::Model
+        identity :type
+        attribute :base_dn
+        attribute :bind_dn
+        attribute :capath
+        attribute :cert
+        attribute :certkey
+        attribute :comment
+        attribute :default
+        attribute :domain
+        attribute :port
+        attribute :secure
+        attribute :server1
+        attribute :server2
+        attribute :tfa
+        attribute :verify
+        def initialize(attributes)
+          self.type = 'ad'
+          super
         end
       end
     end
+  end
 end

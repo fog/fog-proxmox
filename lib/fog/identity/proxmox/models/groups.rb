@@ -1,4 +1,6 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -21,28 +23,27 @@ require 'fog/identity/proxmox/models/group'
 module Fog
   module Identity
     class Proxmox
-        class Groups < Fog::Proxmox::Collection
-          model Fog::Identity::Proxmox::Group
+      class Groups < Fog::Proxmox::Collection
+        model Fog::Identity::Proxmox::Group
 
-          def all(options = {})
-            load_response(service.list_groups, 'groups')
-          end
-
-          def find_by_id(id)
-            cached_group = find { |group| group.groupid == id }
-            return cached_group if cached_group
-            group_hash = service.get_group(id)
-            Fog::Identity::Proxmox::Group.new(
-              group_hash.merge(:service => service)
-            )
-          end
-
-          def destroy(id)
-            group = find_by_id(id)
-            group.destroy
-          end
-
+        def all(_options = {})
+          load_response(service.list_groups, 'groups')
         end
+
+        def find_by_id(id)
+          cached_group = find { |group| group.groupid == id }
+          return cached_group if cached_group
+          group_hash = service.get_group(id)
+          Fog::Identity::Proxmox::Group.new(
+            group_hash.merge(service: service)
+          )
+        end
+
+        def destroy(id)
+          group = find_by_id(id)
+          group.destroy
+        end
+      end
     end
   end
 end

@@ -1,4 +1,5 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -22,7 +23,6 @@ require 'fog/core/model'
 module Fog
   module Proxmox
     class Model < Fog::Model
-
       # Initialize a record
       def initialize(attributes)
         # Old 'connection' is renamed as service and should be used instead

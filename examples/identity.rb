@@ -1,4 +1,5 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -26,40 +27,40 @@
 
 require 'fog/proxmox'
 
-auth_url = "https://172.26.49.146:8006/api2/json/access/token"
+auth_url = 'https://172.26.49.146:8006/api2/json/access/token'
 username = 'root@pam'
 password = 'proxmox01'
 
-identity = Fog::Identity::Proxmox.new(:proxmox_url => auth_url, :proxmox_username => username, :proxmox_password => password)
+identity = Fog::Identity::Proxmox.new(proxmox_url: auth_url, proxmox_username: username, proxmox_password: password)
 
 # Get proxmox version
 identity.version
 
 # List users
 identity.users.each do |user|
-    # user ...
+  # user ...
 end
 
 # Create a new user
-identity.users.create :userid     => 'bobsinclar@pve',
-                      :firstname  => 'bob',
-                      :lastname   => 'sinclar',
-                      :email      => 'bobsinclar@proxmox.com'
+identity.users.create userid: 'bobsinclar@pve',
+                      firstname: 'bob',
+                      lastname: 'sinclar',
+                      email: 'bobsinclar@proxmox.com'
 
 # List groups
 identity.groups.each do |group|
-    # group ...
+  # group ...
 end
 
 # List domains
 identity.domains.each do |domain|
-    # domain ...
+  # domain ...
 end
 
 # Create a new domain (authentication server)
-identity.domains.create :realm  => 'myrealm',
-                        :type   => 'pam',
-                        :domain => 'mydomain'
+identity.domains.create realm: 'myrealm',
+                        type: 'pam',
+                        domain: 'mydomain'
 
 # Get user
 bob = identity.users.find_by_id 'bobsinclar@pve'

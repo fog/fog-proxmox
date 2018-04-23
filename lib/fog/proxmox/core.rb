@@ -1,4 +1,5 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -34,11 +35,10 @@ module Fog
       end
 
       def is_authenticated?
-        return !@current_user.nil?
+        !@current_user.nil?
       end
 
       def initialize_identity(options)
-
         # Create @proxmox_* instance variables from all :proxmox_* options
         options.select { |x| x.to_s.start_with? 'proxmox' }.each do |proxmox_param, value|
           instance_variable_set "@#{proxmox_param}".to_sym, value
@@ -49,29 +49,26 @@ module Fog
         @proxmox_must_reauthenticate = false
         @proxmox_uri = URI.parse(@proxmox_url)
 
-        if !@is_ticket_valid
-          @proxmox_must_reauthenticate = true
-        end
+        @proxmox_must_reauthenticate = true unless @is_ticket_valid
 
         missing_credentials = []
         missing_credentials << :proxmox_username unless @proxmox_username
 
-        if !@with_ticket
+        unless @with_ticket
           missing_credentials << :proxmox_password unless @proxmox_password
         end
-        
-        raise ArgumentError, "Missing required arguments: #{missing_credentials.join(', ')}" unless missing_credentials.empty?
 
+        raise ArgumentError, "Missing required arguments: #{missing_credentials.join(', ')}" unless missing_credentials.empty?
       end
 
       def credentials
         options = {
-          :provider                    => 'proxmox',
-          :proxmox_url                 => @proxmox_uri.to_s,
-          :proxmox_ticket              => @ticket,
-          :proxmox_ticket_deadline     => @ticket_deadline,
-          :proxmox_csrftoken           => @csrf_token,
-          :proxmox_username            => @current_user
+          provider: 'proxmox',
+          proxmox_url: @proxmox_uri.to_s,
+          proxmox_ticket: @ticket,
+          proxmox_ticket_deadline: @ticket_deadline,
+          proxmox_csrftoken: @csrf_token,
+          proxmox_username: @current_user
         }
         proxmox_options.merge options
       end
@@ -86,8 +83,8 @@ module Fog
         retried = false
         begin
           response = @connection.request(params.merge(
-                                           :headers => headers(params[:method],params[:headers]),
-                                           :path    => "#{@api_path}/#{params[:path]}"
+                                           headers: headers(params[:method], params[:headers]),
+                                           path: "#{@api_path}/#{params[:path]}"
           ))
         rescue Excon::Errors::Unauthorized => error
           # token expiration and token renewal possible
@@ -116,13 +113,11 @@ module Fog
           'Accept' => 'application/json'
         }
         # CSRF token is required to PUT, POST and DELETE http requests
-        if ['PUT','POST','DELETE'].include? method
-          headers_hash.store('CSRFPreventionToken',@csrf_token)
+        if %w[PUT POST DELETE].include? method
+          headers_hash.store('CSRFPreventionToken', @csrf_token)
         end
         # if authenticated ticket must be present in cookie
-        if @with_ticket
-          headers_hash.store('Cookie',"PVEAuthCookie=#{@ticket}")
-        end
+        headers_hash.store('Cookie', "PVEAuthCookie=#{@ticket}") if @with_ticket
         headers_hash.merge additional_headers
         headers_hash
       end
@@ -138,7 +133,7 @@ module Fog
       end
 
       def authenticate
-        if !is_authenticated?
+        unless is_authenticated?
           options = proxmox_options
           options[:proxmox_ticket] = @proxmox_must_reauthenticate ? nil : @ticket
           credentials = Fog::Proxmox.authenticate(options, @connection_options)
@@ -157,7 +152,6 @@ module Fog
 
         true
       end
-
     end
   end
 end

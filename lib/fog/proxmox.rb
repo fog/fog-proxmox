@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -23,22 +24,21 @@ require 'fog/core'
 require 'fog/json'
 
 module Fog
-
-  #Identity module
+  # Identity module
   module Identity
-    autoload :Proxmox, File.expand_path('../identity/proxmox', __FILE__)
+    autoload :Proxmox, File.expand_path('identity/proxmox', __dir__)
   end
   # Compute module
   module Compute
-    autoload :Proxmox, File.expand_path('../compute/proxmox', __FILE__)
+    autoload :Proxmox, File.expand_path('compute/proxmox', __dir__)
   end
   # Storage module
   module Storage
-    autoload :Proxmox, File.expand_path('../storage/proxmox', __FILE__)
+    autoload :Proxmox, File.expand_path('storage/proxmox', __dir__)
   end
   # Network module
   module Network
-    autoload :Proxmox, File.expand_path('../network/proxmox', __FILE__)
+    autoload :Proxmox, File.expand_path('network/proxmox', __dir__)
   end
 
   # Proxmox module
@@ -52,7 +52,7 @@ module Fog
     @token_cache = {}
 
     # Default lifetime ticket is 2 hours
-    @ticket_lifetime = 2*60*60
+    @ticket_lifetime = 2 * 60 * 60
 
     class << self
       attr_accessor :token_cache
@@ -63,20 +63,17 @@ module Fog
       Fog::Proxmox.token_cache = {}
     end
 
-    def self.authenticate(options, connection_options = {})      
+    def self.authenticate(options, connection_options = {})
       get_tokens(options, connection_options)
-      return @token_cache
+      @token_cache
     end
 
     def self.set_password(options)
       ticket = options[:proxmox_ticket]
-      if !ticket.nil?
-        options[:proxmox_password] = ticket
-      end
+      options[:proxmox_password] = ticket unless ticket.nil?
     end
 
     def self.get_tokens(options, connection_options = {})
-
       username          = options[:proxmox_username].to_s
       password          = options[:proxmox_password].to_s
       ticket            = options[:proxmox_ticket]
@@ -91,21 +88,20 @@ module Fog
       @is_authenticated = !ticket.nil? && ticket_deadline > Time.now
 
       if @is_authenticated
-        set_token_cache(username,ticket,csrf_token,ticket_deadline)
+        set_token_cache(username, ticket, csrf_token, ticket_deadline)
       else
         connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
-        retrieve_tokens(connection,username,password)
+        retrieve_tokens(connection, username, password)
       end
-      
     end
 
-    def self.retrieve_tokens(connection,username,password)
+    def self.retrieve_tokens(connection, username, password)
       request = {
-        :expects  => [200, 204],
-        :headers  => {'Accept' => 'application/json'},
-        :body     => "username=#{username}&password=#{password}",
-        :method   => 'POST',
-        :path     =>  "#{@api_path}/access/ticket",
+        expects: [200, 204],
+        headers: { 'Accept' => 'application/json' },
+        body: "username=#{username}&password=#{password}",
+        method: 'POST',
+        path: "#{@api_path}/access/ticket"
       }
 
       response   = connection.request(request)
@@ -117,14 +113,12 @@ module Fog
 
       now = Time.now
       ticket_deadline = Time.at(now.to_i + @ticket_lifetime)
-      set_token_cache(username,ticket,csrf_token,ticket_deadline)
-
+      set_token_cache(username, ticket, csrf_token, ticket_deadline)
     end
 
-    def self.set_token_cache(username,ticket,csrf_token,ticket_deadline)
-      @token_cache = {:username => username,  :ticket => ticket, :csrf_token => csrf_token, :ticket_deadline => ticket_deadline}
+    def self.set_token_cache(username, ticket, csrf_token, ticket_deadline)
+      @token_cache = { username: username, ticket: ticket, csrf_token: csrf_token, ticket_deadline: ticket_deadline }
       Fog::Proxmox.token_cache = @token_cache
     end
-
   end
 end

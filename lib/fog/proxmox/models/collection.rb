@@ -1,4 +1,5 @@
-# Copyright 2018 Tristan Robert  
+# frozen_string_literal: true
+# Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
 
@@ -26,23 +27,23 @@ module Fog
       # page of data.
       attr_accessor :response
 
-      def load_response(response, index = nil, attributes_ignored = [])
+      def load_response(response, _index = nil, attributes_ignored = [])
         # Delete it index if it's there, so we don't store response with data twice, but we store only metadata
         body = JSON.decode(response.body)
         objects = body['data']
-        clear && objects.each { |object| self << new(clear_ignored_attributes(object,attributes_ignored)) }
+        clear && objects.each { |object| self << new(clear_ignored_attributes(object, attributes_ignored)) }
         self.response = response
         self
       end
 
       # clear attributes non persistent
       def clear_ignored_attributes(object, attributes_ignored = [])
-        attributes_ignored.each { |attribute| object.delete_if {|k,v| k == attribute}}
+        attributes_ignored.each { |attribute| object.delete_if { |k, _v| k == attribute } }
         object
       end
 
       def get(response, attribute)
-        return response.body[attribute]
+        response.body[attribute]
       end
 
       # Proxmox object creation requires identity and return null
@@ -52,8 +53,8 @@ module Fog
       end
 
       # Returns detailed list of records
-      def all(options = {})
-        raise Fog::Proxmox::Errors::InterfaceNotImplemented.new('Method :all is not implemented')
+      def all(_options = {})
+        raise Fog::Proxmox::Errors::InterfaceNotImplemented, 'Method :all is not implemented'
       end
 
       # Returns non detailed list of records, usually just subset of attributes, which makes this call more effective.
@@ -63,8 +64,8 @@ module Fog
       end
 
       # Gets record given record's UUID
-      def get(uuid)
-        raise Fog::Proxmox::Errors::InterfaceNotImplemented.new('Method :get is not implemented')
+      def get(_uuid)
+        raise Fog::Proxmox::Errors::InterfaceNotImplemented, 'Method :get is not implemented'
       end
 
       def find_by_id(uuid)
@@ -72,8 +73,8 @@ module Fog
       end
 
       # Destroys record given record's UUID
-      def destroy(uuid)
-        raise Fog::Proxmox::Errors::InterfaceNotImplemented.new('Method :destroy is not implemented')
+      def destroy(_uuid)
+        raise Fog::Proxmox::Errors::InterfaceNotImplemented, 'Method :destroy is not implemented'
       end
     end
   end

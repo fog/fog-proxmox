@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -18,20 +19,20 @@
 # frozen_string_literal: true
 
 module Fog
-    module Identity
-      class Proxmox
-          class Real
-            def delete_group(groupid)
-              request(
-                :expects => [200],
-                :method  => 'DELETE',
-                :path    => "access/groups/#{groupid}"
-              )
-            end
-          end
-  
-          class Mock
-          end
+  module Identity
+    class Proxmox
+      class Real
+        def delete_group(groupid)
+          request(
+            expects: [200],
+            method: 'DELETE',
+            path: "access/groups/#{groupid}"
+          )
         end
-    end
+      end
+
+      class Mock
+      end
+      end
+  end
   end

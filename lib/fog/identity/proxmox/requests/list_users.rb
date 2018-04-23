@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -18,23 +19,22 @@
 # frozen_string_literal: true
 
 module Fog
-    module Identity
-      class Proxmox
-          class Real
-            def list_users(options = {})
-              request(
-                :expects => [200],
-                :method  => 'GET',
-                :path    => "access/users",
-                :query   => options
-              )
-            end
-          end
-  
-          class Mock
-            def list_users(options = {})
-            end
-          end
+  module Identity
+    class Proxmox
+      class Real
+        def list_users(options = {})
+          request(
+            expects: [200],
+            method: 'GET',
+            path: 'access/users',
+            query: options
+          )
+        end
+      end
+
+      class Mock
+        def list_users(options = {}); end
       end
     end
+  end
 end

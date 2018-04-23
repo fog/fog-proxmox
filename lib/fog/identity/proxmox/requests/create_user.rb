@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -15,24 +17,22 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
 module Fog
-    module Identity
-      class Proxmox
-          class Real
-            def create_user(user)
-              request(
-                :expects => [200],
-                :method  => 'POST',
-                :path    => "access/users",
-                :body    => URI.encode_www_form(user)
-              )
-            end
-          end
-  
-          class Mock
-          end
+  module Identity
+    class Proxmox
+      class Real
+        def create_user(user)
+          request(
+            expects: [200],
+            method: 'POST',
+            path: 'access/users',
+            body: URI.encode_www_form(user)
+          )
         end
+      end
+
+      class Mock
+      end
     end
   end
+end

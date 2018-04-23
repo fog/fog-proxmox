@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -20,9 +21,9 @@
 require 'simplecov'
 
 SimpleCov.start do
-  add_filter "/spec/"
-  add_group "Identity", "lib/fog/identity"
-  add_group "Core", "lib/fog/proxmox"
+  add_filter '/spec/'
+  add_group 'Identity', 'lib/fog/identity'
+  add_group 'Core', 'lib/fog/proxmox'
 end
 
 require 'minitest/autorun'
