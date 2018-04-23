@@ -23,6 +23,7 @@ require 'fog/identity/proxmox/models/domain'
 module Fog
   module Identity
     class Proxmox
+      # class Domains collection authentication
       class Domains < Fog::Proxmox::Collection
         model Fog::Identity::Proxmox::Domain
 

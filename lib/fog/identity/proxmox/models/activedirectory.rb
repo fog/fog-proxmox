@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -24,13 +25,12 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
 require 'fog/proxmox/models/model'
 
 module Fog
   module Identity
     class Proxmox
+      # class Active Directory authentication
       class Activedirectory < Fog::Proxmox::Model
         identity :type
         attribute :base_dn

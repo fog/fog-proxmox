@@ -23,7 +23,7 @@
 # 1. ENV[PVE_URL] exists: talk to an actual Proxmox server and record HTTP
 #    traffic in VCRs at "spec/debug" (credentials are read from the conventional
 #    environment variables: PVE_URL, PVE_USERNAME, PVE_PASSWORD)
-# 2. otherwise (under Travis etc.): use VCRs at "spec/fixtures/proxmox/#{service}"
+# 2. otherwise (Travis etc.): use VCRs at "spec/fixtures/proxmox/#{service}"
 
 require 'vcr'
 
@@ -33,9 +33,9 @@ class ProxmoxVCR
               :ticket,
               :csrftoken,
               :service,
-              :proxmox_url,
-              :proxmox_path,
-              :ticket_deadline
+              :url,
+              :path,
+              :deadline
 
   def initialize(options)
     @vcr_directory = options[:vcr_directory]
@@ -44,12 +44,12 @@ class ProxmoxVCR
     use_recorded = !ENV.key?('PVE_URL') || ENV['USE_VCR'] == 'true'
 
     if use_recorded
-      Fog.interval  = 0
-      @proxmox_url  = 'https://172.26.49.146:8006/api2/json'
-      @proxmox_path = '/access/ticket'
+      Fog.interval = 0
+      @url  = 'https://172.26.49.146:8006/api2/json'
+      @path = '/access/ticket'
     else
-      @proxmox_url  = ENV['PVE_URL']
-      @proxmox_path = ENV['PVE_PATH']
+      @url  = ENV['PVE_URL']
+      @path = ENV['PVE_PATH']
     end
 
     VCR.configure do |config|
@@ -63,7 +63,7 @@ class ProxmoxVCR
         config.default_cassette_options = { record: :all }
       end
       config.hook_into :webmock
-      config.debug_logger = $stderr # use $stderr to debug
+      config.debug_logger = nil # use $stderr to debug
     end
 
     # ignore enterprise proxy
@@ -73,31 +73,31 @@ class ProxmoxVCR
     Excon.defaults[:ssl_verify_peer] = false if ENV['SSL_VERIFY_PEER'] == 'false'
 
     VCR.use_cassette('identity_ticket') do
-      Fog::Proxmox.clear_token_cache
+      Fog::Proxmox.clear_cache
 
       @username  = 'root@pam'
       @password  = 'proxmox01'
       # ticket recorded in identity_ticket.yml
       @ticket    = 'PVE:root@pam:5AB4B38A::m5asyATnV66Htv+Z2QYNu+KuqZDsR1t3fCViuu0bTAWYfU85zdUY2dF9lJXa7soWlaZ3tZriTxC7d+nhMq9Fq8hCRlNG4ntsEw/CzeuS50phSvq4Phx1uZVV0KjkdcVP1X0J50e42Zfr5hzptiO+cD68OF2GG0GaboQ/MV+PA5IxojYojQe1w6yjjzreZhiZYy9zq1W5CW23yIt5pPWk9oFxLNUHU1I2+jqMCOeE40VhivCUEslusD0ZdoA3tkIWJ504rKQJrJIsq1zi6LIpGsktkbUPxHwSgnftQs0IPRuP5HGaz1g9FSW1IUpC8iCHqEV6re+Pb9Yz+G1G7+G0TQ=='
       @csrftoken = '5AB4B38A:J+3XBmYsJqR7F+18kqbMhj6I/SM'
-      @ticket_expiration = Time.now + 2 * 60 * 60
+      @deadline = Time.now + 2 * 60 * 60
 
       unless use_recorded
-        @username             = ENV['PVE_USERNAME']        || options[:username]             || @username
-        @password             = ENV['PVE_PASSWORD']        || options[:password]             || @password
-        @ticket               = ENV['PVE_TICKET']          || options[:ticket]               || @ticket
-        @csrftoken            = ENV['PVE_CSRFTOKEN']       || options[:csrftoken]            || @csrftoken
-        @ticket_deadline      = ENV['PVE_TICKET_DEADLINE'] || options[:ticket_deadline] || @ticket_deadline
+        @username = ENV['PVE_USERNAME'] || options[:username] || @username
+        @password = ENV['PVE_PASSWORD'] || options[:password] || @password
+        @ticket = ENV['PVE_TICKET'] || options[:ticket] || @ticket
+        @csrftoken = ENV['PVE_CSRFTOKEN'] || options[:csrftoken] || @csrftoken
+        @deadline = ENV['PVE_DEADLINE'] || options[:deadline] || @deadline
       end
 
       connection_options = {
-        proxmox_url: @proxmox_url,
-        proxmox_path: @proxmox_path,
-        proxmox_username: @username,
-        proxmox_password: @password,
-        proxmox_ticket: @ticket,
-        proxmox_csrftoken: @csrftoken,
-        proxmox_ticket_deadline: @ticket_deadline
+        pve_url: @url,
+        pve_path: @path,
+        pve_username: @username,
+        pve_password: @password,
+        pve_ticket: @ticket,
+        pve_csrftoken: @csrftoken,
+        pve_deadline: @deadline
       }
 
       @service = @service_class.new(connection_options)

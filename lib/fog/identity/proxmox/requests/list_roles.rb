@@ -21,6 +21,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real list_roles request
       class Real
         def list_roles
           request(
@@ -31,6 +32,7 @@ module Fog
         end
       end
 
+      # class Mock list_roles request
       class Mock
         def list_roles; end
       end

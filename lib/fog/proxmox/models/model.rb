@@ -22,6 +22,7 @@ require 'fog/core/model'
 
 module Fog
   module Proxmox
+    # class Model proxmox
     class Model < Fog::Model
       # Initialize a record
       def initialize(attributes)
@@ -37,17 +38,17 @@ module Fog
 
       # Updates a record
       def update
-        # raise Fog::Proxmox::Errors::InterfaceNotImplemented.new('Method :get is not implemented')
+        # raise Fog::Proxmox::Errors::InterfaceNotImplemented
       end
 
       # Creates a record
       def create
-        # raise Fog::Proxmox::Errors::InterfaceNotImplemented.new('Method :get is not implemented')
+        # raise Fog::Proxmox::Errors::InterfaceNotImplemented
       end
 
       # Destroys a record
       def destroy
-        # raise Fog::Proxmox::Errors::InterfaceNotImplemented.new('Method :get is not implemented')
+        # raise Fog::Proxmox::Errors::InterfaceNotImplemented
       end
     end
   end

@@ -21,6 +21,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real change_password request
       class Real
         def change_password(userid, password)
           request(
@@ -32,8 +33,9 @@ module Fog
         end
       end
 
+      # class Mock change_password request
       class Mock
       end
-      end
+    end
   end
-  end
+end

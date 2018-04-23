@@ -1,0 +1,12 @@
+AllCops:
+  TargetRubyVersion: 2.5
+  Include:
+    - '**/Rakefile'
+  Exclude:
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'coverage/**/*'
+    - '.bundle/**/*'
+    - '.vscode/**/*'
+    - '**/*.gemspec'
+    - 'Gemfile'

@@ -20,6 +20,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real create_domain collection
       class Real
         def create_domain(domain)
           request(
@@ -31,8 +32,9 @@ module Fog
         end
       end
 
+      # class Mock create_domain collection
       class Mock
       end
-      end
+    end
   end
-  end
+end

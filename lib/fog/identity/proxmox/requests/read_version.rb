@@ -1,13 +1,4 @@
 # frozen_string_literal: true
-
-# Copyright 2018 Tristan Robert
-
-# This file is part of Fog::Proxmox.
-
-# Fog::Proxmox is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -25,21 +16,27 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/model'
+# frozen_string_literal: true
 
 module Fog
   module Identity
     class Proxmox
-      # class PAM authentication
-      class Pam < Fog::Proxmox::Model
-        identity :type
-        attribute :comment
-        attribute :default
-        attribute :tfa
-        def initialize(attributes)
-          self.type = 'pam'
-          super
+      # class Real read_version request
+      class Real
+        def read_version
+          response = request(
+            expects: [200],
+            method: 'GET',
+            path: 'version'
+          )
+          body = JSON.decode(response.body)
+          data = body['data']
+          data
         end
+      end
+
+      # class Mock read_version request
+      class Mock
       end
     end
   end

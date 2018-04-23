@@ -31,6 +31,7 @@ require 'fog/proxmox/models/model'
 module Fog
   module Identity
     class Proxmox
+      # class Yubico Two factor authentification
       class Yubico < Fog::Proxmox::Model
         identity :type
         attribute :id

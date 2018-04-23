@@ -21,6 +21,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real update_role request
       class Real
         def update_role(roleid, attributes)
           request(
@@ -32,8 +33,9 @@ module Fog
         end
       end
 
+      # class Mock update_role request
       class Mock
       end
-      end
+    end
   end
-  end
+end

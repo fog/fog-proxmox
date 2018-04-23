@@ -20,6 +20,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real delete_user request
       class Real
         def delete_user(userid)
           request(
@@ -30,6 +31,7 @@ module Fog
         end
       end
 
+      # class Real delete_user request
       class Mock
       end
     end

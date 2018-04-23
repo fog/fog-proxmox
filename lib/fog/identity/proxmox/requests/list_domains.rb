@@ -21,6 +21,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real list_domains request
       class Real
         def list_domains
           request(
@@ -31,6 +32,7 @@ module Fog
         end
       end
 
+      # class Mock list_domains request
       class Mock
         def list_domains; end
       end

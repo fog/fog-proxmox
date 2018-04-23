@@ -49,48 +49,47 @@ module Fog
     service(:storage, 'Storage')
     service(:network, 'Network')
 
-    @token_cache = {}
+    @cache = {}
 
     # Default lifetime ticket is 2 hours
     @ticket_lifetime = 2 * 60 * 60
 
     class << self
-      attr_accessor :token_cache
+      attr_accessor :cache
       attr_reader :version
     end
 
-    def self.clear_token_cache
-      Fog::Proxmox.token_cache = {}
+    def self.clear_cache
+      Fog::Proxmox.cache = {}
     end
 
     def self.authenticate(options, connection_options = {})
       get_tokens(options, connection_options)
-      @token_cache
+      @cache
     end
 
-    def self.set_password(options)
-      ticket = options[:proxmox_ticket]
-      options[:proxmox_password] = ticket unless ticket.nil?
+    def self.authenticated?
+      !@cache.empty?
+    end
+
+    def self.extract_password(options)
+      ticket = options[:pve_ticket]
+      options[:pve_password] = ticket unless ticket.nil?
     end
 
     def self.get_tokens(options, connection_options = {})
-      username          = options[:proxmox_username].to_s
-      password          = options[:proxmox_password].to_s
-      ticket            = options[:proxmox_ticket]
-      csrf_token        = options[:proxmox_csrftoken]
-      ticket_deadline   = options[:proxmox_ticket_deadline]
-      url               = options[:proxmox_url]
-
-      set_password(options)
-
+      username          = options[:pve_username].to_s
+      password          = options[:pve_password].to_s
+      url               = options[:pve_url]
+      extract_password(options)
       uri = URI.parse(url)
       @api_path = uri.path
-      @is_authenticated = !ticket.nil? && ticket_deadline > Time.now
-
-      if @is_authenticated
-        set_token_cache(username, ticket, csrf_token, ticket_deadline)
-      else
-        connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
+      unless authenticated?
+        connection = Fog::Core::Connection.new(
+          uri.to_s,
+          false,
+          connection_options
+        )
         retrieve_tokens(connection, username, password)
       end
     end
@@ -109,16 +108,21 @@ module Fog
       data       = body['data']
       ticket     = data['ticket']
       username   = data['username']
-      csrf_token = data['CSRFPreventionToken']
+      csrftoken = data['CSRFPreventionToken']
 
       now = Time.now
-      ticket_deadline = Time.at(now.to_i + @ticket_lifetime)
-      set_token_cache(username, ticket, csrf_token, ticket_deadline)
+      deadline = Time.at(now.to_i + @ticket_lifetime)
+      save_token(username, ticket, csrftoken, deadline)
     end
 
-    def self.set_token_cache(username, ticket, csrf_token, ticket_deadline)
-      @token_cache = { username: username, ticket: ticket, csrf_token: csrf_token, ticket_deadline: ticket_deadline }
-      Fog::Proxmox.token_cache = @token_cache
+    def self.save_token(username, ticket, csrftoken, deadline)
+      @cache = {
+        username: username,
+        ticket: ticket,
+        csrftoken: csrftoken,
+        deadline: deadline
+      }
+      Fog::Proxmox.cache = @cache
     end
   end
 end

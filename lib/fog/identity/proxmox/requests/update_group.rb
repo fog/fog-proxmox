@@ -21,6 +21,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real update_group request
       class Real
         def update_group(groupid, attributes)
           request(
@@ -32,8 +33,9 @@ module Fog
         end
       end
 
+      # class Mock update_group request
       class Mock
       end
-      end
+    end
   end
-  end
+end

@@ -31,6 +31,7 @@ require 'fog/proxmox/models/model'
 module Fog
   module Identity
     class Proxmox
+      # class Group model authentication
       class Group < Fog::Proxmox::Model
         identity  :groupid
         attribute :comment

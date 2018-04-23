@@ -21,6 +21,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real update_domain request
       class Real
         def update_domain(realm, attributes)
           request(
@@ -32,8 +33,9 @@ module Fog
         end
       end
 
+      # class Real update_domain request
       class Mock
       end
-      end
+    end
   end
-  end
+end

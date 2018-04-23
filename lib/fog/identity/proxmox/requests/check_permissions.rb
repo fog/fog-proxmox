@@ -21,16 +21,22 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real check_permissions request
       class Real
-        def get_version
-          request(
+        def check_permissions(principal)
+          response = request(
             expects: [200],
-            method: 'GET',
-            path: 'version'
+            method: 'POST',
+            path: 'access/ticket',
+            body: URI.encode_www_form(principal)
           )
+          body = JSON.decode(response.body)
+          data = body['data']
+          data
         end
       end
 
+      # class Mock check_permissions request
       class Mock
       end
     end

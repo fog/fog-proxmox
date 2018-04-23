@@ -21,6 +21,7 @@
 module Fog
   module Proxmox
     module Errors
+      # class ServiceError
       class ServiceError < Fog::Errors::Error
         attr_reader :response_data
 
@@ -44,6 +45,7 @@ module Fog
 
       class ServiceUnavailable < ServiceError; end
 
+      # class BadRequest error
       class BadRequest < ServiceError
         attr_reader :validation_errors
 

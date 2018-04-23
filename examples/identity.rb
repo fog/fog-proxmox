@@ -23,7 +23,7 @@
 # 1. ENV[PVE_URL] exists: talk to an actual Proxmox server and record HTTP
 #    traffic in VCRs at "spec/debug" (credentials are read from the conventional
 #    environment variables: PVE_URL, PVE_USERNAME, PVE_PASSWORD)
-# 2. otherwise (under Travis etc.): use VCRs at "spec/fixtures/proxmox/#{service}"
+# 2. otherwise (Travis, etc): use VCRs at "spec/fixtures/proxmox/#{service}"
 
 require 'fog/proxmox'
 

@@ -23,6 +23,7 @@ require 'fog/identity/proxmox/models/group'
 module Fog
   module Identity
     class Proxmox
+      # class Groups authentication
       class Groups < Fog::Proxmox::Collection
         model Fog::Identity::Proxmox::Group
 

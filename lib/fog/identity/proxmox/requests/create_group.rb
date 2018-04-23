@@ -20,6 +20,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real create_group request
       class Real
         def create_group(group)
           request(
@@ -31,8 +32,9 @@ module Fog
         end
       end
 
+      # class Mock create_group request
       class Mock
       end
-      end
+    end
   end
-  end
+end

@@ -21,6 +21,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real delete_domain collection
       class Real
         def delete_domain(realm)
           request(
@@ -31,8 +32,9 @@ module Fog
         end
       end
 
+      # class Mock delete_domain collection
       class Mock
       end
-      end
+    end
   end
-  end
+end

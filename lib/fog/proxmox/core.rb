@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,46 +17,35 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
 require 'fog/json'
 
 module Fog
   module Proxmox
     # Core module
     module Core
-      attr_accessor :ticket
-      attr_reader :csrf_token
-      attr_reader :current_user
-      attr_reader :ticket_deadline
+      attr_accessor :pve_ticket
+      attr_reader :pve_csrftoken
+      attr_reader :pve_username
+      attr_reader :deadline
+      attr_reader :principal
 
       # fallback
       def self.not_found_class
         Fog::Compute::Proxmox::NotFound
       end
 
-      def is_authenticated?
-        !@current_user.nil?
-      end
-
       def initialize_identity(options)
-        # Create @proxmox_* instance variables from all :proxmox_* options
-        options.select { |x| x.to_s.start_with? 'proxmox' }.each do |proxmox_param, value|
-          instance_variable_set "@#{proxmox_param}".to_sym, value
+        # Create @pve* instance variables from all :pve_* options
+        options.select { |x| x.to_s.start_with? 'pve' }.each do |pve_param, value|
+          instance_variable_set "@#{pve_param}".to_sym, value
         end
-
-        @with_ticket = !@proxmox_ticket.nil?
-        @is_ticket_valid = !@proxmox_ticket_deadline.nil? && @proxmox_ticket_deadline > Time.now
-        @proxmox_must_reauthenticate = false
-        @proxmox_uri = URI.parse(@proxmox_url)
-
-        @proxmox_must_reauthenticate = true unless @is_ticket_valid
-
+        @pve_uri = URI.parse(@pve_url)
+        @pve_must_reauthenticate = true unless @pve_ticket
         missing_credentials = []
-        missing_credentials << :proxmox_username unless @proxmox_username
+        missing_credentials << :pve_username unless @pve_username
 
-        unless @with_ticket
-          missing_credentials << :proxmox_password unless @proxmox_password
+        unless @pve_ticket
+          missing_credentials << :pve_password unless @pve_password
         end
 
         raise ArgumentError, "Missing required arguments: #{missing_credentials.join(', ')}" unless missing_credentials.empty?
@@ -64,13 +54,12 @@ module Fog
       def credentials
         options = {
           provider: 'proxmox',
-          proxmox_url: @proxmox_uri.to_s,
-          proxmox_ticket: @ticket,
-          proxmox_ticket_deadline: @ticket_deadline,
-          proxmox_csrftoken: @csrf_token,
-          proxmox_username: @current_user
+          pve_url: @pve_uri.to_s,
+          pve_ticket: @pve_ticket,
+          pve_csrftoken: @pve_csrftoken,
+          pve_username: @pve_username
         }
-        proxmox_options.merge options
+        pve_options.merge options
       end
 
       def reload
@@ -88,7 +77,7 @@ module Fog
           ))
         rescue Excon::Errors::Unauthorized => error
           # token expiration and token renewal possible
-          if error.response.body != 'Bad username or password' && @proxmox_can_reauthenticate && !retried
+          if error.response.body != 'Bad username or password' && @pve_can_reauthenticate && !retried
             authenticate
             retried = true
             retry
@@ -109,46 +98,45 @@ module Fog
 
       def headers(method, additional_headers)
         additional_headers ||= {}
-        headers_hash = {
-          'Accept' => 'application/json'
-        }
+        headers_hash = { 'Accept' => 'application/json' }
         # CSRF token is required to PUT, POST and DELETE http requests
         if %w[PUT POST DELETE].include? method
-          headers_hash.store('CSRFPreventionToken', @csrf_token)
+          headers_hash.store('CSRFPreventionToken', @pve_csrftoken)
         end
-        # if authenticated ticket must be present in cookie
-        headers_hash.store('Cookie', "PVEAuthCookie=#{@ticket}") if @with_ticket
+        # ticket must be present in cookie
+        headers_hash.store('Cookie', "PVEAuthCookie=#{@pve_ticket}") if @pve_ticket
         headers_hash.merge additional_headers
         headers_hash
       end
 
-      def proxmox_options
+      def pve_options
         options = {}
-        # Create a hash of (:proxmox_*, value) of all the @proxmox_* instance variables
-        instance_variables.select { |x| x.to_s.start_with? '@proxmox' }.each do |proxmox_param|
-          option_name = proxmox_param.to_s[1..-1]
-          options[option_name.to_sym] = instance_variable_get proxmox_param
+        # Create a hash of (:pve_*, value) of all the @pve_* instance variables
+        instance_variables.select { |x| x.to_s.start_with? '@pve' }.each do |pve_param|
+          option_name = pve_param.to_s[1..-1]
+          options[option_name.to_sym] = instance_variable_get pve_param
         end
         options
       end
 
       def authenticate
-        unless is_authenticated?
-          options = proxmox_options
-          options[:proxmox_ticket] = @proxmox_must_reauthenticate ? nil : @ticket
+        unless @principal
+          options = pve_options
+          options[:pve_ticket] = @pve_must_reauthenticate ? nil : @pve_ticket
           credentials = Fog::Proxmox.authenticate(options, @connection_options)
-          @current_user                = credentials[:username]
-          @ticket                      = credentials[:ticket]
-          @ticket_deadline             = credentials[:ticket_deadline]
-          @csrf_token                  = credentials[:csrf_token]
-          @proxmox_must_reauthenticate = false
+          @principal = credentials
+          @pve_username = credentials[:username]
+          @pve_ticket = credentials[:ticket]
+          @pve_deadline = credentials[:deadline]
+          @pve_csrftoken = credentials[:csrftoken]
+          @pve_must_reauthenticate = false
         end
 
-        @host       = @proxmox_uri.host
-        @api_path   = @proxmox_uri.path
+        @host       = @pve_uri.host
+        @api_path   = @pve_uri.path
         @api_path.sub!(%r{/$}, '')
-        @port       = @proxmox_uri.port
-        @scheme     = @proxmox_uri.scheme
+        @port       = @pve_uri.port
+        @scheme     = @pve_uri.scheme
 
         true
       end

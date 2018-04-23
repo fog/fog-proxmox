@@ -21,6 +21,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real get_group collection
       class Real
         def get_group(groupid)
           request(
@@ -31,9 +32,10 @@ module Fog
         end
       end
 
+      # class Mock get_group collection
       class Mock
         def get_group(groupid); end
       end
-      end
+    end
   end
-  end
+end

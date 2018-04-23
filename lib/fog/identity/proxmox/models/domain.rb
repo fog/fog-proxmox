@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -29,6 +30,7 @@ require 'fog/proxmox/models/model'
 module Fog
   module Identity
     class Proxmox
+      # class Domain model authentication
       class Domain < Fog::Proxmox::Model
         identity :realm
         attribute :type

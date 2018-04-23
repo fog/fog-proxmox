@@ -22,13 +22,11 @@ require 'fog/core/collection'
 
 module Fog
   module Proxmox
+    # class Collection proxmox
     class Collection < Fog::Collection
-      # It's important to store the whole response, it contains e.g. important info about whether there is another
-      # page of data.
       attr_accessor :response
 
       def load_response(response, _index = nil, attributes_ignored = [])
-        # Delete it index if it's there, so we don't store response with data twice, but we store only metadata
         body = JSON.decode(response.body)
         objects = body['data']
         clear && objects.each { |object| self << new(clear_ignored_attributes(object, attributes_ignored)) }
@@ -54,10 +52,11 @@ module Fog
 
       # Returns detailed list of records
       def all(_options = {})
-        raise Fog::Proxmox::Errors::InterfaceNotImplemented, 'Method :all is not implemented'
+        raise Fog::Proxmox::Errors::InterfaceNotImplemented, not_implemented('all')
       end
 
-      # Returns non detailed list of records, usually just subset of attributes, which makes this call more effective.
+      # Returns non detailed list of records, usually just subset of attributes,
+      # which makes this call more effective.
       # Not all Proxmox services support non detailed list, so it delegates to :all by default.
       def summary(options = {})
         all(options)
@@ -65,7 +64,7 @@ module Fog
 
       # Gets record given record's UUID
       def get(_uuid)
-        raise Fog::Proxmox::Errors::InterfaceNotImplemented, 'Method :get is not implemented'
+        raise Fog::Proxmox::Errors::InterfaceNotImplemented, not_implemented('get')
       end
 
       def find_by_id(uuid)
@@ -74,7 +73,11 @@ module Fog
 
       # Destroys record given record's UUID
       def destroy(_uuid)
-        raise Fog::Proxmox::Errors::InterfaceNotImplemented, 'Method :destroy is not implemented'
+        raise Fog::Proxmox::Errors::InterfaceNotImplemented, not_implemented('destroy')
+      end
+
+      def not_implemented(method)
+        "Method #{method} is not implemented"
       end
     end
   end

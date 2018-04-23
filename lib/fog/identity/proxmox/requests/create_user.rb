@@ -20,6 +20,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real create_user request
       class Real
         def create_user(user)
           request(
@@ -31,6 +32,7 @@ module Fog
         end
       end
 
+      # class Mock create_user request
       class Mock
       end
     end

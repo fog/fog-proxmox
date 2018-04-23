@@ -21,6 +21,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real update_user request
       class Real
         def update_user(userid, attributes)
           request(
@@ -32,6 +33,7 @@ module Fog
         end
       end
 
+      # class Mock update_user request
       class Mock
       end
     end

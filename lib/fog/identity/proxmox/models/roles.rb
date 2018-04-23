@@ -23,6 +23,7 @@ require 'fog/identity/proxmox/models/role'
 module Fog
   module Identity
     class Proxmox
+      # class Roles model collection authentication
       class Roles < Fog::Proxmox::Collection
         model Fog::Identity::Proxmox::Role
 

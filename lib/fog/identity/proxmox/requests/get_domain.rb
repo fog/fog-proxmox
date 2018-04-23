@@ -21,6 +21,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real get_domain request
       class Real
         def get_domain(realm)
           request(
@@ -31,9 +32,10 @@ module Fog
         end
       end
 
+      # class Mock get_domain request
       class Mock
         def get_domain(realm); end
       end
-      end
+    end
   end
-  end
+end

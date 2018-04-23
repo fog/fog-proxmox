@@ -23,6 +23,7 @@ require 'fog/identity/proxmox/models/user'
 module Fog
   module Identity
     class Proxmox
+      # class Users model collection
       class Users < Fog::Proxmox::Collection
         model Fog::Identity::Proxmox::User
 

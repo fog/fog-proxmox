@@ -21,6 +21,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real list_users request
       class Real
         def list_users(options = {})
           request(
@@ -32,6 +33,7 @@ module Fog
         end
       end
 
+      # class Mock list_users request
       class Mock
         def list_users(options = {}); end
       end

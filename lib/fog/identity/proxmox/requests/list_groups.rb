@@ -21,6 +21,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real list_groups request
       class Real
         def list_groups
           request(
@@ -31,6 +32,7 @@ module Fog
         end
       end
 
+      # class Mock list_groups request
       class Mock
         def list_groups; end
       end

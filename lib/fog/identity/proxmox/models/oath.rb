@@ -31,6 +31,7 @@ require 'fog/proxmox/models/model'
 module Fog
   module Identity
     class Proxmox
+      # class Oath two factors authentication
       class Oath < Fog::Proxmox::Model
         identity :type
         attribute :step

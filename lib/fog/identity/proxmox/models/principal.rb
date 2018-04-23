@@ -30,15 +30,16 @@ require 'fog/proxmox/models/model'
 module Fog
   module Identity
     class Proxmox
-      # class PAM authentication
-      class Pam < Fog::Proxmox::Model
-        identity :type
-        attribute :comment
-        attribute :default
-        attribute :tfa
-        def initialize(attributes)
-          self.type = 'pam'
-          super
+      # class Principal current user authenticated
+      class Principal < Fog::Proxmox::Model
+        identity :username
+        attribute :password
+        attribute :privs
+        attribute :path
+        attribute :otp
+        attribute :realm
+        def to_s
+          username
         end
       end
     end

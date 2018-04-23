@@ -21,6 +21,7 @@
 module Fog
   module Identity
     class Proxmox
+      # class Real delete_group request
       class Real
         def delete_group(groupid)
           request(
@@ -31,8 +32,9 @@ module Fog
         end
       end
 
+      # class Mock delete_group request
       class Mock
       end
-      end
+    end
   end
-  end
+end

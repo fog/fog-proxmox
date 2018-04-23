@@ -27,32 +27,54 @@ describe Fog::Identity::Proxmox do
       service_class: Fog::Identity::Proxmox
     )
     @service = @proxmox_vcr.service
-    @proxmox_url = @proxmox_vcr.proxmox_url
+    @pve_url = @proxmox_vcr.url
+    @username = @proxmox_vcr.username
+    @password = @proxmox_vcr.password
     @ticket = @proxmox_vcr.ticket
     @csrftoken = @proxmox_vcr.csrftoken
-    @ticket_deadline = @proxmox_vcr.ticket_deadline
+    @deadline = @proxmox_vcr.deadline
   end
 
   it 'authenticates with username and password' do
     VCR.use_cassette('auth') do
-      Fog::Identity::Proxmox.new(
-        proxmox_username: 'root@pam',
-        proxmox_password: 'proxmox01',
-        proxmox_url: @proxmox_url.to_s,
-        proxmox_path: '/access/ticket'
+      identity = Fog::Identity::Proxmox.new(
+        pve_username: @username,
+        pve_password: @password,
+        pve_url: @pve_url.to_s,
+        pve_path: '/access/ticket'
       )
+      identity.wont_be_nil
     end
   end
 
-  it 'gets server version' do
-    VCR.use_cassette('get_version') do
-      @service.get_version
+  it 'verifies ticket with path and privs' do
+    VCR.use_cassette('auth') do
+      principal = { username: @username, password: @password, privs: ['User.Modify'], path: 'access', otp: 'proxmox01' }
+      permissions = @service.check_permissions(principal)
+      permissions.wont_be_nil
+      permissions.wont_be_empty
+      permissions['username'].must_equal @username
+      permissions['cap'].wont_be_empty
+    end
+  end
+
+  it 'reads server version' do
+    VCR.use_cassette('read_version') do
+      version = @service.read_version
+      version.wont_be_nil
+      version.include? 'version'
     end
   end
 
   it 'CRUD users' do
     VCR.use_cassette('crud_users') do
-      bob_hash = { userid: 'bobsinclar@pve', password: 'bobsinclar1', firstname: 'Bob', lastname: 'Sinclar', email: 'bobsinclar@proxmox.com' }
+      bob_hash = {
+        userid: 'bobsinclar@pve',
+        password: 'bobsinclar1',
+        firstname: 'Bob',
+        lastname: 'Sinclar',
+        email: 'bobsinclar@proxmox.com'
+      }
       # Create 1st time
       @service.users.create(bob_hash)
       # Find by id
@@ -96,7 +118,7 @@ describe Fog::Identity::Proxmox do
 
   it 'CRUD groups' do
     VCR.use_cassette('crud_groups') do
-      group_hash = {:groupid => 'group1'}
+      group_hash = { groupid: 'group1' }
       # Create 1st time
       @service.groups.create(group_hash)
       # Find by id
@@ -124,13 +146,13 @@ describe Fog::Identity::Proxmox do
 
   it 'CRUD roles' do
     VCR.use_cassette('crud_roles') do
-      role_hash = {:roleid => 'PVETestAuditor'}
+      role_hash = { roleid: 'PVETestAuditor' }
       # Create 1st time
       @service.roles.create(role_hash)
       # Find by id
       role = @service.roles.find_by_id role_hash[:roleid]
       role.wont_be_nil
-      # # Create 2nd time must fails
+      # Create 2nd time must fails
       proc do
         @service.roles.create(role_hash)
       end.must_raise Excon::Errors::InternalServerError
@@ -144,30 +166,32 @@ describe Fog::Identity::Proxmox do
       roles_all.must_include role
       # Delete
       role.destroy
-      proc { @service.roles.find_by_id role_hash[:roleid] }.must_raise Excon::Errors::InternalServerError
+      proc do
+        @service.roles.find_by_id role_hash[:roleid]
+      end.must_raise Excon::Errors::InternalServerError
     end
   end
 
   it 'CRUD domains' do
     VCR.use_cassette('crud_domains') do
       ldap_hash = {
-        :realm => 'LDAP',
-        :type  => 'ldap',
-        :base_dn => 'ou=People,dc=ldap-test,dc=com',
-        :user_attr => 'LDAP',
-        :server1 => 'localhost',
-        :port => 389,
-        :default => 0,
-        :secure => 0
+        realm: 'LDAP',
+        type: 'ldap',
+        base_dn: 'ou=People,dc=ldap-test,dc=com',
+        user_attr: 'LDAP',
+        server1: 'localhost',
+        port: 389,
+        default: 0,
+        secure: 0
       }
       ad_hash = {
-        :realm => 'ActiveDirectory',
-        :type  => 'ad',
-        :domain => 'proxmox.com',
-        :server1 => 'localhost',
-        :port => 389,
-        :default => 0,
-        :secure => 0
+        realm: 'ActiveDirectory',
+        type: 'ad',
+        domain: 'proxmox.com',
+        server1: 'localhost',
+        port: 389,
+        default: 0,
+        secure: 0
       }
       # Create 1st time
       @service.domains.create(ldap_hash)
@@ -176,7 +200,7 @@ describe Fog::Identity::Proxmox do
       ldap.wont_be_nil
       # Create 1st time
       @service.domains.create(ad_hash)
-      # # Create 2nd time must fails
+      # Create 2nd time must fails
       proc do
         @service.domains.create(ldap_hash)
       end.must_raise Excon::Errors::InternalServerError
@@ -184,7 +208,7 @@ describe Fog::Identity::Proxmox do
       proc do
         @service.domains.create(ad_hash)
       end.must_raise Excon::Errors::InternalServerError
-      # # Update
+      # Update
       ldap.type.comment = 'Test domain LDAP'
       ldap.type.tfa = 'type=oath,step=30,digits=8'
       ldap.update
@@ -202,8 +226,12 @@ describe Fog::Identity::Proxmox do
       # Delete
       ldap.destroy
       ad.destroy
-      proc { @service.domains.find_by_id ldap_hash[:realm] }.must_raise Excon::Errors::InternalServerError
-      proc { @service.domains.find_by_id ad_hash[:realm] }.must_raise Excon::Errors::InternalServerError
+      proc do
+        @service.domains.find_by_id ldap_hash[:realm]
+      end.must_raise Excon::Errors::InternalServerError
+      proc do
+        @service.domains.find_by_id ad_hash[:realm]
+      end.must_raise Excon::Errors::InternalServerError
     end
   end
 end

@@ -31,6 +31,7 @@ require 'fog/proxmox/models/model'
 module Fog
   module Identity
     class Proxmox
+      # class Role model authentication
       class Role < Fog::Proxmox::Model
         identity :roleid
         attribute :privs

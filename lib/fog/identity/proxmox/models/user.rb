@@ -31,6 +31,7 @@ require 'fog/proxmox/models/model'
 module Fog
   module Identity
     class Proxmox
+      # class User model
       class User < Fog::Proxmox::Model
         identity :userid
         attribute :firstname
