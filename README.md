@@ -37,6 +37,10 @@ This is not yet a stable version. I recommend you not to use it in production.
 
 Work is still in progress...
 
+### Identity
+
+See [examples/identity.rb](examples/identity.rb) or [spec/indentity_spec.rb](spec/indentity_spec.rb)
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bundle exec rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

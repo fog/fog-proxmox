@@ -24,8 +24,8 @@ module Fog
   module Identity
     # Identity and authentication proxmox class
     class Proxmox < Fog::Service
-      requires :pve_url, :pve_path
-      recognizes :pve_ticket, :pve_ticket_expires, :pve_csrftoken, :persistent, :current_user, :pve_username, :pve_password, :pve_deadline
+      requires :pve_url
+      recognizes :pve_ticket, :pve_path, :pve_ticket_expires, :pve_csrftoken, :persistent, :current_user, :pve_username, :pve_password, :pve_deadline
 
       model_path 'fog/identity/proxmox/models'
       model :principal
@@ -43,8 +43,13 @@ module Fog
       model :oath
       model :yubico
       collection :domains
+      model :permission
+      collection :permissions
       request_path 'fog/identity/proxmox/requests'
       request :check_permissions
+      request :list_permissions
+      request :add_permission
+      request :remove_permission
       request :read_version
       request :list_users
       request :get_user
@@ -74,6 +79,7 @@ module Fog
 
         def initialize(options = {})
           @pve_uri = URI.parse(options[:pve_url])
+          @pve_path = @pve_uri.path
           @config = options
         end
       end

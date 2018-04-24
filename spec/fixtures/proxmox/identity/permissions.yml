@@ -2,10 +2,291 @@
 http_interactions:
 - request:
     method: post
+    uri: https://172.26.49.146:8006/api2/json/access/users
+    body:
+      encoding: US-ASCII
+      string: userid=bobsinclar%40pve&password=bobsinclar1&firstname=Bob&lastname=Sinclar&email=bobsinclar%40proxmox.com
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5ADF18A7:NuD/2yJOzjWUuOAZaEl8GaJ7RFY
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close, Keep-Alive
+      Date:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '13'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":null}'
+    http_version: 
+  recorded_at: Tue, 24 Apr 2018 11:44:40 GMT
+- request:
+    method: put
+    uri: https://172.26.49.146:8006/api2/json/access/acl
+    body:
+      encoding: US-ASCII
+      string: path=%2Faccess%2Fusers&roles=PVEUserAdmin&users=bobsinclar%40pve
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5ADF18A7:NuD/2yJOzjWUuOAZaEl8GaJ7RFY
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '13'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":null}'
+    http_version: 
+  recorded_at: Tue, 24 Apr 2018 11:44:40 GMT
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/access/acl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '113'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"path":"/access/users","ugid":"bobsinclar@pve","propagate":"1","roleid":"PVEUserAdmin","type":"user"}]}'
+    http_version: 
+  recorded_at: Tue, 24 Apr 2018 11:44:40 GMT
+- request:
+    method: put
+    uri: https://172.26.49.146:8006/api2/json/access/acl
+    body:
+      encoding: US-ASCII
+      string: roles=PVEUserAdmin&path=%2Faccess%2Fusers&propagate=1&users=bobsinclar%40pve&delete=1
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5ADF18A7:NuD/2yJOzjWUuOAZaEl8GaJ7RFY
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '13'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":null}'
+    http_version: 
+  recorded_at: Tue, 24 Apr 2018 11:44:40 GMT
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/access/acl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '11'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[]}'
+    http_version: 
+  recorded_at: Tue, 24 Apr 2018 11:44:40 GMT
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/access/users
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '206'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"expire":0,"email":"proxmox@proxmox.com","enable":1,"userid":"root@pam"},{"email":"bobsinclar@proxmox.com","firstname":"Bob","expire":0,"userid":"bobsinclar@pve","lastname":"Sinclar","enable":1}]}'
+    http_version: 
+  recorded_at: Tue, 24 Apr 2018 11:44:41 GMT
+- request:
+    method: delete
+    uri: https://172.26.49.146:8006/api2/json/access/users/bobsinclar@pve
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5ADF18A7:NuD/2yJOzjWUuOAZaEl8GaJ7RFY
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '13'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":null}'
+    http_version: 
+  recorded_at: Tue, 24 Apr 2018 11:44:41 GMT
+- request:
+    method: post
     uri: https://172.26.49.146:8006/api2/json/access/groups
     body:
       encoding: US-ASCII
-      string: groupid=group1
+      string: groupid=group1&comment=Group+1
     headers:
       User-Agent:
       - fog-core/2.1.0
@@ -42,92 +323,11 @@ http_interactions:
     http_version: 
   recorded_at: Tue, 24 Apr 2018 11:44:41 GMT
 - request:
-    method: get
-    uri: https://172.26.49.146:8006/api2/json/access/groups
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.1.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive
-      Date:
-      - Tue, 24 Apr 2018 11:44:39 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '31'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 24 Apr 2018 11:44:39 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[{"groupid":"group1"}]}'
-    http_version: 
-  recorded_at: Tue, 24 Apr 2018 11:44:41 GMT
-- request:
-    method: post
-    uri: https://172.26.49.146:8006/api2/json/access/groups
-    body:
-      encoding: US-ASCII
-      string: groupid=group1
-    headers:
-      User-Agent:
-      - fog-core/2.1.0
-      Accept:
-      - application/json
-      Csrfpreventiontoken:
-      - 5ADF18A7:NuD/2yJOzjWUuOAZaEl8GaJ7RFY
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
-  response:
-    status:
-      code: 500
-      message: 'create group failed: error with cfs lock ''file-user_cfg'': group
-        ''group1'' already exists'
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - close
-      Date:
-      - Tue, 24 Apr 2018 11:44:39 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '13'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 24 Apr 2018 11:44:39 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 24 Apr 2018 11:44:41 GMT
-- request:
     method: put
-    uri: https://172.26.49.146:8006/api2/json/access/groups/group1
+    uri: https://172.26.49.146:8006/api2/json/access/acl
     body:
       encoding: US-ASCII
-      string: comment=Group+1
+      string: roles=PVEUserAdmin&path=%2Faccess%2Fusers&propagate=1&groups=group1
     headers:
       User-Agent:
       - fog-core/2.1.0
@@ -161,6 +361,125 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
+    http_version: 
+  recorded_at: Tue, 24 Apr 2018 11:44:41 GMT
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/access/acl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '106'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"path":"/access/users","ugid":"group1","type":"group","roleid":"PVEUserAdmin","propagate":"1"}]}'
+    http_version: 
+  recorded_at: Tue, 24 Apr 2018 11:44:41 GMT
+- request:
+    method: put
+    uri: https://172.26.49.146:8006/api2/json/access/acl
+    body:
+      encoding: US-ASCII
+      string: roles=PVEUserAdmin&path=%2Faccess%2Fusers&propagate=1&groups=group1&delete=1
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5ADF18A7:NuD/2yJOzjWUuOAZaEl8GaJ7RFY
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '13'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":null}'
+    http_version: 
+  recorded_at: Tue, 24 Apr 2018 11:44:41 GMT
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/access/acl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '11'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 24 Apr 2018 11:44:39 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[]}'
     http_version: 
   recorded_at: Tue, 24 Apr 2018 11:44:41 GMT
 - request:
@@ -226,84 +545,6 @@ http_interactions:
       - max-age=0
       Connection:
       - Keep-Alive, Keep-Alive
-      Date:
-      - Tue, 24 Apr 2018 11:44:39 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '13'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 24 Apr 2018 11:44:39 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 24 Apr 2018 11:44:41 GMT
-- request:
-    method: get
-    uri: https://172.26.49.146:8006/api2/json/access/groups
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.1.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive
-      Date:
-      - Tue, 24 Apr 2018 11:44:39 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '11'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 24 Apr 2018 11:44:39 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[]}'
-    http_version: 
-  recorded_at: Tue, 24 Apr 2018 11:44:41 GMT
-- request:
-    method: get
-    uri: https://172.26.49.146:8006/api2/json/access/groups/group1
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.1.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
-  response:
-    status:
-      code: 500
-      message: group 'group1' does not exist
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - close
       Date:
       - Tue, 24 Apr 2018 11:44:39 GMT
       Pragma:

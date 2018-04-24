@@ -40,8 +40,7 @@ describe Fog::Identity::Proxmox do
       identity = Fog::Identity::Proxmox.new(
         pve_username: @username,
         pve_password: @password,
-        pve_url: @pve_url.to_s,
-        pve_path: '/access/ticket'
+        pve_url: @pve_url.to_s
       )
       identity.wont_be_nil
     end
@@ -232,6 +231,53 @@ describe Fog::Identity::Proxmox do
       proc do
         @service.domains.find_by_id ad_hash[:realm]
       end.must_raise Excon::Errors::InternalServerError
+    end
+  end
+
+  it 'adds or removes permissions' do
+    VCR.use_cassette('permissions') do
+      # Add ACL to users
+      bob_hash = {
+        userid: 'bobsinclar@pve',
+        password: 'bobsinclar1',
+        firstname: 'Bob',
+        lastname: 'Sinclar',
+        email: 'bobsinclar@proxmox.com'
+      }
+      @service.users.create(bob_hash)
+      permission_hash = {
+        path: '/access/users',
+        roles: 'PVEUserAdmin',
+        users: bob_hash[:userid]
+      }
+      @service.add_permission(permission_hash)
+      # Read all permissions
+      permissions = @service.permissions.all
+      permissions.wont_be_empty
+      permission = @service.permissions.create(permission_hash)
+      permissions.must_include permission
+      # Remove ACL to users
+      @service.permissions.remove(permission_hash)
+      permissions = @service.permissions.all
+      permissions.must_be_empty
+      bob = @service.users.find_by_id bob_hash[:userid]
+      bob.destroy
+      # Add ACL to groups
+      @service.groups.create(groupid: 'group1', comment: 'Group 1')
+      permission_hash.delete(:users)
+      permission_hash.store(:groups, 'group1')
+      @service.permissions.add(permission_hash)
+      # Read all permissions
+      permissions = @service.permissions.all
+      permissions.wont_be_empty
+      permission = @service.permissions.create(permission_hash)
+      permissions.must_include permission
+      # Remove ACL to groups
+      @service.permissions.remove(permission_hash)
+      permissions = @service.permissions.all
+      permissions.must_be_empty
+      group1 = @service.groups.find_by_id 'group1'
+      group1.destroy
     end
   end
 end

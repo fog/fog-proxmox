@@ -74,27 +74,20 @@ module Fog
 
     def self.extract_password(options)
       ticket = options[:pve_ticket]
-      options[:pve_password] = ticket unless ticket.nil?
+      options[:pve_password] = ticket unless ticket
     end
 
-    def self.get_tokens(options, connection_options = {})
+    def self.get_tokens(options, _connection_options = {})
       username          = options[:pve_username].to_s
       password          = options[:pve_password].to_s
       url               = options[:pve_url]
       extract_password(options)
       uri = URI.parse(url)
       @api_path = uri.path
-      unless authenticated?
-        connection = Fog::Core::Connection.new(
-          uri.to_s,
-          false,
-          connection_options
-        )
-        retrieve_tokens(connection, username, password)
-      end
+      retrieve_tokens(uri, _connection_options, username, password) unless authenticated?
     end
 
-    def self.retrieve_tokens(connection, username, password)
+    def self.retrieve_tokens(uri, connection_options, username, password)
       request = {
         expects: [200, 204],
         headers: { 'Accept' => 'application/json' },
@@ -102,6 +95,12 @@ module Fog
         method: 'POST',
         path: "#{@api_path}/access/ticket"
       }
+
+      connection = Fog::Core::Connection.new(
+        uri.to_s,
+        false,
+        connection_options
+      )
 
       response   = connection.request(request)
       body       = JSON.decode(response.body)

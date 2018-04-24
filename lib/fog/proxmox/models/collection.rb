@@ -40,7 +40,7 @@ module Fog
         object
       end
 
-      def get(response, attribute)
+      def read(response, attribute)
         response.body[attribute]
       end
 

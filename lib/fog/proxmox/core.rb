@@ -35,6 +35,9 @@ module Fog
       end
 
       def initialize_identity(options)
+        @principal = nil
+        @pve_must_reauthenticate = true
+        @pve_ticket = nil
         # Create @pve* instance variables from all :pve_* options
         options.select { |x| x.to_s.start_with? 'pve' }.each do |pve_param, value|
           instance_variable_set "@#{pve_param}".to_sym, value

@@ -46,10 +46,8 @@ class ProxmoxVCR
     if use_recorded
       Fog.interval = 0
       @url  = 'https://172.26.49.146:8006/api2/json'
-      @path = '/access/ticket'
     else
       @url  = ENV['PVE_URL']
-      @path = ENV['PVE_PATH']
     end
 
     VCR.configure do |config|
@@ -92,7 +90,6 @@ class ProxmoxVCR
 
       connection_options = {
         pve_url: @url,
-        pve_path: @path,
         pve_username: @username,
         pve_password: @password,
         pve_ticket: @ticket,

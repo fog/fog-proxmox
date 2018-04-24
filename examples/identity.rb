@@ -27,45 +27,169 @@
 
 require 'fog/proxmox'
 
-auth_url = 'https://172.26.49.146:8006/api2/json/access/token'
-username = 'root@pam'
-password = 'proxmox01'
+pve_url = 'https://172.26.49.146:8006/api2/json'
+pve_username = 'root@pam'
+pve_password = 'proxmox01'
 
-identity = Fog::Identity::Proxmox.new(proxmox_url: auth_url, proxmox_username: username, proxmox_password: password)
+# Create service identity
+identity = Fog::Identity::Proxmox.new(
+  pve_url: pve_url,
+  pve_username: pve_username,
+  pve_password: pve_password
+)
 
 # Get proxmox version
-identity.version
+identity.read_version
 
-# List users
+# Create a new user
+bob_hash = {
+  userid: 'bobsinclar@pve',
+  password: 'bobsinclar1',
+  firstname: 'Bob',
+  lastname: 'Sinclar',
+  email: 'bobsinclar@proxmox.com'
+}
+# is equivalent to
+# bob_hash = {
+#   userid: 'bobsinclar',
+#   realm: 'pve',
+#   password: 'bobsinclar1',
+#   firstname: 'Bob',
+#   lastname: 'Sinclar',
+#   email: 'bobsinclar@proxmox.com'
+# }
+identity.users.create(bob_hash)
+
+# Get a user by id
+bob = identity.users.find_by_id 'bobsinclar@pve'
+
+# List all users
+identity.users.all
+
+# List user by user
 identity.users.each do |user|
   # user ...
 end
 
-# Create a new user
-identity.users.create userid: 'bobsinclar@pve',
-                      firstname: 'bob',
-                      lastname: 'sinclar',
-                      email: 'bobsinclar@proxmox.com'
+# Update user
+bob.comment = 'novelist'
+# add groups
+bob.groups = %w[group1]
+bob.update
 
-# List groups
+# Delete user
+bob.destroy
+
+# Create groups
+group_hash = { groupid: 'group1' }
+identity.domains.create(group_hash)
+
+# Get one group by id
+group1 = identity.groups.find_by_id 'group1'
+
+# Update group
+group1.comment 'Group 1'
+group1.update
+
+# List all groups
+identity.groups.all
+
+# List group by group
 identity.groups.each do |group|
   # group ...
 end
+
+# Delete group
+group1.destroy
+
+# Create roles
+role_hash = { roleid: 'role1' }
+identity.roles.create(role_hash)
+
+# Get one role by id
+role1 = identity.roles.find_by_id 'role1'
+
+# Update role
+role1.comment 'Role 1'
+role1.update
+
+# List all roles
+identity.roles.all
+
+# List role by role
+identity.roles.each do |role|
+  # role ...
+end
+
+# Delete role
+role1.destroy
+
+# Create a new domain (authentication server)
+# Three types: PAM, PVE, LDAP and ActiveDirectory
+# PAM and PVE already exist by default
+# LDAP sample:
+ldap_hash = {
+  realm: 'LDAP',
+  type: 'ldap',
+  base_dn: 'ou=People,dc=ldap-test,dc=com',
+  user_attr: 'LDAP',
+  server1: 'localhost',
+  port: 389,
+  default: 0,
+  secure: 0
+}
+# ActiveDirectory sample:
+# ad_hash = {
+#   realm: 'ActiveDirectory',
+#   type: 'ad',
+#   domain: 'proxmox.com',
+#   server1: 'localhost',
+#   port: 389,
+#   default: 0,
+#   secure: 0
+# }
+
+identity.domains.create(ldap_hash)
 
 # List domains
 identity.domains.each do |domain|
   # domain ...
 end
 
-# Create a new domain (authentication server)
-identity.domains.create realm: 'myrealm',
-                        type: 'pam',
-                        domain: 'mydomain'
+# Find domain by id
+ldap = identity.domains.find_by_id ldap_hash[:realm]
 
-# Get user
-bob = identity.users.find_by_id 'bobsinclar@pve'
-# Update user
-bob.comment = 'novelist'
-bob.update
-# Delete user
-bob.destroy
+# Update domain
+ldap.type.comment = 'Test domain LDAP'
+# Two types of Two Factors Authentication (TFA): oath and yubico
+ldap.type.tfa = 'type=oath,step=30,digits=8'
+# ad.type.tfa = 'type=yubico,id=1,key=2,url=http://localhost'
+ldap.update
+
+# Delete domain
+ldap.destroy
+
+# Add a user permission
+permission_hash = {
+  path: '/access/users',
+  roles: 'PVEUserAdmin',
+  users: bob_hash[:userid]
+}
+# Add a group permission
+# permission_hash = {
+#   path: '/access/users',
+#   roles: 'PVEUserAdmin',
+#   groups: 'group1'
+# }
+identity.add_permission(permission_hash)
+
+# List all permissions
+identity.permissions.all
+
+# List permission by permission
+identity.permissions.each do |permission|
+  # permission ...
+end
+
+# Remove permission
+identity.remove_permission(permission_hash)
