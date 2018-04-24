@@ -39,7 +39,7 @@ Work is still in progress...
 
 ### Identity
 
-See [examples/identity.rb](examples/identity.rb) or [spec/indentity_spec.rb](spec/indentity_spec.rb)
+See [examples/identity.rb](examples/identity.rb) or [spec/identity_spec.rb](spec/identity_spec.rb)
 
 ## Development
 
