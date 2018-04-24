@@ -20,26 +20,20 @@
 
 module Fog
   module Compute
-    module Proxmox
-      # Disk type class
-      class DiskType
-        include Enumerable
-
-        def each
-          (0..3).each do |i|
-            yield 'ide' + i
-          end
-          (0..13).each do |i|
-            yield 'scsi' + i
-          end
-          (0..15).each do |i|
-            yield 'virtio' + i
-          end
-          (0..5).each do |i|
-            yield 'sata' + i
-          end
-          yield 'efidisk0'
+    class Proxmox
+      # class Real get_server collection
+      class Real
+        def get_server(node,vmid)
+          request(
+            expects: [200],
+            method: 'GET',
+            path: "nodes/#{node}/qemu/#{vmid}"
+          )
         end
+      end
+
+      # class Mock get_server collection
+      class Mock
       end
     end
   end

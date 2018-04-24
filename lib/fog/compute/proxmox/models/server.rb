@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,19 +17,15 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
 require 'fog/compute/models/server'
-require 'fog/storage/proxmox/models'
-require 'fog/network/proxmox/models'
 
 module Fog
   module Compute
     class Proxmox
       # Server model
       class Server < Fog::Compute::Server
-        identity :id, aliases: 'vmid'
-        attr_reader :acpi
+        identity  :vmid
+        attribute :acpi
         attribute :agent
         attribute :archive
         attribute :args
@@ -45,10 +42,10 @@ module Fog
         attribute :description
         attribute :force
         attribute :freeze
-        model Fog::Storage::Proxmox::Hostcpi
+        attribute :hostcpi
         attribute :hotplug
         attribute :hugepages
-        model Fog::Storage::Proxmox::Ide
+        attribute :ide
         attribute :keyboard
         attribute :kvm
         attribute :localtime
@@ -58,20 +55,18 @@ module Fog
         attribute :migrate_downtime
         attribute :migrate_speed
         attribute :name
-        model Fog::Compute::Proxmox::Network
+        attribute :network
         attribute :node
         attribute :numa
-        model Fog::Compute::Proxmox::Numa
         attribute :onboot
         attribute :ostype
         # not recommended
-        # model      Fog::Storage::Proxmox::Parallel
+        # attribute :parallel
         attribute :pool
         attribute :protection
         attribute :reboot
-        attribute :numa
-        model      Fog::Storage::Proxmox::Sata
-        model      Fog::Storage::Proxmox::Scsi
+        attribute :sata
+        attribute :scsi
         attribute :shares
         attribute :smbios1
         attribute :smp
@@ -87,10 +82,20 @@ module Fog
         attribute :usb
         attribute :vcpus
         attribute :vga
-        model Fog::Storage::Virtio
+        attribute :virtio
         attribute :watchdog
         def initialize(attributes = {})
           super
+        end
+        
+        def create
+          service.create_server(attributes)
+        end
+
+        def destroy
+          requires :realm
+          service.delete_server(attributes)
+          true
         end
       end
     end

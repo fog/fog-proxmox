@@ -21,10 +21,20 @@
 module Fog
   module Compute
     class Proxmox
-      # Node model
-      class Node < Fog::Model
-        # required
-        attribute :name, aliases: 'node'
+      # class Real delete_server request
+      class Real
+        def delete_server(node, vmid, options)
+          request(
+            expects: [200],
+            method: 'DELETE',
+            path: "nodes/#{node}/qemu/#{vmid}",
+            body: URI.encode_www_form(options)
+          )
+        end
+      end
+
+      # class Mock delete_server request
+      class Mock
       end
     end
   end

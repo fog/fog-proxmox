@@ -18,14 +18,24 @@
 
 # frozen_string_literal: true
 
-require 'fog/compute/proxmox/models/node'
-
 module Fog
   module Compute
     class Proxmox
-      # Nodes collection
-      class Nodes < Fog::Collection
-        model Fog::Compute::Proxmox::Node
+      # class Real list_servers request
+      class Real
+        def list_servers(node,options)
+          request(
+            expects: [200],
+            method: 'GET',
+            path: "nodes/#{node}/qemu",
+            body: URI.encode_www_form(options)
+          )
+        end
+      end
+
+      # class Mock list_servers request
+      class Mock
+        def list_servers; end
       end
     end
   end

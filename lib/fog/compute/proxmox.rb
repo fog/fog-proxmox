@@ -33,6 +33,8 @@ module Fog
       model_path 'fog/compute/proxmox/models'
       model :pool
       collection :pools
+      model :server
+      collection :servers
 
       # Requests
       request_path 'fog/compute/proxmox/requests'
@@ -43,6 +45,12 @@ module Fog
       request :create_pool
       request :update_pool
       request :delete_pool
+
+      # Manage servers
+      request :list_servers
+      request :get_server
+      request :create_server
+      request :delete_server
 
       # Mock class
       class Mock

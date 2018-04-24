@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,28 +17,23 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
 module Fog
   module Compute
     class Proxmox
-      # Osttype class
-      class OsType
-        include Enumerable
-        def each
-          yield 'wxp'
-          yield 'w2k'
-          yield 'w2k3'
-          yield 'w2k8'
-          yield 'wvista'
-          yield 'win7'
-          yield 'win8'
-          yield 'win10'
-          yield 'l24'
-          yield 'l26'
-          yield 'solaris'
-          yield 'other'
+      # class Real create_server request
+      class Real
+        def create_server(node, vmid, options)
+          request(
+            expects: [200],
+            method: 'POST',
+            path: "nodes/#{node}/qemu/#{vmid}",
+            body: URI.encode_www_form(options)
+          )
         end
+      end
+
+      # class Mock create_server request
+      class Mock
       end
     end
   end
