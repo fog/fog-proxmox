@@ -17,4 +17,4 @@ Please read the [code of conduct](CODE_OF_CONDUCT.md)
 ## Non-Coding
 
 * Offer feedback on open [issues](https://github.com/tristanrobert/fog-proxmox/issues).
-* Financial [support](SUPPORT.md)
+* [Donate](SUPPORT.md)
