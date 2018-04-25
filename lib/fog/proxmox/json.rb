@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,26 +17,15 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
+require 'fog/json'
 
 module Fog
-  module Compute
-    class Proxmox
-      # class Real list_servers request
-      class Real
-        def list_servers
-          request(
-            expects: [200],
-            method: 'GET',
-            path: 'cluster/resources',
-            query: 'type=vm'
-          )
-        end
-      end
-
-      # class Mock list_servers request
-      class Mock
-        def list_servers; end
+  module Proxmox
+    # module Json mixins
+    module Json
+      def self.get_data(response)
+        body = JSON.decode(response.body)
+        body['data']
       end
     end
   end

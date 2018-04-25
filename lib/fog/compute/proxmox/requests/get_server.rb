@@ -18,17 +18,20 @@
 
 # frozen_string_literal: true
 
+require 'fog/proxmox/json'
+
 module Fog
   module Compute
     class Proxmox
       # class Real get_server collection
       class Real
-        def get_server(node,vmid)
-          request(
+        def get_server(node, vmid)
+          response = request(
             expects: [200],
             method: 'GET',
-            path: "nodes/#{node}/qemu/#{vmid}"
+            path: "nodes/#{node}/qemu/#{vmid}/status/current"
           )
+          Fog::Proxmox::Json.get_data(response)
         end
       end
 

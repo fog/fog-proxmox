@@ -25,76 +25,47 @@ module Fog
       # Server model
       class Server < Fog::Compute::Server
         identity  :vmid
-        attribute :acpi
-        attribute :agent
-        attribute :archive
-        attribute :args
-        attribute :autostart
-        attribute :balloon
-        attribute :bios
-        attribute :boot
-        attribute :bootdisk
-        attribute :cdrom
-        attribute :cores
-        attribute :cpu
-        attribute :cpulimit
-        attribute :cpuunits
-        attribute :description
-        attribute :force
-        attribute :freeze
-        attribute :hostcpi
-        attribute :hotplug
-        attribute :hugepages
-        attribute :ide
-        attribute :keyboard
-        attribute :kvm
-        attribute :localtime
-        attribute :lock
-        attribute :machine
-        attribute :memory
-        attribute :migrate_downtime
-        attribute :migrate_speed
-        attribute :name
-        attribute :network
         attribute :node
-        attribute :numa
-        attribute :onboot
-        attribute :ostype
-        # not recommended
-        # attribute :parallel
-        attribute :pool
-        attribute :protection
-        attribute :reboot
-        attribute :sata
-        attribute :scsi
-        attribute :shares
-        attribute :smbios1
-        attribute :smp
-        attribute :sockets
-        attribute :startdate
-        attribute :startup
-        attribute :storage
-        attribute :tablet
-        attribute :tdf
+        attribute :id
+        attribute :name
+        attribute :type
+        attribute :maxdisk
+        attribute :disk
+        attribute :diskwrite
+        attribute :diskread
+        attribute :uptime
+        attribute :netout
+        attribute :netin
+        attribute :cpu
+        attribute :cpus
         attribute :template
-        attribute :unique
-        attribute :unused
-        attribute :usb
-        attribute :vcpus
-        attribute :vga
-        attribute :virtio
-        attribute :watchdog
+        attribute :status
+        attribute :maxcpu
+        attribute :mem
+        attribute :maxmem
+        attribute :qmpstatus
+        attribute :ha
+        attribute :pid
+
         def initialize(attributes = {})
+          prepare_service_value(attributes)
           super
         end
-        
-        def create
-          service.create_server(attributes)
+
+        def create(config = {})
+          requires :node
+          config.store(:vmid, vmid)
+          service.create_server(node, config)
         end
 
-        def destroy
-          requires :realm
-          service.delete_server(attributes)
+        def update_config(config = {})
+          requires :node, :vmid
+          service.update_config_server(node, vmid, config)
+        end
+
+        def destroy(options = {})
+          requires :vmid, :node
+          service.delete_server(node, vmid, options)
           true
         end
       end

@@ -20,6 +20,7 @@
 
 require 'fog/proxmox/version'
 require 'fog/proxmox/core'
+require 'fog/proxmox/json'
 require 'fog/core'
 require 'fog/json'
 
@@ -77,14 +78,14 @@ module Fog
       options[:pve_password] = ticket unless ticket
     end
 
-    def self.get_tokens(options, _connection_options = {})
+    def self.get_tokens(options, connection_options = {})
       username          = options[:pve_username].to_s
       password          = options[:pve_password].to_s
       url               = options[:pve_url]
       extract_password(options)
       uri = URI.parse(url)
       @api_path = uri.path
-      retrieve_tokens(uri, _connection_options, username, password) unless authenticated?
+      retrieve_tokens(uri, connection_options, username, password) unless authenticated?
     end
 
     def self.retrieve_tokens(uri, connection_options, username, password)
@@ -102,11 +103,10 @@ module Fog
         connection_options
       )
 
-      response   = connection.request(request)
-      body       = JSON.decode(response.body)
-      data       = body['data']
-      ticket     = data['ticket']
-      username   = data['username']
+      response  = connection.request(request)
+      data      = Json.get_data(response)
+      ticket    = data['ticket']
+      username  = data['username']
       csrftoken = data['CSRFPreventionToken']
 
       now = Time.now

@@ -35,7 +35,7 @@ module Fog
           cached_pool = find { |pool| pool.poolid == id }
           return cached_pool if cached_pool
           pool_hash = service.get_pool(id)
-          Fog::Identity::Proxmox::pool.new(
+          Fog::Compute::Proxmox::Pool.new(
             pool_hash.merge(service: service)
           )
         end

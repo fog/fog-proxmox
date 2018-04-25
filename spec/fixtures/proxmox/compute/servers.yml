@@ -1,0 +1,603 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/cluster/nextid
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '14'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":"100"}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:19 GMT
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/cluster/nextid?vmid=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '14'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":"100"}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:19 GMT
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/cluster/nextid?vmid=99
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 400
+      message: Parameter verification failed.
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '91'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":null,"errors":{"vmid":"invalid format - value does not look
+        like a valid VM ID\n"}}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:19 GMT
+- request:
+    method: post
+    uri: https://172.26.49.146:8006/api2/json/nodes/pve/qemu
+    body:
+      encoding: US-ASCII
+      string: vmid=100
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5AE09442:HkNyKvl+2NGlaOHvuJU2PuXQDb8
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close, Keep-Alive
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '69'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":"UPID:pve:0000223C:002B06EE:5AE09442:qmcreate:100:root@pam:"}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:19 GMT
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/cluster/nextid?vmid=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 400
+      message: Parameter verification failed.
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '55'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":{"vmid":"VM 100 already exists"},"data":null}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:19 GMT
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/cluster/resources?type=vm
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '85'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"status":"unknown","vmid":100,"type":"qemu","id":"qemu/100","node":"pve"}]}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:19 GMT
+- request:
+    method: post
+    uri: https://172.26.49.146:8006/api2/json/nodes/pve/qemu
+    body:
+      encoding: US-ASCII
+      string: vmid=100
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5AE09442:HkNyKvl+2NGlaOHvuJU2PuXQDb8
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 500
+      message: VM 100 already exists on node 'pve'
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '13'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":null}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:19 GMT
+- request:
+    method: post
+    uri: https://172.26.49.146:8006/api2/json/nodes/pve/qemu/100/config
+    body:
+      encoding: US-ASCII
+      string: ide2=none%2Cmedia%3Dcdrom
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5AE09442:HkNyKvl+2NGlaOHvuJU2PuXQDb8
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close, Keep-Alive
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '69'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":"UPID:pve:0000223E:002B06F4:5AE09442:qmconfig:100:root@pam:"}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:19 GMT
+- request:
+    method: post
+    uri: https://172.26.49.146:8006/api2/json/nodes/pve/qemu/100/config
+    body:
+      encoding: US-ASCII
+      string: virtio0=local-lvm%3A1%2Cbackup%3Dno%2Creplicate%3D0
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5AE09442:HkNyKvl+2NGlaOHvuJU2PuXQDb8
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close, Keep-Alive
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '69'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":"UPID:pve:0000223F:002B06F7:5AE09442:qmconfig:100:root@pam:"}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:19 GMT
+- request:
+    method: post
+    uri: https://172.26.49.146:8006/api2/json/nodes/pve/qemu/100/config
+    body:
+      encoding: US-ASCII
+      string: net0=virtio%2Cbridge%3Dvmbr0
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5AE09442:HkNyKvl+2NGlaOHvuJU2PuXQDb8
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close, Keep-Alive
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '69'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":"UPID:pve:00002251:002B0712:5AE09442:qmconfig:100:root@pam:"}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:20 GMT
+- request:
+    method: post
+    uri: https://172.26.49.146:8006/api2/json/nodes/pve/qemu/100/config
+    body:
+      encoding: US-ASCII
+      string: onboot=1&keyboard=fr&ostype=l26
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5AE09442:HkNyKvl+2NGlaOHvuJU2PuXQDb8
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close, Keep-Alive
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '69'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":"UPID:pve:00002252:002B0716:5AE09442:qmconfig:100:root@pam:"}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:20 GMT
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/cluster/resources?type=vm
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '85'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"type":"qemu","status":"unknown","vmid":100,"id":"qemu/100","node":"pve"}]}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:20 GMT
+- request:
+    method: delete
+    uri: https://172.26.49.146:8006/api2/json/nodes/pve/qemu/100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5AE09442:HkNyKvl+2NGlaOHvuJU2PuXQDb8
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '70'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":"UPID:pve:00002253:002B071C:5AE09442:qmdestroy:100:root@pam:"}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:20 GMT
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/cluster/resources?type=vm
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '11'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[]}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:20 GMT
+- request:
+    method: get
+    uri: https://172.26.49.146:8006/api2/json/nodes/pve/qemu/100/status/current
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AE09442::nm8Csac9nPoLvwSrV1sc8GICKPYpWjDmyaNOeyu5qQ0SGHGUvPEJqKR3ghH19xm2YdqcJ+y4b5pKWErnkNwkqJ79//E0FiKsauAsUY9e04vNFk7pHx5wNiyRd+YFM31PDXMq190mMxEjtSvuAH12BM44i3nPg/MXUyqtuOdg1pt34b1mqh7W1e9EZPvz3FTVrnkliu2ixs2L7JSIsKfSNNqa4jk5S0mcWWSvLYCu77O2iw1BqC85MgKhaDZ6/p/QFx6v6Rd0mlHpCf6Vf0F369YQ69youXjLbajQZ57jEjkNNH7xoe+zWT8UTPPdg7XpqfHnmZIkDfaBChGjXOoP+Q==
+  response:
+    status:
+      code: 500
+      message: Configuration file 'nodes/pve/qemu-server/100.conf' does not exist
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close
+      Date:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '13'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Apr 2018 14:44:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":null}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 14:44:20 GMT
+recorded_with: VCR 3.0.3

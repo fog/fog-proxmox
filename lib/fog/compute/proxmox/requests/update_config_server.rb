@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,26 +17,23 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
 module Fog
   module Compute
     class Proxmox
-      # class Real list_servers request
+      # class Real update_config_server request
       class Real
-        def list_servers
+        def update_config_server(node, vmid, options)
           request(
             expects: [200],
-            method: 'GET',
-            path: 'cluster/resources',
-            query: 'type=vm'
+            method: 'POST',
+            path: "nodes/#{node}/qemu/#{vmid}/config",
+            body: URI.encode_www_form(options)
           )
         end
       end
 
-      # class Mock list_servers request
+      # class Mock create_server request
       class Mock
-        def list_servers; end
       end
     end
   end

@@ -21,21 +21,20 @@
 module Fog
   module Compute
     class Proxmox
-      # class Real list_servers request
+      # class Real check_vmid collection
       class Real
-        def list_servers
+        def check_vmid(vmid)
           request(
             expects: [200],
             method: 'GET',
-            path: 'cluster/resources',
-            query: 'type=vm'
+            path: 'cluster/nextid',
+            query: "vmid=#{vmid}"
           )
         end
       end
 
-      # class Mock list_servers request
+      # class Mock check_vmid collection
       class Mock
-        def list_servers; end
       end
     end
   end

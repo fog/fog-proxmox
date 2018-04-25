@@ -22,11 +22,11 @@ module Fog
     class Proxmox
       # class Real create_server request
       class Real
-        def create_server(node, vmid, options)
+        def create_server(node, options)
           request(
             expects: [200],
             method: 'POST',
-            path: "nodes/#{node}/qemu/#{vmid}",
+            path: "nodes/#{node}/qemu",
             body: URI.encode_www_form(options)
           )
         end

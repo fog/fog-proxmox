@@ -24,10 +24,9 @@ module Fog
     # Proxmox compute service
     class Proxmox < Fog::Service
       requires :pve_url
-      recognizes :pve_ticket, :pve_path, :pve_ticket_expires, 
-      :pve_csrftoken, :persistent, :current_user, :pve_username, 
-      :pve_password, :pve_deadline
-
+      recognizes :pve_ticket, :pve_path, :pve_ticket_expires,
+                 :pve_csrftoken, :persistent, :current_user, :pve_username,
+                 :pve_password, :pve_deadline
 
       # Models
       model_path 'fog/compute/proxmox/models'
@@ -47,9 +46,12 @@ module Fog
       request :delete_pool
 
       # Manage servers
+      request :next_vmid
+      request :check_vmid
       request :list_servers
-      request :get_server
       request :create_server
+      request :get_server
+      request :update_config_server
       request :delete_server
 
       # Mock class

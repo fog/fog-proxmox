@@ -23,8 +23,34 @@ module Fog
   module Compute
     class Proxmox
       # Servers Collection
-      class Servers < Fog::Collection
+      class Servers < Fog::Proxmox::Collection
         model Fog::Compute::Proxmox::Server
+
+        def next_id
+          response = service.next_vmid
+          body = JSON.decode(response.body)
+          data = body['data']
+          Integer(data)
+        end
+
+        def id_valid?(vmid)
+          service.check_vmid(vmid)
+          true
+        rescue Excon::Errors::BadRequest
+          false
+        end
+
+        def find_by_id(node, vmid)
+          cached_server = find { |server| server.vmid == vmid }
+          return cached_server if cached_server
+          data = service.get_server(node, vmid)
+          server_data = data.merge(node: node, vmid: vmid)
+          new(server_data)
+        end
+
+        def all
+          load_response(service.list_servers, 'servers')
+        end
       end
     end
   end

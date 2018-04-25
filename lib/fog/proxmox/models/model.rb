@@ -31,11 +31,6 @@ module Fog
         super
       end
 
-      # Proxmox create object requires identity given by client
-      # def save
-      #   identity ? update : create
-      # end
-
       # Updates a record
       def update
         # raise Fog::Proxmox::Errors::InterfaceNotImplemented
