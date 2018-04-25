@@ -68,6 +68,13 @@ module Fog
           service.delete_server(node, vmid, options)
           true
         end
+
+        def play(action,options = {})
+          requires :vmid, :node
+          raise Fog::Proxmox::Errors::ServiceUnavailable if !['start','stop','resume','suspend','shutdown','reset'].include? action
+          service.play_server(action, node, vmid, options)
+        end
+
       end
     end
   end

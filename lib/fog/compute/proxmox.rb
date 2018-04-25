@@ -53,6 +53,7 @@ module Fog
       request :get_server
       request :update_config_server
       request :delete_server
+      request :play_server
 
       # Mock class
       class Mock
