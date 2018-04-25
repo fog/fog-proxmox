@@ -38,12 +38,14 @@
             "cwd": "${workspaceRoot}",
             "program": "${workspaceRoot}/bin/rspec",
             "useBundler": true,
+            "pathToBundler": "/home/tristan/.rbenv/shims/bundler", // linux rbenv
+            "pathToRDebugIDE": "/home/tristan/.rbenv/shims/rdebug-ide",
             "showDebuggerOutput": true,
             "env": {
                 "DISABLE_PROXY": true,
                 "SSL_VERIFY_PEER": false,
                 "USE_VCR": false,
-                "PVE_URL": "https://172.26.49.146:8006/api2/json",
+                "PVE_URL": "https://192.168.56.101:8006/api2/json",
                 "PVE_USERNAME": "root@pam",
                 "PVE_PASSWORD": "proxmox01"
             },
@@ -59,12 +61,14 @@
             "cwd": "${workspaceRoot}",
             "program": "${workspaceRoot}/bin/rspec",
             "useBundler": true,
+            "pathToBundler": "/home/tristan/.rbenv/shims/bundler", // linux rbenv
+            "pathToRDebugIDE": "/home/tristan/.rbenv/shims/rdebug-ide",
             "showDebuggerOutput": true,
             "env": {
                 "DISABLE_PROXY": true,
                 "SSL_VERIFY_PEER": false,
                 "USE_VCR": false,
-                "PVE_URL": "https://172.26.49.146:8006/api2/json",
+                "PVE_URL": "https://192.168.56.101:8006/api2/json",
                 "PVE_USERNAME": "root@pam",
                 "PVE_PASSWORD": "proxmox01"
             },
@@ -81,12 +85,14 @@
             "cwd": "${workspaceRoot}",
             "program": "${workspaceRoot}/bin/rake",
             "useBundler": true,
+            "pathToBundler": "/home/tristan/.rbenv/shims/bundler", // linux rbenv
+            "pathToRDebugIDE": "/home/tristan/.rbenv/shims/rdebug-ide",
             "showDebuggerOutput": true,
             "env": {
                 "DISABLE_PROXY": true,
                 "SSL_VERIFY_PEER": false,
                 "USE_VCR": false,
-                "PVE_URL": "https://172.26.49.146:8006/api2/json",
+                "PVE_URL": "https://192.168.56.101:8006/api2/json",
                 "PVE_USERNAME": "root@pam",
                 "PVE_PASSWORD": "proxmox01"
             },

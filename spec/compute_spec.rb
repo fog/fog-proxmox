@@ -98,8 +98,8 @@ describe Fog::Compute::Proxmox do
       # Add network interface
       config_hash = { net0: 'virtio,bridge=vmbr0' }
       server.update_config(config_hash)
-      # Add start at boot, keyboard fr, linux 3.x os type
-      config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26' }
+      # Add start at boot, keyboard fr, linux 3.x os type, kvm hardware disabled (proxmox guest in virtualbox)
+      config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26', kvm: 0 }
       server.update_config(config_hash)
       # all servers
       # servers_all = @service.servers.all
