@@ -5,3 +5,10 @@ plugins:
     enabled: true
   reek:
     enabled: true
+exclude_patterns:
+- "tests/"
+- "spec/"
+- "vendor/"
+- "bin/"
+- "coverage/"
+- "examples/"
