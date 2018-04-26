@@ -82,6 +82,20 @@ module Fog
           task_upid
         end
 
+        def attach_volume(volume,options = {})
+          requires :node, :vmid
+          config = { "#{volume[:id]}": "#{volume[:name]}:#{volume[:size]},#{options}" }
+          task_upid = service.update_server(node, vmid, config)
+          task_upid
+        end
+
+        def detach_volume(volume)
+          requires :node, :vmid
+          config = { delete: "#{volume[:id]}" }
+          task_upid = service.update_server(node, vmid, config)
+          task_upid
+        end
+
         def ready?
           status == 'running'
         end

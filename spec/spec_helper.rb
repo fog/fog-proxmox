@@ -22,8 +22,9 @@ require 'simplecov'
 
 SimpleCov.start do
   add_filter '/spec/'
-  add_group 'Identity', 'lib/fog/identity'
   add_group 'Core', 'lib/fog/proxmox'
+  add_group 'Identity', 'lib/fog/identity'
+  add_group 'Compute', 'lib/fog/compute'
 end
 
 require 'minitest/autorun'
