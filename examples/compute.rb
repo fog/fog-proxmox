@@ -58,3 +58,26 @@ end
 
 # Delete pool
 pool1.destroy
+
+# Create servers
+node = 'pve'
+server_hash = { node: node }
+compute.servers.create(server_hash)
+
+# Get one pool by id
+pool1 = compute.pools.find_by_id 'pool1'
+
+# Update pool
+pool1.comment 'pool 1'
+pool1.update
+
+# List all pools
+compute.pools.all
+
+# List pool by pool
+compute.pools.each do |pool|
+  # pool ...
+end
+
+# Delete pool
+pool1.destroy

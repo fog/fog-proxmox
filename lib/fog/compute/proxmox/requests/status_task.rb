@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -17,23 +16,28 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
+# frozen_string_literal: true
+
+require 'fog/proxmox/json'
+
 module Fog
   module Compute
     class Proxmox
-      # class Real update_config_server request
+      # class Real status_task
       class Real
-        def update_config_server(node, vmid, options)
-          request(
+        def status_task(node, upid)
+          response = request(
             expects: [200],
-            method: 'POST',
-            path: "nodes/#{node}/qemu/#{vmid}/config",
-            body: URI.encode_www_form(options)
+            method: 'GET',
+            path: "nodes/#{node}/tasks/#{upid}/status"
           )
+          Fog::Proxmox::Json.get_data(response)
         end
       end
 
-      # class Mock create_server request
+      # class Mock status_task
       class Mock
+        def status_task(node, upid); end
       end
     end
   end

@@ -46,6 +46,10 @@ module Fog
         attribute :qmpstatus
         attribute :ha
         attribute :pid
+        attribute :nics
+        attribute :blockstat
+        attribute :balloon
+        attribute :ballooninfo
 
         def initialize(attributes = {})
           prepare_service_value(attributes)
@@ -55,26 +59,32 @@ module Fog
         def create(config = {})
           requires :node
           config.store(:vmid, vmid)
-          service.create_server(node, config)
+          task_upid = service.create_server(node, config)
+          task_upid
         end
 
-        def update_config(config = {})
+        def update(config = {})
           requires :node, :vmid
-          service.update_config_server(node, vmid, config)
+          task_upid = service.update_server(node, vmid, config)
+          task_upid
         end
 
         def destroy(options = {})
           requires :vmid, :node
-          service.delete_server(node, vmid, options)
-          true
+          task_upid = service.delete_server(node, vmid, options)
+          task_upid
         end
 
-        def play(action,options = {})
+        def action(action, options = {})
           requires :vmid, :node
-          raise Fog::Proxmox::Errors::ServiceUnavailable if !['start','stop','resume','suspend','shutdown','reset'].include? action
-          service.play_server(action, node, vmid, options)
+          raise Fog::Errors::Error, "Action #{action} not implemented" unless %w[start stop resume suspend shutdown reset].include? action
+          task_upid = service.action_server(action, node, vmid, options)
+          task_upid
         end
 
+        def ready?
+          status == 'running'
+        end
       end
     end
   end

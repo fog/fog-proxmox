@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://172.26.49.146:8006/api2/json/access/ticket
+    uri: https://192.168.56.101:8006/api2/json/access/ticket
     body:
       encoding: US-ASCII
       string: username=root%40pam&password=proxmox01&privs=User.Modify&path=access&otp=proxmox01
@@ -12,9 +12,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5ADF18A7:NuD/2yJOzjWUuOAZaEl8GaJ7RFY
+      - 5AE1ADCF:Qp0SbOEFiZqeqkEMnstrG6sgwL8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5ADF18A7::IivVbOT79VmJKbZgz1foFMlNIehF7ZMF+mkJEbvLjsptAnjGtfpx3EGskDl/3claafOH6ZEe/YK6Vez3BnXV20fM88YA/rVdAUM9BM6uKltPaotG0rOz0Uz+rnvz5d3nZVvLwjT9DoL0TRB48phh+7wYWxjOkNWDz19iu9CDBBu/gv+MOEfKCrA4umlzFDozViD2QzLhx2vkiHQi6gzprREks//TS9rhmQxMaDALxKisB62GPQB1k6GNwYN0xfvQb11bh9VsXpzOLsJL7a4cH5wsZYZ6pvJRI9ETIRRUcuABd/1MQA2bAGwuJzdG2pnOzSgdtIvSfvyotY0HX3ccbA==
+      - PVEAuthCookie=PVE:root@pam:5AE1ADCF::CGo+VBcfObyIEvF6l+RtLDzzRTr+nPrHXFE5KzJO0pVxcC7fpegBjI1s1mAdusrK9jRfg7mm+TVoaSCmDAJc4+Yz8YyCHEXG+DUhdzOtFgcUrcEbMTuD0VqV34c9pf8sf6t7ptKFFsWKye5WBd3UjgnDoT5Kktqd1n6d/rxK9ZorTIKLUleJDzY5WF5wiQ49v+196owuTxJhiJImOuDjyddHz4oepec5BjIDt0ScUquPid/GkO7lBUHQcR+PO7WMfLPmjF1sXPee6z9W3ilidfCSfSwbxVwGSNJ0lHG2Zoz1teRHVaybAVOKQFS9fH9LcP8cDWhhiYlrCA1JF5rldw==
   response:
     status:
       code: 200
@@ -25,7 +25,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Tue, 24 Apr 2018 11:44:39 GMT
+      - Thu, 26 Apr 2018 10:45:35 GMT
       Pragma:
       - no-cache
       Server:
@@ -35,10 +35,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 24 Apr 2018 11:44:39 GMT
+      - Thu, 26 Apr 2018 10:45:35 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"cap":{"nodes":{"Sys.Console":1,"Permissions.Modify":1,"Sys.PowerMgmt":1,"Sys.Audit":1,"Sys.Syslog":1,"Sys.Modify":1},"access":{"Permissions.Modify":1,"Group.Allocate":1,"User.Modify":1},"vms":{"VM.Monitor":1,"VM.Config.Network":1,"VM.Backup":1,"VM.Audit":1,"VM.Console":1,"VM.Migrate":1,"VM.Config.Disk":1,"VM.PowerMgmt":1,"VM.Snapshot":1,"VM.Config.CPU":1,"Permissions.Modify":1,"VM.Allocate":1,"VM.Snapshot.Rollback":1,"VM.Config.CDROM":1,"VM.Config.HWType":1,"VM.Clone":1,"VM.Config.Options":1,"VM.Config.Memory":1},"dc":{"Sys.Audit":1},"storage":{"Datastore.Audit":1,"Datastore.AllocateSpace":1,"Datastore.Allocate":1,"Datastore.AllocateTemplate":1}},"username":"root@pam"}}'
+      string: '{"data":{"cap":{"nodes":{"Sys.Console":1,"Sys.Modify":1,"Sys.Audit":1,"Sys.Syslog":1,"Permissions.Modify":1,"Sys.PowerMgmt":1},"storage":{"Datastore.AllocateSpace":1,"Datastore.AllocateTemplate":1,"Datastore.Audit":1,"Datastore.Allocate":1},"dc":{"Sys.Audit":1},"access":{"Group.Allocate":1,"Permissions.Modify":1,"User.Modify":1},"vms":{"VM.Config.CPU":1,"VM.Allocate":1,"VM.Config.Options":1,"VM.PowerMgmt":1,"VM.Config.Network":1,"VM.Migrate":1,"VM.Clone":1,"VM.Config.Memory":1,"VM.Snapshot":1,"VM.Config.HWType":1,"VM.Config.Disk":1,"VM.Console":1,"VM.Snapshot.Rollback":1,"VM.Monitor":1,"VM.Audit":1,"VM.Config.CDROM":1,"Permissions.Modify":1,"VM.Backup":1}},"username":"root@pam"}}'
     http_version: 
-  recorded_at: Tue, 24 Apr 2018 11:44:41 GMT
+  recorded_at: Thu, 26 Apr 2018 10:45:36 GMT
 recorded_with: VCR 3.0.3

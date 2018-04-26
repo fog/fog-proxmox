@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -17,38 +16,26 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/compute/proxmox/models/server'
+# frozen_string_literal: true
 
 module Fog
   module Compute
     class Proxmox
-      # Servers Collection
-      class Servers < Fog::Proxmox::Collection
-        model Fog::Compute::Proxmox::Server
-
-        def next_id
-          response = service.next_vmid
-          body = JSON.decode(response.body)
-          data = body['data']
-          Integer(data)
+      # class Real list_tasks request
+      class Real
+        def list_tasks(node, options)
+          request(
+            expects: [200],
+            method: 'GET',
+            path: "nodes/#{node}/tasks",
+            query: URI.encode_www_form(options)
+          )
         end
+      end
 
-        def id_valid?(vmid)
-          service.check_vmid(vmid)
-          true
-        rescue Excon::Errors::BadRequest
-          false
-        end
-
-        def get(node, vmid)
-          data = service.get_server(node, vmid)
-          server_data = data.merge(node: node, vmid: vmid)
-          new(server_data)
-        end
-
-        def all
-          load_response(service.list_servers, 'servers')
-        end
+      # class Mock list_tasks request
+      class Mock
+        def list_tasks; end
       end
     end
   end

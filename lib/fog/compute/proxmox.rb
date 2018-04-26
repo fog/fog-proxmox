@@ -34,6 +34,8 @@ module Fog
       collection :pools
       model :server
       collection :servers
+      model :task
+      collection :tasks
 
       # Requests
       request_path 'fog/compute/proxmox/requests'
@@ -51,9 +53,15 @@ module Fog
       request :list_servers
       request :create_server
       request :get_server
-      request :update_config_server
+      request :update_server
       request :delete_server
-      request :play_server
+      request :action_server
+      # Tasks
+      request :list_tasks
+      request :get_task
+      request :stop_task
+      request :status_task
+      request :log_task
 
       # Mock class
       class Mock
@@ -74,7 +82,8 @@ module Fog
           @connection_options = options[:connection_options] || {}
           authenticate
           @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
+          url = "#{@scheme}://#{@host}:#{@port}"
+          @connection = Fog::Core::Connection.new(url, @persistent, @connection_options)
         end
 
         def config

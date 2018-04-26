@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -17,23 +16,25 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
+# frozen_string_literal: true
+
 module Fog
   module Compute
     class Proxmox
-      # class Real play_server request
+      # class Real stop_task collection
       class Real
-        def play_server(action,node,vmid,options)
+        def stop_task(node, upid)
           request(
             expects: [200],
-            method: 'POST',
-            path: "nodes/#{node}/qemu/#{vmid}/status/#{action}",
-            body: URI.encode_www_form(options)
+            method: 'DELETE',
+            path: "nodes/#{node}/tasks/#{upid}"
           )
         end
       end
 
-      # class Mock play_server request
+      # class Mock get_task collection
       class Mock
+        def stop_task(taskid); end
       end
     end
   end

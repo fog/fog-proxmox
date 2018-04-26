@@ -17,37 +17,31 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/compute/proxmox/models/server'
+require 'fog/proxmox/models/collection'
+require 'fog/compute/proxmox/models/task'
 
 module Fog
   module Compute
     class Proxmox
-      # Servers Collection
-      class Servers < Fog::Proxmox::Collection
-        model Fog::Compute::Proxmox::Server
+      # class Tasks Collection of node
+      class Tasks < Fog::Proxmox::Collection
+        model Fog::Compute::Proxmox::Task
 
-        def next_id
-          response = service.next_vmid
-          body = JSON.decode(response.body)
-          data = body['data']
-          Integer(data)
+        def search(node, options = {})
+          load_response(service.list_tasks(node, options), 'tasks')
         end
 
-        def id_valid?(vmid)
-          service.check_vmid(vmid)
-          true
-        rescue Excon::Errors::BadRequest
-          false
-        end
-
-        def get(node, vmid)
-          data = service.get_server(node, vmid)
-          server_data = data.merge(node: node, vmid: vmid)
-          new(server_data)
-        end
-
-        def all
-          load_response(service.list_servers, 'servers')
+        def find_by_id(node, id)
+          status_details = service.status_task(node, id)
+          log_array = service.log_task(node, id, {})
+          log = ''
+          log_array.each do |line_hash|
+            log += line_hash['t'].to_s + "\n"
+          end
+          task_hash = status_details.merge(log: log)
+          Fog::Compute::Proxmox::Task.new(
+            task_hash.merge(service: service)
+          )
         end
       end
     end
