@@ -13,8 +13,6 @@ It is intended to satisfy this [feature](https://github.com/fog/fog/issues/3644)
 
 It is inspired by the great [fog-openstack](https://github.com/fog/fog-openstack) module.
 
-__foreman-proxmox plugin repository has been deleted because compute resources as fog-proxmox is supposed to be a foreman's core [feature](https://projects.theforeman.org/issues/2186) if accepted__
-
 ## Installation
 
 Add this line to your application's Gemfile:
