@@ -11,7 +11,9 @@ This is a [FOG](http://fog.io/) module gem to support [Proxmox VE](https://www.p
 
 It is intended to satisfy this [feature](https://github.com/fog/fog/issues/3644), but Proxmox provider only.
 
-It is inspired by the great [fog-openstack](https://github.com/fog/fog-openstack) module
+It is inspired by the great [fog-openstack](https://github.com/fog/fog-openstack) module.
+
+__foreman-proxmox plugin repository has been deleted because compute resources as fog-proxmox is supposed to be a foreman's core feature if accepted__
 
 ## Installation
 
