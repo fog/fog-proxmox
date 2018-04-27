@@ -34,6 +34,10 @@ module Fog
       collection :pools
       model :server
       collection :servers
+      model :volume
+      collection :volumes
+      model :storage
+      collection :storages
       model :task
       collection :tasks
 
@@ -56,6 +60,18 @@ module Fog
       request :update_server
       request :delete_server
       request :action_server
+      request :backup
+      request :template_server
+      request :clone_server
+      request :migrate_server
+      # Manage volumes
+      request :list_volumes
+      request :resize_volume
+      request :move_volume
+      # Manage storages
+      request :list_storages
+      request :get_storage
+      request :attach_storage
       # Tasks
       request :list_tasks
       request :get_task
