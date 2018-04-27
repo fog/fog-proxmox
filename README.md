@@ -9,11 +9,11 @@
 
 This is a [FOG](http://fog.io/) module gem to support [Proxmox VE](https://www.proxmox.com/en/proxmox-ve) (tested with 5.1)
 
-It is intended to satisfy this [feature](https://github.com/fog/fog/issues/3644), but Proxmox provider only.
+It is intended to satisfy this [feature](https://github.com/fog/fog/issues/3644), but Proxmox provider only, and above all this [Foreman](http://www.theforeman.org) [feature](https://projects.theforeman.org/issues/2186).
 
 It is inspired by the great [fog-openstack](https://github.com/fog/fog-openstack) module.
 
-__foreman-proxmox plugin repository has been deleted because compute resources as fog-proxmox is supposed to be a foreman's core feature if accepted__
+__foreman-proxmox plugin repository has been deleted because compute resources as fog-proxmox is supposed to be a foreman's core [feature](https://projects.theforeman.org/issues/2186) if accepted__
 
 ## Installation
 
