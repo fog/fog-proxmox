@@ -26,7 +26,7 @@ module Fog
         hash.each do |key,value| 
           string += "#{key}=#{value},"
         end
-        string.delete_suffix(',')
+        string.slice(0,string.length-1)
       end
     end
   end
