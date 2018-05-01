@@ -55,7 +55,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'ruby-debug-ide', '~> 0.6'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'vcr', '~> 3.0'
-  spec.add_development_dependency 'webmock', '~> 3.3'
+  spec.add_development_dependency 'webmock', '~> 3.4'
 
   spec.add_dependency 'fog-core',  '~> 2.1'
   spec.add_dependency 'fog-json',  '~> 1.1'
