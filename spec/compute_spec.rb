@@ -145,22 +145,22 @@ describe Fog::Compute::Proxmox do
       servers_all.must_include server
       # Start server
       server.action('start')
-      server.wait_for('running')
+      server.wait_for { server.status == 'running' }
       status = server.ready?
       status.must_equal true
       # Suspend server
       server.action('suspend')
-      server.wait_for('paused')
+      server.wait_for {server.qmpstatus == 'paused'}
       qmpstatus = server.qmpstatus
       qmpstatus.must_equal 'paused'
       # Resume server
       server.action('resume')
-      server.wait_for('running')
+      server.wait_for { server.ready? }
       status = server.ready?
       status.must_equal true
       # Stop server
       server.action('stop')
-      server.wait_for('stopped')
+      server.wait_for { server.status == 'stopped' }
       status = server.status
       status.must_equal 'stopped'
       proc do
