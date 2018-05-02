@@ -98,6 +98,19 @@ module Fog
           status == 'running'
         end
 
+        def wait_for(target)          
+          while status != target && qmpstatus != target
+            reload
+            sleep 1
+          end
+        end
+
+        def reload   
+          requires :vmid, :node    
+          object = collection.get(node,vmid)     
+          merge_attributes(object.attributes)
+        end
+
         def backup(options = {})
           requires :vmid, :node
           task_upid = service.backup(node, options.merge({ vmid: vmid }))

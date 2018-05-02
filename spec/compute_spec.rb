@@ -113,8 +113,9 @@ describe Fog::Compute::Proxmox do
       clone = @service.servers.get(node, newid)
       # Delete clone
       clone.destroy
-      valid.must_equal false
-      server.wont_be_nil
+      proc do
+        @service.servers.get(node, newid)
+      end.must_raise Excon::Errors::InternalServerError
       # Create 2nd time must fails
       proc do
         @service.servers.create(server_hash)
@@ -144,34 +145,22 @@ describe Fog::Compute::Proxmox do
       servers_all.must_include server
       # Start server
       server.action('start')
-      while server.status == 'stopped'
-        server = @service.servers.get(node, vmid)
-        sleep 1
-      end
+      server.wait_for('running')
       status = server.ready?
       status.must_equal true
       # Suspend server
       server.action('suspend')
-      while server.qmpstatus == 'running'
-        server = @service.servers.get(node, vmid)
-        sleep 1
-      end
+      server.wait_for('paused')
       qmpstatus = server.qmpstatus
       qmpstatus.must_equal 'paused'
       # Resume server
       server.action('resume')
-      while server.qmpstatus == 'paused'
-        server = @service.servers.get(node, vmid)
-        sleep 1
-      end
-      qmpstatus = server.qmpstatus
-      qmpstatus.must_equal 'running'
+      server.wait_for('running')
+      status = server.ready?
+      status.must_equal true
       # Stop server
       server.action('stop')
-      while server.status == 'running'
-        server = @service.servers.get(node, vmid)
-        sleep 1
-      end
+      server.wait_for('stopped')
       status = server.status
       status.must_equal 'stopped'
       proc do
