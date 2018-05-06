@@ -37,7 +37,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
-  spec.required_ruby_version = '~> 2.5'
+  spec.required_ruby_version = '>= 2.3'
   spec.rubygems_version = '~> 2.6'
 
   spec.add_development_dependency 'bundler', '~> 1.16'
@@ -55,7 +55,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'ruby-debug-ide', '~> 0.6'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'vcr', '~> 3.0'
-  spec.add_development_dependency 'webmock', '~> 3.3'
+  spec.add_development_dependency 'webmock', '~> 3.4'
 
   spec.add_dependency 'fog-core',  '~> 2.1'
   spec.add_dependency 'fog-json',  '~> 1.1'

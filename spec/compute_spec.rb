@@ -67,13 +67,14 @@ describe Fog::Compute::Proxmox do
     VCR.use_cassette('tasks') do
       # List all tasks
       options = { limit: 1 }
-      node = 'pve'
-      tasks = @service.tasks.search(node, options)
+      node_name = 'pve'
+      node = @service.nodes.find_by_id node_name
+      tasks = node.tasks.search(options)
       tasks.wont_be_nil
       tasks.wont_be_empty
       # Get task
       upid = tasks[0].upid
-      task = @service.tasks.find_by_id(node, upid)
+      task = node.tasks.find_by_id(upid)
       task.wont_be_nil
       # Stop task
       task.stop
@@ -83,11 +84,11 @@ describe Fog::Compute::Proxmox do
 
   it 'CRUD servers' do
     VCR.use_cassette('servers') do
-      node = 'pve'
-      server_hash = { node: node }
+      node_name = 'pve'
+      node = @service.nodes.find_by_id node_name
       # Get next vmid
-      vmid = @service.servers.next_id
-      server_hash.store(:vmid, vmid)
+      vmid = node.servers.next_id
+      server_hash = { vmid: vmid }
       # Check valid vmid
       valid = @service.servers.id_valid? vmid
       valid.must_equal true
@@ -95,65 +96,73 @@ describe Fog::Compute::Proxmox do
       valid = @service.servers.id_valid? 99
       valid.must_equal false
       # Create 1st time
-      @service.servers.create(server_hash)
+      node.servers.create(server_hash)
+      sleep 1
       # Check already used vmid
-      valid = @service.servers.id_valid? vmid
-      valid.must_equal false
+      valid = node.servers.id_valid? vmid
+      # Clone server
+      newid = node.servers.next_id
       # Get server
-      server = @service.servers.get(node, vmid)
-      server.wont_be_nil
+      server = node.servers.get vmid
+      # Backup it
+      # server.backup
+      # Delete snapshot
+      # /api2/json does not offer this feature, 
+      # but /api2/extjs does
+      # Clone it
+      server.clone(newid)
+      # Get clone
+      clone = node.servers.get newid
+      # Delete clone
+      clone.destroy
+      proc do
+        node.servers.get newid
+      end.must_raise Excon::Errors::InternalServerError
       # Create 2nd time must fails
       proc do
-        @service.servers.create(server_hash)
+        node.servers.create server_hash
       end.must_raise Excon::Errors::InternalServerError
       # Update config server
       # Add cdrom empty
       config_hash = { ide2: 'none,media=cdrom' }
       server.update(config_hash)
       # Add hdd
-      config_hash = { virtio0: 'local-lvm:1,backup=no,replicate=0' }
-      server.update(config_hash)
+      # Find available storages to images
+      storages = @service.storages.list_store_images(node)
+      storage = storages[0]
+      volume = { id: 'virtio0', storage: storage.storage, size: '1' }
+      options = { backup: 0, replicate: 0 }
+      server.attach_volume(volume, options)
       # Add network interface
       config_hash = { net0: 'virtio,bridge=vmbr0' }
       server.update(config_hash)
-      # Add start at boot, keyboard fr, linux 3.x os type, kvm hardware disabled (proxmox guest in virtualbox)
+      # Add start at boot, keyboard fr, 
+      # linux 4.x os type, kvm hardware disabled (proxmox guest in virtualbox)
       config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26', kvm: 0 }
       server.update(config_hash)
       # all servers
-      servers_all = @service.servers.all
+      servers_all = node.servers.all
       servers_all.wont_be_nil
       servers_all.wont_be_empty
       servers_all.must_include server
       # Start server
       server.action('start')
-      while server.status == 'stopped'
-        server = @service.servers.get(node, vmid)
-        sleep 1
-      end
+      server.wait_for { server.status == 'running' }
       status = server.ready?
       status.must_equal true
       # Suspend server
       server.action('suspend')
-      while server.qmpstatus == 'running'
-        server = @service.servers.get(node, vmid)
-        sleep 1
-      end
+      server.wait_for {server.qmpstatus == 'paused'}
       qmpstatus = server.qmpstatus
       qmpstatus.must_equal 'paused'
       # Resume server
       server.action('resume')
-      while server.qmpstatus == 'paused'
-        server = @service.servers.get(node, vmid)
-        sleep 1
-      end
-      qmpstatus = server.qmpstatus
-      qmpstatus.must_equal 'running'
+      server.wait_for { server.ready? }
+      status = server.ready?
+      status.must_equal true
       # Stop server
       server.action('stop')
-      while server.status == 'running'
-        server = @service.servers.get(node, vmid)
-        sleep 1
-      end
+      server.wait_for { server.status == 'stopped' }
       status = server.status
       status.must_equal 'stopped'
       proc do
@@ -163,8 +172,40 @@ describe Fog::Compute::Proxmox do
       server.destroy
       sleep 1
       proc do
-        @service.servers.get(node, vmid)
+        node.servers.get vmid
       end.must_raise Excon::Errors::InternalServerError
     end
   end
+
+  it 'CRUD snapshots' do
+    VCR.use_cassette('snapshots') do
+      node_name = 'pve'
+      node = @service.nodes.find_by_id node_name
+      vmid = node.servers.next_id
+      server_hash = { vmid: vmid }
+      node.servers.create server_hash
+      # Create
+      snapname = 'snapshot1'
+      server = node.servers.get vmid
+      snapshot_hash = { server: server, name: snapname }
+      server.snapshots.create(snapshot_hash)
+      # Find by id
+      snapshot = server.snapshots.get snapname
+      snapshot.wont_be_nil
+      # Update
+      snapshot.description = 'Snapshot 1'
+      snapshot.update
+      # all snapshots
+      snapshots_all = server.snapshots.all
+      snapshots_all.wont_be_nil
+      snapshots_all.wont_be_empty
+      snapshots_all.must_include snapshot
+      # Delete
+      taskid = snapshot.destroy
+      task = node.tasks.find_by_id taskid
+      task.wait_for { succeeded? }
+      server.destroy
+    end
+  end
+
 end

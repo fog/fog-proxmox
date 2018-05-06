@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,24 +17,29 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
+require 'fog/proxmox/models/collection'
+require 'fog/compute/proxmox/models/node'
 
-require 'simplecov'
+module Fog
+  module Compute
+    class Proxmox
+      # class Nodes Collection of nodes of cluster
+      class Nodes < Fog::Proxmox::Collection
+        model Fog::Compute::Proxmox::Node
 
-SimpleCov.start do
-  add_filter '/spec/'
-  add_group 'Core', 'lib/fog/proxmox'
-  add_group 'Identity', 'lib/fog/identity'
-  add_group 'Compute', 'lib/fog/compute'
-end
+        def all(_options = {})
+          load_response(service.list_nodes, 'nodes')
+        end
 
-require 'minitest/autorun'
-require 'vcr'
-require 'fog/core'
-require 'fog/proxmox'
-
-VCR.configure do |c|
-  c.cassette_library_dir = 'spec/fixtures/proxmox'
-  c.hook_into :webmock
-  c.debug_logger = nil # use $stderr to debug
+        def find_by_id(id)
+          cached_node = find { |node| node.node == id }
+          return cached_node if cached_node
+          node_hash = service.get_node(id)
+          Fog::Compute::Proxmox::Node.new(
+            node_hash.merge(service: service, node: id)
+          )
+        end
+      end
+    end
+  end
 end

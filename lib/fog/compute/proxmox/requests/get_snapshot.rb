@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -18,22 +19,27 @@
 
 # frozen_string_literal: true
 
-require 'simplecov'
+require 'fog/proxmox/json'
 
-SimpleCov.start do
-  add_filter '/spec/'
-  add_group 'Core', 'lib/fog/proxmox'
-  add_group 'Identity', 'lib/fog/identity'
-  add_group 'Compute', 'lib/fog/compute'
-end
+module Fog
+  module Compute
+    class Proxmox
+      # class Real get_snapshot request
+      class Real
+        def get_snapshot(node,vmid,snapname)
+          response = request(
+            expects: [200],
+            method: 'GET',
+            path: "nodes/#{node}/qemu/#{vmid}/snapshot/#{snapname}/config"
+          )
+          Fog::Proxmox::Json.get_data(response)
+        end
+      end
 
-require 'minitest/autorun'
-require 'vcr'
-require 'fog/core'
-require 'fog/proxmox'
-
-VCR.configure do |c|
-  c.cassette_library_dir = 'spec/fixtures/proxmox'
-  c.hook_into :webmock
-  c.debug_logger = nil # use $stderr to debug
+      # class Mock get_snapshot request
+      class Mock
+        def get_snapshot; end
+      end
+    end
+  end
 end

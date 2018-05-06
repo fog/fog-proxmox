@@ -21,7 +21,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Thu, 26 Apr 2018 10:45:36 GMT
+      - Sun, 06 May 2018 15:10:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -31,10 +31,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 26 Apr 2018 10:45:36 GMT
+      - Sun, 06 May 2018 15:10:19 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"ticket":"PVE:root@pam:5AE1ADD0::QQPfTHku3whxZ3OYFyetR4me7hDQcI67jWYvnFlyl0Q+/qq+uiNcGebWKjBuKIEZ1rgugNrQF5rcvlDeLq8AnVwB1OVhPoc9OJj3kUgyODPoUr99GPdRO+/1rSLh26gmWJybjV2TBfDOhS8prE/RK/EsImY8I0Rj6ypTGklNovCUeuQ4EoFvBet7eKTudf59b7kH8owpT2NeNgVEHPAozRAaQo57if/6YZj+0EGwD5PsDgXzrwJrftnQq2nW4iPsFLL1JiCSzwEuqvYLm5rPxr4S50WnVhNS0qT/2tSal2uJftwxdjLDuAB1yoKhCQt38jYJRYdWjHAgMZffgQ3XZQ==","CSRFPreventionToken":"5AE1ADD0:se8Feo7Trl9ksOk2UILTBBxFvB0","cap":{"nodes":{"Sys.Audit":1,"Sys.Modify":1,"Sys.Console":1,"Sys.PowerMgmt":1,"Sys.Syslog":1,"Permissions.Modify":1},"storage":{"Datastore.Allocate":1,"Datastore.Audit":1,"Datastore.AllocateTemplate":1,"Datastore.AllocateSpace":1},"dc":{"Sys.Audit":1},"access":{"User.Modify":1,"Group.Allocate":1,"Permissions.Modify":1},"vms":{"VM.Audit":1,"VM.Config.CDROM":1,"VM.Backup":1,"Permissions.Modify":1,"VM.Clone":1,"VM.Snapshot":1,"VM.Config.Memory":1,"VM.Config.Disk":1,"VM.Config.HWType":1,"VM.Console":1,"VM.Monitor":1,"VM.Snapshot.Rollback":1,"VM.Config.Options":1,"VM.Migrate":1,"VM.Config.Network":1,"VM.PowerMgmt":1,"VM.Allocate":1,"VM.Config.CPU":1}},"username":"root@pam"}}'
+      string: '{"data":{"username":"root@pam","cap":{"access":{"Permissions.Modify":1,"User.Modify":1,"Group.Allocate":1},"storage":{"Datastore.Allocate":1,"Datastore.AllocateTemplate":1,"Datastore.Audit":1,"Datastore.AllocateSpace":1},"nodes":{"Sys.Console":1,"Sys.Audit":1,"Sys.Modify":1,"Permissions.Modify":1,"Sys.Syslog":1,"Sys.PowerMgmt":1},"dc":{"Sys.Audit":1},"vms":{"Permissions.Modify":1,"VM.Config.CDROM":1,"VM.Migrate":1,"VM.PowerMgmt":1,"VM.Allocate":1,"VM.Config.Memory":1,"VM.Config.Disk":1,"VM.Config.Options":1,"VM.Config.HWType":1,"VM.Snapshot":1,"VM.Backup":1,"VM.Console":1,"VM.Snapshot.Rollback":1,"VM.Config.CPU":1,"VM.Monitor":1,"VM.Config.Network":1,"VM.Audit":1,"VM.Clone":1}},"ticket":"PVE:root@pam:5AEF1ADB::ULB5KTFOWPWtXRktx6Ur3/vG9Qk+h3Qu9Dcbs37UOICHdRUNsI2wUfY5xJ0ea9Xg2ATGckzVa4yAi47/yOKBx7V/4i/f4uWWTg0cpgY8sYG2p8t/s3Grb5WF6/d9Wy9dw5cpvU7W1qTp7EQ/vCBmPxzC94LbHFzAxh16suy+zwoVWnPNsZ+ZZpXXJsMTkSBBFrjOG/Z/o/kok3xPFPQUR5aImIKz8/VY0ONcYTUT4xiyH4uGUjy3lwDjyPy0qY4TPN+sJdldEQKEFp7hiTDHnkP8pczHhwS+x0g5ZKhEFuvnNvtKntWCHIf23NH9IKXvGOLmiqx+j52WawFHaIPT9Q==","CSRFPreventionToken":"5AEF1ADB:E9uTxtZ/jVF6NhGZ9mxwHuqehAc"}}'
     http_version: 
-  recorded_at: Thu, 26 Apr 2018 10:45:37 GMT
+  recorded_at: Sun, 06 May 2018 15:10:19 GMT
 recorded_with: VCR 3.0.3

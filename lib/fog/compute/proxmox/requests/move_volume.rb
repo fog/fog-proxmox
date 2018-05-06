@@ -18,22 +18,25 @@
 
 # frozen_string_literal: true
 
-require 'simplecov'
+module Fog
+  module Compute
+    class Proxmox
+      # class Real move_volume request
+      class Real
+        def move_volume(node,vmid,config)
+          request(
+            expects: [200],
+            method: 'POST',
+            path: "nodes/#{node}/qemu/#{vmid}/move_disk",
+            body: URI.encode_www_form(config)
+          )
+        end
+      end
 
-SimpleCov.start do
-  add_filter '/spec/'
-  add_group 'Core', 'lib/fog/proxmox'
-  add_group 'Identity', 'lib/fog/identity'
-  add_group 'Compute', 'lib/fog/compute'
-end
-
-require 'minitest/autorun'
-require 'vcr'
-require 'fog/core'
-require 'fog/proxmox'
-
-VCR.configure do |c|
-  c.cassette_library_dir = 'spec/fixtures/proxmox'
-  c.hook_into :webmock
-  c.debug_logger = nil # use $stderr to debug
+      # class Mock move_volume request
+      class Mock
+        def list_volumes; end
+      end
+    end
+  end
 end

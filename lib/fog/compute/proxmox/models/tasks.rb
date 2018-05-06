@@ -26,22 +26,37 @@ module Fog
       # class Tasks Collection of node
       class Tasks < Fog::Proxmox::Collection
         model Fog::Compute::Proxmox::Task
+        attribute :node
 
-        def search(node, options = {})
-          load_response(service.list_tasks(node, options), 'tasks')
+        def new(attributes = {})
+          requires :node
+          super({ node: node }.merge(attributes))
         end
 
-        def find_by_id(node, id)
-          status_details = service.status_task(node, id)
-          log_array = service.log_task(node, id, {})
+        def search(options = {})
+          requires :node
+          load_response(service.list_tasks(node.node, options), 'tasks')
+        end
+
+        def log(id)
+          requires :node
           log = ''
+          log_array = service.log_task(node.node, id, {})
           log_array.each do |line_hash|
             log += line_hash['t'].to_s + "\n"
           end
-          task_hash = status_details.merge(log: log)
-          Fog::Compute::Proxmox::Task.new(
-            task_hash.merge(service: service)
-          )
+          log
+        end
+
+        def find_by_id(id)
+          requires :node
+          status_details = service.status_task(node.node, id)
+          task_hash = status_details.merge(log: log(id))
+          new(task_hash.merge(service: service, node: node))
+        end
+
+        def get(id)
+          find_by_id(id)
         end
       end
     end

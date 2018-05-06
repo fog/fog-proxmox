@@ -18,22 +18,25 @@
 
 # frozen_string_literal: true
 
-require 'simplecov'
+module Fog
+  module Compute
+    class Proxmox
+      # class Real list_storages request
+      class Real
+        def list_storages(node,options)
+          request(
+            expects: [200],
+            method: 'GET',
+            path: "nodes/#{node}/storage",
+            query: URI.encode_www_form(options)
+          )
+        end
+      end
 
-SimpleCov.start do
-  add_filter '/spec/'
-  add_group 'Core', 'lib/fog/proxmox'
-  add_group 'Identity', 'lib/fog/identity'
-  add_group 'Compute', 'lib/fog/compute'
-end
-
-require 'minitest/autorun'
-require 'vcr'
-require 'fog/core'
-require 'fog/proxmox'
-
-VCR.configure do |c|
-  c.cassette_library_dir = 'spec/fixtures/proxmox'
-  c.hook_into :webmock
-  c.debug_logger = nil # use $stderr to debug
+      # class Mock list_storages request
+      class Mock
+        def list_storages; end
+      end
+    end
+  end
 end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,24 +17,24 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
+module Fog
+  module Compute
+    class Proxmox
+      # class Real clone_server request
+      class Real
+        def clone_server(node, vmid, options)
+          request(
+            expects: [200],
+            method: 'POST',
+            path: "nodes/#{node}/qemu/#{vmid}/clone",
+            body: URI.encode_www_form(options)
+          )
+        end
+      end
 
-require 'simplecov'
-
-SimpleCov.start do
-  add_filter '/spec/'
-  add_group 'Core', 'lib/fog/proxmox'
-  add_group 'Identity', 'lib/fog/identity'
-  add_group 'Compute', 'lib/fog/compute'
-end
-
-require 'minitest/autorun'
-require 'vcr'
-require 'fog/core'
-require 'fog/proxmox'
-
-VCR.configure do |c|
-  c.cassette_library_dir = 'spec/fixtures/proxmox'
-  c.hook_into :webmock
-  c.debug_logger = nil # use $stderr to debug
+      # class Mock clone_server request
+      class Mock
+      end
+    end
+  end
 end

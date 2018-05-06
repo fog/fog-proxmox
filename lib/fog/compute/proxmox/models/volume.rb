@@ -31,38 +31,55 @@ require 'fog/proxmox/models/model'
 module Fog
   module Compute
     class Proxmox
-      # class Task model of a node
-      class Task < Fog::Proxmox::Model
-        identity  :upid
-        attribute :node
+      # class Volume model
+      class Volume < Fog::Proxmox::Model
+        identity  :id
         attribute :status
-        attribute :exitstatus
-        attribute :pid
-        attribute :user
-        attribute :id, :aliases => :vmid
-        attribute :type
-        attribute :pstart
-        attribute :starttime
-        attribute :endtime
-        attribute :status_details
-        attribute :log
+        attribute :disk
+        attribute :maxdisk
+        attribute :storage
+        attribute :server
+
+        def new(attributes = {})
+          if server
+            super({ :server => server }.merge!(attributes))
+          else
+            super
+          end
+        end
 
         def to_s
-          upid
+          id
         end
 
-        def succeeded?
-          finished? && exitstatus == 'OK'
+        def attach(options={})
+          requires :id, :node, :server
+          config = options.merge({ disk: id })
+          task_upid = service.update_server(node, server.vmid, config)
+          task_upid
         end
 
-        def finished?
-          status == 'stopped'
+        def detach
+          requires :id, :node, :server
+          config = { delete: id }
+          task_upid = service.update_server(node, server.vmid, config)
+          task_upid
         end
 
-        def stop
-          requires :node, :upid
-          service.stop_task(node, upid)
+        def resize(size, options = {})
+          requires :id, :node, :server
+          config = options.merge({ disk: id, size: size })
+          task_upid = service.resize_volume(server.node, server.vmid, config)
+          task_upid
         end
+
+        def move(storage, options = {})
+          requires :id, :node, :server
+          config = options.merge({ disk: id, storage: storage })
+          task_upid = service.move_volume(server.node, server.vmid, config)
+          task_upid
+        end
+        
       end
     end
   end

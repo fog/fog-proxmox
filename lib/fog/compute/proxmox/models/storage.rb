@@ -31,38 +31,27 @@ require 'fog/proxmox/models/model'
 module Fog
   module Compute
     class Proxmox
-      # class Task model of a node
-      class Task < Fog::Proxmox::Model
-        identity  :upid
-        attribute :node
-        attribute :status
-        attribute :exitstatus
-        attribute :pid
-        attribute :user
-        attribute :id, :aliases => :vmid
+      # class Storage model
+      class Storage < Fog::Proxmox::Model
+        identity  :storage
+        attribute :content
         attribute :type
-        attribute :pstart
-        attribute :starttime
-        attribute :endtime
-        attribute :status_details
-        attribute :log
+        attribute :avail
+        attribute :total
+        attribute :used
+        attribute :shared
+        attribute :active
+        attribute :enabled
 
         def to_s
-          upid
+          storage
         end
 
-        def succeeded?
-          finished? && exitstatus == 'OK'
+        def attach(vmid, options = {})
+          config = options.merge({ vmid: vmid})
+          service.attach_storage(node, storage, config)
         end
-
-        def finished?
-          status == 'stopped'
-        end
-
-        def stop
-          requires :node, :upid
-          service.stop_task(node, upid)
-        end
+        
       end
     end
   end

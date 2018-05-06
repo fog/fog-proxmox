@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -18,22 +19,24 @@
 
 # frozen_string_literal: true
 
-require 'simplecov'
+module Fog
+  module Compute
+    class Proxmox
+      # class Real get_volume request
+      class Real
+        def get_volume(node,storage,volume)
+          request(
+            expects: [200],
+            method: 'GET',
+            path: "nodes/#{node}/storage/#{storage}/content/#{volume}"
+          )
+        end
+      end
 
-SimpleCov.start do
-  add_filter '/spec/'
-  add_group 'Core', 'lib/fog/proxmox'
-  add_group 'Identity', 'lib/fog/identity'
-  add_group 'Compute', 'lib/fog/compute'
-end
-
-require 'minitest/autorun'
-require 'vcr'
-require 'fog/core'
-require 'fog/proxmox'
-
-VCR.configure do |c|
-  c.cassette_library_dir = 'spec/fixtures/proxmox'
-  c.hook_into :webmock
-  c.debug_logger = nil # use $stderr to debug
+      # class Mock get_volume request
+      class Mock
+        def get_volume; end
+      end
+    end
+  end
 end
