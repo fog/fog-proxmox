@@ -31,38 +31,39 @@ require 'fog/proxmox/models/model'
 module Fog
   module Compute
     class Proxmox
-      # class Task model of a node
-      class Task < Fog::Proxmox::Model
-        identity  :upid
-        attribute :node
-        attribute :status
-        attribute :exitstatus
-        attribute :pid
-        attribute :user
-        attribute :id, :aliases => :vmid
-        attribute :type
-        attribute :pstart
-        attribute :starttime
-        attribute :endtime
-        attribute :status_details
-        attribute :log
+      # class Snapshot model
+      class Snapshot < Fog::Proxmox::Model
+        identity  :name
+        attribute :description
+        attribute :snaptime
+        attribute :server
 
         def to_s
-          upid
+          name
+        end
+        
+        def create(options = {})
+          requires :name, :server
+          options.store(:snapname,name)
+          service.create_snapshot(server.node,server.vmid,options)
+        end
+        
+        def update
+          requires :name, :server
+          service.update_snapshot(server.node,server.vmid,name,description)
+        end
+        
+        def rollback
+          requires :name, :server
+          service.rollback_snapshot(server.node,server.vmid,name)
         end
 
-        def succeeded?
-          finished? && exitstatus == 'OK'
+        def destroy(force = 0)
+          requires :name, :server
+          taskupid = service.delete_snapshot(server.node,server.vmid,name,force)
+          taskupid
         end
-
-        def finished?
-          status == 'stopped'
-        end
-
-        def stop
-          requires :node, :upid
-          service.stop_task(node, upid)
-        end
+        
       end
     end
   end

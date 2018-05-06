@@ -32,8 +32,6 @@ module Fog
       model_path 'fog/compute/proxmox/models'
       model :pool
       collection :pools
-      model :node
-      collection :nodes
       model :server
       collection :servers
       model :image
@@ -44,8 +42,6 @@ module Fog
       collection :storages
       model :task
       collection :tasks
-      model :snapshot
-      collection :snapshots
 
       # Requests
       request_path 'fog/compute/proxmox/requests'
@@ -56,10 +52,6 @@ module Fog
       request :create_pool
       request :update_pool
       request :delete_pool
-
-      # Manage nodes cluster
-      request :list_nodes
-      request :get_node
 
       # Manage servers
       request :next_vmid
@@ -90,14 +82,6 @@ module Fog
       request :stop_task
       request :status_task
       request :log_task
-
-      # CRUD snapshots
-      request :list_snapshots
-      request :get_snapshot
-      request :create_snapshot
-      request :update_snapshot
-      request :delete_snapshot
-      request :rollback_snapshot
 
       # Mock class
       class Mock

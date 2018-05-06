@@ -51,6 +51,8 @@ module Fog
         attribute :blockstat
         attribute :balloon
         attribute :ballooninfo
+        attribute :snapshots
+        attribute :tasks
 
         def initialize(attributes = {})
           prepare_service_value(attributes)
@@ -99,8 +101,8 @@ module Fog
         end
 
         def reload   
-          requires :vmid, :node    
-          object = collection.get(node,vmid)     
+          requires :vmid
+          object = collection.get(vmid)     
           merge_attributes(object.attributes)
         end
 
@@ -126,6 +128,13 @@ module Fog
           requires :vmid, :node
           task_upid = service.migrate_server(node, vmid, options.merge({ target: target }))
           task_upid
+        end
+
+        def snapshots
+          @snapshots ||= begin
+            Fog::Compute::Proxmox::Snapshots.new(:service => service,
+                                                  :server  => self)
+          end
         end
 
       end

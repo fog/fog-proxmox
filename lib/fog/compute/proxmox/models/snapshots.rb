@@ -17,46 +17,36 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/compute/proxmox/models/server'
+require 'fog/proxmox/models/collection'
+require 'fog/compute/proxmox/models/snapshot'
 
 module Fog
   module Compute
     class Proxmox
-      # Servers Collection
-      class Servers < Fog::Proxmox::Collection
-        model Fog::Compute::Proxmox::Server
-        attribute :node
+      # class Snapshots Collection of snapshots
+      class Snapshots < Fog::Proxmox::Collection
+        model Fog::Compute::Proxmox::Snapshot
+        attribute :server
 
         def new(attributes = {})
-          requires :node
-          super({ node: node }.merge(attributes))
-        end
-
-        def next_id
-          response = service.next_vmid
-          body = JSON.decode(response.body)
-          data = body['data']
-          Integer(data)
-        end
-
-        def id_valid?(vmid)
-          service.check_vmid(vmid)
-          true
-        rescue Excon::Errors::BadRequest
-          false
-        end
-
-        def get(vmid)
-          requires :node
-          data = service.get_server(node.node, vmid)
-          server_data = data.merge(node: node, vmid: vmid)
-          new(server_data)
+          requires :server
+          super({:server => server}.merge!(attributes))
         end
 
         def all
-          load_response(service.list_servers, 'servers')
+          requires :server
+          load_response(service.list_snapshots(server.node,server.vmid), 'snapshots')
         end
         
+        def get(name)
+          requires :server
+          cached_snapshot = find { |snapshot| snapshot.name == name }
+          return cached_snapshot if cached_snapshot
+          snapshot_hash = service.get_snapshot(server.node,server.vmid,name)
+          Fog::Compute::Proxmox::Snapshot.new(
+            snapshot_hash.merge({ service: service, server: server, name: name })
+          )
+        end
       end
     end
   end
