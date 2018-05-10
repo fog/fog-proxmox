@@ -35,18 +35,11 @@ gem install fog-proxmox
 
 ## Usage
 
+See [documentation](docs/getting_started.md).
+
 This is not yet a stable version. I recommend you not to use it in production.
 
 Work is still in progress...
-
-### Identity
-
-See [examples/identity.rb](examples/identity.rb) or [spec/identity_spec.rb](spec/identity_spec.rb)
-
-### Compute
-
-See [examples/compute.rb](examples/compute.rb) or [spec/compute_spec.rb](spec/compute_spec.rb)
-
 
 ## Development
 
