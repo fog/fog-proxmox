@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -17,33 +16,25 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/collection'
-require 'fog/compute/proxmox/models/pool'
+# frozen_string_literal: true
 
 module Fog
-  module Compute
+  module Identity
     class Proxmox
-      # class Pools Collection of pools of VMs
-      class Pools < Fog::Proxmox::Collection
-        model Fog::Compute::Proxmox::Pool
-
-        def all(_options = {})
-          load_response(service.list_pools, 'pools')
-        end
-
-        def find_by_id(id)
-          cached_pool = find { |pool| pool.poolid == id }
-          return cached_pool if cached_pool
-          pool_hash = service.get_pool(id)
-          Fog::Compute::Proxmox::Pool.new(
-            pool_hash.merge(service: service)
+      # class Real update_pool request
+      class Real
+        def update_pool(poolid, attributes)
+          request(
+            expects: [200],
+            method: 'PUT',
+            path: "pools/#{poolid}",
+            body: URI.encode_www_form(attributes)
           )
         end
+      end
 
-        def destroy(id)
-          pool = find_by_id(id)
-          pool.destroy
-        end
+      # class Mock update_pool request
+      class Mock
       end
     end
   end

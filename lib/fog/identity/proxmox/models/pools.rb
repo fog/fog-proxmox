@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,24 +17,33 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
+require 'fog/proxmox/models/collection'
+require 'fog/identity/proxmox/models/pool'
 
 module Fog
-  module Compute
+  module Identity
     class Proxmox
-      # class Real delete_pool request
-      class Real
-        def delete_pool(poolid)
-          request(
-            expects: [200],
-            method: 'DELETE',
-            path: "pools/#{poolid}"
+      # class Pools Collection of pools of VMs
+      class Pools < Fog::Proxmox::Collection
+        model Fog::Identity::Proxmox::Pool
+
+        def all(_options = {})
+          load_response(service.list_pools, 'pools')
+        end
+
+        def find_by_id(id)
+          cached_pool = find { |pool| pool.poolid == id }
+          return cached_pool if cached_pool
+          pool_hash = service.get_pool(id)
+          Fog::Identity::Proxmox::Pool.new(
+            pool_hash.merge(service: service)
           )
         end
-      end
 
-      # class Mock delete_pool request
-      class Mock
+        def destroy(id)
+          pool = find_by_id(id)
+          pool.destroy
+        end
       end
     end
   end

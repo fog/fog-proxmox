@@ -66,7 +66,7 @@ describe Fog::Identity::Proxmox do
   end
 
   it 'CRUD users' do
-    VCR.use_cassette('crud_users') do
+    VCR.use_cassette('users') do
       bob_hash = {
         userid: 'bobsinclar@pve',
         password: 'bobsinclar1',
@@ -116,7 +116,7 @@ describe Fog::Identity::Proxmox do
   end
 
   it 'CRUD groups' do
-    VCR.use_cassette('crud_groups') do
+    VCR.use_cassette('groups') do
       group_hash = { groupid: 'group1' }
       # Create 1st time
       @service.groups.create(group_hash)
@@ -144,7 +144,7 @@ describe Fog::Identity::Proxmox do
   end
 
   it 'CRUD roles' do
-    VCR.use_cassette('crud_roles') do
+    VCR.use_cassette('roles') do
       role_hash = { roleid: 'PVETestAuditor' }
       # Create 1st time
       @service.roles.create(role_hash)
@@ -172,7 +172,7 @@ describe Fog::Identity::Proxmox do
   end
 
   it 'CRUD domains' do
-    VCR.use_cassette('crud_domains') do
+    VCR.use_cassette('domains') do
       ldap_hash = {
         realm: 'LDAP',
         type: 'ldap',
@@ -280,4 +280,33 @@ describe Fog::Identity::Proxmox do
       group1.destroy
     end
   end
+
+  it 'CRUD pools' do
+    VCR.use_cassette('pools') do
+      pool_hash = { poolid: 'pool1' }
+      # Create 1st time
+      @service.pools.create(pool_hash)
+      # Find by id
+      pool = @service.pools.find_by_id pool_hash[:poolid]
+      pool.wont_be_nil
+      # Create 2nd time must fails
+      proc do
+        @service.pools.create(pool_hash)
+      end.must_raise Excon::Errors::InternalServerError
+      # Update
+      pool.comment = 'Pool 1'
+      pool.update
+      # all pools
+      pools_all = @service.pools.all
+      pools_all.wont_be_nil
+      pools_all.wont_be_empty
+      pools_all.must_include pool
+      # Delete
+      pool.destroy
+      proc do
+        @service.pools.find_by_id pool_hash[:poolid]
+      end.must_raise Excon::Errors::InternalServerError
+    end
+  end
+
 end

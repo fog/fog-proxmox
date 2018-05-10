@@ -19,7 +19,7 @@
 # frozen_string_literal: true
 
 module Fog
-  module Compute
+  module Identity
     class Proxmox
       # class Real list_pools request
       class Real

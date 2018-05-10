@@ -29,12 +29,13 @@
 require 'fog/proxmox/models/model'
 
 module Fog
-  module Compute
+  module Identity
     class Proxmox
       # class Pool model of VMs
       class Pool < Fog::Proxmox::Model
         identity  :poolid
         attribute :comment
+        
         def to_s
           poolid
         end

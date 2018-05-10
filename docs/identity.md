@@ -19,7 +19,7 @@ require 'fog/proxmox'
 ## Create identity service
 
 ```ruby
-service = Fog::Identity::Proxmox.new(
+identity = Fog::Identity::Proxmox.new(
         pve_username: PVE_USERNAME, # your user name
         pve_password: PVE_PASSWORD, # your password
         pve_url: PVE_URL # your server url
@@ -36,13 +36,13 @@ Fog provides both a **model** and **request** abstraction. The request abstracti
 
 The request abstraction maps directly to the [Proxmox VE API](https://pve.proxmox.com/wiki/Proxmox_VE_API). It provides an interface to the Proxmox Identity service.
 
-To see a list of requests supported by the service:
+To see a list of requests supported by the identity service:
 
 ```ruby
-service.requests
+identity.requests
 ```
 
-To learn more about Identity request methods refer to source files. 
+To learn more about Identity request methods refer to source files.
 
 To learn more about Excon refer to [Excon GitHub repo](https://github.com/geemus/excon).
 
@@ -94,7 +94,7 @@ The remainder of this document details the model abstraction.
 List all users:
 
 ```ruby
-service.users.all
+identity.users.all
 ```
 
 This returns a collection of `Fog::Identity::Proxmox::User` models:
@@ -102,7 +102,7 @@ This returns a collection of `Fog::Identity::Proxmox::User` models:
 Create a user:
 
 ```ruby
-service.users.create({
+identity.users.create({
     userid: 'bobsinclar@pve',
     password: 'bobsinclar1',
     firstname: 'Bob',
@@ -114,7 +114,7 @@ service.users.create({
 Get a user:
 
 ```ruby
-user = service.users.find_by_id 'bobsinclar@pve'
+user = identity.users.find_by_id 'bobsinclar@pve'
 ```
 
 Change his password:
@@ -146,7 +146,7 @@ Proxmox recommends to manage permissions by group instead of by user.
 List all groups:
 
 ```ruby
-service.groups.all
+identity.groups.all
 ```
 
 This returns a collection of `Fog::Identity::Proxmox::Group` models:
@@ -154,7 +154,7 @@ This returns a collection of `Fog::Identity::Proxmox::Group` models:
 Create a group:
 
 ```ruby
-service.groups.create({
+identity.groups.create({
     groupid: 'group1'
 })
 ```
@@ -162,7 +162,7 @@ service.groups.create({
 Get a group:
 
 ```ruby
-group = service.groups.find_by_id 'group1'
+group = identity.groups.find_by_id 'group1'
 ```
 
 Add a comment:
@@ -187,7 +187,7 @@ Proxmox server has two default domains: PAM and PVE.
 List all domains:
 
 ```ruby
-service.domains.all
+identity.domains.all
 ```
 
 This returns a collection of `Fog::Identity::Proxmox::Domain` models:
@@ -195,7 +195,7 @@ This returns a collection of `Fog::Identity::Proxmox::Domain` models:
 Create a LDAP domain:
 
 ```ruby
-service.domains.create({
+identity.domains.create({
         realm: 'LDAP',
         type: 'ldap',
         base_dn: 'ou=People,dc=ldap-test,dc=com',
@@ -210,7 +210,7 @@ service.domains.create({
 Get a domain:
 
 ```ruby
-ldap = service.domains.find_by_id 'LDAP'
+ldap = identity.domains.find_by_id 'LDAP'
 ```
 
 Add a comment and a two factor authentication (OATH) to LDAP realm:
@@ -236,7 +236,7 @@ Proxmox server has several defaults roles already created. See [Proxmox user man
 List all roles:
 
 ```ruby
-service.roles.all
+identity.roles.all
 ```
 
 This returns a collection of `Fog::Identity::Proxmox::Role` models:
@@ -244,13 +244,13 @@ This returns a collection of `Fog::Identity::Proxmox::Role` models:
 Create a new role:
 
 ```ruby
-service.roles.create({ roleid: 'PVETestAuditor' })
+identity.roles.create({ roleid: 'PVETestAuditor' })
 ```
 
 Get the role:
 
 ```ruby
-role = service.groups.find_by_id 'PVETestAuditor'
+role = identity.groups.find_by_id 'PVETestAuditor'
 ```
 
 Add privileges to this new role:
@@ -277,7 +277,7 @@ See more details in [Proxmox user management wiki page](https://pve.proxmox.com/
 List all permissions:
 
 ```ruby
-service.permissions.all
+identity.permissions.all
 ```
 
 This returns a collection of `Fog::Identity::Proxmox::Permission` models:
@@ -285,7 +285,7 @@ This returns a collection of `Fog::Identity::Proxmox::Permission` models:
 Add a new permission (manage users) to a user:
 
 ```ruby
-service.permissions.add({
+identity.permissions.add({
     path: '/access/users',
     roles: 'PVEUserAdmin',
     users: 'bobsinclar@pve'
@@ -295,7 +295,7 @@ service.permissions.add({
 Add a new permission (manage users) to a group of users:
 
 ```ruby
-service.permissions.add({
+identity.permissions.add({
     path: '/access/users',
     roles: 'PVEUserAdmin',
     groups: 'group1'
@@ -305,11 +305,46 @@ service.permissions.add({
 Remove a permission to a user:
 
 ```ruby
-service.permissions.remove({
+identity.permissions.remove({
     path: '/access/users',
     roles: 'PVEUserAdmin',
     users: 'bobsinclar@pve'
 })
+```
+#### Pools management
+
+Proxmox supports pools management of VMs or storages. It eases managing permissions on these.
+
+Create a pool:
+
+```ruby
+identity.pools.create { poolid: 'pool1' }
+```
+
+Get a pool:
+
+```ruby
+pool1 = identity.pools.find_by_id 'pool1'
+```
+
+Add comment and servers (100 and 101) to the pool:
+
+```ruby
+pool1.comment = 'Pool 1'
+pool1.servers = [100,101]
+pool1.update
+```
+
+Get all pools:
+
+```ruby
+identity.pools.all
+```
+
+Delete pool:
+
+```ruby
+pool1.destroy
 ```
 
 More examples can be seen at [examples/identity.rb](examples/identity.rb) or [spec/identity_spec.rb](spec/identity_spec.rb).

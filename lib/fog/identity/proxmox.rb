@@ -33,6 +33,8 @@ module Fog
       collection :users
       model :group
       collection :groups
+      model :pool
+      collection :pools
       model :role
       collection :roles
       model :domain
@@ -45,33 +47,51 @@ module Fog
       collection :domains
       model :permission
       collection :permissions
+
       request_path 'fog/identity/proxmox/requests'
+
+      # Manage permissions
       request :check_permissions
       request :list_permissions
       request :add_permission
       request :remove_permission
       request :read_version
+
+      # Manage users
       request :list_users
       request :get_user
       request :create_user
       request :update_user
       request :delete_user
       request :change_password
+
+      # CRUD groups
       request :list_groups
       request :get_group
       request :create_group
       request :update_group
       request :delete_group
+
+      # CRUD roles
       request :list_roles
       request :get_role
       request :create_role
       request :update_role
       request :delete_role
+
+      # CRUD domains
       request :list_domains
       request :get_domain
       request :create_domain
       request :update_domain
       request :delete_domain
+
+      # CRUD pools
+      request :list_pools
+      request :get_pool
+      request :create_pool
+      request :update_pool
+      request :delete_pool
 
       # Mock class
       class Mock

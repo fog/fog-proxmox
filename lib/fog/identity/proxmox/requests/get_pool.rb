@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -17,23 +16,25 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
+# frozen_string_literal: true
+
 module Fog
-  module Compute
+  module Identity
     class Proxmox
-      # class Real create_pool request
+      # class Real get_pool collection
       class Real
-        def create_pool(pool)
+        def get_pool(poolid)
           request(
             expects: [200],
-            method: 'POST',
-            path: 'pools',
-            body: URI.encode_www_form(pool)
+            method: 'GET',
+            path: "pools/#{poolid}"
           )
         end
       end
 
-      # class Mock create_pool request
+      # class Mock get_pool collection
       class Mock
+        def get_pool(poolid); end
       end
     end
   end

@@ -312,42 +312,6 @@ clone = node.servers.get newid
 clone.destroy
 ```
 
-#### Pools management
-
-Proxmox supports pools management of VMs or storages. It eases managing permissions on these.
-
-Create a pool:
-
-```ruby
-compute.pools.create { poolid: 'pool1' }
-```
-
-Get a pool:
-
-```ruby
-pool1 = compute.pools.find_by_id 'pool1'
-```
-
-Add comment and servers (100 and 101) to the pool:
-
-```ruby
-pool1.comment = 'Pool 1'
-pool1.servers = [100,101]
-pool1.update
-```
-
-Get all pools:
-
-```ruby
-compute.pools.all
-```
-
-Delete pool:
-
-```ruby
-pool1.destroy
-```
-
 #### Tasks management
 
 Proxmox supports tasks management. A task enables to follow all asynchronous actions made in a node: VM creation, start, etc.

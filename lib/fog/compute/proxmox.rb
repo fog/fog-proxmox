@@ -30,8 +30,6 @@ module Fog
 
       # Models
       model_path 'fog/compute/proxmox/models'
-      model :pool
-      collection :pools
       model :node
       collection :nodes
       model :server
@@ -49,13 +47,6 @@ module Fog
 
       # Requests
       request_path 'fog/compute/proxmox/requests'
-
-      # CRUD pools
-      request :list_pools
-      request :get_pool
-      request :create_pool
-      request :update_pool
-      request :delete_pool
 
       # Manage nodes cluster
       request :list_nodes
