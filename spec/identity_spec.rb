@@ -294,14 +294,18 @@ describe Fog::Identity::Proxmox do
         @service.pools.create(pool_hash)
       end.must_raise Excon::Errors::InternalServerError
       # Update
+      # Add comment
       pool.comment = 'Pool 1'
-      pool.update
+      # Add storage as member
+      # pool.vms = 100
+      pool.add_storage 'local-lvm'
       # all pools
       pools_all = @service.pools.all
       pools_all.wont_be_nil
       pools_all.wont_be_empty
       pools_all.must_include pool
       # Delete
+      pool.remove_storage 'local-lvm'
       pool.destroy
       proc do
         @service.pools.find_by_id pool_hash[:poolid]

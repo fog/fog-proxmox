@@ -35,6 +35,7 @@ module Fog
       class Pool < Fog::Proxmox::Model
         identity  :poolid
         attribute :comment
+        attribute :members
         
         def to_s
           poolid
@@ -50,9 +51,39 @@ module Fog
           true
         end
 
+        def add_server(server)
+          requires :poolid
+          attr = attributes.reject { |k, _v| [:poolid,:members].include? k }
+          attr.store('vms',server)
+          service.update_pool(poolid, attr)
+        end
+
+        def add_storage(storage)
+          requires :poolid
+          attr = attributes.reject { |k, _v| [:poolid,:members].include? k }
+          attr.store('storage',storage)
+          service.update_pool(poolid, attr)
+        end
+
+        def remove_storage(storage)
+          requires :poolid
+          attr = attributes.reject { |k, _v| [:poolid,:members].include? k }
+          attr.store('storage',storage)
+          attr.store('delete',1)
+          service.update_pool(poolid, attr)
+        end
+
+        def remove_server(server)
+          requires :poolid
+          attr = attributes.reject { |k, _v| [:poolid,:members].include? k }
+          attr.store('server',server)
+          attr.store('delete',1)
+          service.update_pool(poolid, attr)
+        end
+
         def update
           requires :poolid
-          attr = attributes.reject { |k, _v| k == :poolid }
+          attr = attributes.reject { |k, _v| [:poolid,:members].include? k }
           service.update_pool(poolid, attr)
         end
       end
