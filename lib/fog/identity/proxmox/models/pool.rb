@@ -52,39 +52,31 @@ module Fog
         end
 
         def add_server(server)
-          requires :poolid
-          attr = attributes.reject { |k, _v| [:poolid,:members].include? k }
-          attr.store('vms',server)
-          service.update_pool(poolid, attr)
+          update_with_member('vms',server,false)
         end
 
         def add_storage(storage)
-          requires :poolid
-          attr = attributes.reject { |k, _v| [:poolid,:members].include? k }
-          attr.store('storage',storage)
-          service.update_pool(poolid, attr)
+          update_with_member('storage',storage,false)
         end
 
         def remove_storage(storage)
-          requires :poolid
-          attr = attributes.reject { |k, _v| [:poolid,:members].include? k }
-          attr.store('storage',storage)
-          attr.store('delete',1)
-          service.update_pool(poolid, attr)
+          update_with_member('storage',storage,true)
         end
 
         def remove_server(server)
+          update_with_member('vms',server,true)
+        end
+
+        def update_with_member(member_name,member_id,delete = false)
           requires :poolid
           attr = attributes.reject { |k, _v| [:poolid,:members].include? k }
-          attr.store('server',server)
-          attr.store('delete',1)
+          attr.store(member_name,member_id) if member_name
+          attr.store('delete',1) if delete
           service.update_pool(poolid, attr)
         end
 
         def update
-          requires :poolid
-          attr = attributes.reject { |k, _v| [:poolid,:members].include? k }
-          service.update_pool(poolid, attr)
+          update_with_member(nil,nil,false)
         end
       end
     end

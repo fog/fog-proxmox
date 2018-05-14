@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AF46E21::iCdiXyRMWsWeCb/u4k2lRsQZ2ZC5wFBy9QMW+WLmtHFwgtpa2aHUVwiZ9PaHwU7Xv6UX9WEGVBQOVXwqgnbfndorDpJ2kMM4OPkF2uKepMSIoX7q3c9ej3iq+J21S8DS0Z7tp+FWJgAzgfUhJad20h1cYWyypVaHuU9C7DsmBFre/z04zKfLtb6QfSTOnftqsg+rp2sPNQh5CiqkBDM+oBHG0n2x8BnQGarOYYpRGSB5+TK9HLoocXKoBQpQg4K6cEW7IKOpTdMNSlGhgXpQ0wSPM63u8DF6bNrFOPB50ZABTDWpJo4seitXwjSfJy7AEe2AHx/KXQnDDWkI2Kf0jQ==
+      - PVEAuthCookie=PVE:root@pam:5AF9457E::ecmaaBo6fl+qDKgGasimE+xuE+/xJ5DOMr0B55SnMFFWcjKqOw/r3Pt7QZ0/EnbTxjxJH9zCXF9GabW+/n6vl5E/12njmrlFyDhnwAOYbnw7yUNF/BlGoR5e5kEgAM2Y1motsMkw8TdJ2CSz5et8wfjEl4eFuXjhq7aJcRW4xJk7u5Ql7wQgCczcxR+bVBQgm+pCF49/Hdeqct3NOz1gbDnXjXK6uaJxdN30YGALRgrnZAA4F0lSMi8Xiht00hEHSKIKLafpHEnB6oSYhcXMXeNJIDcpDDi75mGXKYvErlPi3RhADJjl4HfDrBeBA9ptstZRI/ICJA9lscELi+hMig==
   response:
     status:
       code: 200
@@ -23,20 +23,20 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Thu, 10 May 2018 16:06:57 GMT
+      - Mon, 14 May 2018 08:14:54 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '77'
+      - '135'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 10 May 2018 16:06:57 GMT
+      - Mon, 14 May 2018 08:14:54 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"repoid":"0b958203","release":"41","keyboard":"fr","version":"5.1"}}'
+      string: '{"data":{"keyboard":"fr","repoid":"0b958203","http_proxy":"http://pfrie-std.proxy.e2.rie.gouv.fr:8080","release":"41","version":"5.1"}}'
     http_version: 
-  recorded_at: Thu, 10 May 2018 16:07:07 GMT
+  recorded_at: Mon, 14 May 2018 08:14:57 GMT
 recorded_with: VCR 3.0.3

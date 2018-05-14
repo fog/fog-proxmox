@@ -327,12 +327,13 @@ Get a pool:
 pool1 = identity.pools.find_by_id 'pool1'
 ```
 
-Add comment and servers (100 and 101) to the pool:
+Add comment, server 100 and storage local-lvm to the pool:
 
 ```ruby
 pool1.comment = 'Pool 1'
-pool1.servers = [100,101]
 pool1.update
+pool1.add_server 100
+pool1.add_storage 'local-lvm '
 ```
 
 Get all pools:
@@ -344,6 +345,9 @@ identity.pools.all
 Delete pool:
 
 ```ruby
+# you need to remove all members before deleting pool
+pool1.remove_server 100
+pool1.remove_storage 'local-lvm '
 pool1.destroy
 ```
 

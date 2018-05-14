@@ -296,8 +296,9 @@ describe Fog::Identity::Proxmox do
       # Update
       # Add comment
       pool.comment = 'Pool 1'
+      pool.update
       # Add storage as member
-      # pool.vms = 100
+      pool.add_server 100 # do nothing if server does not exist
       pool.add_storage 'local-lvm'
       # all pools
       pools_all = @service.pools.all
@@ -305,6 +306,7 @@ describe Fog::Identity::Proxmox do
       pools_all.wont_be_empty
       pools_all.must_include pool
       # Delete
+      pool.remove_server 100
       pool.remove_storage 'local-lvm'
       pool.destroy
       proc do
