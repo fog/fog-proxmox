@@ -23,7 +23,7 @@ module Fog
     class Proxmox
       # class Real resize_volume request
       class Real
-        def resize_volume(node,vmid,config)
+        def resize_volume(node, vmid, config)
           request(
             expects: [200],
             method: 'PUT',

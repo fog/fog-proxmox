@@ -23,7 +23,7 @@ module Fog
     class Proxmox
       # class Real move_volume request
       class Real
-        def move_volume(node,vmid,config)
+        def move_volume(node, vmid, config)
           request(
             expects: [200],
             method: 'POST',

@@ -24,7 +24,7 @@ module Fog
     class Proxmox
       # class Real delete_volume request
       class Real
-        def delete_volume(node,storage,volume)
+        def delete_volume(node, storage, volume)
           request(
             expects: [200],
             method: 'DELETE',

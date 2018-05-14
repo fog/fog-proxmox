@@ -39,7 +39,7 @@ module Fog
         attribute :exitstatus
         attribute :pid
         attribute :user
-        attribute :id, :aliases => :vmid
+        attribute :id, aliases: :vmid
         attribute :type
         attribute :pstart
         attribute :starttime

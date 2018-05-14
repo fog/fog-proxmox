@@ -23,7 +23,7 @@ module Fog
     class Proxmox
       # class Real list_storages request
       class Real
-        def list_storages(node,options)
+        def list_storages(node, options)
           request(
             expects: [200],
             method: 'GET',

@@ -24,7 +24,7 @@ module Fog
     class Proxmox
       # class Real get_volume request
       class Real
-        def get_volume(node,storage,volume)
+        def get_volume(node, storage, volume)
           request(
             expects: [200],
             method: 'GET',

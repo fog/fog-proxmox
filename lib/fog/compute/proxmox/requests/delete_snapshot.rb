@@ -26,7 +26,7 @@ module Fog
     class Proxmox
       # class Real delete_snapshot request
       class Real
-        def delete_snapshot(node,vmid,snapname,force)
+        def delete_snapshot(node, vmid, snapname, force)
           response = request(
             expects: [200],
             method: 'DELETE',

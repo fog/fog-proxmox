@@ -42,7 +42,7 @@ module Fog
 
         def new(attributes = {})
           if server
-            super({ :server => server }.merge!(attributes))
+            super({ server: server }.merge!(attributes))
           else
             super
           end
@@ -52,9 +52,9 @@ module Fog
           id
         end
 
-        def attach(options={})
+        def attach(options = {})
           requires :id, :node, :server
-          config = options.merge({ disk: id })
+          config = options.merge(disk: id)
           task_upid = service.update_server(node, server.vmid, config)
           task_upid
         end
@@ -68,18 +68,17 @@ module Fog
 
         def resize(size, options = {})
           requires :id, :node, :server
-          config = options.merge({ disk: id, size: size })
+          config = options.merge(disk: id, size: size)
           task_upid = service.resize_volume(server.node, server.vmid, config)
           task_upid
         end
 
         def move(storage, options = {})
           requires :id, :node, :server
-          config = options.merge({ disk: id, storage: storage })
+          config = options.merge(disk: id, storage: storage)
           task_upid = service.move_volume(server.node, server.vmid, config)
           task_upid
         end
-        
       end
     end
   end

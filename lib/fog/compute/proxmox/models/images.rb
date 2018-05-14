@@ -32,12 +32,12 @@ module Fog
         end
 
         def search(node, options = {})
-          load_response(service.list_images(node,options), 'images')
+          load_response(service.list_images(node, options), 'images')
         end
 
         def list_store_images(node)
-          options = { content: 'images'}
-          load_response(service.list_images(node,options), 'images')
+          options = { content: 'images' }
+          load_response(service.list_images(node, options), 'images')
         end
 
         def find_by_id(id)

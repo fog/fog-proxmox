@@ -41,29 +41,28 @@ module Fog
         def to_s
           name
         end
-        
+
         def create(options = {})
           requires :name, :server
-          options.store(:snapname,name)
-          service.create_snapshot(server.node,server.vmid,options)
+          options.store(:snapname, name)
+          service.create_snapshot(server.node, server.vmid, options)
         end
-        
+
         def update
           requires :name, :server
-          service.update_snapshot(server.node,server.vmid,name,description)
+          service.update_snapshot(server.node, server.vmid, name, description)
         end
-        
+
         def rollback
           requires :name, :server
-          service.rollback_snapshot(server.node,server.vmid,name)
+          service.rollback_snapshot(server.node, server.vmid, name)
         end
 
         def destroy(force = 0)
           requires :name, :server
-          taskupid = service.delete_snapshot(server.node,server.vmid,name,force)
+          taskupid = service.delete_snapshot(server.node, server.vmid, name, force)
           taskupid
         end
-        
       end
     end
   end

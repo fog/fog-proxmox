@@ -30,21 +30,21 @@ module Fog
 
         def new(attributes = {})
           requires :server
-          super({:server => server}.merge!(attributes))
+          super({ server: server }.merge!(attributes))
         end
 
         def all
           requires :server
-          load_response(service.list_snapshots(server.node,server.vmid), 'snapshots')
+          load_response(service.list_snapshots(server.node, server.vmid), 'snapshots')
         end
-        
+
         def get(name)
           requires :server
           cached_snapshot = find { |snapshot| snapshot.name == name }
           return cached_snapshot if cached_snapshot
-          snapshot_hash = service.get_snapshot(server.node,server.vmid,name)
+          snapshot_hash = service.get_snapshot(server.node, server.vmid, name)
           Fog::Compute::Proxmox::Snapshot.new(
-            snapshot_hash.merge({ service: service, server: server, name: name })
+            snapshot_hash.merge(service: service, server: server, name: name)
           )
         end
       end

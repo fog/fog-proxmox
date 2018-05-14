@@ -24,7 +24,7 @@ module Fog
     class Proxmox
       # class Real update_snapshot request
       class Real
-        def update_snapshot(node,vmid,snapname,description)
+        def update_snapshot(node, vmid, snapname, description)
           request(
             expects: [200],
             method: 'PUT',

@@ -52,19 +52,19 @@ module Fog
 
         def to_s
           node
-        end        
+        end
 
         def tasks
           @tasks ||= begin
-            Fog::Compute::Proxmox::Tasks.new(:service => service,
-                                                  :node  => self)
+            Fog::Compute::Proxmox::Tasks.new(service: service,
+                                             node: self)
           end
-        end    
+        end
 
         def servers
           @servers ||= begin
-            Fog::Compute::Proxmox::Servers.new(:service => service,
-                                                  :node  => self)
+            Fog::Compute::Proxmox::Servers.new(service: service,
+                                               node: self)
           end
         end
       end

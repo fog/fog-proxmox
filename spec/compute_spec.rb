@@ -79,7 +79,7 @@ describe Fog::Compute::Proxmox do
       # Backup it
       # server.backup
       # Delete snapshot
-      # /api2/json does not offer this feature, 
+      # /api2/json does not offer this feature,
       # but /api2/extjs does
       # Clone it
       server.clone(newid)
@@ -108,7 +108,7 @@ describe Fog::Compute::Proxmox do
       # Add network interface
       config_hash = { net0: 'virtio,bridge=vmbr0' }
       server.update(config_hash)
-      # Add start at boot, keyboard fr, 
+      # Add start at boot, keyboard fr,
       # linux 4.x os type, kvm hardware disabled (proxmox guest in virtualbox)
       config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26', kvm: 0 }
       server.update(config_hash)
@@ -124,7 +124,7 @@ describe Fog::Compute::Proxmox do
       status.must_equal true
       # Suspend server
       server.action('suspend')
-      server.wait_for {server.qmpstatus == 'paused'}
+      server.wait_for { server.qmpstatus == 'paused' }
       qmpstatus = server.qmpstatus
       qmpstatus.must_equal 'paused'
       # Resume server
@@ -179,5 +179,4 @@ describe Fog::Compute::Proxmox do
       server.destroy
     end
   end
-
 end

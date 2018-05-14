@@ -24,7 +24,7 @@ module Fog
     class Proxmox
       # class Real list_snapshots request
       class Real
-        def list_snapshots(node,vmid)
+        def list_snapshots(node, vmid)
           request(
             expects: [200],
             method: 'GET',

@@ -57,7 +57,7 @@ module Fog
         end
 
         def create(attributes = {})
-          domain = new({ realm: attributes[:realm] })
+          domain = new(realm: attributes[:realm])
           type_s = attributes[:type]
           tfa_s = attributes[:tfa]
           attr = attributes.reject { |k, _v| %i[realm type tfa].include? k }
@@ -74,10 +74,10 @@ module Fog
         def to_tfa(tfa_s)
           oath_rxp = /type=oath,step=(?<step>\d+),digits=(?<digits>\d+)/
           yubico_rxp = /type=yubico,id=(?<id>\w+),key=(?<key>\w+),url=(?<url>.+)/
-          if oath_rxp.match(tfa_s)
+          if oath_rxp.match?(tfa_s)
             attributes = oath_rxp.named_captures
             type = 'oath'
-          elsif yubico_rxp.match(tfa_s)
+          elsif yubico_rxp.match?(tfa_s)
             attributes = yubico_rxp.named_captures
             type = 'yubico'
           end

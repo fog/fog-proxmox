@@ -314,5 +314,4 @@ describe Fog::Identity::Proxmox do
       end.must_raise Excon::Errors::InternalServerError
     end
   end
-
 end

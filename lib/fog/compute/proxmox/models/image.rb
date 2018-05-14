@@ -46,7 +46,6 @@ module Fog
         def to_s
           id
         end
-        
       end
     end
   end

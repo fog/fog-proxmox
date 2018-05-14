@@ -23,7 +23,7 @@ module Fog
     class Proxmox
       # class Real attach_storage request
       class Real
-        def attach_storage(node,storage,options)
+        def attach_storage(node, storage, options)
           request(
             expects: [200],
             method: 'POST',

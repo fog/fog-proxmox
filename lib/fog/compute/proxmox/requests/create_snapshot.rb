@@ -24,7 +24,7 @@ module Fog
     class Proxmox
       # class Real create_snapshot request
       class Real
-        def create_snapshot(node,vmid,options)
+        def create_snapshot(node, vmid, options)
           request(
             expects: [200],
             method: 'POST',

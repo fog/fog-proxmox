@@ -72,14 +72,14 @@ module Fog
           task_upid
         end
 
-        def attach_volume(volume,options = {})
+        def attach_volume(volume, options = {})
           options_to_s = Fog::Proxmox::Hash.stringify(options)
           config = { "#{volume[:id]}": "#{volume[:storage]}:#{volume[:size]},#{options_to_s}" }
           update(config)
         end
 
         def detach_volume(volume)
-          options = { delete: "#{volume[:id]}" }
+          options = { delete: (volume[:id]).to_s }
           update(options)
         end
 
@@ -100,21 +100,21 @@ module Fog
           status == 'running'
         end
 
-        def reload   
+        def reload
           requires :vmid
-          object = collection.get(vmid)     
+          object = collection.get(vmid)
           merge_attributes(object.attributes)
         end
 
         def backup(options = {})
           requires :vmid, :node
-          task_upid = service.backup(node, options.merge({ vmid: vmid }))
+          task_upid = service.backup(node, options.merge(vmid: vmid))
           task_upid
         end
 
         def clone(newid, options = {})
           requires :vmid, :node
-          task_upid = service.clone_server(node, vmid, options.merge({ newid: newid }))
+          task_upid = service.clone_server(node, vmid, options.merge(newid: newid))
           task_upid
         end
 
@@ -126,17 +126,16 @@ module Fog
 
         def migrate(target, options = {})
           requires :vmid, :node
-          task_upid = service.migrate_server(node, vmid, options.merge({ target: target }))
+          task_upid = service.migrate_server(node, vmid, options.merge(target: target))
           task_upid
         end
 
         def snapshots
           @snapshots ||= begin
-            Fog::Compute::Proxmox::Snapshots.new(:service => service,
-                                                  :server  => self)
+            Fog::Compute::Proxmox::Snapshots.new(service: service,
+                                                 server: self)
           end
         end
-
       end
     end
   end

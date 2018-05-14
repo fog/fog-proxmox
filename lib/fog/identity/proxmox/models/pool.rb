@@ -36,7 +36,7 @@ module Fog
         identity  :poolid
         attribute :comment
         attribute :members
-        
+
         def to_s
           poolid
         end
@@ -52,31 +52,31 @@ module Fog
         end
 
         def add_server(server)
-          update_with_member('vms',server,false)
+          update_with_member('vms', server, false)
         end
 
         def add_storage(storage)
-          update_with_member('storage',storage,false)
+          update_with_member('storage', storage, false)
         end
 
         def remove_storage(storage)
-          update_with_member('storage',storage,true)
+          update_with_member('storage', storage, true)
         end
 
         def remove_server(server)
-          update_with_member('vms',server,true)
+          update_with_member('vms', server, true)
         end
 
-        def update_with_member(member_name,member_id,delete = false)
+        def update_with_member(member_name, member_id, delete = false)
           requires :poolid
-          attr = attributes.reject { |k, _v| [:poolid,:members].include? k }
-          attr.store(member_name,member_id) if member_name
-          attr.store('delete',1) if delete
+          attr = attributes.reject { |k, _v| %i[poolid members].include? k }
+          attr.store(member_name, member_id) if member_name
+          attr.store('delete', 1) if delete
           service.update_pool(poolid, attr)
         end
 
         def update
-          update_with_member(nil,nil,false)
+          update_with_member(nil, nil, false)
         end
       end
     end

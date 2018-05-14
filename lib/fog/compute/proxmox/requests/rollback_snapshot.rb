@@ -24,7 +24,7 @@ module Fog
     class Proxmox
       # class Real rollback_snapshot request
       class Real
-        def rollback_snapshot(node,vmid,snapname,force)
+        def rollback_snapshot(node, vmid, snapname, _force)
           request(
             expects: [200],
             method: 'POST',

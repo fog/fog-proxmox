@@ -56,7 +56,6 @@ module Fog
         def all
           load_response(service.list_servers, 'servers')
         end
-        
       end
     end
   end

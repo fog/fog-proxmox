@@ -23,10 +23,10 @@ module Fog
     module Hash
       def self.stringify(hash)
         string = ''
-        hash.each do |key,value| 
+        hash.each do |key, value|
           string += "#{key}=#{value},"
         end
-        string.slice(0,string.length-1)
+        string.slice(0, string.length - 1)
       end
     end
   end

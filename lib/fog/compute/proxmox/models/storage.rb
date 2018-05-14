@@ -48,10 +48,9 @@ module Fog
         end
 
         def attach(vmid, options = {})
-          config = options.merge({ vmid: vmid})
+          config = options.merge(vmid: vmid)
           service.attach_storage(node, storage, config)
         end
-        
       end
     end
   end

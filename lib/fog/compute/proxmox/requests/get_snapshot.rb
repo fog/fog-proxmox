@@ -26,7 +26,7 @@ module Fog
     class Proxmox
       # class Real get_snapshot request
       class Real
-        def get_snapshot(node,vmid,snapname)
+        def get_snapshot(node, vmid, snapname)
           response = request(
             expects: [200],
             method: 'GET',
