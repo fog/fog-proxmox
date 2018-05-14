@@ -74,10 +74,10 @@ module Fog
         def to_tfa(tfa_s)
           oath_rxp = /type=oath,step=(?<step>\d+),digits=(?<digits>\d+)/
           yubico_rxp = /type=yubico,id=(?<id>\w+),key=(?<key>\w+),url=(?<url>.+)/
-          if oath_rxp.match?(tfa_s)
+          if oath_rxp.match(tfa_s)
             attributes = oath_rxp.named_captures
             type = 'oath'
-          elsif yubico_rxp.match?(tfa_s)
+          elsif yubico_rxp.match(tfa_s)
             attributes = yubico_rxp.named_captures
             type = 'yubico'
           end
