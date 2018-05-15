@@ -67,7 +67,7 @@ module Fog
           task_upid
         end
 
-        def restore(backup,options = {})
+        def restore(backup, options = {})
           requires :node, :vmid
           config = options.merge(vmid: vmid, archive: backup.volid, storage: backup.storage, force: 1)
           task_upid = service.create_server(node, config)
@@ -128,17 +128,19 @@ module Fog
         end
 
         def extend(disk, size, options = {})
+          requires :vmid, :node
           config = options.merge(disk: disk, size: size)
-          task_upid = service.resize(server.node, server.vmid, config)
+          task_upid = service.resize(node, vmid, config)
           task_upid
         end
 
         def move(disk, storage, options = {})
+          requires :vmid, :node
           config = options.merge(disk: disk, storage: storage)
-          task_upid = service.move_disk(server.node, server.vmid, config)
+          task_upid = service.move_disk(node, vmid, config)
           task_upid
         end
-        
+
         def attach(disk, options = {})
           options_to_s = Fog::Proxmox::Hash.stringify(options)
           config = { "#{disk[:id]}": "#{disk[:storage]}:#{disk[:size]},#{options_to_s}" }
@@ -160,7 +162,7 @@ module Fog
         def configs
           @configs ||= begin
             Fog::Compute::Proxmox::ServerConfigs.new(service: service,
-                                                 server: self)
+                                                     server: self)
           end
         end
       end

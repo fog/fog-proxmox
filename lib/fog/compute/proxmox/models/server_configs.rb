@@ -22,7 +22,7 @@ require 'fog/compute/proxmox/models/server_config'
 module Fog
   module Compute
     class Proxmox
-      # ServerConfigs collection  
+      # ServerConfigs collection
       class ServerConfigs < Fog::Proxmox::Collection
         model Fog::Compute::Proxmox::ServerConfig
         attribute :server
@@ -33,7 +33,7 @@ module Fog
         end
 
         def all
-          load_response(service.list_server_configs(server.node,server.vmid), 'server_configs')
+          load_response(service.list_server_configs(server.node, server.vmid), 'server_configs')
         end
 
         def get(key)
@@ -41,7 +41,6 @@ module Fog
           cached_config = find { |config| config.key == key }
           return cached_config if cached_config
         end
-
 
         def detach(key)
           config = get(key)
@@ -52,7 +51,6 @@ module Fog
           config = get(key)
           config.destroy
         end
-
       end
     end
   end

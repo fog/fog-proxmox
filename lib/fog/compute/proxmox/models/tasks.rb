@@ -38,6 +38,10 @@ module Fog
           load_response(service.list_tasks(node.node, options), 'tasks')
         end
 
+        def all
+          search
+        end
+
         def log(id)
           requires :node
           log = ''
@@ -48,15 +52,12 @@ module Fog
           log
         end
 
-        def find_by_id(id)
+        def get(id)
           requires :node
           status_details = service.status_task(node.node, id)
           task_hash = status_details.merge(log: log(id))
-          new(task_hash.merge(service: service, node: node))
-        end
-
-        def get(id)
-          find_by_id(id)
+          task_data = task_hash.merge(node: node, upid: id)
+          new(task_data)
         end
       end
     end

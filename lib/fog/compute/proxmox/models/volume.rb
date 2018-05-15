@@ -57,9 +57,8 @@ module Fog
 
         def restore(vmid, options = {})
           requires :node, :volid, :storage
-          service.create_server(node,options.merge(archive: volid, storage: storage, vmid: vmid))
+          service.create_server(node, options.merge(archive: volid, storage: storage, vmid: vmid))
         end
-
       end
     end
   end

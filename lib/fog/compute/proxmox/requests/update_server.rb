@@ -17,18 +17,21 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
+require 'fog/proxmox/json'
+
 module Fog
   module Compute
     class Proxmox
       # class Real update_server request
       class Real
         def update_server(node, vmid, config)
-          request(
+          response = request(
             expects: [200],
             method: 'POST',
             path: "nodes/#{node}/qemu/#{vmid}/config",
             body: URI.encode_www_form(config)
           )
+          Fog::Proxmox::Json.get_data(response)
         end
       end
 

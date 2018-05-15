@@ -78,44 +78,84 @@ server = compute.servers.get(node, vmid)
 # Add cdrom empty
 config_hash = { ide2: 'none,media=cdrom' }
 server.update(config_hash)
-# Add hdd
-config_hash = { virtio0: 'local-lvm:1,backup=no,replicate=0' }
-server.update(config_hash)
+# Attach a hdd
+virtio0 = { id: 'virtio0', storage: storage.storage, size: '1' }
+ide0 = { id: 'ide0', storage: storage.storage, size: '1' }
+options = { backup: 0, replicate: 0 }
+server.attach(virtio0, options)
+server.attach(ide0, options)
+# Resize disk server
+server.extend('virtio0','+1G')
+# Move disk server
+server.move('virtio0','local')
+# Detach a disk
+server.detach 'ide0'
+# Remove it
+server.detach 'unused0'
+# Detach another device
+server.detach 'ide2'
 # Add network interface
 config_hash = { net0: 'virtio,bridge=vmbr0' }
 server.update(config_hash)
 # Add start at boot, keyboard fr, linux 3.x os type, kvm hardware disabled (proxmox guest in virtualbox)
 config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26', kvm: 0 }
 server.update(config_hash)
+# List configs
+configs = server.configs.all
+# Get config
+config = server.configs.get 'net0'
+config.value
 # List all servers
 servers_all = compute.servers.all
 
 # Start server
 server.action('start')
-while server.status == 'stopped'
-  server = compute.servers.get(node, vmid)
-  sleep 1
-end
-server.ready?
+# Wait until task is complete
+server.wait_for { ready? }
 # Suspend server
 server.action('suspend')
-while server.qmpstatus == 'running'
-  server = compute.servers.get(node, vmid)
-  sleep 1
-end
+# Wait until task is complete
+server.wait_for { server.qmpstatus == 'paused' }
 # Resume server
 server.action('resume')
-while server.qmpstatus == 'paused'
-  server = compute.servers.get(node, vmid)
-  sleep 1
-end
+# Wait until task is complete
+server.wait_for { ready? }
 # Stop server
 server.action('stop')
-while server.status == 'running'
-  server = compute.servers.get(node, vmid)
-  sleep 1
-end
-# Delete
+# Wait until task is complete
+server.wait_for { server.status == 'stopped' }
+
+# Backup a server
+server.backup(compress: 'lzo')
+
+# Fetch backups
+storages = node.storages.list_by_content_type 'backup'
+storage = storages[0]
+volumes = storage.volumes.list_by_content_type_and_by_server('backup', vmid)
+volume = volumes[0]
+
+# Restore it
+server.restore volume
+
+# Delete a backup
+volume.destroy
+
+# Snapshot a server
+server.snapshots.create(name: 'snapshot1')
+
+# Fetch it
+snapshot = server.snapshots.get 'snapshot1'
+# Fetch all
+server.snapshots.all
+
+# Update snapshot
+snapshot.description 'Snapshot 1'
+snapshot.update
+
+# Delete snapshot
+snapshot.destroy
+
+# Delete server
 server.destroy
 
 # List 1 task

@@ -43,7 +43,7 @@ module Fog
         end
 
         def list_by_content_type(content)
-          search({ content: content })
+          search(content: content)
         end
 
         def find_by_id(id)

@@ -188,7 +188,7 @@ server.update({ net0: 'virtio,bridge=vmbr0' })
 Before attaching a hdd volume, you can first fetch available storages that could have images in this node:
 
 ```ruby
-storages = node.storages.list_store_images
+storages = node.storages.list_by_content_type 'images'
 storage = storages[0] # local-lvm
 ```
 
@@ -199,22 +199,34 @@ Four types of storage controllers emulated by Qemu are available:
 * **SCSI**: scsi[n], n in [0..13]
 * **VirtIO Block**: virtio[n], n in [0..15]
 
-The volume id is the type controller appended with an integer (n).
+The hdd id is the type controller appended with an integer (n).
 
 More details on complete configuration options can be find in [Proxmox VE API](https://pve.proxmox.com/wiki/Proxmox_VE_API).
 
-Then attach a hdd volume from this storage:
+Then attach a hdd from this storage:
 
 ```ruby
-volume = { id: 'virtio0', storage: storage.storage, size: '1' } # virtualIO block with 1Gb
+disk = { id: 'virtio0', storage: storage.storage, size: '1' } # virtualIO block with 1Gb
 options = { backup: 0, replicate: 0 } # nor backup, neither replication
-server.attach_volume(volume, options)
+server.attach(disk, options)
 ```
 
-Detach a volume
+Resize a disk:
 
 ```ruby
-server.detach_volume 'virtio0'
+server.extend('virtio0','+1G')
+```
+
+Move a disk
+
+```ruby
+server.move('virtio0','local')
+```
+
+Detach a disk
+
+```ruby
+server.detach 'virtio0'
 ```
 
 Actions on your server:
@@ -246,7 +258,7 @@ Delete server:
 server.destroy
 ```
 
-##### Backups management
+##### Backup and restore server
 
 You can backup all node's guests or just one guest.
 
@@ -260,6 +272,7 @@ server = node.servers.get vmid
 Then you can backup one server:
 
 ```ruby
+options = { compress: 'lzo'}
 server.backup options
 ```
 
@@ -267,6 +280,41 @@ or backup all servers on a node:
 
 ```ruby
 node.backup options
+```
+
+You can restore a server from a backup. Backups are called volumes.
+You fetch the backup first.
+You start by choosing a node:
+
+```ruby
+node = compute.nodes.get 'pve'
+```
+
+Then you fetch the backup storages and choose one:
+
+```ruby
+storages = node.storages.list_by_content_type 'backup'
+storage = storages[0] # local
+```
+
+Then you fetch the backup volumes of this server and choose one:
+
+```ruby
+volumes = storage.volumes.list_by_content_type_and_by_server('backup',server.vmid)
+backup = volumes[0] # local:backup/vzdump-qemu-100-2018_05_15-15_18_31.vma.lzo
+```
+
+Then you can restore it:
+
+```ruby
+options = { compress: 'lzo'}
+server.restore backup
+```
+
+You can delete it:
+
+```ruby
+backup.delete
 ```
 
 More details on complete backup `options` configuration hash can be find in [Backup and restore wiki page](https://pve.proxmox.com/wiki/Backup_and_Restore).
@@ -339,7 +387,7 @@ clone.destroy
 
 #### Tasks management
 
-Proxmox supports tasks management. A task enables to follow all asynchronous actions made in a node: VM creation, start, etc.
+Proxmox supports tasks management. A task enables to follow all asynchronous actions made in a node: VM creation, start, etc. Indeed, some of these tasks could be long to execute.
 
 You need first to get a node to manage its tasks:
 

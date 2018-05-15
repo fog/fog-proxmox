@@ -52,7 +52,7 @@ module Fog
         def volumes
           @volumes ||= begin
             Fog::Compute::Proxmox::Volumes.new(service: service,
-                                                 node: node, storage: self)
+                                               node: node, storage: self)
           end
         end
       end

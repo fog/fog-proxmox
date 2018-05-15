@@ -72,7 +72,7 @@ module Fog
         def storages
           @storages ||= begin
             Fog::Compute::Proxmox::Storages.new(service: service,
-                                               node: self)
+                                                node: self)
           end
         end
 

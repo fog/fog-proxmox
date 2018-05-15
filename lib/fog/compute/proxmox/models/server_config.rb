@@ -42,7 +42,6 @@ module Fog
           config = { delete: key }
           server.update config
         end
-        
       end
     end
   end

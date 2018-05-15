@@ -47,6 +47,11 @@ module Fog
         attribute :status_details
         attribute :log
 
+        def new(attributes = {})
+          requires :node
+          super({ node: node }.merge(attributes))
+        end
+
         def to_s
           upid
         end
@@ -62,6 +67,12 @@ module Fog
         def stop
           requires :node, :upid
           service.stop_task(node, upid)
+        end
+
+        def reload
+          requires :upid
+          object = collection.get(upid)
+          merge_attributes(object.attributes)
         end
       end
     end

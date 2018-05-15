@@ -23,7 +23,7 @@ module Fog
     class Proxmox
       # class Real list_volumes request
       class Real
-        def list_volumes(node,storage,options)
+        def list_volumes(node, storage, options)
           request(
             expects: [200],
             method: 'GET',

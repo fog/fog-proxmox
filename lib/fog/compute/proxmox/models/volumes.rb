@@ -40,15 +40,15 @@ module Fog
 
         def search(options = {})
           requires :node, :storage
-          load_response(service.list_volumes(node,storage,options), 'volumes')
+          load_response(service.list_volumes(node, storage, options), 'volumes')
         end
 
         def list_by_content_type(content)
-          search({ content: content })
+          search(content: content)
         end
 
-        def list_by_content_type_and_by_server(content,vmid)
-          search({ content: content, vmid: vmid })
+        def list_by_content_type_and_by_server(content, vmid)
+          search(content: content, vmid: vmid)
         end
 
         def get(id)

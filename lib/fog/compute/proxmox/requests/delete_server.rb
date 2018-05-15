@@ -18,18 +18,21 @@
 
 # frozen_string_literal: true
 
+require 'fog/proxmox/json'
+
 module Fog
   module Compute
     class Proxmox
       # class Real delete_server request
       class Real
         def delete_server(node, vmid, options)
-          request(
+          response = request(
             expects: [200],
             method: 'DELETE',
             path: "nodes/#{node}/qemu/#{vmid}",
             body: URI.encode_www_form(options)
           )
+          Fog::Proxmox::Json.get_data(response)
         end
       end
 
