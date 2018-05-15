@@ -34,6 +34,7 @@ module Fog
       # class Storage model
       class Storage < Fog::Proxmox::Model
         identity  :storage
+        attribute :node
         attribute :content
         attribute :type
         attribute :avail
@@ -42,14 +43,17 @@ module Fog
         attribute :shared
         attribute :active
         attribute :enabled
+        attribute :volumes
 
         def to_s
           storage
         end
 
-        def attach(vmid, options = {})
-          config = options.merge(vmid: vmid)
-          service.attach_storage(node, storage, config)
+        def volumes
+          @volumes ||= begin
+            Fog::Compute::Proxmox::Volumes.new(service: service,
+                                                 node: node, storage: self)
+          end
         end
       end
     end

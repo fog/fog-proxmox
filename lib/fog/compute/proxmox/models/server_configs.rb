@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,27 +17,42 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
-require 'fog/proxmox/json'
+require 'fog/compute/proxmox/models/server_config'
 
 module Fog
   module Compute
     class Proxmox
-      # class Real get_server collection
-      class Real
-        def get_server(node, vmid)
-          response = request(
-            expects: [200],
-            method: 'GET',
-            path: "nodes/#{node}/qemu/#{vmid}/status/current"
-          )
-          Fog::Proxmox::Json.get_data(response)
-        end
-      end
+      # ServerConfigs collection  
+      class ServerConfigs < Fog::Proxmox::Collection
+        model Fog::Compute::Proxmox::ServerConfig
+        attribute :server
 
-      # class Mock get_server collection
-      class Mock
+        def new(attributes = {})
+          requires :server
+          super({ server: server }.merge(attributes))
+        end
+
+        def all
+          load_response(service.list_server_configs(server.node,server.vmid), 'server_configs')
+        end
+
+        def get(key)
+          all
+          cached_config = find { |config| config.key == key }
+          return cached_config if cached_config
+        end
+
+
+        def detach(key)
+          config = get(key)
+          config.detach
+        end
+
+        def destroy(key)
+          config = get(key)
+          config.destroy
+        end
+
       end
     end
   end

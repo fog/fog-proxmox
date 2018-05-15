@@ -27,6 +27,7 @@ module Fog
       class Server < Fog::Compute::Server
         identity  :vmid
         attribute :node
+        attribute :configs
         attribute :id
         attribute :name
         attribute :type
@@ -66,21 +67,17 @@ module Fog
           task_upid
         end
 
+        def restore(backup,options = {})
+          requires :node, :vmid
+          config = options.merge(vmid: vmid, archive: backup.volid, storage: backup.storage, force: 1)
+          task_upid = service.create_server(node, config)
+          task_upid
+        end
+
         def update(config = {})
           requires :node, :vmid
           task_upid = service.update_server(node, vmid, config)
           task_upid
-        end
-
-        def attach_volume(volume, options = {})
-          options_to_s = Fog::Proxmox::Hash.stringify(options)
-          config = { "#{volume[:id]}": "#{volume[:storage]}:#{volume[:size]},#{options_to_s}" }
-          update(config)
-        end
-
-        def detach_volume(volume)
-          options = { delete: (volume[:id]).to_s }
-          update(options)
         end
 
         def destroy(options = {})
@@ -108,7 +105,7 @@ module Fog
 
         def backup(options = {})
           requires :vmid, :node
-          task_upid = service.backup(node, options.merge(vmid: vmid))
+          task_upid = service.create_backup(node, options.merge(vmid: vmid))
           task_upid
         end
 
@@ -130,9 +127,39 @@ module Fog
           task_upid
         end
 
+        def extend(disk, size, options = {})
+          config = options.merge(disk: disk, size: size)
+          task_upid = service.resize(server.node, server.vmid, config)
+          task_upid
+        end
+
+        def move(disk, storage, options = {})
+          config = options.merge(disk: disk, storage: storage)
+          task_upid = service.move_disk(server.node, server.vmid, config)
+          task_upid
+        end
+        
+        def attach(disk, options = {})
+          options_to_s = Fog::Proxmox::Hash.stringify(options)
+          config = { "#{disk[:id]}": "#{disk[:storage]}:#{disk[:size]},#{options_to_s}" }
+          update(config)
+        end
+
+        def detach(disk)
+          config = configs.get disk
+          config.destroy
+        end
+
         def snapshots
           @snapshots ||= begin
             Fog::Compute::Proxmox::Snapshots.new(service: service,
+                                                 server: self)
+          end
+        end
+
+        def configs
+          @configs ||= begin
+            Fog::Compute::Proxmox::ServerConfigs.new(service: service,
                                                  server: self)
           end
         end

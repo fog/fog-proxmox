@@ -21,21 +21,21 @@
 module Fog
   module Compute
     class Proxmox
-      # class Real attach_storage request
+      # class Real move_disk request
       class Real
-        def attach_storage(node, storage, options)
+        def move_disk(node, vmid, config)
           request(
             expects: [200],
             method: 'POST',
-            path: "nodes/#{node}/storage/#{storage}/content",
-            query: URI.encode_www_form(options)
+            path: "nodes/#{node}/qemu/#{vmid}/move_disk",
+            body: URI.encode_www_form(config)
           )
         end
       end
 
-      # class Mock get_storage request
+      # class Mock move_disk request
       class Mock
-        def attach_storage; end
+        def move_disk; end
       end
     end
   end

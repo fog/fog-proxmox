@@ -26,9 +26,29 @@ module Fog
       # class Volumes Collection of volumes
       class Volumes < Fog::Proxmox::Collection
         model Fog::Compute::Proxmox::Volume
+        attribute :node
+        attribute :storage
 
-        def all(_options = {})
-          load_response(service.list_volumes, 'volumes')
+        def new(attributes = {})
+          requires :node, :storage
+          super({ node: node, storage: storage }.merge(attributes))
+        end
+
+        def all
+          search
+        end
+
+        def search(options = {})
+          requires :node, :storage
+          load_response(service.list_volumes(node,storage,options), 'volumes')
+        end
+
+        def list_by_content_type(content)
+          search({ content: content })
+        end
+
+        def list_by_content_type_and_by_server(content,vmid)
+          search({ content: content, vmid: vmid })
         end
 
         def get(id)
@@ -38,7 +58,7 @@ module Fog
         end
 
         def destroy(id)
-          volume = find_by_id(id)
+          volume = get(id)
           volume.destroy
         end
       end

@@ -18,24 +18,25 @@
 
 # frozen_string_literal: true
 
+require 'fog/proxmox/json'
+
 module Fog
   module Compute
     class Proxmox
-      # class Real resize_volume request
+      # class Real get_server_status request
       class Real
-        def resize_volume(node, vmid, config)
-          request(
+        def get_server_status(node, vmid)
+          response = request(
             expects: [200],
-            method: 'PUT',
-            path: "nodes/#{node}/qemu/#{vmid}/resize",
-            body: URI.encode_www_form(config)
+            method: 'GET',
+            path: "nodes/#{node}/qemu/#{vmid}/status/current"
           )
+          Fog::Proxmox::Json.get_data(response)
         end
       end
 
-      # class Mock resize_volume request
+      # class Mock get_server_status request
       class Mock
-        def list_volumes; end
       end
     end
   end

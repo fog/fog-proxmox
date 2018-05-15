@@ -20,9 +20,9 @@
 module Fog
   module Compute
     class Proxmox
-      # class Real backup request
+      # class Real create_backup request
       class Real
-        def backup(node, options)
+        def create_backup(node, options)
           request(
             expects: [200],
             method: 'POST',
@@ -32,7 +32,7 @@ module Fog
         end
       end
 
-      # class Mock backup request
+      # class Mock create_backup request
       class Mock
       end
     end

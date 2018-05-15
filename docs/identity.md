@@ -351,4 +351,6 @@ pool1.remove_storage 'local-lvm '
 pool1.destroy
 ```
 
+### Examples
+
 More examples can be seen at [examples/identity.rb](examples/identity.rb) or [spec/identity_spec.rb](spec/identity_spec.rb).

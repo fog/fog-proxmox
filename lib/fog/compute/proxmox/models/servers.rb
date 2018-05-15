@@ -48,7 +48,7 @@ module Fog
 
         def get(vmid)
           requires :node
-          data = service.get_server(node.node, vmid)
+          data = service.get_server_status(node.node, vmid)
           server_data = data.merge(node: node, vmid: vmid)
           new(server_data)
         end

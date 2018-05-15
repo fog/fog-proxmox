@@ -33,52 +33,33 @@ module Fog
     class Proxmox
       # class Volume model
       class Volume < Fog::Proxmox::Model
-        identity  :id
-        attribute :status
-        attribute :disk
-        attribute :maxdisk
+        identity  :volid
+        attribute :content
+        attribute :size
+        attribute :format
+        attribute :node
         attribute :storage
-        attribute :server
 
         def new(attributes = {})
-          if server
-            super({ server: server }.merge!(attributes))
-          else
-            super
-          end
+          requires :node, :storage
+          super({ node: node, storage: storage }.merge(attributes))
         end
 
         def to_s
-          id
+          volid
         end
 
-        def attach(options = {})
-          requires :id, :node, :server
-          config = options.merge(disk: id)
-          task_upid = service.update_server(node, server.vmid, config)
+        def destroy
+          requires :node, :volid, :storage
+          task_upid = service.delete_volume(node, storage, volid)
           task_upid
         end
 
-        def detach
-          requires :id, :node, :server
-          config = { delete: id }
-          task_upid = service.update_server(node, server.vmid, config)
-          task_upid
+        def restore(vmid, options = {})
+          requires :node, :volid, :storage
+          service.create_server(node,options.merge(archive: volid, storage: storage, vmid: vmid))
         end
 
-        def resize(size, options = {})
-          requires :id, :node, :server
-          config = options.merge(disk: id, size: size)
-          task_upid = service.resize_volume(server.node, server.vmid, config)
-          task_upid
-        end
-
-        def move(storage, options = {})
-          requires :id, :node, :server
-          config = options.merge(disk: id, storage: storage)
-          task_upid = service.move_volume(server.node, server.vmid, config)
-          task_upid
-        end
       end
     end
   end

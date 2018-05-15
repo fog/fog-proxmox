@@ -21,21 +21,21 @@
 module Fog
   module Compute
     class Proxmox
-      # class Real list_volumes request
+      # class Real upload_image request
       class Real
-        def list_volumes(node,storage,options)
+        def upload_image(node, storage, options)
           request(
             expects: [200],
-            method: 'GET',
-            path: "/nodes/#{node}/storage/#{storage}/content",
+            method: 'POST',
+            path: "nodes/#{node}/storage/#{storage}/upload",
             query: URI.encode_www_form(options)
           )
         end
       end
 
-      # class Mock list_volumes request
+      # class Mock upload_image request
       class Mock
-        def list_volumes; end
+        def upload_image; end
       end
     end
   end

@@ -34,8 +34,8 @@ module Fog
       collection :nodes
       model :server
       collection :servers
-      model :image
-      collection :images
+      model :server_config
+      collection :server_configs
       model :volume
       collection :volumes
       model :storage
@@ -51,37 +51,36 @@ module Fog
       # Manage nodes cluster
       request :list_nodes
       request :get_node
-
       # Manage servers
       request :next_vmid
       request :check_vmid
       request :list_servers
       request :create_server
-      request :get_server
+      request :get_server_status
+      request :list_server_configs
       request :update_server
       request :delete_server
       request :action_server
-      request :backup
       request :template_server
       request :clone_server
       request :migrate_server
+      request :move_disk
+      request :resize
       # Manage volumes
       request :list_volumes
-      request :resize_volume
-      request :move_volume
       request :get_volume
       request :delete_volume
+      # Manage backups
+      request :create_backup
       # Manage storages
       request :list_storages
       request :get_storage
-      request :attach_storage
       # Tasks
       request :list_tasks
       request :get_task
       request :stop_task
       request :status_task
       request :log_task
-
       # CRUD snapshots
       request :list_snapshots
       request :get_snapshot
@@ -89,6 +88,8 @@ module Fog
       request :update_snapshot
       request :delete_snapshot
       request :rollback_snapshot
+      # Manage images
+      request :upload_image
 
       # Mock class
       class Mock

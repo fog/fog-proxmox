@@ -49,6 +49,7 @@ module Fog
         attribute :swap
         attribute :servers
         attribute :tasks
+        attribute :storages
 
         def to_s
           node
@@ -66,6 +67,18 @@ module Fog
             Fog::Compute::Proxmox::Servers.new(service: service,
                                                node: self)
           end
+        end
+
+        def storages
+          @storages ||= begin
+            Fog::Compute::Proxmox::Storages.new(service: service,
+                                               node: self)
+          end
+        end
+
+        def backup(options = {})
+          task_upid = service.backup(node, options)
+          task_upid
         end
       end
     end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,26 +17,32 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
 module Fog
   module Compute
     class Proxmox
-      # class Real move_volume request
-      class Real
-        def move_volume(node, vmid, config)
-          request(
-            expects: [200],
-            method: 'POST',
-            path: "nodes/#{node}/qemu/#{vmid}/move_disk",
-            body: URI.encode_www_form(config)
-          )
-        end
-      end
+      # ServerConfig model
+      class ServerConfig < Fog::Proxmox::Model
+        identity  :key
+        attribute :value
+        attribute :server
 
-      # class Mock move_volume request
-      class Mock
-        def list_volumes; end
+        def initialize(attributes = {})
+          prepare_service_value(attributes)
+          super
+        end
+
+        def update
+          requires :server
+          config = { key => value }
+          server.update config
+        end
+
+        def destroy
+          requires :server
+          config = { delete: key }
+          server.update config
+        end
+        
       end
     end
   end

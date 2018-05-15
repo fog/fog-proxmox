@@ -185,19 +185,19 @@ server.update({ net0: 'virtio,bridge=vmbr0' })
 
 ##### Volumes server management
 
-Before attaching a hdd volume, you can first fetch available storages in this node:
+Before attaching a hdd volume, you can first fetch available storages that could have images in this node:
 
 ```ruby
-storages = node.storages.all
-storage = storages[0]
+storages = node.storages.list_store_images
+storage = storages[0] # local-lvm
 ```
 
 Four types of storage controllers emulated by Qemu are available:
 
-* IDE: ide[n], n in 0..3
-* SATA: sata[n], n in 0..5
-* SCSI: scsi[n], n in 0..13
-* VirtIO Block: virtio[n], n in 0..15
+* **IDE**: ide[n], n in [0..3]
+* **SATA**: sata[n], n in [0..5]
+* **SCSI**: scsi[n], n in [0..13]
+* **VirtIO Block**: virtio[n], n in [0..15]
 
 The volume id is the type controller appended with an integer (n).
 
@@ -245,6 +245,31 @@ Delete server:
 ```ruby
 server.destroy
 ```
+
+##### Backups management
+
+You can backup all node's guests or just one guest.
+
+You need first to get a node or a server to manage its backups:
+
+```ruby
+node = compute.nodes.get 'pve'
+server = node.servers.get vmid
+```
+
+Then you can backup one server:
+
+```ruby
+server.backup options
+```
+
+or backup all servers on a node:
+
+```ruby
+node.backup options
+```
+
+More details on complete backup `options` configuration hash can be find in [Backup and restore wiki page](https://pve.proxmox.com/wiki/Backup_and_Restore).
 
 ##### Snapshots server management
 
@@ -341,5 +366,7 @@ Stop a task:
 ```ruby
 task.stop
 ```
+
+### Examples
 
 More examples can be seen at [examples/compute.rb](examples/compute.rb) or [spec/compute_spec.rb](spec/compute_spec.rb).

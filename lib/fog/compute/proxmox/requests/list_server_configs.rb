@@ -7,14 +7,6 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# Copyright 2018 Tristan Robert
-
-# This file is part of Fog::Proxmox.
-
-# Fog::Proxmox is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
 
 # Fog::Proxmox is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -26,26 +18,22 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Compute
     class Proxmox
-      # class Image model
-      class Image < Fog::Proxmox::Model
-        identity  :id
-        attribute :content
-        attribute :type
-        attribute :avail
-        attribute :total
-        attribute :used
-        attribute :shared
-        attribute :active
-        attribute :enabled
-
-        def to_s
-          id
+      # class Real list_server_configs request
+      class Real
+        def list_server_configs(node, vmid)
+          request(
+            expects: [200],
+            method: 'GET',
+            path: "nodes/#{node}/qemu/#{vmid}/pending"
+          )
         end
+      end
+
+      # class Mock list_server_configs request
+      class Mock
       end
     end
   end

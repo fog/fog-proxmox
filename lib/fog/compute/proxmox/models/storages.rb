@@ -26,18 +26,24 @@ module Fog
       # class Storages Collection of storages
       class Storages < Fog::Proxmox::Collection
         model Fog::Compute::Proxmox::Storage
+        attribute :node
+
+        def new(attributes = {})
+          requires :node
+          super({ node: node }.merge(attributes))
+        end
 
         def all
           search
         end
 
-        def search(node, options = {})
+        def search(options = {})
+          requires :node
           load_response(service.list_storages(node, options), 'storages')
         end
 
-        def list_store_images(node)
-          options = { content: 'images' }
-          load_response(service.list_storages(node, options), 'storages')
+        def list_by_content_type(content)
+          search({ content: content })
         end
 
         def find_by_id(id)
