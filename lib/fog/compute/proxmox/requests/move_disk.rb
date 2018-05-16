@@ -18,18 +18,21 @@
 
 # frozen_string_literal: true
 
+require 'fog/proxmox/json'
+
 module Fog
   module Compute
     class Proxmox
       # class Real move_disk request
       class Real
         def move_disk(node, vmid, config)
-          request(
+          response = request(
             expects: [200],
             method: 'POST',
             path: "nodes/#{node}/qemu/#{vmid}/move_disk",
             body: URI.encode_www_form(config)
           )
+          Fog::Proxmox::Json.get_data(response)
         end
       end
 

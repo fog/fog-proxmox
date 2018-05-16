@@ -64,33 +64,33 @@ module Fog
           requires :node
           config.store(:vmid, vmid)
           task_upid = service.create_server(node, config)
-          task_upid
+          task_wait_for(task_upid)
         end
 
         def restore(backup, options = {})
           requires :node, :vmid
           config = options.merge(vmid: vmid, archive: backup.volid, storage: backup.storage, force: 1)
           task_upid = service.create_server(node, config)
-          task_upid
+          task_wait_for(task_upid)
         end
 
         def update(config = {})
           requires :node, :vmid
           task_upid = service.update_server(node, vmid, config)
-          task_upid
+          task_wait_for(task_upid)
         end
 
         def destroy(options = {})
           requires :vmid, :node
           task_upid = service.delete_server(node, vmid, options)
-          task_upid
+          task_wait_for(task_upid)
         end
 
         def action(action, options = {})
           requires :vmid, :node
           raise Fog::Errors::Error, "Action #{action} not implemented" unless %w[start stop resume suspend shutdown reset].include? action
           task_upid = service.action_server(action, node, vmid, options)
-          task_upid
+          task_wait_for(task_upid)
         end
 
         def ready?
@@ -106,39 +106,38 @@ module Fog
         def backup(options = {})
           requires :vmid, :node
           task_upid = service.create_backup(node, options.merge(vmid: vmid))
-          task_upid
+          task_wait_for(task_upid)
         end
 
         def clone(newid, options = {})
           requires :vmid, :node
           task_upid = service.clone_server(node, vmid, options.merge(newid: newid))
-          task_upid
+          task_wait_for(task_upid)
         end
 
         def template(options = {})
           requires :vmid, :node
           task_upid = service.template_server(node, vmid, options)
-          task_upid
+          task_wait_for(task_upid)
         end
 
         def migrate(target, options = {})
           requires :vmid, :node
           task_upid = service.migrate_server(node, vmid, options.merge(target: target))
-          task_upid
+          task_wait_for(task_upid)
         end
 
         def extend(disk, size, options = {})
           requires :vmid, :node
           config = options.merge(disk: disk, size: size)
-          task_upid = service.resize(node, vmid, config)
-          task_upid
+          service.resize(node, vmid, config)
         end
 
         def move(disk, storage, options = {})
           requires :vmid, :node
           config = options.merge(disk: disk, storage: storage)
           task_upid = service.move_disk(node, vmid, config)
-          task_upid
+          task_wait_for(task_upid)
         end
 
         def attach(disk, options = {})
@@ -179,6 +178,15 @@ module Fog
           volumes = []
           storages.each { |storage| volumes += storage.volumes.list_by_content_type_and_by_server(content, vmid) }
           volumes
+        end
+
+        def tasks
+          node.tasks.search(vmid: vmid)
+        end
+
+        def task_wait_for(task_upid)
+          task = tasks.get task_upid
+          task.wait_for { succeeded? }
         end
       end
     end

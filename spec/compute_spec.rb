@@ -68,9 +68,7 @@ describe Fog::Compute::Proxmox do
       valid = @service.servers.id_valid? 99
       valid.must_equal false
       # Create 1st time
-      taskid = node.servers.create(server_hash)
-      task = node.tasks.find_by_id taskid
-      task.wait_for { succeeded? }
+      node.servers.create(server_hash)
       # Check already used vmid
       valid = node.servers.id_valid? vmid
       valid.must_equal false
@@ -80,23 +78,17 @@ describe Fog::Compute::Proxmox do
       server = node.servers.get vmid
       server.wont_be_nil
       # Backup it
-      taskid = server.backup(compress: 'lzo')
-      task = node.tasks.get taskid
-      task.wait_for { succeeded? }
+      server.backup(compress: 'lzo')
       # Get this backup image
       # Find available backup storages
       volume = server.backups.first
       volume.wont_be_nil
       # Restore it
-      taskid = server.restore volume
-      task = node.tasks.get taskid
-      task.wait_for { succeeded? }
+      server.restore volume
       # Delete it
       volume.destroy
       # Clone it
-      taskid = server.clone newid
-      task = node.tasks.get taskid
-      task.wait_for { succeeded? }
+      server.clone newid
       # Get clone
       clone = node.servers.get newid
       # Delete clone
@@ -119,18 +111,10 @@ describe Fog::Compute::Proxmox do
       virtio0 = { id: 'virtio0', storage: storage.storage, size: '1' }
       ide0 = { id: 'ide0', storage: storage.storage, size: '1' }
       options = { backup: 0, replicate: 0 }
-      taskid = server.attach(virtio0, options)
-      task = node.tasks.find_by_id taskid
-      task.wait_for { succeeded? }
-      taskid = server.attach(ide0, options)
-      task = node.tasks.find_by_id taskid
-      task.wait_for { succeeded? }
-      taskid = server.detach('ide0')
-      task = node.tasks.find_by_id taskid
-      task.wait_for { succeeded? }
-      taskid = server.detach('unused0')
-      task = node.tasks.find_by_id taskid
-      task.wait_for { succeeded? }
+      server.attach(virtio0, options)
+      server.attach(ide0, options)
+      server.detach('ide0')
+      server.detach('unused0')
       sleep 1
       # Get server disk images
       disk_image = server.disk_images.first
@@ -184,9 +168,7 @@ describe Fog::Compute::Proxmox do
         server.action('hello')
       end.must_raise Fog::Errors::Error
       # Delete
-      taskid = server.destroy
-      task = node.tasks.find_by_id taskid
-      task.wait_for { succeeded? }
+      server.destroy
       proc do
         node.servers.get vmid
       end.must_raise Excon::Errors::InternalServerError
