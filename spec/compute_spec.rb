@@ -87,10 +87,27 @@ describe Fog::Compute::Proxmox do
       server.restore volume
       # Delete it
       volume.destroy
-      # Clone it
-      server.clone newid
+      # Add hdd
+      # Find available storages to images
+      storages = node.storages.list_by_content_type 'images'
+      storage = storages[0]
+      virtio0 = { id: 'virtio0', storage: storage.storage, size: '1' }
+      ide0 = { id: 'ide0', storage: storage.storage, size: '1' }
+      options = { backup: 0, replicate: 0 }
+      server.attach(virtio0, options)
+      server.attach(ide0, options)
+      server.detach('ide0')
+      server.detach('unused0')
+      sleep 1
+      # Clone it (linked fails)
+      server.clone(newid, full: 1)
       # Get clone
       clone = node.servers.get newid
+      # Template this clone (read-only)
+      clone.template
+      # Get clone disk images
+      disk_image = clone.disk_images.first
+      disk_image.wont_be_nil
       # Delete clone
       clone.destroy
       proc do
@@ -104,21 +121,6 @@ describe Fog::Compute::Proxmox do
       # Add cdrom empty
       config_hash = { ide2: 'none,media=cdrom' }
       server.update(config_hash)
-      # Add hdd
-      # Find available storages to images
-      storages = node.storages.list_by_content_type 'images'
-      storage = storages[0]
-      virtio0 = { id: 'virtio0', storage: storage.storage, size: '1' }
-      ide0 = { id: 'ide0', storage: storage.storage, size: '1' }
-      options = { backup: 0, replicate: 0 }
-      server.attach(virtio0, options)
-      server.attach(ide0, options)
-      server.detach('ide0')
-      server.detach('unused0')
-      sleep 1
-      # Get server disk images
-      disk_image = server.disk_images.first
-      disk_image.wont_be_nil
       # Resize disk server
       server.extend('virtio0', '+1G')
       # Move disk server
@@ -201,7 +203,7 @@ describe Fog::Compute::Proxmox do
       # Delete
       taskid = snapshot.destroy
       task = node.tasks.find_by_id taskid
-      task.wait_for { succeeded? }
+      task.wait_for { finished? }
       server.destroy
     end
   end

@@ -117,8 +117,7 @@ module Fog
 
         def template(options = {})
           requires :vmid, :node
-          task_upid = service.template_server(node, vmid, options)
-          task_wait_for(task_upid)
+          service.template_server(node, vmid, options)
         end
 
         def migrate(target, options = {})
@@ -186,7 +185,7 @@ module Fog
 
         def task_wait_for(task_upid)
           task = tasks.get task_upid
-          task.wait_for { succeeded? }
+          task.wait_for { finished? }
         end
       end
     end
