@@ -17,6 +17,7 @@ dependency_scanning:
 
 rubocop:
   script:
+    - bundle install --binstubs
     - rubocop
 
 test-ruby-2.3.7:
