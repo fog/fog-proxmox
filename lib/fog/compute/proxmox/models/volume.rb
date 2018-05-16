@@ -39,6 +39,7 @@ module Fog
         attribute :format
         attribute :node
         attribute :storage
+        attribute :vmid
 
         def new(attributes = {})
           requires :node, :storage

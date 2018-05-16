@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/101/status/current
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:0000146C:0003E479:5AF93F0A:qmdelsnapshot:100:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF032::dFhwlqOhg9Aw/calmJjCWUdGKmCf3tsGUdQtSmqrO15M1FTjtXz5HDEbp+Y7rk23HlNJzRb77Sz5Bm2hoRg3zpVUgYRGzU/gEOdW5Rf+3e3pqnt3fnLbw5VIB2mnEjTlLwLWGB3za3MkQZpcJRCfqMRYaFpP4pSpJa/Xh1BguMZHGR1b+xani6/NQR2xuzCb7h8HVLrxDHwXMGGVCYbUgBNtyLg6B7MEXPK1KRn2DWJIoptmTAqbxooOoREAt4IsUAC8+2mbaXAc1MKvue1VUpd1rPYP8nm84DZYFNzbgpziblPDncxQCxBJR6ygVoIgmVbCX2J+HaYkzMZwesSOOw==
+      - PVEAuthCookie=PVE:root@pam:5AF93F0A::Pv37ecuY2ZDshdU4Q70nvANLDbn9Y0LkS8EJKO49KlUufas9/4YsIURdEmXINyNu3XkvIzC2F1CUwcgs8jbhIy2wl/isqA/ioJ3xNZQelI+/QdIitFkepQlMR7DbVM1o0vFiAExFzhp68S9Mjr88zzLspZX8SuLTQ4h6DL99nF8GLggXoyAhsZhsmtaWgfrAjqb98lvih6owrF8Ts/bBgaQH8nk9SgaF/xFvKsyDmR4Z5tg3kBP52O2Fs0KJhPlnyZV/laxWkz7xQP3jQPZAidDwzSlKf88gL6FLng2HtTRcMiaoOa8STfOK3CZYTYtlGGcK9cS5QenNmUVVZe6PJg==
   response:
     status:
       code: 200
@@ -23,7 +23,1099 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Mon, 14 May 2018 07:47:22 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '235'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:47:22 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"type":"qmdelsnapshot","pid":5228,"user":"root@pam","id":"100","node":"pve","status":"stopped","starttime":1526284042,"upid":"UPID:pve:0000146C:0003E479:5AF93F0A:qmdelsnapshot:100:root@pam:","pstart":255097,"exitstatus":"OK"}}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:47:25 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:0000146C:0003E479:5AF93F0A:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF93F0A::Pv37ecuY2ZDshdU4Q70nvANLDbn9Y0LkS8EJKO49KlUufas9/4YsIURdEmXINyNu3XkvIzC2F1CUwcgs8jbhIy2wl/isqA/ioJ3xNZQelI+/QdIitFkepQlMR7DbVM1o0vFiAExFzhp68S9Mjr88zzLspZX8SuLTQ4h6DL99nF8GLggXoyAhsZhsmtaWgfrAjqb98lvih6owrF8Ts/bBgaQH8nk9SgaF/xFvKsyDmR4Z5tg3kBP52O2Fs0KJhPlnyZV/laxWkz7xQP3jQPZAidDwzSlKf88gL6FLng2HtTRcMiaoOa8STfOK3CZYTYtlGGcK9cS5QenNmUVVZe6PJg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:47:22 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:47:22 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"n":1,"t":"TASK OK"}]}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:47:25 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:0000146C:0003E479:5AF93F0A:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF93F0A::Pv37ecuY2ZDshdU4Q70nvANLDbn9Y0LkS8EJKO49KlUufas9/4YsIURdEmXINyNu3XkvIzC2F1CUwcgs8jbhIy2wl/isqA/ioJ3xNZQelI+/QdIitFkepQlMR7DbVM1o0vFiAExFzhp68S9Mjr88zzLspZX8SuLTQ4h6DL99nF8GLggXoyAhsZhsmtaWgfrAjqb98lvih6owrF8Ts/bBgaQH8nk9SgaF/xFvKsyDmR4Z5tg3kBP52O2Fs0KJhPlnyZV/laxWkz7xQP3jQPZAidDwzSlKf88gL6FLng2HtTRcMiaoOa8STfOK3CZYTYtlGGcK9cS5QenNmUVVZe6PJg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:47:22 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '235'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:47:22 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"user":"root@pam","id":"100","node":"pve","pid":5228,"type":"qmdelsnapshot","starttime":1526284042,"status":"stopped","exitstatus":"OK","pstart":255097,"upid":"UPID:pve:0000146C:0003E479:5AF93F0A:qmdelsnapshot:100:root@pam:"}}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:47:25 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:0000146C:0003E479:5AF93F0A:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF93F0A::Pv37ecuY2ZDshdU4Q70nvANLDbn9Y0LkS8EJKO49KlUufas9/4YsIURdEmXINyNu3XkvIzC2F1CUwcgs8jbhIy2wl/isqA/ioJ3xNZQelI+/QdIitFkepQlMR7DbVM1o0vFiAExFzhp68S9Mjr88zzLspZX8SuLTQ4h6DL99nF8GLggXoyAhsZhsmtaWgfrAjqb98lvih6owrF8Ts/bBgaQH8nk9SgaF/xFvKsyDmR4Z5tg3kBP52O2Fs0KJhPlnyZV/laxWkz7xQP3jQPZAidDwzSlKf88gL6FLng2HtTRcMiaoOa8STfOK3CZYTYtlGGcK9cS5QenNmUVVZe6PJg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:47:22 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:47:22 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"n":1,"t":"TASK OK"}]}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:47:25 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000015B0:0003FC44:5AF93F47:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF93F47::QKtcKf10APHFwNeU3IBoCW7CKqTRsRzcfkX4iEPYG0XLym0BGoboPucuqZD2lWnOH/CF5ogTomM+qB16OAx6FzaDUigV6rKdoJVgAB9RsioykqrKm9IeXkPVMwf+CoDoYOGpJ639CRN4+JjBG+hb1ykFWSjQYsbCioPwKiYzW8m+86K8SmOOi2yWhL5ACeKkyvxJrbX4U8YBTL3PwTJKnFf859g/E+IH0LXvhcSKo4DFxY9FmsnSdtW0WT0dcRsbJ21QvVm/DYuhKVEag0DMLEZ4WYUTNbv5mTItyepcTXw5X4bJpqzT8ADdmJgidwauHbDfhIkstx3yIm6feUxRiA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:48:23 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '235'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:48:23 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"upid":"UPID:pve:000015B0:0003FC44:5AF93F47:qmdelsnapshot:100:root@pam:","pstart":261188,"exitstatus":"OK","pid":5552,"type":"qmdelsnapshot","id":"100","node":"pve","user":"root@pam","status":"stopped","starttime":1526284103}}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:48:26 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000015B0:0003FC44:5AF93F47:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF93F47::QKtcKf10APHFwNeU3IBoCW7CKqTRsRzcfkX4iEPYG0XLym0BGoboPucuqZD2lWnOH/CF5ogTomM+qB16OAx6FzaDUigV6rKdoJVgAB9RsioykqrKm9IeXkPVMwf+CoDoYOGpJ639CRN4+JjBG+hb1ykFWSjQYsbCioPwKiYzW8m+86K8SmOOi2yWhL5ACeKkyvxJrbX4U8YBTL3PwTJKnFf859g/E+IH0LXvhcSKo4DFxY9FmsnSdtW0WT0dcRsbJ21QvVm/DYuhKVEag0DMLEZ4WYUTNbv5mTItyepcTXw5X4bJpqzT8ADdmJgidwauHbDfhIkstx3yIm6feUxRiA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:48:23 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:48:23 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"n":1,"t":"TASK OK"}]}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:48:26 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000015B0:0003FC44:5AF93F47:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF93F47::QKtcKf10APHFwNeU3IBoCW7CKqTRsRzcfkX4iEPYG0XLym0BGoboPucuqZD2lWnOH/CF5ogTomM+qB16OAx6FzaDUigV6rKdoJVgAB9RsioykqrKm9IeXkPVMwf+CoDoYOGpJ639CRN4+JjBG+hb1ykFWSjQYsbCioPwKiYzW8m+86K8SmOOi2yWhL5ACeKkyvxJrbX4U8YBTL3PwTJKnFf859g/E+IH0LXvhcSKo4DFxY9FmsnSdtW0WT0dcRsbJ21QvVm/DYuhKVEag0DMLEZ4WYUTNbv5mTItyepcTXw5X4bJpqzT8ADdmJgidwauHbDfhIkstx3yIm6feUxRiA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:48:23 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '235'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:48:23 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"status":"stopped","starttime":1526284103,"type":"qmdelsnapshot","pid":5552,"id":"100","user":"root@pam","node":"pve","upid":"UPID:pve:000015B0:0003FC44:5AF93F47:qmdelsnapshot:100:root@pam:","exitstatus":"OK","pstart":261188}}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:48:26 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000015B0:0003FC44:5AF93F47:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF93F47::QKtcKf10APHFwNeU3IBoCW7CKqTRsRzcfkX4iEPYG0XLym0BGoboPucuqZD2lWnOH/CF5ogTomM+qB16OAx6FzaDUigV6rKdoJVgAB9RsioykqrKm9IeXkPVMwf+CoDoYOGpJ639CRN4+JjBG+hb1ykFWSjQYsbCioPwKiYzW8m+86K8SmOOi2yWhL5ACeKkyvxJrbX4U8YBTL3PwTJKnFf859g/E+IH0LXvhcSKo4DFxY9FmsnSdtW0WT0dcRsbJ21QvVm/DYuhKVEag0DMLEZ4WYUTNbv5mTItyepcTXw5X4bJpqzT8ADdmJgidwauHbDfhIkstx3yIm6feUxRiA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:48:23 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:48:23 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"n":1,"t":"TASK OK"}]}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:48:26 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000016B9:000427E8:5AF93FB7:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF93FB7::HdSs2cCFnF7XWTO/QvBUVkDY0CVNstniFcsq7VmNLU0Glybjv4OMrHLwGMGa9Vwq92IzWc8T4Hkw8Vs3+yBCsFPxVzQOBRxqRWq86IlD+IF+cVp2aIoQFOQP+UkIlC0GDEgCjhDtGAOix/JsIB2MZgGlQQGXGCg+7B+L7X/DC/U04ETjcC1oWPqM2IDPUsNR0ufl/i6dk+dC/2nT+9Tn62Q+hTjut34j1EE9c4wdkk4dzLaHs1nrBTpjqWcojc1noyl3dfPtK+5zNSfsOEb0+4p8uTuOqTWV3SCEukojrtbZ7tjmgI8jEhVHxOepF+ToLyBSF/sPphlvMakwnbROfQ==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:50:15 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '235'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:50:15 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"starttime":1526284215,"status":"stopped","node":"pve","user":"root@pam","id":"100","type":"qmdelsnapshot","pid":5817,"pstart":272360,"exitstatus":"OK","upid":"UPID:pve:000016B9:000427E8:5AF93FB7:qmdelsnapshot:100:root@pam:"}}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:50:17 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000016B9:000427E8:5AF93FB7:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF93FB7::HdSs2cCFnF7XWTO/QvBUVkDY0CVNstniFcsq7VmNLU0Glybjv4OMrHLwGMGa9Vwq92IzWc8T4Hkw8Vs3+yBCsFPxVzQOBRxqRWq86IlD+IF+cVp2aIoQFOQP+UkIlC0GDEgCjhDtGAOix/JsIB2MZgGlQQGXGCg+7B+L7X/DC/U04ETjcC1oWPqM2IDPUsNR0ufl/i6dk+dC/2nT+9Tn62Q+hTjut34j1EE9c4wdkk4dzLaHs1nrBTpjqWcojc1noyl3dfPtK+5zNSfsOEb0+4p8uTuOqTWV3SCEukojrtbZ7tjmgI8jEhVHxOepF+ToLyBSF/sPphlvMakwnbROfQ==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:50:15 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:50:15 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"n":1,"t":"TASK OK"}],"total":1}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:50:17 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000016B9:000427E8:5AF93FB7:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF93FB7::HdSs2cCFnF7XWTO/QvBUVkDY0CVNstniFcsq7VmNLU0Glybjv4OMrHLwGMGa9Vwq92IzWc8T4Hkw8Vs3+yBCsFPxVzQOBRxqRWq86IlD+IF+cVp2aIoQFOQP+UkIlC0GDEgCjhDtGAOix/JsIB2MZgGlQQGXGCg+7B+L7X/DC/U04ETjcC1oWPqM2IDPUsNR0ufl/i6dk+dC/2nT+9Tn62Q+hTjut34j1EE9c4wdkk4dzLaHs1nrBTpjqWcojc1noyl3dfPtK+5zNSfsOEb0+4p8uTuOqTWV3SCEukojrtbZ7tjmgI8jEhVHxOepF+ToLyBSF/sPphlvMakwnbROfQ==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:50:15 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '235'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:50:15 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"node":"pve","user":"root@pam","id":"100","type":"qmdelsnapshot","pid":5817,"starttime":1526284215,"status":"stopped","exitstatus":"OK","pstart":272360,"upid":"UPID:pve:000016B9:000427E8:5AF93FB7:qmdelsnapshot:100:root@pam:"}}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:50:17 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000016B9:000427E8:5AF93FB7:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF93FB7::HdSs2cCFnF7XWTO/QvBUVkDY0CVNstniFcsq7VmNLU0Glybjv4OMrHLwGMGa9Vwq92IzWc8T4Hkw8Vs3+yBCsFPxVzQOBRxqRWq86IlD+IF+cVp2aIoQFOQP+UkIlC0GDEgCjhDtGAOix/JsIB2MZgGlQQGXGCg+7B+L7X/DC/U04ETjcC1oWPqM2IDPUsNR0ufl/i6dk+dC/2nT+9Tn62Q+hTjut34j1EE9c4wdkk4dzLaHs1nrBTpjqWcojc1noyl3dfPtK+5zNSfsOEb0+4p8uTuOqTWV3SCEukojrtbZ7tjmgI8jEhVHxOepF+ToLyBSF/sPphlvMakwnbROfQ==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:50:15 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:50:15 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"t":"TASK OK","n":1}],"total":1}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:50:17 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:0000189B:00049661:5AF940D2:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF940D2::lh9btjvkPqI0xOYz+h0gD/k3YCZT1t3ODpDtNwXuOXuXIVfVqasHi0Bnc0H9W8vF0mgps3NOeyvt0mUtsVJYK1VxVn59uATEkK0LK95VQmeuoOyDxUnIl/Rc4cb57kb3iSPU4/53NaFjQO4LDi7B+/GgWUfNi0DMZbbtZfK/oUoXy3eDpmJ0GpNERz3NLZ0uopk2XitbzjO9tWu6OFcC9P37NTE0mYskENuM0ws3REr66PSt2/uUB/IUQ+4LhSY4lIK5hj9d/2RjxAqUqPLTbpT4zDMBpZvYbwfN6mjvZ8Pw2e2DAjXUSLYYhrNkSwJWbVB1OxFYRlu6MnaSNr7t6Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:54:58 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '217'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:54:58 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"status":"running","starttime":1526284498,"type":"qmdelsnapshot","pid":6299,"node":"pve","id":"100","user":"root@pam","upid":"UPID:pve:0000189B:00049661:5AF940D2:qmdelsnapshot:100:root@pam:","pstart":300641}}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:55:00 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:0000189B:00049661:5AF940D2:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF940D2::lh9btjvkPqI0xOYz+h0gD/k3YCZT1t3ODpDtNwXuOXuXIVfVqasHi0Bnc0H9W8vF0mgps3NOeyvt0mUtsVJYK1VxVn59uATEkK0LK95VQmeuoOyDxUnIl/Rc4cb57kb3iSPU4/53NaFjQO4LDi7B+/GgWUfNi0DMZbbtZfK/oUoXy3eDpmJ0GpNERz3NLZ0uopk2XitbzjO9tWu6OFcC9P37NTE0mYskENuM0ws3REr66PSt2/uUB/IUQ+4LhSY4lIK5hj9d/2RjxAqUqPLTbpT4zDMBpZvYbwfN6mjvZ8Pw2e2DAjXUSLYYhrNkSwJWbVB1OxFYRlu6MnaSNr7t6Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:54:58 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:54:58 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"n":1,"t":"TASK OK"}]}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:55:00 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:0000189B:00049661:5AF940D2:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF940D2::lh9btjvkPqI0xOYz+h0gD/k3YCZT1t3ODpDtNwXuOXuXIVfVqasHi0Bnc0H9W8vF0mgps3NOeyvt0mUtsVJYK1VxVn59uATEkK0LK95VQmeuoOyDxUnIl/Rc4cb57kb3iSPU4/53NaFjQO4LDi7B+/GgWUfNi0DMZbbtZfK/oUoXy3eDpmJ0GpNERz3NLZ0uopk2XitbzjO9tWu6OFcC9P37NTE0mYskENuM0ws3REr66PSt2/uUB/IUQ+4LhSY4lIK5hj9d/2RjxAqUqPLTbpT4zDMBpZvYbwfN6mjvZ8Pw2e2DAjXUSLYYhrNkSwJWbVB1OxFYRlu6MnaSNr7t6Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:54:58 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '235'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:54:58 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"status":"stopped","starttime":1526284498,"type":"qmdelsnapshot","pid":6299,"node":"pve","user":"root@pam","id":"100","upid":"UPID:pve:0000189B:00049661:5AF940D2:qmdelsnapshot:100:root@pam:","exitstatus":"OK","pstart":300641}}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:55:00 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:0000189B:00049661:5AF940D2:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF940D2::lh9btjvkPqI0xOYz+h0gD/k3YCZT1t3ODpDtNwXuOXuXIVfVqasHi0Bnc0H9W8vF0mgps3NOeyvt0mUtsVJYK1VxVn59uATEkK0LK95VQmeuoOyDxUnIl/Rc4cb57kb3iSPU4/53NaFjQO4LDi7B+/GgWUfNi0DMZbbtZfK/oUoXy3eDpmJ0GpNERz3NLZ0uopk2XitbzjO9tWu6OFcC9P37NTE0mYskENuM0ws3REr66PSt2/uUB/IUQ+4LhSY4lIK5hj9d/2RjxAqUqPLTbpT4zDMBpZvYbwfN6mjvZ8Pw2e2DAjXUSLYYhrNkSwJWbVB1OxFYRlu6MnaSNr7t6Q==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 07:54:58 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 07:54:58 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"t":"TASK OK","n":1}]}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 07:55:00 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001E9B:00064BD5:5AF94532:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF94531::XA+dW1pow4EN2Yb98117fWm61S/AEbCU9zBuMZLdYLkHfe8X1kQmxTenKY609/74bVv3ySME23rglr5AFijz2S6RaVkITNLZcsa6VVa/vihYacnQWCSK4qgOhvyAebY452IdI2EOBAgLoMrthuIPTtbxPsd61nDxytA0uJJpr85RidbuGcEH8f4r343z7jwEImNTygX/6wobYCGY4Cl+a7Te6/fm/jMzy9yJSgsqdghxznMjj6rcbd6ZyVatn3lsl8yT3i4aVKRykVscEBpiRvCkbRizJD8+xZwBBc6x4cIf3erTTph3PyTFYjIIIKiLpletrJ83X07fM7frWZcjeA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 08:13:38 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '235'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 08:13:38 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"upid":"UPID:pve:00001E9B:00064BD5:5AF94532:qmdelsnapshot:100:root@pam:","pstart":412629,"exitstatus":"OK","type":"qmdelsnapshot","pid":7835,"user":"root@pam","node":"pve","id":"100","status":"stopped","starttime":1526285618}}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 08:13:40 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001E9B:00064BD5:5AF94532:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF94531::XA+dW1pow4EN2Yb98117fWm61S/AEbCU9zBuMZLdYLkHfe8X1kQmxTenKY609/74bVv3ySME23rglr5AFijz2S6RaVkITNLZcsa6VVa/vihYacnQWCSK4qgOhvyAebY452IdI2EOBAgLoMrthuIPTtbxPsd61nDxytA0uJJpr85RidbuGcEH8f4r343z7jwEImNTygX/6wobYCGY4Cl+a7Te6/fm/jMzy9yJSgsqdghxznMjj6rcbd6ZyVatn3lsl8yT3i4aVKRykVscEBpiRvCkbRizJD8+xZwBBc6x4cIf3erTTph3PyTFYjIIIKiLpletrJ83X07fM7frWZcjeA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 08:13:38 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 08:13:38 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"n":1,"t":"TASK OK"}]}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 08:13:40 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001E9B:00064BD5:5AF94532:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF94531::XA+dW1pow4EN2Yb98117fWm61S/AEbCU9zBuMZLdYLkHfe8X1kQmxTenKY609/74bVv3ySME23rglr5AFijz2S6RaVkITNLZcsa6VVa/vihYacnQWCSK4qgOhvyAebY452IdI2EOBAgLoMrthuIPTtbxPsd61nDxytA0uJJpr85RidbuGcEH8f4r343z7jwEImNTygX/6wobYCGY4Cl+a7Te6/fm/jMzy9yJSgsqdghxznMjj6rcbd6ZyVatn3lsl8yT3i4aVKRykVscEBpiRvCkbRizJD8+xZwBBc6x4cIf3erTTph3PyTFYjIIIKiLpletrJ83X07fM7frWZcjeA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 08:13:38 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '235'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 08:13:38 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"exitstatus":"OK","pstart":412629,"upid":"UPID:pve:00001E9B:00064BD5:5AF94532:qmdelsnapshot:100:root@pam:","user":"root@pam","id":"100","node":"pve","pid":7835,"type":"qmdelsnapshot","starttime":1526285618,"status":"stopped"}}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 08:13:40 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001E9B:00064BD5:5AF94532:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF94531::XA+dW1pow4EN2Yb98117fWm61S/AEbCU9zBuMZLdYLkHfe8X1kQmxTenKY609/74bVv3ySME23rglr5AFijz2S6RaVkITNLZcsa6VVa/vihYacnQWCSK4qgOhvyAebY452IdI2EOBAgLoMrthuIPTtbxPsd61nDxytA0uJJpr85RidbuGcEH8f4r343z7jwEImNTygX/6wobYCGY4Cl+a7Te6/fm/jMzy9yJSgsqdghxznMjj6rcbd6ZyVatn3lsl8yT3i4aVKRykVscEBpiRvCkbRizJD8+xZwBBc6x4cIf3erTTph3PyTFYjIIIKiLpletrJ83X07fM7frWZcjeA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 08:13:38 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 08:13:38 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"n":1,"t":"TASK OK"}],"total":1}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 08:13:40 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001F6B:0006674F:5AF94578:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF94578::BoLH+HKFgoeq+K57vmxVvEZEj73Rt8/0wvAg2FukCOZov/wM1jdOA8amBRc54gAERA2xNbzlZs2wL28XhWMN1Uy8FMa52lUy6PZHOEmqhRh5KLCNZQGG2kl6w+t83+9bwSawo3ceDuLpjI0xuDC+spt6i368m7OoZqy9HKxPw2atjFOagvnh6dXesyDMZ2nuY3ruLCf/xOZwvJUoOPejiQY14FRpoxweSP7vw/gdnsbtRlZPxg/ZKI+qx/ZRgV+CqVU35v7JlhoJJXk+AFnUcjNhOZ3l12O0uUddphUWmpuP77Jrp0Zd9zBAmxEgdHRG0B5nDoKE/N+FkZPfrWC3Cw==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 08:14:48 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '235'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 08:14:48 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"starttime":1526285688,"status":"stopped","id":"100","user":"root@pam","node":"pve","type":"qmdelsnapshot","pid":8043,"pstart":419663,"exitstatus":"OK","upid":"UPID:pve:00001F6B:0006674F:5AF94578:qmdelsnapshot:100:root@pam:"}}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 08:14:50 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001F6B:0006674F:5AF94578:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF94578::BoLH+HKFgoeq+K57vmxVvEZEj73Rt8/0wvAg2FukCOZov/wM1jdOA8amBRc54gAERA2xNbzlZs2wL28XhWMN1Uy8FMa52lUy6PZHOEmqhRh5KLCNZQGG2kl6w+t83+9bwSawo3ceDuLpjI0xuDC+spt6i368m7OoZqy9HKxPw2atjFOagvnh6dXesyDMZ2nuY3ruLCf/xOZwvJUoOPejiQY14FRpoxweSP7vw/gdnsbtRlZPxg/ZKI+qx/ZRgV+CqVU35v7JlhoJJXk+AFnUcjNhOZ3l12O0uUddphUWmpuP77Jrp0Zd9zBAmxEgdHRG0B5nDoKE/N+FkZPfrWC3Cw==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 08:14:48 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 08:14:48 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"t":"TASK OK","n":1}]}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 08:14:50 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001F6B:0006674F:5AF94578:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF94578::BoLH+HKFgoeq+K57vmxVvEZEj73Rt8/0wvAg2FukCOZov/wM1jdOA8amBRc54gAERA2xNbzlZs2wL28XhWMN1Uy8FMa52lUy6PZHOEmqhRh5KLCNZQGG2kl6w+t83+9bwSawo3ceDuLpjI0xuDC+spt6i368m7OoZqy9HKxPw2atjFOagvnh6dXesyDMZ2nuY3ruLCf/xOZwvJUoOPejiQY14FRpoxweSP7vw/gdnsbtRlZPxg/ZKI+qx/ZRgV+CqVU35v7JlhoJJXk+AFnUcjNhOZ3l12O0uUddphUWmpuP77Jrp0Zd9zBAmxEgdHRG0B5nDoKE/N+FkZPfrWC3Cw==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 08:14:48 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '235'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 08:14:48 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"upid":"UPID:pve:00001F6B:0006674F:5AF94578:qmdelsnapshot:100:root@pam:","pstart":419663,"exitstatus":"OK","type":"qmdelsnapshot","pid":8043,"user":"root@pam","id":"100","node":"pve","status":"stopped","starttime":1526285688}}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 08:14:50 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001F6B:0006674F:5AF94578:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AF94578::BoLH+HKFgoeq+K57vmxVvEZEj73Rt8/0wvAg2FukCOZov/wM1jdOA8amBRc54gAERA2xNbzlZs2wL28XhWMN1Uy8FMa52lUy6PZHOEmqhRh5KLCNZQGG2kl6w+t83+9bwSawo3ceDuLpjI0xuDC+spt6i368m7OoZqy9HKxPw2atjFOagvnh6dXesyDMZ2nuY3ruLCf/xOZwvJUoOPejiQY14FRpoxweSP7vw/gdnsbtRlZPxg/ZKI+qx/ZRgV+CqVU35v7JlhoJJXk+AFnUcjNhOZ3l12O0uUddphUWmpuP77Jrp0Zd9zBAmxEgdHRG0B5nDoKE/N+FkZPfrWC3Cw==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Mon, 14 May 2018 08:14:48 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 14 May 2018 08:14:48 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"t":"TASK OK","n":1}]}'
+    http_version: 
+  recorded_at: Mon, 14 May 2018 08:14:50 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001437:00A5496B:5AFC2776:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2776::vwwpPg8jWVPaIy+Gn+4ChgkSaIyVamN9riHleej6S087/4vpp3/zmmX5xEhbfTWqKUrkWoY4RSI8pVMyzKIObsX9Zkk2bhJSuLfbYUhA3/j8Wm3FxdDdkcBEvSf8PYgx3ArU5jU/2MASCD7X4Eq3RB17GJvMPUyqCsogBXJ2UXEajn6pXVGTrmEEHGRe30smdGo7WYfnLm41/RXvjAJmSDh2+iFK6mTjoADTGTA+c70pT18yZeqoHA1iEvY6nyfF4BpkQh4Fdal4+Mk9gAwTOPF6bscoxPtRW7Nhb64pCzk6wZTntNvCJDVQeiO6/xmT8tLZLboXyk7DdP9MnsCCAw==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 12:43:34 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '237'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 12:43:34 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"starttime":1526474614,"node":"pve","pid":5175,"type":"qmdelsnapshot","status":"stopped","pstart":10832235,"upid":"UPID:pve:00001437:00A5496B:5AFC2776:qmdelsnapshot:100:root@pam:","exitstatus":"OK","id":"100","user":"root@pam"}}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 12:43:36 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001437:00A5496B:5AFC2776:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2776::vwwpPg8jWVPaIy+Gn+4ChgkSaIyVamN9riHleej6S087/4vpp3/zmmX5xEhbfTWqKUrkWoY4RSI8pVMyzKIObsX9Zkk2bhJSuLfbYUhA3/j8Wm3FxdDdkcBEvSf8PYgx3ArU5jU/2MASCD7X4Eq3RB17GJvMPUyqCsogBXJ2UXEajn6pXVGTrmEEHGRe30smdGo7WYfnLm41/RXvjAJmSDh2+iFK6mTjoADTGTA+c70pT18yZeqoHA1iEvY6nyfF4BpkQh4Fdal4+Mk9gAwTOPF6bscoxPtRW7Nhb64pCzk6wZTntNvCJDVQeiO6/xmT8tLZLboXyk7DdP9MnsCCAw==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 12:43:34 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 12:43:34 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"t":"TASK OK","n":1}]}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 12:43:36 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001437:00A5496B:5AFC2776:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2776::vwwpPg8jWVPaIy+Gn+4ChgkSaIyVamN9riHleej6S087/4vpp3/zmmX5xEhbfTWqKUrkWoY4RSI8pVMyzKIObsX9Zkk2bhJSuLfbYUhA3/j8Wm3FxdDdkcBEvSf8PYgx3ArU5jU/2MASCD7X4Eq3RB17GJvMPUyqCsogBXJ2UXEajn6pXVGTrmEEHGRe30smdGo7WYfnLm41/RXvjAJmSDh2+iFK6mTjoADTGTA+c70pT18yZeqoHA1iEvY6nyfF4BpkQh4Fdal4+Mk9gAwTOPF6bscoxPtRW7Nhb64pCzk6wZTntNvCJDVQeiO6/xmT8tLZLboXyk7DdP9MnsCCAw==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 12:43:34 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '237'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 12:43:34 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"upid":"UPID:pve:00001437:00A5496B:5AFC2776:qmdelsnapshot:100:root@pam:","exitstatus":"OK","id":"100","user":"root@pam","node":"pve","starttime":1526474614,"pid":5175,"type":"qmdelsnapshot","status":"stopped","pstart":10832235}}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 12:43:36 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001437:00A5496B:5AFC2776:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2776::vwwpPg8jWVPaIy+Gn+4ChgkSaIyVamN9riHleej6S087/4vpp3/zmmX5xEhbfTWqKUrkWoY4RSI8pVMyzKIObsX9Zkk2bhJSuLfbYUhA3/j8Wm3FxdDdkcBEvSf8PYgx3ArU5jU/2MASCD7X4Eq3RB17GJvMPUyqCsogBXJ2UXEajn6pXVGTrmEEHGRe30smdGo7WYfnLm41/RXvjAJmSDh2+iFK6mTjoADTGTA+c70pT18yZeqoHA1iEvY6nyfF4BpkQh4Fdal4+Mk9gAwTOPF6bscoxPtRW7Nhb64pCzk6wZTntNvCJDVQeiO6/xmT8tLZLboXyk7DdP9MnsCCAw==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 12:43:34 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 12:43:34 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"n":1,"t":"TASK OK"}],"total":1}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 12:43:36 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/102/status/current
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2E28::KJgVTuqPvh1uY29zUYEN11yfcsdukACCQ1IOEzMoUKVdUVRxSPpbCbkUuDDCeB00jLK9lOJrONDVvq9AXZFdJVYTYSAvgGUkoVLv9Zx7wTjLDdLCluF5DC7CbFuN1V0mcv7ZU8F1lo6FCD2UDD+VC8IuCIQSut2KjkN+ZoFgXM8zA7aEeQPv4oTPOpkwTgSo8qMfA4F7hIIGSW1cIuQjJk+lnXSW3gVJ1dSdNAQiK8hPNMggaAX9U6Pyp7qhJWO5anNbIrRNNz4Uy77AInEpoZQZVHUiExKBdU0xUXVhZc+HR0juWUf3Ut2TOj0aVGCoBtjoXsoqHYGQvNG1fpkMeg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:12:08 GMT
       Pragma:
       - no-cache
       Server:
@@ -33,13 +1125,452 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:12:08 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"cpus":1,"mem":0,"diskwrite":0,"netout":0,"maxdisk":0,"maxmem":0,"ha":{"managed":0},"netin":0,"name":"VM
-        101","disk":0,"uptime":0,"template":"","qmpstatus":"stopped","status":"stopped","diskread":0,"cpu":0,"pid":null}}'
+      string: '{"data":{"qmpstatus":"stopped","template":"","diskread":0,"cpus":1,"mem":0,"disk":0,"pid":null,"maxdisk":0,"name":"VM
+        102","netin":0,"cpu":0,"netout":0,"uptime":0,"diskwrite":0,"status":"stopped","ha":{"managed":0},"maxmem":0}}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:35:31 GMT
+  recorded_at: Wed, 16 May 2018 13:12:11 GMT
+- request:
+    method: post
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/102/snapshot
+    body:
+      encoding: US-ASCII
+      string: snapname=snapshot1
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5AFC2E28:vYfUutL0FEsv2aIKpGxPCm3/bCg
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2E28::KJgVTuqPvh1uY29zUYEN11yfcsdukACCQ1IOEzMoUKVdUVRxSPpbCbkUuDDCeB00jLK9lOJrONDVvq9AXZFdJVYTYSAvgGUkoVLv9Zx7wTjLDdLCluF5DC7CbFuN1V0mcv7ZU8F1lo6FCD2UDD+VC8IuCIQSut2KjkN+ZoFgXM8zA7aEeQPv4oTPOpkwTgSo8qMfA4F7hIIGSW1cIuQjJk+lnXSW3gVJ1dSdNAQiK8hPNMggaAX9U6Pyp7qhJWO5anNbIrRNNz4Uy77AInEpoZQZVHUiExKBdU0xUXVhZc+HR0juWUf3Ut2TOj0aVGCoBtjoXsoqHYGQvNG1fpkMeg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:12:08 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '71'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:12:08 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":"UPID:pve:00001E25:00A7E719:5AFC2E28:qmsnapshot:102:root@pam:"}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:12:11 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/102/snapshot
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2E28::KJgVTuqPvh1uY29zUYEN11yfcsdukACCQ1IOEzMoUKVdUVRxSPpbCbkUuDDCeB00jLK9lOJrONDVvq9AXZFdJVYTYSAvgGUkoVLv9Zx7wTjLDdLCluF5DC7CbFuN1V0mcv7ZU8F1lo6FCD2UDD+VC8IuCIQSut2KjkN+ZoFgXM8zA7aEeQPv4oTPOpkwTgSo8qMfA4F7hIIGSW1cIuQjJk+lnXSW3gVJ1dSdNAQiK8hPNMggaAX9U6Pyp7qhJWO5anNbIrRNNz4Uy77AInEpoZQZVHUiExKBdU0xUXVhZc+HR0juWUf3Ut2TOj0aVGCoBtjoXsoqHYGQvNG1fpkMeg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:12:08 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '186'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:12:08 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"snaptime":1526476328,"description":"","vmstate":0,"name":"snapshot1"},{"name":"current","parent":"snapshot1","digest":"fc5424f670d8d45885ab7b8b70f9302dbb038fa7","running":0}]}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:12:11 GMT
+- request:
+    method: put
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/102/snapshot/snapshot1/config
+    body:
+      encoding: UTF-8
+      string: description=Snapshot 1
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5AFC2E28:vYfUutL0FEsv2aIKpGxPCm3/bCg
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2E28::KJgVTuqPvh1uY29zUYEN11yfcsdukACCQ1IOEzMoUKVdUVRxSPpbCbkUuDDCeB00jLK9lOJrONDVvq9AXZFdJVYTYSAvgGUkoVLv9Zx7wTjLDdLCluF5DC7CbFuN1V0mcv7ZU8F1lo6FCD2UDD+VC8IuCIQSut2KjkN+ZoFgXM8zA7aEeQPv4oTPOpkwTgSo8qMfA4F7hIIGSW1cIuQjJk+lnXSW3gVJ1dSdNAQiK8hPNMggaAX9U6Pyp7qhJWO5anNbIrRNNz4Uy77AInEpoZQZVHUiExKBdU0xUXVhZc+HR0juWUf3Ut2TOj0aVGCoBtjoXsoqHYGQvNG1fpkMeg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:12:08 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '13'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:12:08 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":null}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:12:11 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/102/snapshot
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2E28::KJgVTuqPvh1uY29zUYEN11yfcsdukACCQ1IOEzMoUKVdUVRxSPpbCbkUuDDCeB00jLK9lOJrONDVvq9AXZFdJVYTYSAvgGUkoVLv9Zx7wTjLDdLCluF5DC7CbFuN1V0mcv7ZU8F1lo6FCD2UDD+VC8IuCIQSut2KjkN+ZoFgXM8zA7aEeQPv4oTPOpkwTgSo8qMfA4F7hIIGSW1cIuQjJk+lnXSW3gVJ1dSdNAQiK8hPNMggaAX9U6Pyp7qhJWO5anNbIrRNNz4Uy77AInEpoZQZVHUiExKBdU0xUXVhZc+HR0juWUf3Ut2TOj0aVGCoBtjoXsoqHYGQvNG1fpkMeg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:12:08 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '196'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:12:08 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"name":"snapshot1","snaptime":1526476328,"description":"Snapshot
+        1","vmstate":0},{"name":"current","parent":"snapshot1","digest":"7fdeb4b19f5c35b122e32618d07488d0447a9b07","running":0}]}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:12:11 GMT
+- request:
+    method: delete
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/102/snapshot/snapshot1?force=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5AFC2E28:vYfUutL0FEsv2aIKpGxPCm3/bCg
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2E28::KJgVTuqPvh1uY29zUYEN11yfcsdukACCQ1IOEzMoUKVdUVRxSPpbCbkUuDDCeB00jLK9lOJrONDVvq9AXZFdJVYTYSAvgGUkoVLv9Zx7wTjLDdLCluF5DC7CbFuN1V0mcv7ZU8F1lo6FCD2UDD+VC8IuCIQSut2KjkN+ZoFgXM8zA7aEeQPv4oTPOpkwTgSo8qMfA4F7hIIGSW1cIuQjJk+lnXSW3gVJ1dSdNAQiK8hPNMggaAX9U6Pyp7qhJWO5anNbIrRNNz4Uy77AInEpoZQZVHUiExKBdU0xUXVhZc+HR0juWUf3Ut2TOj0aVGCoBtjoXsoqHYGQvNG1fpkMeg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:12:08 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '74'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:12:08 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":"UPID:pve:00001E26:00A7E728:5AFC2E28:qmdelsnapshot:102:root@pam:"}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:12:11 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001E26:00A7E728:5AFC2E28:qmdelsnapshot:102:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2E28::KJgVTuqPvh1uY29zUYEN11yfcsdukACCQ1IOEzMoUKVdUVRxSPpbCbkUuDDCeB00jLK9lOJrONDVvq9AXZFdJVYTYSAvgGUkoVLv9Zx7wTjLDdLCluF5DC7CbFuN1V0mcv7ZU8F1lo6FCD2UDD+VC8IuCIQSut2KjkN+ZoFgXM8zA7aEeQPv4oTPOpkwTgSo8qMfA4F7hIIGSW1cIuQjJk+lnXSW3gVJ1dSdNAQiK8hPNMggaAX9U6Pyp7qhJWO5anNbIrRNNz4Uy77AInEpoZQZVHUiExKBdU0xUXVhZc+HR0juWUf3Ut2TOj0aVGCoBtjoXsoqHYGQvNG1fpkMeg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:12:08 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '237'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:12:08 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"user":"root@pam","id":"102","exitstatus":"OK","upid":"UPID:pve:00001E26:00A7E728:5AFC2E28:qmdelsnapshot:102:root@pam:","pstart":11003688,"status":"stopped","type":"qmdelsnapshot","pid":7718,"node":"pve","starttime":1526476328}}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:12:11 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001E26:00A7E728:5AFC2E28:qmdelsnapshot:102:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2E28::KJgVTuqPvh1uY29zUYEN11yfcsdukACCQ1IOEzMoUKVdUVRxSPpbCbkUuDDCeB00jLK9lOJrONDVvq9AXZFdJVYTYSAvgGUkoVLv9Zx7wTjLDdLCluF5DC7CbFuN1V0mcv7ZU8F1lo6FCD2UDD+VC8IuCIQSut2KjkN+ZoFgXM8zA7aEeQPv4oTPOpkwTgSo8qMfA4F7hIIGSW1cIuQjJk+lnXSW3gVJ1dSdNAQiK8hPNMggaAX9U6Pyp7qhJWO5anNbIrRNNz4Uy77AInEpoZQZVHUiExKBdU0xUXVhZc+HR0juWUf3Ut2TOj0aVGCoBtjoXsoqHYGQvNG1fpkMeg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:12:08 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:12:08 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"n":1,"t":"TASK OK"}]}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:12:11 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001E26:00A7E728:5AFC2E28:qmdelsnapshot:102:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2E28::KJgVTuqPvh1uY29zUYEN11yfcsdukACCQ1IOEzMoUKVdUVRxSPpbCbkUuDDCeB00jLK9lOJrONDVvq9AXZFdJVYTYSAvgGUkoVLv9Zx7wTjLDdLCluF5DC7CbFuN1V0mcv7ZU8F1lo6FCD2UDD+VC8IuCIQSut2KjkN+ZoFgXM8zA7aEeQPv4oTPOpkwTgSo8qMfA4F7hIIGSW1cIuQjJk+lnXSW3gVJ1dSdNAQiK8hPNMggaAX9U6Pyp7qhJWO5anNbIrRNNz4Uy77AInEpoZQZVHUiExKBdU0xUXVhZc+HR0juWUf3Ut2TOj0aVGCoBtjoXsoqHYGQvNG1fpkMeg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:12:08 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '237'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:12:08 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"user":"root@pam","id":"102","exitstatus":"OK","upid":"UPID:pve:00001E26:00A7E728:5AFC2E28:qmdelsnapshot:102:root@pam:","pstart":11003688,"status":"stopped","type":"qmdelsnapshot","pid":7718,"starttime":1526476328,"node":"pve"}}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:12:11 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001E26:00A7E728:5AFC2E28:qmdelsnapshot:102:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2E28::KJgVTuqPvh1uY29zUYEN11yfcsdukACCQ1IOEzMoUKVdUVRxSPpbCbkUuDDCeB00jLK9lOJrONDVvq9AXZFdJVYTYSAvgGUkoVLv9Zx7wTjLDdLCluF5DC7CbFuN1V0mcv7ZU8F1lo6FCD2UDD+VC8IuCIQSut2KjkN+ZoFgXM8zA7aEeQPv4oTPOpkwTgSo8qMfA4F7hIIGSW1cIuQjJk+lnXSW3gVJ1dSdNAQiK8hPNMggaAX9U6Pyp7qhJWO5anNbIrRNNz4Uy77AInEpoZQZVHUiExKBdU0xUXVhZc+HR0juWUf3Ut2TOj0aVGCoBtjoXsoqHYGQvNG1fpkMeg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:12:08 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:12:08 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"n":1,"t":"TASK OK"}]}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:12:11 GMT
+- request:
+    method: delete
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/102
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5AFC2E28:vYfUutL0FEsv2aIKpGxPCm3/bCg
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2E28::KJgVTuqPvh1uY29zUYEN11yfcsdukACCQ1IOEzMoUKVdUVRxSPpbCbkUuDDCeB00jLK9lOJrONDVvq9AXZFdJVYTYSAvgGUkoVLv9Zx7wTjLDdLCluF5DC7CbFuN1V0mcv7ZU8F1lo6FCD2UDD+VC8IuCIQSut2KjkN+ZoFgXM8zA7aEeQPv4oTPOpkwTgSo8qMfA4F7hIIGSW1cIuQjJk+lnXSW3gVJ1dSdNAQiK8hPNMggaAX9U6Pyp7qhJWO5anNbIrRNNz4Uy77AInEpoZQZVHUiExKBdU0xUXVhZc+HR0juWUf3Ut2TOj0aVGCoBtjoXsoqHYGQvNG1fpkMeg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:12:09 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '70'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:12:09 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":"UPID:pve:00001E27:00A7E73D:5AFC2E29:qmdestroy:102:root@pam:"}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:12:11 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/101/status/current
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2F81::NOTFs2Tm1JtSmPu+iPKkGEsbLRFJGwXmKaL1wqDPHvYqzx7qxZrYqVgQVrRz0DY3n7Ku8+aeSubHXJ0ahFEWcRZL5P8w15ipV9VY+z2LbleRK/goZuqu7STaROcrB2jhcHpRFkAARyaL+Vjc3HHmDsk8pqhqxBtKSCmYvTLywkIG884WBKuLfJivKbdKzA+iG0791KF4GraiqfRZLNwDaGJoLTf6vJC/o6GM98Iv1L4TAiPqwODDFrR1MxD9xspTDKZW0H4QWYxD5M12SYSnC0ZnSOrRt7NSByNRvzq5ZjYbIDHjfDwMuXOVRtKWvWm3drGIW4xvDsbWuNId6obVoA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:17:53 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '227'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:17:53 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"diskwrite":0,"status":"stopped","uptime":0,"maxmem":0,"ha":{"managed":0},"name":"VM
+        101","netin":0,"disk":0,"mem":0,"maxdisk":0,"pid":null,"cpus":1,"diskread":0,"template":"","qmpstatus":"stopped","netout":0,"cpu":0}}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:17:55 GMT
 - request:
     method: post
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/101/snapshot
@@ -52,9 +1583,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AFAF032:S5K/F41rI0wDJIGEzJrKZQQKOKI
+      - 5AFC2F81:UUZHYJ6UemTglT9qGTBGDNh+7xI
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF032::dFhwlqOhg9Aw/calmJjCWUdGKmCf3tsGUdQtSmqrO15M1FTjtXz5HDEbp+Y7rk23HlNJzRb77Sz5Bm2hoRg3zpVUgYRGzU/gEOdW5Rf+3e3pqnt3fnLbw5VIB2mnEjTlLwLWGB3za3MkQZpcJRCfqMRYaFpP4pSpJa/Xh1BguMZHGR1b+xani6/NQR2xuzCb7h8HVLrxDHwXMGGVCYbUgBNtyLg6B7MEXPK1KRn2DWJIoptmTAqbxooOoREAt4IsUAC8+2mbaXAc1MKvue1VUpd1rPYP8nm84DZYFNzbgpziblPDncxQCxBJR6ygVoIgmVbCX2J+HaYkzMZwesSOOw==
+      - PVEAuthCookie=PVE:root@pam:5AFC2F81::NOTFs2Tm1JtSmPu+iPKkGEsbLRFJGwXmKaL1wqDPHvYqzx7qxZrYqVgQVrRz0DY3n7Ku8+aeSubHXJ0ahFEWcRZL5P8w15ipV9VY+z2LbleRK/goZuqu7STaROcrB2jhcHpRFkAARyaL+Vjc3HHmDsk8pqhqxBtKSCmYvTLywkIG884WBKuLfJivKbdKzA+iG0791KF4GraiqfRZLNwDaGJoLTf6vJC/o6GM98Iv1L4TAiPqwODDFrR1MxD9xspTDKZW0H4QWYxD5M12SYSnC0ZnSOrRt7NSByNRvzq5ZjYbIDHjfDwMuXOVRtKWvWm3drGIW4xvDsbWuNId6obVoA==
   response:
     status:
       code: 200
@@ -65,7 +1596,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
       Pragma:
       - no-cache
       Server:
@@ -75,12 +1606,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":"UPID:pve:00004174:000D02CA:5AFAF032:qmsnapshot:101:root@pam:"}'
+      string: '{"data":"UPID:pve:0000203F:00A86DD4:5AFC2F81:qmsnapshot:101:root@pam:"}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:35:31 GMT
+  recorded_at: Wed, 16 May 2018 13:17:55 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/101/snapshot
@@ -93,7 +1624,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF032::dFhwlqOhg9Aw/calmJjCWUdGKmCf3tsGUdQtSmqrO15M1FTjtXz5HDEbp+Y7rk23HlNJzRb77Sz5Bm2hoRg3zpVUgYRGzU/gEOdW5Rf+3e3pqnt3fnLbw5VIB2mnEjTlLwLWGB3za3MkQZpcJRCfqMRYaFpP4pSpJa/Xh1BguMZHGR1b+xani6/NQR2xuzCb7h8HVLrxDHwXMGGVCYbUgBNtyLg6B7MEXPK1KRn2DWJIoptmTAqbxooOoREAt4IsUAC8+2mbaXAc1MKvue1VUpd1rPYP8nm84DZYFNzbgpziblPDncxQCxBJR6ygVoIgmVbCX2J+HaYkzMZwesSOOw==
+      - PVEAuthCookie=PVE:root@pam:5AFC2F81::NOTFs2Tm1JtSmPu+iPKkGEsbLRFJGwXmKaL1wqDPHvYqzx7qxZrYqVgQVrRz0DY3n7Ku8+aeSubHXJ0ahFEWcRZL5P8w15ipV9VY+z2LbleRK/goZuqu7STaROcrB2jhcHpRFkAARyaL+Vjc3HHmDsk8pqhqxBtKSCmYvTLywkIG884WBKuLfJivKbdKzA+iG0791KF4GraiqfRZLNwDaGJoLTf6vJC/o6GM98Iv1L4TAiPqwODDFrR1MxD9xspTDKZW0H4QWYxD5M12SYSnC0ZnSOrRt7NSByNRvzq5ZjYbIDHjfDwMuXOVRtKWvWm3drGIW4xvDsbWuNId6obVoA==
   response:
     status:
       code: 200
@@ -104,7 +1635,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
       Pragma:
       - no-cache
       Server:
@@ -114,12 +1645,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"name":"snapshot1","description":"","vmstate":0,"snaptime":1526394930},{"name":"current","running":0,"digest":"1f859db652cd3140a02fc37a64d220808bb30715","parent":"snapshot1"}]}'
+      string: '{"data":[{"name":"snapshot1","vmstate":0,"snaptime":1526476673,"description":""},{"name":"current","parent":"snapshot1","digest":"bad1fc7b30ae7187d7263579761e1fdaf3acc056","running":0}]}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:35:31 GMT
+  recorded_at: Wed, 16 May 2018 13:17:56 GMT
 - request:
     method: put
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/101/snapshot/snapshot1/config
@@ -132,9 +1663,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AFAF032:S5K/F41rI0wDJIGEzJrKZQQKOKI
+      - 5AFC2F81:UUZHYJ6UemTglT9qGTBGDNh+7xI
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF032::dFhwlqOhg9Aw/calmJjCWUdGKmCf3tsGUdQtSmqrO15M1FTjtXz5HDEbp+Y7rk23HlNJzRb77Sz5Bm2hoRg3zpVUgYRGzU/gEOdW5Rf+3e3pqnt3fnLbw5VIB2mnEjTlLwLWGB3za3MkQZpcJRCfqMRYaFpP4pSpJa/Xh1BguMZHGR1b+xani6/NQR2xuzCb7h8HVLrxDHwXMGGVCYbUgBNtyLg6B7MEXPK1KRn2DWJIoptmTAqbxooOoREAt4IsUAC8+2mbaXAc1MKvue1VUpd1rPYP8nm84DZYFNzbgpziblPDncxQCxBJR6ygVoIgmVbCX2J+HaYkzMZwesSOOw==
+      - PVEAuthCookie=PVE:root@pam:5AFC2F81::NOTFs2Tm1JtSmPu+iPKkGEsbLRFJGwXmKaL1wqDPHvYqzx7qxZrYqVgQVrRz0DY3n7Ku8+aeSubHXJ0ahFEWcRZL5P8w15ipV9VY+z2LbleRK/goZuqu7STaROcrB2jhcHpRFkAARyaL+Vjc3HHmDsk8pqhqxBtKSCmYvTLywkIG884WBKuLfJivKbdKzA+iG0791KF4GraiqfRZLNwDaGJoLTf6vJC/o6GM98Iv1L4TAiPqwODDFrR1MxD9xspTDKZW0H4QWYxD5M12SYSnC0ZnSOrRt7NSByNRvzq5ZjYbIDHjfDwMuXOVRtKWvWm3drGIW4xvDsbWuNId6obVoA==
   response:
     status:
       code: 200
@@ -145,7 +1676,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
       Pragma:
       - no-cache
       Server:
@@ -155,12 +1686,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:35:31 GMT
+  recorded_at: Wed, 16 May 2018 13:17:56 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/101/snapshot
@@ -173,7 +1704,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF032::dFhwlqOhg9Aw/calmJjCWUdGKmCf3tsGUdQtSmqrO15M1FTjtXz5HDEbp+Y7rk23HlNJzRb77Sz5Bm2hoRg3zpVUgYRGzU/gEOdW5Rf+3e3pqnt3fnLbw5VIB2mnEjTlLwLWGB3za3MkQZpcJRCfqMRYaFpP4pSpJa/Xh1BguMZHGR1b+xani6/NQR2xuzCb7h8HVLrxDHwXMGGVCYbUgBNtyLg6B7MEXPK1KRn2DWJIoptmTAqbxooOoREAt4IsUAC8+2mbaXAc1MKvue1VUpd1rPYP8nm84DZYFNzbgpziblPDncxQCxBJR6ygVoIgmVbCX2J+HaYkzMZwesSOOw==
+      - PVEAuthCookie=PVE:root@pam:5AFC2F81::NOTFs2Tm1JtSmPu+iPKkGEsbLRFJGwXmKaL1wqDPHvYqzx7qxZrYqVgQVrRz0DY3n7Ku8+aeSubHXJ0ahFEWcRZL5P8w15ipV9VY+z2LbleRK/goZuqu7STaROcrB2jhcHpRFkAARyaL+Vjc3HHmDsk8pqhqxBtKSCmYvTLywkIG884WBKuLfJivKbdKzA+iG0791KF4GraiqfRZLNwDaGJoLTf6vJC/o6GM98Iv1L4TAiPqwODDFrR1MxD9xspTDKZW0H4QWYxD5M12SYSnC0ZnSOrRt7NSByNRvzq5ZjYbIDHjfDwMuXOVRtKWvWm3drGIW4xvDsbWuNId6obVoA==
   response:
     status:
       code: 200
@@ -184,7 +1715,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
       Pragma:
       - no-cache
       Server:
@@ -194,12 +1725,13 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"vmstate":0,"description":"Snapshot 1","name":"snapshot1","snaptime":1526394930},{"parent":"snapshot1","digest":"15d9e3ce270174148e03365a61105f04fa818dea","running":0,"name":"current"}]}'
+      string: '{"data":[{"vmstate":0,"snaptime":1526476673,"description":"Snapshot
+        1","name":"snapshot1"},{"parent":"snapshot1","name":"current","running":0,"digest":"03bc5b0192fdd0d39437655ce27b0a3526329a6d"}]}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:35:31 GMT
+  recorded_at: Wed, 16 May 2018 13:17:56 GMT
 - request:
     method: delete
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/101/snapshot/snapshot1?force=0
@@ -212,9 +1744,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AFAF032:S5K/F41rI0wDJIGEzJrKZQQKOKI
+      - 5AFC2F81:UUZHYJ6UemTglT9qGTBGDNh+7xI
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF032::dFhwlqOhg9Aw/calmJjCWUdGKmCf3tsGUdQtSmqrO15M1FTjtXz5HDEbp+Y7rk23HlNJzRb77Sz5Bm2hoRg3zpVUgYRGzU/gEOdW5Rf+3e3pqnt3fnLbw5VIB2mnEjTlLwLWGB3za3MkQZpcJRCfqMRYaFpP4pSpJa/Xh1BguMZHGR1b+xani6/NQR2xuzCb7h8HVLrxDHwXMGGVCYbUgBNtyLg6B7MEXPK1KRn2DWJIoptmTAqbxooOoREAt4IsUAC8+2mbaXAc1MKvue1VUpd1rPYP8nm84DZYFNzbgpziblPDncxQCxBJR6ygVoIgmVbCX2J+HaYkzMZwesSOOw==
+      - PVEAuthCookie=PVE:root@pam:5AFC2F81::NOTFs2Tm1JtSmPu+iPKkGEsbLRFJGwXmKaL1wqDPHvYqzx7qxZrYqVgQVrRz0DY3n7Ku8+aeSubHXJ0ahFEWcRZL5P8w15ipV9VY+z2LbleRK/goZuqu7STaROcrB2jhcHpRFkAARyaL+Vjc3HHmDsk8pqhqxBtKSCmYvTLywkIG884WBKuLfJivKbdKzA+iG0791KF4GraiqfRZLNwDaGJoLTf6vJC/o6GM98Iv1L4TAiPqwODDFrR1MxD9xspTDKZW0H4QWYxD5M12SYSnC0ZnSOrRt7NSByNRvzq5ZjYbIDHjfDwMuXOVRtKWvWm3drGIW4xvDsbWuNId6obVoA==
   response:
     status:
       code: 200
@@ -225,7 +1757,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
       Pragma:
       - no-cache
       Server:
@@ -235,15 +1767,15 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":"UPID:pve:00004175:000D02D5:5AFAF032:qmdelsnapshot:101:root@pam:"}'
+      string: '{"data":"UPID:pve:00002040:00A86DE6:5AFC2F81:qmdelsnapshot:101:root@pam:"}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:35:31 GMT
+  recorded_at: Wed, 16 May 2018 13:17:56 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00004175:000D02D5:5AFAF032:qmdelsnapshot:101:root@pam:/status
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00002040:00A86DE6:5AFC2F81:qmdelsnapshot:101:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -253,7 +1785,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF032::dFhwlqOhg9Aw/calmJjCWUdGKmCf3tsGUdQtSmqrO15M1FTjtXz5HDEbp+Y7rk23HlNJzRb77Sz5Bm2hoRg3zpVUgYRGzU/gEOdW5Rf+3e3pqnt3fnLbw5VIB2mnEjTlLwLWGB3za3MkQZpcJRCfqMRYaFpP4pSpJa/Xh1BguMZHGR1b+xani6/NQR2xuzCb7h8HVLrxDHwXMGGVCYbUgBNtyLg6B7MEXPK1KRn2DWJIoptmTAqbxooOoREAt4IsUAC8+2mbaXAc1MKvue1VUpd1rPYP8nm84DZYFNzbgpziblPDncxQCxBJR6ygVoIgmVbCX2J+HaYkzMZwesSOOw==
+      - PVEAuthCookie=PVE:root@pam:5AFC2F81::NOTFs2Tm1JtSmPu+iPKkGEsbLRFJGwXmKaL1wqDPHvYqzx7qxZrYqVgQVrRz0DY3n7Ku8+aeSubHXJ0ahFEWcRZL5P8w15ipV9VY+z2LbleRK/goZuqu7STaROcrB2jhcHpRFkAARyaL+Vjc3HHmDsk8pqhqxBtKSCmYvTLywkIG884WBKuLfJivKbdKzA+iG0791KF4GraiqfRZLNwDaGJoLTf6vJC/o6GM98Iv1L4TAiPqwODDFrR1MxD9xspTDKZW0H4QWYxD5M12SYSnC0ZnSOrRt7NSByNRvzq5ZjYbIDHjfDwMuXOVRtKWvWm3drGIW4xvDsbWuNId6obVoA==
   response:
     status:
       code: 200
@@ -264,25 +1796,25 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '236'
+      - '237'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"exitstatus":"OK","node":"pve","status":"stopped","id":"101","pid":16757,"starttime":1526394930,"upid":"UPID:pve:00004175:000D02D5:5AFAF032:qmdelsnapshot:101:root@pam:","user":"root@pam","type":"qmdelsnapshot","pstart":852693}}'
+      string: '{"data":{"pstart":11038182,"status":"stopped","type":"qmdelsnapshot","pid":8256,"node":"pve","starttime":1526476673,"user":"root@pam","id":"101","exitstatus":"OK","upid":"UPID:pve:00002040:00A86DE6:5AFC2F81:qmdelsnapshot:101:root@pam:"}}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:35:31 GMT
+  recorded_at: Wed, 16 May 2018 13:17:56 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00004175:000D02D5:5AFAF032:qmdelsnapshot:101:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00002040:00A86DE6:5AFC2F81:qmdelsnapshot:101:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
@@ -292,7 +1824,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF032::dFhwlqOhg9Aw/calmJjCWUdGKmCf3tsGUdQtSmqrO15M1FTjtXz5HDEbp+Y7rk23HlNJzRb77Sz5Bm2hoRg3zpVUgYRGzU/gEOdW5Rf+3e3pqnt3fnLbw5VIB2mnEjTlLwLWGB3za3MkQZpcJRCfqMRYaFpP4pSpJa/Xh1BguMZHGR1b+xani6/NQR2xuzCb7h8HVLrxDHwXMGGVCYbUgBNtyLg6B7MEXPK1KRn2DWJIoptmTAqbxooOoREAt4IsUAC8+2mbaXAc1MKvue1VUpd1rPYP8nm84DZYFNzbgpziblPDncxQCxBJR6ygVoIgmVbCX2J+HaYkzMZwesSOOw==
+      - PVEAuthCookie=PVE:root@pam:5AFC2F81::NOTFs2Tm1JtSmPu+iPKkGEsbLRFJGwXmKaL1wqDPHvYqzx7qxZrYqVgQVrRz0DY3n7Ku8+aeSubHXJ0ahFEWcRZL5P8w15ipV9VY+z2LbleRK/goZuqu7STaROcrB2jhcHpRFkAARyaL+Vjc3HHmDsk8pqhqxBtKSCmYvTLywkIG884WBKuLfJivKbdKzA+iG0791KF4GraiqfRZLNwDaGJoLTf6vJC/o6GM98Iv1L4TAiPqwODDFrR1MxD9xspTDKZW0H4QWYxD5M12SYSnC0ZnSOrRt7NSByNRvzq5ZjYbIDHjfDwMuXOVRtKWvWm3drGIW4xvDsbWuNId6obVoA==
   response:
     status:
       code: 200
@@ -303,85 +1835,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:35:30 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '42'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 15 May 2018 14:35:30 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[{"t":"TASK OK","n":1}],"total":1}'
-    http_version: 
-  recorded_at: Tue, 15 May 2018 14:35:31 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00004175:000D02D5:5AFAF032:qmdelsnapshot:101:root@pam:/status
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.1.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF032::dFhwlqOhg9Aw/calmJjCWUdGKmCf3tsGUdQtSmqrO15M1FTjtXz5HDEbp+Y7rk23HlNJzRb77Sz5Bm2hoRg3zpVUgYRGzU/gEOdW5Rf+3e3pqnt3fnLbw5VIB2mnEjTlLwLWGB3za3MkQZpcJRCfqMRYaFpP4pSpJa/Xh1BguMZHGR1b+xani6/NQR2xuzCb7h8HVLrxDHwXMGGVCYbUgBNtyLg6B7MEXPK1KRn2DWJIoptmTAqbxooOoREAt4IsUAC8+2mbaXAc1MKvue1VUpd1rPYP8nm84DZYFNzbgpziblPDncxQCxBJR6ygVoIgmVbCX2J+HaYkzMZwesSOOw==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive, Keep-Alive
-      Date:
-      - Tue, 15 May 2018 14:35:30 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '236'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 15 May 2018 14:35:30 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":{"pstart":852693,"type":"qmdelsnapshot","user":"root@pam","pid":16757,"upid":"UPID:pve:00004175:000D02D5:5AFAF032:qmdelsnapshot:101:root@pam:","starttime":1526394930,"id":"101","status":"stopped","exitstatus":"OK","node":"pve"}}'
-    http_version: 
-  recorded_at: Tue, 15 May 2018 14:35:31 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00004175:000D02D5:5AFAF032:qmdelsnapshot:101:root@pam:/log
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.1.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF032::dFhwlqOhg9Aw/calmJjCWUdGKmCf3tsGUdQtSmqrO15M1FTjtXz5HDEbp+Y7rk23HlNJzRb77Sz5Bm2hoRg3zpVUgYRGzU/gEOdW5Rf+3e3pqnt3fnLbw5VIB2mnEjTlLwLWGB3za3MkQZpcJRCfqMRYaFpP4pSpJa/Xh1BguMZHGR1b+xani6/NQR2xuzCb7h8HVLrxDHwXMGGVCYbUgBNtyLg6B7MEXPK1KRn2DWJIoptmTAqbxooOoREAt4IsUAC8+2mbaXAc1MKvue1VUpd1rPYP8nm84DZYFNzbgpziblPDncxQCxBJR6ygVoIgmVbCX2J+HaYkzMZwesSOOw==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive, Keep-Alive
-      Date:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
       Pragma:
       - no-cache
       Server:
@@ -391,12 +1845,90 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"t":"TASK OK","n":1}],"total":1}'
+      string: '{"data":[{"n":1,"t":"TASK OK"}],"total":1}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:35:31 GMT
+  recorded_at: Wed, 16 May 2018 13:17:56 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00002040:00A86DE6:5AFC2F81:qmdelsnapshot:101:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2F81::NOTFs2Tm1JtSmPu+iPKkGEsbLRFJGwXmKaL1wqDPHvYqzx7qxZrYqVgQVrRz0DY3n7Ku8+aeSubHXJ0ahFEWcRZL5P8w15ipV9VY+z2LbleRK/goZuqu7STaROcrB2jhcHpRFkAARyaL+Vjc3HHmDsk8pqhqxBtKSCmYvTLywkIG884WBKuLfJivKbdKzA+iG0791KF4GraiqfRZLNwDaGJoLTf6vJC/o6GM98Iv1L4TAiPqwODDFrR1MxD9xspTDKZW0H4QWYxD5M12SYSnC0ZnSOrRt7NSByNRvzq5ZjYbIDHjfDwMuXOVRtKWvWm3drGIW4xvDsbWuNId6obVoA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:17:53 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '237'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:17:53 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"pid":8256,"type":"qmdelsnapshot","node":"pve","starttime":1526476673,"pstart":11038182,"status":"stopped","exitstatus":"OK","upid":"UPID:pve:00002040:00A86DE6:5AFC2F81:qmdelsnapshot:101:root@pam:","user":"root@pam","id":"101"}}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:17:56 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00002040:00A86DE6:5AFC2F81:qmdelsnapshot:101:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC2F81::NOTFs2Tm1JtSmPu+iPKkGEsbLRFJGwXmKaL1wqDPHvYqzx7qxZrYqVgQVrRz0DY3n7Ku8+aeSubHXJ0ahFEWcRZL5P8w15ipV9VY+z2LbleRK/goZuqu7STaROcrB2jhcHpRFkAARyaL+Vjc3HHmDsk8pqhqxBtKSCmYvTLywkIG884WBKuLfJivKbdKzA+iG0791KF4GraiqfRZLNwDaGJoLTf6vJC/o6GM98Iv1L4TAiPqwODDFrR1MxD9xspTDKZW0H4QWYxD5M12SYSnC0ZnSOrRt7NSByNRvzq5ZjYbIDHjfDwMuXOVRtKWvWm3drGIW4xvDsbWuNId6obVoA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:17:53 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:17:53 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"n":1,"t":"TASK OK"}],"total":1}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:17:56 GMT
 - request:
     method: delete
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/101
@@ -409,9 +1941,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AFAF032:S5K/F41rI0wDJIGEzJrKZQQKOKI
+      - 5AFC2F81:UUZHYJ6UemTglT9qGTBGDNh+7xI
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF032::dFhwlqOhg9Aw/calmJjCWUdGKmCf3tsGUdQtSmqrO15M1FTjtXz5HDEbp+Y7rk23HlNJzRb77Sz5Bm2hoRg3zpVUgYRGzU/gEOdW5Rf+3e3pqnt3fnLbw5VIB2mnEjTlLwLWGB3za3MkQZpcJRCfqMRYaFpP4pSpJa/Xh1BguMZHGR1b+xani6/NQR2xuzCb7h8HVLrxDHwXMGGVCYbUgBNtyLg6B7MEXPK1KRn2DWJIoptmTAqbxooOoREAt4IsUAC8+2mbaXAc1MKvue1VUpd1rPYP8nm84DZYFNzbgpziblPDncxQCxBJR6ygVoIgmVbCX2J+HaYkzMZwesSOOw==
+      - PVEAuthCookie=PVE:root@pam:5AFC2F81::NOTFs2Tm1JtSmPu+iPKkGEsbLRFJGwXmKaL1wqDPHvYqzx7qxZrYqVgQVrRz0DY3n7Ku8+aeSubHXJ0ahFEWcRZL5P8w15ipV9VY+z2LbleRK/goZuqu7STaROcrB2jhcHpRFkAARyaL+Vjc3HHmDsk8pqhqxBtKSCmYvTLywkIG884WBKuLfJivKbdKzA+iG0791KF4GraiqfRZLNwDaGJoLTf6vJC/o6GM98Iv1L4TAiPqwODDFrR1MxD9xspTDKZW0H4QWYxD5M12SYSnC0ZnSOrRt7NSByNRvzq5ZjYbIDHjfDwMuXOVRtKWvWm3drGIW4xvDsbWuNId6obVoA==
   response:
     status:
       code: 200
@@ -422,7 +1954,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
       Pragma:
       - no-cache
       Server:
@@ -432,12 +1964,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:35:30 GMT
+      - Wed, 16 May 2018 13:17:53 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":"UPID:pve:00004176:000D02E1:5AFAF032:qmdestroy:101:root@pam:"}'
+      string: '{"data":"UPID:pve:00002041:00A86DF8:5AFC2F81:qmdestroy:101:root@pam:"}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:35:32 GMT
+  recorded_at: Wed, 16 May 2018 13:17:56 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/cluster/resources?type=node
@@ -450,7 +1982,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF0AC::PyXyy/ph2Avy0YyOhPWufIPp7dGJ/mUSCg0mG1fWpasLmcQogWZd4xGEFlhbFpyfcvavOUaKuinC8PeI/XpaFUiTVpEwRZAWBSLPpC0eqbC++oybzqIInJ9xsS4VwcOZC0GFIhq9dR+iELbuuoISQJIYhsrWcHci0ybPxhHeTbrr/+l3ihph1l7T5WnKBVTkCBE/vMKXA2LtiuVD22pb7kviSksdKdHhz4s3oU861SaN/0yR4BVELGwPyDbTQXDmO2tIEhiecD935cp3rkQD2QTkoidKnOYGYf8BOvAMJ+lMJGS/HQ0833//VWLlPQNOgImN0S2ZtMWYnWh+vob0vg==
+      - PVEAuthCookie=PVE:root@pam:5AFC300F::lVxuf+K4xOVkTW846LGoe9jQdGezFSZJW3ea7oJukc6HCyrTPLc/GFzJ7azeu3KQNBTUwr+tiH6gVFgCoy78U2h5MhouWPnos+YzrEu77gjd1SldIPnyIeM0Fkh++L7ZLifFv9Xe5sQpZpcjrtTdohHeBLTd1p6/MkNbCuaLWK/+dasAvaKhD7DQbkKRBWVM1BStteOfj0K69kFFDKdFbkS2bV/YUTo/8IADry9Rqn4wLjhnFw4x3QubGUtKNkvVZ4Nb++Ll2eqLZ3zBHNXHRLtelpzYkFHgFL84/Q1zi9hVuefjbctrS07twCMjxnjXKvnECupzcSiGNJTe9yhBDw==
   response:
     status:
       code: 200
@@ -461,22 +1993,22 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '208'
+      - '210'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"uptime":8639,"cpu":0.234756094520591,"type":"node","status":"online","level":"","maxcpu":2,"mem":736051200,"disk":1379385344,"id":"node/pve","maxdisk":1815969792,"maxmem":2093355008,"node":"pve"}]}'
+      string: '{"data":[{"status":"online","node":"pve","id":"node/pve","maxmem":4139732992,"disk":1469538304,"maxcpu":2,"maxdisk":4953096192,"uptime":110523,"level":"","type":"node","mem":783314944,"cpu":0.242136312062202}]}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:37:33 GMT
+  recorded_at: Wed, 16 May 2018 13:20:17 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/cluster/nextid
@@ -489,7 +2021,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF0AC::PyXyy/ph2Avy0YyOhPWufIPp7dGJ/mUSCg0mG1fWpasLmcQogWZd4xGEFlhbFpyfcvavOUaKuinC8PeI/XpaFUiTVpEwRZAWBSLPpC0eqbC++oybzqIInJ9xsS4VwcOZC0GFIhq9dR+iELbuuoISQJIYhsrWcHci0ybPxhHeTbrr/+l3ihph1l7T5WnKBVTkCBE/vMKXA2LtiuVD22pb7kviSksdKdHhz4s3oU861SaN/0yR4BVELGwPyDbTQXDmO2tIEhiecD935cp3rkQD2QTkoidKnOYGYf8BOvAMJ+lMJGS/HQ0833//VWLlPQNOgImN0S2ZtMWYnWh+vob0vg==
+      - PVEAuthCookie=PVE:root@pam:5AFC300F::lVxuf+K4xOVkTW846LGoe9jQdGezFSZJW3ea7oJukc6HCyrTPLc/GFzJ7azeu3KQNBTUwr+tiH6gVFgCoy78U2h5MhouWPnos+YzrEu77gjd1SldIPnyIeM0Fkh++L7ZLifFv9Xe5sQpZpcjrtTdohHeBLTd1p6/MkNbCuaLWK/+dasAvaKhD7DQbkKRBWVM1BStteOfj0K69kFFDKdFbkS2bV/YUTo/8IADry9Rqn4wLjhnFw4x3QubGUtKNkvVZ4Nb++Ll2eqLZ3zBHNXHRLtelpzYkFHgFL84/Q1zi9hVuefjbctrS07twCMjxnjXKvnECupzcSiGNJTe9yhBDw==
   response:
     status:
       code: 200
@@ -500,7 +2032,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
       Pragma:
       - no-cache
       Server:
@@ -510,12 +2042,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":"100"}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:37:33 GMT
+  recorded_at: Wed, 16 May 2018 13:20:17 GMT
 - request:
     method: post
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu
@@ -528,9 +2060,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AFAF0AC:2HVOGu1a+UmV8y9hal1AIJZ4pgc
+      - 5AFC300F:0wJkr6e5MF0iBCFUMYuc1YqYwH8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF0AC::PyXyy/ph2Avy0YyOhPWufIPp7dGJ/mUSCg0mG1fWpasLmcQogWZd4xGEFlhbFpyfcvavOUaKuinC8PeI/XpaFUiTVpEwRZAWBSLPpC0eqbC++oybzqIInJ9xsS4VwcOZC0GFIhq9dR+iELbuuoISQJIYhsrWcHci0ybPxhHeTbrr/+l3ihph1l7T5WnKBVTkCBE/vMKXA2LtiuVD22pb7kviSksdKdHhz4s3oU861SaN/0yR4BVELGwPyDbTQXDmO2tIEhiecD935cp3rkQD2QTkoidKnOYGYf8BOvAMJ+lMJGS/HQ0833//VWLlPQNOgImN0S2ZtMWYnWh+vob0vg==
+      - PVEAuthCookie=PVE:root@pam:5AFC300F::lVxuf+K4xOVkTW846LGoe9jQdGezFSZJW3ea7oJukc6HCyrTPLc/GFzJ7azeu3KQNBTUwr+tiH6gVFgCoy78U2h5MhouWPnos+YzrEu77gjd1SldIPnyIeM0Fkh++L7ZLifFv9Xe5sQpZpcjrtTdohHeBLTd1p6/MkNbCuaLWK/+dasAvaKhD7DQbkKRBWVM1BStteOfj0K69kFFDKdFbkS2bV/YUTo/8IADry9Rqn4wLjhnFw4x3QubGUtKNkvVZ4Nb++Ll2eqLZ3zBHNXHRLtelpzYkFHgFL84/Q1zi9hVuefjbctrS07twCMjxnjXKvnECupzcSiGNJTe9yhBDw==
   response:
     status:
       code: 200
@@ -541,7 +2073,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
       Pragma:
       - no-cache
       Server:
@@ -551,12 +2083,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":"UPID:pve:000043D0:000D3288:5AFAF0AC:qmcreate:100:root@pam:"}'
+      string: '{"data":"UPID:pve:000021F6:00A8A54E:5AFC300F:qmcreate:100:root@pam:"}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:37:34 GMT
+  recorded_at: Wed, 16 May 2018 13:20:18 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100/status/current
@@ -569,7 +2101,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF0AC::PyXyy/ph2Avy0YyOhPWufIPp7dGJ/mUSCg0mG1fWpasLmcQogWZd4xGEFlhbFpyfcvavOUaKuinC8PeI/XpaFUiTVpEwRZAWBSLPpC0eqbC++oybzqIInJ9xsS4VwcOZC0GFIhq9dR+iELbuuoISQJIYhsrWcHci0ybPxhHeTbrr/+l3ihph1l7T5WnKBVTkCBE/vMKXA2LtiuVD22pb7kviSksdKdHhz4s3oU861SaN/0yR4BVELGwPyDbTQXDmO2tIEhiecD935cp3rkQD2QTkoidKnOYGYf8BOvAMJ+lMJGS/HQ0833//VWLlPQNOgImN0S2ZtMWYnWh+vob0vg==
+      - PVEAuthCookie=PVE:root@pam:5AFC300F::lVxuf+K4xOVkTW846LGoe9jQdGezFSZJW3ea7oJukc6HCyrTPLc/GFzJ7azeu3KQNBTUwr+tiH6gVFgCoy78U2h5MhouWPnos+YzrEu77gjd1SldIPnyIeM0Fkh++L7ZLifFv9Xe5sQpZpcjrtTdohHeBLTd1p6/MkNbCuaLWK/+dasAvaKhD7DQbkKRBWVM1BStteOfj0K69kFFDKdFbkS2bV/YUTo/8IADry9Rqn4wLjhnFw4x3QubGUtKNkvVZ4Nb++Ll2eqLZ3zBHNXHRLtelpzYkFHgFL84/Q1zi9hVuefjbctrS07twCMjxnjXKvnECupzcSiGNJTe9yhBDw==
   response:
     status:
       code: 200
@@ -580,7 +2112,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
       Pragma:
       - no-cache
       Server:
@@ -590,13 +2122,13 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"netout":0,"diskwrite":0,"mem":0,"cpus":1,"pid":null,"cpu":0,"diskread":0,"status":"stopped","qmpstatus":"stopped","uptime":0,"template":"","disk":0,"netin":0,"name":"VM
-        100","ha":{"managed":0},"maxmem":0,"maxdisk":0}}'
+      string: '{"data":{"cpu":0,"netout":0,"cpus":1,"diskread":0,"template":"","qmpstatus":"stopped","name":"VM
+        100","netin":0,"pid":null,"mem":0,"maxdisk":0,"disk":0,"maxmem":0,"ha":{"managed":0},"diskwrite":0,"status":"stopped","uptime":0}}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:37:34 GMT
+  recorded_at: Wed, 16 May 2018 13:20:18 GMT
 - request:
     method: post
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100/snapshot
@@ -609,9 +2141,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AFAF0AC:2HVOGu1a+UmV8y9hal1AIJZ4pgc
+      - 5AFC300F:0wJkr6e5MF0iBCFUMYuc1YqYwH8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF0AC::PyXyy/ph2Avy0YyOhPWufIPp7dGJ/mUSCg0mG1fWpasLmcQogWZd4xGEFlhbFpyfcvavOUaKuinC8PeI/XpaFUiTVpEwRZAWBSLPpC0eqbC++oybzqIInJ9xsS4VwcOZC0GFIhq9dR+iELbuuoISQJIYhsrWcHci0ybPxhHeTbrr/+l3ihph1l7T5WnKBVTkCBE/vMKXA2LtiuVD22pb7kviSksdKdHhz4s3oU861SaN/0yR4BVELGwPyDbTQXDmO2tIEhiecD935cp3rkQD2QTkoidKnOYGYf8BOvAMJ+lMJGS/HQ0833//VWLlPQNOgImN0S2ZtMWYnWh+vob0vg==
+      - PVEAuthCookie=PVE:root@pam:5AFC300F::lVxuf+K4xOVkTW846LGoe9jQdGezFSZJW3ea7oJukc6HCyrTPLc/GFzJ7azeu3KQNBTUwr+tiH6gVFgCoy78U2h5MhouWPnos+YzrEu77gjd1SldIPnyIeM0Fkh++L7ZLifFv9Xe5sQpZpcjrtTdohHeBLTd1p6/MkNbCuaLWK/+dasAvaKhD7DQbkKRBWVM1BStteOfj0K69kFFDKdFbkS2bV/YUTo/8IADry9Rqn4wLjhnFw4x3QubGUtKNkvVZ4Nb++Ll2eqLZ3zBHNXHRLtelpzYkFHgFL84/Q1zi9hVuefjbctrS07twCMjxnjXKvnECupzcSiGNJTe9yhBDw==
   response:
     status:
       code: 200
@@ -622,7 +2154,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
       Pragma:
       - no-cache
       Server:
@@ -632,12 +2164,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":"UPID:pve:000043D1:000D328F:5AFAF0AC:qmsnapshot:100:root@pam:"}'
+      string: '{"data":"UPID:pve:000021F8:00A8A559:5AFC300F:qmsnapshot:100:root@pam:"}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:37:34 GMT
+  recorded_at: Wed, 16 May 2018 13:20:18 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100/snapshot
@@ -650,7 +2182,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF0AC::PyXyy/ph2Avy0YyOhPWufIPp7dGJ/mUSCg0mG1fWpasLmcQogWZd4xGEFlhbFpyfcvavOUaKuinC8PeI/XpaFUiTVpEwRZAWBSLPpC0eqbC++oybzqIInJ9xsS4VwcOZC0GFIhq9dR+iELbuuoISQJIYhsrWcHci0ybPxhHeTbrr/+l3ihph1l7T5WnKBVTkCBE/vMKXA2LtiuVD22pb7kviSksdKdHhz4s3oU861SaN/0yR4BVELGwPyDbTQXDmO2tIEhiecD935cp3rkQD2QTkoidKnOYGYf8BOvAMJ+lMJGS/HQ0833//VWLlPQNOgImN0S2ZtMWYnWh+vob0vg==
+      - PVEAuthCookie=PVE:root@pam:5AFC300F::lVxuf+K4xOVkTW846LGoe9jQdGezFSZJW3ea7oJukc6HCyrTPLc/GFzJ7azeu3KQNBTUwr+tiH6gVFgCoy78U2h5MhouWPnos+YzrEu77gjd1SldIPnyIeM0Fkh++L7ZLifFv9Xe5sQpZpcjrtTdohHeBLTd1p6/MkNbCuaLWK/+dasAvaKhD7DQbkKRBWVM1BStteOfj0K69kFFDKdFbkS2bV/YUTo/8IADry9Rqn4wLjhnFw4x3QubGUtKNkvVZ4Nb++Ll2eqLZ3zBHNXHRLtelpzYkFHgFL84/Q1zi9hVuefjbctrS07twCMjxnjXKvnECupzcSiGNJTe9yhBDw==
   response:
     status:
       code: 200
@@ -661,7 +2193,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
       Pragma:
       - no-cache
       Server:
@@ -671,12 +2203,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"snaptime":1526395052,"vmstate":0,"description":"","name":"snapshot1"},{"name":"current","running":0,"digest":"da161d09bf29e56dc79c6f2af3b0ae7c71dd57d6","parent":"snapshot1"}]}'
+      string: '{"data":[{"vmstate":0,"description":"","snaptime":1526476815,"name":"snapshot1"},{"digest":"e22b96c820fd7a7ae1e6b540b40963648a8f553e","running":0,"name":"current","parent":"snapshot1"}]}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:37:34 GMT
+  recorded_at: Wed, 16 May 2018 13:20:18 GMT
 - request:
     method: put
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100/snapshot/snapshot1/config
@@ -689,9 +2221,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AFAF0AC:2HVOGu1a+UmV8y9hal1AIJZ4pgc
+      - 5AFC300F:0wJkr6e5MF0iBCFUMYuc1YqYwH8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF0AC::PyXyy/ph2Avy0YyOhPWufIPp7dGJ/mUSCg0mG1fWpasLmcQogWZd4xGEFlhbFpyfcvavOUaKuinC8PeI/XpaFUiTVpEwRZAWBSLPpC0eqbC++oybzqIInJ9xsS4VwcOZC0GFIhq9dR+iELbuuoISQJIYhsrWcHci0ybPxhHeTbrr/+l3ihph1l7T5WnKBVTkCBE/vMKXA2LtiuVD22pb7kviSksdKdHhz4s3oU861SaN/0yR4BVELGwPyDbTQXDmO2tIEhiecD935cp3rkQD2QTkoidKnOYGYf8BOvAMJ+lMJGS/HQ0833//VWLlPQNOgImN0S2ZtMWYnWh+vob0vg==
+      - PVEAuthCookie=PVE:root@pam:5AFC300F::lVxuf+K4xOVkTW846LGoe9jQdGezFSZJW3ea7oJukc6HCyrTPLc/GFzJ7azeu3KQNBTUwr+tiH6gVFgCoy78U2h5MhouWPnos+YzrEu77gjd1SldIPnyIeM0Fkh++L7ZLifFv9Xe5sQpZpcjrtTdohHeBLTd1p6/MkNbCuaLWK/+dasAvaKhD7DQbkKRBWVM1BStteOfj0K69kFFDKdFbkS2bV/YUTo/8IADry9Rqn4wLjhnFw4x3QubGUtKNkvVZ4Nb++Ll2eqLZ3zBHNXHRLtelpzYkFHgFL84/Q1zi9hVuefjbctrS07twCMjxnjXKvnECupzcSiGNJTe9yhBDw==
   response:
     status:
       code: 200
@@ -702,7 +2234,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
       Pragma:
       - no-cache
       Server:
@@ -712,12 +2244,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:37:34 GMT
+  recorded_at: Wed, 16 May 2018 13:20:18 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100/snapshot
@@ -730,7 +2262,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF0AC::PyXyy/ph2Avy0YyOhPWufIPp7dGJ/mUSCg0mG1fWpasLmcQogWZd4xGEFlhbFpyfcvavOUaKuinC8PeI/XpaFUiTVpEwRZAWBSLPpC0eqbC++oybzqIInJ9xsS4VwcOZC0GFIhq9dR+iELbuuoISQJIYhsrWcHci0ybPxhHeTbrr/+l3ihph1l7T5WnKBVTkCBE/vMKXA2LtiuVD22pb7kviSksdKdHhz4s3oU861SaN/0yR4BVELGwPyDbTQXDmO2tIEhiecD935cp3rkQD2QTkoidKnOYGYf8BOvAMJ+lMJGS/HQ0833//VWLlPQNOgImN0S2ZtMWYnWh+vob0vg==
+      - PVEAuthCookie=PVE:root@pam:5AFC300F::lVxuf+K4xOVkTW846LGoe9jQdGezFSZJW3ea7oJukc6HCyrTPLc/GFzJ7azeu3KQNBTUwr+tiH6gVFgCoy78U2h5MhouWPnos+YzrEu77gjd1SldIPnyIeM0Fkh++L7ZLifFv9Xe5sQpZpcjrtTdohHeBLTd1p6/MkNbCuaLWK/+dasAvaKhD7DQbkKRBWVM1BStteOfj0K69kFFDKdFbkS2bV/YUTo/8IADry9Rqn4wLjhnFw4x3QubGUtKNkvVZ4Nb++Ll2eqLZ3zBHNXHRLtelpzYkFHgFL84/Q1zi9hVuefjbctrS07twCMjxnjXKvnECupzcSiGNJTe9yhBDw==
   response:
     status:
       code: 200
@@ -741,7 +2273,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
       Pragma:
       - no-cache
       Server:
@@ -751,13 +2283,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:37:32 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"snaptime":1526395052,"name":"snapshot1","description":"Snapshot
-        1","vmstate":0},{"running":0,"name":"current","digest":"ce67959ef6cd50bae5ef34ba27e0200d2ecd3eb5","parent":"snapshot1"}]}'
+      string: '{"data":[{"description":"Snapshot 1","snaptime":1526476815,"vmstate":0,"name":"snapshot1"},{"running":0,"digest":"c58bc871103620edf0f640794b464f82f340e939","parent":"snapshot1","name":"current"}]}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:37:34 GMT
+  recorded_at: Wed, 16 May 2018 13:20:18 GMT
 - request:
     method: delete
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100/snapshot/snapshot1?force=0
@@ -770,9 +2301,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AFAF0AC:2HVOGu1a+UmV8y9hal1AIJZ4pgc
+      - 5AFC300F:0wJkr6e5MF0iBCFUMYuc1YqYwH8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF0AC::PyXyy/ph2Avy0YyOhPWufIPp7dGJ/mUSCg0mG1fWpasLmcQogWZd4xGEFlhbFpyfcvavOUaKuinC8PeI/XpaFUiTVpEwRZAWBSLPpC0eqbC++oybzqIInJ9xsS4VwcOZC0GFIhq9dR+iELbuuoISQJIYhsrWcHci0ybPxhHeTbrr/+l3ihph1l7T5WnKBVTkCBE/vMKXA2LtiuVD22pb7kviSksdKdHhz4s3oU861SaN/0yR4BVELGwPyDbTQXDmO2tIEhiecD935cp3rkQD2QTkoidKnOYGYf8BOvAMJ+lMJGS/HQ0833//VWLlPQNOgImN0S2ZtMWYnWh+vob0vg==
+      - PVEAuthCookie=PVE:root@pam:5AFC300F::lVxuf+K4xOVkTW846LGoe9jQdGezFSZJW3ea7oJukc6HCyrTPLc/GFzJ7azeu3KQNBTUwr+tiH6gVFgCoy78U2h5MhouWPnos+YzrEu77gjd1SldIPnyIeM0Fkh++L7ZLifFv9Xe5sQpZpcjrtTdohHeBLTd1p6/MkNbCuaLWK/+dasAvaKhD7DQbkKRBWVM1BStteOfj0K69kFFDKdFbkS2bV/YUTo/8IADry9Rqn4wLjhnFw4x3QubGUtKNkvVZ4Nb++Ll2eqLZ3zBHNXHRLtelpzYkFHgFL84/Q1zi9hVuefjbctrS07twCMjxnjXKvnECupzcSiGNJTe9yhBDw==
   response:
     status:
       code: 200
@@ -783,7 +2314,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:37:33 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
       Pragma:
       - no-cache
       Server:
@@ -793,15 +2324,15 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:37:33 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":"UPID:pve:000043D2:000D329B:5AFAF0AD:qmdelsnapshot:100:root@pam:"}'
+      string: '{"data":"UPID:pve:000021F9:00A8A56A:5AFC300F:qmdelsnapshot:100:root@pam:"}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:37:34 GMT
+  recorded_at: Wed, 16 May 2018 13:20:18 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000043D2:000D329B:5AFAF0AD:qmdelsnapshot:100:root@pam:/status
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000021F9:00A8A56A:5AFC300F:qmdelsnapshot:100:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -811,7 +2342,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF0AC::PyXyy/ph2Avy0YyOhPWufIPp7dGJ/mUSCg0mG1fWpasLmcQogWZd4xGEFlhbFpyfcvavOUaKuinC8PeI/XpaFUiTVpEwRZAWBSLPpC0eqbC++oybzqIInJ9xsS4VwcOZC0GFIhq9dR+iELbuuoISQJIYhsrWcHci0ybPxhHeTbrr/+l3ihph1l7T5WnKBVTkCBE/vMKXA2LtiuVD22pb7kviSksdKdHhz4s3oU861SaN/0yR4BVELGwPyDbTQXDmO2tIEhiecD935cp3rkQD2QTkoidKnOYGYf8BOvAMJ+lMJGS/HQ0833//VWLlPQNOgImN0S2ZtMWYnWh+vob0vg==
+      - PVEAuthCookie=PVE:root@pam:5AFC300F::lVxuf+K4xOVkTW846LGoe9jQdGezFSZJW3ea7oJukc6HCyrTPLc/GFzJ7azeu3KQNBTUwr+tiH6gVFgCoy78U2h5MhouWPnos+YzrEu77gjd1SldIPnyIeM0Fkh++L7ZLifFv9Xe5sQpZpcjrtTdohHeBLTd1p6/MkNbCuaLWK/+dasAvaKhD7DQbkKRBWVM1BStteOfj0K69kFFDKdFbkS2bV/YUTo/8IADry9Rqn4wLjhnFw4x3QubGUtKNkvVZ4Nb++Ll2eqLZ3zBHNXHRLtelpzYkFHgFL84/Q1zi9hVuefjbctrS07twCMjxnjXKvnECupzcSiGNJTe9yhBDw==
   response:
     status:
       code: 200
@@ -822,25 +2353,25 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:37:33 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '236'
+      - '219'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:37:33 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"exitstatus":"OK","node":"pve","status":"stopped","id":"100","pid":17362,"upid":"UPID:pve:000043D2:000D329B:5AFAF0AD:qmdelsnapshot:100:root@pam:","starttime":1526395053,"user":"root@pam","type":"qmdelsnapshot","pstart":864923}}'
+      string: '{"data":{"user":"root@pam","id":"100","upid":"UPID:pve:000021F9:00A8A56A:5AFC300F:qmdelsnapshot:100:root@pam:","pstart":11052394,"status":"running","pid":8697,"type":"qmdelsnapshot","node":"pve","starttime":1526476815}}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:37:34 GMT
+  recorded_at: Wed, 16 May 2018 13:20:18 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000043D2:000D329B:5AFAF0AD:qmdelsnapshot:100:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000021F9:00A8A56A:5AFC300F:qmdelsnapshot:100:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
@@ -850,7 +2381,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF0AC::PyXyy/ph2Avy0YyOhPWufIPp7dGJ/mUSCg0mG1fWpasLmcQogWZd4xGEFlhbFpyfcvavOUaKuinC8PeI/XpaFUiTVpEwRZAWBSLPpC0eqbC++oybzqIInJ9xsS4VwcOZC0GFIhq9dR+iELbuuoISQJIYhsrWcHci0ybPxhHeTbrr/+l3ihph1l7T5WnKBVTkCBE/vMKXA2LtiuVD22pb7kviSksdKdHhz4s3oU861SaN/0yR4BVELGwPyDbTQXDmO2tIEhiecD935cp3rkQD2QTkoidKnOYGYf8BOvAMJ+lMJGS/HQ0833//VWLlPQNOgImN0S2ZtMWYnWh+vob0vg==
+      - PVEAuthCookie=PVE:root@pam:5AFC300F::lVxuf+K4xOVkTW846LGoe9jQdGezFSZJW3ea7oJukc6HCyrTPLc/GFzJ7azeu3KQNBTUwr+tiH6gVFgCoy78U2h5MhouWPnos+YzrEu77gjd1SldIPnyIeM0Fkh++L7ZLifFv9Xe5sQpZpcjrtTdohHeBLTd1p6/MkNbCuaLWK/+dasAvaKhD7DQbkKRBWVM1BStteOfj0K69kFFDKdFbkS2bV/YUTo/8IADry9Rqn4wLjhnFw4x3QubGUtKNkvVZ4Nb++Ll2eqLZ3zBHNXHRLtelpzYkFHgFL84/Q1zi9hVuefjbctrS07twCMjxnjXKvnECupzcSiGNJTe9yhBDw==
   response:
     status:
       code: 200
@@ -861,85 +2392,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:37:33 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '42'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 15 May 2018 14:37:33 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[{"t":"TASK OK","n":1}],"total":1}'
-    http_version: 
-  recorded_at: Tue, 15 May 2018 14:37:34 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000043D2:000D329B:5AFAF0AD:qmdelsnapshot:100:root@pam:/status
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.1.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF0AC::PyXyy/ph2Avy0YyOhPWufIPp7dGJ/mUSCg0mG1fWpasLmcQogWZd4xGEFlhbFpyfcvavOUaKuinC8PeI/XpaFUiTVpEwRZAWBSLPpC0eqbC++oybzqIInJ9xsS4VwcOZC0GFIhq9dR+iELbuuoISQJIYhsrWcHci0ybPxhHeTbrr/+l3ihph1l7T5WnKBVTkCBE/vMKXA2LtiuVD22pb7kviSksdKdHhz4s3oU861SaN/0yR4BVELGwPyDbTQXDmO2tIEhiecD935cp3rkQD2QTkoidKnOYGYf8BOvAMJ+lMJGS/HQ0833//VWLlPQNOgImN0S2ZtMWYnWh+vob0vg==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive, Keep-Alive
-      Date:
-      - Tue, 15 May 2018 14:37:33 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '236'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 15 May 2018 14:37:33 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":{"status":"stopped","exitstatus":"OK","node":"pve","upid":"UPID:pve:000043D2:000D329B:5AFAF0AD:qmdelsnapshot:100:root@pam:","starttime":1526395053,"pid":17362,"id":"100","user":"root@pam","pstart":864923,"type":"qmdelsnapshot"}}'
-    http_version: 
-  recorded_at: Tue, 15 May 2018 14:37:34 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000043D2:000D329B:5AFAF0AD:qmdelsnapshot:100:root@pam:/log
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.1.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF0AC::PyXyy/ph2Avy0YyOhPWufIPp7dGJ/mUSCg0mG1fWpasLmcQogWZd4xGEFlhbFpyfcvavOUaKuinC8PeI/XpaFUiTVpEwRZAWBSLPpC0eqbC++oybzqIInJ9xsS4VwcOZC0GFIhq9dR+iELbuuoISQJIYhsrWcHci0ybPxhHeTbrr/+l3ihph1l7T5WnKBVTkCBE/vMKXA2LtiuVD22pb7kviSksdKdHhz4s3oU861SaN/0yR4BVELGwPyDbTQXDmO2tIEhiecD935cp3rkQD2QTkoidKnOYGYf8BOvAMJ+lMJGS/HQ0833//VWLlPQNOgImN0S2ZtMWYnWh+vob0vg==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive, Keep-Alive
-      Date:
-      - Tue, 15 May 2018 14:37:33 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
       Pragma:
       - no-cache
       Server:
@@ -949,12 +2402,90 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:37:33 GMT
+      - Wed, 16 May 2018 13:20:15 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"total":1,"data":[{"n":1,"t":"TASK OK"}]}'
+      string: '{"total":1,"data":[{"t":"TASK OK","n":1}]}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:37:34 GMT
+  recorded_at: Wed, 16 May 2018 13:20:18 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000021F9:00A8A56A:5AFC300F:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC300F::lVxuf+K4xOVkTW846LGoe9jQdGezFSZJW3ea7oJukc6HCyrTPLc/GFzJ7azeu3KQNBTUwr+tiH6gVFgCoy78U2h5MhouWPnos+YzrEu77gjd1SldIPnyIeM0Fkh++L7ZLifFv9Xe5sQpZpcjrtTdohHeBLTd1p6/MkNbCuaLWK/+dasAvaKhD7DQbkKRBWVM1BStteOfj0K69kFFDKdFbkS2bV/YUTo/8IADry9Rqn4wLjhnFw4x3QubGUtKNkvVZ4Nb++Ll2eqLZ3zBHNXHRLtelpzYkFHgFL84/Q1zi9hVuefjbctrS07twCMjxnjXKvnECupzcSiGNJTe9yhBDw==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:20:15 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '237'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:20:15 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"pstart":11052394,"status":"stopped","pid":8697,"type":"qmdelsnapshot","starttime":1526476815,"node":"pve","user":"root@pam","id":"100","exitstatus":"OK","upid":"UPID:pve:000021F9:00A8A56A:5AFC300F:qmdelsnapshot:100:root@pam:"}}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:20:18 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:000021F9:00A8A56A:5AFC300F:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5AFC300F::lVxuf+K4xOVkTW846LGoe9jQdGezFSZJW3ea7oJukc6HCyrTPLc/GFzJ7azeu3KQNBTUwr+tiH6gVFgCoy78U2h5MhouWPnos+YzrEu77gjd1SldIPnyIeM0Fkh++L7ZLifFv9Xe5sQpZpcjrtTdohHeBLTd1p6/MkNbCuaLWK/+dasAvaKhD7DQbkKRBWVM1BStteOfj0K69kFFDKdFbkS2bV/YUTo/8IADry9Rqn4wLjhnFw4x3QubGUtKNkvVZ4Nb++Ll2eqLZ3zBHNXHRLtelpzYkFHgFL84/Q1zi9hVuefjbctrS07twCMjxnjXKvnECupzcSiGNJTe9yhBDw==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Wed, 16 May 2018 13:20:16 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 16 May 2018 13:20:16 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"t":"TASK OK","n":1}]}'
+    http_version: 
+  recorded_at: Wed, 16 May 2018 13:20:18 GMT
 - request:
     method: delete
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100
@@ -967,9 +2498,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5AFAF0AC:2HVOGu1a+UmV8y9hal1AIJZ4pgc
+      - 5AFC300F:0wJkr6e5MF0iBCFUMYuc1YqYwH8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5AFAF0AC::PyXyy/ph2Avy0YyOhPWufIPp7dGJ/mUSCg0mG1fWpasLmcQogWZd4xGEFlhbFpyfcvavOUaKuinC8PeI/XpaFUiTVpEwRZAWBSLPpC0eqbC++oybzqIInJ9xsS4VwcOZC0GFIhq9dR+iELbuuoISQJIYhsrWcHci0ybPxhHeTbrr/+l3ihph1l7T5WnKBVTkCBE/vMKXA2LtiuVD22pb7kviSksdKdHhz4s3oU861SaN/0yR4BVELGwPyDbTQXDmO2tIEhiecD935cp3rkQD2QTkoidKnOYGYf8BOvAMJ+lMJGS/HQ0833//VWLlPQNOgImN0S2ZtMWYnWh+vob0vg==
+      - PVEAuthCookie=PVE:root@pam:5AFC300F::lVxuf+K4xOVkTW846LGoe9jQdGezFSZJW3ea7oJukc6HCyrTPLc/GFzJ7azeu3KQNBTUwr+tiH6gVFgCoy78U2h5MhouWPnos+YzrEu77gjd1SldIPnyIeM0Fkh++L7ZLifFv9Xe5sQpZpcjrtTdohHeBLTd1p6/MkNbCuaLWK/+dasAvaKhD7DQbkKRBWVM1BStteOfj0K69kFFDKdFbkS2bV/YUTo/8IADry9Rqn4wLjhnFw4x3QubGUtKNkvVZ4Nb++Ll2eqLZ3zBHNXHRLtelpzYkFHgFL84/Q1zi9hVuefjbctrS07twCMjxnjXKvnECupzcSiGNJTe9yhBDw==
   response:
     status:
       code: 200
@@ -980,7 +2511,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 15 May 2018 14:37:33 GMT
+      - Wed, 16 May 2018 13:20:16 GMT
       Pragma:
       - no-cache
       Server:
@@ -990,10 +2521,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 15 May 2018 14:37:33 GMT
+      - Wed, 16 May 2018 13:20:16 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":"UPID:pve:000043D3:000D32A8:5AFAF0AD:qmdestroy:100:root@pam:"}'
+      string: '{"data":"UPID:pve:000021FA:00A8A578:5AFC3010:qmdestroy:100:root@pam:"}'
     http_version: 
-  recorded_at: Tue, 15 May 2018 14:37:34 GMT
+  recorded_at: Wed, 16 May 2018 13:20:18 GMT
 recorded_with: VCR 3.0.3

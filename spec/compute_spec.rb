@@ -68,36 +68,35 @@ describe Fog::Compute::Proxmox do
       valid = @service.servers.id_valid? 99
       valid.must_equal false
       # Create 1st time
-      node.servers.create(server_hash)
-      sleep 1
+      taskid = node.servers.create(server_hash)
+      task = node.tasks.find_by_id taskid
+      task.wait_for { succeeded? }
       # Check already used vmid
       valid = node.servers.id_valid? vmid
+      valid.must_equal false
       # Clone server
       newid = node.servers.next_id
       # Get server
       server = node.servers.get vmid
+      server.wont_be_nil
       # Backup it
       taskid = server.backup(compress: 'lzo')
       task = node.tasks.get taskid
       task.wait_for { succeeded? }
       # Get this backup image
       # Find available backup storages
-      storages = node.storages.list_by_content_type 'backup'
-      storages.wont_be_nil
-      storages.wont_be_empty
-      storage = storages[0]
-      storage.wont_be_nil
-      volumes = storage.volumes.list_by_content_type_and_by_server('backup', vmid)
-      storages.wont_be_nil
-      storages.wont_be_empty
-      volume = volumes[0]
+      volume = server.backups.first
       volume.wont_be_nil
       # Restore it
-      server.restore volume
+      taskid = server.restore volume
+      task = node.tasks.get taskid
+      task.wait_for { succeeded? }
       # Delete it
       volume.destroy
       # Clone it
-      server.clone newid
+      taskid = server.clone newid
+      task = node.tasks.get taskid
+      task.wait_for { succeeded? }
       # Get clone
       clone = node.servers.get newid
       # Delete clone
@@ -126,12 +125,20 @@ describe Fog::Compute::Proxmox do
       taskid = server.attach(ide0, options)
       task = node.tasks.find_by_id taskid
       task.wait_for { succeeded? }
-      server.detach('ide0')
-      server.detach('unused0')
+      taskid = server.detach('ide0')
+      task = node.tasks.find_by_id taskid
+      task.wait_for { succeeded? }
+      taskid = server.detach('unused0')
+      task = node.tasks.find_by_id taskid
+      task.wait_for { succeeded? }
+      sleep 1
+      # Get server disk images
+      disk_image = server.disk_images.first
+      disk_image.wont_be_nil
       # Resize disk server
-      server.extend('virtio0','+1G')
+      server.extend('virtio0', '+1G')
       # Move disk server
-      server.move('virtio0','local')
+      server.move('virtio0', 'local')
       # Add network interface
       config_hash = { net0: 'virtio,bridge=vmbr0' }
       server.update(config_hash)

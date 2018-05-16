@@ -165,6 +165,21 @@ module Fog
                                                      server: self)
           end
         end
+
+        def backups
+          volumes 'backup'
+        end
+
+        def disk_images
+          volumes 'images'
+        end
+
+        def volumes(content)
+          storages = node.storages.list_by_content_type content
+          volumes = []
+          storages.each { |storage| volumes += storage.volumes.list_by_content_type_and_by_server(content, vmid) }
+          volumes
+        end
       end
     end
   end
