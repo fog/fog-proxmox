@@ -88,8 +88,6 @@ module Fog
       request :update_snapshot
       request :delete_snapshot
       request :rollback_snapshot
-      # Manage images
-      request :upload_image
 
       # Mock class
       class Mock
