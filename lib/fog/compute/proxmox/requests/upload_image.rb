@@ -18,18 +18,22 @@
 
 # frozen_string_literal: true
 
+require 'fog/proxmox/json'
+
 module Fog
   module Compute
     class Proxmox
       # class Real upload_image request
       class Real
         def upload_image(node, storage, options)
-          request(
+          response = request(
+            headers: { 'Content-type' => 'application-x-cd-image' }
             expects: [200],
             method: 'POST',
             path: "nodes/#{node}/storage/#{storage}/upload",
-            query: URI.encode_www_form(options)
+            body: URI.encode_www_form(options)
           )
+          Fog::Proxmox::Json.get_data(response)
         end
       end
 

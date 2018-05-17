@@ -43,6 +43,18 @@ module Fog
           load_response(service.list_volumes(node, storage, options), 'volumes')
         end
 
+        def import(content, filename, options = {})
+          requires :node, :storage
+          config = options.merge(content: content, filename: filename)
+          task_wait_for(service.upload_image(node, storage, config))
+        end
+
+        def task_wait_for(task_upid)
+          task = node.tasks.get task_upid
+          task.wait_for { finished? }        
+          task.succeeded?
+        end
+
         def list_by_content_type(content)
           search(content: content)
         end

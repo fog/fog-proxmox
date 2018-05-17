@@ -185,7 +185,8 @@ module Fog
 
         def task_wait_for(task_upid)
           task = tasks.get task_upid
-          task.wait_for { finished? }
+          task.wait_for { finished? }  
+          task.succeeded?
         end
       end
     end
