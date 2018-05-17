@@ -255,8 +255,10 @@ server.wait_for { server.status == 'stopped' } # wait until it is stopped
 Fetch server disk_images:
 
 ```ruby
-server.disk_images.all
+disk_images = server.disk_images
 ```
+
+This returns an array of `Fog::Compute::Proxmox::Volume` instances.
 
 Delete server:
 
@@ -291,10 +293,17 @@ node.backup options
 You can restore a server from a backup.
 Backups are volumes which content type is `backup` and owned by a server.
 
-You first fetch the backup volumes of this server and choose one:
+You first fetch the backup volumes of this server:
 
 ```ruby
-volumes = server.backups.all
+volumes = server.backups
+```
+
+This returns an array of `Fog::Compute::Proxmox::Volume` instances.
+
+Then you choose one:
+
+```ruby
 backup = volumes[0] # local:backup/vzdump-qemu-100-2018_05_15-15_18_31.vma.lzo
 ```
 

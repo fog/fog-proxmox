@@ -128,7 +128,7 @@ server.wait_for { server.status == 'stopped' }
 # Backup a server
 server.backup(compress: 'lzo')
 
-# Fetch a backup volume
+# Fetch a backup volume (first one)
 volume = server.backups.first
 
 # Restore it
