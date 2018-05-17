@@ -69,37 +69,45 @@ describe Fog::Compute::Proxmox do
       valid.must_equal false
       # Create 1st time
       node.servers.create(server_hash)
-      sleep 1
       # Check already used vmid
       valid = node.servers.id_valid? vmid
+      valid.must_equal false
       # Clone server
       newid = node.servers.next_id
       # Get server
       server = node.servers.get vmid
+      server.wont_be_nil
       # Backup it
-      taskid = server.backup(compress: 'lzo')
-      task = node.tasks.get taskid
-      task.wait_for { succeeded? }
+      server.backup(compress: 'lzo')
       # Get this backup image
-      # Find available backup storages
-      storages = node.storages.list_by_content_type 'backup'
-      storages.wont_be_nil
-      storages.wont_be_empty
-      storage = storages[0]
-      storage.wont_be_nil
-      volumes = storage.volumes.list_by_content_type_and_by_server('backup', vmid)
-      storages.wont_be_nil
-      storages.wont_be_empty
-      volume = volumes[0]
+      # Find available backup volumes
+      volume = server.backups.first
       volume.wont_be_nil
       # Restore it
       server.restore volume
       # Delete it
       volume.destroy
-      # Clone it
-      server.clone newid
+      # Add hdd
+      # Find available storages with images
+      storages = node.storages.list_by_content_type 'images'
+      storage = storages[0]
+      virtio0 = { id: 'virtio0', storage: storage.storage, size: '1' }
+      ide0 = { id: 'ide0', storage: storage.storage, size: '1' }
+      options = { backup: 0, replicate: 0 }
+      server.attach(virtio0, options)
+      server.attach(ide0, options)
+      server.detach('ide0')
+      server.detach('unused0')
+      sleep 1
+      # Clone it (linked fails)
+      server.clone(newid, full: 1)
       # Get clone
       clone = node.servers.get newid
+      # Template this clone (read-only)
+      clone.template
+      # Get clone disk image
+      disk_image = clone.disk_images.first
+      disk_image.wont_be_nil
       # Delete clone
       clone.destroy
       proc do
@@ -110,28 +118,13 @@ describe Fog::Compute::Proxmox do
         node.servers.create server_hash
       end.must_raise Excon::Errors::InternalServerError
       # Update config server
-      # Add cdrom empty
+      # Add empty cdrom
       config_hash = { ide2: 'none,media=cdrom' }
       server.update(config_hash)
-      # Add hdd
-      # Find available storages to images
-      storages = node.storages.list_by_content_type 'images'
-      storage = storages[0]
-      virtio0 = { id: 'virtio0', storage: storage.storage, size: '1' }
-      ide0 = { id: 'ide0', storage: storage.storage, size: '1' }
-      options = { backup: 0, replicate: 0 }
-      taskid = server.attach(virtio0, options)
-      task = node.tasks.find_by_id taskid
-      task.wait_for { succeeded? }
-      taskid = server.attach(ide0, options)
-      task = node.tasks.find_by_id taskid
-      task.wait_for { succeeded? }
-      server.detach('ide0')
-      server.detach('unused0')
       # Resize disk server
-      server.extend('virtio0','+1G')
+      server.extend('virtio0', '+1G')
       # Move disk server
-      server.move('virtio0','local')
+      server.move('virtio0', 'local')
       # Add network interface
       config_hash = { net0: 'virtio,bridge=vmbr0' }
       server.update(config_hash)
@@ -177,9 +170,7 @@ describe Fog::Compute::Proxmox do
         server.action('hello')
       end.must_raise Fog::Errors::Error
       # Delete
-      taskid = server.destroy
-      task = node.tasks.find_by_id taskid
-      task.wait_for { succeeded? }
+      server.destroy
       proc do
         node.servers.get vmid
       end.must_raise Excon::Errors::InternalServerError
@@ -212,7 +203,7 @@ describe Fog::Compute::Proxmox do
       # Delete
       taskid = snapshot.destroy
       task = node.tasks.find_by_id taskid
-      task.wait_for { succeeded? }
+      task.wait_for { finished? }
       server.destroy
     end
   end

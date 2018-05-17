@@ -85,9 +85,9 @@ options = { backup: 0, replicate: 0 }
 server.attach(virtio0, options)
 server.attach(ide0, options)
 # Resize disk server
-server.extend('virtio0','+1G')
+server.extend('virtio0', '+1G')
 # Move disk server
-server.move('virtio0','local')
+server.move('virtio0', 'local')
 # Detach a disk
 server.detach 'ide0'
 # Remove it
@@ -128,11 +128,8 @@ server.wait_for { server.status == 'stopped' }
 # Backup a server
 server.backup(compress: 'lzo')
 
-# Fetch backups
-storages = node.storages.list_by_content_type 'backup'
-storage = storages[0]
-volumes = storage.volumes.list_by_content_type_and_by_server('backup', vmid)
-volume = volumes[0]
+# Fetch a backup volume (first one)
+volume = server.backups.first
 
 # Restore it
 server.restore volume
@@ -154,6 +151,9 @@ snapshot.update
 
 # Delete snapshot
 snapshot.destroy
+
+# Fetch disk images
+server.disk_images.all
 
 # Delete server
 server.destroy

@@ -39,6 +39,7 @@ module Fog
         attribute :format
         attribute :node
         attribute :storage
+        attribute :vmid
 
         def new(attributes = {})
           requires :node, :storage
@@ -51,8 +52,7 @@ module Fog
 
         def destroy
           requires :node, :volid, :storage
-          task_upid = service.delete_volume(node, storage, volid)
-          task_upid
+          service.delete_volume(node, storage, volid)
         end
 
         def restore(vmid, options = {})
