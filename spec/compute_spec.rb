@@ -59,46 +59,46 @@ describe Fog::Compute::Proxmox do
       node_name = 'pve'
       node = @service.nodes.find_by_id node_name
       # Get next vmid
-      vmid = node.servers.next_id
-      server_hash = { vmid: vmid }
-      # # Check valid vmid
-      # valid = @service.servers.id_valid? vmid
-      # valid.must_equal true
-      # # Check not valid vmid
-      # valid = @service.servers.id_valid? 99
-      # valid.must_equal false
-      # Create 1st time
-      node.servers.create(server_hash)
-      # # Check already used vmid
-      # valid = node.servers.id_valid? vmid
-      # valid.must_equal false
-      # # Clone server
-      # newid = node.servers.next_id
-      # Get server
-      server = node.servers.get vmid
-      # server.wont_be_nil
-      # # Backup it
-      # server.backup(compress: 'lzo')
-      # # Get this backup image
-      # # Find available backup volumes
-      # volume = server.backups.first
-      # volume.wont_be_nil
-      # # Restore it
-      # server.restore volume
-      # # Delete it
-      # volume.destroy
-      # Add hdd
-      # Find available storages with images
-      storages = node.storages.list_by_content_type 'images'
-      storage = storages[0]
-      virtio0 = { id: 'virtio0', storage: storage.storage, size: '1' }
-      ide0 = { id: 'ide0', storage: storage.storage, size: '1' }
-      options = { backup: 0, replicate: 0 }
-      server.attach(virtio0, options)
-      server.attach(ide0, options)
-      server.detach('ide0')
-      server.detach('unused0')
-      sleep 1
+      # vmid = node.servers.next_id
+      # server_hash = { vmid: vmid }
+      # # # Check valid vmid
+      # # valid = @service.servers.id_valid? vmid
+      # # valid.must_equal true
+      # # # Check not valid vmid
+      # # valid = @service.servers.id_valid? 99
+      # # valid.must_equal false
+      # # Create 1st time
+      # node.servers.create(server_hash)
+      # # # Check already used vmid
+      # # valid = node.servers.id_valid? vmid
+      # # valid.must_equal false
+      # # # Clone server
+      # # newid = node.servers.next_id
+      # # Get server
+      # server = node.servers.get vmid
+      # # server.wont_be_nil
+      # # # Backup it
+      # # server.backup(compress: 'lzo')
+      # # # Get this backup image
+      # # # Find available backup volumes
+      # # volume = server.backups.first
+      # # volume.wont_be_nil
+      # # # Restore it
+      # # server.restore volume
+      # # # Delete it
+      # # volume.destroy
+      # # Add hdd
+      # # Find available storages with images
+      # storages = node.storages.list_by_content_type 'images'
+      # storage = storages[0]
+      # virtio0 = { id: 'virtio0', storage: storage.storage, size: '1' }
+      # ide0 = { id: 'ide0', storage: storage.storage, size: '1' }
+      # options = { backup: 0, replicate: 0 }
+      # server.attach(virtio0, options)
+      # server.attach(ide0, options)
+      # server.detach('ide0')
+      # server.detach('unused0')
+      # sleep 1
       # # Clone it (linked fails)
       # server.clone(newid, full: 1)
       # # Get clone
@@ -120,12 +120,13 @@ describe Fog::Compute::Proxmox do
       # Update config server
       # Upload an ubuntu 18.04 iso image
       storage = node.storages.list_by_content_type('iso').first
-      src_file = '../fixtures/proxmox/compute/ubuntu-bionic-mini.iso'
-      storage.volumes.import('iso','ubuntu-bionic-mini.iso', { tmpfilename: src_file })
+      iso_relative_path = 'fixtures/proxmox/compute/ubuntu-bionic-mini.iso'
+      iso_absolute_path = File.expand_path(iso_relative_path, File.dirname(__FILE__))
+      storage.volumes.import(content: 'iso', filename: 'ubuntu-bionic-mini.iso', absolute_path: iso_absolute_path)
       volume = storage.volumes.list_by_content_type('iso').first
       # Add cdrom with iso uploaded
-      config_hash = { ide2: "#{volume.volid},media=cdrom" }
-      server.update(config_hash)
+      # config_hash = { ide2: "#{volume.volid},media=cdrom" }
+      # server.update(config_hash)
       # # Resize disk server
       # server.extend('virtio0', '+1G')
       # # Move disk server
@@ -175,7 +176,7 @@ describe Fog::Compute::Proxmox do
       #   server.action('hello')
       # end.must_raise Fog::Errors::Error
       # Delete
-      server.destroy
+      # server.destroy
       # proc do
       #   node.servers.get vmid
       # end.must_raise Excon::Errors::InternalServerError

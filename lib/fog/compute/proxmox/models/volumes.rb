@@ -43,10 +43,14 @@ module Fog
           load_response(service.list_volumes(node, storage, options), 'volumes')
         end
 
-        def import(content, filename, options = {})
-          requires :node, :storage
-          config = options.merge(content: content, filename: filename)
-          task_wait_for(service.upload_image(node, storage, config))
+        def import(params)
+          requires :node, :storage          
+          options = params.reject { |key,_value| key == :absolute_path }
+          file = File.new(params[:absolute_path], 'r')
+          options = options.merge(request_block: chunker(file))
+          task_wait_for(service.upload_image(node, storage, options))
+        ensure
+          file.close
         end
 
         def task_wait_for(task_upid)
@@ -73,6 +77,17 @@ module Fog
           volume = get(id)
           volume.destroy
         end
+
+        private
+
+        def chunker(file)
+          Excon.defaults[:nonblock] = false
+          chunker = lambda do
+            file.read(Excon.defaults[:chunk_size]).to_s
+          end
+          chunker
+        end
+
       end
     end
   end

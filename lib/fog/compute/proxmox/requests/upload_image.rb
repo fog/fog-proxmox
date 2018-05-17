@@ -26,20 +26,27 @@ module Fog
       # class Real upload_image request
       class Real
         def upload_image(node, storage, options)
-          response = request(
-            headers: { 'Content-type' => 'application-x-cd-image' }
+          params = options.reject { |key,_value| key == :request_block }
+          request_hash = {
+            headers: { 'Content-Type' => 'application/x-cd-image' },
             expects: [200],
             method: 'POST',
             path: "nodes/#{node}/storage/#{storage}/upload",
-            body: URI.encode_www_form(options)
-          )
+            body: URI.encode_www_form(params)
+          } 
+          request_hash[:request_block] = options[:request_block] if options[:request_block]
+          response = request(request_hash)
           Fog::Proxmox::Json.get_data(response)
         end
       end
 
       # class Mock upload_image request
       class Mock
-        def upload_image; end
+        def upload_image(node, storage, body, options)
+          response = Excon::Response.new
+          response.status = 204
+          Fog::Proxmox::Json.get_data(response)
+        end
       end
     end
   end
