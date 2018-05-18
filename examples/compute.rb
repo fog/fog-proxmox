@@ -105,6 +105,8 @@ configs = server.configs.all
 # Get config
 config = server.configs.get 'net0'
 config.value
+# Get mac_addresses
+server.mac_adresses
 # List all servers
 servers_all = compute.servers.all
 

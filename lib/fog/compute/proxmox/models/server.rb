@@ -192,6 +192,7 @@ module Fog
         def mac_addresses
           addresses = []
           configs.nics.each { |nic| addresses.push(extract_mac_address(nic.value)) }
+          addresses
         end
 
         private
