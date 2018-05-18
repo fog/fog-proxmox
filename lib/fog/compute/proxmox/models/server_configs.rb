@@ -36,6 +36,11 @@ module Fog
           load_response(service.list_server_configs(server.node, server.vmid), 'server_configs')
         end
 
+        def nics
+          all
+          select { |config| config.key.start_with? 'net' }
+        end
+
         def get(key)
           all
           cached_config = find { |config| config.key == key }

@@ -188,6 +188,17 @@ module Fog
           task.wait_for { finished? }
           task.succeeded?
         end
+
+        def mac_addresses
+          addresses = []
+          configs.nics.each { |nic| addresses.push(extract_mac_address(nic.value)) }
+        end
+
+        private
+
+        def extract_mac_address(value)
+          value[/([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})/]
+        end
       end
     end
   end
