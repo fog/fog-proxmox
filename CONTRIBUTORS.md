@@ -1,1 +1,9 @@
-Tristan Robert <tristan.robert.44@gmail.com>
+# Developers
+
+* Tristan Robert <tristan.robert.44 at gmail.com>
+
+# Donators
+
+Thanks to all generous donators that support the developers effort:
+
+* [Tobias Köck](https://github.com/tkoeck)
