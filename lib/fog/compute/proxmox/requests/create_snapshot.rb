@@ -17,19 +17,20 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
 module Fog
   module Compute
     class Proxmox
       # class Real create_snapshot request
       class Real
-        def create_snapshot(node, vmid, options)
+        def create_snapshot(path_params, body_params)
+          node = path_params[:node]
+          type = path_params[:type]
+          vmid = path_params[:vmid]
           request(
             expects: [200],
             method: 'POST',
-            path: "nodes/#{node}/qemu/#{vmid}/snapshot",
-            body: URI.encode_www_form(options)
+            path: "nodes/#{node}/#{type}/#{vmid}/snapshot",
+            body: URI.encode_www_form(body_params)
           )
         end
       end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,26 +17,19 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
+require 'fog/compute/proxmox/models/server'
 
 module Fog
   module Compute
     class Proxmox
-      # class Real resize request
-      class Real
-        def resize(node, vmid, config)
-          request(
-            expects: [200],
-            method: 'PUT',
-            path: "nodes/#{node}/qemu/#{vmid}/resize",
-            body: URI.encode_www_form(config)
-          )
+      # Containers Collection
+      class Containers < Fog::Compute::Proxmox::Servers
+        model Fog::Compute::Proxmox::Container
+        
+        def initialize(attributes = {})
+          type = 'lxc'
+          super({ node: node, type: type }.merge(attributes))
         end
-      end
-
-      # class Mock resize request
-      class Mock
-        def resize; end
       end
     end
   end

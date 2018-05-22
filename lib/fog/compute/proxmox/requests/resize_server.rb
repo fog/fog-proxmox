@@ -17,29 +17,26 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/json'
-
 module Fog
   module Compute
     class Proxmox
-      # class Real clone_server request
+      # class Real resize_server request
       class Real
-        def clone_server(path_params, body_params)
+        def resize_server(path_params,body_params)
           node = path_params[:node]
-          type = path_params[:type]
           vmid = path_params[:vmid]
-          response = request(
+          request(
             expects: [200],
-            method: 'POST',
-            path: "nodes/#{node}/#{type}/#{vmid}/clone",
+            method: 'PUT',
+            path: "nodes/#{node}/qemu/#{vmid}/resize",
             body: URI.encode_www_form(body_params)
           )
-          Fog::Proxmox::Json.get_data(response)
         end
       end
 
-      # class Mock clone_server request
+      # class Mock resize_server request
       class Mock
+        def resize; end
       end
     end
   end

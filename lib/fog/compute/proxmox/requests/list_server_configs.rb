@@ -23,7 +23,9 @@ module Fog
     class Proxmox
       # class Real list_server_configs request
       class Real
-        def list_server_configs(node, vmid)
+        def list_server_configs(path_params)
+          node = path_params[:node]
+          vmid = path_params[:vmid]
           request(
             expects: [200],
             method: 'GET',

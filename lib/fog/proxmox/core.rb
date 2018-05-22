@@ -18,6 +18,7 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 require 'fog/json'
+require 'fog/proxmox/variables'
 
 module Fog
   module Proxmox
@@ -38,10 +39,7 @@ module Fog
         @principal = nil
         @pve_must_reauthenticate = true
         @pve_ticket = nil
-        # Create @pve* instance variables from all :pve_* options
-        options.select { |x| x.to_s.start_with? 'pve' }.each do |pve_param, value|
-          instance_variable_set "@#{pve_param}".to_sym, value
-        end
+        Fog::Proxmox::Variables.to_variables(self,options,'pve')
         @pve_uri = URI.parse(@pve_url)
         @pve_must_reauthenticate = true unless @pve_ticket
         missing_credentials = []
@@ -113,13 +111,7 @@ module Fog
       end
 
       def pve_options
-        options = {}
-        # Create a hash of (:pve_*, value) of all the @pve_* instance variables
-        instance_variables.select { |x| x.to_s.start_with? '@pve' }.each do |pve_param|
-          option_name = pve_param.to_s[1..-1]
-          options[option_name.to_sym] = instance_variable_get pve_param
-        end
-        options
+        Fog::Proxmox::Variables.to_hash(self,'pve')
       end
 
       def authenticate

@@ -22,23 +22,22 @@ require 'fog/proxmox/json'
 module Fog
   module Compute
     class Proxmox
-      # class Real clone_server request
+      # class Real get_server_config request
       class Real
-        def clone_server(path_params, body_params)
+        def get_server_config(path_params)
           node = path_params[:node]
           type = path_params[:type]
           vmid = path_params[:vmid]
           response = request(
             expects: [200],
-            method: 'POST',
-            path: "nodes/#{node}/#{type}/#{vmid}/clone",
-            body: URI.encode_www_form(body_params)
+            method: 'GET',
+            path: "nodes/#{node}/#{type}/#{vmid}/config"
           )
           Fog::Proxmox::Json.get_data(response)
         end
       end
 
-      # class Mock clone_server request
+      # class Mock get_server_config request
       class Mock
       end
     end

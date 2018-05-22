@@ -24,12 +24,16 @@ module Fog
     class Proxmox
       # class Real action_server request
       class Real
-        def action_server(action, node, vmid, options)
+        def action_server(path_params, body_params)
+          node = path_params[:node]
+          type = path_params[:type]
+          action = path_params[:action]
+          vmid = path_params[:vmid]
           response = request(
             expects: [200],
             method: 'POST',
-            path: "nodes/#{node}/qemu/#{vmid}/status/#{action}",
-            body: URI.encode_www_form(options)
+            path: "nodes/#{node}/#{type}/#{vmid}/status/#{action}",
+            body: URI.encode_www_form(body_params)
           )
           Fog::Proxmox::Json.get_data(response)
         end

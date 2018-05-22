@@ -17,29 +17,22 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/json'
-
 module Fog
-  module Compute
-    class Proxmox
-      # class Real clone_server request
-      class Real
-        def clone_server(path_params, body_params)
-          node = path_params[:node]
-          type = path_params[:type]
-          vmid = path_params[:vmid]
-          response = request(
-            expects: [200],
-            method: 'POST',
-            path: "nodes/#{node}/#{type}/#{vmid}/clone",
-            body: URI.encode_www_form(body_params)
-          )
-          Fog::Proxmox::Json.get_data(response)
+  module Proxmox
+    # module Variables mixins
+    module Variables
+      def self.to_variables(instance,hash,prefix)
+        hash.select { |x| x.to_s.start_with? prefix }.each do |key, value|
+          instance.instance_variable_set "@#{key}".to_sym, value
         end
       end
-
-      # class Mock clone_server request
-      class Mock
+      def self.to_hash(instance,prefix)
+        hash = {}  
+        instance.instance_variables.select { |x| x.to_s.start_with? '@'+prefix }.each do |param|
+          name = param.to_s[1..-1]
+          hash.store(name.to_sym, instance.instance_variable_get(param))
+        end
+        hash
       end
     end
   end

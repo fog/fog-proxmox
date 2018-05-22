@@ -47,7 +47,7 @@ module Fog
       # Proxmox object creation requires identity and return null
       def create(attributes = {})
         object = new(attributes)
-        object.create
+        object.create(attributes)
       end
 
       # Returns detailed list of records

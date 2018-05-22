@@ -17,8 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
 require 'fog/proxmox/json'
 
 module Fog
@@ -26,12 +24,16 @@ module Fog
     class Proxmox
       # class Real delete_snapshot request
       class Real
-        def delete_snapshot(node, vmid, snapname, force)
+        def delete_snapshot(path_params, query_params)
+          node = path_params[:node]
+          type = path_params[:type]
+          vmid = path_params[:vmid]
+          snapname = path_params[:snapname]
           response = request(
             expects: [200],
             method: 'DELETE',
-            path: "nodes/#{node}/qemu/#{vmid}/snapshot/#{snapname}",
-            query: "force=#{force}"
+            path: "nodes/#{node}/#{type}/#{vmid}/snapshot/#{snapname}",
+            query: URI.encode_www_form(query_params)
           )
           Fog::Proxmox::Json.get_data(response)
         end

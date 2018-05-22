@@ -17,8 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
 require 'fog/proxmox/json'
 
 module Fog
@@ -26,11 +24,15 @@ module Fog
     class Proxmox
       # class Real get_snapshot request
       class Real
-        def get_snapshot(node, vmid, snapname)
+        def get_snapshot(path_params)
+          node = path_params[:node]
+          type = path_params[:type]
+          vmid = path_params[:vmid]
+          snapname = path_params[:snapname]
           response = request(
             expects: [200],
             method: 'GET',
-            path: "nodes/#{node}/qemu/#{vmid}/snapshot/#{snapname}/config"
+            path: "nodes/#{node}/#{type}/#{vmid}/snapshot/#{snapname}/config"
           )
           Fog::Proxmox::Json.get_data(response)
         end

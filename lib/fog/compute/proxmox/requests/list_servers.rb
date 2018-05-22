@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,8 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
 module Fog
   module Compute
     class Proxmox
@@ -28,7 +27,7 @@ module Fog
             expects: [200],
             method: 'GET',
             path: 'cluster/resources',
-            query: 'type=vm'
+            query: "type=vm"
           )
         end
       end

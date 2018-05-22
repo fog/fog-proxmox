@@ -36,6 +36,7 @@ module Fog
       collection :servers
       model :server_config
       collection :server_configs
+      model :container_config
       model :volume
       collection :volumes
       model :storage
@@ -44,6 +45,8 @@ module Fog
       collection :tasks
       model :snapshot
       collection :snapshots
+      model :container
+      collection :containers
 
       # Requests
       request_path 'fog/compute/proxmox/requests'
@@ -57,6 +60,7 @@ module Fog
       request :list_servers
       request :create_server
       request :get_server_status
+      request :get_server_config
       request :list_server_configs
       request :update_server
       request :delete_server
@@ -65,7 +69,9 @@ module Fog
       request :clone_server
       request :migrate_server
       request :move_disk
-      request :resize
+      request :move_volume
+      request :resize_server
+      request :resize_container
       # Manage volumes
       request :list_volumes
       request :get_volume

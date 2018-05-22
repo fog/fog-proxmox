@@ -24,11 +24,15 @@ module Fog
     class Proxmox
       # class Real rollback_snapshot request
       class Real
-        def rollback_snapshot(node, vmid, snapname, _force)
+        def rollback_snapshot(path_params)
+          node = path_params[:node]
+          type = path_params[:type]
+          vmid = path_params[:vmid]
+          snapname = path_params[:snapname]
           request(
             expects: [200],
             method: 'POST',
-            path: "nodes/#{node}/qemu/#{vmid}/snapshot/#{snapname}/rollback"
+            path: "nodes/#{node}/#{type}/#{vmid}/snapshot/#{snapname}/rollback"
           )
         end
       end

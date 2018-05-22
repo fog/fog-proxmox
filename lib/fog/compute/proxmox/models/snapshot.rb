@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -24,8 +25,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
 require 'fog/proxmox/models/model'
 
 module Fog
@@ -44,23 +43,29 @@ module Fog
 
         def create(options = {})
           requires :name, :server
-          options.store(:snapname, name)
-          service.create_snapshot(server.node, server.vmid, options)
+          path_params = { node: server.node, type: server.type, vmid: server.vmid }
+          body_params = options.merge(snapname: name)
+          service.create_snapshot(path_params, body_params)
         end
 
         def update
           requires :name, :server
-          service.update_snapshot(server.node, server.vmid, name, description)
+          path_params = { node: server.node, type: server.type, vmid: server.vmid, snapname: name }
+          body_params = { description: description }
+          service.update_snapshot(path_params, body_params)
         end
 
         def rollback
           requires :name, :server
-          service.rollback_snapshot(server.node, server.vmid, name)
+          path_params = { node: server.node, type: server.type, vmid: server.vmid, snapname: name }
+          service.rollback_snapshot(path_params)
         end
 
         def destroy(force = 0)
           requires :name, :server
-          taskupid = service.delete_snapshot(server.node, server.vmid, name, force)
+          path_params = { node: server.node, type: server.type, vmid: server.vmid, snapname: name }
+          query_params = { force: force }
+          taskupid = service.delete_snapshot(path_params, query_params)
           taskupid
         end
       end

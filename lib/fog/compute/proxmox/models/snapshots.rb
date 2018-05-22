@@ -35,14 +35,16 @@ module Fog
 
         def all
           requires :server
-          load_response(service.list_snapshots(server.node, server.vmid), 'snapshots')
+          path_params = { node: server.node, type: server.type, vmid: server.vmid }
+          load_response(service.list_snapshots(path_params), 'snapshots')
         end
 
         def get(name)
           requires :server
           cached_snapshot = find { |snapshot| snapshot.name == name }
           return cached_snapshot if cached_snapshot
-          snapshot_hash = service.get_snapshot(server.node, server.vmid, name)
+          path_params = { node: server.node, type: server.type, vmid: server.vmid, snapname: name }
+          snapshot_hash = service.get_snapshot(path_params)
           Fog::Compute::Proxmox::Snapshot.new(
             snapshot_hash.merge(service: service, server: server, name: name)
           )

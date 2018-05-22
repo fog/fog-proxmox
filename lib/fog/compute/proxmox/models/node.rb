@@ -69,6 +69,13 @@ module Fog
           end
         end
 
+        def containers
+          @containers ||= begin
+            Fog::Compute::Proxmox::Containers.new(service: service,
+                                               node: self)
+          end
+        end
+
         def storages
           @storages ||= begin
             Fog::Compute::Proxmox::Storages.new(service: service,

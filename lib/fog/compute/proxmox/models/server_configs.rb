@@ -33,7 +33,7 @@ module Fog
         end
 
         def all
-          load_response(service.list_server_configs(server.node, server.vmid), 'server_configs')
+          load_response(service.list_server_configs({ node: server.node, type: server.type, vmid: server.vmid }), 'server_configs')
         end
 
         def nics

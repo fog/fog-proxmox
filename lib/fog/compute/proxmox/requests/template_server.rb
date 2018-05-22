@@ -22,12 +22,15 @@ module Fog
     class Proxmox
       # class Real template_server request
       class Real
-        def template_server(node, vmid, options)
+        def template_server(path_params,body_params)
+          node = path_params[:node]
+          type = path_params[:type]
+          vmid = path_params[:vmid]
           request(
             expects: [200],
             method: 'POST',
-            path: "nodes/#{node}/qemu/#{vmid}/template",
-            body: URI.encode_www_form(options)
+            path: "nodes/#{node}/#{type}/#{vmid}/template",
+            body: URI.encode_www_form(body_params)
           )
         end
       end

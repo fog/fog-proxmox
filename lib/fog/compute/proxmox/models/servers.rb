@@ -26,10 +26,16 @@ module Fog
       class Servers < Fog::Proxmox::Collection
         model Fog::Compute::Proxmox::Server
         attribute :node
+        attribute :type
+
+        def initialize(attributes = {})
+          type = attributes[:type] unless type
+          super({ node: node, type: type }.merge(attributes))
+        end
 
         def new(attributes = {})
-          requires :node
-          super({ node: node }.merge(attributes))
+          requires :node, :type
+          super({ node: node, type: type }.merge(attributes))
         end
 
         def next_id
@@ -48,7 +54,8 @@ module Fog
 
         def get(vmid)
           requires :node
-          data = service.get_server_status(node.node, vmid)
+          path_params = { node: node, type: type, vmid: vmid }
+          data = service.get_server_status(path_params)
           server_data = data.merge(node: node, vmid: vmid)
           new(server_data)
         end

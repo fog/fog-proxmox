@@ -24,12 +24,15 @@ module Fog
     class Proxmox
       # class Real update_server request
       class Real
-        def update_server(node, vmid, config)
+        def update_server(path_params,body_params)
+          node = path_params[:node]
+          type = path_params[:type]
+          vmid = path_params[:vmid]
           response = request(
             expects: [200],
-            method: 'POST',
-            path: "nodes/#{node}/qemu/#{vmid}/config",
-            body: URI.encode_www_form(config)
+            method: type == 'qemu' ? 'POST' : 'PUT',
+            path: "nodes/#{node}/#{type}/#{vmid}/config",
+            body: URI.encode_www_form(body_params)
           )
           Fog::Proxmox::Json.get_data(response)
         end

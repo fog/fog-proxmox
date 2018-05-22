@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,8 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
 require 'fog/proxmox/json'
 
 module Fog
@@ -25,11 +24,14 @@ module Fog
     class Proxmox
       # class Real get_server_status request
       class Real
-        def get_server_status(node, vmid)
+        def get_server_status(path_params)
+          node = path_params[:node]
+          type = path_params[:type]
+          vmid = path_params[:vmid]
           response = request(
             expects: [200],
             method: 'GET',
-            path: "nodes/#{node}/qemu/#{vmid}/status/current"
+            path: "nodes/#{node}/#{type}/#{vmid}/status/current"
           )
           Fog::Proxmox::Json.get_data(response)
         end
