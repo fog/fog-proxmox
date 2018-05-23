@@ -216,7 +216,7 @@ module Fog
           addresses = []
           configs.nics.each { |nic| addresses.push(Fog::Proxmox::MacAddress.extract(nic.value)) }
           addresses
-        end        
+        end
       end
     end
   end

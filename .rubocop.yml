@@ -10,3 +10,4 @@ AllCops:
     - '.vscode/**/*'
     - '**/*.gemspec'
     - 'Gemfile'
+    - 'spec/**/*'

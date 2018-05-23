@@ -164,12 +164,12 @@ server.destroy
 node_name = 'pve'
 node = compute.nodes.find_by_id node_name
 ostemplate = 'local:vztmpl/alpine-3.7-default_20171211_amd64.tar.xz'
-container_hash = { 
-  vmid: vmid, 
-  storage: 'local-lvm', 
-  ostemplate: ostemplate, 
-  password: 'proxmox01', 
-  rootfs: 'local-lvm:1' 
+container_hash = {
+  vmid: vmid,
+  storage: 'local-lvm',
+  ostemplate: ostemplate,
+  password: 'proxmox01',
+  rootfs: 'local-lvm:1'
 }
 
 # Get next free vmid

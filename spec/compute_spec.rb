@@ -84,7 +84,7 @@ describe Fog::Compute::Proxmox do
       volume = server.backups.first
       volume.wont_be_nil
       # Restore it
-      server.restore(volume, { storage: 'local' })
+      server.restore(volume, storage: 'local')
       # Delete it
       volume.destroy
       # Add hdd
@@ -291,10 +291,10 @@ describe Fog::Compute::Proxmox do
   #     # Get a mac adress
   #     mac_address = container.mac_addresses.first
   #     mac_address.wont_be_nil
-  #     # Fetch mount points 
+  #     # Fetch mount points
   #     mount_points = container.mount_points
   #     mount_points.wont_be_empty
-  #     # Fetch nics 
+  #     # Fetch nics
   #     nics = container.nics
   #     nics.wont_be_empty
   #     # all containers
