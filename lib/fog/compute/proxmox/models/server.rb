@@ -19,6 +19,7 @@
 
 require 'fog/compute/models/server'
 require 'fog/proxmox/hash'
+require 'fog/proxmox/mac_address'
 
 module Fog
   module Compute
@@ -213,15 +214,9 @@ module Fog
 
         def mac_addresses
           addresses = []
-          configs.nics.each { |nic| addresses.push(extract_mac_address(nic.value)) }
+          configs.nics.each { |nic| addresses.push(Fog::Proxmox::MacAddress.extract(nic.value)) }
           addresses
-        end
-
-        protected
-
-        def extract_mac_address(value)
-          value[/([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})/]
-        end
+        end        
       end
     end
   end

@@ -83,7 +83,7 @@ module Fog
 
         def mac_addresses
           addresses = []
-          config.nics.each { |_key, value| addresses.push(extract_mac_address(value)) }
+          config.nics.each { |_key, value| addresses.push(Fog::Proxmox::MacAddress.extract(value)) }
           addresses
         end
 
