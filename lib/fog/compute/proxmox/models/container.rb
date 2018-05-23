@@ -25,14 +25,15 @@ module Fog
     class Proxmox
       # Container model
       class Container < Fog::Compute::Proxmox::Server
+        identity  :vmid
         attribute :lock
         attribute :maxswap
         attribute :swap
         attribute :config
 
         def initialize(attributes = {})
-          prepare_service_value(attributes)
           self.type = 'lxc'
+          prepare_service_value(attributes)
           super
         end      
 
@@ -84,6 +85,11 @@ module Fog
           addresses = []
           config.nics.each { |_key,value| addresses.push(extract_mac_address(value)) }
           addresses
+        end
+
+        def action(action, options = {})
+          raise Fog::Errors::Error, "Action #{action} not implemented" unless %w[start stop shutdown].include? action
+          super
         end
         
       end

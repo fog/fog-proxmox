@@ -24,7 +24,7 @@ module Fog
     class Proxmox
       # ContainerConfig model
       class ContainerConfig < Fog::Proxmox::Model
-        identity  :container
+        identity  :digest
         attribute :ostype
         attribute :arch
         attribute :memory
@@ -34,6 +34,7 @@ module Fog
         attribute :rootfs
         attribute :nics
         attribute :mps
+        attribute :container
        
         def initialize(attributes = {})
           prepare_service_value(attributes)

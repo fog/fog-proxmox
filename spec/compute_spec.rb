@@ -255,8 +255,8 @@ describe Fog::Compute::Proxmox do
       container.detach('mp0')
       container.detach('unused0')
       sleep 1
-      # Clone it (linked fails)
-      container.clone(newid, full: 1)
+      # Clone it
+      container.clone(newid)
       # Get clone
       clone = node.containers.get newid
       # Template this clone (read-only)
@@ -275,9 +275,9 @@ describe Fog::Compute::Proxmox do
       end.must_raise Excon::Errors::InternalServerError
       # Update config container
       # Resize rootfs container
-      container.extend('rootfs', '+1G')
-      # Move rootfs container
-      container.move('rootfs', 'local-lvm')
+      container.extend('rootfs', '+5M')
+      # Move rootfs container and delete original
+      container.move('rootfs', 'local-lvm', delete: 1)
       # Add network interface
       config_hash = { net0: 'bridge=vmbr0,name=eth0,ip=dhcp,ip6=dhcp' }
       container.update(config_hash)
@@ -301,6 +301,14 @@ describe Fog::Compute::Proxmox do
       container.wait_for { ready? }
       status = container.ready?
       status.must_equal true
+      # Suspend container not implemented      
+      proc do
+        container.action('suspend')
+      end.must_raise Fog::Errors::Error
+      # Resume container not implemented      
+      proc do
+        container.action('resume')
+      end.must_raise Fog::Errors::Error
       # Stop container
       container.action('stop')
       container.wait_for { container.status == 'stopped' }
@@ -311,6 +319,8 @@ describe Fog::Compute::Proxmox do
       end.must_raise Fog::Errors::Error
       # Delete
       container.destroy
+      # Delete container does not delete images
+      storage.volumes.each { |volume| volume.destroy }
       proc do
         node.containers.get vmid
       end.must_raise Excon::Errors::InternalServerError
