@@ -27,7 +27,7 @@ module Fog
             expects: [200],
             method: 'GET',
             path: 'cluster/resources',
-            query: "type=vm"
+            query: 'type=vm'
           )
         end
       end

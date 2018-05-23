@@ -72,7 +72,7 @@ module Fog
         def containers
           @containers ||= begin
             Fog::Compute::Proxmox::Containers.new(service: service,
-                                               node: self)
+                                                  node: self)
           end
         end
 

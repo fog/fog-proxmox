@@ -24,7 +24,7 @@ module Fog
     class Proxmox
       # class Real resize_container request
       class Real
-        def resize_container(path_params,body_params)
+        def resize_container(path_params, body_params)
           node = path_params[:node]
           vmid = path_params[:vmid]
           response = request(

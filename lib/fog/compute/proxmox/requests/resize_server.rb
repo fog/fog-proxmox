@@ -22,7 +22,7 @@ module Fog
     class Proxmox
       # class Real resize_server request
       class Real
-        def resize_server(path_params,body_params)
+        def resize_server(path_params, body_params)
           node = path_params[:node]
           vmid = path_params[:vmid]
           request(

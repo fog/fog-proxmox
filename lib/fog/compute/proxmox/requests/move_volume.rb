@@ -24,7 +24,7 @@ module Fog
     class Proxmox
       # class Real move_volume request
       class Real
-        def move_volume(path_params,body_params)
+        def move_volume(path_params, body_params)
           node = path_params[:node]
           vmid = path_params[:vmid]
           response = request(

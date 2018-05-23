@@ -165,7 +165,7 @@ module Fog
           options_to_s = Fog::Proxmox::Hash.stringify(options)
           config = { "#{disk[:id]}": "#{disk[:storage]}:#{disk[:size]},#{options_to_s}" }
           update(config)
-        end 
+        end
 
         def detach(disk)
           config = configs.get disk

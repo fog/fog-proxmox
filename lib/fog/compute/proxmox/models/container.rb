@@ -35,7 +35,7 @@ module Fog
           self.type = 'lxc'
           prepare_service_value(attributes)
           super
-        end      
+        end
 
         def restore(backup, options = {})
           requires :node, :vmid
@@ -43,7 +43,7 @@ module Fog
           body_params = options.merge(vmid: vmid, ostemplate: backup.volid, force: 1, restore: 1)
           task_upid = service.create_server(path_params, body_params)
           task_wait_for(task_upid)
-        end 
+        end
 
         def move(volume, storage, options = {})
           requires :vmid, :node
@@ -58,21 +58,21 @@ module Fog
           path_params = { node: node, type: type, vmid: vmid }
           body_params = config
           service.update_server(path_params, body_params)
-        end       
+        end
 
         def config
           @config ||= begin
             path_params = { node: node, type: type, vmid: vmid }
             data = service.get_server_config path_params
-            Fog::Compute::Proxmox::ContainerConfig.new({service: service,
-                                                     container: self}.merge(data))
+            Fog::Compute::Proxmox::ContainerConfig.new({ service: service,
+                                                         container: self }.merge(data))
           end
         end
 
         def detach(mpid)
-          update({ delete: mpid})
+          update(delete: mpid)
         end
-        
+
         def extend(disk, size, options = {})
           requires :vmid, :node
           path_params = { node: node, vmid: vmid }
@@ -83,7 +83,7 @@ module Fog
 
         def mac_addresses
           addresses = []
-          config.nics.each { |_key,value| addresses.push(extract_mac_address(value)) }
+          config.nics.each { |_key, value| addresses.push(extract_mac_address(value)) }
           addresses
         end
 
@@ -91,7 +91,6 @@ module Fog
           raise Fog::Errors::Error, "Action #{action} not implemented" unless %w[start stop shutdown].include? action
           super
         end
-        
       end
     end
   end

@@ -25,7 +25,7 @@ module Fog
       # Containers Collection
       class Containers < Fog::Compute::Proxmox::Servers
         model Fog::Compute::Proxmox::Container
-        
+
         def initialize(attributes = {})
           type = 'lxc'
           super({ node: node, type: type }.merge(attributes))

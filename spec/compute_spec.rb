@@ -216,9 +216,9 @@ describe Fog::Compute::Proxmox do
       # Get next vmid
       vmid = node.containers.next_id
       ostemplate = 'local:vztmpl/alpine-3.7-default_20171211_amd64.tar.xz'
-      container_hash = { vmid: vmid, 
-        storage: 'local-lvm', 
-        ostemplate: ostemplate, password: 'proxmox01', rootfs: 'local-lvm:1' }
+      container_hash = { vmid: vmid,
+                         storage: 'local-lvm',
+                         ostemplate: ostemplate, password: 'proxmox01', rootfs: 'local-lvm:1' }
       # Check valid vmid
       valid = @service.containers.id_valid? vmid
       valid.must_equal true
@@ -242,7 +242,7 @@ describe Fog::Compute::Proxmox do
       backup = container.backups.first
       container.wont_be_nil
       # Restore it
-      container.restore(backup, { storage: 'local-lvm' })
+      container.restore(backup, storage: 'local-lvm')
       # Delete it
       backup.destroy
       # Add mount points
@@ -250,7 +250,7 @@ describe Fog::Compute::Proxmox do
       storages = node.storages.list_by_content_type 'images'
       storage = storages[0]
       mp0 = { id: 'mp0', storage: storage.storage, size: '1' }
-      options = { mp: '/opt/app', backup: 0, replicate: 0, quota: 1}
+      options = { mp: '/opt/app', backup: 0, replicate: 0, quota: 1 }
       container.attach(mp0, options)
       container.detach('mp0')
       container.detach('unused0')
@@ -301,11 +301,11 @@ describe Fog::Compute::Proxmox do
       container.wait_for { ready? }
       status = container.ready?
       status.must_equal true
-      # Suspend container not implemented      
+      # Suspend container not implemented
       proc do
         container.action('suspend')
       end.must_raise Fog::Errors::Error
-      # Resume container not implemented      
+      # Resume container not implemented
       proc do
         container.action('resume')
       end.must_raise Fog::Errors::Error
@@ -320,7 +320,7 @@ describe Fog::Compute::Proxmox do
       # Delete
       container.destroy
       # Delete container does not delete images
-      storage.volumes.each { |volume| volume.destroy }
+      storage.volumes.each(&:destroy)
       proc do
         node.containers.get vmid
       end.must_raise Excon::Errors::InternalServerError

@@ -24,7 +24,7 @@ module Fog
     class Proxmox
       # class Real update_server request
       class Real
-        def update_server(path_params,body_params)
+        def update_server(path_params, body_params)
           node = path_params[:node]
           type = path_params[:type]
           vmid = path_params[:vmid]

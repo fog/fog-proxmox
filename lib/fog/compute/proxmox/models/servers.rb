@@ -29,7 +29,7 @@ module Fog
         attribute :type
 
         def initialize(attributes = {})
-          type = attributes[:type] unless type
+          type ||= attributes[:type]
           super({ node: node, type: type }.merge(attributes))
         end
 

@@ -35,11 +35,11 @@ module Fog
         attribute :nics
         attribute :mps
         attribute :container
-       
+
         def initialize(attributes = {})
           prepare_service_value(attributes)
-          Fog::Proxmox::Variables.to_variables(self,attributes,'net')
-          Fog::Proxmox::Variables.to_variables(self,attributes,'mp')
+          Fog::Proxmox::Variables.to_variables(self, attributes, 'net')
+          Fog::Proxmox::Variables.to_variables(self, attributes, 'mp')
           super({ container: container }.merge(attributes))
         end
 
@@ -53,14 +53,14 @@ module Fog
           requires :server
           config = { delete: key }
           server.update config
-        end  
+        end
 
-        def nics          
-          Fog::Proxmox::Variables.to_hash(self,'net')
+        def nics
+          Fog::Proxmox::Variables.to_hash(self, 'net')
         end
 
         def mps
-          Fog::Proxmox::Variables.to_hash(self,'mp')
+          Fog::Proxmox::Variables.to_hash(self, 'mp')
         end
       end
     end

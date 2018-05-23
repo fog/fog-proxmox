@@ -39,7 +39,7 @@ module Fog
         @principal = nil
         @pve_must_reauthenticate = true
         @pve_ticket = nil
-        Fog::Proxmox::Variables.to_variables(self,options,'pve')
+        Fog::Proxmox::Variables.to_variables(self, options, 'pve')
         @pve_uri = URI.parse(@pve_url)
         @pve_must_reauthenticate = true unless @pve_ticket
         missing_credentials = []
@@ -111,7 +111,7 @@ module Fog
       end
 
       def pve_options
-        Fog::Proxmox::Variables.to_hash(self,'pve')
+        Fog::Proxmox::Variables.to_hash(self, 'pve')
       end
 
       def authenticate
