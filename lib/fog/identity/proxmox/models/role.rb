@@ -40,8 +40,8 @@ module Fog
           roleid
         end
 
-        def create
-          service.create_role(attributes)
+        def create(new_attributes = {})
+          service.create_role(attributes.merge(new_attributes))
         end
 
         def destroy

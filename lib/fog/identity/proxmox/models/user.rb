@@ -47,8 +47,8 @@ module Fog
           userid
         end
 
-        def create
-          service.create_user(attributes)
+        def create(new_attributes = {})
+          service.create_user(attributes.merge(new_attributes))
         end
 
         def destroy

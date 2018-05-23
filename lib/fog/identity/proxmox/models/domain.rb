@@ -38,8 +38,8 @@ module Fog
           realm
         end
 
-        def create
-          attr = type.attributes.merge(realm: realm)
+        def create(new_attributes = {})
+          attr = type.attributes.merge(new_attributes).merge(realm: realm)
           service.create_domain(attr)
         end
 

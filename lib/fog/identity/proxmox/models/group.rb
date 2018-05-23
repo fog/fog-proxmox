@@ -39,8 +39,8 @@ module Fog
           groupid
         end
 
-        def create
-          service.create_group(attributes)
+        def create(new_attributes = {})
+          service.create_group(attributes.merge(new_attributes))
         end
 
         def destroy

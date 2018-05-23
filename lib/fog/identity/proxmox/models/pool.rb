@@ -41,8 +41,8 @@ module Fog
           poolid
         end
 
-        def create
-          service.create_pool(attributes)
+        def create(new_attributes = {})
+          service.create_pool(attributes.merge(new_attributes))
         end
 
         def destroy
