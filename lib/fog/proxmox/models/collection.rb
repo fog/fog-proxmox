@@ -36,7 +36,7 @@ module Fog
 
       # clear attributes non persistent
       def clear_ignored_attributes(object, attributes_ignored = [])
-        attributes_ignored.each { |attribute| object.delete_if { |k, _v| k == attribute } }
+        attributes_ignored.each { |attribute| object.delete_if { |key, _value| key == attribute } }
         object
       end
 

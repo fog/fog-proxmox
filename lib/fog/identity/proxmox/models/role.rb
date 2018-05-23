@@ -52,7 +52,7 @@ module Fog
 
         def update
           requires :roleid
-          attr = attributes.reject { |k, _v| k == :roleid }
+          attr = attributes.reject { |key, _value| key == :roleid }
           service.update_role(roleid, attr)
         end
       end

@@ -59,7 +59,7 @@ module Fog
 
         def update
           requires :userid
-          attr = attributes.reject { |k, _v| k == :userid }
+          attr = attributes.reject { |key, _value| key == :userid }
           service.update_user(userid, attr)
         end
 

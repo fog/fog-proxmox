@@ -51,7 +51,7 @@ module Fog
 
         def update
           requires :groupid
-          attr = attributes.reject { |k, _v| k == :groupid }
+          attr = attributes.reject { |key, _value| key == :groupid }
           service.update_group(groupid, attr)
         end
       end

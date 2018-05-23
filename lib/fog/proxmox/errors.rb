@@ -31,8 +31,9 @@ module Fog
           else
             data = Fog::JSON.decode(error.response.body)
             message = data['message']
-            if message.nil? && !data.values.first.nil?
-              message = data.values.first['message']
+            data1 = data.values.first
+            if message.nil? && !data1.nil?
+              message = data1['message']
             end
           end
 
@@ -41,7 +42,8 @@ module Fog
           new_error
         end
       end
-
+      
+      # class ServiceUnavailable error
       class ServiceUnavailable < ServiceError; end
 
       # class BadRequest error
@@ -57,6 +59,7 @@ module Fog
         end
       end
 
+      # class InterfaceNotImplemented error
       class InterfaceNotImplemented < Fog::Errors::Error; end
     end
   end

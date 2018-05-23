@@ -52,7 +52,7 @@ module Fog
         def update
           requires :realm
           attr = type.attributes
-          attr.delete_if { |k, _v| k == :type }
+          attr.delete_if { |key, _value| key == :type }
           service.update_domain(realm, attr)
         end
       end

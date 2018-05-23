@@ -216,7 +216,7 @@ module Fog
 
         def mac_addresses
           addresses = []
-          config.nics.each { |_key, value| addresses.push(Fog::Proxmox::MacAddress.extract(value)) }
+          config.nics.each_value { |value| addresses.push(Fog::Proxmox::MacAddress.extract(value)) }
           addresses
         end
       end

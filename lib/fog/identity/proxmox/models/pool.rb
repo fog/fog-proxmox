@@ -69,7 +69,7 @@ module Fog
 
         def update_with_member(member_name, member_id, delete = false)
           requires :poolid
-          attr = attributes.reject { |k, _v| %i[poolid members].include? k }
+          attr = attributes.reject { |key, _value| %i[poolid members].include? key }
           attr.store(member_name, member_id) if member_name
           attr.store('delete', 1) if delete
           service.update_pool(poolid, attr)
