@@ -28,13 +28,8 @@ module Fog
         attribute :node
         attribute :type
 
-        def initialize(attributes = {})
-          type ||= attributes[:type]
-          super({ node: node, type: type }.merge(attributes))
-        end
-
         def new(attributes = {})
-          requires :node, :type
+          self.type = 'qemu'
           super({ node: node, type: type }.merge(attributes))
         end
 
