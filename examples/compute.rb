@@ -160,6 +160,98 @@ server.disk_images.all
 # Delete server
 server.destroy
 
+# Create containers
+node_name = 'pve'
+node = compute.nodes.find_by_id node_name
+ostemplate = 'local:vztmpl/alpine-3.7-default_20171211_amd64.tar.xz'
+container_hash = { 
+  vmid: vmid, 
+  storage: 'local-lvm', 
+  ostemplate: ostemplate, 
+  password: 'proxmox01', 
+  rootfs: 'local-lvm:1' 
+}
+
+# Get next free vmid
+vmid = node.containers.next_id
+
+node.containers.create(container_hash)
+# Check already used vmid
+valid = node.containers.id_valid? vmid
+
+# Get container
+container = node.containers.get(vmid)
+
+# Get container config
+container.config
+# Update config container
+# Attach an aditional mount point
+mp0 = { id: 'mp0', storage: 'local-lvm', size: '1' }
+options = { mp: '/opt/app', backup: 0, replicate: 0, quota: 1 }
+container.attach(mp0, options)
+# Resize rootfs container
+container.extend('rootfs', '+1G')
+# Move rootfs container and delete original
+container.move('rootfs', 'local-lvm', delete: 1)
+# Detach a mount point
+container.detach 'mp0'
+# Remove it
+container.detach 'unused0'
+# Add network interface
+config_hash = { net0: 'bridge=vmbr0,name=eth0,ip=dhcp,ip6=dhcp' }
+container.update(config_hash)
+# Add start at boot, linux os type alpine
+config_hash = { onboot: 1, ostype: 'alpine' }
+container.update(config_hash)
+# Get mac_addresses
+container.mac_adresses
+# List all servers
+containers_all = node.containers.all
+
+# Start container
+container.action('start')
+# Wait until task is complete
+container.wait_for { ready? }
+# Stop container
+container.action('stop')
+# Wait until task is complete
+container.wait_for { container.status == 'stopped' }
+
+# Backup a container
+container.backup(compress: 'lzo')
+
+# Fetch a backup volume (first one)
+volume = container.backups.first
+
+# Restore it
+container.restore volume
+
+# Delete a backup
+volume.destroy
+
+# Snapshot a server
+container.snapshots.create(name: 'snapshot1')
+
+# Fetch it
+snapshot = container.snapshots.get 'snapshot1'
+# Fetch all
+container.snapshots.all
+
+# Update snapshot
+snapshot.description 'Snapshot 1'
+snapshot.update
+
+# Delete snapshot
+snapshot.destroy
+
+# Fetch additional mount points
+container.mount_points
+# Fetch network interfaces
+container.nics
+
+# Delete container
+container.destroy
+
 # List 1 task
 options = { limit: 1 }
 node = 'pve'

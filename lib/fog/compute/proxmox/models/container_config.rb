@@ -32,8 +32,6 @@ module Fog
         attribute :hostname
         attribute :onboot
         attribute :rootfs
-        attribute :nics
-        attribute :mps
         attribute :container
 
         def initialize(attributes = {})
@@ -59,7 +57,7 @@ module Fog
           Fog::Proxmox::Variables.to_hash(self, 'net')
         end
 
-        def mps
+        def mount_points
           Fog::Proxmox::Variables.to_hash(self, 'mp')
         end
       end
