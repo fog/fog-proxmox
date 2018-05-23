@@ -24,12 +24,13 @@ module Fog
     class Proxmox
       # class Real create_backup request
       class Real
-        def create_backup(node, options)
+        def create_backup(path_params, body_params)
+          node = path_params[:node]
           response = request(
             expects: [200],
             method: 'POST',
             path: "nodes/#{node}/vzdump",
-            body: URI.encode_www_form(options)
+            body: URI.encode_www_form(body_params)
           )
           Fog::Proxmox::Json.get_data(response)
         end

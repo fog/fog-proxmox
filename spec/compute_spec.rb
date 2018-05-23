@@ -140,7 +140,7 @@ describe Fog::Compute::Proxmox do
       ides.wont_be_empty
       ides.has_key?(:ide2).must_equal true
       # Get a mac adress
-      mac_address = server.mac_addresses.first
+      mac_address = server.config.mac_addresses.first
       mac_address.wont_be_nil
       # all servers
       servers_all = node.servers.all
@@ -292,7 +292,7 @@ describe Fog::Compute::Proxmox do
       config = container.config
       config.wont_be_nil
       # Get a mac address
-      mac_address = container.mac_addresses.first
+      mac_address = container.config.mac_addresses.first
       mac_address.wont_be_nil
       # Fetch nics
       nics = container.config.nics

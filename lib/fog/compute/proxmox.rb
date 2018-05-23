@@ -115,16 +115,6 @@ module Fog
           url = "#{@scheme}://#{@host}:#{@port}"
           @connection = Fog::Core::Connection.new(url, @persistent, @connection_options)
         end
-
-        def config
-          self
-        end
-
-        def configure(source)
-          source.instance_variables.each do |v|
-            instance_variable_set(v, source.instance_variable_get(v))
-          end
-        end
       end
     end
   end

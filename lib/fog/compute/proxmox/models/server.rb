@@ -20,7 +20,6 @@
 require 'fog/compute/models/server'
 require 'fog/proxmox/disk'
 require 'fog/proxmox/hash'
-require 'fog/proxmox/mac_address'
 
 module Fog
   module Compute
@@ -50,12 +49,10 @@ module Fog
         attribute :qmpstatus
         attribute :ha
         attribute :pid
-        attribute :nics
         attribute :blockstat
         attribute :balloon
         attribute :ballooninfo
         attribute :snapshots
-        attribute :tasks
         attribute :type
 
         def to_s
@@ -68,45 +65,33 @@ module Fog
           super
         end
 
-        def create(config = {})
+        def request(name, body_params = {}, path_params = {})
           requires :node
-          path_params = { node: node, type: type }
-          body_params = config.merge(vmid: vmid)
-          task_upid = service.create_server(path_params, body_params)
+          path = path_params.merge(node: node, type: type)
+          task_upid = service.send(name, path, body_params)
           task_wait_for(task_upid)
         end
 
-        def restore(backup, options = {})
-          requires :node, :vmid
-          path_params = { node: node, type: type }
-          body_params = options.merge(vmid: vmid, archive: backup.volid, force: 1)
-          task_upid = service.create_server(path_params, body_params)
-          task_wait_for(task_upid)
+        def create(config = {})
+          request(:create_server, config.merge(vmid: vmid))
         end
 
         def update(config = {})
-          requires :node, :vmid
-          path_params = { node: node, type: type, vmid: vmid }
-          body_params = config
-          task_upid = service.update_server(path_params, body_params)
-          task_wait_for(task_upid)
+          requires :vmid
+          request(:update_server, config, { vmid: vmid })
         end
 
         def destroy(options = {})
-          requires :vmid, :node
-          path_params = { node: node, type: type, vmid: vmid }
-          body_params = options
-          task_upid = service.delete_server(path_params, body_params)
-          task_wait_for(task_upid)
+          requires :vmid
+          request(:delete_server, options, { vmid: vmid })
         end
 
         def action(action, options = {})
-          requires :vmid, :node
-          raise Fog::Errors::Error, "Action #{action} not implemented" unless %w[start stop resume suspend shutdown reset].include? action
-          path_params = { node: node, type: type, action: action, vmid: vmid }
-          body_params = options
-          task_upid = service.action_server(path_params, body_params)
-          task_wait_for(task_upid)
+          requires :vmid
+          action_known = %w[start stop resume suspend shutdown reset].include? action
+          message = "Action #{action} not implemented"
+          raise Fog::Errors::Error, message unless action_known
+          request(:action_server, options, { action: action, vmid: vmid })
         end
 
         def ready?
@@ -120,47 +105,39 @@ module Fog
         end
 
         def backup(options = {})
-          requires :vmid, :node
-          task_upid = service.create_backup(node, options.merge(vmid: vmid))
-          task_wait_for(task_upid)
+          requires :vmid
+          request(:create_backup, options.merge(vmid: vmid))
+        end
+
+        def restore(backup, options = {})
+          requires :vmid
+          config = options.merge(archive: backup.volid, force: 1)
+          create(config)
         end
 
         def clone(newid, options = {})
-          requires :vmid, :node
-          path_params = { node: node, type: type, vmid: vmid }
-          body_params = options.merge(newid: newid)
-          task_upid = service.clone_server(path_params, body_params)
-          task_wait_for(task_upid)
+          requires :vmid
+          request(:clone_server, options.merge(newid: newid), { vmid: vmid })
         end
 
         def template(options = {})
           requires :vmid, :node
-          path_params = { node: node, type: type, vmid: vmid }
-          body_params = options
-          service.template_server(path_params, body_params)
+          service.template_server({ node: node, type: type, vmid: vmid }, options)
         end
 
         def migrate(target, options = {})
-          requires :vmid, :node
-          path_params = { node: node, type: type, vmid: vmid }
-          body_params = options.merge(target: target)
-          task_upid = service.migrate_server(path_params, body_params)
-          task_wait_for(task_upid)
+          requires :vmid
+          request(:migrate_server, options.merge(target: target), { vmid: vmid })
         end
 
         def extend(disk, size, options = {})
           requires :vmid, :node
-          path_params = { node: node, vmid: vmid }
-          body_params = options.merge(disk: disk, size: size)
-          service.resize_server(path_params, body_params)
+          service.resize_server({ node: node, vmid: vmid }, options.merge(disk: disk, size: size))
         end
 
         def move(disk, storage, options = {})
-          requires :vmid, :node
-          path_params = { node: node, vmid: vmid }
-          body_params = options.merge(disk: disk, storage: storage)
-          task_upid = service.move_disk(path_params, body_params)
-          task_wait_for(task_upid)
+          requires :vmid
+          request(:move_disk, options.merge(disk: disk, storage: storage), { vmid: vmid })
         end
 
         def attach(disk, options = {})
@@ -214,11 +191,6 @@ module Fog
           task.succeeded?
         end
 
-        def mac_addresses
-          addresses = []
-          config.nics.each_value { |value| addresses.push(Fog::Proxmox::MacAddress.extract(value)) }
-          addresses
-        end
       end
     end
   end

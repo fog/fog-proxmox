@@ -84,7 +84,7 @@ module Fog
         end
 
         def backup(options = {})
-          task_upid = service.backup(node, options)
+          task_upid = service.backup({ node: node }, options)
           task_upid
         end
       end

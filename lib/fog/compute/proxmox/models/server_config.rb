@@ -18,6 +18,7 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 require 'fog/proxmox/variables'
+require 'fog/proxmox/mac_address'
 
 module Fog
   module Compute
@@ -65,6 +66,11 @@ module Fog
         def scsis
           Fog::Proxmox::Variables.to_hash(self, 'scsi')
         end
+
+        def mac_addresses
+          Fog::Proxmox::MacAddress.to_array(nics)
+        end
+
       end
     end
   end

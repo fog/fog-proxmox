@@ -26,6 +26,11 @@ module Fog
       def self.extract(value)
         value[/([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})/]
       end
+      def self.to_array(nics)
+        addresses = []
+        nics.each_value { |value| addresses.push(extract(value)) }
+        addresses
+      end
     end
   end
 end
