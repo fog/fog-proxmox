@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,26 +17,14 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
+require 'fog/json'
 
 module Fog
-  module Compute
-    class Proxmox
-      # class Real list_server_configs request
-      class Real
-        def list_server_configs(path_params)
-          node = path_params[:node]
-          vmid = path_params[:vmid]
-          request(
-            expects: [200],
-            method: 'GET',
-            path: "nodes/#{node}/qemu/#{vmid}/pending"
-          )
-        end
-      end
-
-      # class Mock list_server_configs request
-      class Mock
+  module Proxmox
+    # module Disk mixins
+    module Disk
+      def self.flatten(disk, options)
+        { "#{disk[:id]}": "#{disk[:storage]}:#{disk[:size]},#{options}" }
       end
     end
   end

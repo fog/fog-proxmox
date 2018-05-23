@@ -191,21 +191,92 @@ server.mac_adresses
 
 This returns an array of strings.
 
-Get all server configs:
+Get all server configuration:
 
 ```ruby
-server.configs
+server.config
 ```
 
-This returns an array of (key,value) pairs.
-
-Get a specific server config:
+This returns a `Fog::Compute::Proxmox::ServerConfig` model:
 
 ```ruby
-server.configs.get 'net0'
+ <Fog::Compute::Proxmox::ServerConfig
+    smbios1: "uuid=ba2da6bd-0c92-4cfe-8f70-d22cc5b5bba2",
+	numa:	0,
+	digest:	"348fdc21536f23a29dfb9b3120faa124aaeec742",
+	ostype:	"l26",
+	cores:	1,
+	virtio0: "local-lvm:vm-100-disk-1,size=1G",
+	bootdisk: "virtio0",
+	scsihw:	"virtio-scsi-pci",
+	sockets: 1,
+	net0: "virtio=8E:BF:3E:E7:17:0D,bridge=vmbr0",
+	memory:	512,
+	name: "test",
+	ide2: "cdrom,media=cdrom",
+	server:	<Fog::Compute::Proxmox::Server vmid: 100, ...>
+  >
 ```
 
-This returns a (key,value) pair.
+Get nics config:
+
+```ruby
+nics = server.config.nics
+```
+
+This returns a hash:
+
+```ruby
+nics = {net0: 'virtio=8E:BF:3E:E7:17:0D,bridge=vmbr0'}
+```
+
+Get IDE controllers config:
+
+```ruby
+ides = server.config.ides
+```
+
+This returns a hash:
+
+```ruby
+ides = {ide2: 'cdrom,media=cdrom'}
+```
+
+Get SATA controllers config:
+
+```ruby
+satas = server.config.satas
+```
+
+This returns a hash:
+
+```ruby
+satas = {}
+```
+
+Get SCSI controllers config:
+
+```ruby
+scsis = server.config.scsis
+```
+
+This returns a hash:
+
+```ruby
+scsis = {}
+```
+
+Get VirtIO block controllers config:
+
+```ruby
+virtios = server.config.virtios
+```
+
+This returns a hash:
+
+```ruby
+virtios = {virtio0: "local-lvm:vm-100-disk-1,size=1G"}
+```
 
 ##### Volumes server management
 
@@ -489,7 +560,7 @@ container.update({ net0: 'bridge=vmbr0,name=eth0,ip=dhcp,ip6=dhcp' })
 Fetch all nics:
 
 ```ruby
-nics = container.nics
+nics = container.config.nics
 ```
 
 This returns a hash:
@@ -592,7 +663,7 @@ Resume, suspend actions are not implemented.
 Fetch container mount points:
 
 ```ruby
-mount_points = container.mount_points
+mount_points = container.config.mount_points
 ```
 
 This returns a hash:

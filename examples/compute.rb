@@ -64,15 +64,15 @@ node = 'pve'
 server_hash = { node: node }
 
 # Get next free vmid
-vmid = compute.servers.next_id
+vmid = node.servers.next_id
 server_hash.store(:vmid, vmid)
 
-compute.servers.create(server_hash)
+node.servers.create(server_hash)
 # Check already used vmid
-valid = compute.servers.id_valid? vmid
+node.servers.id_valid? vmid
 
 # Get server
-server = compute.servers.get(node, vmid)
+server = node.servers.get vmid
 
 # Update config server
 # Add cdrom empty
@@ -100,11 +100,19 @@ server.update(config_hash)
 # Add start at boot, keyboard fr, linux 3.x os type, kvm hardware disabled (proxmox guest in virtualbox)
 config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26', kvm: 0 }
 server.update(config_hash)
-# List configs
-configs = server.configs.all
-# Get config
-config = server.configs.get 'net0'
-config.value
+# Get configuration model
+config = server.config
+# Get nics config
+nics = server.config.nics
+nics[:net0]
+# Get hdd controllers (ide, sata, scsi or virtio) config
+# All return hashes with key equals to controller id
+ides = server.config.ides
+ides[:ide2]
+satas = server.config.satas
+scsis = server.config.scsis
+virtios = server.config.virtios
+virtios[:virtio0]
 # Get mac_addresses
 server.mac_adresses
 # List all servers
@@ -205,6 +213,10 @@ config_hash = { onboot: 1, ostype: 'alpine' }
 container.update(config_hash)
 # Get mac_addresses
 container.mac_adresses
+# Get nics
+container.config.nics
+# Get additional mount points
+container.config.mount_points
 # List all servers
 containers_all = node.containers.all
 
@@ -229,7 +241,7 @@ container.restore volume
 # Delete a backup
 volume.destroy
 
-# Snapshot a server
+# Snapshot a container
 container.snapshots.create(name: 'snapshot1')
 
 # Fetch it

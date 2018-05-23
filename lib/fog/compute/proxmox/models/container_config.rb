@@ -41,18 +41,6 @@ module Fog
           super({ container: container }.merge(attributes))
         end
 
-        def update
-          requires :server
-          config = { key => value }
-          server.update config
-        end
-
-        def destroy
-          requires :server
-          config = { delete: key }
-          server.update config
-        end
-
         def nics
           Fog::Proxmox::Variables.to_hash(self, 'net')
         end

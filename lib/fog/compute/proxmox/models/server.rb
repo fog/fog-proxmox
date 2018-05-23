@@ -18,6 +18,7 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 require 'fog/compute/models/server'
+require 'fog/proxmox/disk'
 require 'fog/proxmox/hash'
 require 'fog/proxmox/mac_address'
 
@@ -28,7 +29,7 @@ module Fog
       class Server < Fog::Compute::Server
         identity  :vmid
         attribute :node
-        attribute :configs
+        attribute :config
         attribute :id
         attribute :name
         attribute :type
@@ -164,13 +165,12 @@ module Fog
 
         def attach(disk, options = {})
           options_to_s = Fog::Proxmox::Hash.stringify(options)
-          config = { "#{disk[:id]}": "#{disk[:storage]}:#{disk[:size]},#{options_to_s}" }
+          config = Fog::Proxmox::Disk.flatten(disk, options_to_s)
           update(config)
         end
 
-        def detach(disk)
-          config = configs.get disk
-          config.destroy
+        def detach(diskid)
+          update(delete: diskid)
         end
 
         def snapshots
@@ -180,10 +180,12 @@ module Fog
           end
         end
 
-        def configs
-          @configs ||= begin
-            Fog::Compute::Proxmox::ServerConfigs.new(service: service,
-                                                     server: self)
+        def config
+          @config = begin
+            path_params = { node: node, type: type, vmid: vmid }
+            data = service.get_server_config path_params
+            Fog::Compute::Proxmox::ServerConfig.new({ service: service,
+                                                      server: self }.merge(data))
           end
         end
 
@@ -214,7 +216,7 @@ module Fog
 
         def mac_addresses
           addresses = []
-          configs.nics.each { |nic| addresses.push(Fog::Proxmox::MacAddress.extract(nic.value)) }
+          config.nics.each { |_key, value| addresses.push(Fog::Proxmox::MacAddress.extract(value)) }
           addresses
         end
       end

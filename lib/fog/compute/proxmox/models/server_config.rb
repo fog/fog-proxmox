@@ -17,30 +17,53 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
+require 'fog/proxmox/variables'
+
 module Fog
   module Compute
     class Proxmox
       # ServerConfig model
       class ServerConfig < Fog::Proxmox::Model
-        identity  :key
-        attribute :value
+        identity  :digest
+        attribute :ostype
+        attribute :smbios1
+        attribute :numa
+        attribute :cores
+        attribute :bootdisk
+        attribute :scsihw
+        attribute :sockets
+        attribute :memory
+        attribute :name
         attribute :server
 
         def initialize(attributes = {})
           prepare_service_value(attributes)
-          super
+          Fog::Proxmox::Variables.to_variables(self, attributes, 'net')
+          Fog::Proxmox::Variables.to_variables(self, attributes, 'virtio')
+          Fog::Proxmox::Variables.to_variables(self, attributes, 'scsi')
+          Fog::Proxmox::Variables.to_variables(self, attributes, 'sata')
+          Fog::Proxmox::Variables.to_variables(self, attributes, 'ide')
+          super({ server: server }.merge(attributes))
         end
 
-        def update
-          requires :server
-          config = { key => value }
-          server.update config
+        def nics
+          Fog::Proxmox::Variables.to_hash(self, 'net')
         end
 
-        def destroy
-          requires :server
-          config = { delete: key }
-          server.update config
+        def virtios
+          Fog::Proxmox::Variables.to_hash(self, 'virtio')
+        end
+
+        def ides
+          Fog::Proxmox::Variables.to_hash(self, 'ide')
+        end
+
+        def statas
+          Fog::Proxmox::Variables.to_hash(self, 'sata')
+        end
+
+        def scsis
+          Fog::Proxmox::Variables.to_hash(self, 'scsi')
         end
       end
     end

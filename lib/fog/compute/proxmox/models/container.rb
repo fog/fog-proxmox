@@ -61,7 +61,7 @@ module Fog
         end
 
         def config
-          @config ||= begin
+          @config = begin
             path_params = { node: node, type: type, vmid: vmid }
             data = service.get_server_config path_params
             Fog::Compute::Proxmox::ContainerConfig.new({ service: service,
@@ -79,12 +79,6 @@ module Fog
           body_params = options.merge(disk: disk, size: size)
           task_upid = service.resize_container(path_params, body_params)
           task_wait_for(task_upid)
-        end
-
-        def mac_addresses
-          addresses = []
-          config.nics.each { |_key, value| addresses.push(Fog::Proxmox::MacAddress.extract(value)) }
-          addresses
         end
 
         def action(action, options = {})

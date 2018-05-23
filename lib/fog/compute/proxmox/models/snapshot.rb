@@ -35,6 +35,7 @@ module Fog
         identity  :name
         attribute :description
         attribute :snaptime
+        attribute :vmstate
         attribute :server
 
         def to_s
@@ -42,10 +43,10 @@ module Fog
         end
 
         def create(options = {})
-          requires :name, :server
+          requires :server
           path_params = { node: server.node, type: server.type, vmid: server.vmid }
-          body_params = options.merge(snapname: name)
-          service.create_snapshot(path_params, body_params)
+          body_params = options
+          server.task_wait_for(service.create_snapshot(path_params, body_params))
         end
 
         def update
@@ -58,15 +59,14 @@ module Fog
         def rollback
           requires :name, :server
           path_params = { node: server.node, type: server.type, vmid: server.vmid, snapname: name }
-          service.rollback_snapshot(path_params)
+          server.task_wait_for(service.rollback_snapshot(path_params))
         end
 
         def destroy(force = 0)
           requires :name, :server
           path_params = { node: server.node, type: server.type, vmid: server.vmid, snapname: name }
           query_params = { force: force }
-          taskupid = service.delete_snapshot(path_params, query_params)
-          taskupid
+          server.task_wait_for(service.delete_snapshot(path_params, query_params))
         end
       end
     end
