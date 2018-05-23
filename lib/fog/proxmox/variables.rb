@@ -22,14 +22,14 @@ module Fog
     # module Variables mixins
     module Variables
       def self.to_variables(instance, hash, prefix)
-        hash.select { |x| x.to_s.start_with? prefix }.each do |key, value|
+        hash.select { |key| key.to_s.start_with? prefix }.each do |key, value|
           instance.instance_variable_set "@#{key}".to_sym, value
         end
       end
 
       def self.to_hash(instance, prefix)
         hash = {}
-        instance.instance_variables.select { |x| x.to_s.start_with? '@' + prefix }.each do |param|
+        instance.instance_variables.select { |variable| variable.to_s.start_with? '@' + prefix }.each do |param|
           name = param.to_s[1..-1]
           hash.store(name.to_sym, instance.instance_variable_get(param))
         end
