@@ -575,6 +575,8 @@ container.action('stop') # stop your container
 container.wait_for { container.status == 'stopped' } # wait until it is stopped
 ```
 
+Resume, suspend actions are not implemented.
+
 Fetch container mount points:
 
 ```ruby
