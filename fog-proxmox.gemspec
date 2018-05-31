@@ -57,7 +57,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'vcr', '~> 3.0'
   spec.add_development_dependency 'webmock', '~> 3.4'
 
-  spec.add_dependency 'fog-core',  '~> 2.1'
-  spec.add_dependency 'fog-json',  '~> 1.1'
+  spec.add_dependency 'fog-core',  '~> 1.45'
+  spec.add_dependency 'fog-json',  '~> 1.0'
   spec.add_dependency 'ipaddress', '~> 0.8'
 end
