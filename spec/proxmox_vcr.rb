@@ -40,6 +40,7 @@ class ProxmoxVCR
   def initialize(options)
     @vcr_directory = options[:vcr_directory]
     @service_class = options[:service_class]
+    @connection_options = options[:connection_options] || {}
 
     use_recorded = !ENV.key?('PVE_URL') || ENV['USE_VCR'] == 'true'
 
@@ -65,10 +66,10 @@ class ProxmoxVCR
     end
 
     # ignore enterprise proxy
-    Excon.defaults[:disable_proxy] = true if ENV['DISABLE_PROXY'] == 'true'
+    @connection_options[:disable_proxy] = true if ENV['DISABLE_PROXY'] == 'true'
 
     # ignore dev certificates on servers
-    Excon.defaults[:ssl_verify_peer] = false if ENV['SSL_VERIFY_PEER'] == 'false'
+    @connection_options[:ssl_verify_peer] = false if ENV['SSL_VERIFY_PEER'] == 'false'
 
     VCR.use_cassette('identity_ticket') do
       Fog::Proxmox.clear_cache
@@ -78,26 +79,25 @@ class ProxmoxVCR
       # ticket recorded in identity_ticket.yml
       @ticket    = 'PVE:root@pam:5AB4B38A::m5asyATnV66Htv+Z2QYNu+KuqZDsR1t3fCViuu0bTAWYfU85zdUY2dF9lJXa7soWlaZ3tZriTxC7d+nhMq9Fq8hCRlNG4ntsEw/CzeuS50phSvq4Phx1uZVV0KjkdcVP1X0J50e42Zfr5hzptiO+cD68OF2GG0GaboQ/MV+PA5IxojYojQe1w6yjjzreZhiZYy9zq1W5CW23yIt5pPWk9oFxLNUHU1I2+jqMCOeE40VhivCUEslusD0ZdoA3tkIWJ504rKQJrJIsq1zi6LIpGsktkbUPxHwSgnftQs0IPRuP5HGaz1g9FSW1IUpC8iCHqEV6re+Pb9Yz+G1G7+G0TQ=='
       @csrftoken = '5AB4B38A:J+3XBmYsJqR7F+18kqbMhj6I/SM'
-      @deadline = Time.now + 2 * 60 * 60
 
       unless use_recorded
         @username = ENV['PVE_USERNAME'] || options[:username] || @username
         @password = ENV['PVE_PASSWORD'] || options[:password] || @password
         @ticket = ENV['PVE_TICKET'] || options[:ticket] || @ticket
         @csrftoken = ENV['PVE_CSRFTOKEN'] || options[:csrftoken] || @csrftoken
-        @deadline = ENV['PVE_DEADLINE'] || options[:deadline] || @deadline
       end
 
-      connection_options = {
+      connection_params = {
         pve_url: @url,
         pve_username: @username,
         pve_password: @password,
         pve_ticket: @ticket,
         pve_csrftoken: @csrftoken,
-        pve_deadline: @deadline
+        pve_deadline: @deadline,
+        connection_options: @connection_options
       }
 
-      @service = @service_class.new(connection_options)
+      @service = @service_class.new(connection_params)
     end
   end
 end

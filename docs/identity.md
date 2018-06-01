@@ -22,11 +22,12 @@ require 'fog/proxmox'
 identity = Fog::Identity::Proxmox.new(
         pve_username: PVE_USERNAME, # your user name
         pve_password: PVE_PASSWORD, # your password
-        pve_url: PVE_URL # your server url
+        pve_url: PVE_URL, # your server url
+		connection_options: {} # connection options
 )
 ```
 
-Optional [connection parameters](connection_parameters.md) are also available.
+[connection_options](connection_parameters.md) are also available.
 
 ## Fog Abstractions
 
