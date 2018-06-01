@@ -110,10 +110,11 @@ module Fog
         def initialize(options = {})
           initialize_identity(options)
           @connection_options = options[:connection_options] || {}
+          @path_prefix = URI.parse(options[:pve_url]).path
           authenticate
           @persistent = options[:persistent] || false
           url = "#{@scheme}://#{@host}:#{@port}"
-          @connection = Fog::Core::Connection.new(url, @persistent, @connection_options)
+          @connection = Fog::Core::Connection.new(url, @persistent, @connection_options.merge(path_prefix: @path_prefix))
         end
       end
     end

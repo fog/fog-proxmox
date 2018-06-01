@@ -93,7 +93,6 @@ class ProxmoxVCR
         pve_password: @password,
         pve_ticket: @ticket,
         pve_csrftoken: @csrftoken,
-        pve_deadline: @deadline,
         connection_options: @connection_options
       }
 

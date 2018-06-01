@@ -32,7 +32,6 @@ describe Fog::Identity::Proxmox do
     @password = @proxmox_vcr.password
     @ticket = @proxmox_vcr.ticket
     @csrftoken = @proxmox_vcr.csrftoken
-    @deadline = @proxmox_vcr.deadline
   end
 
   it 'authenticates with username and password' do

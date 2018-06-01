@@ -22,12 +22,13 @@ module Fog
     class Proxmox
       # class Real list_servers request
       class Real
-        def list_servers
+        def list_servers(options)
+          type = options[:type]
           request(
             expects: [200],
             method: 'GET',
             path: 'cluster/resources',
-            query: 'type=vm'
+            query: "type=#{type}"
           )
         end
       end

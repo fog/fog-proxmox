@@ -85,6 +85,7 @@ module Fog
       extract_password(options)
       uri = URI.parse(url)
       @api_path = uri.path
+      connection_options = connection_options.merge(path_prefix: @api_path)
       retrieve_tokens(uri, connection_options, username, password) unless authenticated?
     end
 
@@ -94,7 +95,7 @@ module Fog
         headers: { 'Accept' => 'application/json' },
         body: "username=#{username}&password=#{password}",
         method: 'POST',
-        path: "#{@api_path}/access/ticket"
+        path: "access/ticket"
       }
 
       connection = Fog::Core::Connection.new(

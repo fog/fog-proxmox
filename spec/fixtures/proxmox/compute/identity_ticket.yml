@@ -8,7 +8,7 @@ http_interactions:
       string: username=root@pam&password=proxmox01
     headers:
       User-Agent:
-      - fog-core/2.1.0
+      - fog-core/1.45.0
       Accept:
       - application/json
   response:
@@ -21,7 +21,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Wed, 23 May 2018 13:56:40 GMT
+      - Fri, 01 Jun 2018 11:50:34 GMT
       Pragma:
       - no-cache
       Server:
@@ -31,10 +31,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 23 May 2018 13:56:40 GMT
+      - Fri, 01 Jun 2018 11:50:34 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"ticket":"PVE:root@pam:5B057318::Y32re4jsq7TYtnvrt9SAGSZ4iivViqBpAY3J0f+zRNKSGFjiysLQJ0O3DrAGVGfwBY4dwXvg2hUdLqGc1RDndZKemjkeXDAQwoR17W9tf0zgCV04n7sp4kZy1HtjFV+D+i4Kin345YpxFw5c3vGNMT3ED99+4iJWbkKAC5YyVAmC97B6vkccP2EZplKt9YnK3LhsxDkBKprBG8fiJXNXH+717WjYciYQhxtQUUoW4RX9qV9O8z0KXNKJAUtieSQEQjXBggLrZlr6koO5vp17Oz8cZALf0bZMUxxCp/Pn86qqD38yHQD8qnuriU0V8/w6pP1eP8xYhKyKcnTGreLHUA==","cap":{"access":{"User.Modify":1,"Permissions.Modify":1,"Group.Allocate":1},"vms":{"VM.Snapshot":1,"VM.Migrate":1,"VM.Config.Network":1,"VM.PowerMgmt":1,"VM.Console":1,"VM.Config.Disk":1,"VM.Config.HWType":1,"VM.Snapshot.Rollback":1,"VM.Backup":1,"VM.Config.Memory":1,"VM.Config.Options":1,"VM.Clone":1,"Permissions.Modify":1,"VM.Audit":1,"VM.Monitor":1,"VM.Config.CPU":1,"VM.Allocate":1,"VM.Config.CDROM":1},"dc":{"Sys.Audit":1},"nodes":{"Sys.PowerMgmt":1,"Sys.Modify":1,"Sys.Audit":1,"Sys.Console":1,"Permissions.Modify":1,"Sys.Syslog":1},"storage":{"Datastore.AllocateSpace":1,"Datastore.Allocate":1,"Datastore.Audit":1,"Datastore.AllocateTemplate":1,"Permissions.Modify":1}},"username":"root@pam","CSRFPreventionToken":"5B057318:EkzESBBCUXdNaWCR7eDfQVrz32w"}}'
+      string: '{"data":{"username":"root@pam","CSRFPreventionToken":"5B11330A:fbacLFaIG2WiFdnqN/K7Je22o9s","cap":{"vms":{"VM.Config.Memory":1,"VM.Snapshot.Rollback":1,"VM.Migrate":1,"Permissions.Modify":1,"VM.Snapshot":1,"VM.Config.CPU":1,"VM.Config.CDROM":1,"VM.Config.Network":1,"VM.Config.HWType":1,"VM.PowerMgmt":1,"VM.Allocate":1,"VM.Console":1,"VM.Audit":1,"VM.Backup":1,"VM.Config.Options":1,"VM.Config.Disk":1,"VM.Monitor":1,"VM.Clone":1},"dc":{"Sys.Audit":1},"storage":{"Datastore.AllocateSpace":1,"Datastore.AllocateTemplate":1,"Permissions.Modify":1,"Datastore.Audit":1,"Datastore.Allocate":1},"nodes":{"Sys.PowerMgmt":1,"Sys.Audit":1,"Sys.Console":1,"Permissions.Modify":1,"Sys.Syslog":1,"Sys.Modify":1},"access":{"Permissions.Modify":1,"User.Modify":1,"Group.Allocate":1}},"ticket":"PVE:root@pam:5B11330A::G1Lpb+milxBvH72nvNC3MmsvxPt744NBdT6UdeDYtEIbX1JIlzxoeCsL/xos2SS0fqwAsH9eExqdXL2UVQJ5qbJs7dw0f09cZNHrQGKbAAWqnbcZBUX4rg624LTY0jkr9ipVET1rwJhiG0/4BUeIIpLcaXsG0tB2JacpRIVrLQpYYSnQhL+mE/EDmQGjRILpv5b9/v0IgDegOeFipis2q6m828yt1oUcY7DxvDYLxLRNai0K2VjLJNQ6bXUTc6Okq+3nh6NfhWVg3s7xf2/YbyVn2GzLFHrLUrMPN6dMos+wWatMclo/jS51r9T3gqzCbi5wqrqSjKlluXvIiEbwzA=="}}'
     http_version: 
-  recorded_at: Wed, 23 May 2018 14:27:36 GMT
+  recorded_at: Fri, 01 Jun 2018 11:50:36 GMT
 recorded_with: VCR 3.0.3

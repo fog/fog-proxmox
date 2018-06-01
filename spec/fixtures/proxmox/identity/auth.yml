@@ -2,19 +2,56 @@
 http_interactions:
 - request:
     method: post
+    uri: https://192.168.56.101:8006/access/ticket
+    body:
+      encoding: US-ASCII
+      string: username=root%40pam&password=proxmox01&privs=User.Modify&path=access&otp=proxmox01
+    headers:
+      User-Agent:
+      - fog-core/1.45.0
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5B11323C:p2JYFrDXYKjghQQGNhhJjw93lZY
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5B11323C::mrQq6htVS8Uh8Xr4WMTpZycO450Gx1nvWVtCFRjdBFklDUo3wIXWfG4w0U2yr83gBOAHbfavljH9EJp3I3b5+cx/e+kJxBKx9rLgfs3+p5s49xWHjZfPKAXYwmEa8tQC6+9Z7Dg+bjJIz5bcP23EDB+0ZE9cRf5Iq6xwR6FAYl55osGZEIDCe9ozKtk4uZPcfJ56SPEQVDXn2GFF+GPtn516fQP7nVMcS2hn1RWWHmV7nu5oUg2vGo5OscysXNrugp2EB9KyjkZb1URyBO0kHTy2lqF5Fk1HHj7K6iES5Bhh9dm/Q5z1wKQduvuJBajwMoRm6uRu1n4B1stYFOEYIA==
+  response:
+    status:
+      code: 501
+      message: no such file '/access/ticket'
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close
+      Date:
+      - Fri, 01 Jun 2018 11:47:08 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Expires:
+      - Fri, 01 Jun 2018 11:47:08 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version: 
+  recorded_at: Fri, 01 Jun 2018 11:47:09 GMT
+- request:
+    method: post
     uri: https://192.168.56.101:8006/api2/json/access/ticket
     body:
       encoding: US-ASCII
       string: username=root%40pam&password=proxmox01&privs=User.Modify&path=access&otp=proxmox01
     headers:
       User-Agent:
-      - fog-core/2.1.0
+      - fog-core/1.45.0
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5B0564F9:nuF5H+SgElVnyC/m6ql/eYpEurs
+      - 5B1132CE:rvSdSTbmoiPLmIazMCG+9M45nCk
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B0564F9::YFNe6OnTTnl6kti2fgk1yQCngdOkf9YVynEyiU8amhW6KAqHUCRvug6ck5QM7c0yIXDJi+Lw2A3vie09JGQMs7jYHzwGlv7M3FQ5pcm86mDcAERBBZuuhnKNB/Mi4S6MzxfRp0WrFQKGfP2OizoQZkic6iYRuDSN+Ju6Ujgwf88SWLKNzIsrGj0wy8GbVj2f2TEEqyeZidOrCYEtmWSTxp8PFvzEIs7l4n6BPnv+NC89U52aBFjIlGzKYoPO+JZgwKjL/ld/8RA2C9MeEk6nwTcEG9ncCc8BxbwWG0knQJ1IACeK7uu2L5EuEbmx042GqhcliWsOTdGnGvrHXfprCg==
+      - PVEAuthCookie=PVE:root@pam:5B1132CE::iG2gCa7e0kGS81GEbY4DpVmcLAlfrv1WbZjcVSHBkztOtgyuh4qRwnPXx+Q6E8yIIkBnU/nCZDh5gtrs8MkXcFTC33Ga9DqVY/9uWRzbyCrUhDT21XoQDovIic0NT1mi4z5DEUE6T+4KC9KcwLQN5gl2YAHadCqA36tvo7a1a2qUJuuNZUJihud1EFLhsRWO4rrNUaq+TQlOUzw8Lc5ybAEEtiJDkqC6yMJzRzpFvRQ9vEAnEwXWbw3rV9abY8lQokb5IosyhcfYcDRoRyJp2VkgGq0KtkKIEKsmyIYsiyjS29U0f2OBk8KqIcGi9OqqzIpdVlSHABauHSyp/8aqBg==
   response:
     status:
       code: 200
@@ -25,7 +62,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Wed, 23 May 2018 12:56:25 GMT
+      - Fri, 01 Jun 2018 11:49:34 GMT
       Pragma:
       - no-cache
       Server:
@@ -35,10 +72,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 23 May 2018 12:56:25 GMT
+      - Fri, 01 Jun 2018 11:49:34 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"username":"root@pam","cap":{"storage":{"Datastore.Audit":1,"Datastore.AllocateSpace":1,"Datastore.Allocate":1,"Permissions.Modify":1,"Datastore.AllocateTemplate":1},"nodes":{"Permissions.Modify":1,"Sys.Syslog":1,"Sys.Modify":1,"Sys.Audit":1,"Sys.Console":1,"Sys.PowerMgmt":1},"vms":{"VM.Config.Options":1,"VM.Clone":1,"VM.Config.Memory":1,"VM.Snapshot.Rollback":1,"VM.Backup":1,"VM.Config.CDROM":1,"VM.Allocate":1,"VM.Monitor":1,"VM.Config.CPU":1,"VM.Audit":1,"Permissions.Modify":1,"VM.Config.Disk":1,"VM.Console":1,"VM.Config.Network":1,"VM.Migrate":1,"VM.PowerMgmt":1,"VM.Snapshot":1,"VM.Config.HWType":1},"dc":{"Sys.Audit":1},"access":{"Group.Allocate":1,"Permissions.Modify":1,"User.Modify":1}}}}'
+      string: '{"data":{"cap":{"nodes":{"Sys.Console":1,"Permissions.Modify":1,"Sys.PowerMgmt":1,"Sys.Audit":1,"Sys.Modify":1,"Sys.Syslog":1},"access":{"User.Modify":1,"Group.Allocate":1,"Permissions.Modify":1},"dc":{"Sys.Audit":1},"storage":{"Permissions.Modify":1,"Datastore.Audit":1,"Datastore.Allocate":1,"Datastore.AllocateSpace":1,"Datastore.AllocateTemplate":1},"vms":{"VM.Audit":1,"VM.Allocate":1,"VM.Console":1,"VM.Config.Network":1,"VM.Config.HWType":1,"VM.PowerMgmt":1,"VM.Config.CDROM":1,"VM.Config.CPU":1,"VM.Snapshot.Rollback":1,"VM.Config.Memory":1,"VM.Snapshot":1,"VM.Migrate":1,"Permissions.Modify":1,"VM.Monitor":1,"VM.Clone":1,"VM.Config.Disk":1,"VM.Config.Options":1,"VM.Backup":1}},"username":"root@pam"}}'
     http_version: 
-  recorded_at: Wed, 23 May 2018 13:27:21 GMT
+  recorded_at: Fri, 01 Jun 2018 11:49:36 GMT
 recorded_with: VCR 3.0.3

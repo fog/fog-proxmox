@@ -32,7 +32,6 @@ describe Fog::Compute::Proxmox do
     @password = @proxmox_vcr.password
     @ticket = @proxmox_vcr.ticket
     @csrftoken = @proxmox_vcr.csrftoken
-    @deadline = @proxmox_vcr.deadline
   end
 
   it 'Manage tasks' do
