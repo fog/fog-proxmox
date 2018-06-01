@@ -2,9 +2,9 @@
 
 # Fog::Proxmox
 
-[![Build Status](https://travis-ci.org/tristanrobert/fog-proxmox.svg?branch=master)](https://travis-ci.org/tristanrobert/fog-proxmox)
-[![Code Climate](https://codeclimate.com/github/tristanrobert/fog-proxmox.svg)](https://codeclimate.com/github/tristanrobert/fog-proxmox)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/8e40616906ff67dc51d3/test_coverage)](https://codeclimate.com/github/tristanrobert/fog-proxmox/test_coverage)
+[![Build Status](https://travis-ci.org/fog/fog-proxmox.svg?branch=master)](https://travis-ci.org/fog/fog-proxmox)
+[![Code Climate](https://codeclimate.com/github/fog/fog-proxmox.svg)](https://codeclimate.com/github/fog/fog-proxmox)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/8e40616906ff67dc51d3/test_coverage)](https://codeclimate.com/github/fog/fog-proxmox/test_coverage)
 
 This is a [FOG](http://fog.io/) (>= 1.45.0) module gem to support [Proxmox VE](https://www.proxmox.com/en/proxmox-ve) (tested with 5.1 and 5.2)
 
@@ -49,7 +49,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 You can reach the [contributors](CONTRIBUTORS.md).
-Bug reports and pull requests are welcome on GitHub at [Fog-Proxmox](https://github.com/tristanrobert/fog-proxmox). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at [Fog-Proxmox](https://github.com/fog/fog-proxmox/issues). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 Please read [how to contribute](CONTRIBUTING.md).
 
