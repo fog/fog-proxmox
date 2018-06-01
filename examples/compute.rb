@@ -60,14 +60,18 @@ end
 pool1.destroy
 
 # Create servers
-node = 'pve'
-server_hash = { node: node }
+
+# Get node owner
+node_name = 'pve'
+node = compute.nodes.find_by_id node_name
 
 # Get next free vmid
 vmid = node.servers.next_id
-server_hash.store(:vmid, vmid)
+server_hash = { vmid: vmid }
 
+# Create server
 node.servers.create(server_hash)
+
 # Check already used vmid
 node.servers.id_valid? vmid
 
