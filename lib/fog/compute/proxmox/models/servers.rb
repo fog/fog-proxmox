@@ -55,8 +55,9 @@ module Fog
           new(server_data)
         end
 
-        def all
-          load_response(service.list_servers, 'servers')
+        def all(options = {})
+          body_params = options.merge(type: 'vm')
+          load_response(service.list_servers(body_params), 'servers')
         end
       end
     end
