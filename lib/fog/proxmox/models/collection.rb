@@ -50,6 +50,11 @@ module Fog
         object.create(attributes)
       end
 
+      # Proxmox object instance
+      def new_object(attributes = {})
+        new(attributes)
+      end
+
       # Returns detailed list of records
       def all(_options = {})
         raise Fog::Proxmox::Errors::InterfaceNotImplemented, not_implemented('all')
