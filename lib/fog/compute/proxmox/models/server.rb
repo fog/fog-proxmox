@@ -53,7 +53,6 @@ module Fog
         attribute :balloon
         attribute :ballooninfo
         attribute :snapshots
-        attribute :type
 
         def to_s
           vmid.to_s
