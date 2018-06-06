@@ -35,6 +35,9 @@ module Fog
         attribute :sockets
         attribute :memory
         attribute :name
+        attribute :cpu
+        attribute :cpulimit
+        attribute :cpuunits
         attribute :server
 
         def initialize(attributes = {})
@@ -69,6 +72,24 @@ module Fog
 
         def mac_addresses
           Fog::Proxmox::MacAddress.to_array(nics)
+        end
+
+        def cpu_extract
+          cpu.split(/(\w+)(,flags=){0,1}(\+[\w-]+){0,1}[;]{0,1}(\+[\w-]+){0,1}/)
+        end
+
+        def cpu_type
+          cpu_extract[0]
+        end
+
+        def spectre
+          spectre_s = '+spec-ctrl'
+          cpu_extract.include? spectre_s
+        end
+
+        def pcid
+          pcid_s = '+pcid'
+          cpu_extract.include? pcid_s
         end
 
       end
