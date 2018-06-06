@@ -74,22 +74,24 @@ module Fog
           Fog::Proxmox::MacAddress.to_array(nics)
         end
 
-        def cpu_extract
-          cpu.split(/(\w+)(,flags=){0,1}(\+[\w-]+){0,1}[;]{0,1}(\+[\w-]+){0,1}/)
-        end
-
         def cpu_type
-          cpu_extract[0]
+          cpu_extract[0] if cpu_extract
         end
 
         def spectre
           spectre_s = '+spec-ctrl'
-          cpu_extract.include? spectre_s
+          cpu_extract.include? spectre_s if cpu_extract
         end
 
         def pcid
           pcid_s = '+pcid'
-          cpu_extract.include? pcid_s
+          cpu_extract.include? pcid_s if cpu_extract
+        end
+        
+        private
+
+        def cpu_extract
+          cpu.split(/(\w+)(,flags=){0,1}(\+[\w-]+){0,1}[;]{0,1}(\+[\w-]+){0,1}/) if cpu
         end
 
       end
