@@ -79,19 +79,21 @@ module Fog
         end
 
         def spectre
-          spectre_s = '+spec-ctrl'
-          cpu_extract.include? spectre_s if cpu_extract
+          cpu_has? '+spec-ctrl'
         end
 
         def pcid
-          pcid_s = '+pcid'
-          cpu_extract.include? pcid_s if cpu_extract
+          cpu_has? '+pcid'
         end
         
         private
 
         def cpu_extract
           cpu.split(/(\w+)(,flags=){0,1}(\+[\w-]+){0,1}[;]{0,1}(\+[\w-]+){0,1}/) if cpu
+        end
+
+        def cpu_has?(value)
+          cpu_extract.include? value if cpu_extract
         end
 
       end
