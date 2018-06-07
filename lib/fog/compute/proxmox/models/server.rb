@@ -61,8 +61,7 @@ module Fog
         def initialize(attributes = {})
           self.type = 'qemu'
           prepare_service_value(attributes)
-          self.config = Fog::Compute::Proxmox::ServerConfig.new({ service: service,
-            server: self }.merge(attributes))
+          set_config(attributes)
           super
         end
 
@@ -151,22 +150,22 @@ module Fog
           update(delete: diskid)
         end
 
+        def set_config(attributes = {})
+          self.config = Fog::Compute::Proxmox::ServerConfig.new({ service: service,
+            server: self }.merge(attributes))
+        end
+
+        def get_config
+          path_params = { node: node, type: type, vmid: vmid }
+          set_config(service.get_server_config(path_params))
+          self.config
+        end
+
         def snapshots
           @snapshots ||= begin
             Fog::Compute::Proxmox::Snapshots.new(service: service,
                                                  server: self)
           end
-        end
-
-        def config
-          self.config = read_config
-        end
-
-        def read_config
-          path_params = { node: node, type: type, vmid: vmid }
-          data = service.get_server_config path_params
-          Fog::Compute::Proxmox::ServerConfig.new({ service: service,
-                                                      server: self }.merge(data))
         end
 
         def backups

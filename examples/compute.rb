@@ -105,20 +105,20 @@ server.update(config_hash)
 config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26', kvm: 0 }
 server.update(config_hash)
 # Get configuration model
-config = server.config
+config = server.get_config
 # Get nics config
-nics = server.config.nics
+nics = server.get_config.nics
 nics[:net0]
 # Get hdd controllers (ide, sata, scsi or virtio) config
 # All return hashes with key equals to controller id
-ides = server.config.ides
+ides = server.get_config.ides
 ides[:ide2]
-satas = server.config.satas
-scsis = server.config.scsis
-virtios = server.config.virtios
+satas = server.get_config.satas
+scsis = server.get_config.scsis
+virtios = server.get_config.virtios
 virtios[:virtio0]
 # Get mac_addresses
-server.mac_adresses
+server.get_config.mac_adresses
 # List all servers
 servers_all = compute.servers.all
 

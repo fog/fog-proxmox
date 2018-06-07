@@ -2,41 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://192.168.56.101:8006/version
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/1.45.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B11323C::mrQq6htVS8Uh8Xr4WMTpZycO450Gx1nvWVtCFRjdBFklDUo3wIXWfG4w0U2yr83gBOAHbfavljH9EJp3I3b5+cx/e+kJxBKx9rLgfs3+p5s49xWHjZfPKAXYwmEa8tQC6+9Z7Dg+bjJIz5bcP23EDB+0ZE9cRf5Iq6xwR6FAYl55osGZEIDCe9ozKtk4uZPcfJ56SPEQVDXn2GFF+GPtn516fQP7nVMcS2hn1RWWHmV7nu5oUg2vGo5OscysXNrugp2EB9KyjkZb1URyBO0kHTy2lqF5Fk1HHj7K6iES5Bhh9dm/Q5z1wKQduvuJBajwMoRm6uRu1n4B1stYFOEYIA==
-  response:
-    status:
-      code: 501
-      message: no such file '/version'
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - close
-      Date:
-      - Fri, 01 Jun 2018 11:47:08 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Expires:
-      - Fri, 01 Jun 2018 11:47:08 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: ''
-    http_version: 
-  recorded_at: Fri, 01 Jun 2018 11:47:09 GMT
-- request:
-    method: get
     uri: https://192.168.56.101:8006/api2/json/version
     body:
       encoding: US-ASCII
@@ -47,7 +12,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B1132CB::hl4/XWvWnzkuk01OzFkZye54DxI47uXRAasFQ2QCCGjQzLqGncZVVwB2zPutKt1XLpPXJsbzx67ZDnDBQ2NORTwqOalDWmww3ONyvYCqvmgRvqui6wCiiOD2jucIl67s47SC1mGEsSDmxZGbADmP84WdVJCbrTpd2pUc89WHJAl/sbIsM5hnCHJiBY6u0+o63X2VPtcB8pA7NohG700nvOH3kFhgepcyvHlIYggnQNzg7OMe66JK0YV2x3tDznbikAzo5Z371LDiH9uH05MOeuwg4XUx8um/TZy6OhhqYEht29TJ7Z0F3bypCH3wvjaQaKMHMdfy8vqlKehubL6ZvA==
+      - PVEAuthCookie=PVE:root@pam:5B19418B::DdFKvPVhxmKCp4l6rFxE3hMNyY7IX0uZaoDTZL7u6CxNilzUSIfg6mSi6H5caZo2QRoK+73eWS3WV45dXANK7SjWw/pdkzSB9hreHKtohvg7G+Y///qRF6GcB4bzUxlHsK5Emm5FfrhYkoBwXz6p+kwpZVe6sa7munnVtEn5eB1471Qj2DlFzlB8yPVfHGBFvfCoqUh8XUomwU50Kpd6tPRCDwYaxXH2Guk2i4ZD6gxDrqCB+q1lw2LRAq7wG8UsG7HIqtDIsXDRKr0cdE3VxFN5Kgx73QXGtSmzl+BCDIwADUIphcTTZMnW0H3PeA/bDZ7L/Nu8nSHG7TtumMZN5A==
   response:
     status:
       code: 200
@@ -58,7 +23,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Fri, 01 Jun 2018 11:49:31 GMT
+      - Thu, 07 Jun 2018 14:30:35 GMT
       Pragma:
       - no-cache
       Server:
@@ -68,10 +33,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 01 Jun 2018 11:49:31 GMT
+      - Thu, 07 Jun 2018 14:30:35 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"version":"5.2","keyboard":"fr","release":"1","repoid":"0fcd7879"}}'
+      string: '{"data":{"release":"1","version":"5.2","keyboard":"fr","repoid":"0fcd7879"}}'
     http_version: 
-  recorded_at: Fri, 01 Jun 2018 11:49:32 GMT
+  recorded_at: Thu, 07 Jun 2018 14:30:36 GMT
 recorded_with: VCR 3.0.3

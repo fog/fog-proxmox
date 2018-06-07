@@ -132,14 +132,14 @@ describe Fog::Compute::Proxmox do
       config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26', kvm: 0 }
       server.update(config_hash)
       # server config
-      virtio0 = server.config.virtios[:virtio0]
+      virtio0 = server.get_config.virtios[:virtio0]
       virtio0.wont_be_nil
-      ides = server.config.ides
+      ides = server.get_config.ides
       ides.wont_be_nil
       ides.wont_be_empty
       ides.has_key?(:ide2).must_equal true
       # Get a mac adress
-      mac_address = server.config.mac_addresses.first
+      mac_address = server.get_config.mac_addresses.first
       mac_address.wont_be_nil
       # all servers
       servers_all = node.servers.all
