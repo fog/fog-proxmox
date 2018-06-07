@@ -26,14 +26,21 @@ module Fog
       # ServerConfig model
       class ServerConfig < Fog::Proxmox::Model
         identity  :digest
+        attribute :description
         attribute :ostype
         attribute :smbios1
         attribute :numa
+        attribute :vcpus
         attribute :cores
         attribute :bootdisk
+        attribute :onboot
+        attribute :agent
         attribute :scsihw
         attribute :sockets
         attribute :memory
+        attribute :min_memory
+        attribute :shares
+        attribute :balloon
         attribute :name
         attribute :cpu
         attribute :cpulimit

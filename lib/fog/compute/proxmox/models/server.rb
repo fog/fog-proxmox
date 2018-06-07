@@ -58,10 +58,6 @@ module Fog
           vmid.to_s
         end
 
-        def persisted?
-          !!identity
-        end
-
         def initialize(attributes = {})
           self.type = 'qemu'
           prepare_service_value(attributes)
@@ -163,12 +159,14 @@ module Fog
         end
 
         def config
-          self.config = begin
-            path_params = { node: node, type: type, vmid: vmid }
-            data = service.get_server_config path_params
-            Fog::Compute::Proxmox::ServerConfig.new({ service: service,
+          self.config = read_config
+        end
+
+        def read_config
+          path_params = { node: node, type: type, vmid: vmid }
+          data = service.get_server_config path_params
+          Fog::Compute::Proxmox::ServerConfig.new({ service: service,
                                                       server: self }.merge(data))
-          end
         end
 
         def backups
