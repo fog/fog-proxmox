@@ -17,8 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/json'
-
 module Fog
   module Proxmox
     # module Disk mixins
