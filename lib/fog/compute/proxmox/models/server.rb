@@ -29,7 +29,6 @@ module Fog
         identity  :vmid
         attribute :node
         attribute :config
-        attribute :id
         attribute :name
         attribute :type
         attribute :maxdisk
