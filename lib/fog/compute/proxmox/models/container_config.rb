@@ -18,7 +18,7 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 require 'fog/proxmox/variables'
-require 'fog/proxmox/mac_address'
+require 'fog/proxmox/nic'
 
 module Fog
   module Compute
@@ -51,7 +51,7 @@ module Fog
         end
 
         def mac_addresses
-          Fog::Proxmox::MacAddress.to_array(nics)
+          Fog::Proxmox::Nic.to_mac_adresses_array(nics)
         end
 
       end
