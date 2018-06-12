@@ -39,4 +39,15 @@ require 'fog/proxmox/helpers/nic_helper'
                 assert_equal '66:89:C5:59:AA:96', mac_address
             end
         end
+
+        describe '#extract' do
+            it "returns bridge" do
+                bridge = Fog::Proxmox::NicHelper.extract('bridge',net[:net0])
+                assert_equal 'vmbr0', bridge
+            end
+            it "returns firewall" do
+                firewall = Fog::Proxmox::NicHelper.extract('firewall',net[:net0])
+                assert_equal '1', firewall
+            end
+        end
     end
