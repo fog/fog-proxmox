@@ -294,7 +294,7 @@ describe Fog::Compute::Proxmox do
       mac_address = container.config.mac_addresses.first
       mac_address.wont_be_nil
       # Fetch nics
-      nics = container.config.nets
+      nets = container.config.nets
       nets.wont_be_empty
       nets.has_key?(:net0).must_equal true
       # all containers

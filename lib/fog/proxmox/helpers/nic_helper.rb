@@ -30,7 +30,7 @@ module Fog
         nic_value[/(#{name}=(\w+))[,]{0,1}/]
       end
       def self.extract_model(nic_value)
-        nic_value[/^(\w+)[=\w+][,]{0,1}/]
+        nic_value[/^(\w+){1}[\w+]/]
       end
       def self.extract_index(nic_key)
         nic_key[/net(\d+)/].to_i
