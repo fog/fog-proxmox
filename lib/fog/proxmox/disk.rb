@@ -22,7 +22,9 @@ module Fog
     # module Disk mixins
     module Disk
       def self.flatten(disk, options)
-        { "#{disk[:id]}": "#{disk[:storage]}:#{disk[:size]},#{options}" }
+        value = "#{disk[:storage]}:#{disk[:size]}"
+        value += ",#{options}" unless options.empty?
+        { "#{disk[:id]}": value }
       end
     end
   end
