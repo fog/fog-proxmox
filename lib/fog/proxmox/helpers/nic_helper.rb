@@ -21,17 +21,16 @@ require 'fog/proxmox/hash'
 
 module Fog
   module Proxmox
-    # module Nic mixins
-    module Nic
-      MAC_ADDRESS_REGEXP = /([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})/
+    # module NicHelper mixins
+    module NicHelper
       def self.extract_mac_address(nic_value)
-        nic_value[MAC_ADDRESS_REGEXP]
+        nic_value[/([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})/]
       end
       def self.extract(name,nic_value)
         nic_value[/(#{name}=(\w+))[,]{0,1}/]
       end
       def self.extract_model(nic_value)
-        nic_value[/((\w+)=MAC_ADDRESS_REGEXP)[,]{0,1}/]
+        nic_value[/^(\w+)[=\w+][,]{0,1}/]
       end
       def self.extract_index(nic_key)
         nic_key[/net(\d+)/].to_i

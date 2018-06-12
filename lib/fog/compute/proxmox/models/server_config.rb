@@ -18,7 +18,7 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 require 'fog/proxmox/variables'
-require 'fog/proxmox/nic'
+require 'fog/proxmox/helpers/nic_helper'
 
 module Fog
   module Compute
@@ -47,6 +47,10 @@ module Fog
         attribute :cpuunits
         attribute :server
 
+        def to_s
+          digest
+        end
+
         def initialize(attributes = {})
           prepare_service_value(attributes)
           Fog::Proxmox::Variables.to_variables(self, attributes, 'net')
@@ -57,8 +61,29 @@ module Fog
           super({ server: server }.merge(attributes))
         end
 
-        def nics
+        def nets
           Fog::Proxmox::Variables.to_hash(self, 'net')
+        end
+
+        def nics
+          nics = []
+          nets.each do |key,value|
+            nics.push(
+              Fog::Compute::Proxmox::Nic.new(
+                server_config: self, 
+                id: key, 
+                model: Fog::Proxmox::NicHelper.extract_model(value),
+                mac: Fog::Proxmox::NicHelper.extract_mac_address(value),
+                bridge: Fog::Proxmox::NicHelper.extract('bridge',value),
+                firewall: Fog::Proxmox::NicHelper.extract('firewall',value),
+                link_down: Fog::Proxmox::NicHelper.extract('link_down',value),
+                rate: Fog::Proxmox::NicHelper.extract('rate',value),
+                queues: Fog::Proxmox::NicHelper.extract('queues',value),
+                tag: Fog::Proxmox::NicHelper.extract('tag',value)
+              )
+            )
+          end
+          nics
         end
 
         def virtios
@@ -78,11 +103,11 @@ module Fog
         end
 
         def mac_addresses
-          Fog::Proxmox::Nic.to_mac_adresses_array(nics)
+          Fog::Proxmox::NicHelper.to_mac_adresses_array(nets)
         end
 
         def next_nicid
-          Fog::Proxmox::Nic.last_index(nics)
+          Fog::Proxmox::NicHelper.last_index(nets)
         end
 
         def cpu_type

@@ -34,6 +34,7 @@ module Fog
       collection :nodes
       model :server
       collection :servers
+      model :nic
       model :server_config
       model :volume
       collection :volumes
