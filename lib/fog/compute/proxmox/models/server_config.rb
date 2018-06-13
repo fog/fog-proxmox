@@ -109,29 +109,6 @@ module Fog
         def next_nicid
           Fog::Proxmox::NicHelper.last_index(nets)
         end
-
-        def cpu_type
-          cpu_extract[0] if cpu_extract
-        end
-
-        def spectre
-          cpu_has? '+spec-ctrl'
-        end
-
-        def pcid
-          cpu_has? '+pcid'
-        end
-        
-        private
-
-        def cpu_extract
-          cpu.split(/(\w+)(,flags=){0,1}(\+[\w-]+){0,1}[;]{0,1}(\+[\w-]+){0,1}/) if cpu
-        end
-
-        def cpu_has?(value)
-          cpu_extract.include? value if cpu_extract
-        end
-
       end
     end
   end
