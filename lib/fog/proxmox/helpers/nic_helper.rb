@@ -27,7 +27,9 @@ module Fog
         nic_value[/([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})/]
       end
       def self.extract(name,nic_value)
-        nic_value.scan(/#{name}=(\w+)/).first.first
+        values = nic_value.scan(/#{name}=(\w+)/)
+        name_value = values.first if values
+        name_value.first if name_value
       end
       def self.extract_model(nic_value)
         nic_value[/^(\w+){1}[\w+]/]

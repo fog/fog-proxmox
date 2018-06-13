@@ -38,7 +38,6 @@ require 'fog/proxmox/helpers/cpu_helper'
         describe '#extract' do
             it "returns array" do
                 result = Fog::Proxmox::CpuHelper.extract(cpu)
-                puts "result=#{result}"
                 assert_equal(5, result.length)
                 assert_equal('cputype=', result[0])
                 assert_equal('kvm64', result[1])
@@ -48,7 +47,6 @@ require 'fog/proxmox/helpers/cpu_helper'
             end
             it "returns array" do
                 result = Fog::Proxmox::CpuHelper.extract(cpu_nocputype)
-                puts "result=#{result}"
                 assert_equal(5, result.length)
                 assert_equal(nil, result[0])
                 assert_equal('kvm64', result[1])

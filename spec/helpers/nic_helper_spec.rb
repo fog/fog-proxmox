@@ -25,6 +25,10 @@ require 'fog/proxmox/helpers/nic_helper'
         let(:net) do 
             { net0: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
         end
+        let(:net_no_options) do 
+            { net0: 'virtio=66:89:C5:59:AA:96' }
+        end
+
 
         describe '#extract_model' do
             it "returns model card" do
@@ -44,6 +48,10 @@ require 'fog/proxmox/helpers/nic_helper'
             it "returns bridge" do
                 bridge = Fog::Proxmox::NicHelper.extract('bridge',net[:net0])
                 assert_equal 'vmbr0', bridge
+            end
+            it "returns nil" do
+                bridge = Fog::Proxmox::NicHelper.extract('bridge',net_no_options[:net0])
+                assert_equal nil, bridge
             end
             it "returns firewall" do
                 firewall = Fog::Proxmox::NicHelper.extract('firewall',net[:net0])
