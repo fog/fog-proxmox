@@ -51,7 +51,7 @@ require 'fog/proxmox/helpers/nic_helper'
             end
             it "returns nil" do
                 bridge = Fog::Proxmox::NicHelper.extract('bridge',net_no_options[:net0])
-                assert_equal nil, bridge
+                assert !bridge
             end
             it "returns firewall" do
                 firewall = Fog::Proxmox::NicHelper.extract('firewall',net[:net0])

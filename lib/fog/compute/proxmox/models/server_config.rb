@@ -45,6 +45,7 @@ module Fog
         attribute :cpu
         attribute :cpulimit
         attribute :cpuunits
+        attribute :interfaces
         attribute :server
 
         def to_s
@@ -65,25 +66,8 @@ module Fog
           Fog::Proxmox::Variables.to_hash(self, 'net')
         end
 
-        def nics
-          nics = []
-          nets.each do |key,value|
-            nics.push(
-              Fog::Compute::Proxmox::Nic.new(
-                server_config: self, 
-                id: key, 
-                model: Fog::Proxmox::NicHelper.extract_model(value),
-                mac: Fog::Proxmox::NicHelper.extract_mac_address(value),
-                bridge: Fog::Proxmox::NicHelper.extract('bridge',value),
-                firewall: Fog::Proxmox::NicHelper.extract('firewall',value),
-                link_down: Fog::Proxmox::NicHelper.extract('link_down',value),
-                rate: Fog::Proxmox::NicHelper.extract('rate',value),
-                queues: Fog::Proxmox::NicHelper.extract('queues',value),
-                tag: Fog::Proxmox::NicHelper.extract('tag',value)
-              )
-            )
-          end
-          nics
+        def interfaces
+          @interfaces ||= Fog::Compute::Proxmox::Interfaces.new(nets: nets)
         end
 
         def virtios

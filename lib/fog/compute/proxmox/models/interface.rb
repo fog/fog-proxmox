@@ -31,8 +31,8 @@ require 'fog/proxmox/models/model'
 module Fog
   module Compute
     class Proxmox
-      # class Nic model
-      class Nic < Fog::Proxmox::Model
+      # class Interface model
+      class Interface < Fog::Proxmox::Model
         identity  :id
         attribute :mac
         attribute :model
@@ -41,24 +41,13 @@ module Fog
         attribute :link_down
         attribute :rate
         attribute :queues
-        attribute :tag
-        attribute :server_config
 
         def to_s
-          self.id.to_s
+          identity ? identity.to_s : super.to_s
         end
 
-        def initialize(hash)
-          self.id = hash[:id]
-          self.server_config = hash[:server_config]
-          self.model = hash[:model]
-          self.mac = hash[:mac]
-          self.bridge = hash[:bridge]
-          self.firewall = hash[:firewall]
-          self.link_down = hash[:link_down]
-          self.rate = hash[:rate]
-          self.queues = hash[:queues]
-          self.tag = hash[:tag]        
+        def device
+          identity.to_s.scan(/net(\d+)/).first
         end
 
       end

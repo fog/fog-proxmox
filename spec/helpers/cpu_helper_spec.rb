@@ -48,7 +48,7 @@ require 'fog/proxmox/helpers/cpu_helper'
             it "returns array" do
                 result = Fog::Proxmox::CpuHelper.extract(cpu_nocputype)
                 assert_equal(5, result.length)
-                assert_equal(nil, result[0])
+                assert !result[0]
                 assert_equal('kvm64', result[1])
                 assert_equal(',flags=', result[2])
                 assert_equal('+spec-ctrl', result[3])
