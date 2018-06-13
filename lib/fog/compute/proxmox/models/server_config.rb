@@ -94,7 +94,7 @@ module Fog
           Fog::Proxmox::Variables.to_hash(self, 'ide')
         end
 
-        def statas
+        def satas
           Fog::Proxmox::Variables.to_hash(self, 'sata')
         end
 

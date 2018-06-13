@@ -18,7 +18,7 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 require 'fog/compute/models/server'
-require 'fog/proxmox/disk'
+require 'fog/proxmox/helpers/disk_helper'
 require 'fog/proxmox/hash'
 
 module Fog
@@ -141,7 +141,7 @@ module Fog
 
         def attach(disk, options = {})
           options_to_s = Fog::Proxmox::Hash.stringify(options)
-          config = Fog::Proxmox::Disk.flatten(disk, options_to_s)
+          config = Fog::Proxmox::DiskHelper.flatten(disk, options_to_s)
           update(config)
         end
 

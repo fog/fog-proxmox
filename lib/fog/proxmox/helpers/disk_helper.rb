@@ -20,7 +20,7 @@
 module Fog
   module Proxmox
     # module Disk mixins
-    module Disk
+    module DiskHelper
       def self.flatten(disk, options)
         value = "#{disk[:storage]}:#{disk[:size]}"
         value += ",#{options}" unless options.empty?
