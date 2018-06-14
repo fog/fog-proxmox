@@ -27,8 +27,12 @@ module Fog
         model Fog::Compute::Proxmox::Container
 
         def new(attributes = {})
-          self.type = 'lxc'
           super({ node: node, type: type }.merge(attributes))
+        end
+
+        def type(attributes = {})
+          @type ||= 'lxc' unless attributes[:type] || attributes['type']
+          @type
         end
       end
     end

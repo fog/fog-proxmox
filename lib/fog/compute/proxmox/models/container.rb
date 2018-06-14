@@ -32,9 +32,13 @@ module Fog
         attribute :config
 
         def initialize(attributes = {})
-          self.type = 'lxc'
           prepare_service_value(attributes)
           super
+        end
+
+        def type(attributes = {})
+          @type ||= 'lxc' unless attributes[:type] || attributes['type']
+          @type
         end
 
         def restore(backup, options = {})

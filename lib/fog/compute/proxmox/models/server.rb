@@ -58,14 +58,18 @@ module Fog
         end
 
         def initialize(attributes = {})
-          self.type = 'qemu'
           prepare_service_value(attributes)
           set_config(attributes)
           super
         end
 
+        def type(attributes = {})
+          @type ||= 'qemu' unless attributes[:type] || attributes['type']
+          @type
+        end
+
         def request(name, body_params = {}, path_params = {})
-          requires :node
+          requires :node, :type
           path = path_params.merge(node: node, type: type)
           task_upid = service.send(name, path, body_params)
           task_wait_for(task_upid)
@@ -150,14 +154,14 @@ module Fog
         end
 
         def set_config(attributes = {})
-          self.config = Fog::Compute::Proxmox::ServerConfig.new({ service: service,
+          @config = Fog::Compute::Proxmox::ServerConfig.new({ service: service,
             server: self }.merge(attributes))
         end
 
-        def get_config
+        def config
           path_params = { node: node, type: type, vmid: vmid }
           set_config(service.get_server_config(path_params))
-          self.config
+          @config
         end
 
         def snapshots

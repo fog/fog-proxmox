@@ -25,7 +25,8 @@ module Fog
     class Proxmox
       # ServerConfig model
       class ServerConfig < Fog::Proxmox::Model
-        identity  :digest
+        identity  :id
+        attribute :digest
         attribute :description
         attribute :ostype
         attribute :smbios1
@@ -49,7 +50,7 @@ module Fog
         attribute :server
 
         def to_s
-          digest
+          identity.to_s
         end
 
         def initialize(attributes = {})

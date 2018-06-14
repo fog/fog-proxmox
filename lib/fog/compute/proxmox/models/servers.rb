@@ -29,8 +29,12 @@ module Fog
         attribute :type
 
         def new(attributes = {})
-          self.type = 'qemu' unless type
           super({ node: node, type: type }.merge(attributes))
+        end
+
+        def type(attributes = {})
+          @type ||= 'qemu' unless attributes[:type] || attributes['type']
+          @type
         end
 
         def next_id
