@@ -1,0 +1,67 @@
+# frozen_string_literal: true
+
+# Copyright 2018 Tristan Robert
+
+# This file is part of Fog::Proxmox.
+
+# Fog::Proxmox is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# Fog::Proxmox is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
+
+require 'spec_helper'
+require_relative './proxmox_vcr'
+
+describe Fog::Network::Proxmox do
+  before :all do
+    @proxmox_vcr = ProxmoxVCR.new(
+      vcr_directory: 'spec/fixtures/proxmox/network',
+      service_class: Fog::Network::Proxmox
+    )
+    @service = @proxmox_vcr.service
+    @pve_url = @proxmox_vcr.url
+    @username = @proxmox_vcr.username
+    @password = @proxmox_vcr.password
+    @ticket = @proxmox_vcr.ticket
+    @csrftoken = @proxmox_vcr.csrftoken
+  end
+
+  it 'CRUD networks' do
+    VCR.use_cassette('networks') do
+      net_hash = {
+        iface: 'enp0s10',
+        type: 'eth'
+      }
+      node = @service.nodes.all.first
+      # Create 1st time
+      node.networks.create(net_hash)
+      # Find by id
+      network = node.networks.find_by_id net_hash[:iface]
+      network.wont_be_nil
+      # Create 2nd time
+      proc do
+        node.networks.create(net_hash)
+      end.must_raise Excon::Error::BadRequest
+      # all networks
+      networks_all = node.networks.all
+      networks_all.wont_be_nil
+      networks_all.wont_be_empty
+      networks_all.must_include network
+      # Update
+      network.update(comments: 'test')
+      node.power('reboot')
+      sleep 60
+      # Delete
+      network.destroy
+      node.power('reboot')
+    end
+  end
+end

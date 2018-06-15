@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://192.168.56.101:8006/api2/json/access/ticket
+    body:
+      encoding: UTF-8
+      string: username=root@pam&password=proxmox01
+    headers:
+      User-Agent:
+      - fog-core/1.45.0
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close, Keep-Alive
+      Date:
+      - Fri, 15 Jun 2018 15:42:56 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '1151'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Fri, 15 Jun 2018 15:42:56 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"cap":{"access":{"Group.Allocate":1,"User.Modify":1,"Permissions.Modify":1},"storage":{"Datastore.AllocateSpace":1,"Datastore.Audit":1,"Datastore.AllocateTemplate":1,"Permissions.Modify":1,"Datastore.Allocate":1},"nodes":{"Permissions.Modify":1,"Sys.PowerMgmt":1,"Sys.Syslog":1,"Sys.Modify":1,"Sys.Console":1,"Sys.Audit":1},"dc":{"Sys.Audit":1},"vms":{"VM.Snapshot.Rollback":1,"VM.Config.Disk":1,"VM.Backup":1,"VM.Config.Network":1,"VM.Migrate":1,"VM.Allocate":1,"VM.Console":1,"VM.Config.Memory":1,"VM.Audit":1,"VM.Monitor":1,"VM.Config.CPU":1,"VM.Clone":1,"VM.Config.CDROM":1,"VM.PowerMgmt":1,"VM.Snapshot":1,"Permissions.Modify":1,"VM.Config.HWType":1,"VM.Config.Options":1}},"ticket":"PVE:root@pam:5B23DE80::ehO+FGO4nt1qmV2SjK0dW0tU995rNul/WGpms3sYWsQ8F5xGtqlH55qsiyBFM73SUECqdy8luEjzvRDj/tqL/mMn1YZ12MG5r0kdd/lkm5xoWojx2BIDb2zaoQcLhgtyHvww1qDRx5PRrKPnsM/4pIMJeslZ3uIZ8JoDoVf+DZ6WwMFxqnSHdFQM/oBpq+w6uuBZ2iIghPQgr/C/nx4tjLzKuP/CITEYN2UH4yemaqaExCuIUCPqLmpqhWcaKJ6VwtKV2YATIYzlxBYH5hwonKRBivuFhEMzyIg+g8V/uatl/q1xrfC6pw7E2DX9+T78YKAt9pEXPOeAp9Ok+1SVSQ==","username":"root@pam","CSRFPreventionToken":"5B23DE80:Odh+gD4Ldii3UblgO6ALIzAfQW0"}}'
+    http_version: 
+  recorded_at: Fri, 15 Jun 2018 15:42:57 GMT
+recorded_with: VCR 3.0.3
