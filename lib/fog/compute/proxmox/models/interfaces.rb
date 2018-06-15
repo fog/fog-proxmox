@@ -29,6 +29,10 @@ module Fog
 
         attribute :nets
 
+        def new(attributes = {})
+          super({ id: "net#{next_nicid}" }.merge(attributes))
+        end
+
         def all(_options = {})
           values = []
           nets.each do |key,value|
@@ -47,6 +51,10 @@ module Fog
         def get(id)
           cached_interface = find { |interface| interface.id == id }
           return cached_interface if cached_interface
+        end
+
+        def next_nicid
+          Fog::Proxmox::NicHelper.last_index(nets) + 1
         end
       end
     end

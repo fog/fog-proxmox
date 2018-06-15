@@ -90,10 +90,6 @@ module Fog
         def mac_addresses
           Fog::Proxmox::NicHelper.to_mac_adresses_array(nets)
         end
-
-        def next_nicid
-          Fog::Proxmox::NicHelper.last_index(nets)
-        end
       end
     end
   end

@@ -58,4 +58,24 @@ require 'fog/proxmox/helpers/nic_helper'
                 assert_equal '1', firewall
             end
         end
+
+        describe '#last_index' do
+            it "returns -1" do
+                last = Fog::Proxmox::NicHelper.last_index({})
+                assert last == -1
+            end
+            it "returns 0" do
+                last = Fog::Proxmox::NicHelper.last_index(net)
+                assert last == 0
+            end
+        end
+
+        describe '#valid?' do
+            it "returns true" do
+                assert Fog::Proxmox::NicHelper.valid?('net0')
+            end
+            it "returns false" do
+                assert !Fog::Proxmox::NicHelper.valid?('sdfdsf')
+            end
+        end
     end

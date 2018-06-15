@@ -43,11 +43,7 @@ module Fog
         attribute :queues
 
         def to_s
-          identity ? identity.to_s : super.to_s
-        end
-
-        def device
-          identity.to_s.scan(/net(\d+)/).first
+          identity.to_s
         end
 
       end

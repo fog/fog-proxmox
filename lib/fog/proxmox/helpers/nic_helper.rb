@@ -37,7 +37,11 @@ module Fog
       def self.extract_index(nic_key)
         nic_key[/net(\d+)/].to_i
       end
+      def self.valid?(nic_key)
+        nic_key.match(/net(\d+)/)
+      end
       def self.last_index(nics)
+        return -1 if nics.empty?
         indexes = []
         nics.each_key { |key| indexes.push(extract_index(key)) }
         indexes.sort
