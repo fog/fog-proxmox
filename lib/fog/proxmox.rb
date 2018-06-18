@@ -95,7 +95,7 @@ module Fog
         headers: { 'Accept' => 'application/json' },
         body: "username=#{username}&password=#{password}",
         method: 'POST',
-        path: "access/ticket"
+        path: 'access/ticket'
       }
 
       connection = Fog::Core::Connection.new(

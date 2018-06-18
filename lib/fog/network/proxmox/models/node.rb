@@ -55,14 +55,14 @@ module Fog
 
         def networks
           @networks ||= Fog::Network::Proxmox::Networks.new(service: service,
-                                             node: self)
+                                                            node: self)
         end
 
         def power(action)
           action_known = %w[reboot shutdown].include? action
           message = "Action #{action} not implemented"
           raise Fog::Errors::Error, message unless action_known
-          service.power_node({ node: node }, { command: action })
+          service.power_node({ node: node }, command: action)
         end
       end
     end

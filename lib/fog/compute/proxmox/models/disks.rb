@@ -37,7 +37,7 @@ module Fog
         end
 
         def next_device(controller)
-          Fog::Proxmox::ControllerHelper.last_index(controller,disks) + 1
+          Fog::Proxmox::ControllerHelper.last_index(controller, disks) + 1
         end
       end
     end

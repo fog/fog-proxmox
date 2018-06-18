@@ -47,7 +47,7 @@ module Fog
         attribute :backup
         attribute :aio
 
-        CONTROLLERS = ['ide','sata','scsi','virtio']
+        CONTROLLERS = %w[ide sata scsi virtio].freeze
 
         def controller
           Fog::Proxmox::DiskHelper.extract_controller(id)
@@ -56,7 +56,6 @@ module Fog
         def device
           Fog::Proxmox::DiskHelper.extract_device(id)
         end
-
       end
     end
   end

@@ -44,7 +44,6 @@ module Fog
         attribute :tag
 
         NAME = 'net'
-
       end
     end
   end

@@ -77,12 +77,12 @@ module Fog
 
         def update(config = {})
           requires :vmid
-          request(:update_server, config, { vmid: vmid })
+          request(:update_server, config, vmid: vmid)
         end
 
         def destroy(options = {})
           requires :vmid
-          request(:delete_server, options, { vmid: vmid })
+          request(:delete_server, options, vmid: vmid)
         end
 
         def action(action, options = {})
@@ -90,7 +90,7 @@ module Fog
           action_known = %w[start stop resume suspend shutdown reset].include? action
           message = "Action #{action} not implemented"
           raise Fog::Errors::Error, message unless action_known
-          request(:action_server, options, { action: action, vmid: vmid })
+          request(:action_server, options, action: action, vmid: vmid)
         end
 
         def ready?
@@ -116,7 +116,7 @@ module Fog
 
         def clone(newid, options = {})
           requires :vmid
-          request(:clone_server, options.merge(newid: newid), { vmid: vmid })
+          request(:clone_server, options.merge(newid: newid), vmid: vmid)
         end
 
         def template(options = {})
@@ -126,7 +126,7 @@ module Fog
 
         def migrate(target, options = {})
           requires :vmid
-          request(:migrate_server, options.merge(target: target), { vmid: vmid })
+          request(:migrate_server, options.merge(target: target), vmid: vmid)
         end
 
         def extend(disk, size, options = {})
@@ -136,7 +136,7 @@ module Fog
 
         def move(disk, storage, options = {})
           requires :vmid
-          request(:move_disk, options.merge(disk: disk, storage: storage), { vmid: vmid })
+          request(:move_disk, options.merge(disk: disk, storage: storage), vmid: vmid)
         end
 
         def attach(disk, options = {})
@@ -190,7 +190,6 @@ module Fog
           task.wait_for { finished? }
           task.succeeded?
         end
-
       end
     end
   end

@@ -23,7 +23,7 @@ module Fog
     class Proxmox
       # class Real list_networks request
       class Real
-        def list_networks(path_params,query_params)
+        def list_networks(path_params, query_params)
           node = path_params[:node]
           request(
             expects: [200],

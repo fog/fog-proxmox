@@ -21,7 +21,6 @@ module Fog
   module Proxmox
     # module Variables mixins
     module Variables
-
       def self.to_variables(instance, hash, prefix)
         hash.select { |key| key.to_s.start_with? prefix }.each do |key, value|
           instance.instance_variable_set "@#{key}".to_sym, value

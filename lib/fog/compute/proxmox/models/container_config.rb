@@ -43,14 +43,10 @@ module Fog
           super(attributes)
         end
 
-        def interfaces
-          @interfaces
-        end
+        attr_reader :interfaces
 
-        def mount_points
-          @mount_points
-        end
-        
+        attr_reader :mount_points
+
         def mac_addresses
           Fog::Proxmox::NicHelper.to_mac_adresses_array(interfaces)
         end
@@ -60,14 +56,14 @@ module Fog
         def compute_nets(attributes)
           nets = Fog::Proxmox::ControllerHelper.to_hash(attributes, Fog::Compute::Proxmox::Interface::NAME)
           @interfaces ||= Fog::Compute::Proxmox::Interfaces.new
-          nets.each do |key,value|
-            nic_hash = { 
-              id: key.to_s, 
+          nets.each do |key, value|
+            nic_hash = {
+              id: key.to_s,
               model: Fog::Proxmox::NicHelper.extract_model(value),
               mac: Fog::Proxmox::NicHelper.extract_mac_address(value)
             }
-            names = Fog::Compute::Proxmox::Interface.attributes.reject { |key,_value| [:id,:mac,:model].include? key }
-            names.each { |name| nic_hash.store(name.to_sym,Fog::Proxmox::ControllerHelper.extract(name,value)) }
+            names = Fog::Compute::Proxmox::Interface.attributes.reject { |key, _value| %i[id mac model].include? key }
+            names.each { |name| nic_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
             @interfaces << Fog::Compute::Proxmox::Interface.new(nic_hash)
           end
         end
@@ -75,18 +71,17 @@ module Fog
         def compute_mps(attributes)
           mps = Fog::Proxmox::ControllerHelper.to_hash(attributes, 'mp')
           @mount_points ||= Fog::Compute::Proxmox::Disks.new
-          mps.each do |key,value|
-            disk_hash = { 
-              id: key.to_s, 
+          mps.each do |key, value|
+            disk_hash = {
+              id: key.to_s,
               storage: Fog::Proxmox::DiskHelper.extract_storage(value),
               size: Fog::Proxmox::DiskHelper.extract_size(value)
             }
-            names = Fog::Compute::Proxmox::Disk.attributes.reject { |key,_value| [:id,:size,:storage].include? key }
-            names.each { |name| disk_hash.store(name.to_sym,Fog::Proxmox::ControllerHelper.extract(name,value)) }
+            names = Fog::Compute::Proxmox::Disk.attributes.reject { |key, _value| %i[id size storage].include? key }
+            names.each { |name| disk_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
             @mount_points << Fog::Compute::Proxmox::Disk.new(disk_hash)
           end
         end
-
       end
     end
   end

@@ -51,7 +51,7 @@ module Fog
         attribute :bridge_fd
         attribute :bridge_ports
 
-        TYPES = ['bridge','bond','eth','alias','vlan','OVSBridge','OVSBond','OVSPort','OVSIntPort','any_bridge']
+        TYPES = %w[bridge bond eth alias vlan OVSBridge OVSBond OVSPort OVSIntPort any_bridge].freeze
 
         def to_s
           identity
@@ -59,24 +59,23 @@ module Fog
 
         def create(attributes = {})
           requires :node
-          path_params = {node: node}
+          path_params = { node: node }
           body_params = attributes
           service.create_network(path_params, body_params)
         end
 
         def update(attributes = {})
           requires :node, :iface, :type
-          path_params = {node: node, iface: iface}
+          path_params = { node: node, iface: iface }
           body_params = attributes.merge(type: type)
           service.update_network(path_params, body_params)
         end
 
         def destroy
           requires :node, :iface
-          path_params = {node: node, iface: iface}
+          path_params = { node: node, iface: iface }
           service.delete_network(path_params)
         end
-
       end
     end
   end

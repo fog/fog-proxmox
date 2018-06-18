@@ -73,7 +73,8 @@ module Fog
         retried = false
         begin
           response = @connection.request(params.merge(
-                                           headers: headers(params[:method], params[:headers])))
+                                           headers: headers(params[:method], params[:headers])
+          ))
         rescue Excon::Errors::Unauthorized => error
           # token expiration and token renewal possible
           if error.response.body != 'Bad username or password' && @pve_can_reauthenticate && !retried

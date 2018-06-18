@@ -21,26 +21,30 @@ module Fog
   module Proxmox
     # module ControllerHelper mixins
     module ControllerHelper
-      def self.extract(name,controller_value)
+      def self.extract(name, controller_value)
         values = controller_value.scan(/#{name}=(\w+)/)
         name_value = values.first if values
-        name_value.first if name_value
+        name_value&.first
       end
-      def self.extract_index(name,key)
+
+      def self.extract_index(name, key)
         key.to_s.scan(/#{name}(\d+)/).first.first.to_i
       end
-      def self.valid?(name,key)
-       key.to_s.match(/#{name}(\d+)/)
+
+      def self.valid?(name, key)
+        key.to_s.match(/#{name}(\d+)/)
       end
-      def self.last_index(name,values)
+
+      def self.last_index(name, values)
         return -1 if values.empty?
         indexes = []
-        values.each_key { |key| indexes.push(extract_index(name,key)) }
+        values.each_key { |key| indexes.push(extract_index(name, key)) }
         indexes.sort
         indexes.last
-      end      
+      end
+
       def self.to_hash(hash, name)
-        hash.select { |key| valid?(name,key.to_s) }
+        hash.select { |key| valid?(name, key.to_s) }
       end
     end
   end

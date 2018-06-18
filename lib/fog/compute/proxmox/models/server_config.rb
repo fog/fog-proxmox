@@ -36,6 +36,7 @@ module Fog
         attribute :cores
         attribute :bootdisk
         attribute :onboot
+        attribute :boot
         attribute :agent
         attribute :scsihw
         attribute :sockets
@@ -61,43 +62,39 @@ module Fog
           Fog::Proxmox::NicHelper.to_mac_adresses_array(interfaces)
         end
 
-        def disks
-          @disks
-        end
+        attr_reader :disks
 
-        def interfaces
-          @interfaces
-        end
+        attr_reader :interfaces
 
         private
 
         def compute_nets(attributes)
           nets = Fog::Proxmox::ControllerHelper.to_hash(attributes, Fog::Compute::Proxmox::Interface::NAME)
           @interfaces ||= Fog::Compute::Proxmox::Interfaces.new
-          nets.each do |key,value|
-            nic_hash = { 
-              id: key.to_s, 
+          nets.each do |key, value|
+            nic_hash = {
+              id: key.to_s,
               model: Fog::Proxmox::NicHelper.extract_model(value),
               mac: Fog::Proxmox::NicHelper.extract_mac_address(value)
             }
-            names = Fog::Compute::Proxmox::Interface.attributes.reject { |key,_value| [:id,:mac,:model].include? key }
-            names.each { |name| nic_hash.store(name.to_sym,Fog::Proxmox::ControllerHelper.extract(name,value)) }
+            names = Fog::Compute::Proxmox::Interface.attributes.reject { |key, _value| %i[id mac model].include? key }
+            names.each { |name| nic_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
             @interfaces << Fog::Compute::Proxmox::Interface.new(nic_hash)
           end
         end
 
         def compute_disks(attributes)
           controllers = {}
-          Fog::Compute::Proxmox::Disk::CONTROLLERS.each { |controller| controllers.merge!(Fog::Proxmox::ControllerHelper.to_hash(attributes, controller)) }     
+          Fog::Compute::Proxmox::Disk::CONTROLLERS.each { |controller| controllers.merge!(Fog::Proxmox::ControllerHelper.to_hash(attributes, controller)) }
           @disks ||= Fog::Compute::Proxmox::Disks.new
-          controllers.each do |key,value|
-            disk_hash = { 
-              id: key.to_s, 
+          controllers.each do |key, value|
+            disk_hash = {
+              id: key.to_s,
               storage: Fog::Proxmox::DiskHelper.extract_storage(value),
               size: Fog::Proxmox::DiskHelper.extract_size(value)
             }
-            names = Fog::Compute::Proxmox::Disk.attributes.reject { |key,_value| [:id,:size,:storage].include? key }
-            names.each { |name| disk_hash.store(name.to_sym,Fog::Proxmox::ControllerHelper.extract(name,value)) }
+            names = Fog::Compute::Proxmox::Disk.attributes.reject { |key, _value| %i[id size storage].include? key }
+            names.each { |name| disk_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
             @disks << Fog::Compute::Proxmox::Disk.new(disk_hash)
           end
         end

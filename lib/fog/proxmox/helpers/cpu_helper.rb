@@ -22,18 +22,22 @@ module Fog
     # module Cpu mixins
     module CpuHelper
       def self.extract(cpu)
-        cpu.scan(/^(cputype=)?(\w+)(,flags=){0,1}(\+[\w-]+){0,1}[,]{0,1}(\+[\w-]+){0,1}/).first if cpu
+        cpu&.scan(/^(cputype=)?(\w+)(,flags=){0,1}(\+[\w-]+){0,1}[,]{0,1}(\+[\w-]+){0,1}/)&.first
       end
+
       def self.extract_type(cpu)
         extract(cpu)[1] if cpu
       end
+
       def self.extract_pcid(cpu)
-        has?('+pcid',cpu)
+        has?('+pcid', cpu)
       end
+
       def self.extract_spectre(cpu)
-        has?('+spec-ctrl',cpu)
+        has?('+spec-ctrl', cpu)
       end
-      def self.has?(value,cpu)
+
+      def self.has?(value, cpu)
         extract(cpu).include? value if cpu
       end
     end

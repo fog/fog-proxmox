@@ -26,27 +26,33 @@ module Fog
         value += ",#{options}" unless options.empty?
         { "#{disk[:id]}": value }
       end
+
       def self.extract_controller(id)
         extract(id)[0]
       end
+
       def self.extract_device(id)
         extract(id)[1].to_i
       end
+
       def self.extract(id)
         id.scan(/(\w+)(\d+)/).first
       end
-      def self.extract_option(name,disk_value)
+
+      def self.extract_option(name, disk_value)
         values = disk_value.scan(/#{name}=(\w+)/)
         name_value = values.first if values
-        name_value.first if name_value
+        name_value&.first
       end
+
       def self.extract_storage(disk_value)
         values = disk_value.scan(/^(.+):(.+)/)
         storage = values.first if values
-        storage.first if storage
+        storage&.first
       end
+
       def self.extract_size(disk_value)
-        extract_option('size',disk_value)
+        extract_option('size', disk_value)
       end
     end
   end

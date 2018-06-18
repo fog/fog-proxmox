@@ -37,7 +37,7 @@ module Fog
           requires :node
           path_params = { node: node }
           query_params = options
-          load_response(service.list_networks(path_params,query_params), 'networks')
+          load_response(service.list_networks(path_params, query_params), 'networks')
         end
 
         def find_by_id(id)

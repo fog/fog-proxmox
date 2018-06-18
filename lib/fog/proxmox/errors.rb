@@ -32,9 +32,7 @@ module Fog
             data = Fog::JSON.decode(error.response.body)
             message = data['message']
             data1 = data.values.first
-            if message.nil? && !data1.nil?
-              message = data1['message']
-            end
+            message = data1['message'] if message.nil? && !data1.nil?
           end
 
           new_error = super(error, message)
@@ -42,7 +40,7 @@ module Fog
           new_error
         end
       end
-      
+
       # class ServiceUnavailable error
       class ServiceUnavailable < ServiceError; end
 
