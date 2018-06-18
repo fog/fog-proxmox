@@ -166,15 +166,23 @@ module Fog
           end
         end
 
+        def interfaces
+          config.interfaces
+        end
+
+        def volumes
+          config.disks
+        end
+
         def backups
-          volumes 'backup'
+          list 'backup'
         end
 
         def images
-          volumes 'images'
+          list 'images'
         end
 
-        def volumes(content)
+        def list(content)
           storages = node.storages.list_by_content_type content
           volumes = []
           storages.each { |storage| volumes += storage.volumes.list_by_content_type_and_by_server(content, vmid) }
