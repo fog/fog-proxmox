@@ -25,10 +25,6 @@ require 'fog/proxmox/helpers/nic_helper'
         let(:net) do 
             { net0: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
         end
-        let(:net_no_options) do 
-            { net0: 'virtio=66:89:C5:59:AA:96' }
-        end
-
 
         describe '#extract_model' do
             it "returns model card" do
@@ -41,41 +37,6 @@ require 'fog/proxmox/helpers/nic_helper'
             it "returns mac address" do
                 mac_address = Fog::Proxmox::NicHelper.extract_mac_address(net[:net0])
                 assert_equal '66:89:C5:59:AA:96', mac_address
-            end
-        end
-
-        describe '#extract' do
-            it "returns bridge" do
-                bridge = Fog::Proxmox::NicHelper.extract('bridge',net[:net0])
-                assert_equal 'vmbr0', bridge
-            end
-            it "returns nil" do
-                bridge = Fog::Proxmox::NicHelper.extract('bridge',net_no_options[:net0])
-                assert !bridge
-            end
-            it "returns firewall" do
-                firewall = Fog::Proxmox::NicHelper.extract('firewall',net[:net0])
-                assert_equal '1', firewall
-            end
-        end
-
-        describe '#last_index' do
-            it "returns -1" do
-                last = Fog::Proxmox::NicHelper.last_index({})
-                assert last == -1
-            end
-            it "returns 0" do
-                last = Fog::Proxmox::NicHelper.last_index(net)
-                assert last == 0
-            end
-        end
-
-        describe '#valid?' do
-            it "returns true" do
-                assert Fog::Proxmox::NicHelper.valid?('net0')
-            end
-            it "returns false" do
-                assert !Fog::Proxmox::NicHelper.valid?('sdfdsf')
             end
         end
     end

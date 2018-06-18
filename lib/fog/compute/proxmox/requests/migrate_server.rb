@@ -29,7 +29,7 @@ module Fog
           request(
             expects: [200],
             method: 'POST',
-            path: "nodes/#{node}/#{qemu}/#{vmid}/migrate",
+            path: "nodes/#{node}/#{type}/#{vmid}/migrate",
             body: URI.encode_www_form(body_params)
           )
         end
@@ -37,6 +37,7 @@ module Fog
 
       # class Mock migrate_server request
       class Mock
+        def migrate_server; end
       end
     end
   end

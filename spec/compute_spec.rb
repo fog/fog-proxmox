@@ -105,8 +105,8 @@ describe Fog::Compute::Proxmox do
       # Template this clone (read-only)
       clone.template
       # Get clone disk image
-      disk_image = clone.disk_images.first
-      disk_image.wont_be_nil
+      image = clone.images.first
+      image.wont_be_nil
       # Delete clone
       clone.destroy
       proc do
@@ -132,12 +132,17 @@ describe Fog::Compute::Proxmox do
       config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26', kvm: 0 }
       server.update(config_hash)
       # server config
-      virtio0 = server.config.virtios[:virtio0]
+      disks = server.config.disks.all
+      nics = server.config.interfaces.all
+      nics.wont_be_nil
+      nics.wont_be_empty
+      nics.get('net0').wont_be_nil
+      disks.wont_be_nil
+      disks.wont_be_empty
+      virtio0 = disks.get('virtio0')
       virtio0.wont_be_nil
-      ides = server.config.ides
-      ides.wont_be_nil
-      ides.wont_be_empty
-      ides.has_key?(:ide2).must_equal true
+      ide2 = disks.get('ide2')
+      ide2.wont_be_nil
       # Get a mac adress
       mac_address = server.config.mac_addresses.first
       mac_address.wont_be_nil
@@ -264,8 +269,8 @@ describe Fog::Compute::Proxmox do
       # Template this clone (read-only)
       clone.template
       # Get clone disk image
-      disk_image = clone.disk_images.first
-      disk_image.wont_be_nil
+      image = clone.images.first
+      image.wont_be_nil
       # Delete clone
       clone.destroy
       proc do

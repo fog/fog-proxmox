@@ -38,10 +38,6 @@ module Fog
         attribute :vmstate
         attribute :server
 
-        def to_s
-          name
-        end
-
         def create(options = {})
           requires :server
           path_params = { node: server.node, type: server.type, vmid: server.vmid }

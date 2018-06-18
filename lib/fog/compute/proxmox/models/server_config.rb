@@ -19,6 +19,7 @@
 
 require 'fog/proxmox/variables'
 require 'fog/proxmox/helpers/nic_helper'
+require 'fog/proxmox/models/model'
 
 module Fog
   module Compute
@@ -47,48 +48,59 @@ module Fog
         attribute :cpulimit
         attribute :cpuunits
         attribute :interfaces
-        attribute :server
-
-        def to_s
-          identity.to_s
-        end
+        attribute :volumes
 
         def initialize(attributes = {})
           prepare_service_value(attributes)
-          Fog::Proxmox::Variables.to_variables(self, attributes, 'net')
-          Fog::Proxmox::Variables.to_variables(self, attributes, 'virtio')
-          Fog::Proxmox::Variables.to_variables(self, attributes, 'scsi')
-          Fog::Proxmox::Variables.to_variables(self, attributes, 'sata')
-          Fog::Proxmox::Variables.to_variables(self, attributes, 'ide')
-          super({ server: server }.merge(attributes))
-        end
-
-        def nets
-          Fog::Proxmox::Variables.to_hash(self, 'net')
+          Fog::Proxmox::ControllerHelper.to_variables(self, attributes, Fog::Compute::Proxmox::Interface::NAME)
+          Fog::Compute::Proxmox::Disk::CONTROLLERS.each { |controller| Fog::Proxmox::ControllerHelper.to_variables(self, attributes, controller) }
+          super(attributes)
         end
 
         def interfaces
-          @interfaces ||= Fog::Compute::Proxmox::Interfaces.new(nets: nets)
+          @interfaces ||= Fog::Compute::Proxmox::Interfaces.new
+          nets.each do |key,value|
+            nic_hash = { 
+              id: key.to_s, 
+              model: Fog::Proxmox::NicHelper.extract_model(value),
+              mac: Fog::Proxmox::NicHelper.extract_mac_address(value)
+            }
+            names = Fog::Compute::Proxmox::Interface.attributes.reject { |key,_value| [:id,:mac,:model].include? key }
+            names.each { |name| nic_hash.store(name.to_sym,Fog::Proxmox::ControllerHelper.extract(name,value)) }
+            @interfaces << Fog::Compute::Proxmox::Interface.new(nic_hash)
+          end
+          @interfaces
         end
 
-        def virtios
-          Fog::Proxmox::Variables.to_hash(self, 'virtio')
-        end
-
-        def ides
-          Fog::Proxmox::Variables.to_hash(self, 'ide')
-        end
-
-        def satas
-          Fog::Proxmox::Variables.to_hash(self, 'sata')
-        end
-
-        def scsis
-          Fog::Proxmox::Variables.to_hash(self, 'scsi')
+        def disks
+          @disks ||= Fog::Compute::Proxmox::Disks.new
+          controllers.each do |key,value|
+            disk_hash = { 
+              id: key.to_s, 
+              storage: Fog::Proxmox::DiskHelper.extract_storage(value),
+              size: Fog::Proxmox::DiskHelper.extract_size(value)
+            }
+            names = Fog::Compute::Proxmox::Disk.attributes.reject { |key,_value| [:id,:size,:storage].include? key }
+            names.each { |name| disk_hash.store(name.to_sym,Fog::Proxmox::ControllerHelper.extract(name,value)) }
+            @disks << Fog::Compute::Proxmox::Disk.new(disk_hash)
+          end
+          @disks
         end
 
         def mac_addresses
           Fog::Proxmox::NicHelper.to_mac_adresses_array(nets)
+        end
+
+        private
+
+        def nets
+          Fog::Proxmox::ControllerHelper.to_hash(self, Fog::Compute::Proxmox::Interface::NAME)
+        end
+
+        def controllers
+          values = {}
+          Fog::Compute::Proxmox::Disk::CONTROLLERS.each { |controller| values.merge!(Fog::Proxmox::ControllerHelper.to_hash(self, controller)) }
+          values
         end
       end
     end

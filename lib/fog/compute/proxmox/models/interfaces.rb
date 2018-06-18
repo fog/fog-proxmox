@@ -19,6 +19,7 @@
 
 require 'fog/proxmox/models/collection'
 require 'fog/compute/proxmox/models/interface'
+require 'fog/proxmox/helpers/controller_helper'
 
 module Fog
   module Compute
@@ -27,25 +28,8 @@ module Fog
       class Interfaces < Fog::Proxmox::Collection
         model Fog::Compute::Proxmox::Interface
 
-        attribute :nets
-
-        def new(attributes = {})
-          super({ id: "net#{next_nicid}" }.merge(attributes))
-        end
-
         def all(_options = {})
-          values = []
-          nets.each do |key,value|
-            nic_hash = { 
-              id: key.to_s, 
-              model: Fog::Proxmox::NicHelper.extract_model(value),
-              mac: Fog::Proxmox::NicHelper.extract_mac_address(value)
-            }
-            names = ['bridge','firewall','link_down','rate','queues','tag']
-            names.each { |name| nic_hash.store(name.to_sym,Fog::Proxmox::NicHelper.extract(name,value)) }
-            values.push(Fog::Compute::Proxmox::Interface.new nic_hash)
-          end
-          values
+          self
         end
 
         def get(id)
@@ -54,7 +38,7 @@ module Fog
         end
 
         def next_nicid
-          Fog::Proxmox::NicHelper.last_index(nets) + 1
+          Fog::Proxmox::ControllerHelper.last_index(NAME,nets) + 1
         end
       end
     end

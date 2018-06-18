@@ -17,29 +17,28 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/json'
+require 'fog/proxmox/models/collection'
+require 'fog/compute/proxmox/models/disk'
 
 module Fog
   module Compute
     class Proxmox
-      # class Real resize_container request
-      class Real
-        def resize_container(path_params, body_params)
-          node = path_params[:node]
-          vmid = path_params[:vmid]
-          response = request(
-            expects: [200],
-            method: 'PUT',
-            path: "nodes/#{node}/lxc/#{vmid}/resize",
-            body: URI.encode_www_form(body_params)
-          )
-          Fog::Proxmox::Json.get_data(response)
-        end
-      end
+      # class Disks Collection of disk
+      class Disks < Fog::Proxmox::Collection
+        model Fog::Compute::Proxmox::Disk
 
-      # class Mock resize_container request
-      class Mock
-        def resize_container; end
+        def all(_options = {})
+          self
+        end
+
+        def get(id)
+          cached_disk = find { |disk| disk.id == id }
+          return cached_disk if cached_disk
+        end
+
+        def next_device(controller)
+          Fog::Proxmox::ControllerHelper.last_index(controller,disks) + 1
+        end
       end
     end
   end

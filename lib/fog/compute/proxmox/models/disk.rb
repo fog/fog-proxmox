@@ -27,23 +27,35 @@
 # frozen_string_literal: true
 
 require 'fog/proxmox/models/model'
+require 'fog/proxmox/helpers/disk_helper'
 
 module Fog
   module Compute
     class Proxmox
-      # class Interface model
-      class Interface < Fog::Proxmox::Model
+      # class Disk model
+      class Disk < Fog::Proxmox::Model
         identity  :id
-        attribute :mac
+        attribute :size
+        attribute :storage
+        attribute :cache
+        attribute :replicate
+        attribute :media
+        attribute :format
         attribute :model
-        attribute :bridge
-        attribute :firewall
-        attribute :link_down
-        attribute :rate
-        attribute :queues
-        attribute :tag
+        attribute :shared
+        attribute :snapshot
+        attribute :backup
+        attribute :aio
 
-        NAME = 'net'
+        CONTROLLERS = ['ide','sata','scsi','virtio']
+
+        def controller
+          Fog::Proxmox::DiskHelper.extract_controller(id)
+        end
+
+        def device
+          Fog::Proxmox::DiskHelper.extract_device(id)
+        end
 
       end
     end

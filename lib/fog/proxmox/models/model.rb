@@ -24,6 +24,15 @@ module Fog
   module Proxmox
     # class Model proxmox
     class Model < Fog::Model
+
+      def to_s
+        identity.to_s
+      end
+
+      def inspect
+        Fog::Formatador.format(self, { :include_nested => false })
+      end
+
       # Initialize a record
       def initialize(attributes)
         # Old 'connection' is renamed as service and should be used instead

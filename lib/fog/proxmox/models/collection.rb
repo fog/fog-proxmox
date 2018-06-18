@@ -19,6 +19,7 @@
 # frozen_string_literal: true
 
 require 'fog/core/collection'
+require 'fog/proxmox/errors'
 
 module Fog
   module Proxmox

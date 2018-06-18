@@ -46,18 +46,6 @@ module Fog
           super({ node: node, storage: storage }.merge(attributes))
         end
 
-        def to_s
-          volid
-        end
-
-        def bus
-            extract_controller[0]
-        end
-
-        def device
-            extract_controller[1]
-        end
-
         def destroy
           requires :node, :volid, :storage
           service.delete_volume(node, storage, volid)
@@ -66,13 +54,7 @@ module Fog
         def restore(vmid, options = {})
           requires :node, :volid, :storage
           service.create_server(node, options.merge(archive: volid, storage: storage, vmid: vmid))
-        end
-
-        private 
-
-        def extract_controller
-            volid ? volid[/(\w+)(\d){0,2}/] : [nil,nil]
-        end
+        end 
       end
     end
   end

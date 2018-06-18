@@ -53,10 +53,6 @@ module Fog
         attribute :ballooninfo
         attribute :snapshots
 
-        def to_s
-          vmid.to_s
-        end
-
         def initialize(attributes = {})
           prepare_service_value(attributes)
           set_config(attributes)
@@ -154,13 +150,12 @@ module Fog
         end
 
         def set_config(attributes = {})
-          @config = Fog::Compute::Proxmox::ServerConfig.new({ service: service,
-            server: self }.merge(attributes))
+          @config = Fog::Compute::Proxmox::ServerConfig.new({ service: service }.merge(attributes))
         end
 
         def config
           path_params = { node: node, type: type, vmid: vmid }
-          set_config(service.get_server_config(path_params))
+          set_config(service.get_server_config(path_params)) if uptime
           @config
         end
 
@@ -175,7 +170,7 @@ module Fog
           volumes 'backup'
         end
 
-        def disk_images
+        def images
           volumes 'images'
         end
 
