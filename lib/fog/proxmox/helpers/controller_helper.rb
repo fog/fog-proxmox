@@ -39,19 +39,8 @@ module Fog
         indexes.sort
         indexes.last
       end      
-      def self.to_variables(instance, hash, name)
-        hash.select { |key| valid?(name,key.to_s) }.each do |key, value|
-          instance.instance_variable_set "@#{key}".to_sym, value
-        end
-      end
-      def self.to_hash(instance, name)
-        hash = {}
-        name = '@' + name
-        instance.instance_variables.select { |variable| valid?(name,variable.to_s) }.each do |param|
-          name = param.to_s[1..-1]
-          hash.store(name.to_sym, instance.instance_variable_get(param))
-        end
-        hash
+      def self.to_hash(hash, name)
+        hash.select { |key| valid?(name,key.to_s) }
       end
     end
   end

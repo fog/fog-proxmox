@@ -31,7 +31,7 @@ module Fog
       end
       def self.to_mac_adresses_array(nics)
         addresses = []
-        nics.each_value { |value| addresses.push(extract_mac_address(value)) }
+        nics.each { |nic| addresses.push(nic.mac) }
         addresses
       end
       def self.flatten(nic)

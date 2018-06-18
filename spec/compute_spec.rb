@@ -132,8 +132,8 @@ describe Fog::Compute::Proxmox do
       config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26', kvm: 0 }
       server.update(config_hash)
       # server config
-      disks = server.config.disks.all
-      nics = server.config.interfaces.all
+      disks = server.config.disks
+      nics = server.config.interfaces
       nics.wont_be_nil
       nics.wont_be_empty
       nics.get('net0').wont_be_nil
@@ -257,7 +257,7 @@ describe Fog::Compute::Proxmox do
       # Fetch mount points
       mount_points = container.config.mount_points
       mount_points.wont_be_empty
-      mount_points.has_key?(:mp0).must_equal true
+      mount_points.get('mp0').wont_be_nil
       # Remove mount points
       container.detach('mp0')
       container.detach('unused0')
@@ -299,9 +299,9 @@ describe Fog::Compute::Proxmox do
       mac_address = container.config.mac_addresses.first
       mac_address.wont_be_nil
       # Fetch nics
-      nets = container.config.nets
-      nets.wont_be_empty
-      nets.has_key?(:net0).must_equal true
+      interfaces = container.config.interfaces
+      interfaces.wont_be_empty
+      interfaces.get('net0').wont_be_nil
       # all containers
       containers_all = node.containers.all
       containers_all.wont_be_nil
