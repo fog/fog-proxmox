@@ -39,6 +39,11 @@ module Fog
         def next_device(controller)
           Fog::Proxmox::ControllerHelper.last_index(controller, disks) + 1
         end
+
+        def cdrom
+          find { |disk| disk.cdrom? }
+        end
+
       end
     end
   end

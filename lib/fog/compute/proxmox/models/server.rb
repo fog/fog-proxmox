@@ -166,14 +166,6 @@ module Fog
           end
         end
 
-        def interfaces
-          config.interfaces
-        end
-
-        def volumes
-          config.disks
-        end
-
         def backups
           list 'backup'
         end

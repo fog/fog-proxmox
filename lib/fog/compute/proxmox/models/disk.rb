@@ -35,6 +35,7 @@ module Fog
       # class Disk model
       class Disk < Fog::Proxmox::Model
         identity  :id
+        attribute :volid
         attribute :size
         attribute :storage
         attribute :cache
@@ -55,6 +56,10 @@ module Fog
 
         def device
           Fog::Proxmox::DiskHelper.extract_device(id)
+        end
+
+        def cdrom?
+          id == 'ide2' && media == 'cdrom'
         end
       end
     end

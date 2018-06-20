@@ -45,10 +45,27 @@ module Fog
         name_value&.first
       end
 
-      def self.extract_storage(disk_value)
-        values = disk_value.scan(/^(.+):(.+)/)
-        storage = values.first if values
-        storage&.first
+      def self.extract_storage_volid_size(disk_value)
+        values_a = disk_value.scan(/^(([\w-]+)[:]{0,1}([\w-]+))/)
+        no_cdrom = disk_value.match(/^(([\w-]+)[:]{1}([\w-]+))/)
+        creation = disk_value.match(/^(([\w-]+)[:]{1}([\d]+))/)
+        values = values_a.first if values_a
+        if no_cdrom
+          if creation
+            storage = values[1]
+            volid = nil
+            size = values[2]
+          else
+            storage = values[1]
+            volid = values[0]
+            size = extract_size(disk_value)
+          end
+        else
+          storage = nil
+          volid = values[0]
+          size = nil
+        end
+        return storage, volid, size
       end
 
       def self.extract_size(disk_value)

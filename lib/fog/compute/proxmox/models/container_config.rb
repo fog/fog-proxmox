@@ -72,10 +72,12 @@ module Fog
           mps = Fog::Proxmox::ControllerHelper.to_hash(attributes, 'mp')
           @mount_points ||= Fog::Compute::Proxmox::Disks.new
           mps.each do |key, value|
+            storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(value)
             disk_hash = {
               id: key.to_s,
-              storage: Fog::Proxmox::DiskHelper.extract_storage(value),
-              size: Fog::Proxmox::DiskHelper.extract_size(value)
+              storage: storage,
+              volid: volid,
+              size: size
             }
             names = Fog::Compute::Proxmox::Disk.attributes.reject { |key, _value| %i[id size storage].include? key }
             names.each { |name| disk_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }

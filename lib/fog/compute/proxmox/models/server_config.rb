@@ -89,12 +89,14 @@ module Fog
           Fog::Compute::Proxmox::Disk::CONTROLLERS.each { |controller| controllers.merge!(Fog::Proxmox::ControllerHelper.to_hash(attributes, controller)) }
           @disks ||= Fog::Compute::Proxmox::Disks.new
           controllers.each do |key, value|
+            storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(value)
             disk_hash = {
               id: key.to_s,
-              storage: Fog::Proxmox::DiskHelper.extract_storage(value),
-              size: Fog::Proxmox::DiskHelper.extract_size(value)
+              size: size,
+              volid: volid,
+              storage: storage
             }
-            names = Fog::Compute::Proxmox::Disk.attributes.reject { |key, _value| %i[id size storage].include? key }
+            names = Fog::Compute::Proxmox::Disk.attributes.reject { |key, _value| %i[id size storage volid].include? key }
             names.each { |name| disk_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
             @disks << Fog::Compute::Proxmox::Disk.new(disk_hash)
           end

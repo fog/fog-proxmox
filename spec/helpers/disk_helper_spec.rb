@@ -27,7 +27,11 @@ require 'fog/proxmox/helpers/disk_helper'
         end
 
         let(:scsi) do 
-            { scsi0: 'local-lvm:vm-100-disk-1,size=8G'}
+            { scsi0: 'local-lvm:vm-100-disk-1,size=8G,cache=none'}
+        end
+
+        let(:cdrom) do 
+            { ide2: 'none,media=cdrom'}
         end
 
         let(:options) do 
@@ -55,10 +59,25 @@ require 'fog/proxmox/helpers/disk_helper'
             end
         end
 
-        describe '#extract_storage' do
-            it "returns storage" do
-                storage = Fog::Proxmox::DiskHelper.extract_storage(scsi[:scsi0])
+        describe '#extract_storage_volid_size' do
+            it "returns scsi get storage and volid" do
+                storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(scsi[:scsi0])
                 assert_equal('local-lvm', storage)
+                assert_equal('local-lvm:vm-100-disk-1', volid)
+                assert_equal('8G', size)
+            end
+            it "returns scsi0 creation storage and volid" do
+                disk = Fog::Proxmox::DiskHelper.flatten(scsi0,options)
+                storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(disk[:scsi0])
+                assert_equal('local-lvm', storage)
+                assert_nil volid
+                assert_equal('1', size)
+            end
+            it "returns cdrom storage and volid" do
+                storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(cdrom[:ide2])
+                assert_nil storage
+                assert_equal('none', volid)
+                assert_nil size
             end
         end
 
