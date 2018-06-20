@@ -69,7 +69,7 @@ module Fog
       end
 
       def self.extract_size(disk_value)
-        extract_option('size', disk_value)
+        extract_option('size', disk_value).to_i
       end
     end
   end
