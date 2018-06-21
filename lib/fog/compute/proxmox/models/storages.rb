@@ -47,9 +47,9 @@ module Fog
         end
 
         def find_by_id(id)
-          cached_storage = find { |storage| storage.id == id }
+          cached_storage = find { |storage| storage.storage == id }
           return cached_storage if cached_storage
-          storage_hash = service.get_storage(id)
+          storage_hash = service.get_storage(node,id, {})
           Fog::Compute::Proxmox::Storage.new(
             storage_hash.merge(service: service)
           )

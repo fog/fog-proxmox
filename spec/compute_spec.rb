@@ -53,6 +53,25 @@ describe Fog::Compute::Proxmox do
     end
   end
 
+  it 'Manage storages' do
+    VCR.use_cassette('storages') do
+      # Get node
+      node_name = 'pve'
+      node = @service.nodes.find_by_id node_name
+      # List all storages
+      storages = node.storages.all
+      storages.wont_be_nil
+      storages.wont_be_empty
+      # List by content type
+      storages = node.storages.list_by_content_type 'iso'
+      storages.wont_be_nil
+      storages.wont_be_empty
+      # Get storage
+      storage = node.storages.find_by_id('local')
+      storage.wont_be_nil
+    end
+  end
+
   it 'CRUD servers' do
     VCR.use_cassette('servers') do
       node_name = 'pve'

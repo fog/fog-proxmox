@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,7 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
+require 'fog/proxmox/json'
 
 module Fog
   module Compute
@@ -24,12 +25,13 @@ module Fog
       # class Real get_storage request
       class Real
         def get_storage(node, storage, options)
-          request(
+          response = request(
             expects: [200],
             method: 'GET',
-            path: "nodes/#{node}/storage/#{storage}/content",
+            path: "nodes/#{node}/storage/#{storage}/status",
             query: URI.encode_www_form(options)
           )
+          Fog::Proxmox::Json.get_data(response)
         end
       end
 

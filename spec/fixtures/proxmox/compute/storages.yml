@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/cluster/resources?type=node
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.45.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5B2B8B54::FTzXOmXpOKenACCTsZjkqrxsJuqlGxRX9PIsy+wk66IiloAIdKg3mP2T57Qg1WDC/YCDpAvKlif29SDsoRFqLqvJIzNk8wzxXY+TKx3THNGgn2kgZO1MfCwrs4/+8ZOmcCLA48WvUbLBwwoIcnBOpHjlCw0fKQ2VRYd8ocGsGSqnGiMTgTU3gqwFRlDrJPvvEtAE+ROFNYC6PzVaGtdQPjAwqgHtyDgXmyKz7dda00spXom5zQvd9cdOi24VUPCH1Dil52CuyNysE52VGk2fgHvgltjelUOjwF6KprB02uquawShvVkSgLNQHPQ/tERi47Qk+JyAGVHLVxSo5pdlPA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Thu, 21 Jun 2018 11:26:12 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '207'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Thu, 21 Jun 2018 11:26:12 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"cpu":0.130650963043504,"level":"","maxcpu":2,"node":"pve","maxdisk":2310864896,"maxmem":2090078208,"disk":1441685504,"uptime":227,"status":"online","type":"node","id":"node/pve","mem":780402688}]}'
+    http_version: 
+  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/storage
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.45.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5B2B8B54::FTzXOmXpOKenACCTsZjkqrxsJuqlGxRX9PIsy+wk66IiloAIdKg3mP2T57Qg1WDC/YCDpAvKlif29SDsoRFqLqvJIzNk8wzxXY+TKx3THNGgn2kgZO1MfCwrs4/+8ZOmcCLA48WvUbLBwwoIcnBOpHjlCw0fKQ2VRYd8ocGsGSqnGiMTgTU3gqwFRlDrJPvvEtAE+ROFNYC6PzVaGtdQPjAwqgHtyDgXmyKz7dda00spXom5zQvd9cdOi24VUPCH1Dil52CuyNysE52VGk2fgHvgltjelUOjwF6KprB02uquawShvVkSgLNQHPQ/tERi47Qk+JyAGVHLVxSo5pdlPA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Thu, 21 Jun 2018 11:26:12 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '311'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Thu, 21 Jun 2018 11:26:12 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"total":3485466624,"active":1,"type":"lvmthin","avail":3485466624,"used":0,"storage":"local-lvm","content":"images,rootdir","enabled":1,"shared":0},{"active":1,"total":2310864896,"type":"dir","avail":731320320,"used":1441972224,"storage":"local","content":"backup,vztmpl,iso","enabled":1,"shared":0}]}'
+    http_version: 
+  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/storage?content=iso
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.45.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5B2B8B54::FTzXOmXpOKenACCTsZjkqrxsJuqlGxRX9PIsy+wk66IiloAIdKg3mP2T57Qg1WDC/YCDpAvKlif29SDsoRFqLqvJIzNk8wzxXY+TKx3THNGgn2kgZO1MfCwrs4/+8ZOmcCLA48WvUbLBwwoIcnBOpHjlCw0fKQ2VRYd8ocGsGSqnGiMTgTU3gqwFRlDrJPvvEtAE+ROFNYC6PzVaGtdQPjAwqgHtyDgXmyKz7dda00spXom5zQvd9cdOi24VUPCH1Dil52CuyNysE52VGk2fgHvgltjelUOjwF6KprB02uquawShvVkSgLNQHPQ/tERi47Qk+JyAGVHLVxSo5pdlPA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Thu, 21 Jun 2018 11:26:12 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '162'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Thu, 21 Jun 2018 11:26:12 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"type":"dir","total":2310864896,"active":1,"avail":731320320,"storage":"local","used":1441972224,"shared":0,"content":"iso,vztmpl,backup","enabled":1}]}'
+    http_version: 
+  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+recorded_with: VCR 3.0.3
