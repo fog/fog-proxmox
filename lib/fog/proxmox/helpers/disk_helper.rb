@@ -54,7 +54,7 @@ module Fog
           if creation
             storage = values[1]
             volid = nil
-            size = values[2]
+            size = values[2].to_i
           else
             storage = values[1]
             volid = values[0]

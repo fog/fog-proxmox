@@ -64,14 +64,14 @@ require 'fog/proxmox/helpers/disk_helper'
                 storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(scsi[:scsi0])
                 assert_equal('local-lvm', storage)
                 assert_equal('local-lvm:vm-100-disk-1', volid)
-                assert_equal('8G', size)
+                assert_equal(8, size)
             end
             it "returns scsi0 creation storage and volid" do
                 disk = Fog::Proxmox::DiskHelper.flatten(scsi0,options)
                 storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(disk[:scsi0])
                 assert_equal('local-lvm', storage)
                 assert_nil volid
-                assert_equal('1', size)
+                assert_equal(1, size)
             end
             it "returns cdrom storage and volid" do
                 storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(cdrom[:ide2])
@@ -84,7 +84,7 @@ require 'fog/proxmox/helpers/disk_helper'
         describe '#extract_size' do
             it "returns size" do
                 size = Fog::Proxmox::DiskHelper.extract_size(scsi[:scsi0])
-                assert_equal('8G', size)
+                assert_equal(8, size)
             end
         end
     end
