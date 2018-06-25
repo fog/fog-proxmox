@@ -49,6 +49,7 @@ module Fog
         attribute :cpu
         attribute :cpulimit
         attribute :cpuunits
+        attribute :keyboard
         attribute :interfaces
         attribute :disks
 
