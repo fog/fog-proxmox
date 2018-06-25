@@ -30,8 +30,12 @@ require 'fog/proxmox/helpers/disk_helper'
             { scsi0: 'local-lvm:vm-100-disk-1,size=8G,cache=none'}
         end
 
-        let(:cdrom) do 
+        let(:cdrom_none) do 
             { ide2: 'none,media=cdrom'}
+        end
+
+        let(:cdrom_iso) do 
+            { ide2: 'local:iso/alpine-virt-3.7.0-x86_64.iso,media=cdrom'}
         end
 
         let(:options) do 
@@ -73,10 +77,16 @@ require 'fog/proxmox/helpers/disk_helper'
                 assert_nil volid
                 assert_equal(1, size)
             end
-            it "returns cdrom storage and volid" do
-                storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(cdrom[:ide2])
+            it "returns cdrom storage and volid none" do
+                storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(cdrom_none[:ide2])
                 assert_nil storage
                 assert_equal('none', volid)
+                assert_nil size
+            end
+            it "returns cdrom storage and volid iso" do
+                storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(cdrom_iso[:ide2])
+                assert_equal('local', storage)
+                assert_equal('local:iso/alpine-virt-3.7.0-x86_64.iso', volid)
                 assert_nil size
             end
         end
