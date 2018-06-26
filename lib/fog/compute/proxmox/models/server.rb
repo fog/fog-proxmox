@@ -140,8 +140,7 @@ module Fog
         end
 
         def attach(disk, options = {})
-          options_to_s = Fog::Proxmox::Hash.stringify(options)
-          config = Fog::Proxmox::DiskHelper.flatten(disk, options_to_s)
+          config = Fog::Proxmox::DiskHelper.flatten(disk.merge(options: options))
           update(config)
         end
 

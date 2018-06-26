@@ -23,7 +23,7 @@ require 'fog/proxmox/helpers/disk_helper'
     describe Fog::Proxmox::DiskHelper do
             
         let(:scsi0) do 
-            { id: 'scsi0', storage: 'local-lvm', size: 1}
+            { id: 'scsi0', storage: 'local-lvm', size: 1, options: { cache: 'none' }}
         end
 
         let(:scsi) do 
@@ -38,13 +38,9 @@ require 'fog/proxmox/helpers/disk_helper'
             { ide2: 'local:iso/alpine-virt-3.7.0-x86_64.iso,media=cdrom'}
         end
 
-        let(:options) do 
-            'cache=none'
-        end
-
         describe '#flatten' do
             it "returns string" do
-                disk = Fog::Proxmox::DiskHelper.flatten(scsi0,options)
+                disk = Fog::Proxmox::DiskHelper.flatten(scsi0)
                 assert_equal({ scsi0: 'local-lvm:1,cache=none' }, disk)
             end
         end
@@ -71,7 +67,7 @@ require 'fog/proxmox/helpers/disk_helper'
                 assert_equal(8, size)
             end
             it "returns scsi0 creation storage and volid" do
-                disk = Fog::Proxmox::DiskHelper.flatten(scsi0,options)
+                disk = Fog::Proxmox::DiskHelper.flatten(scsi0)
                 storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(disk[:scsi0])
                 assert_equal('local-lvm', storage)
                 assert_nil volid

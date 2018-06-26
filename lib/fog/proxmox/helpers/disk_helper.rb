@@ -17,12 +17,15 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
+require 'fog/proxmox/hash'
+
 module Fog
   module Proxmox
     # module Disk mixins
     module DiskHelper
-      def self.flatten(disk, options)
+      def self.flatten(disk)
         value = "#{disk[:storage]}:#{disk[:size]}"
+        options = Fog::Proxmox::Hash.stringify(disk[:options])
         value += ",#{options}" unless options.empty?
         { "#{disk[:id]}": value }
       end
