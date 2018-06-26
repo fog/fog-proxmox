@@ -38,7 +38,7 @@ module Fog
         end
 
         def next_nicid
-          Fog::Proxmox::ControllerHelper.last_index(NAME, nets) + 1
+          Fog::Proxmox::ControllerHelper.last_index(Fog::Compute::Proxmox::Interface::NAME, self) + 1
         end
       end
     end
