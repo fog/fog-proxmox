@@ -28,7 +28,8 @@ module Fog
       end
 
       def self.extract_index(name, key)
-        key.to_s.scan(/#{name}(\d+)/).first.first.to_i
+        idx_a = key.to_s.scan(/#{name}(\d+)/).first
+        idx_a.first.to_i if idx_a
       end
 
       def self.valid?(name, key)
@@ -38,9 +39,12 @@ module Fog
       def self.last_index(name, values)
         return -1 if values.empty?
         indexes = []
-        values.each_key { |key| indexes.push(extract_index(name, key)) }
+        values.each do |value|
+          index = extract_index(name, value)
+          indexes.push(index) if index
+        end
         indexes.sort
-        indexes.last
+        indexes.empty? ? -1 : indexes.last
       end
 
       def self.to_hash(hash, name)
