@@ -22,20 +22,51 @@ require 'fog/proxmox/helpers/nic_helper'
 
     describe Fog::Proxmox::NicHelper do
             
-        let(:net) do 
+        let(:net_vm) do 
             { net0: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
+        end
+
+        let(:net_vm_create) do 
+            { net0: 'model=virtio,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
+        end
+
+        let(:net_lxc) do 
+            { net0: 'eth0=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
+        end
+
+        let(:net_lxc_create) do 
+            { net0: 'name=eth0,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
         end
 
         describe '#extract_model' do
             it "returns model card" do
-                model = Fog::Proxmox::NicHelper.extract_model(net[:net0])
+                model = Fog::Proxmox::NicHelper.extract_model(net_vm[:net0])
+                assert_equal 'virtio', model
+            end
+            it "returns model card creation" do
+                model = Fog::Proxmox::NicHelper.extract_model(net_vm_create[:net0])
                 assert_equal 'virtio', model
             end
         end
 
+        describe '#extract_name' do
+            it "returns lxc name" do
+                model = Fog::Proxmox::NicHelper.extract_name(net_lxc[:net0])
+                assert_equal 'eth0', model
+            end
+            it "returns lxc name creation" do
+                model = Fog::Proxmox::NicHelper.extract_name(net_lxc_create[:net0])
+                assert_equal 'eth0', model
+            end
+        end
+
         describe '#extract_mac_address' do
-            it "returns mac address" do
-                mac_address = Fog::Proxmox::NicHelper.extract_mac_address(net[:net0])
+            it "returns vm mac address" do
+                mac_address = Fog::Proxmox::NicHelper.extract_mac_address(net_vm[:net0])
+                assert_equal '66:89:C5:59:AA:96', mac_address
+            end
+            it "returns lxc mac address" do
+                mac_address = Fog::Proxmox::NicHelper.extract_mac_address(net_lxc[:net0])
                 assert_equal '66:89:C5:59:AA:96', mac_address
             end
         end

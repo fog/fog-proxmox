@@ -33,6 +33,7 @@ module Fog
 
         def initialize(attributes = {})
           prepare_service_value(attributes)
+          set_config(attributes)
           super
         end
 
@@ -64,13 +65,14 @@ module Fog
           service.update_server(path_params, body_params)
         end
 
+        def set_config(attributes = {})
+          @config = Fog::Compute::Proxmox::ContainerConfig.new({ service: service }.merge(attributes))
+        end
+
         def config
-          @config = begin
-            path_params = { node: node, type: type, vmid: vmid }
-            data = service.get_server_config path_params
-            Fog::Compute::Proxmox::ContainerConfig.new({ service: service,
-                                                         container: self }.merge(data))
-          end
+          path_params = { node: node, type: type, vmid: vmid }
+          set_config(service.get_server_config(path_params)) if uptime
+          @config
         end
 
         def detach(mpid)

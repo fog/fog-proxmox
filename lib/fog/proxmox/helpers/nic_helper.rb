@@ -28,7 +28,21 @@ module Fog
       end
 
       def self.extract_model(nic_value)
-        nic_value[/^(\w+){1}[\w+]/]
+        creation = nic_value.match(/^model=(\w+)[,].+/)
+        if creation
+          nic_value.scan(/^model=(\w+)[,].+/).first.first
+        else
+          nic_value.scan(/^(\w+)[=]{1}([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}).+/).first.first
+        end
+      end
+
+      def self.extract_name(nic_value)
+        creation = nic_value.match(/^name=(\w+)[,].+/)
+        if creation
+          nic_value.scan(/^name=(\w+)[,].+/).first.first
+        else
+          nic_value.scan(/^(\w+)[=]{1}([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}).+/).first.first
+        end
       end
 
       def self.to_mac_adresses_array(nics)

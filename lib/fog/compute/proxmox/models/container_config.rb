@@ -59,10 +59,10 @@ module Fog
           nets.each do |key, value|
             nic_hash = {
               id: key.to_s,
-              model: Fog::Proxmox::NicHelper.extract_model(value),
+              name: Fog::Proxmox::NicHelper.extract_name(value),
               mac: Fog::Proxmox::NicHelper.extract_mac_address(value)
             }
-            names = Fog::Compute::Proxmox::Interface.attributes.reject { |key, _value| %i[id mac model].include? key }
+            names = Fog::Compute::Proxmox::Interface.attributes.reject { |key, _value| %i[id mac name].include? key }
             names.each { |name| nic_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
             @interfaces << Fog::Compute::Proxmox::Interface.new(nic_hash)
           end
