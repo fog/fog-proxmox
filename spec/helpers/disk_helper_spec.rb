@@ -26,6 +26,10 @@ require 'fog/proxmox/helpers/disk_helper'
             { id: 'scsi0', storage: 'local-lvm', size: 1, options: { cache: 'none' }}
         end
 
+        let(:scsi0_image) do 
+            { id: 'scsi0', volid: 'local-lvm:vm-100-disk-1', storage: 'local-lvm', size: 1, options: { cache: 'none' }}
+        end
+
         let(:scsi) do 
             { scsi0: 'local-lvm:vm-100-disk-1,size=8G,cache=none'}
         end
@@ -39,9 +43,13 @@ require 'fog/proxmox/helpers/disk_helper'
         end
 
         describe '#flatten' do
-            it "returns string" do
+            it "returns creation string" do
                 disk = Fog::Proxmox::DiskHelper.flatten(scsi0)
                 assert_equal({ scsi0: 'local-lvm:1,cache=none' }, disk)
+            end
+            it "returns image string" do
+                disk = Fog::Proxmox::DiskHelper.flatten(scsi0_image)
+                assert_equal({ scsi0: 'local-lvm:vm-100-disk-1,size=1,cache=none' }, disk)
             end
         end
 

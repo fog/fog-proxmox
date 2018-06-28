@@ -24,7 +24,12 @@ module Fog
     # module Disk mixins
     module DiskHelper
       def self.flatten(disk)
-        value = "#{disk[:storage]}:#{disk[:size]}"
+        volid = disk[:volid]
+        if volid
+          value = "#{disk[:volid]},size=#{disk[:size]}"
+        else
+          value = "#{disk[:storage]}:#{disk[:size]}"
+        end
         options = Fog::Proxmox::Hash.stringify(disk[:options])
         value += ",#{options}" unless options.empty?
         { "#{disk[:id]}": value }
