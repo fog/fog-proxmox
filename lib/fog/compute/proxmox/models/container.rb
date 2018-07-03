@@ -47,7 +47,7 @@ module Fog
           path_params = { node: node, type: type }
           body_params = options.merge(vmid: vmid, ostemplate: backup.volid, force: 1, restore: 1)
           task_upid = service.create_server(path_params, body_params)
-          task_wait_for(task_upid)
+          tasks.wait_for(task_upid)
         end
 
         def move(volume, storage, options = {})
@@ -55,7 +55,7 @@ module Fog
           path_params = { node: node, vmid: vmid }
           body_params = options.merge(volume: volume, storage: storage)
           task_upid = service.move_volume(path_params, body_params)
-          task_wait_for(task_upid)
+          tasks.wait_for(task_upid)
         end
 
         def update(config = {})
@@ -84,7 +84,7 @@ module Fog
           path_params = { node: node, vmid: vmid }
           body_params = options.merge(disk: disk, size: size)
           task_upid = service.resize_container(path_params, body_params)
-          task_wait_for(task_upid)
+          tasks.wait_for(task_upid)
         end
 
         def action(action, options = {})

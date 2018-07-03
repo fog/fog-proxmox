@@ -64,6 +64,10 @@ module Fog
           status == 'stopped'
         end
 
+        def running?
+          status == 'running'
+        end
+
         def stop
           requires :node, :upid
           service.stop_task(node, upid)

@@ -59,6 +59,13 @@ module Fog
           task_data = task_hash.merge(node: node, upid: id)
           new(task_data)
         end
+
+        def wait_for(task_upid)
+          task = get(task_upid)
+          task.wait_for { finished? }
+          task.succeeded?
+        end
+
       end
     end
   end

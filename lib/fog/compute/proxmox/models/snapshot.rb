@@ -42,7 +42,7 @@ module Fog
           requires :server
           path_params = { node: server.node, type: server.type, vmid: server.vmid }
           body_params = options
-          server.task_wait_for(service.create_snapshot(path_params, body_params))
+          server.tasks.wait_for(service.create_snapshot(path_params, body_params))
         end
 
         def update
@@ -55,14 +55,14 @@ module Fog
         def rollback
           requires :name, :server
           path_params = { node: server.node, type: server.type, vmid: server.vmid, snapname: name }
-          server.task_wait_for(service.rollback_snapshot(path_params))
+          server.tasks.wait_for(service.rollback_snapshot(path_params))
         end
 
         def destroy(force = 0)
           requires :name, :server
           path_params = { node: server.node, type: server.type, vmid: server.vmid, snapname: name }
           query_params = { force: force }
-          server.task_wait_for(service.delete_snapshot(path_params, query_params))
+          server.tasks.wait_for(service.delete_snapshot(path_params, query_params))
         end
       end
     end
