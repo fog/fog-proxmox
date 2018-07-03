@@ -96,6 +96,11 @@ module Fog
       request :update_snapshot
       request :delete_snapshot
       request :rollback_snapshot
+      # Consoles
+      request :create_term
+      request :create_spice
+      request :create_vnc
+      request :get_vnc
 
       # Mock class
       class Mock

@@ -25,11 +25,11 @@ module Fog
     module DiskHelper
       def self.flatten(disk)
         volid = disk[:volid]
-        if volid
-          value = "#{disk[:volid]},size=#{disk[:size]}"
-        else
-          value = "#{disk[:storage]}:#{disk[:size]}"
-        end
+        value = if volid
+                  "#{disk[:volid]},size=#{disk[:size]}"
+                else
+                  "#{disk[:storage]}:#{disk[:size]}"
+                end
         options = Fog::Proxmox::Hash.stringify(disk[:options])
         value += ",#{options}" unless options.empty?
         { "#{disk[:id]}": value }
@@ -73,7 +73,7 @@ module Fog
           storage = values[1] unless %w[none cdrom].include? volid
           size = nil
         end
-        return storage, volid, size
+        [storage, volid, size]
       end
 
       def self.extract_size(disk_value)

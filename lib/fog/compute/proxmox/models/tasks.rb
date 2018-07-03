@@ -65,7 +65,6 @@ module Fog
           task.wait_for { finished? }
           task.succeeded?
         end
-
       end
     end
   end

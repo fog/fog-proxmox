@@ -68,7 +68,7 @@ module Fog
           requires :node, :type
           path = path_params.merge(node: node, type: type)
           task_upid = service.send(name, path, body_params)
-          task_wait_for(task_upid)
+          tasks.wait_for(task_upid)
         end
 
         def create(config = {})
@@ -184,10 +184,27 @@ module Fog
           node.tasks.search(vmid: vmid)
         end
 
-        def task_wait_for(task_upid)
-          task = tasks.get task_upid
-          task.wait_for { finished? }
-          task.succeeded?
+        def start_console(options = {})
+          raise ::Fog::Proxmox::Errors::ServiceError, "Unable to start console because server not running." unless ready?
+          type_console = config.type_console
+          raise ::Fog::Proxmox::Errors::ServiceError, "Unable to start console because VGA display server config is not set or unknown." unless type_console
+          requires :vmid, :node, :type
+          path_params = { node: node, type: type, vmid: vmid }
+          body_params = options
+          data = service.send(('create_' + type_console).to_sym, path_params, body_params)
+          task_upid = data['upid']
+          if task_upid
+            task = tasks.get(task_upid)
+            task.wait_for { running? }
+          end
+          data
+        end
+
+        def connect_vnc(options = {})
+          requires :vmid, :node, :type
+          path_params = { node: node, type: type, vmid: vmid }
+          query_params = { port: options['port'], vncticket: options['ticket'] }
+          service.get_vnc(path_params, query_params)
         end
       end
     end

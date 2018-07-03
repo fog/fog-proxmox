@@ -147,7 +147,7 @@ describe Fog::Compute::Proxmox do
       config_hash = { net0: 'virtio,bridge=vmbr0' }
       server.update(config_hash)
       # Add start at boot, keyboard fr,
-      # linux 4.x os type, kvm hardware disabled (proxmox guest in virtualbox)
+      # linux 4.x os type, kvm hardware disabled (proxmox guest in virtualbox) and vga enabled to console
       config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26', kvm: 0 }
       server.update(config_hash)
       # server config
@@ -170,11 +170,60 @@ describe Fog::Compute::Proxmox do
       servers_all.wont_be_nil
       servers_all.wont_be_empty
       servers_all.must_include server
+      # server not running exception
+      proc do
+        vnc = server.start_console(websocket: 1)
+      end.must_raise Fog::Proxmox::Errors::ServiceError
       # Start server
       server.action('start')
       server.wait_for { ready? }
       status = server.ready?
       status.must_equal true
+      # server vga not set exception
+      proc do
+        vnc = server.start_console(websocket: 1)
+      end.must_raise Fog::Proxmox::Errors::ServiceError
+      # Stop server
+      server.action('stop')
+      server.wait_for { server.status == 'stopped' }
+      status = server.status
+      status.must_equal 'stopped'
+      server.update(vga: 'std')
+      # Start server
+      server.action('start')
+      server.wait_for { ready? }
+      status = server.ready?
+      status.must_equal true
+      vnc = server.start_console(websocket: 1)
+      vnc['cert'].wont_be_nil
+      port = server.connect_vnc(vnc)
+      port.wont_be_nil
+      # Stop server
+      server.action('stop')
+      server.wait_for { server.status == 'stopped' }
+      status = server.status
+      status.must_equal 'stopped'
+      server.update(serial0: 'socket', vga: 'serial0')
+      # Start server
+      server.action('start')
+      server.wait_for { ready? }
+      status = server.ready?
+      status.must_equal true
+      term = server.start_console
+      term['ticket'].wont_be_nil
+      # Stop server
+      server.action('stop')
+      server.wait_for { server.status == 'stopped' }
+      status = server.status
+      status.must_equal 'stopped'
+      server.update(vga: 'qxl')
+      # Start server
+      server.action('start')
+      server.wait_for { ready? }
+      status = server.ready?
+      status.must_equal true
+      spice = server.start_console
+      spice['password'].wont_be_nil
       # Suspend server
       server.action('suspend')
       server.wait_for { server.qmpstatus == 'paused' }

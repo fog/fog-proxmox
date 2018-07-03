@@ -17,32 +17,29 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/collection'
-require 'fog/compute/proxmox/models/disk'
+require 'fog/proxmox/json'
 
 module Fog
   module Compute
     class Proxmox
-      # class Disks Collection of disk
-      class Disks < Fog::Proxmox::Collection
-        model Fog::Compute::Proxmox::Disk
-
-        def all(_options = {})
-          self
+      # class Real get_vnc request
+      class Real
+        def get_vnc(path_params, query_params)
+          node = path_params[:node]
+          type = path_params[:type]
+          vmid = path_params[:vmid]
+          response = request(
+            expects: [101, 200],
+            method: 'GET',
+            path: "nodes/#{node}/#{type}/#{vmid}/vncwebsocket",
+            query: URI.encode_www_form(query_params)
+          )
+          Fog::Proxmox::Json.get_data(response)
         end
+      end
 
-        def get(id)
-          cached_disk = find { |disk| disk.id == id }
-          return cached_disk if cached_disk
-        end
-
-        def next_device(controller)
-          Fog::Proxmox::ControllerHelper.last_index(controller, self) + 1
-        end
-
-        def cdrom
-          find(&:cdrom?)
-        end
+      # class Mock get_vnc request
+      class Mock
       end
     end
   end

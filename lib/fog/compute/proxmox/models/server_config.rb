@@ -50,6 +50,7 @@ module Fog
         attribute :cpulimit
         attribute :cpuunits
         attribute :keyboard
+        attribute :vga
         attribute :interfaces
         attribute :disks
 
@@ -67,6 +68,13 @@ module Fog
         attr_reader :disks
 
         attr_reader :interfaces
+
+        def type_console
+          console = 'vnc' if %w[std cirrus vmware].include?(vga)
+          console = 'spice' if %w[qxl qxl2 qxl3 qxl4].include?(vga)
+          console = 'term' if %w[serial0 serial1 serial2 serial3].include?(vga)
+          console
+        end
 
         private
 

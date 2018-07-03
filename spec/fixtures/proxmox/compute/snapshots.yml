@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -23,22 +23,22 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:11 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '207'
+      - '208'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:11 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"cpu":0.130650963043504,"level":"","maxcpu":2,"node":"pve","maxdisk":2310864896,"disk":1441685504,"maxmem":2090078208,"uptime":227,"type":"node","status":"online","id":"node/pve","mem":780402688}]}'
+      string: '{"data":[{"id":"node/pve","maxmem":4136079360,"uptime":2156,"node":"pve","mem":878964736,"level":"","cpu":0.115768533445407,"status":"online","maxcpu":4,"maxdisk":2310864896,"disk":1561534464,"type":"node"}]}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:12 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/cluster/nextid
@@ -51,7 +51,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -62,7 +62,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:11 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -72,12 +72,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:11 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":"100"}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:12 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: post
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu
@@ -90,9 +90,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5B2B8B53:kA3o1n9DMEqfhqPD2IN6zrqQB+Y
+      - 5B3B7BEE:r9Q5ToUSNc/bpDJq5QL7HOB/KUc
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -103,7 +103,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:11 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -113,12 +113,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:11 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":"UPID:pve:00000B33:00005B79:5B2B8B53:qmcreate:100:root@pam:"}'
+      string: '{"data":"UPID:pve:00001FFB:00034AA6:5B3B7BEE:qmcreate:100:root@pam:"}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:12 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks?vmid=100
@@ -131,7 +131,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -142,25 +142,26 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:11 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '1944'
+      - '10745'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:11 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"total":9,"data":[{"endtime":1529580371,"upid":"UPID:pve:00000B33:00005B79:5B2B8B53:qmcreate:100:root@pam:","pid":2867,"id":"100","status":"OK","type":"qmcreate","pstart":23417,"starttime":1529580371,"user":"root@pam","node":"pve"},{"upid":"UPID:pve:00000B23:00005AC3:5B2B8B52:vzdestroy:100:root@pam:","endtime":1529580370,"pid":2851,"id":"100","type":"vzdestroy","status":"OK","pstart":23235,"starttime":1529580370,"user":"root@pam","node":"pve"},{"user":"root@pam","node":"pve","type":"vzstop","status":"OK","pstart":22908,"starttime":1529580366,"id":"100","pid":2821,"upid":"UPID:pve:00000B05:0000597C:5B2B8B4E:vzstop:100:root@pam:","endtime":1529580368},{"pid":2371,"endtime":1529580365,"upid":"UPID:pve:00000943:00005830:5B2B8B4B:vzstart:100:root@pam:","node":"pve","user":"root@pam","type":"vzstart","status":"OK","pstart":22576,"starttime":1529580363,"id":"100"},{"id":"100","pstart":22238,"status":"OK","type":"move_volume","starttime":1529580360,"user":"root@pam","node":"pve","upid":"UPID:pve:000008F7:000056DE:5B2B8B48:move_volume:100:root@pam:","endtime":1529580362,"pid":2295},{"pid":2226,"upid":"UPID:pve:000008B2:00004A97:5B2B8B28:resize:100:root@pam:","endtime":1529580351,"node":"pve","user":"root@pam","pstart":19095,"status":"OK","type":"resize","starttime":1529580328,"id":"100"},{"pid":2086,"upid":"UPID:pve:00000826:00004889:5B2B8B23:vzclone:100:root@pam:","endtime":1529580325,"node":"pve","user":"root@pam","status":"OK","pstart":18569,"type":"vzclone","starttime":1529580323,"id":"100"},{"upid":"UPID:pve:000007D1:00004674:5B2B8B1E:vzrestore:100:root@pam:","endtime":1529580319,"pid":2001,"id":"100","pstart":18036,"status":"OK","type":"vzrestore","starttime":1529580318,"node":"pve","user":"root@pam"},{"pid":1875,"upid":"UPID:pve:00000753:0000448B:5B2B8B19:vzcreate:100:root@pam:","endtime":1529580315,"id":"100","node":"pve","user":"root@pam","starttime":1529580313,"status":"OK","pstart":17547,"type":"vzcreate"}]}'
+      string: '{"data":[{"node":"pve","user":"root@pam","starttime":1530625006,"endtime":1530625006,"id":"100","type":"qmcreate","pid":8187,"pstart":215718,"status":"OK","upid":"UPID:pve:00001FFB:00034AA6:5B3B7BEE:qmcreate:100:root@pam:"},{"endtime":1530625006,"id":"100","starttime":1530624996,"node":"pve","user":"root@pam","status":"connection
+        timed out","pstart":214714,"upid":"UPID:pve:00001F5B:000346BA:5B3B7BE4:vncproxy:100:root@pam:","pid":8027,"type":"vncproxy"},{"upid":"UPID:pve:00001FE1:00034A0A:5B3B7BEC:qmdestroy:100:root@pam:","pstart":215562,"status":"OK","pid":8161,"type":"qmdestroy","id":"100","endtime":1530625004,"starttime":1530625004,"user":"root@pam","node":"pve"},{"user":"root@pam","node":"pve","id":"100","endtime":1530625004,"starttime":1530625003,"pid":8151,"type":"qmstop","upid":"UPID:pve:00001FD7:00034989:5B3B7BEB:qmstop:100:root@pam:","status":"OK","pstart":215433},{"starttime":1530625003,"endtime":1530625003,"id":"100","node":"pve","user":"root@pam","pstart":215416,"status":"OK","upid":"UPID:pve:00001FD6:00034978:5B3B7BEB:qmresume:100:root@pam:","type":"qmresume","pid":8150},{"upid":"UPID:pve:00001FD5:00034965:5B3B7BEA:qmsuspend:100:root@pam:","status":"OK","pstart":215397,"pid":8149,"type":"qmsuspend","id":"100","endtime":1530625002,"starttime":1530625002,"node":"pve","user":"root@pam"},{"starttime":1530625001,"endtime":1530625002,"id":"100","node":"pve","user":"root@pam","status":"OK","pstart":215258,"upid":"UPID:pve:00001FA5:000348DA:5B3B7BE9:qmstart:100:root@pam:","type":"qmstart","pid":8101},{"upid":"UPID:pve:00001FA4:000348CB:5B3B7BE9:qmconfig:100:root@pam:","pstart":215243,"status":"OK","pid":8100,"type":"qmconfig","id":"100","endtime":1530625001,"starttime":1530625001,"user":"root@pam","node":"pve"},{"user":"root@pam","node":"pve","starttime":1530625000,"id":"100","endtime":1530625001,"type":"qmstop","pid":8090,"upid":"UPID:pve:00001F9A:0003484B:5B3B7BE8:qmstop:100:root@pam:","status":"OK","pstart":215115},{"upid":"UPID:pve:00001F68:00034778:5B3B7BE5:qmstart:100:root@pam:","pstart":214904,"status":"OK","pid":8040,"type":"qmstart","id":"100","endtime":1530624998,"starttime":1530624997,"user":"root@pam","node":"pve"},{"status":"OK","pstart":214888,"upid":"UPID:pve:00001F67:00034768:5B3B7BE5:qmconfig:100:root@pam:","type":"qmconfig","pid":8039,"starttime":1530624997,"endtime":1530624997,"id":"100","user":"root@pam","node":"pve"},{"id":"100","endtime":1530624997,"starttime":1530624996,"node":"pve","user":"root@pam","upid":"UPID:pve:00001F5D:000346E6:5B3B7BE4:qmstop:100:root@pam:","status":"OK","pstart":214758,"pid":8029,"type":"qmstop"},{"starttime":1530624994,"endtime":1530624995,"id":"100","node":"pve","user":"root@pam","pstart":214557,"status":"OK","upid":"UPID:pve:00001F24:0003461D:5B3B7BE2:qmstart:100:root@pam:","type":"qmstart","pid":7972},{"type":"qmconfig","pid":7971,"pstart":214442,"status":"OK","upid":"UPID:pve:00001F23:000345AA:5B3B7BE1:qmconfig:100:root@pam:","user":"root@pam","node":"pve","starttime":1530624993,"endtime":1530624993,"id":"100"},{"starttime":1530624991,"endtime":1530624992,"id":"100","node":"pve","user":"root@pam","pstart":214273,"status":"OK","upid":"UPID:pve:00001F18:00034501:5B3B7BDF:qmstop:100:root@pam:","type":"qmstop","pid":7960},{"user":"root@pam","node":"pve","starttime":1530624988,"endtime":1530624989,"id":"100","type":"qmstart","pid":7914,"status":"OK","pstart":213936,"upid":"UPID:pve:00001EEA:000343B0:5B3B7BDC:qmstart:100:root@pam:"},{"user":"root@pam","node":"pve","id":"100","endtime":1530624988,"starttime":1530624988,"pid":7913,"type":"qmconfig","upid":"UPID:pve:00001EE9:00034394:5B3B7BDC:qmconfig:100:root@pam:","status":"OK","pstart":213908},{"node":"pve","user":"root@pam","id":"100","endtime":1530624987,"starttime":1530624987,"pid":7912,"type":"qmconfig","upid":"UPID:pve:00001EE8:00034386:5B3B7BDB:qmconfig:100:root@pam:","pstart":213894,"status":"OK"},{"user":"root@pam","node":"pve","starttime":1530624986,"id":"100","endtime":1530624987,"type":"qmmove","pid":7876,"upid":"UPID:pve:00001EC4:000342FF:5B3B7BDA:qmmove:100:root@pam:","status":"OK","pstart":213759},{"pstart":213685,"status":"OK","upid":"UPID:pve:00001EA1:000342B5:5B3B7BD9:qmconfig:100:root@pam:","type":"qmconfig","pid":7841,"starttime":1530624985,"endtime":1530624985,"id":"100","user":"root@pam","node":"pve"},{"node":"pve","user":"root@pam","endtime":1530624983,"id":"100","starttime":1530624982,"pid":7713,"type":"qmclone","status":"OK","pstart":213372,"upid":"UPID:pve:00001E21:0003417C:5B3B7BD6:qmclone:100:root@pam:"},{"type":"qmconfig","pid":7700,"pstart":213148,"status":"OK","upid":"UPID:pve:00001E14:0003409C:5B3B7BD4:qmconfig:100:root@pam:","node":"pve","user":"root@pam","starttime":1530624980,"endtime":1530624980,"id":"100"},{"upid":"UPID:pve:00001E13:0003402E:5B3B7BD3:qmconfig:100:root@pam:","pstart":213038,"status":"OK","pid":7699,"type":"qmconfig","id":"100","endtime":1530624979,"starttime":1530624979,"user":"root@pam","node":"pve"},{"node":"pve","user":"root@pam","starttime":1530624978,"endtime":1530624978,"id":"100","type":"qmconfig","pid":7682,"pstart":212919,"status":"OK","upid":"UPID:pve:00001E02:00033FB7:5B3B7BD2:qmconfig:100:root@pam:"},{"user":"root@pam","node":"pve","endtime":1530624977,"id":"100","starttime":1530624976,"pid":7665,"type":"qmconfig","pstart":212786,"status":"OK","upid":"UPID:pve:00001DF1:00033F32:5B3B7BD0:qmconfig:100:root@pam:"},{"starttime":1530624975,"endtime":1530624975,"id":"100","node":"pve","user":"root@pam","pstart":212646,"status":"OK","upid":"UPID:pve:00001DDF:00033EA6:5B3B7BCF:qmrestore:100:root@pam:","type":"qmrestore","pid":7647},{"pid":7627,"type":"qmcreate","upid":"UPID:pve:00001DCB:00033C50:5B3B7BC9:qmcreate:100:root@pam:","pstart":212048,"status":"OK","user":"root@pam","node":"pve","id":"100","endtime":1530624969,"starttime":1530624969},{"node":"pve","user":"root@pam","id":"100","endtime":1530624966,"starttime":1530624966,"pid":7606,"type":"vzdestroy","upid":"UPID:pve:00001DB6:00033B41:5B3B7BC6:vzdestroy:100:root@pam:","pstart":211777,"status":"OK"},{"node":"pve","user":"root@pam","id":"100","endtime":1530624966,"starttime":1530624965,"pid":7556,"type":"vzstop","upid":"UPID:pve:00001D84:00033AA5:5B3B7BC5:vzstop:100:root@pam:","pstart":211621,"status":"OK"},{"upid":"UPID:pve:00001C2F:00033A05:5B3B7BC3:vzstart:100:root@pam:","status":"OK","pstart":211461,"type":"vzstart","pid":7215,"starttime":1530624963,"id":"100","endtime":1530624964,"node":"pve","user":"root@pam"},{"type":"move_volume","pid":7133,"status":"OK","pstart":211072,"upid":"UPID:pve:00001BDD:00033880:5B3B7BBF:move_volume:100:root@pam:","user":"root@pam","node":"pve","starttime":1530624959,"endtime":1530624961,"id":"100"},{"type":"resize","pid":7066,"pstart":207891,"status":"OK","upid":"UPID:pve:00001B9A:00032C13:5B3B7B9F:resize:100:root@pam:","node":"pve","user":"root@pam","starttime":1530624927,"endtime":1530624950,"id":"100"},{"starttime":1530624921,"id":"100","endtime":1530624923,"node":"pve","user":"root@pam","upid":"UPID:pve:00001B18:000329A9:5B3B7B99:vzclone:100:root@pam:","status":"OK","pstart":207273,"type":"vzclone","pid":6936},{"status":"OK","pstart":206640,"upid":"UPID:pve:00001ABB:00032730:5B3B7B93:vzrestore:100:root@pam:","type":"vzrestore","pid":6843,"starttime":1530624915,"endtime":1530624916,"id":"100","node":"pve","user":"root@pam"},{"user":"root@pam","node":"pve","starttime":1530624908,"id":"100","endtime":1530624909,"type":"vzcreate","pid":6785,"upid":"UPID:pve:00001A81:00032455:5B3B7B8C:vzcreate:100:root@pam:","pstart":205909,"status":"OK"},{"node":"pve","user":"root@pam","starttime":1530624065,"id":"100","endtime":1530624065,"type":"qmdestroy","pid":5658,"upid":"UPID:pve:0000161A:0001DB25:5B3B7841:qmdestroy:100:root@pam:","pstart":121637,"status":"OK"},{"pid":5639,"type":"qmstop","pstart":121188,"status":"OK","upid":"UPID:pve:00001607:0001D964:5B3B783C:qmstop:100:root@pam:","user":"root@pam","node":"pve","endtime":1530624061,"id":"100","starttime":1530624060},{"pid":2886,"type":"qmstart","upid":"UPID:pve:00000B46:0000365C:5B3B740C:qmstart:100:root@pam:","pstart":13916,"status":"OK","node":"pve","user":"root@pam","id":"100","endtime":1530622989,"starttime":1530622988},{"node":"pve","user":"root@pam","starttime":1530622987,"id":"100","endtime":1530622987,"type":"qmconfig","pid":2885,"upid":"UPID:pve:00000B45:00003647:5B3B740B:qmconfig:100:root@pam:","pstart":13895,"status":"OK"},{"pid":2884,"type":"qmconfig","upid":"UPID:pve:00000B44:0000363A:5B3B740B:qmconfig:100:root@pam:","status":"OK","pstart":13882,"node":"pve","user":"root@pam","id":"100","endtime":1530622987,"starttime":1530622987},{"node":"pve","user":"root@pam","id":"100","endtime":1530622987,"starttime":1530622986,"pid":2858,"type":"qmmove","upid":"UPID:pve:00000B2A:000035C4:5B3B740A:qmmove:100:root@pam:","pstart":13764,"status":"OK"},{"upid":"UPID:pve:00000B0B:0000356A:5B3B7409:qmconfig:100:root@pam:","pstart":13674,"status":"OK","type":"qmconfig","pid":2827,"starttime":1530622985,"id":"100","endtime":1530622985,"user":"root@pam","node":"pve"},{"pstart":13303,"status":"OK","upid":"UPID:pve:00000A87:000033F7:5B3B7405:qmclone:100:root@pam:","pid":2695,"type":"qmclone","endtime":1530622983,"id":"100","starttime":1530622981,"node":"pve","user":"root@pam"},{"id":"100","endtime":1530622980,"starttime":1530622979,"node":"pve","user":"root@pam","upid":"UPID:pve:00000A61:0000331D:5B3B7403:qmconfig:100:root@pam:","status":"OK","pstart":13085,"pid":2657,"type":"qmconfig"},{"user":"root@pam","node":"pve","id":"100","endtime":1530622979,"starttime":1530622979,"pid":2656,"type":"qmconfig","upid":"UPID:pve:00000A60:0000330C:5B3B7403:qmconfig:100:root@pam:","status":"OK","pstart":13068},{"pstart":12946,"status":"OK","upid":"UPID:pve:00000A4F:00003292:5B3B7402:qmconfig:100:root@pam:","type":"qmconfig","pid":2639,"starttime":1530622978,"endtime":1530622978,"id":"100","user":"root@pam","node":"pve"},{"upid":"UPID:pve:00000A3E:00003219:5B3B7401:qmconfig:100:root@pam:","pstart":12825,"status":"OK","pid":2622,"type":"qmconfig","id":"100","endtime":1530622977,"starttime":1530622977,"user":"root@pam","node":"pve"},{"user":"root@pam","node":"pve","starttime":1530622975,"endtime":1530622975,"id":"100","type":"qmrestore","pid":2612,"status":"OK","pstart":12689,"upid":"UPID:pve:00000A34:00003191:5B3B73FF:qmrestore:100:root@pam:"},{"starttime":1530622972,"id":"100","endtime":1530622972,"node":"pve","user":"root@pam","upid":"UPID:pve:00000A1C:00003026:5B3B73FC:qmcreate:100:root@pam:","pstart":12326,"status":"OK","type":"qmcreate","pid":2588},{"pid":2573,"type":"vzdestroy","upid":"UPID:pve:00000A0D:00002F62:5B3B73FA:vzdestroy:100:root@pam:","pstart":12130,"status":"OK","user":"root@pam","node":"pve","id":"100","endtime":1530622970,"starttime":1530622970}],"total":793}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:12 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B33:00005B79:5B2B8B53:qmcreate:100:root@pam:/status
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFB:00034AA6:5B3B7BEE:qmcreate:100:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -170,7 +171,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -181,25 +182,25 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '224'
+      - '225'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"user":"root@pam","pstart":23417,"node":"pve","id":"100","pid":2867,"status":"stopped","type":"qmcreate","exitstatus":"OK","upid":"UPID:pve:00000B33:00005B79:5B2B8B53:qmcreate:100:root@pam:","starttime":1529580371}}'
+      string: '{"data":{"user":"root@pam","pstart":215718,"starttime":1530625006,"upid":"UPID:pve:00001FFB:00034AA6:5B3B7BEE:qmcreate:100:root@pam:","exitstatus":"OK","type":"qmcreate","status":"stopped","pid":8187,"id":"100","node":"pve"}}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B33:00005B79:5B2B8B53:qmcreate:100:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFB:00034AA6:5B3B7BEE:qmcreate:100:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
@@ -209,7 +210,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -220,7 +221,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -230,90 +231,90 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"total":1,"data":[{"n":1,"t":"TASK OK"}]}'
-    http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B33:00005B79:5B2B8B53:qmcreate:100:root@pam:/status
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/1.45.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive, Keep-Alive
-      Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '224'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":{"user":"root@pam","pstart":23417,"node":"pve","id":"100","pid":2867,"status":"stopped","type":"qmcreate","upid":"UPID:pve:00000B33:00005B79:5B2B8B53:qmcreate:100:root@pam:","exitstatus":"OK","starttime":1529580371}}'
-    http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B33:00005B79:5B2B8B53:qmcreate:100:root@pam:/log
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/1.45.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive, Keep-Alive
-      Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '42'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"total":1,"data":[{"t":"TASK OK","n":1}]}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFB:00034AA6:5B3B7BEE:qmcreate:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.45.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '225'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"node":"pve","id":"100","type":"qmcreate","exitstatus":"OK","status":"stopped","pid":8187,"starttime":1530625006,"user":"root@pam","pstart":215718,"upid":"UPID:pve:00001FFB:00034AA6:5B3B7BEE:qmcreate:100:root@pam:"}}'
+    http_version: 
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFB:00034AA6:5B3B7BEE:qmcreate:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.45.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"t":"TASK OK","n":1}],"total":1}'
+    http_version: 
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100/status/current
@@ -326,7 +327,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -337,7 +338,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -347,13 +348,13 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"diskread":0,"maxdisk":0,"qmpstatus":"stopped","name":"VM
-        100","cpu":0,"ha":{"managed":0},"uptime":0,"disk":0,"netout":0,"pid":null,"diskwrite":0,"mem":0,"template":"","status":"stopped","cpus":1,"netin":0,"maxmem":536870912}}'
+      string: '{"data":{"diskread":0,"cpus":1,"netout":0,"mem":0,"status":"stopped","pid":null,"disk":0,"name":"VM
+        100","cpu":0,"maxdisk":0,"uptime":0,"netin":0,"qmpstatus":"stopped","ha":{"managed":0},"maxmem":536870912,"template":"","diskwrite":0}}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100/config
@@ -366,7 +367,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -377,7 +378,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -387,12 +388,52 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"digest":"a373318abcecccc89b0b8265438b551390d6101b","smbios1":"uuid=a166d49f-d0af-4916-aeb1-30ca6e88e0c3"}}'
+      string: '{"data":{"smbios1":"uuid=921a2652-9f03-42de-93fa-97763e6a453c","digest":"a45839223ae1a65e27fc1a551b6e32f39792e4ee"}}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks?vmid=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.45.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '10745'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":793,"data":[{"starttime":1530625006,"id":"100","endtime":1530625006,"user":"root@pam","node":"pve","upid":"UPID:pve:00001FFB:00034AA6:5B3B7BEE:qmcreate:100:root@pam:","status":"OK","pstart":215718,"type":"qmcreate","pid":8187},{"pid":8027,"type":"vncproxy","pstart":214714,"status":"connection
+        timed out","upid":"UPID:pve:00001F5B:000346BA:5B3B7BE4:vncproxy:100:root@pam:","user":"root@pam","node":"pve","endtime":1530625006,"id":"100","starttime":1530624996},{"starttime":1530625004,"endtime":1530625004,"id":"100","node":"pve","user":"root@pam","status":"OK","pstart":215562,"upid":"UPID:pve:00001FE1:00034A0A:5B3B7BEC:qmdestroy:100:root@pam:","type":"qmdestroy","pid":8161},{"user":"root@pam","node":"pve","starttime":1530625003,"endtime":1530625004,"id":"100","type":"qmstop","pid":8151,"status":"OK","pstart":215433,"upid":"UPID:pve:00001FD7:00034989:5B3B7BEB:qmstop:100:root@pam:"},{"node":"pve","user":"root@pam","starttime":1530625003,"id":"100","endtime":1530625003,"type":"qmresume","pid":8150,"upid":"UPID:pve:00001FD6:00034978:5B3B7BEB:qmresume:100:root@pam:","status":"OK","pstart":215416},{"pid":8149,"type":"qmsuspend","pstart":215397,"status":"OK","upid":"UPID:pve:00001FD5:00034965:5B3B7BEA:qmsuspend:100:root@pam:","user":"root@pam","node":"pve","endtime":1530625002,"id":"100","starttime":1530625002},{"starttime":1530625001,"id":"100","endtime":1530625002,"user":"root@pam","node":"pve","upid":"UPID:pve:00001FA5:000348DA:5B3B7BE9:qmstart:100:root@pam:","pstart":215258,"status":"OK","type":"qmstart","pid":8101},{"id":"100","endtime":1530625001,"starttime":1530625001,"user":"root@pam","node":"pve","upid":"UPID:pve:00001FA4:000348CB:5B3B7BE9:qmconfig:100:root@pam:","pstart":215243,"status":"OK","pid":8100,"type":"qmconfig"},{"pid":8090,"type":"qmstop","pstart":215115,"status":"OK","upid":"UPID:pve:00001F9A:0003484B:5B3B7BE8:qmstop:100:root@pam:","user":"root@pam","node":"pve","endtime":1530625001,"id":"100","starttime":1530625000},{"starttime":1530624997,"endtime":1530624998,"id":"100","node":"pve","user":"root@pam","status":"OK","pstart":214904,"upid":"UPID:pve:00001F68:00034778:5B3B7BE5:qmstart:100:root@pam:","type":"qmstart","pid":8040},{"status":"OK","pstart":214888,"upid":"UPID:pve:00001F67:00034768:5B3B7BE5:qmconfig:100:root@pam:","pid":8039,"type":"qmconfig","endtime":1530624997,"id":"100","starttime":1530624997,"node":"pve","user":"root@pam"},{"user":"root@pam","node":"pve","id":"100","endtime":1530624997,"starttime":1530624996,"pid":8029,"type":"qmstop","upid":"UPID:pve:00001F5D:000346E6:5B3B7BE4:qmstop:100:root@pam:","pstart":214758,"status":"OK"},{"type":"qmstart","pid":7972,"upid":"UPID:pve:00001F24:0003461D:5B3B7BE2:qmstart:100:root@pam:","status":"OK","pstart":214557,"node":"pve","user":"root@pam","starttime":1530624994,"id":"100","endtime":1530624995},{"pid":7971,"type":"qmconfig","upid":"UPID:pve:00001F23:000345AA:5B3B7BE1:qmconfig:100:root@pam:","pstart":214442,"status":"OK","user":"root@pam","node":"pve","id":"100","endtime":1530624993,"starttime":1530624993},{"upid":"UPID:pve:00001F18:00034501:5B3B7BDF:qmstop:100:root@pam:","status":"OK","pstart":214273,"type":"qmstop","pid":7960,"starttime":1530624991,"id":"100","endtime":1530624992,"user":"root@pam","node":"pve"},{"user":"root@pam","node":"pve","starttime":1530624988,"endtime":1530624989,"id":"100","type":"qmstart","pid":7914,"status":"OK","pstart":213936,"upid":"UPID:pve:00001EEA:000343B0:5B3B7BDC:qmstart:100:root@pam:"},{"pid":7913,"type":"qmconfig","upid":"UPID:pve:00001EE9:00034394:5B3B7BDC:qmconfig:100:root@pam:","pstart":213908,"status":"OK","node":"pve","user":"root@pam","id":"100","endtime":1530624988,"starttime":1530624988},{"pid":7912,"type":"qmconfig","upid":"UPID:pve:00001EE8:00034386:5B3B7BDB:qmconfig:100:root@pam:","pstart":213894,"status":"OK","user":"root@pam","node":"pve","id":"100","endtime":1530624987,"starttime":1530624987},{"starttime":1530624986,"endtime":1530624987,"id":"100","user":"root@pam","node":"pve","pstart":213759,"status":"OK","upid":"UPID:pve:00001EC4:000342FF:5B3B7BDA:qmmove:100:root@pam:","type":"qmmove","pid":7876},{"pid":7841,"type":"qmconfig","upid":"UPID:pve:00001EA1:000342B5:5B3B7BD9:qmconfig:100:root@pam:","status":"OK","pstart":213685,"node":"pve","user":"root@pam","id":"100","endtime":1530624985,"starttime":1530624985},{"type":"qmclone","pid":7713,"upid":"UPID:pve:00001E21:0003417C:5B3B7BD6:qmclone:100:root@pam:","pstart":213372,"status":"OK","user":"root@pam","node":"pve","starttime":1530624982,"id":"100","endtime":1530624983},{"upid":"UPID:pve:00001E14:0003409C:5B3B7BD4:qmconfig:100:root@pam:","pstart":213148,"status":"OK","type":"qmconfig","pid":7700,"starttime":1530624980,"id":"100","endtime":1530624980,"node":"pve","user":"root@pam"},{"pid":7699,"type":"qmconfig","pstart":213038,"status":"OK","upid":"UPID:pve:00001E13:0003402E:5B3B7BD3:qmconfig:100:root@pam:","node":"pve","user":"root@pam","endtime":1530624979,"id":"100","starttime":1530624979},{"pid":7682,"type":"qmconfig","upid":"UPID:pve:00001E02:00033FB7:5B3B7BD2:qmconfig:100:root@pam:","status":"OK","pstart":212919,"user":"root@pam","node":"pve","id":"100","endtime":1530624978,"starttime":1530624978},{"pid":7665,"type":"qmconfig","upid":"UPID:pve:00001DF1:00033F32:5B3B7BD0:qmconfig:100:root@pam:","status":"OK","pstart":212786,"user":"root@pam","node":"pve","id":"100","endtime":1530624977,"starttime":1530624976},{"pstart":212646,"status":"OK","upid":"UPID:pve:00001DDF:00033EA6:5B3B7BCF:qmrestore:100:root@pam:","pid":7647,"type":"qmrestore","endtime":1530624975,"id":"100","starttime":1530624975,"node":"pve","user":"root@pam"},{"endtime":1530624969,"id":"100","starttime":1530624969,"node":"pve","user":"root@pam","pstart":212048,"status":"OK","upid":"UPID:pve:00001DCB:00033C50:5B3B7BC9:qmcreate:100:root@pam:","pid":7627,"type":"qmcreate"},{"user":"root@pam","node":"pve","id":"100","endtime":1530624966,"starttime":1530624966,"pid":7606,"type":"vzdestroy","upid":"UPID:pve:00001DB6:00033B41:5B3B7BC6:vzdestroy:100:root@pam:","pstart":211777,"status":"OK"},{"pstart":211621,"status":"OK","upid":"UPID:pve:00001D84:00033AA5:5B3B7BC5:vzstop:100:root@pam:","pid":7556,"type":"vzstop","endtime":1530624966,"id":"100","starttime":1530624965,"user":"root@pam","node":"pve"},{"type":"vzstart","pid":7215,"status":"OK","pstart":211461,"upid":"UPID:pve:00001C2F:00033A05:5B3B7BC3:vzstart:100:root@pam:","user":"root@pam","node":"pve","starttime":1530624963,"endtime":1530624964,"id":"100"},{"node":"pve","user":"root@pam","endtime":1530624961,"id":"100","starttime":1530624959,"pid":7133,"type":"move_volume","status":"OK","pstart":211072,"upid":"UPID:pve:00001BDD:00033880:5B3B7BBF:move_volume:100:root@pam:"},{"upid":"UPID:pve:00001B9A:00032C13:5B3B7B9F:resize:100:root@pam:","pstart":207891,"status":"OK","type":"resize","pid":7066,"starttime":1530624927,"id":"100","endtime":1530624950,"node":"pve","user":"root@pam"},{"type":"vzclone","pid":6936,"upid":"UPID:pve:00001B18:000329A9:5B3B7B99:vzclone:100:root@pam:","status":"OK","pstart":207273,"node":"pve","user":"root@pam","starttime":1530624921,"id":"100","endtime":1530624923},{"pstart":206640,"status":"OK","upid":"UPID:pve:00001ABB:00032730:5B3B7B93:vzrestore:100:root@pam:","type":"vzrestore","pid":6843,"starttime":1530624915,"endtime":1530624916,"id":"100","node":"pve","user":"root@pam"},{"user":"root@pam","node":"pve","endtime":1530624909,"id":"100","starttime":1530624908,"pid":6785,"type":"vzcreate","pstart":205909,"status":"OK","upid":"UPID:pve:00001A81:00032455:5B3B7B8C:vzcreate:100:root@pam:"},{"user":"root@pam","node":"pve","endtime":1530624065,"id":"100","starttime":1530624065,"pid":5658,"type":"qmdestroy","pstart":121637,"status":"OK","upid":"UPID:pve:0000161A:0001DB25:5B3B7841:qmdestroy:100:root@pam:"},{"type":"qmstop","pid":5639,"upid":"UPID:pve:00001607:0001D964:5B3B783C:qmstop:100:root@pam:","pstart":121188,"status":"OK","user":"root@pam","node":"pve","starttime":1530624060,"id":"100","endtime":1530624061},{"id":"100","endtime":1530622989,"starttime":1530622988,"node":"pve","user":"root@pam","upid":"UPID:pve:00000B46:0000365C:5B3B740C:qmstart:100:root@pam:","status":"OK","pstart":13916,"pid":2886,"type":"qmstart"},{"upid":"UPID:pve:00000B45:00003647:5B3B740B:qmconfig:100:root@pam:","status":"OK","pstart":13895,"pid":2885,"type":"qmconfig","id":"100","endtime":1530622987,"starttime":1530622987,"user":"root@pam","node":"pve"},{"endtime":1530622987,"id":"100","starttime":1530622987,"node":"pve","user":"root@pam","status":"OK","pstart":13882,"upid":"UPID:pve:00000B44:0000363A:5B3B740B:qmconfig:100:root@pam:","pid":2884,"type":"qmconfig"},{"starttime":1530622986,"endtime":1530622987,"id":"100","node":"pve","user":"root@pam","status":"OK","pstart":13764,"upid":"UPID:pve:00000B2A:000035C4:5B3B740A:qmmove:100:root@pam:","type":"qmmove","pid":2858},{"user":"root@pam","node":"pve","starttime":1530622985,"endtime":1530622985,"id":"100","type":"qmconfig","pid":2827,"pstart":13674,"status":"OK","upid":"UPID:pve:00000B0B:0000356A:5B3B7409:qmconfig:100:root@pam:"},{"node":"pve","user":"root@pam","starttime":1530622981,"id":"100","endtime":1530622983,"type":"qmclone","pid":2695,"upid":"UPID:pve:00000A87:000033F7:5B3B7405:qmclone:100:root@pam:","status":"OK","pstart":13303},{"pid":2657,"type":"qmconfig","upid":"UPID:pve:00000A61:0000331D:5B3B7403:qmconfig:100:root@pam:","pstart":13085,"status":"OK","node":"pve","user":"root@pam","id":"100","endtime":1530622980,"starttime":1530622979},{"status":"OK","pstart":13068,"upid":"UPID:pve:00000A60:0000330C:5B3B7403:qmconfig:100:root@pam:","type":"qmconfig","pid":2656,"starttime":1530622979,"endtime":1530622979,"id":"100","node":"pve","user":"root@pam"},{"node":"pve","user":"root@pam","endtime":1530622978,"id":"100","starttime":1530622978,"pid":2639,"type":"qmconfig","pstart":12946,"status":"OK","upid":"UPID:pve:00000A4F:00003292:5B3B7402:qmconfig:100:root@pam:"},{"pstart":12825,"status":"OK","upid":"UPID:pve:00000A3E:00003219:5B3B7401:qmconfig:100:root@pam:","pid":2622,"type":"qmconfig","endtime":1530622977,"id":"100","starttime":1530622977,"user":"root@pam","node":"pve"},{"status":"OK","pstart":12689,"upid":"UPID:pve:00000A34:00003191:5B3B73FF:qmrestore:100:root@pam:","pid":2612,"type":"qmrestore","endtime":1530622975,"id":"100","starttime":1530622975,"user":"root@pam","node":"pve"},{"starttime":1530622972,"id":"100","endtime":1530622972,"user":"root@pam","node":"pve","upid":"UPID:pve:00000A1C:00003026:5B3B73FC:qmcreate:100:root@pam:","status":"OK","pstart":12326,"type":"qmcreate","pid":2588},{"id":"100","endtime":1530622970,"starttime":1530622970,"node":"pve","user":"root@pam","upid":"UPID:pve:00000A0D:00002F62:5B3B73FA:vzdestroy:100:root@pam:","status":"OK","pstart":12130,"pid":2573,"type":"vzdestroy"}]}'
+    http_version: 
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: post
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100/snapshot
@@ -405,9 +446,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5B2B8B53:kA3o1n9DMEqfhqPD2IN6zrqQB+Y
+      - 5B3B7BEE:r9Q5ToUSNc/bpDJq5QL7HOB/KUc
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -418,7 +459,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -428,15 +469,15 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":"UPID:pve:00000B34:00005B8B:5B2B8B54:qmsnapshot:100:root@pam:"}'
+      string: '{"data":"UPID:pve:00001FFC:00034AC5:5B3B7BEE:qmsnapshot:100:root@pam:"}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks?vmid=100
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFC:00034AC5:5B3B7BEE:qmsnapshot:100:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -446,46 +487,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive
-      Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '1944'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[{"node":"pve","user":"root@pam","starttime":1529580371,"status":"OK","type":"qmcreate","pstart":23417,"id":"100","pid":2867,"endtime":1529580371,"upid":"UPID:pve:00000B33:00005B79:5B2B8B53:qmcreate:100:root@pam:"},{"starttime":1529580370,"pstart":23235,"status":"OK","type":"vzdestroy","node":"pve","user":"root@pam","id":"100","endtime":1529580370,"upid":"UPID:pve:00000B23:00005AC3:5B2B8B52:vzdestroy:100:root@pam:","pid":2851},{"pid":2821,"upid":"UPID:pve:00000B05:0000597C:5B2B8B4E:vzstop:100:root@pam:","endtime":1529580368,"node":"pve","user":"root@pam","type":"vzstop","status":"OK","pstart":22908,"starttime":1529580366,"id":"100"},{"id":"100","node":"pve","user":"root@pam","starttime":1529580363,"type":"vzstart","status":"OK","pstart":22576,"pid":2371,"upid":"UPID:pve:00000943:00005830:5B2B8B4B:vzstart:100:root@pam:","endtime":1529580365},{"endtime":1529580362,"upid":"UPID:pve:000008F7:000056DE:5B2B8B48:move_volume:100:root@pam:","pid":2295,"starttime":1529580360,"status":"OK","type":"move_volume","pstart":22238,"node":"pve","user":"root@pam","id":"100"},{"id":"100","pstart":19095,"status":"OK","type":"resize","starttime":1529580328,"node":"pve","user":"root@pam","upid":"UPID:pve:000008B2:00004A97:5B2B8B28:resize:100:root@pam:","endtime":1529580351,"pid":2226},{"pid":2086,"endtime":1529580325,"upid":"UPID:pve:00000826:00004889:5B2B8B23:vzclone:100:root@pam:","user":"root@pam","node":"pve","starttime":1529580323,"type":"vzclone","status":"OK","pstart":18569,"id":"100"},{"id":"100","user":"root@pam","node":"pve","starttime":1529580318,"status":"OK","pstart":18036,"type":"vzrestore","pid":2001,"upid":"UPID:pve:000007D1:00004674:5B2B8B1E:vzrestore:100:root@pam:","endtime":1529580319},{"endtime":1529580315,"upid":"UPID:pve:00000753:0000448B:5B2B8B19:vzcreate:100:root@pam:","pid":1875,"starttime":1529580313,"status":"OK","type":"vzcreate","pstart":17547,"user":"root@pam","node":"pve","id":"100"}],"total":9}'
-    http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B34:00005B8B:5B2B8B54:qmsnapshot:100:root@pam:/status
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/1.45.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -496,25 +498,25 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '228'
+      - '229'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"pid":2868,"status":"stopped","type":"qmsnapshot","upid":"UPID:pve:00000B34:00005B8B:5B2B8B54:qmsnapshot:100:root@pam:","exitstatus":"OK","starttime":1529580372,"user":"root@pam","pstart":23435,"node":"pve","id":"100"}}'
+      string: '{"data":{"pid":8188,"type":"qmsnapshot","exitstatus":"OK","status":"stopped","upid":"UPID:pve:00001FFC:00034AC5:5B3B7BEE:qmsnapshot:100:root@pam:","pstart":215749,"user":"root@pam","starttime":1530625006,"node":"pve","id":"100"}}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B34:00005B8B:5B2B8B54:qmsnapshot:100:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFC:00034AC5:5B3B7BEE:qmsnapshot:100:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
@@ -524,7 +526,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -535,7 +537,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -545,15 +547,15 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"n":1,"t":"TASK OK"}],"total":1}'
+      string: '{"total":1,"data":[{"t":"TASK OK","n":1}]}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B34:00005B8B:5B2B8B54:qmsnapshot:100:root@pam:/status
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFC:00034AC5:5B3B7BEE:qmsnapshot:100:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -563,7 +565,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -574,25 +576,25 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '228'
+      - '229'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"starttime":1529580372,"upid":"UPID:pve:00000B34:00005B8B:5B2B8B54:qmsnapshot:100:root@pam:","exitstatus":"OK","status":"stopped","type":"qmsnapshot","pid":2868,"id":"100","node":"pve","pstart":23435,"user":"root@pam"}}'
+      string: '{"data":{"starttime":1530625006,"pstart":215749,"user":"root@pam","upid":"UPID:pve:00001FFC:00034AC5:5B3B7BEE:qmsnapshot:100:root@pam:","status":"stopped","exitstatus":"OK","type":"qmsnapshot","pid":8188,"id":"100","node":"pve"}}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B34:00005B8B:5B2B8B54:qmsnapshot:100:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFC:00034AC5:5B3B7BEE:qmsnapshot:100:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
@@ -602,7 +604,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -613,7 +615,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -623,12 +625,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"n":1,"t":"TASK OK"}],"total":1}'
+      string: '{"total":1,"data":[{"t":"TASK OK","n":1}]}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100/snapshot
@@ -641,7 +643,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -652,7 +654,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -662,12 +664,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"vmstate":0,"snaptime":1529580372,"description":"","name":"snapshot1"},{"running":0,"name":"current","parent":"snapshot1","digest":"36a5168acaa17ea735b1f109f2533f1c009ed034"}]}'
+      string: '{"data":[{"snaptime":1530625006,"name":"snapshot1","vmstate":0,"description":""},{"running":0,"name":"current","digest":"f80941adc633ff738fa81b9137858e62ed11b896","parent":"snapshot1"}]}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: put
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100/snapshot/snapshot1/config
@@ -680,9 +682,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5B2B8B53:kA3o1n9DMEqfhqPD2IN6zrqQB+Y
+      - 5B3B7BEE:r9Q5ToUSNc/bpDJq5QL7HOB/KUc
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -693,7 +695,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -703,12 +705,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100/snapshot
@@ -721,7 +723,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -732,7 +734,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -742,13 +744,53 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"snaptime":1529580372,"vmstate":0,"description":"Snapshot
-        1","name":"snapshot1"},{"parent":"snapshot1","digest":"60cf3e3ea3aacb39d19e33e2bfe1d9caeb91e8de","running":0,"name":"current"}]}'
+      string: '{"data":[{"name":"snapshot1","snaptime":1530625006,"description":"Snapshot
+        1","vmstate":0},{"parent":"snapshot1","name":"current","digest":"90d873507151f781cafe4c6a5c238d2d30bceab1","running":0}]}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks?vmid=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.45.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '10748'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":794,"data":[{"upid":"UPID:pve:00001FFC:00034AC5:5B3B7BEE:qmsnapshot:100:root@pam:","status":"OK","pstart":215749,"type":"qmsnapshot","pid":8188,"starttime":1530625006,"id":"100","endtime":1530625006,"node":"pve","user":"root@pam"},{"endtime":1530625006,"id":"100","starttime":1530625006,"node":"pve","user":"root@pam","pstart":215718,"status":"OK","upid":"UPID:pve:00001FFB:00034AA6:5B3B7BEE:qmcreate:100:root@pam:","pid":8187,"type":"qmcreate"},{"upid":"UPID:pve:00001F5B:000346BA:5B3B7BE4:vncproxy:100:root@pam:","status":"connection
+        timed out","pstart":214714,"type":"vncproxy","pid":8027,"starttime":1530624996,"id":"100","endtime":1530625006,"user":"root@pam","node":"pve"},{"starttime":1530625004,"endtime":1530625004,"id":"100","node":"pve","user":"root@pam","pstart":215562,"status":"OK","upid":"UPID:pve:00001FE1:00034A0A:5B3B7BEC:qmdestroy:100:root@pam:","type":"qmdestroy","pid":8161},{"user":"root@pam","node":"pve","starttime":1530625003,"endtime":1530625004,"id":"100","type":"qmstop","pid":8151,"pstart":215433,"status":"OK","upid":"UPID:pve:00001FD7:00034989:5B3B7BEB:qmstop:100:root@pam:"},{"starttime":1530625003,"endtime":1530625003,"id":"100","node":"pve","user":"root@pam","status":"OK","pstart":215416,"upid":"UPID:pve:00001FD6:00034978:5B3B7BEB:qmresume:100:root@pam:","type":"qmresume","pid":8150},{"pid":8149,"type":"qmsuspend","upid":"UPID:pve:00001FD5:00034965:5B3B7BEA:qmsuspend:100:root@pam:","status":"OK","pstart":215397,"user":"root@pam","node":"pve","id":"100","endtime":1530625002,"starttime":1530625002},{"node":"pve","user":"root@pam","endtime":1530625002,"id":"100","starttime":1530625001,"pid":8101,"type":"qmstart","pstart":215258,"status":"OK","upid":"UPID:pve:00001FA5:000348DA:5B3B7BE9:qmstart:100:root@pam:"},{"status":"OK","pstart":215243,"upid":"UPID:pve:00001FA4:000348CB:5B3B7BE9:qmconfig:100:root@pam:","type":"qmconfig","pid":8100,"starttime":1530625001,"endtime":1530625001,"id":"100","node":"pve","user":"root@pam"},{"pstart":215115,"status":"OK","upid":"UPID:pve:00001F9A:0003484B:5B3B7BE8:qmstop:100:root@pam:","type":"qmstop","pid":8090,"starttime":1530625000,"endtime":1530625001,"id":"100","node":"pve","user":"root@pam"},{"status":"OK","pstart":214904,"upid":"UPID:pve:00001F68:00034778:5B3B7BE5:qmstart:100:root@pam:","type":"qmstart","pid":8040,"starttime":1530624997,"endtime":1530624998,"id":"100","user":"root@pam","node":"pve"},{"upid":"UPID:pve:00001F67:00034768:5B3B7BE5:qmconfig:100:root@pam:","pstart":214888,"status":"OK","type":"qmconfig","pid":8039,"starttime":1530624997,"id":"100","endtime":1530624997,"user":"root@pam","node":"pve"},{"pid":8029,"type":"qmstop","upid":"UPID:pve:00001F5D:000346E6:5B3B7BE4:qmstop:100:root@pam:","pstart":214758,"status":"OK","node":"pve","user":"root@pam","id":"100","endtime":1530624997,"starttime":1530624996},{"type":"qmstart","pid":7972,"upid":"UPID:pve:00001F24:0003461D:5B3B7BE2:qmstart:100:root@pam:","pstart":214557,"status":"OK","node":"pve","user":"root@pam","starttime":1530624994,"id":"100","endtime":1530624995},{"pid":7971,"type":"qmconfig","upid":"UPID:pve:00001F23:000345AA:5B3B7BE1:qmconfig:100:root@pam:","pstart":214442,"status":"OK","node":"pve","user":"root@pam","id":"100","endtime":1530624993,"starttime":1530624993},{"starttime":1530624991,"id":"100","endtime":1530624992,"node":"pve","user":"root@pam","upid":"UPID:pve:00001F18:00034501:5B3B7BDF:qmstop:100:root@pam:","status":"OK","pstart":214273,"type":"qmstop","pid":7960},{"user":"root@pam","node":"pve","starttime":1530624988,"id":"100","endtime":1530624989,"type":"qmstart","pid":7914,"upid":"UPID:pve:00001EEA:000343B0:5B3B7BDC:qmstart:100:root@pam:","status":"OK","pstart":213936},{"endtime":1530624988,"id":"100","starttime":1530624988,"node":"pve","user":"root@pam","pstart":213908,"status":"OK","upid":"UPID:pve:00001EE9:00034394:5B3B7BDC:qmconfig:100:root@pam:","pid":7913,"type":"qmconfig"},{"node":"pve","user":"root@pam","starttime":1530624987,"id":"100","endtime":1530624987,"type":"qmconfig","pid":7912,"upid":"UPID:pve:00001EE8:00034386:5B3B7BDB:qmconfig:100:root@pam:","pstart":213894,"status":"OK"},{"upid":"UPID:pve:00001EC4:000342FF:5B3B7BDA:qmmove:100:root@pam:","pstart":213759,"status":"OK","pid":7876,"type":"qmmove","id":"100","endtime":1530624987,"starttime":1530624986,"node":"pve","user":"root@pam"},{"user":"root@pam","node":"pve","endtime":1530624985,"id":"100","starttime":1530624985,"pid":7841,"type":"qmconfig","status":"OK","pstart":213685,"upid":"UPID:pve:00001EA1:000342B5:5B3B7BD9:qmconfig:100:root@pam:"},{"pstart":213372,"status":"OK","upid":"UPID:pve:00001E21:0003417C:5B3B7BD6:qmclone:100:root@pam:","pid":7713,"type":"qmclone","endtime":1530624983,"id":"100","starttime":1530624982,"user":"root@pam","node":"pve"},{"pid":7700,"type":"qmconfig","upid":"UPID:pve:00001E14:0003409C:5B3B7BD4:qmconfig:100:root@pam:","status":"OK","pstart":213148,"user":"root@pam","node":"pve","id":"100","endtime":1530624980,"starttime":1530624980},{"upid":"UPID:pve:00001E13:0003402E:5B3B7BD3:qmconfig:100:root@pam:","pstart":213038,"status":"OK","pid":7699,"type":"qmconfig","id":"100","endtime":1530624979,"starttime":1530624979,"user":"root@pam","node":"pve"},{"node":"pve","user":"root@pam","id":"100","endtime":1530624978,"starttime":1530624978,"pid":7682,"type":"qmconfig","upid":"UPID:pve:00001E02:00033FB7:5B3B7BD2:qmconfig:100:root@pam:","pstart":212919,"status":"OK"},{"upid":"UPID:pve:00001DF1:00033F32:5B3B7BD0:qmconfig:100:root@pam:","pstart":212786,"status":"OK","type":"qmconfig","pid":7665,"starttime":1530624976,"id":"100","endtime":1530624977,"node":"pve","user":"root@pam"},{"node":"pve","user":"root@pam","endtime":1530624975,"id":"100","starttime":1530624975,"pid":7647,"type":"qmrestore","status":"OK","pstart":212646,"upid":"UPID:pve:00001DDF:00033EA6:5B3B7BCF:qmrestore:100:root@pam:"},{"status":"OK","pstart":212048,"upid":"UPID:pve:00001DCB:00033C50:5B3B7BC9:qmcreate:100:root@pam:","type":"qmcreate","pid":7627,"starttime":1530624969,"endtime":1530624969,"id":"100","user":"root@pam","node":"pve"},{"pid":7606,"type":"vzdestroy","pstart":211777,"status":"OK","upid":"UPID:pve:00001DB6:00033B41:5B3B7BC6:vzdestroy:100:root@pam:","user":"root@pam","node":"pve","endtime":1530624966,"id":"100","starttime":1530624966},{"node":"pve","user":"root@pam","endtime":1530624966,"id":"100","starttime":1530624965,"pid":7556,"type":"vzstop","status":"OK","pstart":211621,"upid":"UPID:pve:00001D84:00033AA5:5B3B7BC5:vzstop:100:root@pam:"},{"status":"OK","pstart":211461,"upid":"UPID:pve:00001C2F:00033A05:5B3B7BC3:vzstart:100:root@pam:","pid":7215,"type":"vzstart","endtime":1530624964,"id":"100","starttime":1530624963,"user":"root@pam","node":"pve"},{"type":"move_volume","pid":7133,"status":"OK","pstart":211072,"upid":"UPID:pve:00001BDD:00033880:5B3B7BBF:move_volume:100:root@pam:","user":"root@pam","node":"pve","starttime":1530624959,"endtime":1530624961,"id":"100"},{"pid":7066,"type":"resize","status":"OK","pstart":207891,"upid":"UPID:pve:00001B9A:00032C13:5B3B7B9F:resize:100:root@pam:","node":"pve","user":"root@pam","endtime":1530624950,"id":"100","starttime":1530624927},{"pstart":207273,"status":"OK","upid":"UPID:pve:00001B18:000329A9:5B3B7B99:vzclone:100:root@pam:","pid":6936,"type":"vzclone","endtime":1530624923,"id":"100","starttime":1530624921,"user":"root@pam","node":"pve"},{"starttime":1530624915,"id":"100","endtime":1530624916,"user":"root@pam","node":"pve","upid":"UPID:pve:00001ABB:00032730:5B3B7B93:vzrestore:100:root@pam:","status":"OK","pstart":206640,"type":"vzrestore","pid":6843},{"node":"pve","user":"root@pam","starttime":1530624908,"endtime":1530624909,"id":"100","type":"vzcreate","pid":6785,"pstart":205909,"status":"OK","upid":"UPID:pve:00001A81:00032455:5B3B7B8C:vzcreate:100:root@pam:"},{"node":"pve","user":"root@pam","starttime":1530624065,"id":"100","endtime":1530624065,"type":"qmdestroy","pid":5658,"upid":"UPID:pve:0000161A:0001DB25:5B3B7841:qmdestroy:100:root@pam:","pstart":121637,"status":"OK"},{"upid":"UPID:pve:00001607:0001D964:5B3B783C:qmstop:100:root@pam:","pstart":121188,"status":"OK","pid":5639,"type":"qmstop","id":"100","endtime":1530624061,"starttime":1530624060,"user":"root@pam","node":"pve"},{"pid":2886,"type":"qmstart","status":"OK","pstart":13916,"upid":"UPID:pve:00000B46:0000365C:5B3B740C:qmstart:100:root@pam:","user":"root@pam","node":"pve","endtime":1530622989,"id":"100","starttime":1530622988},{"pid":2885,"type":"qmconfig","upid":"UPID:pve:00000B45:00003647:5B3B740B:qmconfig:100:root@pam:","pstart":13895,"status":"OK","node":"pve","user":"root@pam","id":"100","endtime":1530622987,"starttime":1530622987},{"pid":2884,"type":"qmconfig","upid":"UPID:pve:00000B44:0000363A:5B3B740B:qmconfig:100:root@pam:","pstart":13882,"status":"OK","user":"root@pam","node":"pve","id":"100","endtime":1530622987,"starttime":1530622987},{"upid":"UPID:pve:00000B2A:000035C4:5B3B740A:qmmove:100:root@pam:","status":"OK","pstart":13764,"pid":2858,"type":"qmmove","id":"100","endtime":1530622987,"starttime":1530622986,"node":"pve","user":"root@pam"},{"node":"pve","user":"root@pam","endtime":1530622985,"id":"100","starttime":1530622985,"pid":2827,"type":"qmconfig","status":"OK","pstart":13674,"upid":"UPID:pve:00000B0B:0000356A:5B3B7409:qmconfig:100:root@pam:"},{"status":"OK","pstart":13303,"upid":"UPID:pve:00000A87:000033F7:5B3B7405:qmclone:100:root@pam:","pid":2695,"type":"qmclone","endtime":1530622983,"id":"100","starttime":1530622981,"user":"root@pam","node":"pve"},{"user":"root@pam","node":"pve","starttime":1530622979,"endtime":1530622980,"id":"100","type":"qmconfig","pid":2657,"pstart":13085,"status":"OK","upid":"UPID:pve:00000A61:0000331D:5B3B7403:qmconfig:100:root@pam:"},{"starttime":1530622979,"id":"100","endtime":1530622979,"node":"pve","user":"root@pam","upid":"UPID:pve:00000A60:0000330C:5B3B7403:qmconfig:100:root@pam:","status":"OK","pstart":13068,"type":"qmconfig","pid":2656},{"status":"OK","pstart":12946,"upid":"UPID:pve:00000A4F:00003292:5B3B7402:qmconfig:100:root@pam:","type":"qmconfig","pid":2639,"starttime":1530622978,"endtime":1530622978,"id":"100","node":"pve","user":"root@pam"},{"pid":2622,"type":"qmconfig","upid":"UPID:pve:00000A3E:00003219:5B3B7401:qmconfig:100:root@pam:","status":"OK","pstart":12825,"node":"pve","user":"root@pam","id":"100","endtime":1530622977,"starttime":1530622977},{"endtime":1530622975,"id":"100","starttime":1530622975,"user":"root@pam","node":"pve","status":"OK","pstart":12689,"upid":"UPID:pve:00000A34:00003191:5B3B73FF:qmrestore:100:root@pam:","pid":2612,"type":"qmrestore"},{"node":"pve","user":"root@pam","starttime":1530622972,"endtime":1530622972,"id":"100","type":"qmcreate","pid":2588,"pstart":12326,"status":"OK","upid":"UPID:pve:00000A1C:00003026:5B3B73FC:qmcreate:100:root@pam:"}]}'
+    http_version: 
+  recorded_at: Tue, 03 Jul 2018 13:36:47 GMT
 - request:
     method: delete
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100/snapshot/snapshot1?force=0
@@ -761,9 +803,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5B2B8B53:kA3o1n9DMEqfhqPD2IN6zrqQB+Y
+      - 5B3B7BEE:r9Q5ToUSNc/bpDJq5QL7HOB/KUc
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -774,7 +816,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -784,15 +826,15 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":"UPID:pve:00000B35:00005BA2:5B2B8B54:qmdelsnapshot:100:root@pam:"}'
+      string: '{"data":"UPID:pve:00001FFD:00034ADC:5B3B7BEE:qmdelsnapshot:100:root@pam:"}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:48 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks?vmid=100
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFD:00034ADC:5B3B7BEE:qmdelsnapshot:100:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -802,46 +844,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive
-      Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '2387'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"total":11,"data":[{"upid":"UPID:pve:00000B35:00005BA2:5B2B8B54:qmdelsnapshot:100:root@pam:","endtime":1529580372,"pid":2869,"id":"100","starttime":1529580372,"pstart":23458,"status":"OK","type":"qmdelsnapshot","user":"root@pam","node":"pve"},{"pid":2868,"endtime":1529580372,"upid":"UPID:pve:00000B34:00005B8B:5B2B8B54:qmsnapshot:100:root@pam:","id":"100","node":"pve","user":"root@pam","starttime":1529580372,"pstart":23435,"status":"OK","type":"qmsnapshot"},{"id":"100","status":"OK","type":"qmcreate","pstart":23417,"starttime":1529580371,"user":"root@pam","node":"pve","endtime":1529580371,"upid":"UPID:pve:00000B33:00005B79:5B2B8B53:qmcreate:100:root@pam:","pid":2867},{"pid":2851,"endtime":1529580370,"upid":"UPID:pve:00000B23:00005AC3:5B2B8B52:vzdestroy:100:root@pam:","user":"root@pam","node":"pve","starttime":1529580370,"status":"OK","pstart":23235,"type":"vzdestroy","id":"100"},{"type":"vzstop","status":"OK","pstart":22908,"starttime":1529580366,"user":"root@pam","node":"pve","id":"100","endtime":1529580368,"upid":"UPID:pve:00000B05:0000597C:5B2B8B4E:vzstop:100:root@pam:","pid":2821},{"pid":2371,"endtime":1529580365,"upid":"UPID:pve:00000943:00005830:5B2B8B4B:vzstart:100:root@pam:","user":"root@pam","node":"pve","pstart":22576,"status":"OK","type":"vzstart","starttime":1529580363,"id":"100"},{"pid":2295,"endtime":1529580362,"upid":"UPID:pve:000008F7:000056DE:5B2B8B48:move_volume:100:root@pam:","user":"root@pam","node":"pve","pstart":22238,"status":"OK","type":"move_volume","starttime":1529580360,"id":"100"},{"id":"100","status":"OK","pstart":19095,"type":"resize","starttime":1529580328,"node":"pve","user":"root@pam","upid":"UPID:pve:000008B2:00004A97:5B2B8B28:resize:100:root@pam:","endtime":1529580351,"pid":2226},{"pid":2086,"upid":"UPID:pve:00000826:00004889:5B2B8B23:vzclone:100:root@pam:","endtime":1529580325,"id":"100","node":"pve","user":"root@pam","status":"OK","pstart":18569,"type":"vzclone","starttime":1529580323},{"id":"100","pstart":18036,"status":"OK","type":"vzrestore","starttime":1529580318,"user":"root@pam","node":"pve","endtime":1529580319,"upid":"UPID:pve:000007D1:00004674:5B2B8B1E:vzrestore:100:root@pam:","pid":2001},{"upid":"UPID:pve:00000753:0000448B:5B2B8B19:vzcreate:100:root@pam:","endtime":1529580315,"pid":1875,"starttime":1529580313,"pstart":17547,"status":"OK","type":"vzcreate","user":"root@pam","node":"pve","id":"100"}]}'
-    http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B35:00005BA2:5B2B8B54:qmdelsnapshot:100:root@pam:/status
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/1.45.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -852,25 +855,25 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '234'
+      - '235'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"pstart":23458,"user":"root@pam","id":"100","node":"pve","type":"qmdelsnapshot","status":"stopped","pid":2869,"starttime":1529580372,"exitstatus":"OK","upid":"UPID:pve:00000B35:00005BA2:5B2B8B54:qmdelsnapshot:100:root@pam:"}}'
+      string: '{"data":{"pid":8189,"status":"stopped","exitstatus":"OK","type":"qmdelsnapshot","upid":"UPID:pve:00001FFD:00034ADC:5B3B7BEE:qmdelsnapshot:100:root@pam:","starttime":1530625006,"pstart":215772,"user":"root@pam","node":"pve","id":"100"}}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:48 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B35:00005BA2:5B2B8B54:qmdelsnapshot:100:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFD:00034ADC:5B3B7BEE:qmdelsnapshot:100:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
@@ -880,7 +883,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -891,7 +894,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -901,90 +904,90 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"total":1,"data":[{"t":"TASK OK","n":1}]}'
-    http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B35:00005BA2:5B2B8B54:qmdelsnapshot:100:root@pam:/status
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/1.45.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive, Keep-Alive
-      Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '234'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":{"id":"100","node":"pve","pstart":23458,"user":"root@pam","starttime":1529580372,"exitstatus":"OK","upid":"UPID:pve:00000B35:00005BA2:5B2B8B54:qmdelsnapshot:100:root@pam:","status":"stopped","type":"qmdelsnapshot","pid":2869}}'
-    http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B35:00005BA2:5B2B8B54:qmdelsnapshot:100:root@pam:/log
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/1.45.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive, Keep-Alive
-      Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '42'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":[{"t":"TASK OK","n":1}],"total":1}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:48 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFD:00034ADC:5B3B7BEE:qmdelsnapshot:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.45.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '235'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"100","node":"pve","upid":"UPID:pve:00001FFD:00034ADC:5B3B7BEE:qmdelsnapshot:100:root@pam:","user":"root@pam","pstart":215772,"starttime":1530625006,"pid":8189,"exitstatus":"OK","type":"qmdelsnapshot","status":"stopped"}}'
+    http_version: 
+  recorded_at: Tue, 03 Jul 2018 13:36:48 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFD:00034ADC:5B3B7BEE:qmdelsnapshot:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.45.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '42'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"t":"TASK OK","n":1}]}'
+    http_version: 
+  recorded_at: Tue, 03 Jul 2018 13:36:48 GMT
 - request:
     method: delete
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/qemu/100
@@ -997,9 +1000,9 @@ http_interactions:
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5B2B8B53:kA3o1n9DMEqfhqPD2IN6zrqQB+Y
+      - 5B3B7BEE:r9Q5ToUSNc/bpDJq5QL7HOB/KUc
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -1010,7 +1013,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -1020,12 +1023,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":"UPID:pve:00000B36:00005BB1:5B2B8B54:qmdestroy:100:root@pam:"}'
+      string: '{"data":"UPID:pve:00001FFE:00034AE8:5B3B7BEE:qmdestroy:100:root@pam:"}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:48 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks?vmid=100
@@ -1038,7 +1041,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -1049,25 +1052,26 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '2387'
+      - '10759'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"starttime":1529580372,"type":"qmdelsnapshot","status":"OK","pstart":23458,"node":"pve","user":"root@pam","id":"100","upid":"UPID:pve:00000B35:00005BA2:5B2B8B54:qmdelsnapshot:100:root@pam:","endtime":1529580372,"pid":2869},{"node":"pve","user":"root@pam","starttime":1529580372,"type":"qmsnapshot","status":"OK","pstart":23435,"id":"100","pid":2868,"endtime":1529580372,"upid":"UPID:pve:00000B34:00005B8B:5B2B8B54:qmsnapshot:100:root@pam:"},{"upid":"UPID:pve:00000B33:00005B79:5B2B8B53:qmcreate:100:root@pam:","endtime":1529580371,"pid":2867,"id":"100","starttime":1529580371,"type":"qmcreate","status":"OK","pstart":23417,"node":"pve","user":"root@pam"},{"upid":"UPID:pve:00000B23:00005AC3:5B2B8B52:vzdestroy:100:root@pam:","endtime":1529580370,"pid":2851,"id":"100","starttime":1529580370,"type":"vzdestroy","status":"OK","pstart":23235,"node":"pve","user":"root@pam"},{"id":"100","node":"pve","user":"root@pam","starttime":1529580366,"type":"vzstop","status":"OK","pstart":22908,"pid":2821,"upid":"UPID:pve:00000B05:0000597C:5B2B8B4E:vzstop:100:root@pam:","endtime":1529580368},{"upid":"UPID:pve:00000943:00005830:5B2B8B4B:vzstart:100:root@pam:","endtime":1529580365,"pid":2371,"starttime":1529580363,"status":"OK","type":"vzstart","pstart":22576,"node":"pve","user":"root@pam","id":"100"},{"pid":2295,"upid":"UPID:pve:000008F7:000056DE:5B2B8B48:move_volume:100:root@pam:","endtime":1529580362,"node":"pve","user":"root@pam","starttime":1529580360,"pstart":22238,"status":"OK","type":"move_volume","id":"100"},{"pid":2226,"endtime":1529580351,"upid":"UPID:pve:000008B2:00004A97:5B2B8B28:resize:100:root@pam:","user":"root@pam","node":"pve","status":"OK","type":"resize","pstart":19095,"starttime":1529580328,"id":"100"},{"pid":2086,"upid":"UPID:pve:00000826:00004889:5B2B8B23:vzclone:100:root@pam:","endtime":1529580325,"node":"pve","user":"root@pam","starttime":1529580323,"status":"OK","pstart":18569,"type":"vzclone","id":"100"},{"id":"100","user":"root@pam","node":"pve","starttime":1529580318,"pstart":18036,"status":"OK","type":"vzrestore","pid":2001,"endtime":1529580319,"upid":"UPID:pve:000007D1:00004674:5B2B8B1E:vzrestore:100:root@pam:"},{"user":"root@pam","node":"pve","status":"OK","type":"vzcreate","pstart":17547,"starttime":1529580313,"id":"100","pid":1875,"upid":"UPID:pve:00000753:0000448B:5B2B8B19:vzcreate:100:root@pam:","endtime":1529580315}],"total":11}'
+      string: '{"total":795,"data":[{"upid":"UPID:pve:00001FFD:00034ADC:5B3B7BEE:qmdelsnapshot:100:root@pam:","pstart":215772,"status":"OK","pid":8189,"type":"qmdelsnapshot","id":"100","endtime":1530625006,"starttime":1530625006,"node":"pve","user":"root@pam"},{"type":"qmsnapshot","pid":8188,"upid":"UPID:pve:00001FFC:00034AC5:5B3B7BEE:qmsnapshot:100:root@pam:","status":"OK","pstart":215749,"node":"pve","user":"root@pam","starttime":1530625006,"id":"100","endtime":1530625006},{"type":"qmcreate","pid":8187,"pstart":215718,"status":"OK","upid":"UPID:pve:00001FFB:00034AA6:5B3B7BEE:qmcreate:100:root@pam:","node":"pve","user":"root@pam","starttime":1530625006,"endtime":1530625006,"id":"100"},{"pid":8027,"type":"vncproxy","upid":"UPID:pve:00001F5B:000346BA:5B3B7BE4:vncproxy:100:root@pam:","pstart":214714,"status":"connection
+        timed out","node":"pve","user":"root@pam","id":"100","endtime":1530625006,"starttime":1530624996},{"type":"qmdestroy","pid":8161,"status":"OK","pstart":215562,"upid":"UPID:pve:00001FE1:00034A0A:5B3B7BEC:qmdestroy:100:root@pam:","node":"pve","user":"root@pam","starttime":1530625004,"endtime":1530625004,"id":"100"},{"starttime":1530625003,"id":"100","endtime":1530625004,"node":"pve","user":"root@pam","upid":"UPID:pve:00001FD7:00034989:5B3B7BEB:qmstop:100:root@pam:","pstart":215433,"status":"OK","type":"qmstop","pid":8151},{"pid":8150,"type":"qmresume","upid":"UPID:pve:00001FD6:00034978:5B3B7BEB:qmresume:100:root@pam:","pstart":215416,"status":"OK","node":"pve","user":"root@pam","id":"100","endtime":1530625003,"starttime":1530625003},{"user":"root@pam","node":"pve","starttime":1530625002,"id":"100","endtime":1530625002,"type":"qmsuspend","pid":8149,"upid":"UPID:pve:00001FD5:00034965:5B3B7BEA:qmsuspend:100:root@pam:","status":"OK","pstart":215397},{"user":"root@pam","node":"pve","endtime":1530625002,"id":"100","starttime":1530625001,"pid":8101,"type":"qmstart","status":"OK","pstart":215258,"upid":"UPID:pve:00001FA5:000348DA:5B3B7BE9:qmstart:100:root@pam:"},{"pid":8100,"type":"qmconfig","status":"OK","pstart":215243,"upid":"UPID:pve:00001FA4:000348CB:5B3B7BE9:qmconfig:100:root@pam:","user":"root@pam","node":"pve","endtime":1530625001,"id":"100","starttime":1530625001},{"pid":8090,"type":"qmstop","status":"OK","pstart":215115,"upid":"UPID:pve:00001F9A:0003484B:5B3B7BE8:qmstop:100:root@pam:","node":"pve","user":"root@pam","endtime":1530625001,"id":"100","starttime":1530625000},{"pstart":214904,"status":"OK","upid":"UPID:pve:00001F68:00034778:5B3B7BE5:qmstart:100:root@pam:","pid":8040,"type":"qmstart","endtime":1530624998,"id":"100","starttime":1530624997,"user":"root@pam","node":"pve"},{"upid":"UPID:pve:00001F67:00034768:5B3B7BE5:qmconfig:100:root@pam:","pstart":214888,"status":"OK","pid":8039,"type":"qmconfig","id":"100","endtime":1530624997,"starttime":1530624997,"node":"pve","user":"root@pam"},{"node":"pve","user":"root@pam","id":"100","endtime":1530624997,"starttime":1530624996,"pid":8029,"type":"qmstop","upid":"UPID:pve:00001F5D:000346E6:5B3B7BE4:qmstop:100:root@pam:","pstart":214758,"status":"OK"},{"pid":7972,"type":"qmstart","pstart":214557,"status":"OK","upid":"UPID:pve:00001F24:0003461D:5B3B7BE2:qmstart:100:root@pam:","user":"root@pam","node":"pve","endtime":1530624995,"id":"100","starttime":1530624994},{"starttime":1530624993,"id":"100","endtime":1530624993,"node":"pve","user":"root@pam","upid":"UPID:pve:00001F23:000345AA:5B3B7BE1:qmconfig:100:root@pam:","pstart":214442,"status":"OK","type":"qmconfig","pid":7971},{"type":"qmstop","pid":7960,"pstart":214273,"status":"OK","upid":"UPID:pve:00001F18:00034501:5B3B7BDF:qmstop:100:root@pam:","user":"root@pam","node":"pve","starttime":1530624991,"endtime":1530624992,"id":"100"},{"upid":"UPID:pve:00001EEA:000343B0:5B3B7BDC:qmstart:100:root@pam:","pstart":213936,"status":"OK","type":"qmstart","pid":7914,"starttime":1530624988,"id":"100","endtime":1530624989,"user":"root@pam","node":"pve"},{"starttime":1530624988,"endtime":1530624988,"id":"100","node":"pve","user":"root@pam","status":"OK","pstart":213908,"upid":"UPID:pve:00001EE9:00034394:5B3B7BDC:qmconfig:100:root@pam:","type":"qmconfig","pid":7913},{"user":"root@pam","node":"pve","id":"100","endtime":1530624987,"starttime":1530624987,"pid":7912,"type":"qmconfig","upid":"UPID:pve:00001EE8:00034386:5B3B7BDB:qmconfig:100:root@pam:","status":"OK","pstart":213894},{"starttime":1530624986,"id":"100","endtime":1530624987,"node":"pve","user":"root@pam","upid":"UPID:pve:00001EC4:000342FF:5B3B7BDA:qmmove:100:root@pam:","status":"OK","pstart":213759,"type":"qmmove","pid":7876},{"type":"qmconfig","pid":7841,"status":"OK","pstart":213685,"upid":"UPID:pve:00001EA1:000342B5:5B3B7BD9:qmconfig:100:root@pam:","user":"root@pam","node":"pve","starttime":1530624985,"endtime":1530624985,"id":"100"},{"upid":"UPID:pve:00001E21:0003417C:5B3B7BD6:qmclone:100:root@pam:","pstart":213372,"status":"OK","pid":7713,"type":"qmclone","id":"100","endtime":1530624983,"starttime":1530624982,"user":"root@pam","node":"pve"},{"node":"pve","user":"root@pam","endtime":1530624980,"id":"100","starttime":1530624980,"pid":7700,"type":"qmconfig","status":"OK","pstart":213148,"upid":"UPID:pve:00001E14:0003409C:5B3B7BD4:qmconfig:100:root@pam:"},{"node":"pve","user":"root@pam","starttime":1530624979,"id":"100","endtime":1530624979,"type":"qmconfig","pid":7699,"upid":"UPID:pve:00001E13:0003402E:5B3B7BD3:qmconfig:100:root@pam:","pstart":213038,"status":"OK"},{"upid":"UPID:pve:00001E02:00033FB7:5B3B7BD2:qmconfig:100:root@pam:","status":"OK","pstart":212919,"pid":7682,"type":"qmconfig","id":"100","endtime":1530624978,"starttime":1530624978,"user":"root@pam","node":"pve"},{"upid":"UPID:pve:00001DF1:00033F32:5B3B7BD0:qmconfig:100:root@pam:","status":"OK","pstart":212786,"type":"qmconfig","pid":7665,"starttime":1530624976,"id":"100","endtime":1530624977,"node":"pve","user":"root@pam"},{"node":"pve","user":"root@pam","endtime":1530624975,"id":"100","starttime":1530624975,"pid":7647,"type":"qmrestore","pstart":212646,"status":"OK","upid":"UPID:pve:00001DDF:00033EA6:5B3B7BCF:qmrestore:100:root@pam:"},{"user":"root@pam","node":"pve","id":"100","endtime":1530624969,"starttime":1530624969,"pid":7627,"type":"qmcreate","upid":"UPID:pve:00001DCB:00033C50:5B3B7BC9:qmcreate:100:root@pam:","pstart":212048,"status":"OK"},{"id":"100","endtime":1530624966,"starttime":1530624966,"node":"pve","user":"root@pam","upid":"UPID:pve:00001DB6:00033B41:5B3B7BC6:vzdestroy:100:root@pam:","pstart":211777,"status":"OK","pid":7606,"type":"vzdestroy"},{"status":"OK","pstart":211621,"upid":"UPID:pve:00001D84:00033AA5:5B3B7BC5:vzstop:100:root@pam:","pid":7556,"type":"vzstop","endtime":1530624966,"id":"100","starttime":1530624965,"node":"pve","user":"root@pam"},{"pid":7215,"type":"vzstart","pstart":211461,"status":"OK","upid":"UPID:pve:00001C2F:00033A05:5B3B7BC3:vzstart:100:root@pam:","node":"pve","user":"root@pam","endtime":1530624964,"id":"100","starttime":1530624963},{"starttime":1530624959,"id":"100","endtime":1530624961,"user":"root@pam","node":"pve","upid":"UPID:pve:00001BDD:00033880:5B3B7BBF:move_volume:100:root@pam:","status":"OK","pstart":211072,"type":"move_volume","pid":7133},{"pstart":207891,"status":"OK","upid":"UPID:pve:00001B9A:00032C13:5B3B7B9F:resize:100:root@pam:","pid":7066,"type":"resize","endtime":1530624950,"id":"100","starttime":1530624927,"user":"root@pam","node":"pve"},{"type":"vzclone","pid":6936,"upid":"UPID:pve:00001B18:000329A9:5B3B7B99:vzclone:100:root@pam:","status":"OK","pstart":207273,"user":"root@pam","node":"pve","starttime":1530624921,"id":"100","endtime":1530624923},{"node":"pve","user":"root@pam","endtime":1530624916,"id":"100","starttime":1530624915,"pid":6843,"type":"vzrestore","pstart":206640,"status":"OK","upid":"UPID:pve:00001ABB:00032730:5B3B7B93:vzrestore:100:root@pam:"},{"endtime":1530624909,"id":"100","starttime":1530624908,"user":"root@pam","node":"pve","status":"OK","pstart":205909,"upid":"UPID:pve:00001A81:00032455:5B3B7B8C:vzcreate:100:root@pam:","pid":6785,"type":"vzcreate"},{"pid":5658,"type":"qmdestroy","status":"OK","pstart":121637,"upid":"UPID:pve:0000161A:0001DB25:5B3B7841:qmdestroy:100:root@pam:","user":"root@pam","node":"pve","endtime":1530624065,"id":"100","starttime":1530624065},{"upid":"UPID:pve:00001607:0001D964:5B3B783C:qmstop:100:root@pam:","pstart":121188,"status":"OK","type":"qmstop","pid":5639,"starttime":1530624060,"id":"100","endtime":1530624061,"user":"root@pam","node":"pve"},{"upid":"UPID:pve:00000B46:0000365C:5B3B740C:qmstart:100:root@pam:","status":"OK","pstart":13916,"type":"qmstart","pid":2886,"starttime":1530622988,"id":"100","endtime":1530622989,"node":"pve","user":"root@pam"},{"status":"OK","pstart":13895,"upid":"UPID:pve:00000B45:00003647:5B3B740B:qmconfig:100:root@pam:","type":"qmconfig","pid":2885,"starttime":1530622987,"endtime":1530622987,"id":"100","user":"root@pam","node":"pve"},{"node":"pve","user":"root@pam","endtime":1530622987,"id":"100","starttime":1530622987,"pid":2884,"type":"qmconfig","pstart":13882,"status":"OK","upid":"UPID:pve:00000B44:0000363A:5B3B740B:qmconfig:100:root@pam:"},{"starttime":1530622986,"id":"100","endtime":1530622987,"user":"root@pam","node":"pve","upid":"UPID:pve:00000B2A:000035C4:5B3B740A:qmmove:100:root@pam:","pstart":13764,"status":"OK","type":"qmmove","pid":2858},{"status":"OK","pstart":13674,"upid":"UPID:pve:00000B0B:0000356A:5B3B7409:qmconfig:100:root@pam:","type":"qmconfig","pid":2827,"starttime":1530622985,"endtime":1530622985,"id":"100","node":"pve","user":"root@pam"},{"status":"OK","pstart":13303,"upid":"UPID:pve:00000A87:000033F7:5B3B7405:qmclone:100:root@pam:","pid":2695,"type":"qmclone","endtime":1530622983,"id":"100","starttime":1530622981,"user":"root@pam","node":"pve"},{"pid":2657,"type":"qmconfig","upid":"UPID:pve:00000A61:0000331D:5B3B7403:qmconfig:100:root@pam:","status":"OK","pstart":13085,"user":"root@pam","node":"pve","id":"100","endtime":1530622980,"starttime":1530622979},{"upid":"UPID:pve:00000A60:0000330C:5B3B7403:qmconfig:100:root@pam:","pstart":13068,"status":"OK","pid":2656,"type":"qmconfig","id":"100","endtime":1530622979,"starttime":1530622979,"user":"root@pam","node":"pve"},{"node":"pve","user":"root@pam","starttime":1530622978,"id":"100","endtime":1530622978,"type":"qmconfig","pid":2639,"upid":"UPID:pve:00000A4F:00003292:5B3B7402:qmconfig:100:root@pam:","pstart":12946,"status":"OK"},{"pstart":12825,"status":"OK","upid":"UPID:pve:00000A3E:00003219:5B3B7401:qmconfig:100:root@pam:","type":"qmconfig","pid":2622,"starttime":1530622977,"endtime":1530622977,"id":"100","node":"pve","user":"root@pam"},{"id":"100","endtime":1530622975,"starttime":1530622975,"user":"root@pam","node":"pve","upid":"UPID:pve:00000A34:00003191:5B3B73FF:qmrestore:100:root@pam:","status":"OK","pstart":12689,"pid":2612,"type":"qmrestore"}]}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:48 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B36:00005BB1:5B2B8B54:qmdestroy:100:root@pam:/status
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFE:00034AE8:5B3B7BEE:qmdestroy:100:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -1077,7 +1081,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -1088,25 +1092,25 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '208'
+      - '209'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"status":"running","type":"qmdestroy","pid":2870,"starttime":1529580372,"upid":"UPID:pve:00000B36:00005BB1:5B2B8B54:qmdestroy:100:root@pam:","pstart":23473,"user":"root@pam","id":"100","node":"pve"}}'
+      string: '{"data":{"pid":8190,"status":"running","type":"qmdestroy","upid":"UPID:pve:00001FFE:00034AE8:5B3B7BEE:qmdestroy:100:root@pam:","user":"root@pam","pstart":215784,"starttime":1530625006,"node":"pve","id":"100"}}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:48 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B36:00005BB1:5B2B8B54:qmdestroy:100:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFE:00034AE8:5B3B7BEE:qmdestroy:100:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
@@ -1116,7 +1120,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
   response:
     status:
       code: 200
@@ -1127,7 +1131,85 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '45'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total":1,"data":[{"t":"no content","n":1}]}'
+    http_version: 
+  recorded_at: Tue, 03 Jul 2018 13:36:48 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFE:00034AE8:5B3B7BEE:qmdestroy:100:root@pam:/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.45.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '227'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Tue, 03 Jul 2018 13:36:46 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"node":"pve","id":"100","type":"qmdestroy","exitstatus":"OK","status":"stopped","pid":8190,"pstart":215784,"user":"root@pam","starttime":1530625006,"upid":"UPID:pve:00001FFE:00034AE8:5B3B7BEE:qmdestroy:100:root@pam:"}}'
+    http_version: 
+  recorded_at: Tue, 03 Jul 2018 13:36:48 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00001FFE:00034AE8:5B3B7BEE:qmdestroy:100:root@pam:/log
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.45.0
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5B3B7BEE::XJDzJnLJLxcU0gk5acUJK0kpyKdQw7UTEg0uG6G0esFJ3kE2wLbX4hHSauGu2ctr9VokLeZJTrHonpt2K4prfcpD54FqleOuLUw7546u5Uu/DDps+fBesdoNA1Fs3w2l7vGyw7J27+vO4XHeqW+aD5faeer4HnUjkbERXofbMyqf0O+cESD+RgXrTJPj91VZMta9JqrK1pYk8YiMFDsgNF8qWW0lJUiSsC9HiPCe9oabt7Pd8cpuZMy5rt2U9lfWYKW8kNU30c3dHCILW6R3jnGOooMdb9/zNggrptOiQikFNybQWqR+jvBBx7GWBe3TpE9RI8QwN5M8U6mF3fO/cA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive, Keep-Alive
+      Date:
+      - Tue, 03 Jul 2018 13:36:46 GMT
       Pragma:
       - no-cache
       Server:
@@ -1137,88 +1219,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
+      - Tue, 03 Jul 2018 13:36:46 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"total":1,"data":[{"n":1,"t":"TASK OK"}]}'
     http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B36:00005BB1:5B2B8B54:qmdestroy:100:root@pam:/status
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/1.45.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive, Keep-Alive
-      Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '226'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":{"starttime":1529580372,"upid":"UPID:pve:00000B36:00005BB1:5B2B8B54:qmdestroy:100:root@pam:","exitstatus":"OK","type":"qmdestroy","status":"stopped","pid":2870,"id":"100","node":"pve","pstart":23473,"user":"root@pam"}}'
-    http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/tasks/UPID:pve:00000B36:00005BB1:5B2B8B54:qmdestroy:100:root@pam:/log
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/1.45.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B2B8B53::h/pzup9m7N6pYjscXDJ9UtT0lItndEInaNvA3WERqj03fMikRvNc3NuCLoi8cafKUuZaUQWeXqz7f32+yJDImErwY4EDhICExb8mcXUKGbdP7jPCttWaLvCFh3TBbZ8rRryDi2eG+rw3sZP0uIewBg3PDrUazga58lzAMfbViRDcBBtbeaw12O9NZv00xKysESZE6z/DLV9bEtH0SfKPqfu8aBU7PzexXw/g2B3xNVeFFWbysOd3xrDLatf3yWJ05pQrDIZGvusukxZApLq3Q/fGizorRyUK+f2dIuOixJy2+IkK7AGP72T+ZnY9ZPe24zLeidc1Oo81LRYXWz5wIQ==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive, Keep-Alive
-      Date:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '42'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Thu, 21 Jun 2018 11:26:12 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[{"n":1,"t":"TASK OK"}],"total":1}'
-    http_version: 
-  recorded_at: Thu, 21 Jun 2018 11:26:13 GMT
+  recorded_at: Tue, 03 Jul 2018 13:36:48 GMT
 recorded_with: VCR 3.0.3
