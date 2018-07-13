@@ -87,6 +87,13 @@ module Fog
           task_upid = service.backup({ node: node }, options)
           task_upid
         end
+
+        def statistics(output = 'rrddata', options = { timeframe: 'hour', cf: 'AVERAGE'})
+          path_params = { node: node, output: output }
+          query_params = options
+          service.get_node_statistics(path_params,query_params)
+        end
+
       end
     end
   end

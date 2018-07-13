@@ -124,6 +124,18 @@ Get a node:
 node = service.nodes.find_by_id 'pve'
 ```
 
+Get statistics (default is data):
+
+```ruby
+node.statistics
+```
+
+Get statistics (image png):
+
+```ruby
+node.statistics('rrd', { timeframe: 'hour', ds: 'cpu,memused', cf: 'AVERAGE' })
+```
+
 #### Servers management
 
 Proxmox supports servers management. Servers are also called virtual machines (VM).

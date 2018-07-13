@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -17,8 +16,32 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
+# frozen_string_literal: true
+
+require 'fog/proxmox/json'
+
 module Fog
-  module Proxmox
-    VERSION = '0.5.0'
+  module Compute
+    class Proxmox
+      # class Real get_node_statistics request
+      class Real
+        def get_node_statistics(path_params,query_params)
+          node = path_params[:node]
+          output = path_params[:output]
+          response = request(
+            expects: [200],
+            method: 'GET',
+            path: "nodes/#{node}/#{output}",
+            query: URI.encode_www_form(query_params)
+          )
+          Fog::Proxmox::Json.get_data(response)
+        end
+      end
+
+      # class Mock get_statistics request
+      class Mock
+        def get_node_statistics; end
+      end
+    end
   end
 end

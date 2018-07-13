@@ -53,6 +53,22 @@ describe Fog::Compute::Proxmox do
     end
   end
 
+  it 'Manage nodes' do
+    VCR.use_cassette('nodes') do
+      # Get node
+      node_name = 'pve'
+      node = @service.nodes.find_by_id node_name
+      # Get statistics data
+      data = node.statistics
+      data.wont_be_nil
+      data.wont_be_empty
+      # Get statistics image
+      data = node.statistics('rrd', { timeframe: 'hour', ds: 'cpu,memused', cf: 'AVERAGE' })
+      data.wont_be_nil
+      data['image'].wont_be_nil
+    end
+  end
+
   it 'Manage storages' do
     VCR.use_cassette('storages') do
       # Get node

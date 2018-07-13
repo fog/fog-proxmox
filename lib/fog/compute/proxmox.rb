@@ -57,6 +57,7 @@ module Fog
       # Manage nodes cluster
       request :list_nodes
       request :get_node
+      request :get_node_statistics
       # Manage servers
       request :next_vmid
       request :check_vmid
