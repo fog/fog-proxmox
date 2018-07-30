@@ -30,8 +30,11 @@ module Fog
                 else
                   "#{disk[:storage]}:#{disk[:size]}"
                 end
-        options = Fog::Proxmox::Hash.stringify(disk[:options])
-        value += ",#{options}" unless options.empty?
+        opts = disk[:options] if disk.has_key? :options
+        main_a = [:id,:volid,:storage,:size]
+        opts = disk.reject { |key,_value| main_a.include? key } unless opts
+        options = Fog::Proxmox::Hash.stringify(opts) if opts
+        value += ",#{options}" if options
         { "#{disk[:id]}": value }
       end
 

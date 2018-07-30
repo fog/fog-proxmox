@@ -57,6 +57,13 @@ module Fog
         model += ',' + Fog::Proxmox::Hash.stringify(options) unless options.empty?
         { "#{nic[:id]}": model }
       end
+
+      def self.container_flatten(nic)
+        name = "name=#{nic[:name]}"
+        options = nic.reject { |key, _value| %i[name id].include? key }
+        name += ',' + Fog::Proxmox::Hash.stringify(options) unless options.empty?
+        { "#{nic[:id]}": name }
+      end
     end
   end
 end

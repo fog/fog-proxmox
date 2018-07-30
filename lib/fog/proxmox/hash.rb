@@ -22,11 +22,12 @@ module Fog
     # module Hash mixins
     module Hash
       def self.stringify(hash)
+        return '' unless hash
         string = ''
         hash.each do |key, value|
-          string += "#{key}=#{value},"
+          string += "#{key}=#{value}," if value
         end
-        string.slice(0, string.length - 1)
+        string.slice(0, string.length - 1) if string.length > 0
       end
     end
   end

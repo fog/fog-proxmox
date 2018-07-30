@@ -27,12 +27,31 @@ module Fog
       class ContainerConfig < Fog::Proxmox::Model
         identity  :digest
         attribute :ostype
+        attribute :storage
+        attribute :template
         attribute :arch
         attribute :memory
         attribute :swap
         attribute :hostname
+        attribute :nameserver
+        attribute :searchdomain
+        attribute :password
         attribute :onboot
+        attribute :startup
         attribute :rootfs
+        attribute :cores
+        attribute :cpuunits
+        attribute :cpulimit
+        attribute :description
+        attribute :console
+        attribute :cmode
+        attribute :tty
+        attribute :force
+        attribute :lock
+        attribute :description
+        attribute :pool
+        attribute :bwlimit
+        attribute :unprivileged
         attribute :interfaces
         attribute :mount_points
 
