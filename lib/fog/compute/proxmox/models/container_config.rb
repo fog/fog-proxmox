@@ -89,6 +89,7 @@ module Fog
 
         def compute_mps(attributes)
           mps = Fog::Proxmox::ControllerHelper.to_hash(attributes, 'mp')
+          mps.store(:rootfs,attributes['rootfs'])
           @mount_points ||= Fog::Compute::Proxmox::Disks.new
           mps.each do |key, value|
             storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(value)

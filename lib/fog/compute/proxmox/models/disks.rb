@@ -43,6 +43,10 @@ module Fog
         def cdrom
           find(&:cdrom?)
         end
+
+        def rootfs
+          find(&:rootfs?)
+        end
       end
     end
   end

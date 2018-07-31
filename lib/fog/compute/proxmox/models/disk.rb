@@ -61,6 +61,10 @@ module Fog
         def cdrom?
           id == 'ide2' && media == 'cdrom'
         end
+
+        def rootfs?
+          id == 'rootfs'
+        end
       end
     end
   end
