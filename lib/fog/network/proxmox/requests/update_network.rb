@@ -26,7 +26,6 @@ module Fog
       class Real
         def update_network(path_params, body_params)
           node = path_params[:node]
-          type = body_params[:type]
           iface = path_params[:iface]
           response = request(
             expects: [200],

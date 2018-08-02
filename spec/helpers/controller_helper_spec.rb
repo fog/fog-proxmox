@@ -31,6 +31,15 @@ require 'fog/proxmox/helpers/controller_helper'
         let(:scsi) do 
             { scsi10: 'local-lvm:1,cache=none' }
         end
+        let(:cdrom) do 
+            { ide2: 'none,media=cdrom' }
+        end
+        let(:mp) do 
+            { mp0: 'local-lvm:1' }
+        end        
+        let(:rootfs) do 
+            { rootfs: 'local-lvm:1' }
+        end
 
         describe '#extract' do
             it "returns bridge" do
@@ -72,6 +81,39 @@ require 'fog/proxmox/helpers/controller_helper'
             end
             it "returns false" do
                 assert !Fog::Proxmox::ControllerHelper.valid?('net','sdfdsf')
+            end
+        end
+
+        describe '#select' do
+            it "returns scsi10" do
+                controllers = Fog::Proxmox::ControllerHelper.select(scsi,'scsi')
+                assert controllers.has_key?(:scsi10)
+                assert controllers.has_value?(scsi[:scsi10])
+            end
+            it "returns empty" do
+                controllers = Fog::Proxmox::ControllerHelper.select(net,'scsi')
+                assert controllers.empty?
+            end
+        end
+
+        describe '#collect_controllers' do
+            it "returns scsi0 and ide2" do
+                controllers = Fog::Proxmox::ControllerHelper.collect_controllers(scsi.merge(cdrom))
+                assert controllers.has_key?(:scsi10)
+                assert controllers.has_value?(scsi[:scsi10])
+                assert controllers.has_key?(:ide2)
+                assert controllers.has_value?(cdrom[:ide2])
+            end
+            it "returns rootfs and mp0" do
+                controllers = Fog::Proxmox::ControllerHelper.collect_controllers(rootfs.merge(mp))
+                assert controllers.has_key?(:mp0)
+                assert controllers.has_value?(mp[:mp0])
+                assert controllers.has_key?(:rootfs)
+                assert controllers.has_value?(rootfs[:rootfs])
+            end
+            it "returns empty" do
+                controllers = Fog::Proxmox::ControllerHelper.collect_controllers(net)
+                assert controllers.empty?
             end
         end
     end

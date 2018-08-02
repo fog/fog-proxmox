@@ -23,6 +23,7 @@ module Fog
   module Proxmox
     # module NicHelper mixins
     module NicHelper
+
       def self.extract_mac_address(nic_value)
         nic_value[/([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})/]
       end
@@ -63,6 +64,14 @@ module Fog
         options = nic.reject { |key, _value| %i[name id].include? key }
         name += ',' + Fog::Proxmox::Hash.stringify(options) unless options.empty?
         { "#{nic[:id]}": name }
+      end
+
+      def self.valid?(key)
+        key.to_s.match(/^net(\d+)$/)
+      end
+
+      def self.collect_nics(attributes)        
+        attributes.select { |key| valid?(key.to_s) }
       end
     end
   end

@@ -66,7 +66,7 @@ module Fog
         end
 
         def set_config(attributes = {})
-          @config = Fog::Compute::Proxmox::ContainerConfig.new({ service: service }.merge(attributes))
+          @config = Fog::Compute::Proxmox::ContainerConfig.new({ service: service, vmid: vmid }.merge(attributes))
         end
 
         def config

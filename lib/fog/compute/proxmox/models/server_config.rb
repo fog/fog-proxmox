@@ -19,6 +19,7 @@
 
 require 'fog/proxmox/variables'
 require 'fog/proxmox/helpers/nic_helper'
+require 'fog/proxmox/helpers/controller_helper'
 require 'fog/proxmox/models/model'
 
 module Fog
@@ -26,7 +27,7 @@ module Fog
     class Proxmox
       # ServerConfig model
       class ServerConfig < Fog::Proxmox::Model
-        identity  :id
+        identity  :vmid
         attribute :digest
         attribute :description
         attribute :ostype
@@ -79,7 +80,7 @@ module Fog
         private
 
         def compute_nets(attributes)
-          nets = Fog::Proxmox::ControllerHelper.to_hash(attributes, Fog::Compute::Proxmox::Interface::NAME)
+          nets = Fog::Proxmox::NicHelper.collect_nics(attributes)
           @interfaces ||= Fog::Compute::Proxmox::Interfaces.new
           nets.each do |key, value|
             nic_hash = {
@@ -94,8 +95,7 @@ module Fog
         end
 
         def compute_disks(attributes)
-          controllers = {}
-          Fog::Compute::Proxmox::Disk::CONTROLLERS.each { |controller| controllers.merge!(Fog::Proxmox::ControllerHelper.to_hash(attributes, controller)) }
+          controllers = Fog::Proxmox::ControllerHelper.collect_controllers(attributes)
           @disks ||= Fog::Compute::Proxmox::Disks.new
           controllers.each do |key, value|
             storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(value)

@@ -42,8 +42,6 @@ module Fog
         attribute :rate
         attribute :queues
         attribute :tag
-
-        NAME = 'net'
       end
     end
   end

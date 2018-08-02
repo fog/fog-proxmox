@@ -70,4 +70,26 @@ require 'fog/proxmox/helpers/nic_helper'
                 assert_equal '66:89:C5:59:AA:96', mac_address
             end
         end
+
+        describe '#valid?' do
+            it "returns true" do
+                assert Fog::Proxmox::NicHelper.valid?('net0')
+            end
+            it "returns false" do
+                assert !Fog::Proxmox::NicHelper.valid?('net')
+            end
+        end
+
+        describe '#collect_nics' do
+            it "returns net0" do
+                nets = Fog::Proxmox::NicHelper.collect_nics(net_vm.merge({'netout': 'sdfdsgfdsf'}))
+                assert nets.has_key?(:net0)
+                assert nets.has_value?(net_vm[:net0])
+                assert !nets.has_key?('netout')
+            end
+            it "returns empty" do
+                nets = Fog::Proxmox::NicHelper.collect_nics({'netout': 'sdfdsgfdsf'})
+                assert nets.empty?
+            end
+        end
     end

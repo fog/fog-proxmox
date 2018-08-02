@@ -167,6 +167,8 @@ describe Fog::Compute::Proxmox do
       config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26', kvm: 0 }
       server.update(config_hash)
       # server config
+      #config = server.config
+      #config.identity.must_equal vmid
       disks = server.config.disks
       nics = server.config.interfaces
       nics.wont_be_nil
@@ -188,7 +190,7 @@ describe Fog::Compute::Proxmox do
       servers_all.must_include server
       # server not running exception
       proc do
-        vnc = server.start_console(websocket: 1)
+        server.start_console(websocket: 1)
       end.must_raise Fog::Proxmox::Errors::ServiceError
       # Start server
       server.action('start')
@@ -197,7 +199,7 @@ describe Fog::Compute::Proxmox do
       status.must_equal true
       # server vga not set exception
       proc do
-        vnc = server.start_console(websocket: 1)
+        server.start_console(websocket: 1)
       end.must_raise Fog::Proxmox::Errors::ServiceError
       # Stop server
       server.action('stop')
@@ -379,6 +381,7 @@ describe Fog::Compute::Proxmox do
       # get container config
       config = container.config
       config.wont_be_nil
+      config.identity.must_equal vmid
       # Get a mac address
       mac_address = container.config.mac_addresses.first
       mac_address.wont_be_nil
