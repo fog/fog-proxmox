@@ -36,6 +36,9 @@ module Fog
         identity  :id
         attribute :mac
         attribute :model
+        attribute :name
+        attribute :ip
+        attribute :ip6
         attribute :bridge
         attribute :firewall
         attribute :link_down
