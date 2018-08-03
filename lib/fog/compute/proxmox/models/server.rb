@@ -27,6 +27,7 @@ module Fog
       # Server model
       class Server < Fog::Compute::Server
         identity  :vmid
+        attribute :id
         attribute :node
         attribute :config
         attribute :name
@@ -59,10 +60,9 @@ module Fog
           super
         end
 
-        def type(attributes = {})
-          @type ||= 'qemu' unless attributes[:type] || attributes['type']
-          @type
-        end
+        def type
+          attributes[:type]
+        end 
 
         def request(name, body_params = {}, path_params = {})
           requires :node, :type

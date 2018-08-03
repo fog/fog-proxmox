@@ -26,15 +26,17 @@ module Fog
       class Servers < Fog::Proxmox::Collection
         model Fog::Compute::Proxmox::Server
         attribute :node
-        attribute :type
+
+        def initialize(attributes = {})
+          super(attributes)
+        end
+
+        def type
+          'qemu'
+        end
 
         def new(attributes = {})
           super({ node: node, type: type }.merge(attributes))
-        end
-
-        def type(attributes = {})
-          @type ||= 'qemu' unless attributes[:type] || attributes['type']
-          @type
         end
 
         def next_id

@@ -31,17 +31,6 @@ module Fog
         attribute :swap
         attribute :config
 
-        def initialize(attributes = {})
-          prepare_service_value(attributes)
-          set_config(attributes)
-          super
-        end
-
-        def type(attributes = {})
-          @type ||= 'lxc' unless attributes[:type] || attributes['type']
-          @type
-        end
-
         def restore(backup, options = {})
           requires :node, :vmid
           path_params = { node: node, type: type }

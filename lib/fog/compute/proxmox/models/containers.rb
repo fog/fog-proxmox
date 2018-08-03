@@ -26,13 +26,16 @@ module Fog
       class Containers < Fog::Compute::Proxmox::Servers
         model Fog::Compute::Proxmox::Container
 
-        def new(attributes = {})
-          super({ node: node, type: type }.merge(attributes))
+        def initialize(attributes = {})
+          super(attributes)
         end
 
-        def type(attributes = {})
-          @type ||= 'lxc' unless attributes[:type] || attributes['type']
-          @type
+        def type
+          'lxc'
+        end
+
+        def new(attributes = {})
+          super({ node: node, type: type }.merge(attributes))
         end
       end
     end
