@@ -50,7 +50,6 @@ module Fog
         attribute :tty
         attribute :force
         attribute :lock
-        attribute :description
         attribute :pool
         attribute :bwlimit
         attribute :unprivileged

@@ -3,3 +3,4 @@ bin/
 pkg/
 spec/debug/
 coverage/
+TAGS
