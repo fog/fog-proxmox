@@ -71,6 +71,10 @@ module Fog
           Fog::Proxmox::NicHelper.to_mac_adresses_array(interfaces)
         end
 
+        def type_console
+          'vnc' # by default. term is available too
+        end
+
         private
 
         def compute_nets(attributes)
