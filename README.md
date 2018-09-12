@@ -36,10 +36,6 @@ gem install fog-proxmox
 
 See [documentation](docs/getting_started.md).
 
-This is not yet a stable version. I recommend you not to use it in production.
-
-Work is still in progress...
-
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bundle exec rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
