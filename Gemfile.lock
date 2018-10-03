@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fog-proxmox (0.5.1)
+    fog-proxmox (0.5.2)
       fog-core (~> 1.45)
       fog-json (~> 1.0)
       ipaddress (~> 0.8)
@@ -46,8 +46,8 @@ GEM
       builder
       excon (~> 0.58)
       formatador (~> 0.2)
-    fog-json (1.0.2)
-      fog-core (~> 1.0)
+    fog-json (1.2.0)
+      fog-core
       multi_json (~> 1.10)
     formatador (0.2.5)
     hashdiff (0.3.7)
@@ -143,4 +143,4 @@ DEPENDENCIES
   webmock (~> 3.4)
 
 BUNDLED WITH
-   1.16.2
+   1.16.5
