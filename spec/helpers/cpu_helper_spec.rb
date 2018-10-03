@@ -23,10 +23,10 @@ require 'fog/proxmox/helpers/cpu_helper'
     describe Fog::Proxmox::CpuHelper do
             
         let(:cpu) do 
-            'cputype=kvm64,flags=+spec-ctrl,+pcid'
+            'cputype=kvm64,flags=+spec-ctrl;+pcid'
         end
         let(:cpu_nocputype) do 
-            'kvm64,flags=+spec-ctrl,+pcid'
+            'kvm64,flags=+spec-ctrl;+pcid'
         end
         let(:cpu_nospectre) do 
             'cputype=kvm64,flags=+pcid'

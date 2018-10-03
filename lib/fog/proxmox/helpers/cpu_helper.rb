@@ -22,7 +22,7 @@ module Fog
     # module Cpu mixins
     module CpuHelper
       def self.extract(cpu)
-        cpu&.scan(/^(cputype=)?(\w+)(,flags=){0,1}(\+[\w-]+){0,1}[,]{0,1}(\+[\w-]+){0,1}/)&.first
+        cpu&.scan(/^(cputype=)?(\w+)(,flags=){0,1}(\+[\w-]+){0,1}[;]{0,1}(\+[\w-]+){0,1}/)&.first
       end
 
       def self.extract_type(cpu)
