@@ -42,6 +42,20 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+## Testing
+
+To record your VCR cassettes:
+
+```shell
+PVE_URL=https://192.168.56.101:8006/api2/json DISABLE_PROXY=true SSL_VERIFY_PEER=false bundle exec rake spec
+```
+
+To replay your recorded tests:
+
+```shell
+USE_VCR=true bundle exec rake spec
+```
+
 ## Contributing
 
 You can reach the [contributors](CONTRIBUTORS.md).

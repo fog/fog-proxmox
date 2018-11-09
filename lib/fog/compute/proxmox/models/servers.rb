@@ -63,7 +63,7 @@ module Fog
         end
 
         def all(options = {})
-          body_params = options.merge(type: 'vm')
+          body_params = options.merge(node: node, type: type)
           load_response(service.list_servers(body_params), 'servers')
         end
       end

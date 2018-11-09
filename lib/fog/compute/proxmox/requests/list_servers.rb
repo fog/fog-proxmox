@@ -23,12 +23,12 @@ module Fog
       # class Real list_servers request
       class Real
         def list_servers(options)
+          node = options[:node]
           type = options[:type]
           request(
             expects: [200],
             method: 'GET',
-            path: 'cluster/resources',
-            query: "type=#{type}"
+            path: "nodes/#{node}/#{type}"
           )
         end
       end
