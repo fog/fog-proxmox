@@ -41,7 +41,7 @@ describe Fog::Identity::Proxmox do
         pve_password: @password,
         pve_url: @pve_url.to_s
       )
-      # identity.wont_be_nil
+      identity.wont_be_nil
     end
   end
 
@@ -49,18 +49,18 @@ describe Fog::Identity::Proxmox do
     VCR.use_cassette('auth') do
       principal = { username: @username, password: @password, privs: ['User.Modify'], path: 'access', otp: 'proxmox01' }
       permissions = @service.check_permissions(principal)
-      # permissions.wont_be_nil
-      # permissions.wont_be_empty
-      # permissions['username'].must_equal @username
-      # permissions['cap'].wont_be_empty
+      permissions.wont_be_nil
+      permissions.wont_be_empty
+      permissions['username'].must_equal @username
+      permissions['cap'].wont_be_empty
     end
   end
 
   it 'reads server version' do
     VCR.use_cassette('read_version') do
       version = @service.read_version
-      # version.wont_be_nil
-      # version.include? 'version'
+      version.wont_be_nil
+      version.include? 'version'
     end
   end
 
@@ -77,16 +77,16 @@ describe Fog::Identity::Proxmox do
       @service.users.create(bob_hash)
       # Find by id
       bob = @service.users.find_by_id bob_hash[:userid]
-      # bob.wont_be_nil
+      bob.wont_be_nil
       # Create 2nd time must fails
-      # proc do
-      #   @service.users.create(bob_hash)
-      # end.must_raise Excon::Errors::InternalServerError
+      proc do
+        @service.users.create(bob_hash)
+      end.must_raise Excon::Errors::InternalServerError
       # all users
       users_all = @service.users.all
-      # users_all.wont_be_nil
-      # users_all.wont_be_empty
-      # users_all.must_include bob
+      users_all.wont_be_nil
+      users_all.wont_be_empty
+      users_all.must_include bob
       # Update
       bob.comment = 'novelist'
       bob.enable  = 0
@@ -99,18 +99,18 @@ describe Fog::Identity::Proxmox do
       bob.change_password
       # disabled users
       users_disabled = @service.users.all('enabled' => 0)
-      # users_disabled.wont_be_nil
-      # users_disabled.wont_be_empty
-      # users_disabled.must_include bob
+      users_disabled.wont_be_nil
+      users_disabled.wont_be_empty
+      users_disabled.must_include bob
       # Delete
       bob.destroy
       group1 = @service.groups.find_by_id 'group1'
       group1.destroy
       group2 = @service.groups.find_by_id 'group2'
       group2.destroy
-      # proc do
-      #   @service.users.find_by_id bob_hash[:userid]
-      # end.must_raise Excon::Errors::InternalServerError
+      proc do
+        @service.users.find_by_id bob_hash[:userid]
+      end.must_raise Excon::Errors::InternalServerError
     end
   end
 
