@@ -303,7 +303,7 @@ describe Fog::Compute::Proxmox do
       node = @service.nodes.find_by_id node_name
       # Get next vmid
       vmid = node.containers.next_id
-      ostemplate = 'local:vztmpl/alpine-3.7-default_20171211_amd64.tar.xz'
+      ostemplate = 'local:vztmpl/alpine-3.8-default_20180913_amd64.tar.xz'
       container_hash = { vmid: vmid,
                          storage: 'local-lvm',
                          ostemplate: ostemplate, password: 'proxmox01', rootfs: 'local-lvm:1' }
