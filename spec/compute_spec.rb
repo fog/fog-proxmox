@@ -167,8 +167,8 @@ describe Fog::Compute::Proxmox do
       config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26', kvm: 0 }
       server.update(config_hash)
       # server config
-      #config = server.config
-      #config.identity.must_equal vmid
+      config = server.config
+      config.identity.must_equal vmid
       disks = server.config.disks
       nics = server.config.interfaces
       nics.wont_be_nil
@@ -393,7 +393,7 @@ describe Fog::Compute::Proxmox do
       containers_all = node.containers.all
       containers_all.wont_be_nil
       containers_all.wont_be_empty
-      containers_all.must_include container
+      containers_all.first.vmid.must_equal container.vmid.to_s
       # Start container
       container.action('start')
       container.wait_for { ready? }

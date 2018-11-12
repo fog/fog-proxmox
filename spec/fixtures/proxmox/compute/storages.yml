@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5BE5B0C1::QCmmDkMwjZI8IxswEIQf6Y2PSGb7wcgLiIGxQHhXj3eEfZ5WxhODL1a4NJCwGd4Do4/h83iKY+cKOXOMOFqsGp5QmoedMIZG7VfK2CK0owBDJzLmxclmUcZSdJRI0k2z04V+UbalQeBOkWHNBtvHkuPKgN7d6NaDm1P03CwW01qwU3uHYCZbdkpDf/Fes/P0dloe2izT/97/4eyjNvINClw0mBfkprnzSs/TUjUHu0F5ZTmWKpRJYhbsb4Z7BUlIBGmYipgGPG0VFjZxFSf+XI+uhbqIM5MgBonu1ns+93kbU+L1qOVaTdx+yujFYFf3FMMQzMV8iKED6fdjWFytRQ==
+      - PVEAuthCookie=PVE:root@pam:5BE980DB::HrTqooGcPDfWHUbGQhLn64L50UfEzC9eAVXGfxRt/8/Vs63Lifigqn7hYRQmGLAcUluTshZJyLajfYdTPC32HC+sr0oNjtNnDz7S/Fw8z4bs92kySoj9Km4oUu771vkJ7guEXefSKxgaUB7TiISSdaYJaPtFwbwylhk+tqrAcVTuJFPKRoUyuVAIBhOoVuZZIawWEOlXdmSPtkUjWZ/P5a6DfvwR9I2WRdDR6A1Le379Ea9KtTmd9cr9pksK6fTertlY+trDHAXa6LvV19usFxoZVA7hrh0jgYsQsYeYObJJDCPTrr595cvjF2z8/ZqfCsjCccRBK6j+ylqXrJe4cA==
   response:
     status:
       code: 200
@@ -23,22 +23,22 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Fri, 09 Nov 2018 16:07:29 GMT
+      - Mon, 12 Nov 2018 13:32:11 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '412'
+      - '409'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 09 Nov 2018 16:07:29 GMT
+      - Mon, 12 Nov 2018 13:32:11 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"disk":1402523648,"mem":778964992,"node":"pve2","maxcpu":2,"id":"node/pve2","cpu":0.0113806904931841,"uptime":29261,"status":"online","maxmem":2090078208,"maxdisk":1815969792,"type":"node","level":""},{"cpu":0.0088288336582219,"maxcpu":2,"id":"node/pve","uptime":29472,"status":"online","maxmem":2090078208,"maxdisk":4953096192,"type":"node","level":"","disk":1458720768,"mem":683671552,"node":"pve"}]}'
+      string: '{"data":[{"type":"node","node":"pve2","level":"","cpu":0.00816802175114679,"id":"node/pve2","maxcpu":2,"maxmem":2090078208,"mem":729174016,"uptime":463,"status":"online","disk":1404755968,"maxdisk":1815969792},{"maxdisk":4953096192,"disk":1465536512,"uptime":754,"status":"online","maxcpu":2,"level":"","cpu":0.0695203332536091,"id":"node/pve","node":"pve","type":"node","mem":686129152,"maxmem":2090078208}]}'
     http_version: 
-  recorded_at: Fri, 09 Nov 2018 16:07:31 GMT
+  recorded_at: Mon, 12 Nov 2018 13:32:13 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/storage
@@ -51,7 +51,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5BE5B0C1::QCmmDkMwjZI8IxswEIQf6Y2PSGb7wcgLiIGxQHhXj3eEfZ5WxhODL1a4NJCwGd4Do4/h83iKY+cKOXOMOFqsGp5QmoedMIZG7VfK2CK0owBDJzLmxclmUcZSdJRI0k2z04V+UbalQeBOkWHNBtvHkuPKgN7d6NaDm1P03CwW01qwU3uHYCZbdkpDf/Fes/P0dloe2izT/97/4eyjNvINClw0mBfkprnzSs/TUjUHu0F5ZTmWKpRJYhbsb4Z7BUlIBGmYipgGPG0VFjZxFSf+XI+uhbqIM5MgBonu1ns+93kbU+L1qOVaTdx+yujFYFf3FMMQzMV8iKED6fdjWFytRQ==
+      - PVEAuthCookie=PVE:root@pam:5BE980DB::HrTqooGcPDfWHUbGQhLn64L50UfEzC9eAVXGfxRt/8/Vs63Lifigqn7hYRQmGLAcUluTshZJyLajfYdTPC32HC+sr0oNjtNnDz7S/Fw8z4bs92kySoj9Km4oUu771vkJ7guEXefSKxgaUB7TiISSdaYJaPtFwbwylhk+tqrAcVTuJFPKRoUyuVAIBhOoVuZZIawWEOlXdmSPtkUjWZ/P5a6DfvwR9I2WRdDR6A1Le379Ea9KtTmd9cr9pksK6fTertlY+trDHAXa6LvV19usFxoZVA7hrh0jgYsQsYeYObJJDCPTrr595cvjF2z8/ZqfCsjCccRBK6j+ylqXrJe4cA==
   response:
     status:
       code: 200
@@ -62,7 +62,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Fri, 09 Nov 2018 16:07:29 GMT
+      - Mon, 12 Nov 2018 13:32:11 GMT
       Pragma:
       - no-cache
       Server:
@@ -72,12 +72,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 09 Nov 2018 16:07:29 GMT
+      - Mon, 12 Nov 2018 13:32:11 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"avail":8854175744,"storage":"local-lvm","type":"lvmthin","used":0,"content":"images,rootdir","shared":0,"active":1,"enabled":1,"total":8854175744},{"used":1458728960,"type":"dir","content":"backup,iso,vztmpl","storage":"local","avail":3222577152,"shared":0,"active":1,"total":4953096192,"enabled":1}]}'
+      string: '{"data":[{"avail":3215745024,"active":1,"used":1465561088,"total":4953096192,"content":"backup,vztmpl,iso","enabled":1,"shared":0,"storage":"local","type":"dir"},{"used":0,"total":8854175744,"avail":8854175744,"active":1,"storage":"local-lvm","type":"lvmthin","shared":0,"content":"rootdir,images","enabled":1}]}'
     http_version: 
-  recorded_at: Fri, 09 Nov 2018 16:07:31 GMT
+  recorded_at: Mon, 12 Nov 2018 13:32:13 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/nodes/pve/storage?content=iso
@@ -90,7 +90,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5BE5B0C1::QCmmDkMwjZI8IxswEIQf6Y2PSGb7wcgLiIGxQHhXj3eEfZ5WxhODL1a4NJCwGd4Do4/h83iKY+cKOXOMOFqsGp5QmoedMIZG7VfK2CK0owBDJzLmxclmUcZSdJRI0k2z04V+UbalQeBOkWHNBtvHkuPKgN7d6NaDm1P03CwW01qwU3uHYCZbdkpDf/Fes/P0dloe2izT/97/4eyjNvINClw0mBfkprnzSs/TUjUHu0F5ZTmWKpRJYhbsb4Z7BUlIBGmYipgGPG0VFjZxFSf+XI+uhbqIM5MgBonu1ns+93kbU+L1qOVaTdx+yujFYFf3FMMQzMV8iKED6fdjWFytRQ==
+      - PVEAuthCookie=PVE:root@pam:5BE980DB::HrTqooGcPDfWHUbGQhLn64L50UfEzC9eAVXGfxRt/8/Vs63Lifigqn7hYRQmGLAcUluTshZJyLajfYdTPC32HC+sr0oNjtNnDz7S/Fw8z4bs92kySoj9Km4oUu771vkJ7guEXefSKxgaUB7TiISSdaYJaPtFwbwylhk+tqrAcVTuJFPKRoUyuVAIBhOoVuZZIawWEOlXdmSPtkUjWZ/P5a6DfvwR9I2WRdDR6A1Le379Ea9KtTmd9cr9pksK6fTertlY+trDHAXa6LvV19usFxoZVA7hrh0jgYsQsYeYObJJDCPTrr595cvjF2z8/ZqfCsjCccRBK6j+ylqXrJe4cA==
   response:
     status:
       code: 200
@@ -101,7 +101,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Fri, 09 Nov 2018 16:07:30 GMT
+      - Mon, 12 Nov 2018 13:32:11 GMT
       Pragma:
       - no-cache
       Server:
@@ -111,10 +111,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 09 Nov 2018 16:07:30 GMT
+      - Mon, 12 Nov 2018 13:32:11 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"active":1,"enabled":1,"total":4953096192,"avail":3222577152,"storage":"local","type":"dir","used":1458728960,"content":"backup,vztmpl,iso","shared":0}]}'
+      string: '{"data":[{"total":4953096192,"used":1465561088,"active":1,"avail":3215745024,"type":"dir","storage":"local","shared":0,"enabled":1,"content":"backup,vztmpl,iso"}]}'
     http_version: 
-  recorded_at: Fri, 09 Nov 2018 16:07:31 GMT
+  recorded_at: Mon, 12 Nov 2018 13:32:13 GMT
 recorded_with: VCR 3.0.3
