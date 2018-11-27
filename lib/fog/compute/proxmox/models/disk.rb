@@ -47,6 +47,7 @@ module Fog
         attribute :snapshot
         attribute :backup
         attribute :aio
+        attribute :mp
 
         def controller
           Fog::Proxmox::DiskHelper.extract_controller(id)
