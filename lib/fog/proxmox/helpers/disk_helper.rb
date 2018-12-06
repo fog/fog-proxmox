@@ -80,8 +80,22 @@ module Fog
         [storage, volid, size]
       end
 
+      def self.to_bytes(size)
+	val=size.match(/\d+(\w?)/)
+	case val[1] 
+	  when NIL then m=0
+	  when "K" then m=1
+	  when "M" then m=2
+	  when "G" then m=3
+	  when "T" then m=4
+          when "P" then m=5
+        end
+	val[0].to_i*1024**m
+      end
+
       def self.extract_size(disk_value)
-        extract_option('size', disk_value).to_i
+        size=extract_option('size', disk_value)
+	self.to_bytes(size)
       end
     end
   end

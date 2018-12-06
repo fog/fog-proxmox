@@ -84,13 +84,13 @@ require 'fog/proxmox/helpers/disk_helper'
                 storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(scsi[:scsi0])
                 assert_equal('local-lvm', storage)
                 assert_equal('local-lvm:vm-100-disk-1', volid)
-                assert_equal(8, size)
+                assert_equal(8589934592, size)
             end
             it "returns virtio get local storage volid and size" do
                 storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(virtio[:virtio1])
                 assert_equal('local', storage)
                 assert_equal('local:108/vm-108-disk-1.qcow2', volid)
-                assert_equal(15, size)
+                assert_equal(16106127360, size)
             end
             it "returns scsi0 creation storage and volid" do
                 disk = Fog::Proxmox::DiskHelper.flatten(scsi0)
@@ -115,7 +115,11 @@ require 'fog/proxmox/helpers/disk_helper'
         describe '#extract_size' do
             it "returns size" do
                 size = Fog::Proxmox::DiskHelper.extract_size(scsi[:scsi0])
-                assert_equal(8, size)
+                assert_equal(8589934592, size)
+            end
+            it "returns size" do
+                size = Fog::Proxmox::DiskHelper.extract_size(virtio[:virtio1])
+                assert_equal(16106127360, size)
             end
         end
     end
