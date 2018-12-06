@@ -57,9 +57,10 @@ module Fog
       end
 
       def self.extract_storage_volid_size(disk_value)
+        #volid definition: <VOULME_ID>:=<STORAGE_ID>:<storage type dependent volume name>
         values_a = disk_value.scan(/^(([\w-]+)[:]{0,1}([\w\/\.-]+))/)
         no_cdrom = !disk_value.match(/^(.+)[,]{1}(media=cdrom)$/)
-        creation = disk_value.match(/^(([\w-]+)[:]{1}([\d]+))/)
+        creation = disk_value.split(',')[0].match(/^(([\w-]+)[:]{1}([\d]+))$/)
         values = values_a.first if values_a
         if no_cdrom
           if creation

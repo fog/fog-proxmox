@@ -34,6 +34,14 @@ require 'fog/proxmox/helpers/disk_helper'
             { scsi0: 'local-lvm:vm-100-disk-1,size=8G,cache=none'}
         end
 
+        let(:virtio1) do
+	    { id: 'virtio1', volid: 'local:108/vm-108-disk-1.qcow2,size=15G' }
+	end
+
+	let(:virtio) do
+	    { virtio1: 'local:108/vm-108-disk-1.qcow2,size=15G' }
+	end
+
         let(:cdrom_none) do 
             { ide2: 'none,media=cdrom'}
         end
@@ -54,7 +62,11 @@ require 'fog/proxmox/helpers/disk_helper'
         end
 
         describe '#extract_controller' do
-            it "returns controller" do
+            it "returns virtio controller" do
+                controller = Fog::Proxmox::DiskHelper.extract_controller(virtio1[:id])
+                assert_equal('virtio', controller)
+            end
+            it "returns scsi controller" do
                 controller = Fog::Proxmox::DiskHelper.extract_controller(scsi0[:id])
                 assert_equal('scsi', controller)
             end
@@ -73,6 +85,12 @@ require 'fog/proxmox/helpers/disk_helper'
                 assert_equal('local-lvm', storage)
                 assert_equal('local-lvm:vm-100-disk-1', volid)
                 assert_equal(8, size)
+            end
+            it "returns virtio get local storage volid and size" do
+                storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(virtio[:virtio1])
+                assert_equal('local', storage)
+                assert_equal('local:108/vm-108-disk-1.qcow2', volid)
+                assert_equal(15, size)
             end
             it "returns scsi0 creation storage and volid" do
                 disk = Fog::Proxmox::DiskHelper.flatten(scsi0)
@@ -94,7 +112,6 @@ require 'fog/proxmox/helpers/disk_helper'
                 assert_nil size
             end
         end
-
         describe '#extract_size' do
             it "returns size" do
                 size = Fog::Proxmox::DiskHelper.extract_size(scsi[:scsi0])
