@@ -39,7 +39,7 @@ require 'fog/proxmox/helpers/disk_helper'
 	end
 
 	let(:virtio) do
-	    { virtio1: 'local:108/vm-108-disk-1.qcow2,size=15G' }
+	    { virtio1: 'local:108/vm-108-disk-1.qcow2,size=245'}
 	end
 
         let(:cdrom_none) do 
@@ -90,7 +90,7 @@ require 'fog/proxmox/helpers/disk_helper'
                 storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(virtio[:virtio1])
                 assert_equal('local', storage)
                 assert_equal('local:108/vm-108-disk-1.qcow2', volid)
-                assert_equal(16106127360, size)
+                assert_equal(245, size)
             end
             it "returns scsi0 creation storage and volid" do
                 disk = Fog::Proxmox::DiskHelper.flatten(scsi0)
@@ -119,7 +119,7 @@ require 'fog/proxmox/helpers/disk_helper'
             end
             it "returns size" do
                 size = Fog::Proxmox::DiskHelper.extract_size(virtio[:virtio1])
-                assert_equal(16106127360, size)
+                assert_equal(245, size)
             end
         end
     end

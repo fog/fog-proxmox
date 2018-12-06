@@ -82,8 +82,8 @@ module Fog
 
       def self.to_bytes(size)
 	val=size.match(/\d+(\w?)/)
+	m=0
 	case val[1] 
-	  when NIL then m=0
 	  when "K" then m=1
 	  when "M" then m=2
 	  when "G" then m=3
