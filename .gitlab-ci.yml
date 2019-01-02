@@ -16,6 +16,7 @@ dependency_scanning:
     paths: [gl-dependency-scanning-report.json]
 
 rubocop:
+  image: ruby:2.5.1
   script:
     - bundle install --binstubs
     - rubocop
