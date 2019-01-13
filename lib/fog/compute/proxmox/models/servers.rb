@@ -56,8 +56,10 @@ module Fog
         def get(vmid)
           requires :node
           path_params = { node: node, type: type, vmid: vmid }
-          server_data = service.get_server_status path_params
+          server_data = service.get_server_status(path_params)
+          server_data = server_data.first if server_data.is_a?(Array)
           config_data = service.get_server_config path_params
+          config_data = config_data.first if config_data.is_a?(Array)
           data = server_data.merge(config_data).merge(node: node, vmid: vmid)
           new(data)
         end
