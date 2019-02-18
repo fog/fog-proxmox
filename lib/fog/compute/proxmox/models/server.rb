@@ -62,11 +62,11 @@ module Fog
 
         def type
           attributes[:type]
-        end 
+        end
 
         def request(name, body_params = {}, path_params = {})
           requires :node, :type
-          path = path_params.merge(node: node, type: type)
+          path = path_params.merge(node: node.to_s, type: type)
           task_upid = service.send(name, path, body_params)
           tasks.wait_for(task_upid)
         end
