@@ -26,13 +26,11 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Compute
     class Proxmox
       # class Volume model
-      class Volume < Fog::Proxmox::Model
+      class Volume < Fog::Model
         identity  :volid
         attribute :content
         attribute :size

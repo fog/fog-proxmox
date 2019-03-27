@@ -26,13 +26,11 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Identity
     class Proxmox
       # class User model
-      class User < Fog::Proxmox::Model
+      class User < Fog::Model
         identity :userid
         attribute :firstname
         attribute :lastname

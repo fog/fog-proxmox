@@ -26,27 +26,29 @@ module Fog
       # class Snapshots Collection of snapshots
       class Snapshots < Fog::Proxmox::Collection
         model Fog::Compute::Proxmox::Snapshot
-        attribute :server
+        attribute :server_id
+        attribute :server_type
+        attribute :node_id
 
         def new(attributes = {})
-          requires :server
-          super({ server: server }.merge!(attributes))
+          requires :node_id, :server_id, :server_type
+          super({ node_id: node_id, server_id: server_id, server_type: server_type }.merge(attributes))
         end
 
         def all
-          requires :server
-          path_params = { node: server.node, type: server.type, vmid: server.vmid }
+          requires :node_id, :server_id, :server_type
+          path_params = { node: node_id, type: server_type, vmid: server_id }
           load_response(service.list_snapshots(path_params), 'snapshots')
         end
 
         def get(name)
-          requires :server
+          requires :node_id, :server_id, :server_type
           cached_snapshot = find { |snapshot| snapshot.name == name }
           return cached_snapshot if cached_snapshot
-          path_params = { node: server.node, type: server.type, vmid: server.vmid, snapname: name }
+          path_params = { node: node_id, type: server_type, vmid: server_id, snapname: name }
           snapshot_hash = service.get_snapshot(path_params)
           Fog::Compute::Proxmox::Snapshot.new(
-            snapshot_hash.merge(service: service, server: server, name: name)
+            snapshot_hash.merge(service: service, node_id: node_id, server_id: server_id, server_type: server_type, name: name)
           )
         end
       end

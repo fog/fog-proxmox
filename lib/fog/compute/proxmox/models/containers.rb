@@ -35,7 +35,7 @@ module Fog
         end
 
         def new(attributes = {})
-          super({ node: node, type: type }.merge(attributes))
+          super({ node_id: node_id, type: type }.merge(attributes))
         end
       end
     end

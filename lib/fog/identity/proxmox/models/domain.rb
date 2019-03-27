@@ -25,13 +25,11 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Identity
     class Proxmox
       # class Domain model authentication
-      class Domain < Fog::Proxmox::Model
+      class Domain < Fog::Model
         identity :realm
         attribute :type
         def to_s

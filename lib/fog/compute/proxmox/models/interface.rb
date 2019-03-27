@@ -26,13 +26,11 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Compute
     class Proxmox
       # class Interface model
-      class Interface < Fog::Proxmox::Model
+      class Interface < Fog::Model
         identity  :id
         attribute :mac
         attribute :model

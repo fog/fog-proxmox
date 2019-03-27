@@ -25,7 +25,7 @@ module Fog
       # Servers Collection
       class Servers < Fog::Proxmox::Collection
         model Fog::Compute::Proxmox::Server
-        attribute :node
+        attribute :node_id
 
         def initialize(attributes = {})
           super(attributes)
@@ -36,14 +36,14 @@ module Fog
         end
 
         def new(attributes = {})
-          super({ node: node, type: type }.merge(attributes))
+          requires :node_id
+          super({ node_id: node_id, type: type }.merge(attributes))
         end
 
         def next_id
           response = service.next_vmid
           body = JSON.decode(response.body)
           data = body['data']
-          Integer(data)
         end
 
         def id_valid?(vmid)
@@ -54,17 +54,18 @@ module Fog
         end
 
         def get(vmid)
-          requires :node
-          path_params = { node: node, type: type, vmid: vmid }
+          requires :node_id
+          path_params = { node: node_id, type: type, vmid: vmid }
           server_data = service.get_server_status path_params
           config_data = service.get_server_config path_params
-          data = server_data.merge(config_data).merge(node: node, vmid: vmid)
+          data = server_data.merge(config_data).merge(node: node_id, vmid: vmid)
           new(data)
         end
 
         def all(options = {})
-          body_params = options.merge(node: node, type: type)
-          load_response(service.list_servers(body_params), 'servers')
+          requires :node_id
+          body_params = options.merge(node: node_id, type: type)
+          load_response(service.list_servers(body_params), 'servers', ['node'])
         end
       end
     end

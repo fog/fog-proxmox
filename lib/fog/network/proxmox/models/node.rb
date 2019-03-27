@@ -26,13 +26,11 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Network
     class Proxmox
       # class Node model of VMs
-      class Node < Fog::Proxmox::Model
+      class Node < Fog::Model
         identity  :node
         attribute :status
         attribute :wait

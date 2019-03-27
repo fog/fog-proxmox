@@ -26,13 +26,11 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Compute
     class Proxmox
       # class Storage model
-      class Storage < Fog::Proxmox::Model
+      class Storage < Fog::Model
         identity  :storage
         attribute :node
         attribute :content

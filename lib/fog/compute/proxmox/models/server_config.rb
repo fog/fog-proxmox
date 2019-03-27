@@ -20,13 +20,12 @@
 require 'fog/proxmox/variables'
 require 'fog/proxmox/helpers/nic_helper'
 require 'fog/proxmox/helpers/controller_helper'
-require 'fog/proxmox/models/model'
 
 module Fog
   module Compute
     class Proxmox
       # ServerConfig model
-      class ServerConfig < Fog::Proxmox::Model
+      class ServerConfig < Fog::Model
         identity  :vmid
         attribute :digest
         attribute :description
@@ -57,8 +56,8 @@ module Fog
 
         def initialize(attributes = {})
           prepare_service_value(attributes)
-          compute_nets(attributes)
-          compute_disks(attributes)
+          initialize_interfaces(attributes)
+          initialize_disks(attributes)
           super(attributes)
         end
 
@@ -67,7 +66,6 @@ module Fog
         end
 
         attr_reader :disks
-
         attr_reader :interfaces
 
         def type_console
@@ -79,7 +77,7 @@ module Fog
 
         private
 
-        def compute_nets(attributes)
+        def initialize_interfaces(attributes)
           nets = Fog::Proxmox::NicHelper.collect_nics(attributes)
           @interfaces ||= Fog::Compute::Proxmox::Interfaces.new
           nets.each do |key, value|
@@ -94,7 +92,7 @@ module Fog
           end
         end
 
-        def compute_disks(attributes)
+        def initialize_disks(attributes)
           controllers = Fog::Proxmox::ControllerHelper.collect_controllers(attributes)
           @disks ||= Fog::Compute::Proxmox::Disks.new
           controllers.each do |key, value|

@@ -26,13 +26,11 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Identity
     class Proxmox
       # class Yubico Two factor authentification
-      class Yubico < Fog::Proxmox::Model
+      class Yubico < Fog::Model
         identity :type
         attribute :id
         attribute :key

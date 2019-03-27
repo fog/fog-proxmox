@@ -27,7 +27,7 @@ module Fog
       # Server model
       class Server < Fog::Compute::Server
         identity  :vmid
-        attribute :id
+        attribute :node_id
         attribute :node
         attribute :config
         attribute :name
@@ -53,20 +53,30 @@ module Fog
         attribute :balloon
         attribute :ballooninfo
         attribute :snapshots
+        attribute :template
+        attribute :tasks
+        attribute :vmgenid
 
         def initialize(attributes = {})
           prepare_service_value(attributes)
-          set_config(attributes)
-          super
+          initialize_config(attributes)
+          super(attributes)
         end
 
         def type
           attributes[:type]
         end 
 
+        def node
+          attributes[:node] = node_id.nil? ? nil : begin
+            Fog::Compute::Proxmox::Node.new(service: service,
+                                             node: node_id)
+          end
+        end 
+
         def request(name, body_params = {}, path_params = {})
-          requires :node, :type
-          path = path_params.merge(node: node, type: type)
+          requires :node_id, :type
+          path = path_params.merge(node: node_id, type: type)
           task_upid = service.send(name, path, body_params)
           tasks.wait_for(task_upid)
         end
@@ -119,9 +129,9 @@ module Fog
           request(:clone_server, options.merge(newid: newid), vmid: vmid)
         end
 
-        def template(options = {})
-          requires :vmid, :node
-          service.template_server({ node: node, type: type, vmid: vmid }, options)
+        def create_template(options = {})
+          requires :vmid, :node_id
+          service.template_server({ node: node_id, type: type, vmid: vmid }, options)
         end
 
         def migrate(target, options = {})
@@ -130,8 +140,8 @@ module Fog
         end
 
         def extend(disk, size, options = {})
-          requires :vmid, :node
-          service.resize_server({ node: node, vmid: vmid }, options.merge(disk: disk, size: size))
+          requires :vmid, :node_id
+          service.resize_server({ node: node_id, vmid: vmid }, options.merge(disk: disk, size: size))
         end
 
         def move(disk, storage, options = {})
@@ -148,20 +158,23 @@ module Fog
           update(delete: diskid)
         end
 
-        def set_config(attributes = {})
-          @config = Fog::Compute::Proxmox::ServerConfig.new({ service: service, vmid: vmid }.merge(attributes))
+        def config
+          requires :vmid
+          path_params = { node: node_id, type: type, vmid: vmid }
+          attributes[:config] ||= vmid.nil? ? nil : begin
+            Fog::Compute::Proxmox::ServerConfig.new({ service: service, vmid: vmid }.merge(service.get_server_config(path_params)))
+          end
         end
 
-        def config
-          path_params = { node: node, type: type, vmid: vmid }
-          set_config(service.get_server_config(path_params)) if uptime
-          @config
+        def initialize_config(attributes = {})
+          attributes[:config] ||= vmid.nil? ? nil : begin
+            Fog::Compute::Proxmox::ServerConfig.new(service: service, vmid: vmid)
+          end
         end
 
         def snapshots
-          @snapshots ||= begin
-            Fog::Compute::Proxmox::Snapshots.new(service: service,
-                                                 server: self)
+          attributes[:snapshots] ||= vmid.nil? ? [] : begin
+            Fog::Compute::Proxmox::Snapshots.new(service: service, server_id: vmid, server_type: type, node_id: node_id)
           end
         end
 
@@ -181,15 +194,18 @@ module Fog
         end
 
         def tasks
-          node.tasks.search(vmid: vmid)
+          attributes[:tasks] ||= vmid.nil? ? [] : begin
+            Fog::Compute::Proxmox::Tasks.new(service: service,
+              node_id: node_id).select { |task| task.id == vmid }
+          end
         end
 
         def start_console(options = {})
           raise ::Fog::Proxmox::Errors::ServiceError, "Unable to start console because server not running." unless ready?
           type_console = config.type_console
           raise ::Fog::Proxmox::Errors::ServiceError, "Unable to start console because VGA display server config is not set or unknown." unless type_console
-          requires :vmid, :node, :type
-          path_params = { node: node, type: type, vmid: vmid }
+          requires :vmid, :node_id, :type
+          path_params = { node: node_id, type: type, vmid: vmid }
           body_params = options
           data = service.send(('create_' + type_console).to_sym, path_params, body_params)
           task_upid = data['upid']
@@ -201,8 +217,8 @@ module Fog
         end
 
         def connect_vnc(options = {})
-          requires :vmid, :node, :type
-          path_params = { node: node, type: type, vmid: vmid }
+          requires :vmid, :node_id, :type
+          path_params = { node: node_id, type: type, vmid: vmid }
           query_params = { port: options['port'], vncticket: options['ticket'] }
           service.get_vnc(path_params, query_params)
         end

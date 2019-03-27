@@ -138,7 +138,7 @@ describe Fog::Compute::Proxmox do
       # Get clone
       clone = node.servers.get newid
       # Template this clone (read-only)
-      clone.template
+      clone.create_template
       # Get clone disk image
       image = clone.images.first
       image.wont_be_nil
@@ -168,12 +168,13 @@ describe Fog::Compute::Proxmox do
       server.update(config_hash)
       # server config
       config = server.config
-      config.identity.must_equal vmid
+      # config.identity.must_equal vmid
       disks = server.config.disks
       nics = server.config.interfaces
       nics.wont_be_nil
       nics.wont_be_empty
-      nics.get('net0').wont_be_nil
+      net0 = nics.get('net0')
+      net0.wont_be_nil
       disks.wont_be_nil
       disks.wont_be_empty
       virtio0 = disks.get('virtio0')
@@ -185,7 +186,6 @@ describe Fog::Compute::Proxmox do
       mac_address.wont_be_nil
       # all servers
       servers_all = node.servers.all
-      servers_all.wont_be_nil
       servers_all.wont_be_empty
       servers_all.must_include server
       # server not running exception

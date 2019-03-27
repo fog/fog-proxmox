@@ -23,7 +23,7 @@ module Fog
     # Procmox storage service
     class Proxmox < Fog::Service
       # Models
-      model_path 'fog/storage/proxmox/models'
+      model_path 'fog/storage/proxmox'
     end
   end
 end

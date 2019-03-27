@@ -26,15 +26,13 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Compute
     class Proxmox
       # class Task model of a node
-      class Task < Fog::Proxmox::Model
+      class Task < Fog::Model
         identity  :upid
-        attribute :node
+        attribute :node_id, aliases: :node
         attribute :status
         attribute :exitstatus
         attribute :pid
@@ -48,8 +46,8 @@ module Fog
         attribute :log
 
         def new(attributes = {})
-          requires :node
-          super({ node: node }.merge(attributes))
+          requires :node_id
+          super({ node_id: node_id }.merge(attributes))
         end
 
         def to_s
@@ -69,8 +67,8 @@ module Fog
         end
 
         def stop
-          requires :node, :upid
-          service.stop_task(node, upid)
+          requires :node_id, :upid
+          service.stop_task(node_id, upid)
         end
 
         def reload

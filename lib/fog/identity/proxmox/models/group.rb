@@ -26,13 +26,11 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Identity
     class Proxmox
       # class Group model authentication
-      class Group < Fog::Proxmox::Model
+      class Group < Fog::Model
         identity  :groupid
         attribute :comment
         def to_s

@@ -25,7 +25,7 @@ module Fog
   module Compute
     class Proxmox
       # ContainerConfig model
-      class ContainerConfig < Fog::Proxmox::Model
+      class ContainerConfig < Fog::Model
         identity  :vmid
         attribute :digest
         attribute :ostype
