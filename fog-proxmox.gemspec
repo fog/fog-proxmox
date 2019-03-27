@@ -40,7 +40,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.3'
   spec.rubygems_version = '~> 2.6'
 
-  spec.add_development_dependency 'bundler', '~> 1.16'
+  spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'debase', '~> 0.2.2'
   spec.add_development_dependency 'debride', '~> 1.8'
   spec.add_development_dependency 'fasterer', '~> 0.3'
