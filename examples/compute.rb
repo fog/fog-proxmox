@@ -105,22 +105,19 @@ server.update(config_hash)
 config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26', kvm: 0 }
 server.update(config_hash)
 # Get configuration model
-config = server.get_config
+config = server.config
 # Get nics config
-nics = server.get_config.nics
+nics = server.config.nics
 nics[:net0]
 # Get hdd controllers (ide, sata, scsi or virtio) config
 # All return hashes with key equals to controller id
-ides = server.get_config.ides
-ides[:ide2]
-satas = server.get_config.satas
-scsis = server.get_config.scsis
-virtios = server.get_config.virtios
-virtios[:virtio0]
+disks = server.config.disks
+ide0 = disks.get('ide0')
+virtio0 = disks.get('virtio0')
 # Get mac_addresses
-server.get_config.mac_adresses
+server.config.mac_adresses
 # List all servers
-servers_all = compute.servers.all
+servers_all = node.servers.all
 
 # Start server
 server.action('start')
@@ -167,7 +164,7 @@ snapshot.update
 snapshot.destroy
 
 # Fetch disk images
-server.disk_images.all
+server.config.disks
 
 # Delete server
 server.destroy

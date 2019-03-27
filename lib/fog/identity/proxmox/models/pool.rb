@@ -26,13 +26,11 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Identity
     class Proxmox
       # class Pool model of VMs
-      class Pool < Fog::Proxmox::Model
+      class Pool < Fog::Model
         identity  :poolid
         attribute :comment
         attribute :members

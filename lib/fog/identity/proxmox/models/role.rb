@@ -26,13 +26,11 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Identity
     class Proxmox
       # class Role model authentication
-      class Role < Fog::Proxmox::Model
+      class Role < Fog::Model
         identity :roleid
         attribute :privs
         attribute :append

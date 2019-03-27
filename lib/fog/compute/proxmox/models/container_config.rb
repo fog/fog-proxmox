@@ -25,7 +25,7 @@ module Fog
   module Compute
     class Proxmox
       # ContainerConfig model
-      class ContainerConfig < Fog::Proxmox::Model
+      class ContainerConfig < Fog::Model
         identity  :vmid
         attribute :digest
         attribute :ostype
@@ -58,8 +58,8 @@ module Fog
 
         def initialize(attributes = {})
           prepare_service_value(attributes)
-          compute_nets(attributes)
-          compute_mps(attributes)
+          initialize_interfaces(attributes)
+          initialize_mount_points(attributes)
           super(attributes)
         end
 
@@ -77,7 +77,7 @@ module Fog
 
         private
 
-        def compute_nets(attributes)
+        def initialize_interfaces(attributes)
           nets = Fog::Proxmox::NicHelper.collect_nics(attributes)
           @interfaces ||= Fog::Compute::Proxmox::Interfaces.new
           nets.each do |key, value|
@@ -92,7 +92,7 @@ module Fog
           end
         end
 
-        def compute_mps(attributes)
+        def initialize_mount_points(attributes)
           controllers = Fog::Proxmox::ControllerHelper.collect_controllers(attributes)
           @mount_points ||= Fog::Compute::Proxmox::Disks.new
           controllers.each do |key, value|

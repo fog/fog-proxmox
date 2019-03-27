@@ -26,15 +26,13 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Compute
     class Proxmox
       # class Storage model
-      class Storage < Fog::Proxmox::Model
+      class Storage < Fog::Model
         identity  :storage
-        attribute :node
+        attribute :node_id, aliases: :node
         attribute :content
         attribute :type
         attribute :avail
@@ -52,7 +50,7 @@ module Fog
         def volumes
           @volumes ||= begin
             Fog::Compute::Proxmox::Volumes.new(service: service,
-                                               node: node, storage: self)
+                                               node_id: node_id, storage_id: storage)
           end
         end
       end

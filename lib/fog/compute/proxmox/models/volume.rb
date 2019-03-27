@@ -26,34 +26,32 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Compute
     class Proxmox
       # class Volume model
-      class Volume < Fog::Proxmox::Model
+      class Volume < Fog::Model
         identity  :volid
         attribute :content
         attribute :size
         attribute :format
-        attribute :node
-        attribute :storage
+        attribute :node_id
+        attribute :storage_id
         attribute :vmid
 
         def new(attributes = {})
-          requires :node, :storage
-          super({ node: node, storage: storage }.merge(attributes))
+          requires :node_id, :storage_id
+          super({ node_id: node_id, storage_id: storage_id }.merge(attributes))
         end
 
         def destroy
-          requires :node, :volid, :storage
-          service.delete_volume(node, storage, volid)
+          requires :node_id, :volid, :storage_id
+          service.delete_volume(node_id, storage_id, volid)
         end
 
         def restore(vmid, options = {})
-          requires :node, :volid, :storage
-          service.create_server(node, options.merge(archive: volid, storage: storage, vmid: vmid))
+          requires :node_id, :volid, :storage_id
+          service.create_server(node_id, options.merge(archive: volid, storage: storage_id, vmid: vmid))
         end
       end
     end

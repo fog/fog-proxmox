@@ -25,13 +25,11 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Identity
     class Proxmox
       # class LDAP authentication
-      class Ldap < Fog::Proxmox::Model
+      class Ldap < Fog::Model
         identity :type
         attribute :base_dn
         attribute :bind_dn

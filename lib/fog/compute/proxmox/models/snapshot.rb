@@ -25,42 +25,51 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Compute
     class Proxmox
       # class Snapshot model
-      class Snapshot < Fog::Proxmox::Model
+      class Snapshot < Fog::Model
         identity  :name
         attribute :description
         attribute :snaptime
         attribute :vmstate
+        attribute :node_id
+        attribute :server_id
+        attribute :server_type
         attribute :server
+        attribute :vmgenid
+
+        def server
+          requires :node_id, :server_id, :server_type
+          attributes[:server] ||= server_id.nil? ? nil : begin
+            Fog::Compute::Proxmox::Server.new(service: service, node_id: node_id, type: server_type, vmid: server_id)
+          end
+        end
 
         def create(options = {})
-          requires :server
-          path_params = { node: server.node, type: server.type, vmid: server.vmid }
+          requires :node_id, :server_id, :server_type
+          path_params = { node: node_id, type: server_type, vmid: server_id }
           body_params = options
           server.tasks.wait_for(service.create_snapshot(path_params, body_params))
         end
 
         def update
-          requires :name, :server
-          path_params = { node: server.node, type: server.type, vmid: server.vmid, snapname: name }
+          requires :name, :node_id, :server_id, :server_type
+          path_params = { node: node_id, type: server_type, vmid: server_id, snapname: name }
           body_params = { description: description }
           service.update_snapshot(path_params, body_params)
         end
 
         def rollback
-          requires :name, :server
-          path_params = { node: server.node, type: server.type, vmid: server.vmid, snapname: name }
+          requires :name, :node_id, :server_id, :server_type
+          path_params = { node: node_id, type: server_type, vmid: server_id, snapname: name }
           server.tasks.wait_for(service.rollback_snapshot(path_params))
         end
 
         def destroy(force = 0)
-          requires :name, :server
-          path_params = { node: server.node, type: server.type, vmid: server.vmid, snapname: name }
+          requires :name, :node_id, :server_id, :server_type
+          path_params = { node: node_id, type: server_type, vmid: server_id, snapname: name }
           query_params = { force: force }
           server.tasks.wait_for(service.delete_snapshot(path_params, query_params))
         end

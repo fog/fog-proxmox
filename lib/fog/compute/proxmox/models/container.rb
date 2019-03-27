@@ -32,36 +32,24 @@ module Fog
         attribute :config
 
         def restore(backup, options = {})
-          requires :node, :vmid
-          path_params = { node: node, type: type }
-          body_params = options.merge(vmid: vmid, ostemplate: backup.volid, force: 1, restore: 1)
-          task_upid = service.create_server(path_params, body_params)
-          tasks.wait_for(task_upid)
+          request(:create_server, options.merge(vmid: vmid, ostemplate: backup.volid, force: 1, restore: 1), vmid: vmid)
         end
 
         def move(volume, storage, options = {})
-          requires :vmid, :node
-          path_params = { node: node, vmid: vmid }
-          body_params = options.merge(volume: volume, storage: storage)
-          task_upid = service.move_volume(path_params, body_params)
-          tasks.wait_for(task_upid)
+          request(:move_volume, options.merge(volume: volume, storage: storage), vmid: vmid)
         end
 
-        def update(config = {})
-          requires :node, :vmid
-          path_params = { node: node, type: type, vmid: vmid }
-          body_params = config
-          service.update_server(path_params, body_params)
-        end
-
-        def set_config(attributes = {})
-          @config = Fog::Compute::Proxmox::ContainerConfig.new({ service: service, vmid: vmid }.merge(attributes))
+        def update(attributes = {})
+          requires :vmid
+          request(:update_server, attributes, vmid: vmid)
         end
 
         def config
-          path_params = { node: node, type: type, vmid: vmid }
-          set_config(service.get_server_config(path_params)) if uptime
-          @config
+          requires :node_id, :vmid, :type
+          path_params = { node: node_id, type: type, vmid: vmid }
+          attributes[:config] ||= vmid.nil? ? nil : begin
+            Fog::Compute::Proxmox::ContainerConfig.new({ service: service, vmid: vmid }.merge(service.get_server_config(path_params)))
+          end
         end
 
         def detach(mpid)
@@ -69,8 +57,8 @@ module Fog
         end
 
         def extend(disk, size, options = {})
-          requires :vmid, :node
-          path_params = { node: node, vmid: vmid }
+          requires :vmid, :node_id
+          path_params = { node: node_id, vmid: vmid }
           body_params = options.merge(disk: disk, size: size)
           task_upid = service.resize_container(path_params, body_params)
           tasks.wait_for(task_upid)
@@ -79,6 +67,14 @@ module Fog
         def action(action, options = {})
           raise Fog::Errors::Error, "Action #{action} not implemented" unless %w[start stop shutdown].include? action
           super
+        end
+
+        private
+
+        def initialize_config(attributes = {})
+          attributes[:config] ||= vmid.nil? ? nil : begin
+            Fog::Compute::Proxmox::ContainerConfig.new({ service: service, vmid: vmid }.merge(attributes))
+          end
         end
       end
     end

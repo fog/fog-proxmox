@@ -26,12 +26,12 @@ module Fog
       # class Volumes Collection of volumes
       class Volumes < Fog::Proxmox::Collection
         model Fog::Compute::Proxmox::Volume
-        attribute :node
-        attribute :storage
+        attribute :node_id
+        attribute :storage_id
 
         def new(attributes = {})
-          requires :node, :storage
-          super({ node: node, storage: storage }.merge(attributes))
+          requires :node_id, :storage_id
+          super({ node_id: node_id, storage_id: storage_id }.merge(attributes))
         end
 
         def all
@@ -39,8 +39,8 @@ module Fog
         end
 
         def search(options = {})
-          requires :node, :storage
-          load_response(service.list_volumes(node, storage, options), 'volumes')
+          requires :node_id, :storage_id
+          load_response(service.list_volumes(node_id, storage_id, options), 'volumes')
         end
 
         def list_by_content_type(content)

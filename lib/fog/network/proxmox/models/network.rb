@@ -26,13 +26,11 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Network
     class Proxmox
       # class Network model
-      class Network < Fog::Proxmox::Model
+      class Network < Fog::Model
         identity  :iface
         attribute :node
         attribute :comments

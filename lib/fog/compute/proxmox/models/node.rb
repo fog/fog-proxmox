@@ -26,13 +26,11 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Compute
     class Proxmox
       # class Node model of VMs
-      class Node < Fog::Proxmox::Model
+      class Node < Fog::Model
         identity  :node
         attribute :status
         attribute :wait
@@ -56,30 +54,30 @@ module Fog
         end
 
         def tasks
-          @tasks ||= begin
+          attributes[:tasks] ||= node.nil? ? [] : begin
             Fog::Compute::Proxmox::Tasks.new(service: service,
-                                             node: self)
-          end
+                                             node_id: node)
+            end
         end
 
         def servers
-          @servers ||= begin
+          attributes[:servers] ||= node.nil? ? [] : begin
             Fog::Compute::Proxmox::Servers.new(service: service,
-                                               node: self)
+              node_id: node)
           end
         end
 
         def containers
-          @containers ||= begin
+          attributes[:containers] ||= node.nil? ? [] : begin
             Fog::Compute::Proxmox::Containers.new(service: service,
-                                                  node: self)
+              node_id: node)
           end
         end
 
         def storages
-          @storages ||= begin
+          attributes[:storages] ||= node.nil? ? [] : begin
             Fog::Compute::Proxmox::Storages.new(service: service,
-                                                node: self)
+              node_id: node)
           end
         end
 

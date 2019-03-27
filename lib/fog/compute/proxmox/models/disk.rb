@@ -26,14 +26,13 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
 require 'fog/proxmox/helpers/disk_helper'
 
 module Fog
   module Compute
     class Proxmox
       # class Disk model
-      class Disk < Fog::Proxmox::Model
+      class Disk < Fog::Model
         identity  :id
         attribute :volid
         attribute :size

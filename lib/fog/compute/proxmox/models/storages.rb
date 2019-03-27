@@ -26,11 +26,11 @@ module Fog
       # class Storages Collection of storages
       class Storages < Fog::Proxmox::Collection
         model Fog::Compute::Proxmox::Storage
-        attribute :node
+        attribute :node_id
 
         def new(attributes = {})
-          requires :node
-          super({ node: node }.merge(attributes))
+          requires :node_id
+          super({ node_id: node_id }.merge(attributes))
         end
 
         def all
@@ -38,8 +38,8 @@ module Fog
         end
 
         def search(options = {})
-          requires :node
-          load_response(service.list_storages(node, options), 'storages')
+          requires :node_id
+          load_response(service.list_storages(node_id, options), 'storages')
         end
 
         def list_by_content_type(content)
@@ -49,7 +49,7 @@ module Fog
         def find_by_id(id)
           cached_storage = find { |storage| storage.storage == id }
           return cached_storage if cached_storage
-          storage_hash = service.get_storage(node, id, {})
+          storage_hash = service.get_storage(node_id, id, {})
           Fog::Compute::Proxmox::Storage.new(
             storage_hash.merge(service: service)
           )

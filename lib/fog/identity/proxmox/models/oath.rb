@@ -26,13 +26,11 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/models/model'
-
 module Fog
   module Identity
     class Proxmox
       # class Oath two factors authentication
-      class Oath < Fog::Proxmox::Model
+      class Oath < Fog::Model
         identity :type
         attribute :step
         attribute :digits
