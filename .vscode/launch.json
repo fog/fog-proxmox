@@ -9,8 +9,6 @@
             "cwd": "${workspaceRoot}",
             "program": "${workspaceRoot}/main.rb",
             "useBundler": true,
-            "pathToBundler": "/home/tristan/.rbenv/shims/bundler", // linux rbenv
-            "pathToRDebugIDE": "/home/tristan/.rbenv/shims/rdebug-ide",
         },
         {
             "name": "Listen for rdebug-ide",
@@ -38,8 +36,6 @@
             "cwd": "${workspaceRoot}",
             "program": "${workspaceRoot}/bin/rspec",
             "useBundler": true,
-            "pathToBundler": "/home/tristan/.rbenv/shims/bundler", // linux rbenv
-            "pathToRDebugIDE": "/home/tristan/.rbenv/shims/rdebug-ide",
             "showDebuggerOutput": true,
             "env": {
                 "DISABLE_PROXY": true,
@@ -61,8 +57,6 @@
             "cwd": "${workspaceRoot}",
             "program": "${workspaceRoot}/bin/rspec",
             "useBundler": true,
-            "pathToBundler": "/home/tristan/.rbenv/shims/bundler", // linux rbenv
-            "pathToRDebugIDE": "/home/tristan/.rbenv/shims/rdebug-ide",
             "showDebuggerOutput": true,
             "env": {
                 "DISABLE_PROXY": true,
@@ -85,8 +79,6 @@
             "cwd": "${workspaceRoot}",
             "program": "${workspaceRoot}/bin/rake",
             "useBundler": true,
-            "pathToBundler": "/home/tristan/.rbenv/shims/bundler", // linux rbenv
-            "pathToRDebugIDE": "/home/tristan/.rbenv/shims/rdebug-ide",
             "showDebuggerOutput": true,
             "env": {
                 "DISABLE_PROXY": true,
