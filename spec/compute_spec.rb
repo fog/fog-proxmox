@@ -51,7 +51,7 @@ describe Fog::Compute::Proxmox do
       # Stop task
       task.stop
       task.wait_for { finished? }
-      task.succeeded?.must_equal true
+      task.finished?.must_equal true
     end
   end
 

@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5B19418B::DdFKvPVhxmKCp4l6rFxE3hMNyY7IX0uZaoDTZL7u6CxNilzUSIfg6mSi6H5caZo2QRoK+73eWS3WV45dXANK7SjWw/pdkzSB9hreHKtohvg7G+Y///qRF6GcB4bzUxlHsK5Emm5FfrhYkoBwXz6p+kwpZVe6sa7munnVtEn5eB1471Qj2DlFzlB8yPVfHGBFvfCoqUh8XUomwU50Kpd6tPRCDwYaxXH2Guk2i4ZD6gxDrqCB+q1lw2LRAq7wG8UsG7HIqtDIsXDRKr0cdE3VxFN5Kgx73QXGtSmzl+BCDIwADUIphcTTZMnW0H3PeA/bDZ7L/Nu8nSHG7TtumMZN5A==
+      - PVEAuthCookie=PVE:root@pam:5C9CA33E::tlWFpFLqRzml1nfbvRZpbNKjjgTCFf+cP2Pm9+Pbmf+jc3rTDqXXNyhTQ449I33PAxLePijwpx6K0dcGBcKiFtUD88dEfaKUNX10HoEMcacYg6w/FY6mLaQVDeLye8lW/IbZ3vQx3LNHzWxi2FC4G4uLR0TGdwuvI7R/Ml53nuSm0bBCQBvjyxsKBOjB8lh/xhXy2njbY6isk/4ceYU/iDZS49SCe48SyiL8DlH8d7CtCrVZiCxn0RU5H5+t1J73e4Hu8cdQLvLobwVN/IWsR0qC1J/58sKL1Vg9k3BYIrhxvyvTDJI/1l66t+h9X6HZ8eoxuh8gMSHvIBfSTY1Ptw==
   response:
     status:
       code: 200
@@ -23,7 +23,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Thu, 07 Jun 2018 14:30:35 GMT
+      - Thu, 28 Mar 2019 10:34:38 GMT
       Pragma:
       - no-cache
       Server:
@@ -33,10 +33,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 07 Jun 2018 14:30:35 GMT
+      - Thu, 28 Mar 2019 10:34:38 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"release":"1","version":"5.2","keyboard":"fr","repoid":"0fcd7879"}}'
+      string: '{"data":{"release":"8","version":"5.3","keyboard":"fr","repoid":"2929af8e"}}'
     http_version: 
-  recorded_at: Thu, 07 Jun 2018 14:30:36 GMT
+  recorded_at: Thu, 28 Mar 2019 10:34:39 GMT
 recorded_with: VCR 3.0.3
