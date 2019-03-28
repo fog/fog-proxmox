@@ -66,6 +66,13 @@ module Fog
           attributes[:type]
         end 
 
+        def node
+          attributes[:node] = node_id.nil? ? nil : begin
+            Fog::Compute::Proxmox::Node.new(service: service,
+                                             node: node_id)
+          end
+        end 
+
         def request(name, body_params = {}, path_params = {})
           requires :node_id, :type
           path = path_params.merge(node: node_id, type: type)
