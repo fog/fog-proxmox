@@ -41,3 +41,10 @@ test-ruby-2.5.1:
     - bundle install --binstubs
     - bundle exec rake test
     - bundle exec rake spec
+
+test-ruby-2.6.2:
+  image: ruby:2.6.2
+  script:
+    - bundle install --binstubs
+    - bundle exec rake test
+    - bundle exec rake spec
