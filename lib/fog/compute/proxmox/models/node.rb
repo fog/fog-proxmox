@@ -56,13 +56,8 @@ module Fog
         def tasks
           attributes[:tasks] ||= node.nil? ? [] : begin
             Fog::Compute::Proxmox::Tasks.new(service: service,
-<<<<<<< HEAD
                                              node_id: node)
             end
-=======
-                                             node: node)
-          end
->>>>>>> 566bc9fefc2a4f22709bc85e64005eb3cac44d29
         end
 
         def servers

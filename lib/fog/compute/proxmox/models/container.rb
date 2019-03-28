@@ -39,15 +39,18 @@ module Fog
           request(:move_volume, options.merge(volume: volume, storage: storage), vmid: vmid)
         end
 
+        # no async task in container update
         def update(attributes = {})
-          requires :vmid
-          request(:update_server, attributes, vmid: vmid)
+          requires :node, :vmid, :type
+          path_params = { node: node, type: type, vmid: vmid }
+          body_params = attributes
+          service.update_server(path_params, body_params)
         end
 
         def config
           requires :node_id, :vmid, :type
           path_params = { node: node_id, type: type, vmid: vmid }
-          attributes[:config] ||= vmid.nil? ? nil : begin
+          attributes[:config] = vmid.nil? ? nil : begin
             Fog::Compute::Proxmox::ContainerConfig.new({ service: service, vmid: vmid }.merge(service.get_server_config(path_params)))
           end
         end
@@ -57,11 +60,8 @@ module Fog
         end
 
         def extend(disk, size, options = {})
-          requires :vmid, :node_id
-          path_params = { node: node_id, vmid: vmid }
-          body_params = options.merge(disk: disk, size: size)
-          task_upid = service.resize_container(path_params, body_params)
-          tasks.wait_for(task_upid)
+          requires :vmid
+          request(:resize_container, options.merge(disk: disk, size: size), vmid: vmid)
         end
 
         def action(action, options = {})
@@ -69,10 +69,10 @@ module Fog
           super
         end
 
-        private
+        protected
 
         def initialize_config(attributes = {})
-          attributes[:config] ||= vmid.nil? ? nil : begin
+          attributes[:config] = vmid.nil? ? nil : begin
             Fog::Compute::Proxmox::ContainerConfig.new({ service: service, vmid: vmid }.merge(attributes))
           end
         end

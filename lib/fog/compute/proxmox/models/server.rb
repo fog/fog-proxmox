@@ -73,6 +73,7 @@ module Fog
           end
         end 
 
+        # request with async task
         def request(name, body_params = {}, path_params = {})
           requires :node_id, :type
           path = path_params.merge(node: node_id, type: type)
@@ -158,9 +159,9 @@ module Fog
         end
 
         def config
-          requires :vmid
+          requires :node_id, :vmid, :type
           path_params = { node: node_id, type: type, vmid: vmid }
-          attributes[:config] ||= vmid.nil? ? nil : begin
+          attributes[:config] = vmid.nil? ? nil : begin
             Fog::Compute::Proxmox::ServerConfig.new({ service: service, vmid: vmid }.merge(service.get_server_config(path_params)))
           end
         end
@@ -216,13 +217,15 @@ module Fog
           service.get_vnc(path_params, query_params)
         end
 
-        private 
+        protected 
 
         def initialize_config(attributes = {})
-          attributes[:config] ||= vmid.nil? ? nil : begin
+          attributes[:config] = vmid.nil? ? nil : begin
             Fog::Compute::Proxmox::ServerConfig.new(service: service, vmid: vmid)
           end
         end
+
+        private
 
         def node
           node_id.nil? ? nil : begin
