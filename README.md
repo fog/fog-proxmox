@@ -6,11 +6,18 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/33e619f2167cc9864b61/maintainability)](https://codeclimate.com/github/fog/fog-proxmox/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/33e619f2167cc9864b61/test_coverage)](https://codeclimate.com/github/fog/fog-proxmox/test_coverage)
 
-This is a [FOG](http://fog.io/) (>= 1.45.0) module gem to support [Proxmox VE](https://www.proxmox.com/en/proxmox-ve) (tested with 5.1 and 5.2)
+This is a [FOG](http://fog.io/) (>= 1.45.0) module gem to support [Proxmox VE](https://www.proxmox.com/en/proxmox-ve)
 
 It is intended to satisfy this [feature](https://github.com/fog/fog/issues/3644), but Proxmox provider only, and above all this [Foreman](http://www.theforeman.org) [feature](https://projects.theforeman.org/issues/2186).
 
 It is inspired by the great [fog-openstack](https://github.com/fog/fog-openstack) module.
+
+## Compatibility versions
+
+|Fog-Proxmox|Proxmox VE|
+|--|--|
+|<0.6|<5.3|
+|>=0.6|>=5.3|
 
 ## Installation
 
