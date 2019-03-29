@@ -17,8 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/json'
-
 module Fog
   module Compute
     class Proxmox
@@ -27,13 +25,12 @@ module Fog
         def move_volume(path_params, body_params)
           node = path_params[:node]
           vmid = path_params[:vmid]
-          response = request(
+          request(
             expects: [200],
             method: 'POST',
             path: "nodes/#{node}/lxc/#{vmid}/move_volume",
             body: URI.encode_www_form(body_params)
           )
-          Fog::Proxmox::Json.get_data(response)
         end
       end
 

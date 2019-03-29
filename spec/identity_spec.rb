@@ -76,7 +76,7 @@ describe Fog::Identity::Proxmox do
       # Create 1st time
       @service.users.create(bob_hash)
       # Find by id
-      bob = @service.users.find_by_id bob_hash[:userid]
+      bob = @service.users.get bob_hash[:userid]
       bob.wont_be_nil
       # Create 2nd time must fails
       proc do
@@ -104,12 +104,12 @@ describe Fog::Identity::Proxmox do
       users_disabled.must_include bob
       # Delete
       bob.destroy
-      group1 = @service.groups.find_by_id 'group1'
+      group1 = @service.groups.get 'group1'
       group1.destroy
-      group2 = @service.groups.find_by_id 'group2'
+      group2 = @service.groups.get 'group2'
       group2.destroy
       proc do
-        @service.users.find_by_id bob_hash[:userid]
+        @service.users.get bob_hash[:userid]
       end.must_raise Excon::Errors::InternalServerError
     end
   end
@@ -120,7 +120,7 @@ describe Fog::Identity::Proxmox do
       # Create 1st time
       @service.groups.create(group_hash)
       # Find by id
-      group = @service.groups.find_by_id group_hash[:groupid]
+      group = @service.groups.get group_hash[:groupid]
       group.wont_be_nil
       # Create 2nd time must fails
       proc do
@@ -137,7 +137,7 @@ describe Fog::Identity::Proxmox do
       # Delete
       group.destroy
       proc do
-        @service.groups.find_by_id group_hash[:groupid]
+        @service.groups.get group_hash[:groupid]
       end.must_raise Excon::Errors::InternalServerError
     end
   end
@@ -148,7 +148,7 @@ describe Fog::Identity::Proxmox do
       # Create 1st time
       @service.roles.create(role_hash)
       # Find by id
-      role = @service.roles.find_by_id role_hash[:roleid]
+      role = @service.roles.get role_hash[:roleid]
       role.wont_be_nil
       # Create 2nd time must fails
       proc do
@@ -165,7 +165,7 @@ describe Fog::Identity::Proxmox do
       # Delete
       role.destroy
       proc do
-        @service.roles.find_by_id role_hash[:roleid]
+        @service.roles.get role_hash[:roleid]
       end.must_raise Excon::Errors::InternalServerError
     end
   end
@@ -194,7 +194,7 @@ describe Fog::Identity::Proxmox do
       # Create 1st time
       @service.domains.create(ldap_hash)
       # Find by id
-      ldap = @service.domains.find_by_id ldap_hash[:realm]
+      ldap = @service.domains.get ldap_hash[:realm]
       ldap.wont_be_nil
       # Create 1st time
       @service.domains.create(ad_hash)
@@ -211,7 +211,7 @@ describe Fog::Identity::Proxmox do
       ldap.type.tfa = 'type=oath,step=30,digits=8'
       ldap.update
       # Find by id
-      ad = @service.domains.find_by_id ad_hash[:realm]
+      ad = @service.domains.get ad_hash[:realm]
       ad.wont_be_nil
       ad.type.tfa = 'type=yubico,id=1,key=2,url=http://localhost'
       ad.update
@@ -225,10 +225,10 @@ describe Fog::Identity::Proxmox do
       ldap.destroy
       ad.destroy
       proc do
-        @service.domains.find_by_id ldap_hash[:realm]
+        @service.domains.get ldap_hash[:realm]
       end.must_raise Excon::Errors::InternalServerError
       proc do
-        @service.domains.find_by_id ad_hash[:realm]
+        @service.domains.get ad_hash[:realm]
       end.must_raise Excon::Errors::InternalServerError
     end
   end
@@ -245,27 +245,29 @@ describe Fog::Identity::Proxmox do
       }
       @service.users.create(bob_hash)
       permission_hash = {
+        type: 'pve',
         path: '/access/users',
         roles: 'PVEUserAdmin',
         users: bob_hash[:userid]
       }
-      @service.add_permission(permission_hash)
+      @service.permissions.create(permission_hash)
       # Read all permissions
       permissions = @service.permissions.all
       permissions.wont_be_empty
-      permission = @service.permissions.create(permission_hash)
+      @service.permissions.create(permission_hash)
+      permission = @service.permissions.get()
       permissions.must_include permission
       # Remove ACL to users
-      @service.permissions.remove(permission_hash)
+      permission.destroy
       permissions = @service.permissions.all
       permissions.must_be_empty
-      bob = @service.users.find_by_id bob_hash[:userid]
+      bob = @service.users.get bob_hash[:userid]
       bob.destroy
       # Add ACL to groups
       @service.groups.create(groupid: 'group1', comment: 'Group 1')
       permission_hash.delete(:users)
       permission_hash.store(:groups, 'group1')
-      @service.permissions.add(permission_hash)
+      @service.permissions.create(permission_hash)
       # Read all permissions
       permissions = @service.permissions.all
       permissions.wont_be_empty
@@ -275,7 +277,7 @@ describe Fog::Identity::Proxmox do
       @service.permissions.remove(permission_hash)
       permissions = @service.permissions.all
       permissions.must_be_empty
-      group1 = @service.groups.find_by_id 'group1'
+      group1 = @service.groups.get 'group1'
       group1.destroy
     end
   end
@@ -286,7 +288,7 @@ describe Fog::Identity::Proxmox do
       # Create 1st time
       @service.pools.create(pool_hash)
       # Find by id
-      pool = @service.pools.find_by_id pool_hash[:poolid]
+      pool = @service.pools.get pool_hash[:poolid]
       pool.wont_be_nil
       # Create 2nd time must fails
       proc do
@@ -309,7 +311,7 @@ describe Fog::Identity::Proxmox do
       pool.remove_storage 'local-lvm'
       pool.destroy
       proc do
-        @service.pools.find_by_id pool_hash[:poolid]
+        @service.pools.get pool_hash[:poolid]
       end.must_raise Excon::Errors::InternalServerError
     end
   end

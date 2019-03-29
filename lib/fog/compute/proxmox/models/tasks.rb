@@ -17,14 +17,13 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/collection'
 require 'fog/compute/proxmox/models/task'
 
 module Fog
   module Compute
     class Proxmox
       # class Tasks Collection of node
-      class Tasks < Fog::Proxmox::Collection
+      class Tasks < Fog::Collection
         model Fog::Compute::Proxmox::Task
         attribute :node_id
 
@@ -33,13 +32,9 @@ module Fog
           super({ node_id: node_id }.merge(attributes))
         end
 
-        def search(options = {})
+        def all(filters = {})
           requires :node_id
-          load_response(service.list_tasks(node_id, options), 'tasks')
-        end
-
-        def all
-          search
+          load service.list_tasks(node_id, filters)
         end
 
         def log(id)

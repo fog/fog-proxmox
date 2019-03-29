@@ -37,16 +37,16 @@ describe Fog::Compute::Proxmox do
   it 'Manage tasks' do
     VCR.use_cassette('tasks') do
       # List all tasks
-      options = { limit: 1 }
+      filters = { limit: 1 }
       node_name = 'pve'
-      node = @service.nodes.find_by_id node_name
-      tasks = node.tasks.search(options)
+      node = @service.nodes.get node_name
+      tasks = node.tasks.all(filters)
       tasks.wont_be_nil
       tasks.wont_be_empty
       tasks.size.must_equal 1
       # Get task
       upid = tasks[0].upid
-      task = node.tasks.find_by_id(upid)
+      task = node.tasks.get(upid)
       task.wont_be_nil
       # Stop task
       task.stop
@@ -59,7 +59,7 @@ describe Fog::Compute::Proxmox do
     VCR.use_cassette('nodes') do
       # Get node
       node_name = 'pve'
-      node = @service.nodes.find_by_id node_name
+      node = @service.nodes.get node_name
       # Get statistics data
       data = node.statistics
       data.wont_be_nil
@@ -75,25 +75,28 @@ describe Fog::Compute::Proxmox do
     VCR.use_cassette('storages') do
       # Get node
       node_name = 'pve'
-      node = @service.nodes.find_by_id node_name
+      node = @service.nodes.get node_name
       # List all storages
       storages = node.storages.all
       storages.wont_be_nil
       storages.wont_be_empty
+      storages.size.must_equal 2
       # List by content type
       storages = node.storages.list_by_content_type 'iso'
       storages.wont_be_nil
       storages.wont_be_empty
+      storages.size.must_equal 1
       # Get storage
-      storage = node.storages.find_by_id('local')
+      storage = node.storages.get('local')
       storage.wont_be_nil
+      storage.identity.must_equal 'local'
     end
   end
 
   it 'CRUD servers' do
     VCR.use_cassette('servers') do
       node_name = 'pve'
-      node = @service.nodes.find_by_id node_name
+      node = @service.nodes.get node_name
       # Get next vmid
       vmid = node.servers.next_id
       server_hash = { vmid: vmid }
@@ -170,7 +173,7 @@ describe Fog::Compute::Proxmox do
       server.update(config_hash)
       # server config
       config = server.config
-      # config.identity.must_equal vmid
+      config.identity.must_equal vmid
       disks = server.config.disks
       nics = server.config.interfaces
       nics.wont_be_nil
@@ -273,14 +276,14 @@ describe Fog::Compute::Proxmox do
   it 'CRUD snapshots' do
     VCR.use_cassette('snapshots') do
       node_name = 'pve'
-      node = @service.nodes.find_by_id node_name
+      node = @service.nodes.get node_name
       vmid = node.servers.next_id
       server_hash = { vmid: vmid }
       node.servers.create server_hash
       # Create
       snapname = 'snapshot1'
       server = node.servers.get vmid
-      snapshot_hash = { snapname: snapname }
+      snapshot_hash = { name: snapname }
       server.snapshots.create(snapshot_hash)
       # Find by id
       snapshot = server.snapshots.get snapname
@@ -302,13 +305,11 @@ describe Fog::Compute::Proxmox do
   it 'CRUD containers' do
     VCR.use_cassette('containers') do
       node_name = 'pve'
-      node = @service.nodes.find_by_id node_name
+      node = @service.nodes.get node_name
       # Get next vmid
       vmid = node.containers.next_id
       ostemplate = 'local:vztmpl/alpine-3.8-default_20180913_amd64.tar.xz'
-      container_hash = { vmid: vmid,
-                         storage: 'local-lvm',
-                         ostemplate: ostemplate, password: 'proxmox01', rootfs: 'local-lvm:1' }
+      container_hash = { storage: 'local-lvm', password: 'proxmox01', rootfs: 'local-lvm:1' }
       # Check valid vmid
       valid = node.containers.id_valid? vmid
       valid.must_equal true
@@ -316,7 +317,7 @@ describe Fog::Compute::Proxmox do
       valid = node.containers.id_valid? 99
       valid.must_equal false
       # Create 1st time
-      node.containers.create(container_hash)
+      node.containers.create(ostemplate, vmid, container_hash)
       # Check already used vmid
       valid = node.containers.id_valid? vmid
       valid.must_equal false
@@ -366,7 +367,7 @@ describe Fog::Compute::Proxmox do
       end.must_raise Excon::Errors::InternalServerError
       # Create 2nd time must fails
       proc do
-        node.containers.create container_hash
+        node.containers.create(ostemplate, vmid, container_hash)
       end.must_raise Excon::Errors::InternalServerError
       # Update config container
       # Resize rootfs container

@@ -17,14 +17,13 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/collection'
 require 'fog/compute/proxmox/models/volume'
 
 module Fog
   module Compute
     class Proxmox
       # class Volumes Collection of volumes
-      class Volumes < Fog::Proxmox::Collection
+      class Volumes < Fog::Collection
         model Fog::Compute::Proxmox::Volume
         attribute :node_id
         attribute :storage_id
@@ -34,27 +33,23 @@ module Fog
           super({ node_id: node_id, storage_id: storage_id }.merge(attributes))
         end
 
-        def all
-          search
-        end
-
-        def search(options = {})
+        def all(filters = {})
           requires :node_id, :storage_id
-          load_response(service.list_volumes(node_id, storage_id, options), 'volumes')
+          load service.list_volumes(node_id, storage_id, filters)
         end
 
         def list_by_content_type(content)
-          search(content: content)
+          requires :node_id
+          all.select { |volume| volume.content.include? content}
         end
 
         def list_by_content_type_and_by_server(content, vmid)
-          search(content: content, vmid: vmid)
+          all(vmid: vmid)
         end
 
         def get(id)
-          all
-          cached_volume = find { |volume| volume.id == id }
-          return cached_volume if cached_volume
+          requires :node_id, :storage_id
+          new service.get_volume(node: node_id, storage: storage_id, volume: id)
         end
 
         def destroy(id)

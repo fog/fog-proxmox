@@ -1,12 +1,3 @@
-# frozen_string_literal: true
-# Copyright 2018 Tristan Robert
-
-# This file is part of Fog::Proxmox.
-
-# Fog::Proxmox is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -33,24 +24,22 @@ module Fog
       class Group < Fog::Model
         identity  :groupid
         attribute :comment
-        def to_s
-          groupid
-        end
 
-        def create(new_attributes = {})
-          service.create_group(attributes.merge(new_attributes))
+        def save(options = {})
+          service.create_group(attributes.merge(options))
+          reload
         end
 
         def destroy
-          requires :groupid
+          requires identity
           service.delete_group(groupid)
           true
         end
 
         def update
-          requires :groupid
-          attr = attributes.reject { |key, _value| key == :groupid }
-          service.update_group(groupid, attr)
+          requires identity
+          service.update_group(identity, attributes.reject { |attribute| [:groupid].include? attribute })
+          reload
         end
       end
     end

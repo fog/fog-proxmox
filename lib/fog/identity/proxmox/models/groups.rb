@@ -17,31 +17,25 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/collection'
 require 'fog/identity/proxmox/models/group'
 
 module Fog
   module Identity
     class Proxmox
       # class Groups authentication
-      class Groups < Fog::Proxmox::Collection
+      class Groups < Fog::Collection
         model Fog::Identity::Proxmox::Group
 
-        def all(_options = {})
-          load_response(service.list_groups, 'groups')
+        def all
+          load service.list_groups
         end
 
-        def find_by_id(id)
-          cached_group = find { |group| group.groupid == id }
-          return cached_group if cached_group
-          group_hash = service.get_group(id)
-          Fog::Identity::Proxmox::Group.new(
-            group_hash.merge(service: service)
-          )
+        def get(id)
+          new service.get_group(id)
         end
 
         def destroy(id)
-          group = find_by_id(id)
+          group = get(id)
           group.destroy
         end
       end

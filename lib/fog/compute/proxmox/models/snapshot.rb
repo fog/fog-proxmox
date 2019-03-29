@@ -37,20 +37,12 @@ module Fog
         attribute :node_id
         attribute :server_id
         attribute :server_type
-        attribute :server
         attribute :vmgenid
 
-        def server
-          requires :node_id, :server_id, :server_type
-          attributes[:server] ||= server_id.nil? ? nil : begin
-            Fog::Compute::Proxmox::Server.new(service: service, node_id: node_id, type: server_type, vmid: server_id)
-          end
-        end
-
-        def create(options = {})
-          requires :node_id, :server_id, :server_type
+        def save
+          requires :node_id, :server_id, :server_type, :name
           path_params = { node: node_id, type: server_type, vmid: server_id }
-          body_params = options
+          body_params = { snapname: name }
           server.tasks.wait_for(service.create_snapshot(path_params, body_params))
         end
 
@@ -72,6 +64,15 @@ module Fog
           path_params = { node: node_id, type: server_type, vmid: server_id, snapname: name }
           query_params = { force: force }
           server.tasks.wait_for(service.delete_snapshot(path_params, query_params))
+        end
+
+        private
+
+        def server
+          requires :node_id, :server_id, :server_type
+          begin
+            Fog::Compute::Proxmox::Server.new(service: service, node_id: node_id, type: server_type, vmid: server_id)
+          end
         end
       end
     end

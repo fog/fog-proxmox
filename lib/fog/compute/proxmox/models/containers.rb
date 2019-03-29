@@ -32,10 +32,16 @@ module Fog
 
         def type
           'lxc'
-        end
+        end    
 
         def new(attributes = {})
+          requires :node_id, :type
           super({ node_id: node_id, type: type }.merge(attributes))
+        end
+
+        def create(ostemplate, vmid, options = {})
+          requires :node_id, :type
+          service.create_server({ node: node_id, type: type }, options.merge(ostemplate: ostemplate, vmid: vmid))
         end
       end
     end

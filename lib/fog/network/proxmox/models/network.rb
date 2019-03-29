@@ -32,7 +32,7 @@ module Fog
       # class Network model
       class Network < Fog::Model
         identity  :iface
-        attribute :node
+        attribute :node_id
         attribute :comments
         attribute :active
         attribute :autostart
@@ -51,27 +51,23 @@ module Fog
 
         TYPES = %w[bridge bond eth alias vlan OVSBridge OVSBond OVSPort OVSIntPort any_bridge].freeze
 
-        def to_s
-          identity
-        end
-
-        def create(attributes = {})
-          requires :node
-          path_params = { node: node }
+        def save(options = {})
+          requires :node_id
+          path_params = { node: node_id }
           body_params = attributes
           service.create_network(path_params, body_params)
         end
 
-        def update(attributes = {})
-          requires :node, :iface, :type
-          path_params = { node: node, iface: iface }
-          body_params = attributes.merge(type: type)
+        def update(options = {})
+          requires :node_id, :iface, :type
+          path_params = { node: node_id, iface: iface }
+          body_params = options.merge(type: type)
           service.update_network(path_params, body_params)
         end
 
         def destroy
-          requires :node, :iface
-          path_params = { node: node, iface: iface }
+          requires :node_id, :iface
+          path_params = { node: node_id, iface: iface }
           service.delete_network(path_params)
         end
       end

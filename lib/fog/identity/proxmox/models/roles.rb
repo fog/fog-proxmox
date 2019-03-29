@@ -17,32 +17,25 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/collection'
 require 'fog/identity/proxmox/models/role'
 
 module Fog
   module Identity
     class Proxmox
       # class Roles model collection authentication
-      class Roles < Fog::Proxmox::Collection
+      class Roles < Fog::Collection
         model Fog::Identity::Proxmox::Role
 
-        def all(_options = {})
-          # special attibute is volatile in role
-          load_response(service.list_roles, 'roles', ['special'])
+        def all
+          load service.list_roles
         end
 
-        def find_by_id(id)
-          cached_role = find { |role| role.roleid == id }
-          return cached_role if cached_role
-          role_hash = service.get_role(id)
-          Fog::Identity::Proxmox::Role.new(
-            role_hash.merge(service: service)
-          )
+        def get(id)
+          new service.get_role(id)
         end
 
         def destroy(id)
-          role = find_by_id(id)
+          role = get(id)
           role.destroy
         end
       end

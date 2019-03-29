@@ -18,21 +18,18 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/json'
-
 module Fog
   module Compute
     class Proxmox
       # class Real log_task
       class Real
         def log_task(node, upid, options)
-          response = request(
+          request(
             expects: [200],
             method: 'GET',
             path: "nodes/#{node}/tasks/#{upid}/log",
             query: URI.encode_www_form(options)
           )
-          Fog::Proxmox::Json.get_data(response)
         end
       end
 

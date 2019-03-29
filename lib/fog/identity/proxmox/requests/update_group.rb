@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -23,12 +22,12 @@ module Fog
     class Proxmox
       # class Real update_group request
       class Real
-        def update_group(groupid, attributes)
+        def update_group(groupid, options)
           request(
             expects: [200],
             method: 'PUT',
             path: "access/groups/#{groupid}",
-            body: URI.encode_www_form(attributes)
+            body: URI.encode_www_form(options)
           )
         end
       end

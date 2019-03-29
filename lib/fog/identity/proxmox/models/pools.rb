@@ -17,31 +17,25 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/collection'
 require 'fog/identity/proxmox/models/pool'
 
 module Fog
   module Identity
     class Proxmox
       # class Pools Collection of pools of VMs
-      class Pools < Fog::Proxmox::Collection
+      class Pools < Fog::Collection
         model Fog::Identity::Proxmox::Pool
 
-        def all(_options = {})
-          load_response(service.list_pools, 'pools')
+        def all
+          load service.list_pools
         end
 
-        def find_by_id(id)
-          cached_pool = find { |pool| pool.poolid == id }
-          return cached_pool if cached_pool
-          pool_hash = service.get_pool(id)
-          Fog::Identity::Proxmox::Pool.new(
-            pool_hash.merge(service: service)
-          )
+        def get(id)
+          new service.get_pool(id)
         end
 
         def destroy(id)
-          pool = find_by_id(id)
+          pool = get(id)
           pool.destroy
         end
       end

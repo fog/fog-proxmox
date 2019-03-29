@@ -27,7 +27,6 @@ module Fog
       # ServerConfig model
       class ServerConfig < Fog::Model
         identity  :vmid
-        attribute :digest
         attribute :description
         attribute :ostype
         attribute :smbios1

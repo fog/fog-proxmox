@@ -17,27 +17,21 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/collection'
 require 'fog/identity/proxmox/models/user'
 
 module Fog
   module Identity
     class Proxmox
       # class Users model collection
-      class Users < Fog::Proxmox::Collection
+      class Users < Fog::Collection
         model Fog::Identity::Proxmox::User
 
-        def all(options = {})
-          load_response(service.list_users(options), 'users')
+        def all(filters = {})
+          load service.list_users(filters)
         end
 
-        def find_by_id(id)
-          cached_user = find { |user| user.userid == id }
-          return cached_user if cached_user
-          user_hash = service.get_user(id)
-          Fog::Identity::Proxmox::User.new(
-            user_hash.merge(service: service)
-          )
+        def get(id)
+          new service.get_user(id)
         end
 
         def destroy(id)

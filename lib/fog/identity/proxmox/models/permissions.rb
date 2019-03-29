@@ -17,43 +17,34 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/collection'
 require 'fog/identity/proxmox/models/permission'
 
 module Fog
   module Identity
     class Proxmox
       # class Permissions authentication
-      class Permissions < Fog::Proxmox::Collection
+      class Permissions < Fog::Collection
         model Fog::Identity::Proxmox::Permission
-
-        def all(_options = {})
-          load_response(service.list_permissions, 'permissions')
-        end
-
-        def create(permission_hash)
-          groups = permission_hash[:groups]
-          users = permission_hash[:users]
-          roles = permission_hash[:roles]
-          path = permission_hash[:path]
+        
+        def new(options = {})
+          groups = options[:groups]
+          users = options[:users]
+          roles = options[:roles]
+          path = options[:path]
+          requires groups, users, roles, path
           propagate ||= 1
-          permission = new(path: path, propagate: propagate, roleid: roles)
           if groups
-            permission.type = 'group'
-            permission.ugid = groups
+            type = 'group'
+            ugid = groups
           elsif users
-            permission.type = 'user'
-            permission.ugid = users
+            type = 'user'
+            ugid = users
           end
-          permission
+          super(path: path, propagate: propagate, roleid: roles, type: type, ugid: ugid)
         end
 
-        def add(permission)
-          create(permission).add
-        end
-
-        def remove(permission)
-          create(permission).remove
+        def all
+          load service.list_permissions
         end
       end
     end

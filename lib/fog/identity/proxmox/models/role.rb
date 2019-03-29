@@ -1,12 +1,3 @@
-# frozen_string_literal: true
-# Copyright 2018 Tristan Robert
-
-# This file is part of Fog::Proxmox.
-
-# Fog::Proxmox is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -34,12 +25,10 @@ module Fog
         identity :roleid
         attribute :privs
         attribute :append
-        def to_s
-          roleid
-        end
 
-        def create(new_attributes = {})
-          service.create_role(attributes.merge(new_attributes))
+        def save(options = {})
+          service.create_role(attributes.merge(options))
+          reload
         end
 
         def destroy
@@ -50,8 +39,8 @@ module Fog
 
         def update
           requires :roleid
-          attr = attributes.reject { |key, _value| key == :roleid }
-          service.update_role(roleid, attr)
+          service.update_role(roleid, attributes.reject { |attribute| [:roleid].include? attribute })
+          reload
         end
       end
     end

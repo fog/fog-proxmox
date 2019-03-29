@@ -20,16 +20,6 @@
             "remoteWorkspaceRoot": "${workspaceRoot}"
         },
         {
-            "name": "Rails server",
-            "type": "Ruby",
-            "request": "launch",
-            "cwd": "${workspaceRoot}",
-            "program": "${workspaceRoot}/bin/rails",
-            "args": [
-                "server"
-            ]
-        },
-        {
             "name": "RSpec - all",
             "type": "Ruby",
             "request": "launch",

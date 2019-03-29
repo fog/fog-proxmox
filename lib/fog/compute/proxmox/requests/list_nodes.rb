@@ -27,8 +27,7 @@ module Fog
           request(
             expects: [200],
             method: 'GET',
-            path: 'cluster/resources',
-            query: 'type=node'
+            path: 'nodes'
           )
         end
       end

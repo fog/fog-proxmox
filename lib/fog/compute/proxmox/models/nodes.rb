@@ -17,27 +17,21 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/collection'
 require 'fog/compute/proxmox/models/node'
 
 module Fog
   module Compute
     class Proxmox
       # class Nodes Collection of nodes of cluster
-      class Nodes < Fog::Proxmox::Collection
+      class Nodes < Fog::Collection
         model Fog::Compute::Proxmox::Node
 
-        def all(_options = {})
-          load_response(service.list_nodes, 'nodes')
+        def all
+          load service.list_nodes
         end
 
-        def find_by_id(id)
-          cached_node = find { |node| node.node == id }
-          return cached_node if cached_node
-          node_hash = service.get_node(id)
-          Fog::Compute::Proxmox::Node.new(
-            node_hash.merge(service: service, node: id)
-          )
+        def get(id)
+          all.find { |node| node.identity === id }
         end
       end
     end

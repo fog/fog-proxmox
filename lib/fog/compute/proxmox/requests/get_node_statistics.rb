@@ -18,8 +18,6 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/json'
-
 module Fog
   module Compute
     class Proxmox
@@ -28,13 +26,12 @@ module Fog
         def get_node_statistics(path_params,query_params)
           node = path_params[:node]
           output = path_params[:output]
-          response = request(
+          request(
             expects: [200],
             method: 'GET',
             path: "nodes/#{node}/#{output}",
             query: URI.encode_www_form(query_params)
           )
-          Fog::Proxmox::Json.get_data(response)
         end
       end
 

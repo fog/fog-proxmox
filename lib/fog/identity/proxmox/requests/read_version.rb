@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -24,14 +23,11 @@ module Fog
       # class Real read_version request
       class Real
         def read_version
-          response = request(
+          request(
             expects: [200],
             method: 'GET',
             path: 'version'
           )
-          body = JSON.decode(response.body)
-          data = body['data']
-          data
         end
       end
 

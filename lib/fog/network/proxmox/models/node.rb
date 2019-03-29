@@ -47,13 +47,11 @@ module Fog
         attribute :swap
         attribute :networks
 
-        def to_s
-          node
-        end
-
         def networks
-          @networks ||= Fog::Network::Proxmox::Networks.new(service: service,
-                                                            node: self)
+          attributes[:networks] ||= identity.nil? ? [] : begin
+            Fog::Network::Proxmox::Networks.new(service: service,
+                                                            node_id: identity)
+            end
         end
 
         def power(action)

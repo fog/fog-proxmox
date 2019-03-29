@@ -17,36 +17,30 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/collection'
 require 'fog/network/proxmox/models/node'
 
 module Fog
   module Network
     class Proxmox
       # class Networks Collection of nodes of cluster
-      class Networks < Fog::Proxmox::Collection
+      class Networks < Fog::Collection
         model Fog::Network::Proxmox::Network
-        attribute :node
+        attribute :node_id
 
         def new(attributes = {})
-          requires :node
-          super({ node: node }.merge(attributes))
+          requires :node_id
+          super({ node_id: node_id }.merge(attributes))
         end
 
-        def all(options = {})
-          requires :node
-          path_params = { node: node }
-          query_params = options
-          load_response(service.list_networks(path_params, query_params), 'networks')
+        def all(filters = {})
+          requires :node_id
+          path_params = { node: node_id }
+          query_params = filters
+          load service.list_networks(path_params, query_params)
         end
 
-        def find_by_id(id)
-          cached_network = find { |network| network.iface == id }
-          return cached_network if cached_network
-          network_hash = service.get_network(id)
-          Fog::Network::Proxmox::Network.new(
-            network_hash.merge(service: service, node: node, iface: id)
-          )
+        def get(id)
+          new service.get_network(id)
         end
       end
     end

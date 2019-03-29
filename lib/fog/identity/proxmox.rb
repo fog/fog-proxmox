@@ -38,12 +38,7 @@ module Fog
       model :role
       collection :roles
       model :domain
-      model :pam
-      model :pve
-      model :ldap
-      model :activedirectory
-      model :oath
-      model :yubico
+      model :domain_type
       collection :domains
       model :permission
       collection :permissions

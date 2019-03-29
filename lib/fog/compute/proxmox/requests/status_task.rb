@@ -18,20 +18,17 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/json'
-
 module Fog
   module Compute
     class Proxmox
       # class Real status_task
       class Real
         def status_task(node, upid)
-          response = request(
+          request(
             expects: [200],
             method: 'GET',
             path: "nodes/#{node}/tasks/#{upid}/status"
           )
-          Fog::Proxmox::Json.get_data(response)
         end
       end
 

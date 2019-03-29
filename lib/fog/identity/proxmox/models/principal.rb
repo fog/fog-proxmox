@@ -36,9 +36,6 @@ module Fog
         attribute :path
         attribute :otp
         attribute :realm
-        def to_s
-          username
-        end
       end
     end
   end

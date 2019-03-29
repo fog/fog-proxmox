@@ -17,14 +17,13 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/collection'
 require 'fog/compute/proxmox/models/disk'
 
 module Fog
   module Compute
     class Proxmox
       # class Disks Collection of disk
-      class Disks < Fog::Proxmox::Collection
+      class Disks < Fog::Collection
         model Fog::Compute::Proxmox::Disk
 
         def all(_options = {})

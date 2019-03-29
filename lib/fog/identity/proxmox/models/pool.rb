@@ -1,12 +1,3 @@
-# frozen_string_literal: true
-# Copyright 2018 Tristan Robert
-
-# This file is part of Fog::Proxmox.
-
-# Fog::Proxmox is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -35,12 +26,9 @@ module Fog
         attribute :comment
         attribute :members
 
-        def to_s
-          poolid
-        end
-
-        def create(new_attributes = {})
-          service.create_pool(attributes.merge(new_attributes))
+        def save(options = {})
+          service.create_pool(attributes.merge(options))
+          reload
         end
 
         def destroy
@@ -67,10 +55,11 @@ module Fog
 
         def update_with_member(member_name, member_id, delete = false)
           requires :poolid
-          attr = attributes.reject { |key, _value| %i[poolid members].include? key }
-          attr.store(member_name, member_id) if member_name
-          attr.store('delete', 1) if delete
-          service.update_pool(poolid, attr)
+          otpions = attributes.reject { |attribute| %i[poolid members].include? attribute }
+          otpions.store(member_name, member_id) if member_name
+          otpions.store('delete', 1) if delete
+          service.update_pool(poolid, otpions)
+          reload
         end
 
         def update

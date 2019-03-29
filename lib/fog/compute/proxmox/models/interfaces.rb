@@ -17,7 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/collection'
 require 'fog/compute/proxmox/models/interface'
 require 'fog/proxmox/helpers/controller_helper'
 
@@ -25,7 +24,7 @@ module Fog
   module Compute
     class Proxmox
       # class Interfaces Collection of nodes of cluster
-      class Interfaces < Fog::Proxmox::Collection
+      class Interfaces < Fog::Collection
         model Fog::Compute::Proxmox::Interface
 
         def all(_options = {})

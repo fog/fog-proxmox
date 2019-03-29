@@ -1,12 +1,3 @@
-# frozen_string_literal: true
-# Copyright 2018 Tristan Robert
-
-# This file is part of Fog::Proxmox.
-
-# Fog::Proxmox is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -41,12 +32,9 @@ module Fog
         attribute :enable
         attribute :groups
         attribute :keys
-        def to_s
-          userid
-        end
 
-        def create(new_attributes = {})
-          service.create_user(attributes.merge(new_attributes))
+        def save(options = {})
+          service.create_user(attributes.merge(options))
         end
 
         def destroy
@@ -57,13 +45,11 @@ module Fog
 
         def update
           requires :userid
-          attr = attributes.reject { |key, _value| key == :userid }
-          service.update_user(userid, attr)
+          service.update_user(userid, attributes.reject { |attribute| [:userid].include? attribute })
         end
 
         def change_password
-          requires :userid
-          requires :password
+          requires :userid, :password
           service.change_password(userid, password)
         end
       end

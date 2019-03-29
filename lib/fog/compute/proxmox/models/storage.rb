@@ -41,16 +41,13 @@ module Fog
         attribute :shared
         attribute :active
         attribute :enabled
+        attribute :used_fraction
         attribute :volumes
 
-        def to_s
-          storage
-        end
-
         def volumes
-          @volumes ||= begin
+          attributes[:volumes] ||= node_id.nil? || identity.nil? ? [] : begin
             Fog::Compute::Proxmox::Volumes.new(service: service,
-                                               node_id: node_id, storage_id: storage)
+                                               node_id: node_id, storage_id: identity)
           end
         end
       end

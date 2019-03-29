@@ -17,14 +17,13 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/models/collection'
 require 'fog/compute/proxmox/models/storage'
 
 module Fog
   module Compute
     class Proxmox
       # class Storages Collection of storages
-      class Storages < Fog::Proxmox::Collection
+      class Storages < Fog::Collection
         model Fog::Compute::Proxmox::Storage
         attribute :node_id
 
@@ -33,26 +32,19 @@ module Fog
           super({ node_id: node_id }.merge(attributes))
         end
 
-        def all
-          search
-        end
-
-        def search(options = {})
+        def all(filters = {})
           requires :node_id
-          load_response(service.list_storages(node_id, options), 'storages')
+          load service.list_storages(node_id, filters)
         end
 
         def list_by_content_type(content)
-          search(content: content)
+          requires :node_id
+          all.select { |storage| storage.content.include? content }
         end
 
-        def find_by_id(id)
-          cached_storage = find { |storage| storage.storage == id }
-          return cached_storage if cached_storage
-          storage_hash = service.get_storage(node_id, id, {})
-          Fog::Compute::Proxmox::Storage.new(
-            storage_hash.merge(service: service)
-          )
+        def get(id)
+          requires :node_id
+          all.find { |storage| storage.identity === id }
         end
       end
     end

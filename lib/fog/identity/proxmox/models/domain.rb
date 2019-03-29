@@ -1,13 +1,3 @@
-# frozen_string_literal: true
-
-# Copyright 2018 Tristan Robert
-
-# This file is part of Fog::Proxmox.
-
-# Fog::Proxmox is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -31,14 +21,18 @@ module Fog
       # class Domain model authentication
       class Domain < Fog::Model
         identity :realm
+        attribute :comment
+        attribute :tfa
         attribute :type
-        def to_s
-          realm
+
+        def initialize(attributes = {})
+          initialize_type(attributes)
+          super(attributes)
         end
 
-        def create(new_attributes = {})
-          attr = type.attributes.merge(new_attributes).merge(realm: realm)
-          service.create_domain(attr)
+        def save(options = {})
+          service.create_domain(type.attributes.merge(options).merge(realm: realm))
+          reload
         end
 
         def destroy
@@ -49,10 +43,18 @@ module Fog
 
         def update
           requires :realm
-          attr = type.attributes
-          attr.delete_if { |key, _value| key == :type }
-          service.update_domain(realm, attr)
+          service.update_domain(realm, type.attributes.merge(attributes.reject { |attribute| [:type].include? attribute }))
+          reload
         end
+
+        private
+
+        def initialize_type(attributes = {})
+          attributes[:type] ||= type.nil? ? nil : begin
+            Fog::Proxmox::Identity::DomainType(type.attributes)
+          end
+        end
+
       end
     end
   end
