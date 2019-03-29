@@ -32,9 +32,10 @@ module Fog
 
         def type
           'lxc'
-        end
+        end    
 
         def new(attributes = {})
+          requires :node_id
           super({ node_id: node_id, type: type }.merge(attributes))
         end
       end

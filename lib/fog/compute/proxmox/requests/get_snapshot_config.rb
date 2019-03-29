@@ -17,27 +17,27 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/json'
-
 module Fog
   module Compute
     class Proxmox
-      # class Real get_storage request
+      # class Real get_snapshot_config request
       class Real
-        def get_storage(node, storage, options)
-          response = request(
+        def get_snapshot_config(path_params)
+          node = path_params[:node]
+          type = path_params[:type]
+          vmid = path_params[:vmid]
+          snapname = path_params[:snapname]
+          request(
             expects: [200],
             method: 'GET',
-            path: "nodes/#{node}/storage/#{storage}/status",
-            query: URI.encode_www_form(options)
+            path: "nodes/#{node}/#{type}/#{vmid}/snapshot/#{snapname}/config"
           )
-          Fog::Proxmox::Json.get_data(response)
         end
       end
 
-      # class Mock get_storage request
+      # class Mock get_snapshot_config request
       class Mock
-        def get_storage; end
+        def get_snapshot_config; end
       end
     end
   end

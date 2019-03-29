@@ -32,50 +32,43 @@ module Fog
       # class Node model of VMs
       class Node < Fog::Model
         identity  :node
-        attribute :status
-        attribute :wait
-        attribute :uptime
-        attribute :pveversion
-        attribute :ksm
-        attribute :kversion
-        attribute :loadavg
-        attribute :rootfs
         attribute :cpu
-        attribute :cpuinfo
-        attribute :memory
-        attribute :idle
-        attribute :swap
+        attribute :level
+        attribute :maxcpu
+        attribute :maxmem
+        attribute :mem
+        attribute :maxdisk
+        attribute :disk
+        attribute :ssl_fingerprint
+        attribute :status
+        attribute :uptime
         attribute :servers
         attribute :tasks
         attribute :storages
 
-        def to_s
-          node
-        end
-
         def tasks
-          attributes[:tasks] ||= node.nil? ? [] : begin
+          attributes[:tasks] ||= identity.nil? ? [] : begin
             Fog::Compute::Proxmox::Tasks.new(service: service,
                                              node_id: node)
             end
         end
 
         def servers
-          attributes[:servers] ||= node.nil? ? [] : begin
+          attributes[:servers] ||= identity.nil? ? [] : begin
             Fog::Compute::Proxmox::Servers.new(service: service,
               node_id: node)
           end
         end
 
         def containers
-          attributes[:containers] ||= node.nil? ? [] : begin
+          attributes[:containers] ||= identity.nil? ? [] : begin
             Fog::Compute::Proxmox::Containers.new(service: service,
               node_id: node)
           end
         end
 
         def storages
-          attributes[:storages] ||= node.nil? ? [] : begin
+          attributes[:storages] ||= identity.nil? ? [] : begin
             Fog::Compute::Proxmox::Storages.new(service: service,
               node_id: node)
           end

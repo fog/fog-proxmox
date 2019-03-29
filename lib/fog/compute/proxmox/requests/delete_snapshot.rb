@@ -17,8 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/json'
-
 module Fog
   module Compute
     class Proxmox
@@ -29,13 +27,12 @@ module Fog
           type = path_params[:type]
           vmid = path_params[:vmid]
           snapname = path_params[:snapname]
-          response = request(
+          request(
             expects: [200],
             method: 'DELETE',
             path: "nodes/#{node}/#{type}/#{vmid}/snapshot/#{snapname}",
             query: URI.encode_www_form(query_params)
           )
-          Fog::Proxmox::Json.get_data(response)
         end
       end
 

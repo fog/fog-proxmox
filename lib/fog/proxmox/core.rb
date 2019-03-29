@@ -19,6 +19,7 @@
 
 require 'fog/json'
 require 'fog/proxmox/variables'
+require 'fog/proxmox/json'
 
 module Fog
   module Proxmox
@@ -93,7 +94,7 @@ module Fog
                   error
                 end
         end
-        response
+        Fog::Proxmox::Json.get_data(response)
       end
 
       def headers(method, additional_headers)

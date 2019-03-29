@@ -39,10 +39,16 @@ module Fog
           request(:move_volume, options.merge(volume: volume, storage: storage), vmid: vmid)
         end
 
+        def reload
+          requires :vmid
+          object = node.containers.get(vmid)
+          merge_attributes(object.attributes)
+        end
+
         # no async task in container update
         def update(attributes = {})
           requires :node, :vmid, :type
-          path_params = { node: node, type: type, vmid: vmid }
+          path_params = { node: node_id, type: type, vmid: vmid }
           body_params = attributes
           service.update_server(path_params, body_params)
         end
@@ -51,7 +57,9 @@ module Fog
           requires :node_id, :vmid, :type
           path_params = { node: node_id, type: type, vmid: vmid }
           attributes[:config] = vmid.nil? ? nil : begin
-            Fog::Compute::Proxmox::ContainerConfig.new({ service: service, vmid: vmid }.merge(service.get_server_config(path_params)))
+            options = { service: service, vmid: vmid }
+            options = options.merge(service.get_server_config(path_params)) if uptime
+            Fog::Compute::Proxmox::ContainerConfig.new(options)
           end
         end
 

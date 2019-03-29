@@ -20,6 +20,7 @@
 require 'fog/compute/models/server'
 require 'fog/proxmox/helpers/disk_helper'
 require 'fog/proxmox/hash'
+require 'fog/proxmox/errors'
 
 module Fog
   module Compute
@@ -66,13 +67,6 @@ module Fog
           attributes[:type]
         end 
 
-        def node
-          attributes[:node] = node_id.nil? ? nil : begin
-            Fog::Compute::Proxmox::Node.new(service: service,
-                                             node: node_id)
-          end
-        end 
-
         # request with async task
         def request(name, body_params = {}, path_params = {})
           requires :node_id, :type
@@ -81,8 +75,10 @@ module Fog
           tasks.wait_for(task_upid)
         end
 
-        def create(attributes = {})
-          request(:create_server, attributes.merge(vmid: vmid))
+        def save
+          requires :vmid
+          request(:create_server, attributes.reject{ |attribute| [:node_id, :config, :type].include? attribute }.merge(vmid: vmid))
+          reload
         end
 
         def update(attributes = {})
@@ -109,7 +105,7 @@ module Fog
 
         def reload
           requires :vmid
-          object = collection.get(vmid)
+          object = node.servers.get(vmid)
           merge_attributes(object.attributes)
         end
 
@@ -120,8 +116,8 @@ module Fog
 
         def restore(backup, options = {})
           requires :vmid
-          config = options.merge(archive: backup.volid, force: 1)
-          create(config)
+          attr_hash = options.merge(archive: backup.volid, force: 1)
+          save(attr_hash)
         end
 
         def clone(newid, options = {})
@@ -162,12 +158,14 @@ module Fog
           requires :node_id, :vmid, :type
           path_params = { node: node_id, type: type, vmid: vmid }
           attributes[:config] = vmid.nil? ? nil : begin
-            Fog::Compute::Proxmox::ServerConfig.new({ service: service, vmid: vmid }.merge(service.get_server_config(path_params)))
+            options = { service: service, vmid: vmid }
+            options = options.merge(service.get_server_config(path_params)) if uptime
+            Fog::Compute::Proxmox::ServerConfig.new(options)
           end
         end
 
         def snapshots
-          attributes[:snapshots] ||= vmid.nil? ? [] : begin
+          attributes[:snapshots] ||= identity.nil? ? [] : begin
             Fog::Compute::Proxmox::Snapshots.new(service: service, server_id: vmid, server_type: type, node_id: node_id)
           end
         end
@@ -183,7 +181,7 @@ module Fog
         def list(content)
           storages = node.storages.list_by_content_type content
           volumes = []
-          storages.each { |storage| volumes += storage.volumes.list_by_content_type_and_by_server(content, vmid) }
+          storages.each { |storage| volumes += storage.volumes.list_by_content_type_and_by_server(content, identity) }
           volumes
         end
 
@@ -220,7 +218,8 @@ module Fog
         protected 
 
         def initialize_config(attributes = {})
-          attributes[:config] = vmid.nil? ? nil : begin
+          vmid = attributes[:vmid] if vmid.nil?
+          attributes[:config] ||= vmid.nil? ? nil : begin
             Fog::Compute::Proxmox::ServerConfig.new(service: service, vmid: vmid)
           end
         end

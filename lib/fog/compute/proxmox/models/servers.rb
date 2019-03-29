@@ -23,13 +23,9 @@ module Fog
   module Compute
     class Proxmox
       # Servers Collection
-      class Servers < Fog::Proxmox::Collection
+      class Servers < Fog::Collection
         model Fog::Compute::Proxmox::Server
         attribute :node_id
-
-        def initialize(attributes = {})
-          super(attributes)
-        end
 
         def type
           'qemu'
@@ -41,9 +37,7 @@ module Fog
         end
 
         def next_id
-          response = service.next_vmid
-          body = JSON.decode(response.body)
-          data = body['data']
+          service.next_vmid
         end
 
         def id_valid?(vmid)
@@ -53,19 +47,19 @@ module Fog
           false
         end
 
-        def get(vmid)
+        def get(id)
           requires :node_id
-          path_params = { node: node_id, type: type, vmid: vmid }
-          server_data = service.get_server_status path_params
+          path_params = { node: node_id, type: type, vmid: id }
+          status_data = service.get_server_status path_params
           config_data = service.get_server_config path_params
-          data = server_data.merge(config_data).merge(node: node_id, vmid: vmid)
+          data = status_data.merge(config_data).merge(node: node_id, vmid: id)
           new(data)
         end
 
         def all(options = {})
           requires :node_id
           body_params = options.merge(node: node_id, type: type)
-          load_response(service.list_servers(body_params), 'servers', ['node'])
+          load service.list_servers(body_params)
         end
       end
     end

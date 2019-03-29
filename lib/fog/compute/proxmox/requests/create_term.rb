@@ -17,8 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/json'
-
 module Fog
   module Compute
     class Proxmox
@@ -28,13 +26,12 @@ module Fog
           node = path_params[:node]
           type = path_params[:type]
           vmid = path_params[:vmid]
-          response = request(
+          request(
             expects: [200],
             method: 'POST',
             path: "nodes/#{node}/#{type}/#{vmid}/termproxy",
             body: URI.encode_www_form(body_params)
           )
-          Fog::Proxmox::Json.get_data(response)
         end
       end
 

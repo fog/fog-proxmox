@@ -56,7 +56,6 @@ module Fog
 
       # Manage nodes cluster
       request :list_nodes
-      request :get_node
       request :get_node_statistics
       # Manage servers
       request :next_vmid
@@ -83,7 +82,6 @@ module Fog
       request :create_backup
       # Manage storages
       request :list_storages
-      request :get_storage
       # Tasks
       request :list_tasks
       request :get_task
@@ -92,7 +90,7 @@ module Fog
       request :log_task
       # CRUD snapshots
       request :list_snapshots
-      request :get_snapshot
+      request :get_snapshot_config
       request :create_snapshot
       request :update_snapshot
       request :delete_snapshot
