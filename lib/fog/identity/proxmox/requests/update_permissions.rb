@@ -21,20 +21,19 @@
 module Fog
   module Identity
     class Proxmox
-      # class Real remove_permission request
+      # class Real update_permissions request
       class Real
-        def remove_permission(permission)
-          permission.store('delete', 1)
+        def update_permissions(body_params)
           request(
             expects: [200],
             method: 'PUT',
             path: 'access/acl',
-            body: URI.encode_www_form(permission)
+            body: URI.encode_www_form(body_params)
           )
         end
       end
 
-      # class Mock remove_permission request
+      # class Mock update_permissions request
       class Mock
       end
     end

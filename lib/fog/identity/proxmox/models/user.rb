@@ -35,6 +35,7 @@ module Fog
 
         def save(options = {})
           service.create_user(attributes.merge(options))
+          reload
         end
 
         def destroy
@@ -46,6 +47,7 @@ module Fog
         def update
           requires :userid
           service.update_user(userid, attributes.reject { |attribute| [:userid].include? attribute })
+          reload
         end
 
         def change_password

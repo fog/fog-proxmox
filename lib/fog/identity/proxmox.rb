@@ -48,8 +48,7 @@ module Fog
       # Manage permissions
       request :check_permissions
       request :list_permissions
-      request :add_permission
-      request :remove_permission
+      request :update_permissions
       request :read_version
 
       # Manage users

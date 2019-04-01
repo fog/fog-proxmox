@@ -67,7 +67,6 @@ module Fog
         # request with async task
         def request(name, body_params = {}, path_params = {})
           requires :node_id, :type
-          puts "body_params=#{body_params}"
           path = path_params.merge(node: node_id, type: type)
           task_upid = service.send(name, path, body_params)
           tasks.wait_for(task_upid)
@@ -75,7 +74,6 @@ module Fog
 
         def save(options = {})
           requires :vmid
-          puts "options=#{options}"
           request(:create_server, options.merge(vmid: vmid))
           reload
         end

@@ -17,8 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/json'
-
 module Fog
   module Network
     class Proxmox
@@ -27,13 +25,12 @@ module Fog
         def update_network(path_params, body_params)
           node = path_params[:node]
           iface = path_params[:iface]
-          response = request(
+          request(
             expects: [200],
             method: 'PUT',
             path: "nodes/#{node}/network/#{iface}",
             body: URI.encode_www_form(body_params)
           )
-          Fog::Proxmox::Json.get_data(response)
         end
       end
 

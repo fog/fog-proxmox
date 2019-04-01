@@ -54,7 +54,7 @@ module Fog
         def save(options = {})
           requires :node_id
           path_params = { node: node_id }
-          body_params = attributes
+          body_params = options.merge(attributes.reject { |attribute| [:node_id].include? attribute })
           service.create_network(path_params, body_params)
         end
 

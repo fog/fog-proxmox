@@ -24,7 +24,7 @@ module Fog
       class Role < Fog::Model
         identity :roleid
         attribute :privs
-        attribute :append
+        attribute :special
 
         def save(options = {})
           service.create_role(attributes.merge(options))
@@ -39,7 +39,7 @@ module Fog
 
         def update
           requires :roleid
-          service.update_role(roleid, attributes.reject { |attribute| [:roleid].include? attribute })
+          service.update_role(roleid, attributes.reject { |attribute| [:roleid, :special].include? attribute })
           reload
         end
       end

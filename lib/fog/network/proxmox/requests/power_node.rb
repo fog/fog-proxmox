@@ -18,8 +18,6 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/json'
-
 module Fog
   module Network
     class Proxmox
@@ -27,13 +25,12 @@ module Fog
       class Real
         def power_node(path_params, body_params)
           node = path_params[:node]
-          response = request(
+          request(
             expects: [200],
             method: 'POST',
             path: "nodes/#{node}/status",
             body: URI.encode_www_form(body_params)
           )
-          Fog::Proxmox::Json.get_data(response)
         end
       end
 

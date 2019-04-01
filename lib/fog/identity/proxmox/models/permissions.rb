@@ -25,26 +25,18 @@ module Fog
       # class Permissions authentication
       class Permissions < Fog::Collection
         model Fog::Identity::Proxmox::Permission
-        
-        def new(options = {})
-          groups = options[:groups]
-          users = options[:users]
-          roles = options[:roles]
-          path = options[:path]
-          requires groups, users, roles, path
-          propagate ||= 1
-          if groups
-            type = 'group'
-            ugid = groups
-          elsif users
-            type = 'user'
-            ugid = users
-          end
-          super(path: path, propagate: propagate, roleid: roles, type: type, ugid: ugid)
-        end
 
         def all
           load service.list_permissions
+        end
+
+        def get(type, path, roleid, ugid)
+          all.find { |permission| permission.type === type && permission.path === path && permission.roleid === roleid && permission.ugid === ugid }
+        end
+
+        def destroy(permission_hash)
+          permission = new(permission_hash)
+          permission.destroy
         end
       end
     end

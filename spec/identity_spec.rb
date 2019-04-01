@@ -108,9 +108,8 @@ describe Fog::Identity::Proxmox do
       group1.destroy
       group2 = @service.groups.get 'group2'
       group2.destroy
-      proc do
-        @service.users.get bob_hash[:userid]
-      end.must_raise Excon::Errors::InternalServerError
+      bob = @service.users.get bob_hash[:userid]
+      bob.must_be_nil
     end
   end
 
@@ -136,9 +135,8 @@ describe Fog::Identity::Proxmox do
       groups_all.must_include group
       # Delete
       group.destroy
-      proc do
-        @service.groups.get group_hash[:groupid]
-      end.must_raise Excon::Errors::InternalServerError
+      group1 = @service.groups.get group_hash[:groupid]
+      group1.must_be_nil
     end
   end
 
@@ -164,9 +162,8 @@ describe Fog::Identity::Proxmox do
       roles_all.must_include role
       # Delete
       role.destroy
-      proc do
-        @service.roles.get role_hash[:roleid]
-      end.must_raise Excon::Errors::InternalServerError
+      role = @service.roles.get role_hash[:roleid]
+      role.must_be_nil
     end
   end
 
@@ -212,7 +209,7 @@ describe Fog::Identity::Proxmox do
       ldap.update
       # Find by id
       ad = @service.domains.get ad_hash[:realm]
-      ad.wont_be_nil
+      # ad.wont_be_nil
       ad.type.tfa = 'type=yubico,id=1,key=2,url=http://localhost'
       ad.update
       # # all groups
@@ -224,12 +221,10 @@ describe Fog::Identity::Proxmox do
       # Delete
       ldap.destroy
       ad.destroy
-      proc do
-        @service.domains.get ldap_hash[:realm]
-      end.must_raise Excon::Errors::InternalServerError
-      proc do
-        @service.domains.get ad_hash[:realm]
-      end.must_raise Excon::Errors::InternalServerError
+      ldap = @service.domains.get ldap_hash[:realm]
+      ldap.must_be_nil
+      ad = @service.domains.get ad_hash[:realm]
+      ad.must_be_nil
     end
   end
 
@@ -243,42 +238,38 @@ describe Fog::Identity::Proxmox do
         lastname: 'Sinclar',
         email: 'bobsinclar@proxmox.com'
       }
+      @service.roles.create(roleid: 'PVETestAdmin', privs: 'User.Modify,Group.Allocate')
+      role = @service.roles.get('PVETestAdmin')
+      role.wont_be_nil
       @service.users.create(bob_hash)
-      permission_hash = {
-        type: 'pve',
-        path: '/access/users',
-        roles: 'PVEUserAdmin',
-        users: bob_hash[:userid]
-      }
-      @service.permissions.create(permission_hash)
+      bob = @service.users.get bob_hash[:userid]
+      bob.wont_be_nil
+      permission = @service.permissions.create(type: 'user', roleid: role.roleid, path: '/access', ugid: bob.userid)
+      permission.wont_be_nil
       # Read all permissions
       permissions = @service.permissions.all
       permissions.wont_be_empty
-      @service.permissions.create(permission_hash)
-      permission = @service.permissions.get()
       permissions.must_include permission
       # Remove ACL to users
-      permission.destroy
-      permissions = @service.permissions.all
-      permissions.must_be_empty
+      permissions.destroy(type: 'user', roleid: role.roleid, path: '/access', ugid: bob.userid)
+      permission = @service.permissions.get('user', role.roleid, '/access', bob.userid)
+      permission.must_be_nil
       bob = @service.users.get bob_hash[:userid]
       bob.destroy
       # Add ACL to groups
-      @service.groups.create(groupid: 'group1', comment: 'Group 1')
-      permission_hash.delete(:users)
-      permission_hash.store(:groups, 'group1')
-      @service.permissions.create(permission_hash)
-      # Read all permissions
+      group1 = @service.groups.create(groupid: 'group1', comment: 'Group 1')
+      permission = @service.permissions.create(type: 'group', roleid: role.roleid, path: '/access', ugid: group1.groupid)
+      permission.wont_be_nil
+      # Read new permission
       permissions = @service.permissions.all
       permissions.wont_be_empty
-      permission = @service.permissions.create(permission_hash)
       permissions.must_include permission
       # Remove ACL to groups
-      @service.permissions.remove(permission_hash)
+      permissions.destroy(type: 'group', roleid: role.roleid, path: '/access', ugid: group1.groupid)
       permissions = @service.permissions.all
       permissions.must_be_empty
-      group1 = @service.groups.get 'group1'
       group1.destroy
+      role.destroy
     end
   end
 
@@ -310,9 +301,8 @@ describe Fog::Identity::Proxmox do
       pool.remove_server 100
       pool.remove_storage 'local-lvm'
       pool.destroy
-      proc do
-        @service.pools.get pool_hash[:poolid]
-      end.must_raise Excon::Errors::InternalServerError
+      pool = @service.pools.get pool_hash[:poolid]
+      pool.must_be_nil
     end
   end
 end

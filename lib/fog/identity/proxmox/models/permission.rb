@@ -23,17 +23,41 @@ module Fog
       # class Permission
       class Permission < Fog::Model
         identity :type
-        identity :ugid
         identity :roleid
         identity :path
+        identity :ugid
         attribute :propagate
 
         def save
-          service.add_permission(attributes)
+          service.update_permissions(to_update)
         end
 
         def destroy
-          service.remove_permission(attributes)
+          service.update_permissions(to_update.merge(delete: 1))
+        end
+
+        private
+
+        def initialize_roles(new_attributes = {})
+          roles = new_attributes.delete(:roleid)
+          new_attributes.store(:roles, roles)       
+        end
+
+        def initialize_ugid(new_attributes = {})
+          ugs = new_attributes.delete(:ugid)
+          if type === 'user'
+            new_attributes.store(:users, ugs)
+          elsif type === 'group'
+            new_attributes.store(:groups, ugs)
+          end
+          new_attributes.delete(:type)          
+        end
+
+        def to_update
+          new_attributes = attributes.clone
+          initialize_roles(new_attributes)
+          initialize_ugid(new_attributes)
+          new_attributes
         end
       end
     end

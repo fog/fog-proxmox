@@ -18,8 +18,6 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/json'
-
 module Fog
   module Network
     class Proxmox
@@ -28,12 +26,11 @@ module Fog
         def delete_network(path_params)
           node = path_params[:node]
           iface = path_params[:iface]
-          response = request(
+          request(
             expects: [200],
             method: 'DELETE',
             path: "nodes/#{node}/network/#{iface}"
           )
-          Fog::Proxmox::Json.get_data(response)
         end
       end
 

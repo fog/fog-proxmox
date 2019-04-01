@@ -39,10 +39,10 @@ compute = Fog::Compute::Proxmox.new(
 
 # Create pools
 pool_hash = { poolid: 'pool1' }
-compute.domains.create(pool_hash)
+pool1 = compute.pools.create(pool_hash)
 
 # Get one pool by id
-pool1 = compute.pools.find_by_id 'pool1'
+pool1 = compute.pools.get 'pool1'
 
 # Update pool
 pool1.comment 'pool 1'
@@ -63,7 +63,7 @@ pool1.destroy
 
 # Get node owner
 node_name = 'pve'
-node = compute.nodes.find_by_id node_name
+node = compute.nodes.get node_name
 
 # Get next free vmid
 vmid = node.servers.next_id
@@ -171,7 +171,7 @@ server.destroy
 
 # Create containers
 node_name = 'pve'
-node = compute.nodes.find_by_id node_name
+node = compute.nodes.get node_name
 ostemplate = 'local:vztmpl/alpine-3.7-default_20171211_amd64.tar.xz'
 container_hash = {
   vmid: vmid,
@@ -214,8 +214,8 @@ config_hash = { onboot: 1, ostype: 'alpine' }
 container.update(config_hash)
 # Get mac_addresses
 container.mac_adresses
-# Get nics
-container.config.nics
+# Get interfaces
+container.config.interfaces
 # Get additional mount points
 container.config.mount_points
 # List all servers
@@ -258,19 +258,19 @@ snapshot.update
 snapshot.destroy
 
 # Fetch additional mount points
-container.mount_points
+container.config.mount_points
 # Fetch network interfaces
-container.nics
+container.config.interfaces
 
 # Delete container
 container.destroy
 
 # List 1 task
-options = { limit: 1 }
-node = 'pve'
-tasks = compute.tasks.search(node, options)
+filters = { limit: 1 }
+node = compute.nodes.get 'pve'
+tasks = node.tasks.all(filters)
 # Get task
 upid = tasks[0].upid
-task = compute.tasks.find_by_id(node, upid)
+task = node.tasks.get(upid)
 # Stop task
 task.stop

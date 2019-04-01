@@ -31,7 +31,7 @@ module Fog
         end
 
         def get(id)
-          new service.get_domain(id)
+          all.find { |domain| domain.identity === id }
         end
 
         def destroy(id)

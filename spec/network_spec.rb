@@ -44,7 +44,7 @@ describe Fog::Network::Proxmox do
       # Create 1st time
       node.networks.create(net_hash)
       # Find by id
-      network = node.networks.find_by_id net_hash[:iface]
+      network = node.networks.get net_hash[:iface]
       network.wont_be_nil
       # Create 2nd time
       proc do

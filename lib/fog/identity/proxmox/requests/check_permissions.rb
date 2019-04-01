@@ -24,15 +24,12 @@ module Fog
       # class Real check_permissions request
       class Real
         def check_permissions(principal)
-          response = request(
+          request(
             expects: [200],
             method: 'POST',
             path: 'access/ticket',
             body: URI.encode_www_form(principal)
           )
-          body = JSON.decode(response.body)
-          data = body['data']
-          data
         end
       end
 

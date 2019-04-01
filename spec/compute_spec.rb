@@ -150,7 +150,7 @@ describe Fog::Compute::Proxmox do
       # Delete clone
       clone.destroy
       proc do
-        node.servers.get newid
+        clone = node.servers.get newid
       end.must_raise Excon::Errors::InternalServerError
       # Create 2nd time must fails
       proc do

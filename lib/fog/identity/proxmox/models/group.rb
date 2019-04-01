@@ -31,13 +31,13 @@ module Fog
         end
 
         def destroy
-          requires identity
+          requires :groupid
           service.delete_group(groupid)
           true
         end
 
         def update
-          requires identity
+          requires :groupid
           service.update_group(identity, attributes.reject { |attribute| [:groupid].include? attribute })
           reload
         end

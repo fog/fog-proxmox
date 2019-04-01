@@ -31,11 +31,11 @@ module Fog
         end
 
         def get(id)
-          new service.get_user(id)
+          all.find { |user| user.identity === id }
         end
 
         def destroy(id)
-          user = find_by_id(id)
+          user = get(id)
           user.destroy
         end
       end

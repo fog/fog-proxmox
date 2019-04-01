@@ -49,19 +49,11 @@ bob_hash = {
   lastname: 'Sinclar',
   email: 'bobsinclar@proxmox.com'
 }
-# is equivalent to
-# bob_hash = {
-#   userid: 'bobsinclar',
-#   realm: 'pve',
-#   password: 'bobsinclar1',
-#   firstname: 'Bob',
-#   lastname: 'Sinclar',
-#   email: 'bobsinclar@proxmox.com'
-# }
+
 identity.users.create(bob_hash)
 
 # Get a user by id
-bob = identity.users.find_by_id 'bobsinclar@pve'
+bob = identity.users.get 'bobsinclar@pve'
 
 # List all users
 identity.users.all
@@ -85,7 +77,7 @@ group_hash = { groupid: 'group1' }
 identity.domains.create(group_hash)
 
 # Get one group by id
-group1 = identity.groups.find_by_id 'group1'
+group1 = identity.groups.get 'group1'
 
 # Update group
 group1.comment 'Group 1'
@@ -107,7 +99,7 @@ role_hash = { roleid: 'role1' }
 identity.roles.create(role_hash)
 
 # Get one role by id
-role1 = identity.roles.find_by_id 'role1'
+role1 = identity.roles.get 'role1'
 
 # Update role
 role1.comment 'Role 1'
@@ -157,7 +149,7 @@ identity.domains.each do |domain|
 end
 
 # Find domain by id
-ldap = identity.domains.find_by_id ldap_hash[:realm]
+ldap = identity.domains.get ldap_hash[:realm]
 
 # Update domain
 ldap.type.comment = 'Test domain LDAP'
@@ -171,17 +163,19 @@ ldap.destroy
 
 # Add a user permission
 permission_hash = {
-  path: '/access/users',
-  roles: 'PVEUserAdmin',
-  users: bob_hash[:userid]
+  type: 'user'
+  path: '/access',
+  roleid: 'PVEUserAdmin',
+  ugid: bob_hash[:userid]
 }
 # Add a group permission
 # permission_hash = {
-#   path: '/access/users',
-#   roles: 'PVEUserAdmin',
-#   groups: 'group1'
+#   type: 'group'
+#   path: '/access',
+#   roleid: 'PVEUserAdmin',
+#   ugid: 'group1'
 # }
-identity.add_permission(permission_hash)
+permission = identity.permissions.create(permission_hash)
 
 # List all permissions
 identity.permissions.all
@@ -192,4 +186,5 @@ identity.permissions.each do |permission|
 end
 
 # Remove permission
-identity.remove_permission(permission_hash)
+permission = identity.get(permission_hash)
+permission.destroy

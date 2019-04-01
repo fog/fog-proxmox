@@ -25,13 +25,13 @@ module Fog
         attribute :tfa
         attribute :type
 
-        def initialize(attributes = {})
-          initialize_type(attributes)
-          super(attributes)
+        def initialize(new_attributes = {})
+          initialize_type(new_attributes)
+          super(new_attributes)
         end
 
-        def save(options = {})
-          service.create_domain(type.attributes.merge(options).merge(realm: realm))
+        def save(new_attributes = {})
+          service.create_domain(type.attributes.merge(new_attributes).merge(attributes.reject { |attribute| [:type].include? attribute }))
           reload
         end
 
@@ -43,18 +43,22 @@ module Fog
 
         def update
           requires :realm
-          service.update_domain(realm, type.attributes.merge(attributes.reject { |attribute| [:type].include? attribute }))
+          service.update_domain(realm, type.attributes.merge(attributes).reject { |attribute| [:type, :realm].include? attribute })
           reload
         end
 
         private
 
-        def initialize_type(attributes = {})
-          attributes[:type] ||= type.nil? ? nil : begin
-            Fog::Proxmox::Identity::DomainType(type.attributes)
+        def initialize_type(new_attributes = {})
+          if new_attributes.has_key? :realm
+            realm = new_attributes.delete(:realm)
+          elsif new_attributes.has_key? 'realm'              
+            realm = new_attributes.delete('realm')
           end
+          attributes[:type] = Fog::Identity::Proxmox::DomainType.new(new_attributes)
+          new_attributes.delete_if { |new_attribute| attributes[:type].attributes.has_key? new_attribute.to_sym }
+          new_attributes.store(:realm, realm)
         end
-
       end
     end
   end

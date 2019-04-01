@@ -29,9 +29,9 @@ module Fog
         def all
           load service.list_pools
         end
-
+   
         def get(id)
-          new service.get_pool(id)
+          all.find { |pool| pool.identity === id }
         end
 
         def destroy(id)
