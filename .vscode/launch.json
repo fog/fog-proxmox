@@ -33,7 +33,7 @@
                 "USE_VCR": false,
                 "PVE_URL": "https://192.168.56.101:8006/api2/json",
                 "PVE_USERNAME": "root@pam",
-                "PVE_PASSWORD": "proxmox01"
+                "PVE_PASSWORD": ""
             },
             "args": [
                 "-I",
@@ -54,7 +54,7 @@
                 "USE_VCR": false,
                 "PVE_URL": "https://192.168.56.101:8006/api2/json",
                 "PVE_USERNAME": "root@pam",
-                "PVE_PASSWORD": "proxmox01"
+                "PVE_PASSWORD": ""
             },
             "args": [
                 "-I",
@@ -76,7 +76,7 @@
                 "USE_VCR": false,
                 "PVE_URL": "https://192.168.56.101:8006/api2/json",
                 "PVE_USERNAME": "root@pam",
-                "PVE_PASSWORD": "proxmox01"
+                "PVE_PASSWORD": ""
             },
             "args": [
                 "spec",

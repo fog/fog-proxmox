@@ -30,7 +30,7 @@ gem 'fog-proxmox'
 And then execute:
 
 ```ruby
-bundle install --binstubs
+bundle install
 ```
 
 Or install it yourself as:
