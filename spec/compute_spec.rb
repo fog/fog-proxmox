@@ -338,6 +338,7 @@ describe Fog::Compute::Proxmox do
       container.restore(backup, storage: 'local-lvm')
       # Delete it
       backup.destroy
+      container.backups.must_be_empty
       # Add mount points
       # Find available storages with images
       storages = node.storages.list_by_content_type 'images'

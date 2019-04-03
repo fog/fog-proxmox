@@ -27,13 +27,12 @@ module Fog
       class Interfaces < Fog::Collection
         model Fog::Compute::Proxmox::Interface
 
-        def all(_options = {})
+        def all
           self
         end
 
         def get(id)
-          cached_interface = find { |interface| interface.id == id }
-          return cached_interface if cached_interface
+          all.find { |interface| interface.identity === id }
         end
 
         def next_nicid

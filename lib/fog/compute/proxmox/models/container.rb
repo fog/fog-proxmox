@@ -33,15 +33,12 @@ module Fog
 
         def restore(backup, options = {})
           request(:create_server, options.merge(vmid: vmid, ostemplate: backup.volid, force: 1, restore: 1), vmid: vmid)
+          reload
         end
 
         def move(volume, storage, options = {})
           request(:move_volume, options.merge(volume: volume, storage: storage), vmid: vmid)
-        end
-
-        def reload
-          object = node.containers.get(vmid)
-          merge_attributes(object.attributes)
+          reload
         end
 
         # no async task in container update
@@ -49,6 +46,7 @@ module Fog
           path_params = { node: node_id, type: type, vmid: vmid }
           body_params = new_attributes
           service.update_server(path_params, body_params)
+          reload
         end
 
         def detach(mpid)
@@ -57,6 +55,7 @@ module Fog
 
         def extend(disk, size, options = {})
           request(:resize_container, options.merge(disk: disk, size: size), vmid: vmid)
+          reload
         end
 
         def action(action, options = {})

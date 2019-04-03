@@ -26,13 +26,12 @@ module Fog
       class Disks < Fog::Collection
         model Fog::Compute::Proxmox::Disk
 
-        def all(_options = {})
+        def all
           self
         end
 
         def get(id)
-          cached_disk = find { |disk| disk.id == id }
-          return cached_disk if cached_disk
+          all.find { |disk| disk.identity === id }
         end
 
         def next_device(controller)

@@ -72,7 +72,7 @@ module Fog
         end
 
         def persisted?
-          service.check_vmid vmid
+          service.next_vmid(vmid: vmid)
           true
         rescue Excon::Error::InternalServerError
           false
@@ -107,19 +107,16 @@ module Fog
           message = "Action #{action} not implemented"
           raise Fog::Errors::Error, message unless action_known
           request(:action_server, options, action: action, vmid: vmid)
+          reload
         end
 
         def ready?
           status == 'running'
         end
 
-        def reload
-          object = node.servers.get(vmid)
-          merge_attributes(object.attributes)
-        end
-
         def backup(options = {})
           request(:create_backup, options.merge(vmid: vmid))
+          reload
         end
 
         def restore(backup, options = {})
@@ -129,22 +126,27 @@ module Fog
 
         def clone(newid, options = {})
           request(:clone_server, options.merge(newid: newid), vmid: vmid)
+          reload
         end
 
         def create_template(options = {})
           service.template_server({ node: node_id, type: type, vmid: vmid }, options)
+          reload
         end
 
         def migrate(target, options = {})
           request(:migrate_server, options.merge(target: target), vmid: vmid)
+          reload
         end
 
         def extend(disk, size, options = {})
           service.resize_server({ node: node_id, vmid: vmid }, options.merge(disk: disk, size: size))
+          reload
         end
 
         def move(disk, storage, options = {})
           request(:move_disk, options.merge(disk: disk, storage: storage), vmid: vmid)
+          reload
         end
 
         def attach(disk, options = {})

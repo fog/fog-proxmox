@@ -78,7 +78,7 @@ module Fog
 
         def initialize_interfaces(new_attributes)
           nets = Fog::Proxmox::NicHelper.collect_nics(new_attributes)
-          @interfaces ||= Fog::Compute::Proxmox::Interfaces.new
+          attributes[:interfaces] = Fog::Compute::Proxmox::Interfaces.new
           nets.each do |key, value|
             nic_hash = {
               id: key.to_s,
@@ -87,13 +87,13 @@ module Fog
             }
             names = Fog::Compute::Proxmox::Interface.attributes.reject { |key, _value| %i[id mac name].include? key }
             names.each { |name| nic_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
-            @interfaces << Fog::Compute::Proxmox::Interface.new(nic_hash)
+            attributes[:interfaces] << Fog::Compute::Proxmox::Interface.new(nic_hash)
           end
         end
 
         def initialize_mount_points(new_attributes)
           controllers = Fog::Proxmox::ControllerHelper.collect_controllers(new_attributes)
-          @mount_points ||= Fog::Compute::Proxmox::Disks.new
+          attributes[:mount_points] = Fog::Compute::Proxmox::Disks.new
           controllers.each do |key, value|
             storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(value)
             disk_hash = {
@@ -104,7 +104,7 @@ module Fog
             }
             names = Fog::Compute::Proxmox::Disk.attributes.reject { |key, _value| %i[id size storage volid].include? key }
             names.each { |name| disk_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
-            @mount_points << Fog::Compute::Proxmox::Disk.new(disk_hash)
+            attributes[:mount_points] << Fog::Compute::Proxmox::Disk.new(disk_hash)
           end
         end
       end

@@ -40,7 +40,7 @@ module Fog
         end
 
         def id_valid?(vmid)
-          service.check_vmid(vmid)
+          service.next_vmid(vmid: vmid)
           true
         rescue Excon::Errors::BadRequest
           false

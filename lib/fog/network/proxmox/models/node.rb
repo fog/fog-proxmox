@@ -47,11 +47,13 @@ module Fog
         attribute :swap
         attribute :networks
 
-        def networks
-          attributes[:networks] ||= identity.nil? ? [] : begin
-            Fog::Network::Proxmox::Networks.new(service: service,
-                                                            node_id: identity)
-            end
+        def initialize(new_attributes = {})
+          prepare_service_value(new_attributes)
+          attributes[:node] = new_attributes['node'] unless new_attributes['node'].nil?
+          attributes[:node] = new_attributes[:node] unless new_attributes[:node].nil?
+          requires :node
+          initialize_networks
+          super(new_attributes)
         end
 
         def power(action)
@@ -59,6 +61,12 @@ module Fog
           message = "Action #{action} not implemented"
           raise Fog::Errors::Error, message unless action_known
           service.power_node({ node: node }, command: action)
+        end
+
+        private
+
+        def initialize_networks
+          attributes[:networks] = Fog::Network::Proxmox::Networks.new(service: service, node_id: node)
         end
       end
     end
