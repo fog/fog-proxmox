@@ -107,7 +107,9 @@ describe Fog::Compute::Proxmox do
       valid = node.servers.id_valid? 99
       valid.must_equal false
       # Create 1st time
-      node.servers.create(server_hash)
+      server = node.servers.create(server_hash)
+      ok = server.persisted?
+      ok.must_equal true
       # Check already used vmid
       valid = node.servers.id_valid? vmid
       valid.must_equal false
@@ -175,10 +177,10 @@ describe Fog::Compute::Proxmox do
       config = server.config
       config.identity.must_equal vmid
       disks = server.config.disks
-      nics = server.config.interfaces
-      nics.wont_be_nil
-      nics.wont_be_empty
-      net0 = nics.get('net0')
+      interfaces = server.config.interfaces
+      interfaces.wont_be_nil
+      interfaces.wont_be_empty
+      net0 = interfaces.get('net0')
       net0.wont_be_nil
       disks.wont_be_nil
       disks.wont_be_empty

@@ -39,28 +39,35 @@ module Fog
         attribute :server_type
         attribute :vmgenid
 
-        def save
+        def initialize(new_attributes = {})
+          prepare_service_value(new_attributes)
+          attributes[:node_id] = new_attributes[:node_id] unless new_attributes[:node_id].nil?
+          attributes[:server_id] = new_attributes[:server_id] unless new_attributes[:server_id].nil?
+          attributes[:server_type] = new_attributes[:server_type] unless new_attributes[:server_type].nil?
+          attributes[:name] = new_attributes[:name] unless new_attributes[:name].nil?
+          attributes[:name] = new_attributes['name'] unless new_attributes['name'].nil?
           requires :node_id, :server_id, :server_type, :name
+          super(new_attributes)
+        end
+
+        def save
           path_params = { node: node_id, type: server_type, vmid: server_id }
           body_params = { snapname: name }
           server.tasks.wait_for(service.create_snapshot(path_params, body_params))
         end
 
         def update
-          requires :name, :node_id, :server_id, :server_type
           path_params = { node: node_id, type: server_type, vmid: server_id, snapname: name }
           body_params = { description: description }
           service.update_snapshot(path_params, body_params)
         end
 
         def rollback
-          requires :name, :node_id, :server_id, :server_type
           path_params = { node: node_id, type: server_type, vmid: server_id, snapname: name }
           server.tasks.wait_for(service.rollback_snapshot(path_params))
         end
 
         def destroy(force = 0)
-          requires :name, :node_id, :server_id, :server_type
           path_params = { node: node_id, type: server_type, vmid: server_id, snapname: name }
           query_params = { force: force }
           server.tasks.wait_for(service.delete_snapshot(path_params, query_params))
@@ -69,10 +76,7 @@ module Fog
         private
 
         def server
-          requires :node_id, :server_id, :server_type
-          begin
-            Fog::Compute::Proxmox::Server.new(service: service, node_id: node_id, type: server_type, vmid: server_id)
-          end
+          Fog::Compute::Proxmox::Server.new(service: service, node_id: node_id, type: server_type, vmid: server_id)
         end
       end
     end

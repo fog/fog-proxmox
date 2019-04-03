@@ -95,7 +95,7 @@ module Fog
 
       def self.extract_size(disk_value)
         size=extract_option('size', disk_value)
-	self.to_bytes(size)
+	      size ? self.to_bytes(size) : "1G"
       end
     end
   end

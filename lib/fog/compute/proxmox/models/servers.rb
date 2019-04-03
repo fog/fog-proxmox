@@ -31,9 +31,8 @@ module Fog
           'qemu'
         end
 
-        def new(attributes = {})
-          requires :node_id
-          super({ node_id: node_id, type: type }.merge(attributes))
+        def new(new_attributes = {})
+          super({ node_id: node_id, type: type }.merge(new_attributes))
         end
 
         def next_id
@@ -48,7 +47,6 @@ module Fog
         end
 
         def get(id)
-          requires :node_id
           path_params = { node: node_id, type: type, vmid: id }
           status_data = service.get_server_status path_params
           config_data = service.get_server_config path_params
@@ -57,7 +55,6 @@ module Fog
         end
 
         def all(options = {})
-          requires :node_id
           body_params = options.merge(node: node_id, type: type)
           load service.list_servers(body_params)
         end

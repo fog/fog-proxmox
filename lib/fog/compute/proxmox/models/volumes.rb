@@ -28,18 +28,15 @@ module Fog
         attribute :node_id
         attribute :storage_id
 
-        def new(attributes = {})
-          requires :node_id, :storage_id
-          super({ node_id: node_id, storage_id: storage_id }.merge(attributes))
+        def new(new_attributes = {})
+          super({ node_id: node_id, storage_id: storage_id }.merge(new_attributes))
         end
 
         def all(filters = {})
-          requires :node_id, :storage_id
           load service.list_volumes(node_id, storage_id, filters)
         end
 
         def list_by_content_type(content)
-          requires :node_id
           all.select { |volume| volume.content.include? content}
         end
 
@@ -48,7 +45,6 @@ module Fog
         end
 
         def get(id)
-          requires :node_id, :storage_id
           new service.get_volume(node: node_id, storage: storage_id, volume: id)
         end
 

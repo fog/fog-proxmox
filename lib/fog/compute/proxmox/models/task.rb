@@ -45,13 +45,12 @@ module Fog
         attribute :status_details
         attribute :log
 
-        def new(attributes = {})
-          requires :node_id
-          super({ node_id: node_id }.merge(attributes))
-        end
-
-        def to_s
-          upid
+        def initialize(new_attributes = {})
+          prepare_service_value(new_attributes)
+          attributes[:node_id] = new_attributes[:node_id] unless new_attributes[:node_id].nil?
+          attributes[:upid] = new_attributes['upid'] unless new_attributes['upid'].nil?
+          requires :node_id, :upid
+          super(new_attributes)
         end
 
         def succeeded?
@@ -67,12 +66,10 @@ module Fog
         end
 
         def stop
-          requires :node_id, :upid
           service.stop_task(node_id, upid)
         end
 
         def reload
-          requires :upid
           object = collection.get(upid)
           merge_attributes(object.attributes)
         end

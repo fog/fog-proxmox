@@ -26,10 +26,9 @@ module Fog
       class Storages < Fog::Collection
         model Fog::Compute::Proxmox::Storage
         attribute :node_id
-
-        def new(attributes = {})
-          requires :node_id
-          super({ node_id: node_id }.merge(attributes))
+        
+        def new(new_attributes = {})
+          super({ node_id: node_id }.merge(new_attributes))
         end
 
         def all(filters = {})

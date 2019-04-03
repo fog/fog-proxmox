@@ -56,16 +56,15 @@ module Fog
         attribute :interfaces
         attribute :mount_points
 
-        def initialize(attributes = {})
-          prepare_service_value(attributes)
-          initialize_interfaces(attributes)
-          initialize_mount_points(attributes)
-          super(attributes)
+        def initialize(new_attributes = {})
+          prepare_service_value(new_attributes)
+          attributes[:vmid] = new_attributes[:vmid] unless new_attributes[:vmid].nil?
+          attributes[:vmid] = new_attributes['vmid'] unless new_attributes['vmid'].nil?
+          requires :vmid
+          initialize_interfaces(new_attributes)
+          initialize_mount_points(new_attributes)
+          super(new_attributes)
         end
-
-        attr_reader :interfaces
-
-        attr_reader :mount_points
 
         def mac_addresses
           Fog::Proxmox::NicHelper.to_mac_adresses_array(interfaces)
@@ -77,8 +76,8 @@ module Fog
 
         private
 
-        def initialize_interfaces(attributes)
-          nets = Fog::Proxmox::NicHelper.collect_nics(attributes)
+        def initialize_interfaces(new_attributes)
+          nets = Fog::Proxmox::NicHelper.collect_nics(new_attributes)
           @interfaces ||= Fog::Compute::Proxmox::Interfaces.new
           nets.each do |key, value|
             nic_hash = {
@@ -92,8 +91,8 @@ module Fog
           end
         end
 
-        def initialize_mount_points(attributes)
-          controllers = Fog::Proxmox::ControllerHelper.collect_controllers(attributes)
+        def initialize_mount_points(new_attributes)
+          controllers = Fog::Proxmox::ControllerHelper.collect_controllers(new_attributes)
           @mount_points ||= Fog::Compute::Proxmox::Disks.new
           controllers.each do |key, value|
             storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(value)

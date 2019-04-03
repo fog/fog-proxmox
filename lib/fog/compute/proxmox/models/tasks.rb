@@ -27,18 +27,15 @@ module Fog
         model Fog::Compute::Proxmox::Task
         attribute :node_id
 
-        def new(attributes = {})
-          requires :node_id
-          super({ node_id: node_id }.merge(attributes))
+        def new(new_attributes = {})
+          super({ node_id: node_id }.merge(new_attributes))
         end
 
         def all(filters = {})
-          requires :node_id
           load service.list_tasks(node_id, filters)
         end
 
         def log(id)
-          requires :node_id
           log = ''
           log_array = service.log_task(node_id, id, {})
           log_array.each do |line_hash|
@@ -48,7 +45,6 @@ module Fog
         end
 
         def get(id)
-          requires :node_id
           status_details = service.status_task(node_id, id)
           task_hash = status_details.merge(log: log(id))
           task_data = task_hash.merge(node_id: node_id, upid: id)

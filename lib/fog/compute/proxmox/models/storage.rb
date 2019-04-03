@@ -44,11 +44,19 @@ module Fog
         attribute :used_fraction
         attribute :volumes
 
-        def volumes
-          attributes[:volumes] ||= node_id.nil? || identity.nil? ? [] : begin
-            Fog::Compute::Proxmox::Volumes.new(service: service,
-                                               node_id: node_id, storage_id: identity)
-          end
+        def initialize(new_attributes = {})
+          prepare_service_value(new_attributes)
+          attributes[:node_id] = new_attributes[:node_id] unless new_attributes[:node_id].nil?
+          attributes[:storage] = new_attributes['storage'] unless new_attributes['storage'].nil?
+          requires :node_id, :storage
+          initialize_volumes
+          super(new_attributes)
+        end
+
+        private
+
+        def initialize_volumes
+          attributes[:volumes] = Fog::Compute::Proxmox::Volumes.new(service: service, node_id: node_id, storage_id: identity)
         end
       end
     end

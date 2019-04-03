@@ -39,18 +39,20 @@ module Fog
         attribute :storage_id
         attribute :vmid
 
-        def new(attributes = {})
-          requires :node_id, :storage_id
-          super({ node_id: node_id, storage_id: storage_id }.merge(attributes))
+        def initialize(new_attributes = {})
+          prepare_service_value(new_attributes)
+          attributes[:node_id] = new_attributes[:node_id] unless new_attributes[:node_id].nil?
+          attributes[:storage_id] = new_attributes[:storage_id] unless new_attributes[:storage_id].nil?
+          attributes[:volid] = new_attributes['volid'] unless new_attributes['volid'].nil?
+          requires :node_id, :storage_id, :volid
+          super(new_attributes)
         end
 
         def destroy
-          requires :node_id, :volid, :storage_id
           service.delete_volume(node_id, storage_id, volid)
         end
 
         def restore(vmid, options = {})
-          requires :node_id, :volid, :storage_id
           service.create_server(node_id, options.merge(archive: volid, storage: storage_id, vmid: vmid))
         end
       end

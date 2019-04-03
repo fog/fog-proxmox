@@ -53,19 +53,19 @@ module Fog
         attribute :interfaces
         attribute :disks
 
-        def initialize(attributes = {})
-          prepare_service_value(attributes)
-          initialize_interfaces(attributes)
-          initialize_disks(attributes)
-          super(attributes)
+        def initialize(new_attributes = {})
+          prepare_service_value(new_attributes)
+          attributes[:vmid] = new_attributes[:vmid] unless new_attributes[:vmid].nil?
+          attributes[:vmid] = new_attributes['vmid'] unless new_attributes['vmid'].nil?
+          requires :vmid
+          initialize_interfaces(new_attributes)
+          initialize_disks(new_attributes)
+          super(new_attributes)
         end
 
         def mac_addresses
           Fog::Proxmox::NicHelper.to_mac_adresses_array(interfaces)
         end
-
-        attr_reader :disks
-        attr_reader :interfaces
 
         def type_console
           console = 'vnc' if %w[std cirrus vmware].include?(vga)
@@ -76,9 +76,9 @@ module Fog
 
         private
 
-        def initialize_interfaces(attributes)
-          nets = Fog::Proxmox::NicHelper.collect_nics(attributes)
-          @interfaces ||= Fog::Compute::Proxmox::Interfaces.new
+        def initialize_interfaces(new_attributes)
+          nets = Fog::Proxmox::NicHelper.collect_nics(new_attributes)
+          attributes[:interfaces] = Fog::Compute::Proxmox::Interfaces.new
           nets.each do |key, value|
             nic_hash = {
               id: key.to_s,
@@ -87,13 +87,13 @@ module Fog
             }
             names = Fog::Compute::Proxmox::Interface.attributes.reject { |key, _value| %i[id mac model].include? key }
             names.each { |name| nic_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
-            @interfaces << Fog::Compute::Proxmox::Interface.new(nic_hash)
+            attributes[:interfaces] << Fog::Compute::Proxmox::Interface.new(nic_hash)
           end
         end
 
-        def initialize_disks(attributes)
-          controllers = Fog::Proxmox::ControllerHelper.collect_controllers(attributes)
-          @disks ||= Fog::Compute::Proxmox::Disks.new
+        def initialize_disks(new_attributes)
+          controllers = Fog::Proxmox::ControllerHelper.collect_controllers(new_attributes)
+          attributes[:disks] = Fog::Compute::Proxmox::Disks.new
           controllers.each do |key, value|
             storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(value)
             disk_hash = {
@@ -104,7 +104,7 @@ module Fog
             }
             names = Fog::Compute::Proxmox::Disk.attributes.reject { |key, _value| %i[id size storage volid].include? key }
             names.each { |name| disk_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
-            @disks << Fog::Compute::Proxmox::Disk.new(disk_hash)
+            attributes[:disks] << Fog::Compute::Proxmox::Disk.new(disk_hash)
           end
         end
       end

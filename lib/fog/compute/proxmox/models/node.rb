@@ -42,36 +42,21 @@ module Fog
         attribute :ssl_fingerprint
         attribute :status
         attribute :uptime
-        attribute :servers
         attribute :tasks
+        attribute :servers
+        attribute :containers
         attribute :storages
 
-        def tasks
-          attributes[:tasks] ||= identity.nil? ? [] : begin
-            Fog::Compute::Proxmox::Tasks.new(service: service,
-                                             node_id: node)
-            end
-        end
-
-        def servers
-          attributes[:servers] ||= identity.nil? ? [] : begin
-            Fog::Compute::Proxmox::Servers.new(service: service,
-              node_id: node)
-          end
-        end
-
-        def containers
-          attributes[:containers] ||= identity.nil? ? [] : begin
-            Fog::Compute::Proxmox::Containers.new(service: service,
-              node_id: node)
-          end
-        end
-
-        def storages
-          attributes[:storages] ||= identity.nil? ? [] : begin
-            Fog::Compute::Proxmox::Storages.new(service: service,
-              node_id: node)
-          end
+        def initialize(new_attributes = {})
+          prepare_service_value(new_attributes)
+          attributes[:node] = new_attributes['node'] unless new_attributes['node'].nil?
+          attributes[:node] = new_attributes[:node] unless new_attributes[:node].nil?
+          requires :node
+          initialize_tasks
+          initialize_servers
+          initialize_containers
+          initialize_storages
+          super(new_attributes)
         end
 
         def backup(options = {})
@@ -83,6 +68,24 @@ module Fog
           path_params = { node: node, output: output }
           query_params = options
           service.get_node_statistics(path_params,query_params)
+        end
+
+        private
+
+        def initialize_tasks
+          attributes[:tasks] = Fog::Compute::Proxmox::Tasks.new(service: service, node_id: node)
+        end
+
+        def initialize_servers
+          attributes[:servers] = Fog::Compute::Proxmox::Servers.new(service: service, node_id: node)
+        end
+
+        def initialize_containers
+          attributes[:containers] = Fog::Compute::Proxmox::Containers.new(service: service, node_id: node)
+        end
+
+        def initialize_storages
+          attributes[:storages] = Fog::Compute::Proxmox::Storages.new(service: service, node_id: node)
         end
 
       end

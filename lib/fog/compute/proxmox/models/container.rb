@@ -40,27 +40,15 @@ module Fog
         end
 
         def reload
-          requires :vmid
           object = node.containers.get(vmid)
           merge_attributes(object.attributes)
         end
 
         # no async task in container update
-        def update(attributes = {})
-          requires :node, :vmid, :type
+        def update(new_attributes = {})
           path_params = { node: node_id, type: type, vmid: vmid }
-          body_params = attributes
+          body_params = new_attributes
           service.update_server(path_params, body_params)
-        end
-
-        def config
-          requires :node_id, :vmid, :type
-          path_params = { node: node_id, type: type, vmid: vmid }
-          attributes[:config] = vmid.nil? ? nil : begin
-            options = { service: service, vmid: vmid }
-            options = options.merge(service.get_server_config(path_params)) if uptime
-            Fog::Compute::Proxmox::ContainerConfig.new(options)
-          end
         end
 
         def detach(mpid)
@@ -68,7 +56,6 @@ module Fog
         end
 
         def extend(disk, size, options = {})
-          requires :vmid
           request(:resize_container, options.merge(disk: disk, size: size), vmid: vmid)
         end
 
@@ -77,12 +64,11 @@ module Fog
           super
         end
 
-        protected
+        private
 
-        def initialize_config(attributes = {})
-          attributes[:config] = vmid.nil? ? nil : begin
-            Fog::Compute::Proxmox::ContainerConfig.new({ service: service, vmid: vmid }.merge(attributes))
-          end
+        def initialize_config(new_attributes = {})
+          options = { service: service, vmid: vmid }
+          attributes[:config] = Fog::Compute::Proxmox::ContainerConfig.new(options.merge(new_attributes))
         end
       end
     end

@@ -58,10 +58,26 @@ module Fog
         attribute :tasks
         attribute :vmgenid
 
-        def initialize(attributes = {})
-          prepare_service_value(attributes)
-          initialize_config(attributes)
-          super(attributes)
+        def initialize(new_attributes = {})
+          prepare_service_value(new_attributes)
+          attributes[:node_id] = new_attributes[:node_id] unless new_attributes[:node_id].nil?
+          attributes[:type] = new_attributes[:type] unless new_attributes[:type].nil?
+          attributes[:vmid] = new_attributes[:vmid] unless new_attributes[:vmid].nil?
+          attributes[:vmid] = new_attributes['vmid'] unless new_attributes['vmid'].nil?
+          requires :node_id, :type, :vmid
+          initialize_config(new_attributes)
+          initialize_snapshots
+          initialize_tasks
+          super(new_attributes)
+        end
+
+        def persisted?
+          service.check_vmid vmid
+          true
+        rescue Excon::Error::InternalServerError
+          false
+        rescue Excon::Error::BadRequest
+          true
         end
 
         # request with async task
@@ -73,24 +89,20 @@ module Fog
         end
 
         def save(options = {})
-          requires :vmid
           request(:create_server, options.merge(vmid: vmid))
           reload
         end
 
         def update(attributes = {})
-          requires :vmid
           request(:update_server, attributes, vmid: vmid)
           reload
         end
 
         def destroy(options = {})
-          requires :vmid
           request(:delete_server, options, vmid: vmid)
         end
 
         def action(action, options = {})
-          requires :vmid
           action_known = %w[start stop resume suspend shutdown reset].include? action
           message = "Action #{action} not implemented"
           raise Fog::Errors::Error, message unless action_known
@@ -102,92 +114,46 @@ module Fog
         end
 
         def reload
-          requires :vmid
           object = node.servers.get(vmid)
           merge_attributes(object.attributes)
         end
 
         def backup(options = {})
-          requires :vmid
           request(:create_backup, options.merge(vmid: vmid))
         end
 
         def restore(backup, options = {})
-          requires :vmid
           attr_hash = options.merge(archive: backup.volid, force: 1)
           save(attr_hash)
         end
 
         def clone(newid, options = {})
-          requires :vmid
           request(:clone_server, options.merge(newid: newid), vmid: vmid)
         end
 
         def create_template(options = {})
-          requires :vmid, :node_id
           service.template_server({ node: node_id, type: type, vmid: vmid }, options)
         end
 
         def migrate(target, options = {})
-          requires :vmid
           request(:migrate_server, options.merge(target: target), vmid: vmid)
         end
 
         def extend(disk, size, options = {})
-          requires :vmid, :node_id
           service.resize_server({ node: node_id, vmid: vmid }, options.merge(disk: disk, size: size))
         end
 
         def move(disk, storage, options = {})
-          requires :vmid
           request(:move_disk, options.merge(disk: disk, storage: storage), vmid: vmid)
         end
 
         def attach(disk, options = {})
-          config = Fog::Proxmox::DiskHelper.flatten(disk.merge(options: options))
-          update(config)
+          disk_hash = Fog::Proxmox::DiskHelper.flatten(disk.merge(options: options))
+          update(disk_hash)
         end
 
         def detach(diskid)
           update(delete: diskid)
-        end
-
-        def config
-          requires :node_id, :vmid, :type
-          path_params = { node: node_id, type: type, vmid: vmid }
-          attributes[:config] = vmid.nil? ? nil : begin
-            options = { service: service, vmid: vmid }
-            options = options.merge(service.get_server_config(path_params)) if uptime
-            Fog::Compute::Proxmox::ServerConfig.new(options)
-          end
-        end
-
-        def snapshots
-          attributes[:snapshots] ||= identity.nil? ? [] : begin
-            Fog::Compute::Proxmox::Snapshots.new(service: service, server_id: vmid, server_type: type, node_id: node_id)
-          end
-        end
-
-        def backups
-          list 'backup'
-        end
-
-        def images
-          list 'images'
-        end
-
-        def list(content)
-          storages = node.storages.list_by_content_type content
-          volumes = []
-          storages.each { |storage| volumes += storage.volumes.list_by_content_type_and_by_server(content, identity) }
-          volumes
-        end
-
-        def tasks
-          attributes[:tasks] ||= vmid.nil? ? [] : begin
-            Fog::Compute::Proxmox::Tasks.new(service: service,
-              node_id: node_id).select { |task| task.id == vmid }
-          end
         end
 
         def start_console(options = {})
@@ -207,28 +173,45 @@ module Fog
         end
 
         def connect_vnc(options = {})
-          requires :vmid, :node_id, :type
           path_params = { node: node_id, type: type, vmid: vmid }
           query_params = { port: options['port'], vncticket: options['ticket'] }
           service.get_vnc(path_params, query_params)
         end
 
+        def backups
+          list 'backup'
+        end
+
+        def images
+          list 'images'
+        end
+
+        def list(content)
+          storages = node.storages.list_by_content_type content
+          volumes = []
+          storages.each { |storage| volumes += storage.volumes.list_by_content_type_and_by_server(content, identity) }
+          volumes
+        end
+
         protected 
 
-        def initialize_config(attributes = {})
-          vmid = attributes[:vmid] if vmid.nil?
-          attributes[:config] ||= vmid.nil? ? nil : begin
-            Fog::Compute::Proxmox::ServerConfig.new(service: service, vmid: vmid)
-          end
+        def initialize_config(new_attributes = {})
+          options = { service: service, vmid: vmid }
+          attributes[:config] = Fog::Compute::Proxmox::ServerConfig.new(options.merge(new_attributes))
         end
 
         private
 
+        def initialize_snapshots
+          attributes[:snapshots] = Fog::Compute::Proxmox::Snapshots.new(service: service, server_id: vmid, server_type: type, node_id: node_id)
+        end
+
+        def initialize_tasks
+          attributes[:tasks] = Fog::Compute::Proxmox::Tasks.new(service: service, node_id: node_id).select { |task| task.id == vmid }
+        end
+
         def node
-          node_id.nil? ? nil : begin
-            Fog::Compute::Proxmox::Node.new(service: service,
-                                             node: node_id)
-          end
+          Fog::Compute::Proxmox::Node.new(service: service, node: node_id)
         end 
       end
     end

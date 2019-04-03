@@ -26,21 +26,15 @@ module Fog
       class Containers < Fog::Compute::Proxmox::Servers
         model Fog::Compute::Proxmox::Container
 
-        def initialize(attributes = {})
-          super(attributes)
-        end
-
         def type
           'lxc'
         end    
 
-        def new(attributes = {})
-          requires :node_id, :type
-          super({ node_id: node_id, type: type }.merge(attributes))
+        def new(new_attributes = {})
+          super({ node_id: node_id, type: type }.merge(new_attributes))
         end
 
         def create(ostemplate, vmid, options = {})
-          requires :node_id, :type
           service.create_server({ node: node_id, type: type }, options.merge(ostemplate: ostemplate, vmid: vmid))
         end
       end
