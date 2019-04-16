@@ -20,9 +20,9 @@
 require 'fog/proxmox/core'
 
 module Fog
-  module Compute
+  module Proxmox
     # Proxmox compute service
-    class Proxmox < Fog::Service
+    class Compute < Fog::Service
       requires :pve_url
       recognizes :pve_ticket, :pve_path, :pve_ticket_expires,
                  :pve_csrftoken, :persistent, :current_user, :pve_username,

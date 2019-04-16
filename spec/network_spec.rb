@@ -20,11 +20,11 @@
 require 'spec_helper'
 require_relative './proxmox_vcr'
 
-describe Fog::Network::Proxmox do
+describe Fog::Proxmox::Network do
   before :all do
     @proxmox_vcr = ProxmoxVCR.new(
       vcr_directory: 'spec/fixtures/proxmox/network',
-      service_class: Fog::Network::Proxmox
+      service_class: Fog::Proxmox::Network
     )
     @service = @proxmox_vcr.service
     @pve_url = @proxmox_vcr.url

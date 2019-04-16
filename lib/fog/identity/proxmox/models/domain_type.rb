@@ -16,8 +16,8 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Domain type model authentication
       class DomainType < Fog::Model
         identity :type

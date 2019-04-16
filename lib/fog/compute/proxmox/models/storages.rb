@@ -20,11 +20,11 @@
 require 'fog/compute/proxmox/models/storage'
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Storages Collection of storages
       class Storages < Fog::Collection
-        model Fog::Compute::Proxmox::Storage
+        model Fog::Proxmox::Compute::Storage
         attribute :node_id
         
         def new(new_attributes = {})

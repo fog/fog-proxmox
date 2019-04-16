@@ -19,8 +19,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Real list_users request
       class Real
         def list_users(options = {})

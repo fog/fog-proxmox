@@ -19,8 +19,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Real log_task
       class Real
         def log_task(node, upid, options)

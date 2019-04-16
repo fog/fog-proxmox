@@ -18,8 +18,8 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Real create_pool request
       class Real
         def create_pool(pool)

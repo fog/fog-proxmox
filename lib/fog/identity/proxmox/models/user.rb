@@ -18,8 +18,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class User model
       class User < Fog::Model
         identity :userid

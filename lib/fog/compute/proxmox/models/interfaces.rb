@@ -21,11 +21,11 @@ require 'fog/compute/proxmox/models/interface'
 require 'fog/proxmox/helpers/controller_helper'
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Interfaces Collection of nodes of cluster
       class Interfaces < Fog::Collection
-        model Fog::Compute::Proxmox::Interface
+        model Fog::Proxmox::Compute::Interface
 
         def all
           self
@@ -36,7 +36,7 @@ module Fog
         end
 
         def next_nicid
-          Fog::Proxmox::ControllerHelper.last_index(Fog::Compute::Proxmox::Interface::NAME, self) + 1
+          Fog::Proxmox::ControllerHelper.last_index(Fog::Proxmox::Compute::Interface::NAME, self) + 1
         end
       end
     end

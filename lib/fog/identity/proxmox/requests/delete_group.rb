@@ -19,8 +19,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Real delete_group request
       class Real
         def delete_group(groupid)

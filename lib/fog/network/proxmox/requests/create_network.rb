@@ -18,8 +18,8 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 module Fog
-  module Network
-    class Proxmox
+  module Proxmox
+    class Network
       # class Real create_network request
       class Real
         def create_network(path_params, body_params)

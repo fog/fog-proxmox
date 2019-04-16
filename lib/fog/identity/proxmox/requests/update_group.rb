@@ -18,8 +18,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Real update_group request
       class Real
         def update_group(groupid, options)

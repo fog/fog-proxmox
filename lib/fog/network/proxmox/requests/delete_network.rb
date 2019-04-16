@@ -19,8 +19,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Network
-    class Proxmox
+  module Proxmox
+    class Network
       # class Real delete_network request
       class Real
         def delete_network(path_params)

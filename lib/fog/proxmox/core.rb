@@ -33,7 +33,7 @@ module Fog
 
       # fallback
       def self.not_found_class
-        Fog::Compute::Proxmox::NotFound
+        Fog::Proxmox::Compute::NotFound
       end
 
       def initialize_identity(options)

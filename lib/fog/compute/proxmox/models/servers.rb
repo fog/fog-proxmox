@@ -20,11 +20,11 @@
 require 'fog/compute/proxmox/models/server'
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # Servers Collection
       class Servers < Fog::Collection
-        model Fog::Compute::Proxmox::Server
+        model Fog::Proxmox::Compute::Server
         attribute :node_id
         attribute :type
 

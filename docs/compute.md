@@ -19,7 +19,7 @@ require 'fog/proxmox'
 ## Create compute service
 
 ```ruby
-compute = Fog::Compute::Proxmox.new(
+compute = Fog::Proxmox::Compute.new(
         pve_username: PVE_USERNAME, # your user name
         pve_password: PVE_PASSWORD, # your password
 		pve_url: PVE_URL, # your server url
@@ -116,7 +116,7 @@ List all nodes:
 service.nodes.all
 ```
 
-This returns a collection of `Fog::Compute::Proxmox::Node` models:
+This returns a collection of `Fog::Proxmox::Compute::Node` models:
 
 Get a node:
 
@@ -152,7 +152,7 @@ List all servers:
 node.servers.all
 ```
 
-This returns a collection of `Fog::Identity::Proxmox::Server` models.
+This returns a collection of `Fog::Proxmox::Identity::Server` models.
 
 Before creating a server you can get the next available server id (integer >= 100) in the cluster:
 
@@ -210,10 +210,10 @@ Get all server configuration:
 server.config
 ```
 
-This returns a `Fog::Compute::Proxmox::ServerConfig` model:
+This returns a `Fog::Proxmox::Compute::ServerConfig` model:
 
 ```ruby
- <Fog::Compute::Proxmox::ServerConfig
+ <Fog::Proxmox::Compute::ServerConfig
     smbios1: "uuid=ba2da6bd-0c92-4cfe-8f70-d22cc5b5bba2",
 	numa:	0,
 	digest:	"348fdc21536f23a29dfb9b3120faa124aaeec742",
@@ -227,7 +227,7 @@ This returns a `Fog::Compute::Proxmox::ServerConfig` model:
 	memory:	512,
 	name: "test",
 	ide2: "cdrom,media=cdrom",
-	server:	<Fog::Compute::Proxmox::Server vmid: 100, ...>
+	server:	<Fog::Proxmox::Compute::Server vmid: 100, ...>
   >
 ```
 
@@ -362,7 +362,7 @@ Fetch server disk_images:
 disk_images = server.disk_images
 ```
 
-This returns an array of `Fog::Compute::Proxmox::Volume` instances.
+This returns an array of `Fog::Proxmox::Compute::Volume` instances.
 
 Delete server:
 
@@ -403,7 +403,7 @@ You first fetch the backup volumes of this server:
 volumes = server.backups
 ```
 
-This returns an array of `Fog::Compute::Proxmox::Volume` instances.
+This returns an array of `Fog::Proxmox::Compute::Volume` instances.
 
 Then you choose one:
 
@@ -411,10 +411,10 @@ Then you choose one:
 backup = volumes[0] # local:backup/vzdump-qemu-100-2018_05_15-15_18_31.vma.lzo
 ```
 
-This returns a `Fog::Compute::Proxmox::Volume` instance:
+This returns a `Fog::Proxmox::Compute::Volume` instance:
 
 ```ruby
- <Fog::Compute::Proxmox::Volume
+ <Fog::Proxmox::Compute::Volume
     volid="local:backup/vzdump-qemu-100-2018_05_15-15_18_31.vma.lzo",
     content="backup",
     size=376,
@@ -522,7 +522,7 @@ List all containers:
 node.containers.all
 ```
 
-This returns a collection of `Fog::Identity::Proxmox::Container` models which are inherited from `Fog::Identity::Proxmox::Server` because they have many common features.
+This returns a collection of `Fog::Proxmox::Identity::Container` models which are inherited from `Fog::Proxmox::Identity::Server` because they have many common features.
 
 Before creating a container you can get the next available container id (integer >= 100) in the cluster:
 
@@ -592,10 +592,10 @@ Get container configuration:
 container.config
 ```
 
-This returns a `Fog::Compute::Proxmox::ContainerConfig` model:
+This returns a `Fog::Proxmox::Compute::ContainerConfig` model:
 
 ```ruby
- <Fog::Compute::Proxmox::ContainerConfig
+ <Fog::Proxmox::Compute::ContainerConfig
     memory:	512,
 	net0:	"name=eth0,bridge=vmbr0,hwaddr=BE:3C:A9:3F:4E:39,ip=dhcp,ip6=dhcp,type=veth",
 	swap:	512,
@@ -605,7 +605,7 @@ This returns a `Fog::Compute::Proxmox::ContainerConfig` model:
 	digest:	"e5131befed2f6ff8e11d598c4d8bb6016d5c0901",
 	ostype:	"alpine",
 	arch:	"amd64"
-	container:	<Fog::Compute::Proxmox::Container vmid: 100, ...>
+	container:	<Fog::Proxmox::Compute::Container vmid: 100, ...>
   >
 ```
 
@@ -720,7 +720,7 @@ You first fetch the backup volumes of this container:
 volumes = container.backups
 ```
 
-This returns an array of `Fog::Compute::Proxmox::Volume` instances.
+This returns an array of `Fog::Proxmox::Compute::Volume` instances.
 
 Then you choose one:
 
@@ -728,10 +728,10 @@ Then you choose one:
 backup = volumes[0] # local:backup/vzdump-qemu-100-2018_05_15-15_18_31.vma.lzo
 ```
 
-This returns a `Fog::Compute::Proxmox::Volume` instance:
+This returns a `Fog::Proxmox::Compute::Volume` instance:
 
 ```ruby
- <Fog::Compute::Proxmox::Volume
+ <Fog::Proxmox::Compute::Volume
     volid="local:backup/vzdump-qemu-100-2018_05_15-15_18_31.vma.lzo",
     content="backup",
     size=376,

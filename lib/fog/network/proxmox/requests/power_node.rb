@@ -19,8 +19,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Network
-    class Proxmox
+  module Proxmox
+    class Network
       # class Real power_node request
       class Real
         def power_node(path_params, body_params)

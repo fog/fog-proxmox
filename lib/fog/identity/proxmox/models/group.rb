@@ -18,8 +18,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Group model authentication
       class Group < Fog::Model
         identity  :groupid

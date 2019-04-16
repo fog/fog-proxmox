@@ -18,8 +18,8 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Real get_server_status request
       class Real
         def get_server_status(path_params)

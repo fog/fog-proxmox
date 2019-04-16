@@ -32,7 +32,7 @@ pve_username = 'root@pam'
 pve_password = 'proxmox01'
 
 # Create service identity
-identity = Fog::Identity::Proxmox.new(
+identity = Fog::Proxmox::Identity.new(
   pve_url: pve_url,
   pve_username: pve_username,
   pve_password: pve_password

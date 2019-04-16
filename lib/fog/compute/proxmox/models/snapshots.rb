@@ -20,11 +20,11 @@
 require 'fog/compute/proxmox/models/snapshot'
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Snapshots Collection of snapshots
       class Snapshots < Fog::Collection
-        model Fog::Compute::Proxmox::Snapshot
+        model Fog::Proxmox::Compute::Snapshot
         attribute :server_id
         attribute :server_type
         attribute :node_id

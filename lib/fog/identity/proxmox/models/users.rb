@@ -20,11 +20,11 @@
 require 'fog/identity/proxmox/models/user'
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Users model collection
       class Users < Fog::Collection
-        model Fog::Identity::Proxmox::User
+        model Fog::Proxmox::Identity::User
 
         def all(filters = {})
           load service.list_users(filters)

@@ -20,11 +20,11 @@
 require 'fog/identity/proxmox/models/role'
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Roles model collection authentication
       class Roles < Fog::Collection
-        model Fog::Identity::Proxmox::Role
+        model Fog::Proxmox::Identity::Role
 
         def all
           load service.list_roles

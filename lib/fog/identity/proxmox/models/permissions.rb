@@ -20,11 +20,11 @@
 require 'fog/identity/proxmox/models/permission'
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Permissions authentication
       class Permissions < Fog::Collection
-        model Fog::Identity::Proxmox::Permission
+        model Fog::Proxmox::Identity::Permission
 
         def all
           load service.list_permissions

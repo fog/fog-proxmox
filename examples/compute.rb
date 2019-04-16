@@ -31,7 +31,7 @@ pve_username = 'root@pam'
 pve_password = 'proxmox01'
 
 # Create service compute
-compute = Fog::Compute::Proxmox.new(
+compute = Fog::Proxmox::Compute.new(
   pve_url: pve_url,
   pve_username: pve_username,
   pve_password: pve_password

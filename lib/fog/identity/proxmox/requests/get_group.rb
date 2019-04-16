@@ -19,8 +19,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Real get_group collection
       class Real
         def get_group(groupid)

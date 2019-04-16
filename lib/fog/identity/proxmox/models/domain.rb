@@ -16,8 +16,8 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Domain model authentication
       class Domain < Fog::Model
         identity :realm
@@ -55,7 +55,7 @@ module Fog
           elsif new_attributes.has_key? 'realm'              
             realm = new_attributes.delete('realm')
           end
-          attributes[:type] = Fog::Identity::Proxmox::DomainType.new(new_attributes)
+          attributes[:type] = Fog::Proxmox::Identity::DomainType.new(new_attributes)
           new_attributes.delete_if { |new_attribute| attributes[:type].attributes.has_key? new_attribute.to_sym }
           new_attributes.store(:realm, realm)
         end

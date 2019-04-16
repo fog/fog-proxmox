@@ -19,8 +19,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Real change_password request
       class Real
         def change_password(userid, password)

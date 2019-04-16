@@ -27,8 +27,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Volume model
       class Volume < Fog::Model
         identity  :volid

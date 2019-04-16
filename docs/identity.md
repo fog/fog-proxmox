@@ -19,7 +19,7 @@ require 'fog/proxmox'
 ## Create identity service
 
 ```ruby
-identity = Fog::Identity::Proxmox.new(
+identity = Fog::Proxmox::Identity.new(
         pve_username: PVE_USERNAME, # your user name
         pve_password: PVE_PASSWORD, # your password
         pve_url: PVE_URL, # your server url
@@ -98,7 +98,7 @@ List all users:
 identity.users.all
 ```
 
-This returns a collection of `Fog::Identity::Proxmox::User` models:
+This returns a collection of `Fog::Proxmox::Identity::User` models:
 
 Create a user:
 
@@ -150,7 +150,7 @@ List all groups:
 identity.groups.all
 ```
 
-This returns a collection of `Fog::Identity::Proxmox::Group` models:
+This returns a collection of `Fog::Proxmox::Identity::Group` models:
 
 Create a group:
 
@@ -191,7 +191,7 @@ List all domains:
 identity.domains.all
 ```
 
-This returns a collection of `Fog::Identity::Proxmox::Domain` models:
+This returns a collection of `Fog::Proxmox::Identity::Domain` models:
 
 Create a LDAP domain:
 
@@ -240,7 +240,7 @@ List all roles:
 identity.roles.all
 ```
 
-This returns a collection of `Fog::Identity::Proxmox::Role` models:
+This returns a collection of `Fog::Proxmox::Identity::Role` models:
 
 Create a new role:
 
@@ -281,7 +281,7 @@ List all permissions:
 identity.permissions.all
 ```
 
-This returns a collection of `Fog::Identity::Proxmox::Permission` models:
+This returns a collection of `Fog::Proxmox::Identity::Permission` models:
 
 Add a new permission (manage users) to a user:
 

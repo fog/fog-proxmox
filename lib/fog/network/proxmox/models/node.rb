@@ -27,8 +27,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Network
-    class Proxmox
+  module Proxmox
+    class Network
       # class Node model of VMs
       class Node < Fog::Model
         identity  :node
@@ -66,7 +66,7 @@ module Fog
         private
 
         def initialize_networks
-          attributes[:networks] = Fog::Network::Proxmox::Networks.new(service: service, node_id: node)
+          attributes[:networks] = Fog::Proxmox::Network::Networks.new(service: service, node_id: node)
         end
       end
     end

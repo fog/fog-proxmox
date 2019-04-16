@@ -21,8 +21,8 @@
 require 'fog/proxmox/json'
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Real list_storages request
       class Real
         def list_storages(node, options = {})

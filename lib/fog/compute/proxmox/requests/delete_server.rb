@@ -19,8 +19,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Real delete_server request
       class Real
         def delete_server(path_params, body_params)

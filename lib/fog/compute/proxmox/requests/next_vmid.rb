@@ -19,8 +19,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Real next_vmid collection
       class Real
         def next_vmid(options = {})

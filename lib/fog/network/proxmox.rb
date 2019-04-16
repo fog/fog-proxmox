@@ -18,9 +18,9 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 module Fog
-  module Network
+  module Proxmox
     # Proxmox network service
-    class Proxmox < Fog::Service
+    class Network < Fog::Service
       requires :pve_url
       recognizes :pve_ticket, :pve_path, :pve_ticket_expires, :pve_csrftoken, :persistent, :current_user, :pve_username, :pve_password
 

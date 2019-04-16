@@ -20,8 +20,8 @@
 require 'fog/proxmox/helpers/disk_helper'
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Disk model
       class Disk < Fog::Model
         identity  :id

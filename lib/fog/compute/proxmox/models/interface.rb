@@ -20,8 +20,8 @@
 require "fog/proxmox/helpers/nic_helper"
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Interface model
       class Interface < Fog::Model
         identity  :id

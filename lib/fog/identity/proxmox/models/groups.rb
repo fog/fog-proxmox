@@ -20,11 +20,11 @@
 require 'fog/identity/proxmox/models/group'
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Groups authentication
       class Groups < Fog::Collection
-        model Fog::Identity::Proxmox::Group
+        model Fog::Proxmox::Identity::Group
 
         def all
           load service.list_groups

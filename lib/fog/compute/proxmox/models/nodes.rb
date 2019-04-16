@@ -20,11 +20,11 @@
 require 'fog/compute/proxmox/models/node'
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Nodes Collection of nodes of cluster
       class Nodes < Fog::Collection
-        model Fog::Compute::Proxmox::Node
+        model Fog::Proxmox::Compute::Node
 
         def all
           load service.list_nodes

@@ -25,26 +25,13 @@ require 'fog/core'
 require 'fog/json'
 
 module Fog
-  # Identity module
-  module Identity
-    autoload :Proxmox, File.expand_path('identity/proxmox', __dir__)
-  end
-  # Compute module
-  module Compute
-    autoload :Proxmox, File.expand_path('compute/proxmox', __dir__)
-  end
-  # Storage module
-  module Storage
-    autoload :Proxmox, File.expand_path('storage/proxmox', __dir__)
-  end
-  # Network module
-  module Network
-    autoload :Proxmox, File.expand_path('network/proxmox', __dir__)
-  end
-
   # Proxmox module
   module Proxmox
     extend Fog::Provider
+    autoload :Identity, File.expand_path('identity/proxmox', __dir__)
+    autoload :Compute, File.expand_path('compute/proxmox', __dir__)
+    autoload :Storage, File.expand_path('storage/proxmox', __dir__)
+    autoload :Network, File.expand_path('network/proxmox', __dir__)
     service(:identity, 'Identity')
     service(:compute, 'Compute')
     service(:storage, 'Storage')

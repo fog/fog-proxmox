@@ -26,8 +26,8 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Snapshot model
       class Snapshot < Fog::Model
         identity  :name
@@ -76,7 +76,7 @@ module Fog
         private
 
         def server
-          Fog::Compute::Proxmox::Server.new(service: service, node_id: node_id, type: server_type, vmid: server_id)
+          Fog::Proxmox::Compute::Server.new(service: service, node_id: node_id, type: server_type, vmid: server_id)
         end
       end
     end

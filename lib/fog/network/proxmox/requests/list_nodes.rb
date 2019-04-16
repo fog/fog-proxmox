@@ -19,8 +19,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Network
-    class Proxmox
+  module Proxmox
+    class Network
       # class Real list_nodes request
       class Real
         def list_nodes

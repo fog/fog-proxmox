@@ -19,9 +19,9 @@
 # frozen_string_literal: true
 
 module Fog
-  module Storage
+  module Proxmox
     # Procmox storage service
-    class Proxmox < Fog::Service
+    class Storage < Fog::Service
       # Models
       model_path 'fog/storage/proxmox'
     end

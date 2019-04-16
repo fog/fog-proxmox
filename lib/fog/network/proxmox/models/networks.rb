@@ -20,11 +20,11 @@
 require 'fog/network/proxmox/models/node'
 
 module Fog
-  module Network
-    class Proxmox
+  module Proxmox
+    class Network
       # class Networks Collection of nodes of cluster
       class Networks < Fog::Collection
-        model Fog::Network::Proxmox::Network
+        model Fog::Proxmox::Network::Network
         attribute :node_id
 
         def new(attributes = {})

@@ -20,8 +20,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Real rollback_snapshot request
       class Real
         def rollback_snapshot(path_params)

@@ -27,8 +27,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Network
-    class Proxmox
+  module Proxmox
+    class Network
       # class Network model
       class Network < Fog::Model
         identity  :iface

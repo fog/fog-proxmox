@@ -20,8 +20,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Real get_volume request
       class Real
         def get_volume(node, storage, volume)

@@ -26,8 +26,8 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Principal current user authenticated
       class Principal < Fog::Model
         identity :username

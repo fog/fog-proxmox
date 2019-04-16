@@ -25,6 +25,7 @@ SimpleCov.start do
   add_group 'Core', 'lib/fog/proxmox'
   add_group 'Identity', 'lib/fog/identity'
   add_group 'Compute', 'lib/fog/compute'
+  add_group 'Network', 'lib/fog/network'
 end
 
 require 'minitest/autorun'

@@ -20,11 +20,11 @@
 require 'fog/compute/proxmox/models/disk'
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Disks Collection of disk
       class Disks < Fog::Collection
-        model Fog::Compute::Proxmox::Disk
+        model Fog::Proxmox::Compute::Disk
 
         def all
           self

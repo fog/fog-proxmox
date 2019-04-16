@@ -20,11 +20,11 @@
 require 'fog/compute/proxmox/models/volume'
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Volumes Collection of volumes
       class Volumes < Fog::Collection
-        model Fog::Compute::Proxmox::Volume
+        model Fog::Proxmox::Compute::Volume
         attribute :node_id
         attribute :storage_id
 

@@ -19,8 +19,8 @@
 # frozen_string_literal: true
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Real status_task
       class Real
         def status_task(node, upid)

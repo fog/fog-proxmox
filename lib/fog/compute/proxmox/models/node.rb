@@ -29,8 +29,8 @@
 require 'fog/proxmox/attributes'
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Node model of VMs
       class Node < Fog::Model
         identity  :node
@@ -74,19 +74,19 @@ module Fog
         private
 
         def initialize_tasks
-          attributes[:tasks] = Fog::Compute::Proxmox::Tasks.new(service: service, node_id: node)
+          attributes[:tasks] = Fog::Proxmox::Compute::Tasks.new(service: service, node_id: node)
         end
 
         def initialize_servers
-          attributes[:servers] = Fog::Compute::Proxmox::Servers.new(service: service, node_id: node, type: 'qemu')
+          attributes[:servers] = Fog::Proxmox::Compute::Servers.new(service: service, node_id: node, type: 'qemu')
         end
 
         def initialize_containers
-          attributes[:containers] = Fog::Compute::Proxmox::Servers.new(service: service, node_id: node, type: 'lxc')
+          attributes[:containers] = Fog::Proxmox::Compute::Servers.new(service: service, node_id: node, type: 'lxc')
         end
 
         def initialize_storages
-          attributes[:storages] = Fog::Compute::Proxmox::Storages.new(service: service, node_id: node)
+          attributes[:storages] = Fog::Proxmox::Compute::Storages.new(service: service, node_id: node)
         end
 
       end

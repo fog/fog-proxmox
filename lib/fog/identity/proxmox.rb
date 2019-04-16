@@ -21,9 +21,9 @@
 require 'fog/core'
 
 module Fog
-  module Identity
+  module Proxmox
     # Identity and authentication proxmox class
-    class Proxmox < Fog::Service
+    class Identity < Fog::Service
       requires :pve_url
       recognizes :pve_ticket, :pve_path, :pve_ticket_expires, :pve_csrftoken, :persistent, :current_user, :pve_username, :pve_password, :pve_deadline
 

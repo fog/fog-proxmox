@@ -23,8 +23,8 @@ require 'fog/proxmox/hash'
 require 'fog/proxmox/errors'
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # Server model
       class Server < Fog::Compute::Server
         identity  :vmid
@@ -233,21 +233,21 @@ module Fog
 
         def initialize_config(new_attributes = {})
           options = { service: service, vmid: vmid }
-          attributes[:config] = Fog::Compute::Proxmox::ServerConfig.new(options.merge(new_attributes))
+          attributes[:config] = Fog::Proxmox::Compute::ServerConfig.new(options.merge(new_attributes))
         end
 
         private
 
         def initialize_snapshots
-          attributes[:snapshots] = Fog::Compute::Proxmox::Snapshots.new(service: service, server_id: vmid, server_type: type, node_id: node_id)
+          attributes[:snapshots] = Fog::Proxmox::Compute::Snapshots.new(service: service, server_id: vmid, server_type: type, node_id: node_id)
         end
 
         def initialize_tasks
-          attributes[:tasks] = Fog::Compute::Proxmox::Tasks.new(service: service, node_id: node_id).select { |task| task.id == vmid }
+          attributes[:tasks] = Fog::Proxmox::Compute::Tasks.new(service: service, node_id: node_id).select { |task| task.id == vmid }
         end
 
         def node
-          Fog::Compute::Proxmox::Node.new(service: service, node: node_id)
+          Fog::Proxmox::Compute::Node.new(service: service, node: node_id)
         end 
       end
     end

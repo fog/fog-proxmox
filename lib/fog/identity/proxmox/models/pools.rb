@@ -20,11 +20,11 @@
 require 'fog/identity/proxmox/models/pool'
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Pools Collection of pools of VMs
       class Pools < Fog::Collection
-        model Fog::Identity::Proxmox::Pool
+        model Fog::Proxmox::Identity::Pool
 
         def all
           load service.list_pools

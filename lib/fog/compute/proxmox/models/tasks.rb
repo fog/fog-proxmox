@@ -20,11 +20,11 @@
 require 'fog/compute/proxmox/models/task'
 
 module Fog
-  module Compute
-    class Proxmox
+  module Proxmox
+    class Compute
       # class Tasks Collection of node
       class Tasks < Fog::Collection
-        model Fog::Compute::Proxmox::Task
+        model Fog::Proxmox::Compute::Task
         attribute :node_id
 
         def new(new_attributes = {})

@@ -20,11 +20,11 @@
 require 'fog/identity/proxmox/models/domain'
 
 module Fog
-  module Identity
-    class Proxmox
+  module Proxmox
+    class Identity
       # class Domains collection authentication
       class Domains < Fog::Collection
-        model Fog::Identity::Proxmox::Domain
+        model Fog::Proxmox::Identity::Domain
 
         def all
           load service.list_domains
