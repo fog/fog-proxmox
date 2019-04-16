@@ -26,10 +26,7 @@ module Fog
       class Servers < Fog::Collection
         model Fog::Compute::Proxmox::Server
         attribute :node_id
-
-        def type
-          'qemu'
-        end
+        attribute :type
 
         def new(new_attributes = {})
           super({ node_id: node_id, type: type }.merge(new_attributes))
@@ -46,17 +43,36 @@ module Fog
           false
         end
 
+        def containers?
+          type == 'lxc'
+        end
+
         def get(id)
           path_params = { node: node_id, type: type, vmid: id }
-          status_data = service.get_server_status path_params
-          config_data = service.get_server_config path_params
-          data = status_data.merge(config_data).merge(node: node_id, vmid: id)
-          new(data)
+          begin
+            status_data = service.get_server_status path_params
+            config_data = service.get_server_config path_params
+          rescue => e
+            if e.respond_to?('response') && e.response.respond_to?('data') && e.response.data.has_key?(:reason_phrase) && e.response.data[:reason_phrase].end_with?('does not exist')
+              raise(Fog::Errors::NotFound)
+            else
+              raise(e)
+            end
+          else
+            data = status_data.merge(config_data).merge(node: node_id, vmid: id)
+            new(data)
+          end
         end
 
         def all(options = {})
           body_params = options.merge(node: node_id, type: type)
           load service.list_servers(body_params)
+        end
+
+        def create(new_attributes = {})
+          object = new(new_attributes.select { |key, _value| [:node_id, :vmid, :type].include? key.to_sym })
+          object.save(new_attributes.reject { |key, _value| [:node_id, :vmid, :type].include? key.to_sym })
+          object
         end
       end
     end

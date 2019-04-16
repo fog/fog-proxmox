@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/proxmox/variables'
+require 'fog/proxmox/attributes'
 require 'fog/proxmox/helpers/nic_helper'
 require 'fog/proxmox/helpers/controller_helper'
 
@@ -50,13 +50,29 @@ module Fog
         attribute :cpuunits
         attribute :keyboard
         attribute :vga
+        attribute :storage
+        attribute :template
+        attribute :arch
+        attribute :swap
+        attribute :hostname
+        attribute :nameserver
+        attribute :searchdomain
+        attribute :password
+        attribute :startup
+        attribute :console
+        attribute :cmode
+        attribute :tty
+        attribute :force
+        attribute :lock
+        attribute :pool
+        attribute :bwlimit
+        attribute :unprivileged
         attribute :interfaces
         attribute :disks
 
         def initialize(new_attributes = {})
           prepare_service_value(new_attributes)
-          attributes[:vmid] = new_attributes[:vmid] unless new_attributes[:vmid].nil?
-          attributes[:vmid] = new_attributes['vmid'] unless new_attributes['vmid'].nil?
+          Fog::Proxmox::Attributes.set_attr_and_sym('vmid', attributes, new_attributes)
           requires :vmid
           initialize_interfaces(new_attributes)
           initialize_disks(new_attributes)
@@ -74,7 +90,26 @@ module Fog
           console
         end
 
+        def flatten
+          flat_hash = attributes.reject { |attribute| [:node_id, :type, :vmid, :disks, :interfaces].include? attribute }
+          flat_hash.merge(interfaces_flatten)
+          flat_hash.merge(disks_flatten)
+          flat_hash
+        end
+
         private
+
+        def interfaces_flatten
+          flat_hash = {}
+          interfaces.each { |interface| flat_hash.merge(interface.flatten) }
+          flat_hash
+        end
+
+        def disks_flatten
+          flat_hash = {}
+          disks.each { |disk| flat_hash.merge(disk.flatten) }
+          flat_hash
+        end
 
         def initialize_interfaces(new_attributes)
           nets = Fog::Proxmox::NicHelper.collect_nics(new_attributes)
@@ -82,10 +117,10 @@ module Fog
           nets.each do |key, value|
             nic_hash = {
               id: key.to_s,
-              model: Fog::Proxmox::NicHelper.extract_model(value),
+              model: Fog::Proxmox::NicHelper.extract_nic_id(value),
               mac: Fog::Proxmox::NicHelper.extract_mac_address(value)
             }
-            names = Fog::Compute::Proxmox::Interface.attributes.reject { |key, _value| %i[id mac model].include? key }
+            names = Fog::Compute::Proxmox::Interface.attributes.reject { |attribute| [:id, :mac, :model].include? attribute }
             names.each { |name| nic_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
             attributes[:interfaces] << Fog::Compute::Proxmox::Interface.new(nic_hash)
           end
@@ -102,7 +137,7 @@ module Fog
               volid: volid,
               storage: storage
             }
-            names = Fog::Compute::Proxmox::Disk.attributes.reject { |key, _value| %i[id size storage volid].include? key }
+            names = Fog::Compute::Proxmox::Disk.attributes.reject { |attribute| [:id, :size, :storage, :volid].include? attribute }
             names.each { |name| disk_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
             attributes[:disks] << Fog::Compute::Proxmox::Disk.new(disk_hash)
           end

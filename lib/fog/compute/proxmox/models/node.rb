@@ -26,6 +26,8 @@
 
 # frozen_string_literal: true
 
+require 'fog/proxmox/attributes'
+
 module Fog
   module Compute
     class Proxmox
@@ -49,8 +51,7 @@ module Fog
 
         def initialize(new_attributes = {})
           prepare_service_value(new_attributes)
-          attributes[:node] = new_attributes['node'] unless new_attributes['node'].nil?
-          attributes[:node] = new_attributes[:node] unless new_attributes[:node].nil?
+          Fog::Proxmox::Attributes.set_attr_and_sym('node', attributes, new_attributes)
           requires :node
           initialize_tasks
           initialize_servers
@@ -77,11 +78,11 @@ module Fog
         end
 
         def initialize_servers
-          attributes[:servers] = Fog::Compute::Proxmox::Servers.new(service: service, node_id: node)
+          attributes[:servers] = Fog::Compute::Proxmox::Servers.new(service: service, node_id: node, type: 'qemu')
         end
 
         def initialize_containers
-          attributes[:containers] = Fog::Compute::Proxmox::Containers.new(service: service, node_id: node)
+          attributes[:containers] = Fog::Compute::Proxmox::Servers.new(service: service, node_id: node, type: 'lxc')
         end
 
         def initialize_storages

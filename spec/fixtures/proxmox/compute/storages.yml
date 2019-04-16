@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4BA42::R+NpUvwXMpdqE2W7LaqiLkTMORRJ6fD4cPkeVls5s/rXbZtZshypBWa3gsRMKaRWukMcxQR4+9GSi81qjA0Q0wunW9mnTQI/2+mb58iDjCXNHL4wstsEKc6m2uGNZH6NxNRLsue+oFk2Sn98JD31ZiUm9RhVw64buL50xidt7mog3vOl6CASwwW3Idmrs11iivrtZpG19DQ9XHPRqgAO7tN0ge8M7Odz6ihomwE3CA1oJTBCduSGFa5XKCpMVUv5xIcsTUAQHvxpfhsPsWLs1LzrzWb512pqIv/g91hzp+C88cGjPo1mnWYyTlQWn7Or3Kz2wWnj0SX2FQyvTnFAwQ==
+      - PVEAuthCookie=PVE:root@pam:5CAF63BE::y1HEE/RUIUldoJWxjFgJ3iRVkI/7WpxY3tpjgn09HYRuOKSv8X/3eWZi4JCqR2pzJ4+Y87iuxLLtX/LGFbJhfzSksCynTjQ5tc8vnoEaTGf3yQA5JCB1/MVB3WzwP9SZ0jf8NuXmegq2tLLbLvNbUOgx9dMyBiI3rlXaI9AIQH7CZ7ujfBtvFR9Gc7z6obx2JToRndtZQxOhJy5dymQHIfnGTHqj5rYExqa4j0GqLegN8KdbKqKSMZ3LIVw5ZUiFdLM2PbWI34Dur1a8cMklfgKP5zLFVPCyNSFpkUDK9V8P8Cm8dbpYYsIR9EW67o2wkcERZIem886Df7gL56bV6w==
   response:
     status:
       code: 200
@@ -23,25 +23,25 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:50:58 GMT
+      - Thu, 11 Apr 2019 15:56:47 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '324'
+      - '334'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:50:58 GMT
+      - Thu, 11 Apr 2019 15:56:47 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"type":"node","node":"pve","id":"node/pve","maxdisk":3896197120,"maxmem":4136062976,"cpu":0.0061799361840681,"disk":1649278976,"uptime":998,"ssl_fingerprint":"53:9E:0D:E3:B5:6E:DF:F3:62:5F:B4:06:1E:B7:1E:89:66:74:A4:DC:8E:16:8C:37:BB:1D:42:FD:B8:65:B2:04","status":"online","level":"","maxcpu":4,"mem":846962688}]}'
+      string: '{"data":[{"disk":1605083136,"node":"proxmox","mem":828039168,"maxcpu":2,"uptime":5374,"maxdisk":3896197120,"status":"online","cpu":0.00735704666634875,"id":"node/proxmox","maxmem":4136439808,"ssl_fingerprint":"98:9A:61:77:A6:B7:4B:A2:A1:01:FA:60:F0:2B:2F:0E:05:F6:09:9D:41:F1:59:62:D7:24:BB:5A:35:58:13:75","type":"node","level":""}]}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:50:59 GMT
+  recorded_at: Thu, 11 Apr 2019 15:56:48 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/storage
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox/storage
     body:
       encoding: US-ASCII
       string: ''
@@ -51,7 +51,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4BA42::R+NpUvwXMpdqE2W7LaqiLkTMORRJ6fD4cPkeVls5s/rXbZtZshypBWa3gsRMKaRWukMcxQR4+9GSi81qjA0Q0wunW9mnTQI/2+mb58iDjCXNHL4wstsEKc6m2uGNZH6NxNRLsue+oFk2Sn98JD31ZiUm9RhVw64buL50xidt7mog3vOl6CASwwW3Idmrs11iivrtZpG19DQ9XHPRqgAO7tN0ge8M7Odz6ihomwE3CA1oJTBCduSGFa5XKCpMVUv5xIcsTUAQHvxpfhsPsWLs1LzrzWb512pqIv/g91hzp+C88cGjPo1mnWYyTlQWn7Or3Kz2wWnj0SX2FQyvTnFAwQ==
+      - PVEAuthCookie=PVE:root@pam:5CAF63BE::y1HEE/RUIUldoJWxjFgJ3iRVkI/7WpxY3tpjgn09HYRuOKSv8X/3eWZi4JCqR2pzJ4+Y87iuxLLtX/LGFbJhfzSksCynTjQ5tc8vnoEaTGf3yQA5JCB1/MVB3WzwP9SZ0jf8NuXmegq2tLLbLvNbUOgx9dMyBiI3rlXaI9AIQH7CZ7ujfBtvFR9Gc7z6obx2JToRndtZQxOhJy5dymQHIfnGTHqj5rYExqa4j0GqLegN8KdbKqKSMZ3LIVw5ZUiFdLM2PbWI34Dur1a8cMklfgKP5zLFVPCyNSFpkUDK9V8P8Cm8dbpYYsIR9EW67o2wkcERZIem886Df7gL56bV6w==
   response:
     status:
       code: 200
@@ -62,7 +62,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:50:58 GMT
+      - Thu, 11 Apr 2019 15:56:47 GMT
       Pragma:
       - no-cache
       Server:
@@ -72,15 +72,15 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:50:58 GMT
+      - Thu, 11 Apr 2019 15:56:47 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"type":"dir","storage":"local","shared":0,"used_fraction":0.423305859843149,"total":3896197120,"active":1,"content":"backup,vztmpl,iso","used":1649283072,"avail":2028810240,"enabled":1},{"storage":"local-lvm","type":"lvmthin","shared":0,"used_fraction":0,"total":6438256640,"active":1,"content":"images,rootdir","enabled":1,"used":0,"avail":6438256640}]}'
+      string: '{"data":[{"storage":"local-lvm","used_fraction":0,"shared":0,"total":6438256640,"content":"images,rootdir","active":1,"enabled":1,"type":"lvmthin","used":0,"avail":6438256640},{"active":1,"content":"iso,vztmpl,backup","enabled":1,"type":"dir","used":1605087232,"avail":2073006080,"storage":"local","total":3896197120,"shared":0,"used_fraction":0.411962532326906}]}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:50:59 GMT
+  recorded_at: Thu, 11 Apr 2019 15:56:48 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/storage
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox/storage
     body:
       encoding: US-ASCII
       string: ''
@@ -90,7 +90,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4BA42::R+NpUvwXMpdqE2W7LaqiLkTMORRJ6fD4cPkeVls5s/rXbZtZshypBWa3gsRMKaRWukMcxQR4+9GSi81qjA0Q0wunW9mnTQI/2+mb58iDjCXNHL4wstsEKc6m2uGNZH6NxNRLsue+oFk2Sn98JD31ZiUm9RhVw64buL50xidt7mog3vOl6CASwwW3Idmrs11iivrtZpG19DQ9XHPRqgAO7tN0ge8M7Odz6ihomwE3CA1oJTBCduSGFa5XKCpMVUv5xIcsTUAQHvxpfhsPsWLs1LzrzWb512pqIv/g91hzp+C88cGjPo1mnWYyTlQWn7Or3Kz2wWnj0SX2FQyvTnFAwQ==
+      - PVEAuthCookie=PVE:root@pam:5CAF63BE::y1HEE/RUIUldoJWxjFgJ3iRVkI/7WpxY3tpjgn09HYRuOKSv8X/3eWZi4JCqR2pzJ4+Y87iuxLLtX/LGFbJhfzSksCynTjQ5tc8vnoEaTGf3yQA5JCB1/MVB3WzwP9SZ0jf8NuXmegq2tLLbLvNbUOgx9dMyBiI3rlXaI9AIQH7CZ7ujfBtvFR9Gc7z6obx2JToRndtZQxOhJy5dymQHIfnGTHqj5rYExqa4j0GqLegN8KdbKqKSMZ3LIVw5ZUiFdLM2PbWI34Dur1a8cMklfgKP5zLFVPCyNSFpkUDK9V8P8Cm8dbpYYsIR9EW67o2wkcERZIem886Df7gL56bV6w==
   response:
     status:
       code: 200
@@ -101,7 +101,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:50:58 GMT
+      - Thu, 11 Apr 2019 15:56:47 GMT
       Pragma:
       - no-cache
       Server:
@@ -111,15 +111,15 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:50:58 GMT
+      - Thu, 11 Apr 2019 15:56:47 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"shared":0,"used_fraction":0.423305859843149,"storage":"local","type":"dir","enabled":1,"used":1649283072,"avail":2028810240,"content":"iso,vztmpl,backup","active":1,"total":3896197120},{"total":6438256640,"active":1,"content":"images,rootdir","avail":6438256640,"used":0,"enabled":1,"type":"lvmthin","storage":"local-lvm","used_fraction":0,"shared":0}]}'
+      string: '{"data":[{"storage":"local-lvm","shared":0,"used_fraction":0,"total":6438256640,"content":"images,rootdir","active":1,"used":0,"avail":6438256640,"type":"lvmthin","enabled":1},{"active":1,"content":"backup,iso,vztmpl","used":1605087232,"type":"dir","avail":2073006080,"enabled":1,"storage":"local","total":3896197120,"used_fraction":0.411962532326906,"shared":0}]}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:51:00 GMT
+  recorded_at: Thu, 11 Apr 2019 15:56:48 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/nodes/pve/storage
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox/storage
     body:
       encoding: US-ASCII
       string: ''
@@ -129,7 +129,7 @@ http_interactions:
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4BA42::R+NpUvwXMpdqE2W7LaqiLkTMORRJ6fD4cPkeVls5s/rXbZtZshypBWa3gsRMKaRWukMcxQR4+9GSi81qjA0Q0wunW9mnTQI/2+mb58iDjCXNHL4wstsEKc6m2uGNZH6NxNRLsue+oFk2Sn98JD31ZiUm9RhVw64buL50xidt7mog3vOl6CASwwW3Idmrs11iivrtZpG19DQ9XHPRqgAO7tN0ge8M7Odz6ihomwE3CA1oJTBCduSGFa5XKCpMVUv5xIcsTUAQHvxpfhsPsWLs1LzrzWb512pqIv/g91hzp+C88cGjPo1mnWYyTlQWn7Or3Kz2wWnj0SX2FQyvTnFAwQ==
+      - PVEAuthCookie=PVE:root@pam:5CAF63BE::y1HEE/RUIUldoJWxjFgJ3iRVkI/7WpxY3tpjgn09HYRuOKSv8X/3eWZi4JCqR2pzJ4+Y87iuxLLtX/LGFbJhfzSksCynTjQ5tc8vnoEaTGf3yQA5JCB1/MVB3WzwP9SZ0jf8NuXmegq2tLLbLvNbUOgx9dMyBiI3rlXaI9AIQH7CZ7ujfBtvFR9Gc7z6obx2JToRndtZQxOhJy5dymQHIfnGTHqj5rYExqa4j0GqLegN8KdbKqKSMZ3LIVw5ZUiFdLM2PbWI34Dur1a8cMklfgKP5zLFVPCyNSFpkUDK9V8P8Cm8dbpYYsIR9EW67o2wkcERZIem886Df7gL56bV6w==
   response:
     status:
       code: 200
@@ -140,7 +140,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:50:58 GMT
+      - Thu, 11 Apr 2019 15:56:47 GMT
       Pragma:
       - no-cache
       Server:
@@ -150,10 +150,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:50:58 GMT
+      - Thu, 11 Apr 2019 15:56:47 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"used_fraction":0.423305859843149,"shared":0,"storage":"local","type":"dir","enabled":1,"avail":2028810240,"used":1649283072,"content":"vztmpl,backup,iso","active":1,"total":3896197120},{"shared":0,"used_fraction":0,"storage":"local-lvm","type":"lvmthin","content":"images,rootdir","enabled":1,"used":0,"avail":6438256640,"total":6438256640,"active":1}]}'
+      string: '{"data":[{"total":3896197120,"shared":0,"used_fraction":0.411962532326906,"storage":"local","avail":2073006080,"used":1605087232,"type":"dir","enabled":1,"active":1,"content":"vztmpl,iso,backup"},{"total":6438256640,"shared":0,"used_fraction":0,"storage":"local-lvm","enabled":1,"used":0,"avail":6438256640,"type":"lvmthin","active":1,"content":"images,rootdir"}]}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:51:00 GMT
+  recorded_at: Thu, 11 Apr 2019 15:56:48 GMT
 recorded_with: VCR 3.0.3

@@ -17,26 +17,16 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'fog/compute/proxmox/models/server'
-
 module Fog
-  module Compute
-    class Proxmox
-      # Containers Collection
-      class Containers < Fog::Compute::Proxmox::Servers
-        model Fog::Compute::Proxmox::Container
-
-        def type
-          'lxc'
-        end    
-
-        def new(new_attributes = {})
-          super({ node_id: node_id, type: type }.merge(new_attributes))
-        end
-
-        def create(ostemplate, vmid, options = {})
-          service.create_server({ node: node_id, type: type }, options.merge(ostemplate: ostemplate, vmid: vmid))
-        end
+  module Proxmox
+    # module Attributes mixins
+    module Attributes
+      def self.set_attr(attr_name, attributes, new_attributes)
+        attributes[attr_name.to_sym] = new_attributes[attr_name] unless new_attributes[attr_name].nil?
+      end
+      def self.set_attr_and_sym(attr_name, attributes, new_attributes)
+        self.set_attr(attr_name, attributes, new_attributes)
+        self.set_attr(attr_name.to_sym, attributes, new_attributes)
       end
     end
   end

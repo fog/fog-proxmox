@@ -54,6 +54,18 @@ module Fog
         def rootfs?
           id == 'rootfs'
         end
+
+        def mount_point?
+          id.match(/(mp)(\d+)/)
+        end
+
+        def controller?
+          id.match(/(scsi|ide|sata|virtio)(\d+)/)
+        end
+
+        def flatten
+          Fog::Proxmox::DiskHelper.flatten(attributes)
+        end
       end
     end
   end

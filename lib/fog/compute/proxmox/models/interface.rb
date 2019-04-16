@@ -17,6 +17,8 @@
 
 # frozen_string_literal: true
 
+require "fog/proxmox/helpers/nic_helper"
+
 module Fog
   module Compute
     class Proxmox
@@ -34,6 +36,10 @@ module Fog
         attribute :rate
         attribute :queues
         attribute :tag
+
+        def flatten
+          Fog::Proxmox::NicHelper.flatten(attributes)
+        end
       end
     end
   end

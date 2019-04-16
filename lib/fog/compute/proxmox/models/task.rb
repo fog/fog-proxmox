@@ -48,6 +48,7 @@ module Fog
         def initialize(new_attributes = {})
           prepare_service_value(new_attributes)
           attributes[:node_id] = new_attributes[:node_id] unless new_attributes[:node_id].nil?
+          attributes[:upid] = new_attributes[:upid] unless new_attributes[:upid].nil?
           attributes[:upid] = new_attributes['upid'] unless new_attributes['upid'].nil?
           requires :node_id, :upid
           super(new_attributes)

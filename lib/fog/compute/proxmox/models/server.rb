@@ -28,11 +28,11 @@ module Fog
       # Server model
       class Server < Fog::Compute::Server
         identity  :vmid
-        attribute :digest
+        attribute :type
         attribute :node_id
         attribute :config
+        attribute :digest
         attribute :name
-        attribute :type
         attribute :maxdisk
         attribute :disk
         attribute :diskwrite
@@ -54,16 +54,17 @@ module Fog
         attribute :balloon
         attribute :ballooninfo
         attribute :snapshots
-        attribute :template
         attribute :tasks
         attribute :vmgenid
+        attribute :lock
+        attribute :maxswap
+        attribute :swap
 
         def initialize(new_attributes = {})
           prepare_service_value(new_attributes)
-          attributes[:node_id] = new_attributes[:node_id] unless new_attributes[:node_id].nil?
-          attributes[:type] = new_attributes[:type] unless new_attributes[:type].nil?
-          attributes[:vmid] = new_attributes[:vmid] unless new_attributes[:vmid].nil?
-          attributes[:vmid] = new_attributes['vmid'] unless new_attributes['vmid'].nil?
+          Fog::Proxmox::Attributes.set_attr_and_sym('node_id', attributes, new_attributes)
+          Fog::Proxmox::Attributes.set_attr_and_sym('type', attributes, new_attributes)
+          Fog::Proxmox::Attributes.set_attr_and_sym('vmid', attributes, new_attributes)
           requires :node_id, :type, :vmid
           initialize_config(new_attributes)
           initialize_snapshots
@@ -71,13 +72,20 @@ module Fog
           super(new_attributes)
         end
 
+        def container?
+          type == 'lxc'
+        end
+
         def persisted?
           service.next_vmid(vmid: vmid)
-          true
+          persisted = false
+          persisted
         rescue Excon::Error::InternalServerError
-          false
+          persisted = false
+          persisted
         rescue Excon::Error::BadRequest
-          true
+          persisted = true
+          persisted
         end
 
         # request with async task
@@ -88,13 +96,21 @@ module Fog
           tasks.wait_for(task_upid)
         end
 
-        def save(options = {})
-          request(:create_server, options.merge(vmid: vmid))
+        def save(new_attributes = {})
+          body_params = new_attributes.merge(vmid: vmid)
+          body_params = body_params.merge(config.flatten) unless persisted?
+          request(:create_server, body_params)
           reload
         end
 
-        def update(attributes = {})
-          request(:update_server, attributes, vmid: vmid)
+        def update(new_attributes = {})
+          if container?
+            path_params = { node: node_id, type: type, vmid: vmid }
+            body_params = new_attributes
+            service.update_server(path_params, body_params)
+          else
+            request(:update_server, new_attributes, vmid: vmid)
+          end
           reload
         end
 
@@ -120,7 +136,11 @@ module Fog
         end
 
         def restore(backup, options = {})
-          attr_hash = options.merge(archive: backup.volid, force: 1)
+          if container?
+            attr_hash = options.merge(ostemplate: backup.volid, force: 1, restore: 1)
+          else
+            attr_hash = options.merge(archive: backup.volid, force: 1)
+          end
           save(attr_hash)
         end
 
@@ -140,12 +160,20 @@ module Fog
         end
 
         def extend(disk, size, options = {})
-          service.resize_server({ node: node_id, vmid: vmid }, options.merge(disk: disk, size: size))
+          if container?
+            request(:resize_container, options.merge(disk: disk, size: size), vmid: vmid)
+          else
+            service.resize_server({ vmid: vmid, node: node_id }, options.merge(disk: disk, size: size))
+          end
           reload
         end
 
-        def move(disk, storage, options = {})
-          request(:move_disk, options.merge(disk: disk, storage: storage), vmid: vmid)
+        def move(volume, storage, options = {})
+          if container?
+            request(:move_volume, options.merge(volume: volume, storage: storage), vmid: vmid)
+          else
+            request(:move_disk, options.merge(disk: volume, storage: storage), vmid: vmid)
+          end
           reload
         end
 
@@ -160,8 +188,14 @@ module Fog
 
         def start_console(options = {})
           raise ::Fog::Proxmox::Errors::ServiceError, "Unable to start console because server not running." unless ready?
-          type_console = config.type_console
-          raise ::Fog::Proxmox::Errors::ServiceError, "Unable to start console because VGA display server config is not set or unknown." unless type_console
+          if container?
+            type_console = options[:console]
+            options.delete_if { |option| [:console].include? option }
+            raise ::Fog::Proxmox::Errors::ServiceError, "Unable to start console because console container config is not set or unknown." unless type_console
+          else
+            type_console = config.type_console
+            raise ::Fog::Proxmox::Errors::ServiceError, "Unable to start console because VGA display server config is not set or unknown." unless type_console
+          end
           requires :vmid, :node_id, :type
           path_params = { node: node_id, type: type, vmid: vmid }
           body_params = options

@@ -22,11 +22,13 @@ module Fog
     # module Cpu mixins
     module CpuHelper
       def self.extract(cpu)
-        cpu&.scan(/^(cputype=)?(\w+)(,flags=){0,1}(\+[\w-]+){0,1}[;]{0,1}(\+[\w-]+){0,1}/)&.first
+        cpu_regexp = /^(cputype=)?(\w+)(,flags=){0,1}(\+[\w-]+){0,1}[;]{0,1}(\+[\w-]+){0,1}/
+        cpu && cpu.is_a?(String) && cpu&.match(cpu_regexp) ? cpu&.scan(cpu_regexp)&.first : []
       end
 
       def self.extract_type(cpu)
-        extract(cpu)[1] if cpu
+        cpu_a = extract(cpu)
+        cpu_a[1] unless cpu_a.empty? || cpu_a.size < 2
       end
 
       def self.extract_pcid(cpu)
@@ -38,7 +40,8 @@ module Fog
       end
 
       def self.has?(value, cpu)
-        extract(cpu).include? value if cpu
+        cpu_a = extract(cpu)
+        cpu_a.include? value
       end
     end
   end

@@ -40,22 +40,22 @@ require 'fog/proxmox/helpers/nic_helper'
 
         describe '#extract_model' do
             it "returns model card" do
-                model = Fog::Proxmox::NicHelper.extract_model(net_vm[:net0])
+                model = Fog::Proxmox::NicHelper.extract_nic_id(net_vm[:net0])
                 assert_equal 'virtio', model
             end
             it "returns model card creation" do
-                model = Fog::Proxmox::NicHelper.extract_model(net_vm_create[:net0])
+                model = Fog::Proxmox::NicHelper.extract_nic_id(net_vm_create[:net0])
                 assert_equal 'virtio', model
             end
         end
 
         describe '#extract_name' do
             it "returns lxc name" do
-                model = Fog::Proxmox::NicHelper.extract_name(net_lxc[:net0])
+                model = Fog::Proxmox::NicHelper.extract_nic_id(net_lxc[:net0])
                 assert_equal 'eth0', model
             end
             it "returns lxc name creation" do
-                model = Fog::Proxmox::NicHelper.extract_name(net_lxc_create[:net0])
+                model = Fog::Proxmox::NicHelper.extract_nic_id(net_lxc_create[:net0])
                 assert_equal 'eth0', model
             end
         end

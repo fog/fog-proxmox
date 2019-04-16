@@ -28,21 +28,33 @@ module Fog
         nic_value[/([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})/]
       end
 
-      def self.extract_model(nic_value)
-        creation = nic_value.match(/^model=(\w+)[,].+/)
-        if creation
-          nic_value.scan(/^model=(\w+)[,].+/).first.first
-        else
-          nic_value.scan(/^(\w+)[=]{1}([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}).+/).first.first
-        end
+      def self.model_regexp
+        /^model=(\w+)[,].+/
       end
 
-      def self.extract_name(nic_value)
-        creation = nic_value.match(/^name=(\w+)[,].+/)
-        if creation
-          nic_value.scan(/^name=(\w+)[,].+/).first.first
+      def self.name_regexp
+        /^name=(\w+)[,].+/
+      end
+
+      def self.nic_creation_regexp
+        /^(\w+)[=]{1}([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}).+/
+      end
+
+      def self.has_model?(nic_value)
+        nic_value.match(self.model_regexp)
+      end
+
+      def self.has_name?(nic_value)
+        nic_value.match(self.name_regexp)
+      end
+
+      def self.extract_nic_id(nic_value)
+        if self.has_model?(nic_value)
+          nic_value.scan(self.model_regexp).first.first
+        elsif self.has_name?(nic_value)
+          nic_value.scan(self.name_regexp).first.first
         else
-          nic_value.scan(/^(\w+)[=]{1}([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}).+/).first.first
+          nic_value.scan(self.nic_creation_regexp).first.first
         end
       end
 
@@ -52,18 +64,21 @@ module Fog
         addresses
       end
 
-      def self.flatten(nic)
-        model = "model=#{nic[:model]}"
-        options = nic.reject { |key, _value| %i[model id].include? key }
-        model += ',' + Fog::Proxmox::Hash.stringify(options) unless options.empty?
-        { "#{nic[:id]}": model }
+      def self.nic_name(nic)
+        if nic.has_key?(:model)
+          "model"
+        elsif nic.has_key?(:name)
+          "name"
+        else
+          ""
+        end
       end
 
-      def self.container_flatten(nic)
-        name = "name=#{nic[:name]}"
-        options = nic.reject { |key, _value| %i[name id].include? key }
-        name += ',' + Fog::Proxmox::Hash.stringify(options) unless options.empty?
-        { "#{nic[:id]}": name }
+      def self.flatten(nic)
+        nic_id = self.nic_name(nic) + "=" + nic[self.nic_name(nic).to_sym]
+        options = nic.reject { |key, _value| [self.nic_name(nic).to_sym, :id].include? key }
+        nic_id += ',' + Fog::Proxmox::Hash.stringify(options) unless options.empty?
+        { "#{nic[:id]}": nic_id }
       end
 
       def self.valid?(key)

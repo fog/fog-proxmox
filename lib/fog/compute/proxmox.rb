@@ -47,9 +47,6 @@ module Fog
       collection :tasks
       model :snapshot
       collection :snapshots
-      model :container
-      collection :containers
-      model :container_config
 
       # Requests
       request_path 'fog/compute/proxmox/requests'
