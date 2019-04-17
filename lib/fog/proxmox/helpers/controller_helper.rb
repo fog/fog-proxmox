@@ -23,16 +23,15 @@ module Fog
     module ControllerHelper
 
       CONTROLLERS = %w[ide sata scsi virtio mp rootfs].freeze
-
       def self.extract(name, controller_value)
-        values = controller_value.scan(/#{name}=(\w+)/)
-        name_value = values.first if values
-        name_value&.first
+        matches = controller_value.match(/[,]{0,1}#{name}[=]{1}(?<name_value>[\w\/]+)/)
+        matches ? matches[:name_value] : matches
       end
 
       def self.extract_index(name, key)
-        idx_a = key.to_s.scan(/#{name}(\d+)/).first
-        idx_a.first.to_i if idx_a
+        matches = key.to_s.match(/#{name}(?<index>\d+)/)
+        index = matches ? matches[:index] : matches
+        index ? index.to_i : -1
       end
 
       def self.valid?(name, key)

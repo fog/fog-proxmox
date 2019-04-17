@@ -23,7 +23,7 @@ require 'fog/proxmox/helpers/controller_helper'
     describe Fog::Proxmox::ControllerHelper do
             
         let(:net) do 
-            { net0: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
+            { net0: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1,mp=/opt/path' }
         end
         let(:net_no_options) do 
             { net0: 'virtio=66:89:C5:59:AA:96' }
@@ -35,7 +35,7 @@ require 'fog/proxmox/helpers/controller_helper'
             { ide2: 'none,media=cdrom' }
         end
         let(:mp) do 
-            { mp0: 'local-lvm:1' }
+            { mp0: 'local-lvm:1,mp=/opt/path' }
         end        
         let(:rootfs) do 
             { rootfs: 'local-lvm:1' }
@@ -57,6 +57,21 @@ require 'fog/proxmox/helpers/controller_helper'
             it "returns cache" do
                 cache = Fog::Proxmox::ControllerHelper.extract('cache',scsi[:scsi10])
                 assert_equal 'none', cache
+            end
+            it "returns mp" do
+                path = Fog::Proxmox::ControllerHelper.extract('mp',mp[:mp0])
+                assert_equal '/opt/path', path
+            end
+        end
+
+        describe '#extract_index' do
+            it "net0 returns 0" do
+                index = Fog::Proxmox::ControllerHelper.extract_index('net',:net0)
+                assert index == 0
+            end
+            it "scsi10 returns 10" do
+                index = Fog::Proxmox::ControllerHelper.extract_index('scsi',:scsi10)
+                assert index == 10
             end
         end
 
