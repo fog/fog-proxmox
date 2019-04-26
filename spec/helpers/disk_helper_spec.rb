@@ -35,12 +35,12 @@ require 'fog/proxmox/helpers/disk_helper'
         end
 
         let(:virtio1) do
-	    { id: 'virtio1', volid: 'local:108/vm-108-disk-1.qcow2,size=15G' }
-	end
+	        { id: 'virtio1', volid: 'local:108/vm-108-disk-1.qcow2,size=15G' }
+	    end
 
-	let(:virtio) do
-	    { virtio1: 'local:108/vm-108-disk-1.qcow2,size=245'}
-	end
+        let(:virtio) do
+            { virtio1: 'local:108/vm-108-disk-1.qcow2,size=245'}
+        end
 
         let(:cdrom_none) do 
             { ide2: 'none,media=cdrom'}
@@ -120,6 +120,54 @@ require 'fog/proxmox/helpers/disk_helper'
             it "returns size" do
                 size = Fog::Proxmox::DiskHelper.extract_size(virtio[:virtio1])
                 assert_equal(245, size)
+            end
+        end
+
+        describe '#disk?' do
+            it "rootfs returns true" do
+                assert Fog::Proxmox::DiskHelper.disk?('rootfs')
+            end
+            it "mp0 returns true" do
+                assert Fog::Proxmox::DiskHelper.disk?('mp0')
+            end
+            it "scsi0 returns true" do
+                assert Fog::Proxmox::DiskHelper.disk?('scsi0')
+            end
+            it "virtio12 returns true" do
+                assert Fog::Proxmox::DiskHelper.disk?('virtio12')
+            end
+            it "sata2 returns true" do
+                assert Fog::Proxmox::DiskHelper.disk?('sata2')
+            end
+            it "ide0 returns true" do
+                assert Fog::Proxmox::DiskHelper.disk?('ide0')
+            end
+            it "dsfdsfdsfds returns false" do
+                assert !Fog::Proxmox::DiskHelper.disk?('dsfdsfdsfds')
+            end
+        end
+
+        describe '#server_disk?' do
+            it "ide0 returns true" do
+                assert Fog::Proxmox::DiskHelper.server_disk?('ide0')
+            end
+            it "scsi1 returns true" do
+                assert Fog::Proxmox::DiskHelper.server_disk?('scsi1')
+            end
+            it "virtio returns false" do
+                assert !Fog::Proxmox::DiskHelper.server_disk?('virtio')
+            end
+        end
+
+        describe '#container_disk?' do
+            it "rootfs returns true" do
+                assert Fog::Proxmox::DiskHelper.container_disk?('rootfs')
+            end
+            it "mp0 returns true" do
+                assert Fog::Proxmox::DiskHelper.container_disk?('mp0')
+            end
+            it "mp returns false" do
+                assert !Fog::Proxmox::DiskHelper.container_disk?('mp')
             end
         end
     end

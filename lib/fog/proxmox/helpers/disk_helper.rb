@@ -23,6 +23,12 @@ module Fog
   module Proxmox
     # module Disk mixins
     module DiskHelper
+      
+      DISKS_REGEXP = /^(scsi|sata|mp|rootfs|virtio|ide)(\d+){0,1}$/
+      SERVER_DISK_REGEXP = /^(scsi|sata|virtio|ide)(\d+)$/
+      MOUNT_POINT_REGEXP = /^(mp)(\d+)$/
+      ROOTFS_REGEXP = /^(rootfs)$/
+
       def self.flatten(disk)
         volid = disk[:volid]
         value = if volid
@@ -96,6 +102,26 @@ module Fog
       def self.extract_size(disk_value)
         size=extract_option('size', disk_value)
 	      size ? self.to_bytes(size) : "1G"
+      end
+
+      def self.disk?(id)
+        DISKS_REGEXP.match?(id)
+      end
+
+      def self.server_disk?(id)
+        SERVER_DISK_REGEXP.match?(id)
+      end
+
+      def self.rootfs?(id)
+        ROOTFS_REGEXP.match?(id)
+      end
+
+      def self.mount_point?(id)
+        MOUNT_POINT_REGEXP.match?(id)
+      end
+
+      def self.container_disk?(id)
+        rootfs?(id) || mount_point?(id)
       end
     end
   end

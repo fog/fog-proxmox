@@ -24,6 +24,8 @@ module Fog
     # module NicHelper mixins
     module NicHelper
 
+      NICS_REGEXP = /^(net)(\d+)/
+
       def self.extract_mac_address(nic_value)
         nic_value[/([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})/]
       end
@@ -81,12 +83,12 @@ module Fog
         { "#{nic[:id]}": nic_id }
       end
 
-      def self.valid?(key)
-        key.to_s.match(/^net(\d+)$/)
-      end
-
       def self.collect_nics(attributes)        
-        attributes.select { |key| valid?(key.to_s) }
+        attributes.select { |key| is_a_nic?(key.to_s) }
+      end
+    
+      def self.is_a_nic?(id)
+        NICS_REGEXP.match?(id)
       end
     end
   end

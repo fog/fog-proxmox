@@ -71,12 +71,12 @@ require 'fog/proxmox/helpers/nic_helper'
             end
         end
 
-        describe '#valid?' do
+        describe '#is_a_nic?' do
             it "returns true" do
-                assert Fog::Proxmox::NicHelper.valid?('net0')
+                assert Fog::Proxmox::NicHelper.is_a_nic?('net0')
             end
             it "returns false" do
-                assert !Fog::Proxmox::NicHelper.valid?('net')
+                assert !Fog::Proxmox::NicHelper.is_a_nic?('net')
             end
         end
 
