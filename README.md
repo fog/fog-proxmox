@@ -1,4 +1,4 @@
-![Foreman](fogproxmox.png)
+![Foreman](.github/fogproxmox.png)
 
 # Fog::Proxmox
 
@@ -65,10 +65,10 @@ USE_VCR=true bundle exec rake spec
 
 ## Contributing
 
-You can reach the [contributors](CONTRIBUTORS.md).
+You can reach the [contributors](.github/CONTRIBUTORS.md).
 Bug reports and pull requests are welcome on GitHub at [Fog-Proxmox](https://github.com/fog/fog-proxmox/issues). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-Please read [how to contribute](CONTRIBUTING.md).
+Please read [how to contribute](.github/CONTRIBUTING.md).
 
 ## License
 
