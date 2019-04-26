@@ -1,10 +1,9 @@
 PATH
   remote: .
   specs:
-    fog-proxmox (0.8.0)
-      fog-core (~> 2.1)
-      fog-json (~> 1.2)
-      ipaddress (~> 0.8)
+    foreman_fog_proxmox (0.8.0)
+    deface
+    fog-proxmox (~> 0.8)
 
 GEM
   remote: https://rubygems.org/
@@ -50,6 +49,10 @@ GEM
     fog-json (1.2.0)
       fog-core
       multi_json (~> 1.10)
+    fog-proxmox (0.8.0)
+      fog-core (~> 2.1)
+      fog-json (~> 1.2)
+      ipaddress (~> 0.8)
     formatador (0.2.5)
     hashdiff (0.3.8)
     ice_nine (0.11.2)
