@@ -28,6 +28,7 @@ module Fog
       SERVER_DISK_REGEXP = /^(scsi|sata|virtio|ide)(\d+)$/
       MOUNT_POINT_REGEXP = /^(mp)(\d+)$/
       ROOTFS_REGEXP = /^(rootfs)$/
+      CDROM_REGEXP = /^(.+)[,]{1}(media=cdrom)[,]{0,1}(.*)$/
 
       def self.flatten(disk)
         volid = disk[:volid]
@@ -65,7 +66,7 @@ module Fog
       def self.extract_storage_volid_size(disk_value)
         #volid definition: <VOULME_ID>:=<STORAGE_ID>:<storage type dependent volume name>
         values_a = disk_value.scan(/^(([\w-]+)[:]{0,1}([\w\/\.-]+))/)
-        no_cdrom = !disk_value.match(/^(.+)[,]{1}(media=cdrom)$/)
+        no_cdrom = !disk_value.match(CDROM_REGEXP)
         creation = disk_value.split(',')[0].match(/^(([\w-]+)[:]{1}([\d]+))$/)
         values = values_a.first if values_a
         if no_cdrom
@@ -106,6 +107,10 @@ module Fog
 
       def self.disk?(id)
         DISKS_REGEXP.match?(id)
+      end
+
+      def self.cdrom?(value)
+        CDROM_REGEXP.match?(value)
       end
 
       def self.server_disk?(id)

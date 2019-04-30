@@ -170,4 +170,13 @@ require 'fog/proxmox/helpers/disk_helper'
                 assert !Fog::Proxmox::DiskHelper.container_disk?('mp')
             end
         end
+
+        describe '#cdrom?' do
+            it "local:iso/alpine-virt-3.7.0-x86_64.iso,media=cdrom returns true" do
+                assert Fog::Proxmox::DiskHelper.cdrom?('local:iso/alpine-virt-3.7.0-x86_64.iso,media=cdrom')
+            end
+            it "local:iso/alpine-virt-3.7.0-x86_64.iso returns false" do
+                assert !Fog::Proxmox::DiskHelper.cdrom?('local:iso/alpine-virt-3.7.0-x86_64.iso')
+            end
+        end
     end
