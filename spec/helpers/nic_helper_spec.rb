@@ -38,6 +38,18 @@ require 'fog/proxmox/helpers/nic_helper'
             { net0: 'name=eth0,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
         end
 
+        let(:lxc_nic) do 
+            { id: 'net0', name: 'eth0', macaddr: '66:89:C5:59:AA:96', bridge: 'vmbr0', firewall: 1, link_down: 1, queues: 1, rate: 1, tag: 1 }
+        end
+
+        let(:qemu_nic) do 
+            { id: 'net1', model: 'virtio', macaddr: '66:89:C5:59:AA:96', bridge: 'vmbr0', firewall: 1, link_down: 1, queues: 1, rate: 1, tag: 1 }
+        end
+
+        let(:qemu_nic_create) do 
+            { id: 'net1', model: 'virtio', bridge: 'vmbr0', firewall: 1, link_down: 1, queues: 1, rate: 1, tag: 1 }
+        end
+
         describe '#extract_model' do
             it "returns model card" do
                 model = Fog::Proxmox::NicHelper.extract_nic_id(net_vm[:net0])
@@ -71,12 +83,12 @@ require 'fog/proxmox/helpers/nic_helper'
             end
         end
 
-        describe '#is_a_nic?' do
+        describe '#nic?' do
             it "returns true" do
-                assert Fog::Proxmox::NicHelper.is_a_nic?('net0')
+                assert Fog::Proxmox::NicHelper.nic?('net0')
             end
             it "returns false" do
-                assert !Fog::Proxmox::NicHelper.is_a_nic?('net')
+                assert !Fog::Proxmox::NicHelper.nic?('net')
             end
         end
 
@@ -90,6 +102,21 @@ require 'fog/proxmox/helpers/nic_helper'
             it "returns empty" do
                 nets = Fog::Proxmox::NicHelper.collect_nics({'netout': 'sdfdsgfdsf'})
                 assert nets.empty?
+            end
+        end
+
+        describe '#flatten' do
+            it "returns qemu nic string" do
+                flat_qemu = { net1: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
+                assert_equal flat_qemu ,Fog::Proxmox::NicHelper.flatten(qemu_nic)
+            end
+            it "returns qemu nic create string" do
+                flat_qemu = { net1: 'model=virtio,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
+                assert_equal flat_qemu ,Fog::Proxmox::NicHelper.flatten(qemu_nic_create)
+            end
+            it "returns lxc nic string" do
+                flat_lxc = { net0: 'eth0=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
+                assert_equal flat_lxc ,Fog::Proxmox::NicHelper.flatten(lxc_nic)
             end
         end
     end

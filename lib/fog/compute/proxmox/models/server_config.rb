@@ -118,9 +118,9 @@ module Fog
             nic_hash = {
               id: key.to_s,
               model: Fog::Proxmox::NicHelper.extract_nic_id(value),
-              mac: Fog::Proxmox::NicHelper.extract_mac_address(value)
+              macaddr: Fog::Proxmox::NicHelper.extract_mac_address(value)
             }
-            names = Fog::Proxmox::Compute::Interface.attributes.reject { |attribute| [:id, :mac, :model].include? attribute }
+            names = Fog::Proxmox::Compute::Interface.attributes.reject { |attribute| [:id, :macaddr, :model].include? attribute }
             names.each { |name| nic_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
             attributes[:interfaces] << Fog::Proxmox::Compute::Interface.new(nic_hash)
           end

@@ -25,7 +25,7 @@ module Fog
       # class Interface model
       class Interface < Fog::Model
         identity  :id
-        attribute :mac
+        attribute :macaddr
         attribute :model
         attribute :name
         attribute :ip
@@ -39,6 +39,10 @@ module Fog
 
         def flatten
           Fog::Proxmox::NicHelper.flatten(attributes)
+        end
+
+        def to_s
+          Fog::Proxmox::Hash.flatten(flatten)
         end
       end
     end

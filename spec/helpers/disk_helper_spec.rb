@@ -42,6 +42,14 @@ require 'fog/proxmox/helpers/disk_helper'
             { virtio1: 'local:108/vm-108-disk-1.qcow2,size=245'}
         end
 
+        let(:ide2) do 
+            { id: 'ide2' }
+        end
+
+        let(:ide2_image) do 
+            { id: 'ide2', volid: 'local:iso/alpine-virt-3.7.0-x86_64.iso' }
+        end
+
         let(:cdrom_none) do 
             { ide2: 'none,media=cdrom'}
         end
@@ -58,6 +66,14 @@ require 'fog/proxmox/helpers/disk_helper'
             it "returns image string" do
                 disk = Fog::Proxmox::DiskHelper.flatten(scsi0_image)
                 assert_equal({ scsi0: 'local-lvm:vm-100-disk-1,size=1,cache=none' }, disk)
+            end
+            it "returns cdrom none string" do
+                disk = Fog::Proxmox::DiskHelper.flatten(ide2)
+                assert_equal(cdrom_none, disk)
+            end
+            it "returns cdrom image string" do
+                disk = Fog::Proxmox::DiskHelper.flatten(ide2_image)
+                assert_equal(cdrom_iso, disk)
             end
         end
 

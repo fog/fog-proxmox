@@ -66,6 +66,10 @@ module Fog
         def flatten
           Fog::Proxmox::DiskHelper.flatten(attributes)
         end
+
+        def to_s
+          Fog::Proxmox::Hash.flatten(flatten)
+        end
       end
     end
   end

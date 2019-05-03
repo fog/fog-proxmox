@@ -21,14 +21,19 @@ module Fog
   module Proxmox
     # module Hash mixins
     module Hash
+
       def self.stringify(hash)
-        return '' unless hash
-        string = ''
-        hash.each do |key, value|
-          string += "#{key}=#{value}," if value
-        end
-        string.slice(0, string.length - 1) if string.length > 0
+        filtered = hash.reject { |_key,value| value.to_s.empty? }
+        a = filtered.to_a.collect { |item| item.join('=') }
+        a.join(',')
       end
+
+      def self.flatten(hash)
+        filtered = hash.reject { |_key,value| value.to_s.empty? }
+        a = filtered.to_a.collect { |item| item.join(': ') }
+        a.join(',')
+      end
+
     end
   end
 end
