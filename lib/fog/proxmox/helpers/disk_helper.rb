@@ -33,22 +33,22 @@ module Fog
       def self.flatten(disk)
         id = disk[:id]
         value = ''
-        if disk.has_key?(:volid)
+        if disk[:volid]
           value += disk[:volid]
-          value += ',size=' + disk[:size].to_s if disk.has_key?(:size)
-        elsif disk.has_key?(:storage) && disk.has_key?(:size)
+          value += ',size=' + disk[:size].to_s if disk[:size]
+        elsif disk[:storage] && disk[:size]
           value += disk[:storage] + ':' + disk[:size].to_s
         elsif id == 'ide2'
           value += 'none'
         end
-        opts = disk[:options] if disk.has_key?(:options)
+        opts = disk[:options] if disk[:options]
         main_a = [:id,:volid,:storage,:size]
         opts = disk.reject { |key,_value| main_a.include? key } unless opts
         options = ''
         options += Fog::Proxmox::Hash.stringify(opts) if opts
-        options += ',' unless options.empty? || id != 'ide2'
+        options += ',' if !options.empty? && id == 'ide2'
         options += 'media=cdrom' if id == 'ide2'
-        value += ',' unless value.empty?
+        value += ',' if !options.empty? && !value.empty?
         value += options
         { "#{id}": value }
       end
