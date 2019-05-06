@@ -28,7 +28,7 @@ module Fog
       SERVER_DISK_REGEXP = /^(scsi|sata|virtio|ide)(\d+)$/
       MOUNT_POINT_REGEXP = /^(mp)(\d+)$/
       ROOTFS_REGEXP = /^(rootfs)$/
-      CDROM_REGEXP = /^(.+)[,]{1}(media=cdrom)[,]{0,1}(.*)$/
+      CDROM_REGEXP = /^(.*)[,]{0,1}(media=cdrom)[,]{0,1}(.*)$/
 
       def self.flatten(disk)
         id = disk[:id]
@@ -46,8 +46,10 @@ module Fog
         opts = disk.reject { |key,_value| main_a.include? key } unless opts
         options = ''
         options += Fog::Proxmox::Hash.stringify(opts) if opts
-        options += ',' if !options.empty? && id == 'ide2'
-        options += 'media=cdrom' if id == 'ide2'
+        if id == 'ide2' && !self.cdrom?(options)
+          options += ',' if !options.empty?
+          options += 'media=cdrom'
+        end
         value += ',' if !options.empty? && !value.empty?
         value += options
         { "#{id}": value }
