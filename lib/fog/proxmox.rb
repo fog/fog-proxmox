@@ -37,27 +37,33 @@ module Fog
     service(:storage, 'Storage')
     service(:network, 'Network')
 
-    @cache = {}
+    @credentials = {}
+    @now = Time.now
 
     # Default lifetime ticket is 2 hours
     @ticket_lifetime = 2 * 60 * 60
 
     class << self
-      attr_accessor :cache
+      attr_reader :credentials
       attr_reader :version
+      attr_accessor :now # tests only
     end
 
-    def self.clear_cache
-      Fog::Proxmox.cache = {}
+    def self.clear_credentials
+      @credentials = {}
     end
 
     def self.authenticate(options, connection_options = {})
       get_tokens(options, connection_options)
-      @cache
+      self
     end
 
     def self.authenticated?
-      !@cache.empty?
+      !@credentials.empty?
+    end
+
+    def self.credentials_has_expired?
+      authenticated? && @credentials[:deadline] > @now
     end
 
     def self.extract_password(options)
@@ -73,7 +79,8 @@ module Fog
       uri = URI.parse(url)
       @api_path = uri.path
       connection_options = connection_options.merge(path_prefix: @api_path)
-      retrieve_tokens(uri, connection_options, username, password) unless authenticated?
+      password = @credentials[:csrftoken] if credentials_has_expired?
+      retrieve_tokens(uri, connection_options, username, password) unless authenticated? && !credentials_has_expired?
     end
 
     def self.retrieve_tokens(uri, connection_options, username, password)
@@ -96,20 +103,17 @@ module Fog
       ticket    = data['ticket']
       username  = data['username']
       csrftoken = data['CSRFPreventionToken']
-
-      now = Time.now
-      deadline = Time.at(now.to_i + @ticket_lifetime)
+      deadline = Time.at(@now.to_i + @ticket_lifetime)
       save_token(username, ticket, csrftoken, deadline)
     end
 
     def self.save_token(username, ticket, csrftoken, deadline)
-      @cache = {
+      @credentials = {
         username: username,
         ticket: ticket,
         csrftoken: csrftoken,
         deadline: deadline
       }
-      Fog::Proxmox.cache = @cache
     end
   end
 end

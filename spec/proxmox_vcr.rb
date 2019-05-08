@@ -72,7 +72,7 @@ class ProxmoxVCR
     @connection_options[:ssl_verify_peer] = false if ENV['SSL_VERIFY_PEER'] == 'false'
 
     VCR.use_cassette('identity_ticket') do
-      Fog::Proxmox.clear_cache
+      Fog::Proxmox.clear_credentials
 
       @username  = 'root@pam'
       @password  = 'proxmox01'

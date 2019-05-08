@@ -38,11 +38,9 @@ module Fog
 
       def initialize_identity(options)
         @principal = nil
-        @pve_must_reauthenticate = true
         @pve_ticket = nil
         Fog::Proxmox::Variables.to_variables(self, options, 'pve')
         @pve_uri = URI.parse(@pve_url)
-        @pve_must_reauthenticate = true unless @pve_ticket
         missing_credentials = []
         missing_credentials << :pve_username unless @pve_username
 
@@ -78,7 +76,7 @@ module Fog
           ))
         rescue Excon::Errors::Unauthorized => error
           # token expiration and token renewal possible
-          if error.response.body != 'Bad username or password' && @pve_can_reauthenticate && !retried
+          if error.response.body != 'Bad username or password' && !retried
             authenticate
             retried = true
             retry
@@ -115,17 +113,14 @@ module Fog
       end
 
       def authenticate
-        unless @principal
-          options = pve_options
-          options[:pve_ticket] = @pve_must_reauthenticate ? nil : @pve_ticket
-          credentials = Fog::Proxmox.authenticate(options, @connection_options)
-          @principal = credentials
-          @pve_username = credentials[:username]
-          @pve_ticket = credentials[:ticket]
-          @pve_deadline = credentials[:deadline]
-          @pve_csrftoken = credentials[:csrftoken]
-          @pve_must_reauthenticate = false
-        end
+        options = pve_options
+        @pve_ticket = options[:pve_ticket]
+        Fog::Proxmox.authenticate(options, @connection_options)
+        @principal = Fog::Proxmox.credentials
+        @pve_username = Fog::Proxmox.credentials[:username]
+        @pve_ticket = Fog::Proxmox.credentials[:ticket]
+        @pve_deadline = Fog::Proxmox.credentials[:deadline]
+        @pve_csrftoken = Fog::Proxmox.credentials[:csrftoken]
 
         @host       = @pve_uri.host
         @api_path   = @pve_uri.path
