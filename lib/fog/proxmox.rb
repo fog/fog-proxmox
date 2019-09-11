@@ -80,7 +80,9 @@ module Fog
       request = {
         expects: [200, 204],
         headers: { 'Accept' => 'application/json' },
-        body: "username=#{username}&password=#{password}",
+        body: "username=#{URI.
+encode_www_form_component(username)}&password=#{URI.
+encode_www_form_component(password)}",
         method: 'POST',
         path: 'access/ticket'
       }

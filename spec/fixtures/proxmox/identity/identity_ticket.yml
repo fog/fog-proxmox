@@ -5,7 +5,7 @@ http_interactions:
     uri: https://192.168.56.101:8006/api2/json/access/ticket
     body:
       encoding: UTF-8
-      string: username=root@pam&password=proxmox01
+      string: username=root%40pam&password=proxmox01
     headers:
       User-Agent:
       - fog-core/1.45.0
