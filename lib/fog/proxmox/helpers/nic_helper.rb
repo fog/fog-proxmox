@@ -93,7 +93,7 @@ module Fog
       end
 
       def self.nic?(id)
-        NICS_REGEXP.match?(id)
+        NICS_REGEXP.match(id) ? true : false
       end
     end
   end

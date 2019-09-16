@@ -21,40 +21,40 @@ require 'spec_helper'
 require 'fog/proxmox/helpers/disk_helper'
 
     describe Fog::Proxmox::DiskHelper do
-            
-        let(:scsi0) do 
+
+        let(:scsi0) do
             { id: 'scsi0', storage: 'local-lvm', size: 1, options: { cache: 'none' }}
         end
 
-        let(:scsi0_image) do 
+        let(:scsi0_image) do
             { id: 'scsi0', volid: 'local-lvm:vm-100-disk-1', storage: 'local-lvm', size: 1, options: { cache: 'none' }}
         end
 
-        let(:scsi) do 
+        let(:scsi) do
             { scsi0: 'local-lvm:vm-100-disk-1,size=8G,cache=none'}
         end
 
         let(:virtio1) do
-	        { id: 'virtio1', volid: 'local:108/vm-108-disk-1.qcow2,size=15G' }
-	    end
+            { id: 'virtio1', volid: 'local:108/vm-108-disk-1.qcow2,size=15G' }
+        end
 
         let(:virtio) do
             { virtio1: 'local:108/vm-108-disk-1.qcow2,size=245'}
         end
 
-        let(:ide2) do 
+        let(:ide2) do
             { id: 'ide2' }
         end
 
-        let(:ide2_image) do 
+        let(:ide2_image) do
             { id: 'ide2', volid: 'local:iso/alpine-virt-3.7.0-x86_64.iso' }
         end
 
-        let(:cdrom_none) do 
+        let(:cdrom_none) do
             { ide2: 'none,media=cdrom'}
         end
 
-        let(:cdrom_iso) do 
+        let(:cdrom_iso) do
             { ide2: 'local:iso/alpine-virt-3.7.0-x86_64.iso,media=cdrom'}
         end
 
