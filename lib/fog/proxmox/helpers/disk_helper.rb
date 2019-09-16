@@ -23,7 +23,7 @@ module Fog
   module Proxmox
     # module Disk mixins
     module DiskHelper
-      
+
       DISKS_REGEXP = /^(scsi|sata|mp|rootfs|virtio|ide)(\d+){0,1}$/
       SERVER_DISK_REGEXP = /^(scsi|sata|virtio|ide)(\d+)$/
       MOUNT_POINT_REGEXP = /^(mp)(\d+)$/
@@ -100,7 +100,7 @@ module Fog
       def self.to_bytes(size)
         val=size.match(/\d+(\w?)/)
         m=0
-        case val[1] 
+        case val[1]
           when "K" then m=1
           when "M" then m=2
           when "G" then m=3
@@ -116,23 +116,23 @@ module Fog
       end
 
       def self.disk?(id)
-        DISKS_REGEXP.match?(id)
+        DISKS_REGEXP.match(id) ? true : false
       end
 
       def self.cdrom?(value)
-        CDROM_REGEXP.match?(value)
+        CDROM_REGEXP.match(value) ? true : false
       end
 
       def self.server_disk?(id)
-        SERVER_DISK_REGEXP.match?(id)
+        SERVER_DISK_REGEXP.match(id) ? true : false
       end
 
       def self.rootfs?(id)
-        ROOTFS_REGEXP.match?(id)
+        ROOTFS_REGEXP.match(id) ? true : false
       end
 
       def self.mount_point?(id)
-        MOUNT_POINT_REGEXP.match?(id)
+        MOUNT_POINT_REGEXP.match(id) ? true : false
       end
 
       def self.container_disk?(id)
