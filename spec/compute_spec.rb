@@ -65,7 +65,7 @@ describe Fog::Proxmox::Compute do
       data.wont_be_nil
       data.wont_be_empty
       # Get statistics image
-      data = node.statistics('rrd', { timeframe: 'hour', ds: 'cpu,memused', cf: 'AVERAGE' })
+      data = node.statistics('rrd', timeframe: 'hour', ds: 'cpu,memused', cf: 'AVERAGE')
       data.wont_be_nil
       data['image'].wont_be_nil
     end
@@ -329,7 +329,7 @@ describe Fog::Proxmox::Compute do
       # Get container
       container = node.containers.get vmid
       container.wont_be_nil
-      rootfs_a = container.config.disks.select { |disk| disk.rootfs? }
+      rootfs_a = container.config.disks.select(&:rootfs?)
       rootfs_a.wont_be_empty
       rootfs = rootfs_a.first
       rootfs.wont_be_nil
@@ -352,7 +352,7 @@ describe Fog::Proxmox::Compute do
       options = { mp: '/opt/app', backup: 0, replicate: 0, quota: 1 }
       container.attach(mp0, options)
       # Fetch mount points
-      mount_points = container.config.disks.select { |disk| disk.mount_point? }
+      mount_points = container.config.disks.select(&:mount_point?)
       mount_points.wont_be_empty
       mount_points.get('mp0').wont_be_nil
       # Remove mount points

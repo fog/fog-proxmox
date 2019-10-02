@@ -20,24 +20,23 @@
 require 'spec_helper'
 require 'fog/proxmox/hash'
 
-    describe Fog::Proxmox::Hash do
-            
-        let(:net_vm) do 
-            { net0: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
-        end
-        let(:net) do 
-            { id: 'net0', model: 'virtio', macaddr: '66:89:C5:59:AA:96', z: nil }
-        end
+describe Fog::Proxmox::Hash do
+  let(:net_vm) do
+    { net0: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
+  end
+  let(:net) do
+    { id: 'net0', model: 'virtio', macaddr: '66:89:C5:59:AA:96', z: nil }
+  end
 
-        describe '#flatten' do
-            it "returns string net_vm" do
-                assert_equal 'net0: virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1', Fog::Proxmox::Hash.flatten(net_vm)
-            end
-        end
-
-        describe '#stringify' do
-            it "returns stringify hash" do
-                assert_equal 'id=net0,model=virtio,macaddr=66:89:C5:59:AA:96', Fog::Proxmox::Hash.stringify(net)
-            end
-        end
+  describe '#flatten' do
+    it 'returns string net_vm' do
+      assert_equal 'net0: virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1', Fog::Proxmox::Hash.flatten(net_vm)
     end
+  end
+
+  describe '#stringify' do
+    it 'returns stringify hash' do
+      assert_equal 'id=net0,model=virtio,macaddr=66:89:C5:59:AA:96', Fog::Proxmox::Hash.stringify(net)
+    end
+  end
+end
