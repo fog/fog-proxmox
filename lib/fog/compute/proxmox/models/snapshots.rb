@@ -30,7 +30,13 @@ module Fog
         attribute :node_id
 
         def new(new_attributes = {})
-          super({ node_id: node_id, server_id: server_id, server_type: server_type }.merge(new_attributes))
+          super(
+            {
+              node_id: node_id,
+              server_id: server_id,
+              server_type: server_type
+            }.merge(new_attributes)
+          )
         end
 
         def all
@@ -39,7 +45,7 @@ module Fog
         end
 
         def get(name)
-          all.find { |snapshot| snapshot.identity === name }
+          all.find { |snapshot| snapshot.identity == name }
         end
       end
     end

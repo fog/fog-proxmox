@@ -25,7 +25,17 @@ module Fog
     # Identity and authentication proxmox class
     class Identity < Fog::Service
       requires :pve_url
-      recognizes :pve_ticket, :pve_path, :pve_ticket_expires, :pve_csrftoken, :persistent, :current_user, :pve_username, :pve_password, :pve_deadline
+      recognizes(
+        :pve_ticket,
+        :pve_path,
+        :pve_ticket_expires,
+        :pve_csrftoken,
+        :persistent,
+        :current_user,
+        :pve_username,
+        :pve_password,
+        :pve_deadline
+      )
 
       model_path 'fog/identity/proxmox/models'
       model :principal
@@ -108,7 +118,11 @@ module Fog
           authenticate
           @persistent = options[:persistent] || false
           url = "#{@scheme}://#{@host}:#{@port}"
-          @connection = Fog::Core::Connection.new(url, @persistent, @connection_options.merge(path_prefix: @path_prefix))
+          @connection = Fog::Core::Connection.new(
+            url,
+            @persistent,
+            @connection_options.merge(path_prefix: @path_prefix)
+          )
         end
 
         def config

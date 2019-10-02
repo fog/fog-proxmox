@@ -53,7 +53,10 @@ module Fog
         end
 
         def restore(vmid, options = {})
-          service.create_server(node_id, options.merge(archive: volid, storage: storage_id, vmid: vmid))
+          service.create_server(
+            node_id,
+            options.merge(archive: volid, storage: storage_id, vmid: vmid)
+          )
         end
       end
     end

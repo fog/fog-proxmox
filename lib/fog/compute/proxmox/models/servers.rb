@@ -52,8 +52,11 @@ module Fog
           begin
             status_data = service.get_server_status path_params
             config_data = service.get_server_config path_params
-          rescue => e
-            if e.respond_to?('response') && e.response.respond_to?('data') && e.response.data.has_key?(:reason_phrase) && e.response.data[:reason_phrase].end_with?('does not exist')
+          rescue StandardError => e
+            if e.respond_to?('response') &&
+               e.response.respond_to?('data') &&
+               e.response.data.key?(:reason_phrase) &&
+               e.response.data[:reason_phrase].end_with?('does not exist')
               raise(Fog::Errors::NotFound)
             else
               raise(e)
@@ -70,8 +73,12 @@ module Fog
         end
 
         def create(new_attributes = {})
-          object = new(new_attributes.select { |key, _value| [:node_id, :vmid, :type].include? key.to_sym })
-          object.save(new_attributes.reject { |key, _value| [:node_id, :vmid, :type].include? key.to_sym })
+          object = new(
+            new_attributes.select { |key, _value| [:node_id, :vmid, :type].include? key.to_sym }
+          )
+          object.save(
+            new_attributes.reject { |key, _value| [:node_id, :vmid, :type].include? key.to_sym }
+          )
           object
         end
       end

@@ -31,7 +31,7 @@ module Fog
         end
 
         def get(id)
-          all.find { |node| node.identity === id }
+          all.find { |node| node.identity == id }
         end
       end
     end

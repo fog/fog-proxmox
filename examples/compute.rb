@@ -101,7 +101,8 @@ server.detach 'ide2'
 # Add network interface
 config_hash = { net0: 'virtio,bridge=vmbr0' }
 server.update(config_hash)
-# Add start at boot, keyboard fr, linux 3.x os type, kvm hardware disabled (proxmox guest in virtualbox)
+# Add start at boot, keyboard fr, linux 3.x os type,
+# kvm hardware disabled (proxmox guest in virtualbox)
 config_hash = { onboot: 1, keyboard: 'fr', ostype: 'l26', kvm: 0 }
 server.update(config_hash)
 # Get configuration model

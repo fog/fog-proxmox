@@ -31,7 +31,7 @@ module Fog
         end
 
         def get(id)
-          all.find { |disk| disk.identity === id }
+          all.find { |disk| disk.identity == id }
         end
 
         def next_device(controller)

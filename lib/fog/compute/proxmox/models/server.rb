@@ -122,6 +122,7 @@ module Fog
           action_known = %w[start stop resume suspend shutdown reset].include? action
           message = "Action #{action} not implemented"
           raise Fog::Errors::Error, message unless action_known
+
           request(:action_server, options, action: action, vmid: vmid)
           reload
         end
@@ -136,11 +137,11 @@ module Fog
         end
 
         def restore(backup, options = {})
-          if container?
-            attr_hash = options.merge(ostemplate: backup.volid, force: 1, restore: 1)
-          else
-            attr_hash = options.merge(archive: backup.volid, force: 1)
-          end
+          attr_hash = if container?
+                        options.merge(ostemplate: backup.volid, force: 1, restore: 1)
+                      else
+                        options.merge(archive: backup.volid, force: 1)
+                      end
           save(attr_hash)
         end
 
@@ -187,14 +188,15 @@ module Fog
         end
 
         def start_console(options = {})
-          raise ::Fog::Proxmox::Errors::ServiceError, "Unable to start console because server not running." unless ready?
+          raise ::Fog::Proxmox::Errors::ServiceError, 'Unable to start console because server not running.' unless ready?
+
           if container?
             type_console = options[:console]
             options.delete_if { |option| [:console].include? option }
-            raise ::Fog::Proxmox::Errors::ServiceError, "Unable to start console because console container config is not set or unknown." unless type_console
+            raise ::Fog::Proxmox::Errors::ServiceError, 'Unable to start console because console container config is not set or unknown.' unless type_console
           else
             type_console = config.type_console
-            raise ::Fog::Proxmox::Errors::ServiceError, "Unable to start console because VGA display server config is not set or unknown." unless type_console
+            raise ::Fog::Proxmox::Errors::ServiceError, 'Unable to start console because VGA display server config is not set or unknown.' unless type_console
           end
           requires :vmid, :node_id, :type
           path_params = { node: node_id, type: type, vmid: vmid }
@@ -229,7 +231,7 @@ module Fog
           volumes
         end
 
-        protected 
+        protected
 
         def initialize_config(new_attributes = {})
           options = { service: service, vmid: vmid }
@@ -248,7 +250,7 @@ module Fog
 
         def node
           Fog::Proxmox::Compute::Node.new(service: service, node: node_id)
-        end 
+        end
       end
     end
   end

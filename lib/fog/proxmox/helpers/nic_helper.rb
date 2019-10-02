@@ -23,8 +23,7 @@ module Fog
   module Proxmox
     # module NicHelper mixins
     module NicHelper
-
-      NICS_REGEXP = /^(net)(\d+)/
+      NICS_REGEXP = /^(net)(\d+)/.freeze
 
       def self.extract_mac_address(nic_value)
         nic_value[/([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})/]
@@ -42,21 +41,21 @@ module Fog
         /^(\w+)[=]{1}([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}).+/
       end
 
-      def self.has_model?(nic_value)
-        nic_value.match(self.model_regexp)
+      def self.model?(nic_value)
+        nic_value.match(model_regexp)
       end
 
-      def self.has_name?(nic_value)
-        nic_value.match(self.name_regexp)
+      def self.name?(nic_value)
+        nic_value.match(name_regexp)
       end
 
       def self.extract_nic_id(nic_value)
-        if self.has_model?(nic_value)
-          nic_value.scan(self.model_regexp).first.first
-        elsif self.has_name?(nic_value)
-          nic_value.scan(self.name_regexp).first.first
+        if model?(nic_value)
+          nic_value.scan(model_regexp).first.first
+        elsif name?(nic_value)
+          nic_value.scan(name_regexp).first.first
         else
-          nic_value.scan(self.nic_update_regexp).first.first
+          nic_value.scan(nic_update_regexp).first.first
         end
       end
 
@@ -67,32 +66,32 @@ module Fog
       end
 
       def self.nic_name(nic)
-        if nic.has_key?(:model)
-          "model"
-        elsif nic.has_key?(:name)
-          "name"
+        if nic.key?(:model)
+          'model'
+        elsif nic.key?(:name)
+          'name'
         else
-          ""
+          ''
         end
       end
 
       def self.flatten(nic_hash)
-        nic_id = nic_hash[self.nic_name(nic_hash).to_sym]
-        if nic_hash.has_key?(:macaddr)
-          nic_value = nic_id + "=" + nic_hash[:macaddr]
-        else
-          nic_value = self.nic_name(nic_hash) + "=" + nic_id
-        end
-        options = nic_hash.reject { |key, _value| [self.nic_name(nic_hash).to_sym,:id,:macaddr].include? key.to_sym }
+        nic_id = nic_hash[nic_name(nic_hash).to_sym]
+        nic_value = if nic_hash.key?(:macaddr)
+                      nic_id + '=' + nic_hash[:macaddr]
+                    else
+                      nic_name(nic_hash) + '=' + nic_id
+                    end
+        options = nic_hash.reject { |key, _value| [nic_name(nic_hash).to_sym, :id, :macaddr].include? key.to_sym }
         nic_value += ',' unless options.empty?
         nic_value += Fog::Proxmox::Hash.stringify(options) unless options.empty?
         { "#{nic_hash[:id]}": nic_value }
       end
 
-      def self.collect_nics(attributes)        
+      def self.collect_nics(attributes)
         attributes.select { |key| nic?(key.to_s) }
       end
-    
+
       def self.nic?(id)
         NICS_REGEXP.match?(id)
       end

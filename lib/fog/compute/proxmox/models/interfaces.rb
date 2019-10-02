@@ -32,11 +32,13 @@ module Fog
         end
 
         def get(id)
-          all.find { |interface| interface.identity === id }
+          all.find { |interface| interface.identity == id }
         end
 
         def next_nicid
-          Fog::Proxmox::ControllerHelper.last_index(Fog::Proxmox::Compute::Interface::NAME, self) + 1
+          Fog::Proxmox::ControllerHelper.last_index(
+            Fog::Proxmox::Compute::Interface::NAME, self
+          ) + 1
         end
       end
     end

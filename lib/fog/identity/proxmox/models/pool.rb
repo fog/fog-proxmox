@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -55,7 +56,7 @@ module Fog
 
         def update_with_member(member_name, member_id, delete = false)
           requires :poolid
-          otpions = attributes.reject { |attribute| %i[poolid members].include? attribute }
+          otpions = attributes.reject { |attribute| [:poolid, :members].include? attribute }
           otpions.store(member_name, member_id) if member_name
           otpions.store('delete', 1) if delete
           service.update_pool(poolid, otpions)

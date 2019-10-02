@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -38,7 +39,10 @@ module Fog
 
         def update
           requires :groupid
-          service.update_group(identity, attributes.reject { |attribute| [:groupid].include? attribute })
+          service.update_group(
+            identity,
+            attributes.reject { |attribute| [:groupid].include? attribute }
+          )
           reload
         end
       end

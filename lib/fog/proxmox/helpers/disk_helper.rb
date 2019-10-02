@@ -23,12 +23,11 @@ module Fog
   module Proxmox
     # module Disk mixins
     module DiskHelper
-      
-      DISKS_REGEXP = /^(scsi|sata|mp|rootfs|virtio|ide)(\d+){0,1}$/
-      SERVER_DISK_REGEXP = /^(scsi|sata|virtio|ide)(\d+)$/
-      MOUNT_POINT_REGEXP = /^(mp)(\d+)$/
-      ROOTFS_REGEXP = /^(rootfs)$/
-      CDROM_REGEXP = /^(.*)[,]{0,1}(media=cdrom)[,]{0,1}(.*)$/
+      DISKS_REGEXP = /^(scsi|sata|mp|rootfs|virtio|ide)(\d+){0,1}$/.freeze
+      SERVER_DISK_REGEXP = /^(scsi|sata|virtio|ide)(\d+)$/.freeze
+      MOUNT_POINT_REGEXP = /^(mp)(\d+)$/.freeze
+      ROOTFS_REGEXP = /^(rootfs)$/.freeze
+      CDROM_REGEXP = /^(.*)[,]{0,1}(media=cdrom)[,]{0,1}(.*)$/.freeze
 
       def self.flatten(disk)
         id = disk[:id]
@@ -42,12 +41,12 @@ module Fog
           value += 'none'
         end
         opts = disk[:options] if disk[:options]
-        main_a = [:id,:volid,:storage,:size]
-        opts = disk.reject { |key,_value| main_a.include? key } unless opts
+        main_a = [:id, :volid, :storage, :size]
+        opts ||= disk.reject { |key, _value| main_a.include? key }
         options = ''
         options += Fog::Proxmox::Hash.stringify(opts) if opts
-        if id == 'ide2' && !self.cdrom?(options)
-          options += ',' if !options.empty?
+        if id == 'ide2' && !cdrom?(options)
+          options += ',' unless options.empty?
           options += 'media=cdrom'
         end
         value += ',' if !options.empty? && !value.empty?
@@ -74,18 +73,17 @@ module Fog
       end
 
       def self.extract_storage_volid_size(disk_value)
-        #volid definition: <VOULME_ID>:=<STORAGE_ID>:<storage type dependent volume name>
+        # volid definition: <VOULME_ID>:=<STORAGE_ID>:<storage type dependent volume name>
         values_a = disk_value.scan(/^(([\w-]+)[:]{0,1}([\w\/\.-]+))/)
         no_cdrom = !disk_value.match(CDROM_REGEXP)
         creation = disk_value.split(',')[0].match(/^(([\w-]+)[:]{1}([\d]+))$/)
         values = values_a.first if values_a
         if no_cdrom
+          storage = values[1]
           if creation
-            storage = values[1]
             volid = nil
             size = values[2].to_i
           else
-            storage = values[1]
             volid = values[0]
             size = extract_size(disk_value)
           end
@@ -98,21 +96,21 @@ module Fog
       end
 
       def self.to_bytes(size)
-        val=size.match(/\d+(\w?)/)
-        m=0
-        case val[1] 
-          when "K" then m=1
-          when "M" then m=2
-          when "G" then m=3
-          when "T" then m=4
-          when "P" then m=5
+        val = size.match(/\d+(\w?)/)
+        m = 0
+        case val[1]
+        when 'K' then m = 1
+        when 'M' then m = 2
+        when 'G' then m = 3
+        when 'T' then m = 4
+        when 'P' then m = 5
         end
-        val[0].to_i*1024**m
+        val[0].to_i * 1024**m
       end
 
       def self.extract_size(disk_value)
-        size=extract_option('size', disk_value)
-	      size ? self.to_bytes(size) : "1G"
+        size = extract_option('size', disk_value)
+        size ? to_bytes(size) : '1G'
       end
 
       def self.disk?(id)

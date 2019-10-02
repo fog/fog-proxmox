@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -46,7 +47,10 @@ module Fog
 
         def update
           requires :userid
-          service.update_user(userid, attributes.reject { |attribute| [:userid].include? attribute })
+          service.update_user(
+            userid,
+            attributes.reject { |attribute| [:userid].include? attribute }
+          )
           reload
         end
 

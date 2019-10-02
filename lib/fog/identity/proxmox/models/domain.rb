@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -31,7 +33,11 @@ module Fog
         end
 
         def save(new_attributes = {})
-          service.create_domain(type.attributes.merge(new_attributes).merge(attributes.reject { |attribute| [:type].include? attribute }))
+          service.create_domain(
+            type.attributes.merge(new_attributes).merge(
+              attributes.reject { |attribute| [:type].include? attribute }
+            )
+          )
           reload
         end
 
@@ -43,20 +49,27 @@ module Fog
 
         def update
           requires :realm
-          service.update_domain(realm, type.attributes.merge(attributes).reject { |attribute| [:type, :realm].include? attribute })
+          service.update_domain(
+            realm,
+            type.attributes.merge(attributes).reject do |attribute|
+              [:type, :realm].include? attribute
+            end
+          )
           reload
         end
 
         private
 
         def initialize_type(new_attributes = {})
-          if new_attributes.has_key? :realm
+          if new_attributes.key? :realm
             realm = new_attributes.delete(:realm)
-          elsif new_attributes.has_key? 'realm'              
+          elsif new_attributes.key? 'realm'
             realm = new_attributes.delete('realm')
           end
           attributes[:type] = Fog::Proxmox::Identity::DomainType.new(new_attributes)
-          new_attributes.delete_if { |new_attribute| attributes[:type].attributes.has_key? new_attribute.to_sym }
+          new_attributes.delete_if do |new_attribute|
+            attributes[:type].attributes.key? new_attribute.to_sym
+          end
           new_attributes.store(:realm, realm)
         end
       end

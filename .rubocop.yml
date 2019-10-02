@@ -1,7 +1,10 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
   TargetRubyVersion: 2.3
   Include:
     - '**/Rakefile'
+    - '**/*.rb'
   Exclude:
     - 'bin/**/*'
     - 'vendor/**/*'
@@ -11,3 +14,40 @@ AllCops:
     - '**/*.gemspec'
     - 'Gemfile'
     - 'spec/**/*'
+
+# TODO: try to refactor concerned code
+Metrics/AbcSize:
+  Max: 60
+
+Metrics/BlockLength:
+  Max: 366
+
+Metrics/ClassLength:
+  Max: 322
+
+Metrics/CyclomaticComplexity:
+  Max: 13
+
+Metrics/MethodLength:
+  Max: 50
+
+Metrics/ModuleLength:
+  Max: 244
+
+Metrics/PerceivedComplexity:
+  Max: 14
+
+Metrics/LineLength:
+  Max: 158 # TODO: discuss and set this
+
+Lint/UselessAssignment:
+  Exclude:
+    - 'examples/*'
+
+Style/RegexpLiteral:
+  EnforcedStyle: slashes
+  AllowInnerSlashes: true
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+

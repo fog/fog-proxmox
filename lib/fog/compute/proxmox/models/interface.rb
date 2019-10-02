@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -17,7 +18,7 @@
 
 # frozen_string_literal: true
 
-require "fog/proxmox/helpers/nic_helper"
+require 'fog/proxmox/helpers/nic_helper'
 
 module Fog
   module Proxmox

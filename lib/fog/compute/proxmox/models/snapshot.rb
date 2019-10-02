@@ -76,7 +76,12 @@ module Fog
         private
 
         def server
-          Fog::Proxmox::Compute::Server.new(service: service, node_id: node_id, type: server_type, vmid: server_id)
+          Fog::Proxmox::Compute::Server.new(
+            service: service,
+            node_id: node_id,
+            type: server_type,
+            vmid: server_id
+          )
         end
       end
     end

@@ -73,25 +73,25 @@ module Fog
       def request(params)
         retried = false
         begin
-          response = @connection.request(params.merge(
-                                           headers: headers(params[:method], params[:headers])
-          ))
-        rescue Excon::Errors::Unauthorized => error
-          # token expiration and token renewal possible
-          if error.response.body != 'Bad username or password' && @pve_can_reauthenticate && !retried
-            authenticate
-            retried = true
-            retry
+          response = @connection.request(
+            params.merge(headers: headers(params[:method], params[:headers]))
+          )
+        rescue Excon::Errors::Unauthorized => e
           # bad credentials or token renewal not possible
-          else
-            raise error
-          end
-        rescue Excon::Errors::HTTPStatusError => error
-          raise case error
+          raise if e.response.body == 'Bad username or password' ||
+                   !@pve_can_reauthenticate ||
+                   retried
+
+          # token expiration and token renewal possible
+          authenticate
+          retried = true
+          retry
+        rescue Excon::Errors::HTTPStatusError => e
+          raise case e
                 when Excon::Errors::NotFound
-                  self.class.not_found_class.slurp(error)
+                  self.class.not_found_class.slurp(e)
                 else
-                  error
+                  e
                 end
         end
         Fog::Proxmox::Json.get_data(response)
@@ -101,9 +101,7 @@ module Fog
         additional_headers ||= {}
         headers_hash = { 'Accept' => 'application/json' }
         # CSRF token is required to PUT, POST and DELETE http requests
-        if %w[PUT POST DELETE].include? method
-          headers_hash.store('CSRFPreventionToken', @pve_csrftoken)
-        end
+        headers_hash.store('CSRFPreventionToken', @pve_csrftoken) if %w[PUT POST DELETE].include? method
         # ticket must be present in cookie
         headers_hash.store('Cookie', "PVEAuthCookie=#{@pve_ticket}") if @pve_ticket
         headers_hash.merge additional_headers
@@ -129,7 +127,7 @@ module Fog
 
         @host       = @pve_uri.host
         @api_path   = @pve_uri.path
-        @api_path.sub!(%r{/$}, '')
+        @api_path.sub!(/\/$/, '')
         @port       = @pve_uri.port
         @scheme     = @pve_uri.scheme
 

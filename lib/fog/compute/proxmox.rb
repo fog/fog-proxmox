@@ -118,7 +118,11 @@ module Fog
           authenticate
           @persistent = options[:persistent] || false
           url = "#{@scheme}://#{@host}:#{@port}"
-          @connection = Fog::Core::Connection.new(url, @persistent, @connection_options.merge(path_prefix: @path_prefix))
+          @connection = Fog::Core::Connection.new(
+            url,
+            @persistent,
+            @connection_options.merge(path_prefix: @path_prefix)
+          )
         end
       end
     end

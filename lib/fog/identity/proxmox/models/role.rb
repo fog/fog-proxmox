@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -39,7 +40,10 @@ module Fog
 
         def update
           requires :roleid
-          service.update_role(roleid, attributes.reject { |attribute| [:roleid, :special].include? attribute })
+          service.update_role(
+            roleid,
+            attributes.reject { |attribute| [:roleid, :special].include? attribute }
+          )
           reload
         end
       end
