@@ -3,6 +3,7 @@ env:
   - CC_TEST_REPORTER_ID=1b8ec457c0c30f927f785b4a080eca5164140c5b84716f64809b5ce2f57f3554
   - TASK=test
   - TASK=spec
+  - TASK=audit
 language: ruby
 sudo: false
 cache: bundler

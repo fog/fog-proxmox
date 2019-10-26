@@ -20,7 +20,9 @@
 require 'bundler/gem_tasks'
 require 'rubocop/rake_task'
 require 'rake/testtask'
+require 'bundler/audit/task'
 
+Bundler::Audit::Task.new
 RuboCop::RakeTask.new
 
 task default: :test
@@ -33,6 +35,9 @@ end
 
 desc 'Run fog-proxmox spec/ tests (VCR)'
 task spec: 'tests:spec'
+
+desc 'Run audit vulnerabilities'
+task audit: 'bundle:audit'
 
 namespace :tests do
   desc 'Run fog-proxmox test/'
