@@ -91,13 +91,11 @@ module Fog
         method: 'POST',
         path: 'access/ticket'
       }
-
       connection = Fog::Core::Connection.new(
         uri.to_s,
         false,
         connection_options
       )
-
       response  = connection.request(request)
       data      = Json.get_data(response)
       ticket    = data['ticket']

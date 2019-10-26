@@ -19,23 +19,12 @@
 
 module Fog
   module Proxmox
-    # module Cpu mixins
-    module CpuHelper
-      CPU_REGEXP = /(\bcputype=)?(\w+)[,]?(\bflags=)?(\+[\w-]+)?[;]?(\+[\w-]+)?/
-      def self.extract(cpu,i)
-        cpu.match(CPU_REGEXP)[i]
-      end
-
-      def self.extract_type(cpu)
-        extract(cpu,2)
-      end
-
-      def self.has_pcid?(cpu)
-        extract(cpu,5) == '+pcid'
-      end
-
-      def self.has_spectre?(cpu)
-        extract(cpu,4) == '+spec-ctrl'
+    # module String mixins
+    module String
+      def self.to_boolean(text)
+        return true if text == true   || text =~ (/(true|t|yes|y|1)$/i)
+        return false if text == false  || text.empty? || text =~ (/(false|f|no|n|0)$/i)
+        raise ArgumentError.new("invalid value for Boolean: \"#{text}\"")
       end
     end
   end

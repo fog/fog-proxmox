@@ -35,27 +35,6 @@ require 'fog/proxmox/helpers/cpu_helper'
             'cputype=kvm64,flags=+spec-ctrl'
         end
 
-        describe '#extract' do
-            it "returns array" do
-                result = Fog::Proxmox::CpuHelper.extract(cpu)
-                assert_equal(5, result.length)
-                assert_equal('cputype=', result[0])
-                assert_equal('kvm64', result[1])
-                assert_equal(',flags=', result[2])
-                assert_equal('+spec-ctrl', result[3])
-                assert_equal('+pcid', result[4])
-            end
-            it "returns array" do
-                result = Fog::Proxmox::CpuHelper.extract(cpu_nocputype)
-                assert_equal(5, result.length)
-                assert !result[0]
-                assert_equal('kvm64', result[1])
-                assert_equal(',flags=', result[2])
-                assert_equal('+spec-ctrl', result[3])
-                assert_equal('+pcid', result[4])
-            end
-        end
-
         describe '#extract_type' do
             it "returns string" do
                 result = Fog::Proxmox::CpuHelper.extract_type(cpu)
@@ -67,24 +46,24 @@ require 'fog/proxmox/helpers/cpu_helper'
             end
         end
 
-        describe '#extract_spectre' do
+        describe '#has_spectre?' do
             it "returns true" do
-                result = Fog::Proxmox::CpuHelper.extract_spectre(cpu)
+                result = Fog::Proxmox::CpuHelper.has_spectre?(cpu)
                 assert result
             end
             it "returns false" do
-                result = Fog::Proxmox::CpuHelper.extract_spectre(cpu_nospectre)
+                result = Fog::Proxmox::CpuHelper.has_spectre?(cpu_nospectre)
                 assert !result
             end
         end
 
-        describe '#extract_pcid' do
+        describe '#has_pcid?' do
             it "returns true" do
-                result = Fog::Proxmox::CpuHelper.extract_pcid(cpu)
+                result = Fog::Proxmox::CpuHelper.has_pcid?(cpu)
                 assert result
             end
             it "returns false" do
-                result = Fog::Proxmox::CpuHelper.extract_pcid(cpu_nopcid)
+                result = Fog::Proxmox::CpuHelper.has_pcid?(cpu_nopcid)
                 assert !result
             end
         end

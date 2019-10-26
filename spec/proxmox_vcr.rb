@@ -76,23 +76,16 @@ class ProxmoxVCR
 
       @username  = 'root@pam'
       @password  = 'proxmox01'
-      # ticket recorded in identity_ticket.yml
-      @ticket    = 'PVE:root@pam:5AB4B38A::m5asyATnV66Htv+Z2QYNu+KuqZDsR1t3fCViuu0bTAWYfU85zdUY2dF9lJXa7soWlaZ3tZriTxC7d+nhMq9Fq8hCRlNG4ntsEw/CzeuS50phSvq4Phx1uZVV0KjkdcVP1X0J50e42Zfr5hzptiO+cD68OF2GG0GaboQ/MV+PA5IxojYojQe1w6yjjzreZhiZYy9zq1W5CW23yIt5pPWk9oFxLNUHU1I2+jqMCOeE40VhivCUEslusD0ZdoA3tkIWJ504rKQJrJIsq1zi6LIpGsktkbUPxHwSgnftQs0IPRuP5HGaz1g9FSW1IUpC8iCHqEV6re+Pb9Yz+G1G7+G0TQ=='
-      @csrftoken = '5AB4B38A:J+3XBmYsJqR7F+18kqbMhj6I/SM'
 
       unless use_recorded
         @username = ENV['PVE_USERNAME'] || options[:username] || @username
         @password = ENV['PVE_PASSWORD'] || options[:password] || @password
-        @ticket = ENV['PVE_TICKET'] || options[:ticket] || @ticket
-        @csrftoken = ENV['PVE_CSRFTOKEN'] || options[:csrftoken] || @csrftoken
       end
 
       connection_params = {
         pve_url: @url,
         pve_username: @username,
         pve_password: @password,
-        pve_ticket: @ticket,
-        pve_csrftoken: @csrftoken,
         connection_options: @connection_options
       }
 

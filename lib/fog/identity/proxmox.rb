@@ -19,6 +19,7 @@
 # frozen_string_literal: true
 
 require 'fog/core'
+require 'fog/proxmox/string'
 
 module Fog
   module Proxmox
@@ -108,6 +109,9 @@ module Fog
           authenticate
           @persistent = options[:persistent] || false
           url = "#{@scheme}://#{@host}:#{@port}"
+          if ENV.has_key?('SSL_VERIFY_PEER')
+            Excon.defaults[:ssl_verify_peer] = Fog::Proxmox::String.to_boolean(ENV['SSL_VERIFY_PEER'])
+          end
           @connection = Fog::Core::Connection.new(url, @persistent, @connection_options.merge(path_prefix: @path_prefix))
         end
 

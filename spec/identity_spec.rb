@@ -22,6 +22,7 @@ require_relative './proxmox_vcr'
 
 describe Fog::Proxmox::Identity do
   before :all do
+    Excon.defaults[:ssl_ca_file] = 'spec/fixtures/proxmox/pve.home'
     @proxmox_vcr = ProxmoxVCR.new(
       vcr_directory: 'spec/fixtures/proxmox/identity',
       service_class: Fog::Proxmox::Identity
@@ -30,19 +31,6 @@ describe Fog::Proxmox::Identity do
     @pve_url = @proxmox_vcr.url
     @username = @proxmox_vcr.username
     @password = @proxmox_vcr.password
-    @ticket = @proxmox_vcr.ticket
-    @csrftoken = @proxmox_vcr.csrftoken
-  end
-
-  it 'authenticates with username and password' do
-    VCR.use_cassette('auth') do
-      identity = Fog::Proxmox::Identity.new(
-        pve_username: @username,
-        pve_password: @password,
-        pve_url: @pve_url.to_s
-      )
-      identity.wont_be_nil
-    end
   end
 
   it 'verifies ticket with path and privs' do
