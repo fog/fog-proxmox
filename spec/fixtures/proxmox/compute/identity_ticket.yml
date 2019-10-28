@@ -4,11 +4,11 @@ http_interactions:
     method: post
     uri: https://192.168.56.101:8006/api2/json/access/ticket
     body:
-      encoding: UTF-8
-      string: username=root@pam&password=proxmox01
+      encoding: US-ASCII
+      string: username=root%40pam&password=proxmox01
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
   response:
@@ -21,7 +21,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Thu, 11 Apr 2019 15:58:37 GMT
+      - Mon, 28 Oct 2019 15:19:04 GMT
       Pragma:
       - no-cache
       Server:
@@ -31,10 +31,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Thu, 11 Apr 2019 15:58:37 GMT
+      - Mon, 28 Oct 2019 15:19:04 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"CSRFPreventionToken":"5CAF642D:UeqCTsDtWXSr3VYr2Sgtld4vjoo","username":"root@pam","cap":{"dc":{"Sys.Audit":1},"access":{"User.Modify":1,"Group.Allocate":1,"Permissions.Modify":1},"nodes":{"Sys.Audit":1,"Sys.Console":1,"Sys.Modify":1,"Permissions.Modify":1,"Sys.PowerMgmt":1,"Sys.Syslog":1},"vms":{"VM.Allocate":1,"VM.Snapshot":1,"VM.Config.Network":1,"VM.Monitor":1,"VM.Backup":1,"VM.Config.Options":1,"VM.Config.CDROM":1,"Permissions.Modify":1,"VM.Config.Memory":1,"VM.Migrate":1,"VM.Config.CPU":1,"VM.Config.HWType":1,"VM.Clone":1,"VM.Snapshot.Rollback":1,"VM.Audit":1,"VM.PowerMgmt":1,"VM.Console":1,"VM.Config.Disk":1},"storage":{"Datastore.Audit":1,"Datastore.AllocateTemplate":1,"Datastore.Allocate":1,"Permissions.Modify":1,"Datastore.AllocateSpace":1}},"ticket":"PVE:root@pam:5CAF642D::uJJ4aCsUbTdw9bWSsVIDgeMw2NtUUlKek4AIV22Il2Pll+TGCvj0dEaFAVnB304/OIT5XNokVL5J8xCbj8wSLeP20OO4lHmpsxfz+6wSmUF2X0xPqvwFcMN6eAluAEK9MU/rsmgj2wQXOlODhPkz1lm3+f5CGJJ+SROTVFnwZug1ihPBaGbFaIqHpZXe/A1vNLiXjvjRPVvQc7cLeoALZoQu5fKcTEDoburW0Fm/La2vECOtRbLFHjH2/yugT7RO+ynl7H7ovbLslJpQsLoT5E7UGS4CK1PD2mtVvOuoF/7bBo/MqG0sgZ1Ku/9K0b0EOrt4w5y7+CgBhazkOBUHdA=="}}'
+      string: '{"data":{"cap":{"storage":{"Permissions.Modify":1,"Datastore.AllocateTemplate":1,"Datastore.Audit":1,"Datastore.AllocateSpace":1,"Datastore.Allocate":1},"access":{"Group.Allocate":1,"Permissions.Modify":1,"User.Modify":1},"dc":{"Sys.Audit":1},"nodes":{"Sys.Modify":1,"Sys.Console":1,"Sys.Syslog":1,"Sys.PowerMgmt":1,"Permissions.Modify":1,"Sys.Audit":1},"vms":{"VM.Config.Network":1,"VM.Clone":1,"VM.Audit":1,"VM.Allocate":1,"VM.Config.Options":1,"VM.Backup":1,"VM.Config.CDROM":1,"VM.Config.Disk":1,"VM.Config.Memory":1,"VM.Console":1,"VM.Snapshot":1,"VM.Monitor":1,"Permissions.Modify":1,"VM.Snapshot.Rollback":1,"VM.PowerMgmt":1,"VM.Config.CPU":1,"VM.Config.HWType":1,"VM.Migrate":1}},"username":"root@pam","ticket":"PVE:root@pam:5DB706E8::tMQwoWbWxURwMFxOG2mT1/0mUDNHXY5ScROqO2HsnuQd0LBUWwBfgp9HzyfGKyQJZsPnNGDGxu8AVCrOsI36SW9xXAOzzSnSyAbVsf54QH2cbennt9uCK2Hr36mu8reOQlyHgP8e1esebHdq7EWwOowgvJCMaiiDI2tz/3BgT3hEAFpP1D58IMsztH+FSL1d53fEIfCIkQlju+uAj+z3+DaW2GncigLj4SB4oS5ivl2GvoeJMzaBQxrLtidKR/FWkjR4F1z11EU6N4inG3jmrWDYLXVQgG0V9iiJr39mm1YVQsOw/L6au0SsbwMuuQhsfKMsDw2/G9RkDnWr08zEuQ==","CSRFPreventionToken":"5DB706E8:mH/KSfTu1GNrjyEiPbZJeDN8eJs"}}'
     http_version: 
-  recorded_at: Thu, 11 Apr 2019 15:58:38 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Mon, 28 Oct 2019 15:19:05 GMT
+recorded_with: VCR 4.0.0

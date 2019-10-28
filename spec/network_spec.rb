@@ -45,16 +45,16 @@ describe Fog::Proxmox::Network do
       node.networks.create(net_hash)
       # Find by id
       network = node.networks.get net_hash[:iface]
-      network.wont_be_nil
+      _(network).wont_be_nil
       # Create 2nd time
-      proc do
+      _(proc do
         node.networks.create(net_hash)
-      end.must_raise Excon::Error::BadRequest
+      end).must_raise Excon::Error::BadRequest
       # all networks
       networks_all = node.networks.all
-      networks_all.wont_be_nil
-      networks_all.wont_be_empty
-      networks_all.must_include network
+      _(networks_all).wont_be_nil
+      _(networks_all).wont_be_empty
+      _(networks_all).must_include network
       # Update
       network.update(comments: 'test')
       node.power('reboot')

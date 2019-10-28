@@ -8,13 +8,13 @@ http_interactions:
       string: type=ldap&base_dn=ou%3DPeople%2Cdc%3Dldap-test%2Cdc%3Dcom&user_attr=LDAP&server1=localhost&port=389&default=0&secure=0&realm=LDAP
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5CA4B5FC:HZr6PykVK7OiMXGYVCBY7RTIQIw
+      - 5DB6FEC3:XMtKYCymKElrYcGThWgYFrP1KaQ
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -25,7 +25,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -35,12 +35,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:20 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/domains
@@ -49,11 +49,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -64,7 +64,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -74,13 +74,14 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"comment":"Linux PAM standard authentication","realm":"pam","type":"pam"},{"type":"ldap","realm":"LDAP"},{"comment":"Proxmox
-        VE authentication server","realm":"pve","type":"pve"}]}'
+      string: '{"data":[{"realm":"pam","type":"pam","comment":"Linux PAM standard
+        authentication"},{"realm":"LDAP","type":"ldap"},{"type":"pve","comment":"Proxmox
+        VE authentication server","realm":"pve"}]}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:20 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/domains
@@ -89,11 +90,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -104,7 +105,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -114,14 +115,14 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"realm":"LDAP","type":"ldap"},{"comment":"Proxmox VE authentication
-        server","realm":"pve","type":"pve"},{"type":"pam","realm":"pam","comment":"Linux
-        PAM standard authentication"}]}'
+      string: '{"data":[{"realm":"pam","type":"pam","comment":"Linux PAM standard
+        authentication"},{"realm":"LDAP","type":"ldap"},{"realm":"pve","type":"pve","comment":"Proxmox
+        VE authentication server"}]}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:20 GMT
 - request:
     method: post
     uri: https://192.168.56.101:8006/api2/json/access/domains
@@ -130,13 +131,13 @@ http_interactions:
       string: type=ad&domain=proxmox.com&server1=localhost&port=389&default=0&secure=0&realm=ActiveDirectory
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5CA4B5FC:HZr6PykVK7OiMXGYVCBY7RTIQIw
+      - 5DB6FEC3:XMtKYCymKElrYcGThWgYFrP1KaQ
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -147,7 +148,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -157,12 +158,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:20 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/domains
@@ -171,11 +172,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -186,7 +187,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -196,13 +197,14 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"type":"ldap","realm":"LDAP"},{"type":"pve","realm":"pve","comment":"Proxmox
-        VE authentication server"},{"type":"pam","comment":"Linux PAM standard authentication","realm":"pam"},{"realm":"ActiveDirectory","type":"ad"}]}'
+      string: '{"data":[{"realm":"pve","type":"pve","comment":"Proxmox VE authentication
+        server"},{"realm":"ActiveDirectory","type":"ad"},{"comment":"Linux PAM standard
+        authentication","type":"pam","realm":"pam"},{"type":"ldap","realm":"LDAP"}]}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:20 GMT
 - request:
     method: post
     uri: https://192.168.56.101:8006/api2/json/access/domains
@@ -211,13 +213,13 @@ http_interactions:
       string: type=ldap&base_dn=ou%3DPeople%2Cdc%3Dldap-test%2Cdc%3Dcom&user_attr=LDAP&server1=localhost&port=389&default=0&secure=0&realm=LDAP
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5CA4B5FC:HZr6PykVK7OiMXGYVCBY7RTIQIw
+      - 5DB6FEC3:XMtKYCymKElrYcGThWgYFrP1KaQ
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 500
@@ -229,7 +231,7 @@ http_interactions:
       Connection:
       - close
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -239,12 +241,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:21 GMT
 - request:
     method: post
     uri: https://192.168.56.101:8006/api2/json/access/domains
@@ -253,13 +255,13 @@ http_interactions:
       string: type=ad&domain=proxmox.com&server1=localhost&port=389&default=0&secure=0&realm=ActiveDirectory
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5CA4B5FC:HZr6PykVK7OiMXGYVCBY7RTIQIw
+      - 5DB6FEC3:XMtKYCymKElrYcGThWgYFrP1KaQ
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 500
@@ -271,7 +273,7 @@ http_interactions:
       Connection:
       - close
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -281,12 +283,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:21 GMT
 - request:
     method: put
     uri: https://192.168.56.101:8006/api2/json/access/domains/LDAP
@@ -295,13 +297,13 @@ http_interactions:
       string: comment=Test+domain+LDAP&tfa=type%3Doath%2Cstep%3D30%2Cdigits%3D8
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5CA4B5FC:HZr6PykVK7OiMXGYVCBY7RTIQIw
+      - 5DB6FEC3:XMtKYCymKElrYcGThWgYFrP1KaQ
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -312,7 +314,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -322,12 +324,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:21 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/domains
@@ -336,11 +338,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -351,7 +353,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -361,14 +363,14 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"realm":"pam","comment":"Linux PAM standard authentication","type":"pam"},{"type":"ad","realm":"ActiveDirectory"},{"type":"ldap","tfa":"oath","comment":"Test
-        domain LDAP","realm":"LDAP"},{"realm":"pve","comment":"Proxmox VE authentication
-        server","type":"pve"}]}'
+      string: '{"data":[{"tfa":"oath","realm":"LDAP","type":"ldap","comment":"Test
+        domain LDAP"},{"realm":"pam","type":"pam","comment":"Linux PAM standard authentication"},{"realm":"pve","comment":"Proxmox
+        VE authentication server","type":"pve"},{"type":"ad","realm":"ActiveDirectory"}]}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:21 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/domains
@@ -377,11 +379,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -392,7 +394,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -402,15 +404,14 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"realm":"ActiveDirectory","type":"ad"},{"comment":"Linux
-        PAM standard authentication","realm":"pam","type":"pam"},{"comment":"Proxmox
-        VE authentication server","realm":"pve","type":"pve"},{"type":"ldap","tfa":"oath","comment":"Test
-        domain LDAP","realm":"LDAP"}]}'
+      string: '{"data":[{"tfa":"oath","realm":"LDAP","comment":"Test domain LDAP","type":"ldap"},{"type":"pam","comment":"Linux
+        PAM standard authentication","realm":"pam"},{"comment":"Proxmox VE authentication
+        server","type":"pve","realm":"pve"},{"realm":"ActiveDirectory","type":"ad"}]}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:21 GMT
 - request:
     method: put
     uri: https://192.168.56.101:8006/api2/json/access/domains/ActiveDirectory
@@ -419,13 +420,13 @@ http_interactions:
       string: tfa=type%3Dyubico%2Cid%3D1%2Ckey%3D2%2Curl%3Dhttp%3A%2F%2Flocalhost
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5CA4B5FC:HZr6PykVK7OiMXGYVCBY7RTIQIw
+      - 5DB6FEC3:XMtKYCymKElrYcGThWgYFrP1KaQ
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -436,7 +437,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -446,12 +447,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:21 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/domains
@@ -460,11 +461,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -475,7 +476,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -485,14 +486,15 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"realm":"LDAP","comment":"Test domain LDAP","tfa":"oath","type":"ldap"},{"comment":"Proxmox
-        VE authentication server","realm":"pve","type":"pve"},{"realm":"pam","comment":"Linux
-        PAM standard authentication","type":"pam"},{"type":"ad","realm":"ActiveDirectory","tfa":"yubico"}]}'
+      string: '{"data":[{"realm":"ActiveDirectory","tfa":"yubico","type":"ad"},{"comment":"Proxmox
+        VE authentication server","type":"pve","realm":"pve"},{"type":"pam","comment":"Linux
+        PAM standard authentication","realm":"pam"},{"tfa":"oath","realm":"LDAP","type":"ldap","comment":"Test
+        domain LDAP"}]}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:21 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/domains
@@ -501,11 +503,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -516,7 +518,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -526,14 +528,14 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"type":"ldap","tfa":"oath","realm":"LDAP","comment":"Test
-        domain LDAP"},{"type":"pve","comment":"Proxmox VE authentication server","realm":"pve"},{"type":"pam","realm":"pam","comment":"Linux
-        PAM standard authentication"},{"type":"ad","realm":"ActiveDirectory","tfa":"yubico"}]}'
+      string: '{"data":[{"type":"ad","realm":"ActiveDirectory","tfa":"yubico"},{"realm":"pve","comment":"Proxmox
+        VE authentication server","type":"pve"},{"realm":"pam","comment":"Linux PAM
+        standard authentication","type":"pam"},{"comment":"Test domain LDAP","type":"ldap","realm":"LDAP","tfa":"oath"}]}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:21 GMT
 - request:
     method: delete
     uri: https://192.168.56.101:8006/api2/json/access/domains/LDAP
@@ -542,13 +544,13 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5CA4B5FC:HZr6PykVK7OiMXGYVCBY7RTIQIw
+      - 5DB6FEC3:XMtKYCymKElrYcGThWgYFrP1KaQ
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -559,7 +561,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -569,12 +571,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:21 GMT
 - request:
     method: delete
     uri: https://192.168.56.101:8006/api2/json/access/domains/ActiveDirectory
@@ -583,13 +585,13 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5CA4B5FC:HZr6PykVK7OiMXGYVCBY7RTIQIw
+      - 5DB6FEC3:XMtKYCymKElrYcGThWgYFrP1KaQ
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -600,7 +602,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -610,12 +612,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:21 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/domains
@@ -624,11 +626,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -639,7 +641,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -649,13 +651,13 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"type":"pam","comment":"Linux PAM standard authentication","realm":"pam"},{"comment":"Proxmox
-        VE authentication server","realm":"pve","type":"pve"}]}'
+      string: '{"data":[{"type":"pam","comment":"Linux PAM standard authentication","realm":"pam"},{"type":"pve","comment":"Proxmox
+        VE authentication server","realm":"pve"}]}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
+  recorded_at: Mon, 28 Oct 2019 14:44:21 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/domains
@@ -664,11 +666,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FC::h1HVXyhCGMBLWVlKEquCR8zuVMmAoUA59BiQJMRzt/eA4CykjAsOIlLqxIolKeQhiH8XaXVd/2UDEF9fTA8QYZl+heJstOH+yKewosfVHK702Jbq3t9WOeUAI0DteDvvDgDvdkuWvYBjXWmdkSTRmF+ni12oj1tJnhSHMHcodGGHxmjRJRU5NujeyP3Sh1Rs3m6LMsxUXnZud/60bd+QCWsbhx6Vo4OXNVT69pZu6lgsfhSRWGmlLJH4RIH4N3xLebOXxd1gcYFvWIvQnFPqhK8pfnaEBLi/cPzPpHYt42osFbvCPw0CDIbXIe5pU73MgFXOHE/vzSIr7bK8eG/oLg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -679,7 +681,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
@@ -689,11 +691,11 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:44 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"type":"pam","comment":"Linux PAM standard authentication","realm":"pam"},{"comment":"Proxmox
-        VE authentication server","realm":"pve","type":"pve"}]}'
+      string: '{"data":[{"realm":"pve","type":"pve","comment":"Proxmox VE authentication
+        server"},{"type":"pam","comment":"Linux PAM standard authentication","realm":"pam"}]}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:46 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Mon, 28 Oct 2019 14:44:21 GMT
+recorded_with: VCR 4.0.0

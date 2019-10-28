@@ -87,16 +87,16 @@ describe Fog::Proxmox::Identity do
       @service.users.create(bob_hash)
       # Find by id
       bob = @service.users.get bob_hash[:userid]
-      bob.wont_be_nil
+      _(bob).wont_be_nil
       # Create 2nd time must fails
-      proc do
+      _(proc do
         @service.users.create(bob_hash)
-      end.must_raise Excon::Errors::InternalServerError
+      end).must_raise Excon::Errors::InternalServerError
       # all users
       users_all = @service.users.all
-      users_all.wont_be_nil
-      users_all.wont_be_empty
-      users_all.must_include bob
+      _(users_all).wont_be_nil
+      _(users_all).wont_be_empty
+      _(users_all).must_include bob
       # Update
       bob.comment = 'novelist'
       bob.enable  = 0
@@ -119,7 +119,7 @@ describe Fog::Proxmox::Identity do
       group2 = @service.groups.get 'group2'
       group2.destroy
       bob = @service.users.get bob_hash[:userid]
-      bob.must_be_nil
+      _(bob).must_be_nil
     end
   end
 
@@ -130,23 +130,23 @@ describe Fog::Proxmox::Identity do
       @service.groups.create(group_hash)
       # Find by id
       group = @service.groups.get group_hash[:groupid]
-      group.wont_be_nil
+      _(group).wont_be_nil
       # Create 2nd time must fails
-      proc do
+      _(proc do
         @service.groups.create(group_hash)
-      end.must_raise Excon::Errors::InternalServerError
+      end).must_raise Excon::Errors::InternalServerError
       # Update
       group.comment = 'Group 1'
       group.update
       # all groups
       groups_all = @service.groups.all
-      groups_all.wont_be_nil
-      groups_all.wont_be_empty
-      groups_all.must_include group
+      _(groups_all).wont_be_nil
+      _(groups_all).wont_be_empty
+      _(groups_all).must_include group
       # Delete
       group.destroy
       group1 = @service.groups.get group_hash[:groupid]
-      group1.must_be_nil
+      _(group1).must_be_nil
     end
   end
 
@@ -157,23 +157,23 @@ describe Fog::Proxmox::Identity do
       @service.roles.create(role_hash)
       # Find by id
       role = @service.roles.get role_hash[:roleid]
-      role.wont_be_nil
+      _(role).wont_be_nil
       # Create 2nd time must fails
-      proc do
+      _(proc do
         @service.roles.create(role_hash)
-      end.must_raise Excon::Errors::InternalServerError
+      end).must_raise Excon::Errors::InternalServerError
       # # Update
       role.privs = 'Datastore.Audit Sys.Audit VM.Audit'
       role.update
       # # all groups
       roles_all = @service.roles.all
-      roles_all.wont_be_nil
-      roles_all.wont_be_empty
-      roles_all.must_include role
+      _(roles_all).wont_be_nil
+      _(roles_all).wont_be_empty
+      _(roles_all).must_include role
       # Delete
       role.destroy
       role = @service.roles.get role_hash[:roleid]
-      role.must_be_nil
+      _(role).must_be_nil
     end
   end
 
@@ -202,17 +202,17 @@ describe Fog::Proxmox::Identity do
       @service.domains.create(ldap_hash)
       # Find by id
       ldap = @service.domains.get ldap_hash[:realm]
-      ldap.wont_be_nil
+      _(ldap).wont_be_nil
       # Create 1st time
       @service.domains.create(ad_hash)
       # Create 2nd time must fails
-      proc do
+      _(proc do
         @service.domains.create(ldap_hash)
-      end.must_raise Excon::Errors::InternalServerError
+      end).must_raise Excon::Errors::InternalServerError
       # # Create 2nd time must fails
-      proc do
+      _(proc do
         @service.domains.create(ad_hash)
-      end.must_raise Excon::Errors::InternalServerError
+      end).must_raise Excon::Errors::InternalServerError
       # Update
       ldap.type.comment = 'Test domain LDAP'
       ldap.type.tfa = 'type=oath,step=30,digits=8'
@@ -224,17 +224,17 @@ describe Fog::Proxmox::Identity do
       ad.update
       # # all groups
       domains_all = @service.domains.all
-      domains_all.wont_be_nil
-      domains_all.wont_be_empty
-      domains_all.must_include ldap
-      domains_all.must_include ad
+      _(domains_all).wont_be_nil
+      _(domains_all).wont_be_empty
+      _(domains_all).must_include ldap
+      _(domains_all).must_include ad
       # Delete
       ldap.destroy
       ad.destroy
       ldap = @service.domains.get ldap_hash[:realm]
-      ldap.must_be_nil
+      _(ldap).must_be_nil
       ad = @service.domains.get ad_hash[:realm]
-      ad.must_be_nil
+      _(ad).must_be_nil
     end
   end
 
@@ -250,34 +250,34 @@ describe Fog::Proxmox::Identity do
       }
       @service.roles.create(roleid: 'PVETestAdmin', privs: 'User.Modify,Group.Allocate')
       role = @service.roles.get('PVETestAdmin')
-      role.wont_be_nil
+      _(role).wont_be_nil
       @service.users.create(bob_hash)
       bob = @service.users.get bob_hash[:userid]
-      bob.wont_be_nil
+      _(bob).wont_be_nil
       permission = @service.permissions.create(type: 'user', roleid: role.roleid, path: '/access', ugid: bob.userid)
-      permission.wont_be_nil
+      _(permission).wont_be_nil
       # Read all permissions
       permissions = @service.permissions.all
-      permissions.wont_be_empty
-      permissions.must_include permission
+      _(permissions).wont_be_empty
+      _(permissions).must_include permission
       # Remove ACL to users
       permissions.destroy(type: 'user', roleid: role.roleid, path: '/access', ugid: bob.userid)
       permission = @service.permissions.get('user', role.roleid, '/access', bob.userid)
-      permission.must_be_nil
+      _(permission).must_be_nil
       bob = @service.users.get bob_hash[:userid]
       bob.destroy
       # Add ACL to groups
       group1 = @service.groups.create(groupid: 'group1', comment: 'Group 1')
       permission = @service.permissions.create(type: 'group', roleid: role.roleid, path: '/access', ugid: group1.groupid)
-      permission.wont_be_nil
+      _(permission).wont_be_nil
       # Read new permission
       permissions = @service.permissions.all
-      permissions.wont_be_empty
-      permissions.must_include permission
+      _(permissions).wont_be_empty
+      _(permissions).must_include permission
       # Remove ACL to groups
       permissions.destroy(type: 'group', roleid: role.roleid, path: '/access', ugid: group1.groupid)
       permissions = @service.permissions.all
-      permissions.must_be_empty
+      _(permissions).must_be_empty
       group1.destroy
       role.destroy
     end
@@ -290,11 +290,11 @@ describe Fog::Proxmox::Identity do
       @service.pools.create(pool_hash)
       # Find by id
       pool = @service.pools.get pool_hash[:poolid]
-      pool.wont_be_nil
+      _(pool).wont_be_nil
       # Create 2nd time must fails
-      proc do
+      _(proc do
         @service.pools.create(pool_hash)
-      end.must_raise Excon::Errors::InternalServerError
+      end).must_raise Excon::Errors::InternalServerError
       # Update
       # Add comment
       pool.comment = 'Pool 1'
@@ -304,15 +304,15 @@ describe Fog::Proxmox::Identity do
       pool.add_storage 'local-lvm'
       # all pools
       pools_all = @service.pools.all
-      pools_all.wont_be_nil
-      pools_all.wont_be_empty
-      pools_all.must_include pool
+      _(pools_all).wont_be_nil
+      _(pools_all).wont_be_empty
+      _(pools_all).must_include pool
       # Delete
       pool.remove_server 100
       pool.remove_storage 'local-lvm'
       pool.destroy
       pool = @service.pools.get pool_hash[:poolid]
-      pool.must_be_nil
+      _(pool).must_be_nil
     end
   end
 end

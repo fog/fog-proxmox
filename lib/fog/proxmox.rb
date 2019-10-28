@@ -47,6 +47,7 @@ module Fog
       attr_reader :credentials
       attr_reader :version
       attr_accessor :now # tests only
+      attr_accessor :ticket_lifetime # tests only
     end
 
     def self.clear_credentials
@@ -54,7 +55,7 @@ module Fog
     end
 
     def self.authenticate(options, connection_options = {})
-      get_tokens(options, connection_options)
+      get_credentials(options, connection_options)
       self
     end
 
@@ -71,7 +72,7 @@ module Fog
       options[:pve_password] = ticket unless ticket
     end
 
-    def self.get_tokens(options, connection_options = {})
+    def self.get_credentials(options, connection_options = {})
       username          = options[:pve_username].to_s
       password          = options[:pve_password].to_s
       url               = options[:pve_url]
@@ -102,10 +103,10 @@ module Fog
       username  = data['username']
       csrftoken = data['CSRFPreventionToken']
       deadline = Time.at(@now.to_i + @ticket_lifetime)
-      save_token(username, ticket, csrftoken, deadline)
+      save_credentials(username, ticket, csrftoken, deadline)
     end
 
-    def self.save_token(username, ticket, csrftoken, deadline)
+    def self.save_credentials(username, ticket, csrftoken, deadline)
       @credentials = {
         username: username,
         ticket: ticket,

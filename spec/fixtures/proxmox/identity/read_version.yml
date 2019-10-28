@@ -8,11 +8,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FE::PV5429PyZgWF/XjTk9r/Zibfow4+R0QQRA/ft6DEe8LaBkrHzj68jdt8K530G0fXc2ewj53Q8F+rfZpQeOAitzWbKmMjSZo1jf79OOHiW9ns+qlbyrG+mFE1NFMn3awiUL5RD50wsrrrKVS4v17TRPbIwpLdbYHKN3liyS+EBKZEzG5RLXRw3oU4DZaVuBnWgAuMVog8WpIFxG5NxDjQOXgm7kmzPv9OJOn4ZocQrsE5P12XGazk82QmT58eWDooD45NzlnSxAUPSS8bPguoc86EdL3LB1PhDXBth/dlZE+ktHQHvUgOV1qUMBzbDSfWGLU3PmZ+FekdtXUhhyN4Hg==
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
   response:
     status:
       code: 200
@@ -23,20 +23,20 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:46 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '134'
+      - '76'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:46 GMT
+      - Mon, 28 Oct 2019 14:44:19 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"http_proxy":"http://pfrie-std.proxy.e2.rie.gouv.fr:8080","version":"5.3","keyboard":"fr","repoid":"2929af8e","release":"8"}}'
+      string: '{"data":{"keyboard":"fr","version":"5.4","release":"3","repoid":"0a6eaa62"}}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:47 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Mon, 28 Oct 2019 14:44:20 GMT
+recorded_with: VCR 4.0.0

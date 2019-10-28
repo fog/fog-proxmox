@@ -1,6 +1,45 @@
 ---
 http_interactions:
 - request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/version
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.1.2
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5DB5B1A1::EUwkNhvy7sij4pSb45UTbSFkOBuK2SQS18rCMHUzJMgWqKT7+Xy6fyA0npuGpaPnxEZ7jNUDfu4GU3+mvskCbxQtFCtVCUJkVpHu1svUul+bEC3rbuNcC5hj0LJu6SOs3HHWKMrAGzlm0HjH+Dtbd6k3PUPchCEjcbCRlnWQwnLsY3pwS+TL2DzndMWf31c+2cmJmHnlIhCGUE/k5bZWGnTv2iZmgoXvk5mwmltjjgOZwkRjYaYqsOv05nbTK+iKowU/fO6zAk9alwtFNCQZXJJWoUitPRm4MyUyJ08PQc6GJFCHFrR3Sig/FhbouMr/38ixg9EzjO6J4KwwNkkGeA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Sun, 27 Oct 2019 15:02:58 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '76'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Sun, 27 Oct 2019 15:02:58 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"keyboard":"fr","version":"5.4","repoid":"0a6eaa62","release":"3"}}'
+    http_version: 
+  recorded_at: Sun, 27 Oct 2019 15:02:58 GMT
+- request:
     method: post
     uri: https://192.168.56.101:8006/api2/json/access/ticket
     body:
@@ -8,13 +47,13 @@ http_interactions:
       string: username=root%40pam&password=proxmox01&privs=User.Modify&path=access&otp=proxmox01
     headers:
       User-Agent:
-      - fog-core/1.45.0
+      - fog-core/2.1.2
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5CA4B5FD:90Bc/QID+0rzMPO4u003G3UIcKk
+      - 5DB6FE7F:wdPeaqwrI3ZzUBA2NDyDUtJ6UWU
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5CA4B5FD::eXiuesLu81RqogtobDSQBsFQ1HbPinLLLVVS+8qC9ear4K51eOolY0XOMosnm22ML99dSqN4TTNDAPhox+J78cl9IdMuuhRACtFJyaBqugBwrao0Iw6JoGSUQiIORvWlQF75odFmmlBcqB6TZ80U63eRLjvNk8aF1tszWb2hlbFJRzwiSjjs+JoZ6BzYNSk1PnHuzrkOBcG26VxnI7WotRzIV7NO3qMZedBjwYKLw7w8PnhstR0zfbaMllSiJL8QVLCnbo+t2RpivR3Uu8ftGcrVLXgh2+snA/fCWYWjzfIW16qU/UI8IBfdBiblmK8SxSZZ23tR5bKfwU5uCf78Sw==
+      - PVEAuthCookie=PVE:root@pam:5DB6FE7F::eYPJIOdUDz3ubelJqrzWlzvuTj9OvP0JyDGZcGLlKw2UV9qgbJOmqJcxnGuKQAOOeea4HG9SADjf2+FWtxudUXcRJ6+EcgdKIJZEpOQ5cBgV5TyrwgKy2+f6ZrdnyaR0wSQz8NmOvfHgewnLf5xAT1VM6DWoP2lGUQALqhs2u/VHGYSQlRLPgVZBwAbcWkV45bVB898GzKfroWMC1DA5+IE5KFpEQc3Govlo4iw8P3ab/TLqr9LbeZUZrTNlBZAJ4Kt30dTZCoL1B9+1rLW/KK3lKDGKd1fEgB6RhkgkQkszX2bjP09oq8nGnnjrvSx+R9fI1Nayl0zw9ys8L+KoZQ==
   response:
     status:
       code: 200
@@ -25,7 +64,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Wed, 03 Apr 2019 13:32:45 GMT
+      - Mon, 28 Oct 2019 14:43:11 GMT
       Pragma:
       - no-cache
       Server:
@@ -35,10 +74,88 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Wed, 03 Apr 2019 13:32:45 GMT
+      - Mon, 28 Oct 2019 14:43:11 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"cap":{"access":{"Permissions.Modify":1,"User.Modify":1,"Group.Allocate":1},"storage":{"Datastore.Audit":1,"Datastore.AllocateTemplate":1,"Datastore.AllocateSpace":1,"Datastore.Allocate":1,"Permissions.Modify":1},"nodes":{"Sys.Modify":1,"Sys.Audit":1,"Permissions.Modify":1,"Sys.Console":1,"Sys.Syslog":1,"Sys.PowerMgmt":1},"vms":{"VM.Console":1,"VM.Snapshot.Rollback":1,"VM.Config.Memory":1,"VM.Snapshot":1,"VM.Config.CDROM":1,"Permissions.Modify":1,"VM.Config.Options":1,"VM.Monitor":1,"VM.Config.Disk":1,"VM.Migrate":1,"VM.PowerMgmt":1,"VM.Config.CPU":1,"VM.Audit":1,"VM.Backup":1,"VM.Config.HWType":1,"VM.Allocate":1,"VM.Clone":1,"VM.Config.Network":1},"dc":{"Sys.Audit":1}},"username":"root@pam"}}'
+      string: '{"data":{"cap":{"storage":{"Datastore.Audit":1,"Permissions.Modify":1,"Datastore.AllocateTemplate":1,"Datastore.Allocate":1,"Datastore.AllocateSpace":1},"dc":{"Sys.Audit":1},"access":{"Group.Allocate":1,"Permissions.Modify":1,"User.Modify":1},"vms":{"VM.Config.Network":1,"VM.Clone":1,"VM.Config.Options":1,"VM.Allocate":1,"VM.Audit":1,"VM.Backup":1,"VM.Config.Disk":1,"VM.Config.CDROM":1,"VM.Config.Memory":1,"VM.Snapshot":1,"VM.Console":1,"VM.Monitor":1,"Permissions.Modify":1,"VM.Snapshot.Rollback":1,"VM.Config.CPU":1,"VM.PowerMgmt":1,"VM.Migrate":1,"VM.Config.HWType":1},"nodes":{"Sys.Console":1,"Sys.Modify":1,"Sys.Audit":1,"Sys.PowerMgmt":1,"Permissions.Modify":1,"Sys.Syslog":1}},"username":"root@pam"}}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2019 13:32:47 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Mon, 28 Oct 2019 14:43:12 GMT
+- request:
+    method: post
+    uri: https://192.168.56.101:8006/api2/json/access/ticket
+    body:
+      encoding: US-ASCII
+      string: username=root%40pam&password=PVE%3Aroot%40pam%3A5DB6FEC3%3A%3AF%2B5cdMaonNKHhZDP1Dqm%2B202B0pOWJSjNF8E3lBtP4%2FbTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif%2BWzEIK1a1gqS8RDxzGArSYCRxD0O1pp%2BvZODSyqVu21oqXaMeeaG%2BXD%2BZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO%2F%2FW04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK%2BfwN1hxdGQ%3D%3D
+    headers:
+      User-Agent:
+      - fog-core/2.1.2
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close, Keep-Alive
+      Date:
+      - Mon, 28 Oct 2019 14:44:19 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '1151'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 28 Oct 2019 14:44:19 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"cap":{"vms":{"Permissions.Modify":1,"VM.Monitor":1,"VM.Snapshot.Rollback":1,"VM.PowerMgmt":1,"VM.Config.CPU":1,"VM.Config.HWType":1,"VM.Migrate":1,"VM.Clone":1,"VM.Config.Network":1,"VM.Backup":1,"VM.Audit":1,"VM.Allocate":1,"VM.Config.Options":1,"VM.Config.CDROM":1,"VM.Config.Disk":1,"VM.Console":1,"VM.Snapshot":1,"VM.Config.Memory":1},"nodes":{"Sys.Audit":1,"Permissions.Modify":1,"Sys.Syslog":1,"Sys.PowerMgmt":1,"Sys.Console":1,"Sys.Modify":1},"dc":{"Sys.Audit":1},"access":{"User.Modify":1,"Permissions.Modify":1,"Group.Allocate":1},"storage":{"Datastore.Audit":1,"Permissions.Modify":1,"Datastore.AllocateTemplate":1,"Datastore.Allocate":1,"Datastore.AllocateSpace":1}},"ticket":"PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==","username":"root@pam","CSRFPreventionToken":"5DB6FEC3:XMtKYCymKElrYcGThWgYFrP1KaQ"}}'
+    http_version: 
+  recorded_at: Mon, 28 Oct 2019 14:44:20 GMT
+- request:
+    method: post
+    uri: https://192.168.56.101:8006/api2/json/access/ticket
+    body:
+      encoding: US-ASCII
+      string: username=root%40pam&password=proxmox01&privs=User.Modify&path=access&otp=proxmox01
+    headers:
+      User-Agent:
+      - fog-core/2.1.2
+      Accept:
+      - application/json
+      Csrfpreventiontoken:
+      - 5DB6FEC3:XMtKYCymKElrYcGThWgYFrP1KaQ
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5DB6FEC3::F+5cdMaonNKHhZDP1Dqm+202B0pOWJSjNF8E3lBtP4/bTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif+WzEIK1a1gqS8RDxzGArSYCRxD0O1pp+vZODSyqVu21oqXaMeeaG+XD+ZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO//W04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK+fwN1hxdGQ==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - close, Keep-Alive
+      Date:
+      - Mon, 28 Oct 2019 14:44:19 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '711'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 28 Oct 2019 14:44:19 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"cap":{"nodes":{"Sys.Audit":1,"Permissions.Modify":1,"Sys.Syslog":1,"Sys.PowerMgmt":1,"Sys.Console":1,"Sys.Modify":1},"vms":{"VM.Config.CPU":1,"VM.PowerMgmt":1,"VM.Migrate":1,"VM.Config.HWType":1,"VM.Monitor":1,"Permissions.Modify":1,"VM.Snapshot.Rollback":1,"VM.Config.Disk":1,"VM.Config.CDROM":1,"VM.Snapshot":1,"VM.Console":1,"VM.Config.Memory":1,"VM.Clone":1,"VM.Config.Network":1,"VM.Backup":1,"VM.Allocate":1,"VM.Config.Options":1,"VM.Audit":1},"storage":{"Datastore.AllocateTemplate":1,"Permissions.Modify":1,"Datastore.Audit":1,"Datastore.Allocate":1,"Datastore.AllocateSpace":1},"access":{"User.Modify":1,"Group.Allocate":1,"Permissions.Modify":1},"dc":{"Sys.Audit":1}},"username":"root@pam"}}'
+    http_version: 
+  recorded_at: Mon, 28 Oct 2019 14:44:20 GMT
+recorded_with: VCR 4.0.0
