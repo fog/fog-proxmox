@@ -82,14 +82,14 @@ describe Fog::Proxmox::Identity do
       @service.groups.create(groupid: 'group2')
       bob.groups = %w[group1 group2]
       bob.update
-      # change bob's password
-      bob.password = 'bobsinclar2'
+      # change bob's password with special characters
+      bob.password = 'bobsinclar&!.-_2'
       bob.change_password
       # disabled users
       users_disabled = @service.users.all('enabled' => 0)
-      users_disabled.wont_be_nil
-      users_disabled.wont_be_empty
-      users_disabled.must_include bob
+      _(users_disabled).wont_be_nil
+      _(users_disabled).wont_be_empty
+      _(users_disabled).must_include bob
       # Delete
       bob.destroy
       group1 = @service.groups.get 'group1'

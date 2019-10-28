@@ -28,7 +28,7 @@ module Fog
             expects: [200],
             method: 'PUT',
             path: 'access/password',
-            body: "userid=#{userid}&password=#{password}"
+            body: URI.encode_www_form(userid: userid, password: password)
           )
         end
       end

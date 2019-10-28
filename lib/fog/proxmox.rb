@@ -79,15 +79,15 @@ module Fog
       uri = URI.parse(url)
       @api_path = uri.path
       connection_options = connection_options.merge(path_prefix: @api_path)
-      password = @credentials[:csrftoken] if credentials_has_expired?
-      retrieve_tokens(uri, connection_options, username, password) unless authenticated? && !credentials_has_expired?
+      password = @credentials[:ticket] if credentials_has_expired?
+      request_credentials(uri, connection_options, username, password) unless authenticated? && !credentials_has_expired?
     end
 
-    def self.retrieve_tokens(uri, connection_options, username, password)
+    def self.request_credentials(uri, connection_options, username, password)
       request = {
         expects: [200, 204],
         headers: { 'Accept' => 'application/json' },
-        body: "username=#{username}&password=#{password}",
+        body: URI.encode_www_form(username: username, password: password),
         method: 'POST',
         path: 'access/ticket'
       }
