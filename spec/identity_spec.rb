@@ -31,23 +31,45 @@ describe Fog::Proxmox::Identity do
     @pve_url = @proxmox_vcr.url
     @username = @proxmox_vcr.username
     @password = @proxmox_vcr.password
+    Fog::Proxmox.ticket_lifetime = 2 * 60 * 60 # default 2 hours
   end
 
-  it 'verifies ticket with path and privs' do
+  it 'checks ticket with path and privs' do
     VCR.use_cassette('auth') do
       principal = { username: @username, password: @password, privs: ['User.Modify'], path: 'access', otp: 'proxmox01' }
       permissions = @service.check_permissions(principal)
-      permissions.wont_be_nil
-      permissions.wont_be_empty
-      permissions['username'].must_equal @username
-      permissions['cap'].wont_be_empty
+      _(permissions).wont_be_nil
+      _(permissions).wont_be_empty
+      _(permissions['username']).must_equal @username
+      _(permissions['cap']).wont_be_empty
+    end
+  end
+
+  it 'renew expired ticket' do
+    VCR.use_cassette('auth') do
+      Fog::Proxmox.ticket_lifetime = 0 # ticket expired
+      @connection_options = {}
+      # ignore enterprise proxy
+      @connection_options[:disable_proxy] = true if ENV['DISABLE_PROXY'] == 'true'
+      # ignore dev certificates on servers
+      @connection_options[:ssl_verify_peer] = false if ENV['SSL_VERIFY_PEER'] == 'false'
+      connection_params = {
+        pve_url: @pve_url,
+        pve_username: @username,
+        pve_password: @password,
+        connection_options: @connection_options
+      }
+      _(Fog::Proxmox.credentials_has_expired?).must_equal true
+      Fog::Proxmox.authenticate(connection_params)
+      Fog::Proxmox.ticket_lifetime = 2 * 60 * 60
+      _(Fog::Proxmox.credentials_has_expired?).must_equal false
     end
   end
 
   it 'reads server version' do
     VCR.use_cassette('read_version') do
       version = @service.read_version
-      version.wont_be_nil
+      _(version).wont_be_nil
       version.include? 'version'
     end
   end
