@@ -20,51 +20,50 @@
 require 'spec_helper'
 require 'fog/proxmox/helpers/cpu_helper'
 
-    describe Fog::Proxmox::CpuHelper do
-            
-        let(:cpu) do 
-            'cputype=kvm64,flags=+spec-ctrl;+pcid'
-        end
-        let(:cpu_nocputype) do 
-            'kvm64,flags=+spec-ctrl;+pcid'
-        end
-        let(:cpu_nospectre) do 
-            'cputype=kvm64,flags=+pcid'
-        end
-        let(:cpu_nopcid) do 
-            'cputype=kvm64,flags=+spec-ctrl'
-        end
+describe Fog::Proxmox::CpuHelper do
+  let(:cpu) do
+    'cputype=kvm64,flags=+spec-ctrl;+pcid'
+  end
+  let(:cpu_nocputype) do
+    'kvm64,flags=+spec-ctrl;+pcid'
+  end
+  let(:cpu_nospectre) do
+    'cputype=kvm64,flags=+pcid'
+  end
+  let(:cpu_nopcid) do
+    'cputype=kvm64,flags=+spec-ctrl'
+  end
 
-        describe '#extract_type' do
-            it "returns string" do
-                result = Fog::Proxmox::CpuHelper.extract_type(cpu)
-                assert_equal('kvm64', result)
-            end
-            it "returns string" do
-                result = Fog::Proxmox::CpuHelper.extract_type(cpu_nocputype)
-                assert_equal('kvm64', result)
-            end
-        end
-
-        describe '#has_spectre?' do
-            it "returns true" do
-                result = Fog::Proxmox::CpuHelper.has_spectre?(cpu)
-                assert result
-            end
-            it "returns false" do
-                result = Fog::Proxmox::CpuHelper.has_spectre?(cpu_nospectre)
-                assert !result
-            end
-        end
-
-        describe '#has_pcid?' do
-            it "returns true" do
-                result = Fog::Proxmox::CpuHelper.has_pcid?(cpu)
-                assert result
-            end
-            it "returns false" do
-                result = Fog::Proxmox::CpuHelper.has_pcid?(cpu_nopcid)
-                assert !result
-            end
-        end
+  describe '#extract_type' do
+    it 'returns string' do
+      result = Fog::Proxmox::CpuHelper.extract_type(cpu)
+      assert_equal('kvm64', result)
     end
+    it 'returns string' do
+      result = Fog::Proxmox::CpuHelper.extract_type(cpu_nocputype)
+      assert_equal('kvm64', result)
+    end
+  end
+
+  describe '#has_spectre?' do
+    it 'returns true' do
+      result = Fog::Proxmox::CpuHelper.has_spectre?(cpu)
+      assert result
+    end
+    it 'returns false' do
+      result = Fog::Proxmox::CpuHelper.has_spectre?(cpu_nospectre)
+      assert !result
+    end
+  end
+
+  describe '#has_pcid?' do
+    it 'returns true' do
+      result = Fog::Proxmox::CpuHelper.has_pcid?(cpu)
+      assert result
+    end
+    it 'returns false' do
+      result = Fog::Proxmox::CpuHelper.has_pcid?(cpu_nopcid)
+      assert !result
+    end
+  end
+end

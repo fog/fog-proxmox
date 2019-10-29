@@ -20,115 +20,114 @@
 require 'spec_helper'
 require 'fog/proxmox/helpers/controller_helper'
 
-    describe Fog::Proxmox::ControllerHelper do
-            
-        let(:net) do 
-            { net0: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1,mp=/opt/path' }
-        end
-        let(:net_no_options) do 
-            { net0: 'virtio=66:89:C5:59:AA:96' }
-        end   
-        let(:scsi) do 
-            { scsi10: 'local-lvm:1,cache=none' }
-        end
-        let(:cdrom) do 
-            { ide2: 'none,media=cdrom' }
-        end
-        let(:mp) do 
-            { mp0: 'local-lvm:1,mp=/opt/path' }
-        end        
-        let(:rootfs) do 
-            { rootfs: 'local-lvm:1' }
-        end
+describe Fog::Proxmox::ControllerHelper do
+  let(:net) do
+    { net0: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1,mp=/opt/path' }
+  end
+  let(:net_no_options) do
+    { net0: 'virtio=66:89:C5:59:AA:96' }
+  end
+  let(:scsi) do
+    { scsi10: 'local-lvm:1,cache=none' }
+  end
+  let(:cdrom) do
+    { ide2: 'none,media=cdrom' }
+  end
+  let(:mp) do
+    { mp0: 'local-lvm:1,mp=/opt/path' }
+  end
+  let(:rootfs) do
+    { rootfs: 'local-lvm:1' }
+  end
 
-        describe '#extract' do
-            it "returns bridge" do
-                bridge = Fog::Proxmox::ControllerHelper.extract('bridge',net[:net0])
-                assert_equal 'vmbr0', bridge
-            end
-            it "returns nil" do
-                bridge = Fog::Proxmox::ControllerHelper.extract('bridge',net_no_options[:net0])
-                assert !bridge
-            end
-            it "returns firewall" do
-                firewall = Fog::Proxmox::ControllerHelper.extract('firewall',net[:net0])
-                assert_equal '1', firewall
-            end
-            it "returns cache" do
-                cache = Fog::Proxmox::ControllerHelper.extract('cache',scsi[:scsi10])
-                assert_equal 'none', cache
-            end
-            it "returns mp" do
-                path = Fog::Proxmox::ControllerHelper.extract('mp',mp[:mp0])
-                assert_equal '/opt/path', path
-            end
-        end
-
-        describe '#extract_index' do
-            it "net0 returns 0" do
-                index = Fog::Proxmox::ControllerHelper.extract_index('net',:net0)
-                assert index == 0
-            end
-            it "scsi10 returns 10" do
-                index = Fog::Proxmox::ControllerHelper.extract_index('scsi',:scsi10)
-                assert index == 10
-            end
-        end
-
-        describe '#last_index' do
-            it "returns -1" do
-                last = Fog::Proxmox::ControllerHelper.last_index('net',{})
-                assert last == -1
-            end
-            it "returns 0" do
-                last = Fog::Proxmox::ControllerHelper.last_index('net',net)
-                assert last == 0
-            end
-            it "returns 10" do
-                last = Fog::Proxmox::ControllerHelper.last_index('scsi',scsi)
-                assert last == 10
-            end
-        end
-
-        describe '#valid?' do
-            it "returns true" do
-                assert Fog::Proxmox::ControllerHelper.valid?('net','net0')
-            end
-            it "returns false" do
-                assert !Fog::Proxmox::ControllerHelper.valid?('net','sdfdsf')
-            end
-        end
-
-        describe '#select' do
-            it "returns scsi10" do
-                controllers = Fog::Proxmox::ControllerHelper.select(scsi,'scsi')
-                assert controllers.has_key?(:scsi10)
-                assert controllers.has_value?(scsi[:scsi10])
-            end
-            it "returns empty" do
-                controllers = Fog::Proxmox::ControllerHelper.select(net,'scsi')
-                assert controllers.empty?
-            end
-        end
-
-        describe '#collect_controllers' do
-            it "returns scsi0 and ide2" do
-                controllers = Fog::Proxmox::ControllerHelper.collect_controllers(scsi.merge(cdrom))
-                assert controllers.has_key?(:scsi10)
-                assert controllers.has_value?(scsi[:scsi10])
-                assert controllers.has_key?(:ide2)
-                assert controllers.has_value?(cdrom[:ide2])
-            end
-            it "returns rootfs and mp0" do
-                controllers = Fog::Proxmox::ControllerHelper.collect_controllers(rootfs.merge(mp))
-                assert controllers.has_key?(:mp0)
-                assert controllers.has_value?(mp[:mp0])
-                assert controllers.has_key?(:rootfs)
-                assert controllers.has_value?(rootfs[:rootfs])
-            end
-            it "returns empty" do
-                controllers = Fog::Proxmox::ControllerHelper.collect_controllers(net)
-                assert controllers.empty?
-            end
-        end
+  describe '#extract' do
+    it 'returns bridge' do
+      bridge = Fog::Proxmox::ControllerHelper.extract('bridge', net[:net0])
+      assert_equal 'vmbr0', bridge
     end
+    it 'returns nil' do
+      bridge = Fog::Proxmox::ControllerHelper.extract('bridge', net_no_options[:net0])
+      assert !bridge
+    end
+    it 'returns firewall' do
+      firewall = Fog::Proxmox::ControllerHelper.extract('firewall', net[:net0])
+      assert_equal '1', firewall
+    end
+    it 'returns cache' do
+      cache = Fog::Proxmox::ControllerHelper.extract('cache', scsi[:scsi10])
+      assert_equal 'none', cache
+    end
+    it 'returns mp' do
+      path = Fog::Proxmox::ControllerHelper.extract('mp', mp[:mp0])
+      assert_equal '/opt/path', path
+    end
+  end
+
+  describe '#extract_index' do
+    it 'net0 returns 0' do
+      index = Fog::Proxmox::ControllerHelper.extract_index('net', :net0)
+      assert index == 0
+    end
+    it 'scsi10 returns 10' do
+      index = Fog::Proxmox::ControllerHelper.extract_index('scsi', :scsi10)
+      assert index == 10
+    end
+  end
+
+  describe '#last_index' do
+    it 'returns -1' do
+      last = Fog::Proxmox::ControllerHelper.last_index('net', {})
+      assert last == -1
+    end
+    it 'returns 0' do
+      last = Fog::Proxmox::ControllerHelper.last_index('net', net)
+      assert last == 0
+    end
+    it 'returns 10' do
+      last = Fog::Proxmox::ControllerHelper.last_index('scsi', scsi)
+      assert last == 10
+    end
+  end
+
+  describe '#valid?' do
+    it 'returns true' do
+      assert Fog::Proxmox::ControllerHelper.valid?('net', 'net0')
+    end
+    it 'returns false' do
+      assert !Fog::Proxmox::ControllerHelper.valid?('net', 'sdfdsf')
+    end
+  end
+
+  describe '#select' do
+    it 'returns scsi10' do
+      controllers = Fog::Proxmox::ControllerHelper.select(scsi, 'scsi')
+      assert controllers.key?(:scsi10)
+      assert controllers.value?(scsi[:scsi10])
+    end
+    it 'returns empty' do
+      controllers = Fog::Proxmox::ControllerHelper.select(net, 'scsi')
+      assert controllers.empty?
+    end
+  end
+
+  describe '#collect_controllers' do
+    it 'returns scsi0 and ide2' do
+      controllers = Fog::Proxmox::ControllerHelper.collect_controllers(scsi.merge(cdrom))
+      assert controllers.key?(:scsi10)
+      assert controllers.value?(scsi[:scsi10])
+      assert controllers.key?(:ide2)
+      assert controllers.value?(cdrom[:ide2])
+    end
+    it 'returns rootfs and mp0' do
+      controllers = Fog::Proxmox::ControllerHelper.collect_controllers(rootfs.merge(mp))
+      assert controllers.key?(:mp0)
+      assert controllers.value?(mp[:mp0])
+      assert controllers.key?(:rootfs)
+      assert controllers.value?(rootfs[:rootfs])
+    end
+    it 'returns empty' do
+      controllers = Fog::Proxmox::ControllerHelper.collect_controllers(net)
+      assert controllers.empty?
+    end
+  end
+end

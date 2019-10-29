@@ -5,6 +5,7 @@ AllCops:
   Include:
     - '**/Rakefile'
     - '**/*.rb'
+    - 'spec/**/*.rb'
   Exclude:
     - 'bin/**/*'
     - 'vendor/**/*'
@@ -13,7 +14,6 @@ AllCops:
     - '.vscode/**/*'
     - '**/*.gemspec'
     - 'Gemfile'
-    - 'spec/**/*'
 
 # TODO: try to refactor concerned code
 Metrics/AbcSize:
@@ -35,7 +35,7 @@ Metrics/ModuleLength:
   Max: 244
 
 Metrics/PerceivedComplexity:
-  Max: 14
+  Max: 15
 
 Metrics/LineLength:
   Max: 158 # TODO: discuss and set this
