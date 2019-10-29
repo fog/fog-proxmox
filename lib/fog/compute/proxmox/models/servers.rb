@@ -53,7 +53,8 @@ module Fog
             status_data = service.get_server_status path_params
             config_data = service.get_server_config path_params
           rescue StandardError => e
-            if e.respond_to?('response') && e.response.respond_to?('data') && e.response.data.key?(:reason_phrase) && e.response.data[:reason_phrase].end_with?('does not exist')
+            if e.respond_to?('response') && e.response.respond_to?('data') && e.response.data.key?(:reason_phrase) &&
+               e.response.data[:reason_phrase].end_with?('does not exist')
               raise(Fog::Errors::NotFound)
             else
               raise(e)

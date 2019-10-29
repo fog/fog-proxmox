@@ -163,7 +163,7 @@ ldap.destroy
 
 # Add a user permission
 permission_hash = {
-  type: 'user'
+  type: 'user',
   path: '/access',
   roleid: 'PVEUserAdmin',
   ugid: bob_hash[:userid]
@@ -175,7 +175,7 @@ permission_hash = {
 #   roleid: 'PVEUserAdmin',
 #   ugid: 'group1'
 # }
-permission = identity.permissions.create(permission_hash)
+permission1 = identity.permissions.create(permission_hash)
 
 # List all permissions
 identity.permissions.all
@@ -186,5 +186,5 @@ identity.permissions.each do |permission|
 end
 
 # Remove permission
-permission = identity.get(permission_hash)
-permission.destroy
+permission2 = identity.get(permission_hash)
+permission2.destroy

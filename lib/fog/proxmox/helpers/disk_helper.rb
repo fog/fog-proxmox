@@ -79,12 +79,11 @@ module Fog
         creation = disk_value.split(',')[0].match(/^(([\w-]+)[:]{1}([\d]+))$/)
         values = values_a.first if values_a
         if no_cdrom
+          storage = values[1]
           if creation
-            storage = values[1]
             volid = nil
             size = values[2].to_i
           else
-            storage = values[1]
             volid = values[0]
             size = extract_size(disk_value)
           end

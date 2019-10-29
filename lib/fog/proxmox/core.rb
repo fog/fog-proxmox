@@ -75,15 +75,13 @@ module Fog
                                            headers: headers(params[:method], params[:headers])
                                          ))
         rescue Excon::Errors::Unauthorized => e
-          # token expiration and token renewal possible
-          if e.response.body != 'Bad username or password' && !retried
-            authenticate
-            retried = true
-            retry
           # bad credentials or token renewal not possible
-          else
-            raise e
-          end
+          raise unless e.response.body != 'Bad username or password' && !retried
+
+          # token expiration and token renewal possible
+          authenticate
+          retried = true
+          retry
         rescue Excon::Errors::HTTPStatusError => e
           raise case e
                 when Excon::Errors::NotFound
