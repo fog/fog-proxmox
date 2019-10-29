@@ -23,3 +23,7 @@ Naming/PredicateName:
 Naming/UncommunicativeMethodParamName:
   Exclude:
     - 'lib/fog/proxmox/helpers/cpu_helper.rb'
+
+Style/CaseEquality:
+  Exclude:
+    - 'lib/fog/**/*'
