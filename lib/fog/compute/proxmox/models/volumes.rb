@@ -37,10 +37,10 @@ module Fog
         end
 
         def list_by_content_type(content)
-          all.select { |volume| volume.content.include? content}
+          all.select { |volume| volume.content.include? content }
         end
 
-        def list_by_content_type_and_by_server(content, vmid)
+        def list_by_content_type_and_by_server(_content, vmid)
           all(vmid: vmid)
         end
 

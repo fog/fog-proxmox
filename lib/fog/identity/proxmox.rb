@@ -109,9 +109,7 @@ module Fog
           authenticate
           @persistent = options[:persistent] || false
           url = "#{@scheme}://#{@host}:#{@port}"
-          if ENV.has_key?('SSL_VERIFY_PEER')
-            Excon.defaults[:ssl_verify_peer] = Fog::Proxmox::String.to_boolean(ENV['SSL_VERIFY_PEER'])
-          end
+          Excon.defaults[:ssl_verify_peer] = Fog::Proxmox::String.to_boolean(ENV['SSL_VERIFY_PEER']) if ENV.key?('SSL_VERIFY_PEER')
           @connection = Fog::Core::Connection.new(url, @persistent, @connection_options.merge(path_prefix: @path_prefix))
         end
 

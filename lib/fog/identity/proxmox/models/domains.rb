@@ -38,7 +38,6 @@ module Fog
           domain = get(id)
           domain.destroy
         end
-
       end
     end
   end

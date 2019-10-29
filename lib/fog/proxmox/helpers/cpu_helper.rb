@@ -21,21 +21,21 @@ module Fog
   module Proxmox
     # module Cpu mixins
     module CpuHelper
-      CPU_REGEXP = /(\bcputype=)?(\w+)[,]?(\bflags=)?(\+[\w-]+)?[;]?(\+[\w-]+)?/
-      def self.extract(cpu,i)
+      CPU_REGEXP = /(\bcputype=)?(\w+)[,]?(\bflags=)?(\+[\w-]+)?[;]?(\+[\w-]+)?/.freeze
+      def self.extract(cpu, i)
         cpu.match(CPU_REGEXP)[i]
       end
 
       def self.extract_type(cpu)
-        extract(cpu,2)
+        extract(cpu, 2)
       end
 
       def self.has_pcid?(cpu)
-        extract(cpu,5) == '+pcid'
+        extract(cpu, 5) == '+pcid'
       end
 
       def self.has_spectre?(cpu)
-        extract(cpu,4) == '+spec-ctrl'
+        extract(cpu, 4) == '+spec-ctrl'
       end
     end
   end

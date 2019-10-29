@@ -60,6 +60,7 @@ module Fog
           action_known = %w[reboot shutdown].include? action
           message = "Action #{action} not implemented"
           raise Fog::Errors::Error, message unless action_known
+
           service.power_node({ node: node }, command: action)
         end
 

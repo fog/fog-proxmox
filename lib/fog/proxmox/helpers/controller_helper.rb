@@ -21,7 +21,6 @@ module Fog
   module Proxmox
     # module ControllerHelper mixins
     module ControllerHelper
-
       CONTROLLERS = %w[ide sata scsi virtio mp rootfs].freeze
       def self.extract(name, controller_value)
         matches = controller_value.match(/[,]{0,1}#{name}[=]{1}(?<name_value>[\w\/]+)/)
@@ -40,6 +39,7 @@ module Fog
 
       def self.last_index(name, values)
         return -1 if values.empty?
+
         indexes = []
         values.each do |value|
           index = extract_index(name, value)
@@ -49,7 +49,7 @@ module Fog
         indexes.empty? ? -1 : indexes.last
       end
 
-      def self.select(hash,name)
+      def self.select(hash, name)
         hash.select { |key| valid?(name, key.to_s) }
       end
 
@@ -58,7 +58,6 @@ module Fog
         CONTROLLERS.each { |controller| controllers.merge!(select(attributes, controller)) }
         controllers
       end
-
     end
   end
 end

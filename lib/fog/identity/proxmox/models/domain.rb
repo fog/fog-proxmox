@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -50,13 +52,13 @@ module Fog
         private
 
         def initialize_type(new_attributes = {})
-          if new_attributes.has_key? :realm
+          if new_attributes.key? :realm
             realm = new_attributes.delete(:realm)
-          elsif new_attributes.has_key? 'realm'              
+          elsif new_attributes.key? 'realm'
             realm = new_attributes.delete('realm')
           end
           attributes[:type] = Fog::Proxmox::Identity::DomainType.new(new_attributes)
-          new_attributes.delete_if { |new_attribute| attributes[:type].attributes.has_key? new_attribute.to_sym }
+          new_attributes.delete_if { |new_attribute| attributes[:type].attributes.key? new_attribute.to_sym }
           new_attributes.store(:realm, realm)
         end
       end
