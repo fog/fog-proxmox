@@ -85,7 +85,7 @@ http_interactions:
     uri: https://192.168.56.101:8006/api2/json/access/ticket
     body:
       encoding: US-ASCII
-      string: username=root%40pam&password=PVE%3Aroot%40pam%3A5DB6FEC3%3A%3AF%2B5cdMaonNKHhZDP1Dqm%2B202B0pOWJSjNF8E3lBtP4%2FbTuKgd2RLJyqF9kNsVdnXhndFDsdLEQUPMKHYmF3AR82F4lZif%2BWzEIK1a1gqS8RDxzGArSYCRxD0O1pp%2BvZODSyqVu21oqXaMeeaG%2BXD%2BZWnGPtvl1wfpjGwgL023vqDABrrGWJ6BL3qPZk9ZmDksHBHKj3Y0KO%2F%2FW04p8KrUEJyaePiqjqv8vsAYwqFCAuO8XaKnNs1wRYfPylHfm3vaCMz1ejMH22YVTaqc0v1dHiUEj9zVqrTj2GUdBSG3yDwNN2E4pQTsidI0y68H5AtPsmQtPMT7AVK%2BfwN1hxdGQ%3D%3D
+      string: username=root%40pam&password=PVE%3Aroot%40pam%3A5DB6FEC4%3A%3ANNZU6BjEX3QwWf0kz8A7bUndhLg6jLHXu67a9f4EkQ74Dq1UPDR462iehfI6LfHXWWwjndD0bUuKl%2Fzdtug0YTmZ1MosVkYfGg62v0gTuRxl3Aq4gK037wLR18Qhd826xP%2FZcfNGN%2BLreYLErhTIdyOulht38jlVzL6dkkFvUsL08jNJJ6nOXr3R6WjjnwuZ2Cz0%2FnIDC%2Bv9vT7fYB%2Fp0CogiApK4LshlD1RS2N%2BawgvpXtRPi2jsfMrZyylFUw7E%2F7mW7V0kFeS7YF15ajKQamK6ULlcZzHtrRjX%2F0pul7SxA7zzVnnvOnLvaJzdlm3fwq8lC3lN3XZN5H7zn0wMA%3D%3D
     headers:
       User-Agent:
       - fog-core/2.1.2

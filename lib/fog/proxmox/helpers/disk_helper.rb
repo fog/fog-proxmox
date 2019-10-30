@@ -116,23 +116,23 @@ module Fog
       end
 
       def self.disk?(id)
-        DISKS_REGEXP.match?(id)
+        DISKS_REGEXP.match(id) ? true : false
       end
 
       def self.cdrom?(value)
-        CDROM_REGEXP.match?(value)
+        CDROM_REGEXP.match(value) ? true : false
       end
 
       def self.server_disk?(id)
-        SERVER_DISK_REGEXP.match?(id)
+        SERVER_DISK_REGEXP.match(id) ? true : false
       end
 
       def self.rootfs?(id)
-        ROOTFS_REGEXP.match?(id)
+        ROOTFS_REGEXP.match(id) ? true : false
       end
 
       def self.mount_point?(id)
-        MOUNT_POINT_REGEXP.match?(id)
+        MOUNT_POINT_REGEXP.match(id) ? true : false
       end
 
       def self.container_disk?(id)
