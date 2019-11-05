@@ -31,7 +31,6 @@ describe Fog::Proxmox::Identity do
     @pve_url = @proxmox_vcr.url
     @username = @proxmox_vcr.username
     @password = @proxmox_vcr.password
-    Fog::Proxmox.ticket_lifetime = 2 * 60 * 60 # default 2 hours
   end
 
   it 'checks ticket with path and privs' do
@@ -46,8 +45,7 @@ describe Fog::Proxmox::Identity do
   end
 
   it 'renew expired ticket' do
-    VCR.use_cassette('auth') do
-      Fog::Proxmox.ticket_lifetime = 0 # ticket expired
+    VCR.use_cassette('renew') do
       @connection_options = {}
       # ignore enterprise proxy
       @connection_options[:disable_proxy] = true if ENV['DISABLE_PROXY'] == 'true'
@@ -57,12 +55,12 @@ describe Fog::Proxmox::Identity do
         pve_url: @pve_url,
         pve_username: @username,
         pve_password: @password,
+        pve_ticket_lifetime: - (100 * 60 * 60), # ticket has expired from 100 hours
         connection_options: @connection_options
       }
-      _(Fog::Proxmox.credentials_has_expired?).must_equal true
-      Fog::Proxmox.authenticate(connection_params)
-      Fog::Proxmox.ticket_lifetime = 2 * 60 * 60
       _(Fog::Proxmox.credentials_has_expired?).must_equal false
+      Fog::Proxmox.authenticate(connection_params)
+      _(Fog::Proxmox.credentials_has_expired?).must_equal true
     end
   end
 

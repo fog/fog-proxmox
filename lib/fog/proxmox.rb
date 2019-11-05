@@ -38,16 +38,10 @@ module Fog
     service(:network, 'Network')
 
     @credentials = {}
-    @now = Time.now
-
-    # Default lifetime ticket is 2 hours
-    @ticket_lifetime = 2 * 60 * 60
 
     class << self
       attr_reader :credentials
       attr_reader :version
-      attr_accessor :now # tests only
-      attr_accessor :ticket_lifetime # tests only
     end
 
     def self.clear_credentials
@@ -64,27 +58,29 @@ module Fog
     end
 
     def self.credentials_has_expired?
-      authenticated? && @credentials[:deadline] > @now
+      authenticated? && @credentials[:deadline] < Time.now
     end
 
     def self.extract_password(options)
       ticket = options[:pve_ticket]
-      options[:pve_password] = ticket unless ticket
+      ticket ? ticket : options[:pve_password].to_s
     end
 
     def self.get_credentials(options, connection_options = {})
+      pve_ticket_lifetime   = options[:pve_ticket_lifetime]
+      # Default lifetime ticket is 2 hours
+      ticket_lifetime = pve_ticket_lifetime ? pve_ticket_lifetime : 2 * 60 * 60
       username          = options[:pve_username].to_s
-      password          = options[:pve_password].to_s
+      password          = extract_password(options)
       url               = options[:pve_url]
-      extract_password(options)
       uri = URI.parse(url)
       @api_path = uri.path
       connection_options = connection_options.merge(path_prefix: @api_path)
       password = @credentials[:ticket] if credentials_has_expired?
-      request_credentials(uri, connection_options, username, password) unless authenticated? && !credentials_has_expired?
+      request_credentials(uri, connection_options, username, password, ticket_lifetime)
     end
 
-    def self.request_credentials(uri, connection_options, username, password)
+    def self.request_credentials(uri, connection_options, username, password, ticket_lifetime)
       request = {
         expects: [200, 204],
         headers: { 'Accept' => 'application/json' },
@@ -102,7 +98,8 @@ module Fog
       ticket    = data['ticket']
       username  = data['username']
       csrftoken = data['CSRFPreventionToken']
-      deadline = Time.at(@now.to_i + @ticket_lifetime)
+      epoch = Time.now.to_i + ticket_lifetime
+      deadline = Time.at(epoch)
       save_credentials(username, ticket, csrftoken, deadline)
     end
 
