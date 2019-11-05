@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fog-proxmox (0.8.2)
+    fog-proxmox (0.8.3)
       fog-core (~> 2.1)
       fog-json (~> 1.2)
       ipaddress (~> 0.8)
