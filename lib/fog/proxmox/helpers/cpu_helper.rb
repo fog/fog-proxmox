@@ -23,7 +23,7 @@ module Fog
     module CpuHelper
       CPU_REGEXP = /(\bcputype=)?(\w+)[,]?(\bflags=)?(\+[\w-]+)?[;]?(\+[\w-]+)?/
       def self.extract(cpu,i)
-        cpu.match(CPU_REGEXP)[i]
+        cpu ? CPU_REGEXP.match(cpu.to_s)[i] : ''
       end
 
       def self.extract_type(cpu)
