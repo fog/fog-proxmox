@@ -21,20 +21,20 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Mon, 28 Oct 2019 15:21:47 GMT
+      - Fri, 22 Nov 2019 15:45:40 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '1151'
+      - '1167'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Mon, 28 Oct 2019 15:21:47 GMT
+      - Fri, 22 Nov 2019 15:45:40 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"CSRFPreventionToken":"5DB7078B:Iqkw5So5MfwZXL6vugdNe9MDyHw","username":"root@pam","ticket":"PVE:root@pam:5DB7078B::Lnb6mVS7yhpfE9xK+rFh5zr8S0gbTMeIJOh2Zrt2Dm0r+RCa93a9FTIiN1fbOon7/hr64xBf/oZyHxuWupeHk0Fq9XoWfpq+abjvgHUtfp7Pd8KMdp/kMTgjp7R93cmXaQNYqkZZQEO9pM6wM6sleBCfjJevUjxmWWZdFGtf1FNOh/d7pLi2UIHm1a1fAntVmNq3K0TZcQJT0GMdjbbWA6q4HQFQ7YQQ+32quh3AyjFKSDcTauy7XKlAH/MU9ocjphmxddlTkLX9Zfu7Q9PPoFV15Ypfv1+b0DwJbbTgsHno+OO39LU2IR97neV2w13G1lGQMBCGl9Fwh8mgru0/Ww==","cap":{"nodes":{"Sys.Modify":1,"Sys.Console":1,"Sys.Syslog":1,"Sys.PowerMgmt":1,"Permissions.Modify":1,"Sys.Audit":1},"vms":{"VM.Config.HWType":1,"VM.Migrate":1,"VM.PowerMgmt":1,"VM.Config.CPU":1,"VM.Snapshot.Rollback":1,"VM.Monitor":1,"Permissions.Modify":1,"VM.Config.Memory":1,"VM.Console":1,"VM.Snapshot":1,"VM.Config.CDROM":1,"VM.Config.Disk":1,"VM.Audit":1,"VM.Allocate":1,"VM.Config.Options":1,"VM.Backup":1,"VM.Config.Network":1,"VM.Clone":1},"storage":{"Datastore.Audit":1,"Permissions.Modify":1,"Datastore.AllocateTemplate":1,"Datastore.Allocate":1,"Datastore.AllocateSpace":1},"access":{"User.Modify":1,"Group.Allocate":1,"Permissions.Modify":1},"dc":{"Sys.Audit":1}}}}'
+      string: '{"data":{"cap":{"vms":{"VM.Console":1,"VM.Migrate":1,"VM.Audit":1,"VM.Snapshot":1,"Permissions.Modify":1,"VM.Config.Options":1,"VM.Allocate":1,"VM.Monitor":1,"VM.Config.CDROM":1,"VM.Config.Memory":1,"VM.Config.Network":1,"VM.PowerMgmt":1,"VM.Snapshot.Rollback":1,"VM.Clone":1,"VM.Config.HWType":1,"VM.Config.Disk":1,"VM.Config.CPU":1,"VM.Backup":1},"dc":{"Sys.Audit":1},"access":{"User.Modify":1,"Group.Allocate":1,"Permissions.Modify":1},"storage":{"Datastore.AllocateTemplate":1,"Datastore.AllocateSpace":1,"Datastore.Audit":1,"Datastore.Allocate":1,"Permissions.Modify":1},"nodes":{"Sys.Modify":1,"Sys.Console":1,"Sys.PowerMgmt":1,"Sys.Audit":1,"Sys.Syslog":1,"Permissions.Modify":1}},"ticket":"PVE:root@pam:5DD802A4::o4yb4/NL7JEJueeGMREt4rkA/o7w+TkICAL3IqWM0lRC0mNWwDvolr0DL+ibedzVDgDCONn3ypTcBTMxnllJX52QvuTfX8Cy0BR2mfqGxWg6acsl0YvcRFIhlYaWaSHBN5yfe23wvdnoXtHYgEUWsIda00QYPzm2dWYfnUam/vuh+va9ypvZ3NATPbF0EBEHHa+k5oBdL5Ete77+YoQUhKC7rDtZaJ0EPSkzWin+/M8bnSEDf7bETe2pS9fcg4jy7BLKzT0RHYSgMGJQ0dbpWxSzqEBo6DwnUWGqRsQ8h4AsDyR+ffxIc9HiqRFvJ5ShndMrtCjg/w08A8AM/UHABQ==","username":"root@pam","CSRFPreventionToken":"5DD802A4:AMi8Xfhz+bFVs9s+yLXQA2wjOfxDZRfXaQz+eGYxzwU"}}'
     http_version: 
-  recorded_at: Mon, 28 Oct 2019 15:21:48 GMT
+  recorded_at: Fri, 22 Nov 2019 15:45:42 GMT
 recorded_with: VCR 4.0.0

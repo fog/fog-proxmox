@@ -19,6 +19,7 @@ It is inspired by the great [fog-openstack](https://github.com/fog/fog-openstack
 |<0.6|<5.3|
 |>=0.6|>=5.3|
 |>=0.8|>=5.4|
+|>=0.9|>=6.0|
 
 ## Installation
 
