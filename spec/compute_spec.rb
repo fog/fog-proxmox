@@ -311,7 +311,7 @@ describe Fog::Proxmox::Compute do
       _(node).wont_be_nil
       # Get next vmid
       vmid = node.containers.next_id
-      ostemplate = 'local:vztmpl/alpine-3.8-default_20180913_amd64.tar.xz'
+      ostemplate = 'local:vztmpl/alpine-3.10-default_20190626_amd64.tar.xz'
       container_hash = { ostemplate: ostemplate, storage: 'local-lvm', password: 'proxmox01', rootfs: 'local-lvm:1' }
       # Check valid vmid
       valid = node.containers.id_valid? vmid
