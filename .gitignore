@@ -4,3 +4,4 @@ pkg/
 spec/debug/
 coverage/
 TAGS
+Gemfile.lock
