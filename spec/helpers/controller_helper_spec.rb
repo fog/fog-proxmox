@@ -23,11 +23,14 @@ require 'fog/proxmox/helpers/controller_helper'
     describe Fog::Proxmox::ControllerHelper do
             
         let(:net) do 
-            { net0: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1,mp=/opt/path' }
+            { net0: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
         end
         let(:net_no_options) do 
             { net0: 'virtio=66:89:C5:59:AA:96' }
-        end   
+        end 
+        let(:net_lxc) do 
+            { net0: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1,ip=192.168.56.100/31' }
+        end  
         let(:scsi) do 
             { scsi10: 'local-lvm:1,cache=none' }
         end
@@ -61,6 +64,10 @@ require 'fog/proxmox/helpers/controller_helper'
             it "returns mp" do
                 path = Fog::Proxmox::ControllerHelper.extract('mp',mp[:mp0])
                 assert_equal '/opt/path', path
+            end
+            it "returns cidr ip" do
+                path = Fog::Proxmox::ControllerHelper.extract('ip',net_lxc[:net0])
+                assert_equal '192.168.56.100/31', path
             end
         end
 

@@ -38,16 +38,24 @@ module Fog
         /^name=(\w+)[,].+/
       end
 
+      def self.ip_regexp
+        /^(.+)[,]{1}ip=([\d\.\/]+)[,]?(.+)?$/
+      end
+
       def self.nic_update_regexp
         /^(\w+)[=]{1}([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}).+/
       end
 
       def self.has_model?(nic_value)
-        nic_value.match(self.model_regexp)
+        nic_value.match?(self.model_regexp)
       end
 
       def self.has_name?(nic_value)
-        nic_value.match(self.name_regexp)
+        nic_value.match?(self.name_regexp)
+      end
+
+      def self.has_ip?(nic_value)
+        nic_value.match?(self.ip_regexp)
       end
 
       def self.extract_nic_id(nic_value)
@@ -95,6 +103,12 @@ module Fog
     
       def self.nic?(id)
         NICS_REGEXP.match(id) ? true : false
+      end
+
+      def self.extract_ip(nic_value)
+        if ip = self.ip_regexp.match(nic_value)
+          ip[2]
+        end
       end
     end
   end

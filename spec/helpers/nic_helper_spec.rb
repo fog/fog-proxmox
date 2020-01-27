@@ -31,15 +31,15 @@ require 'fog/proxmox/helpers/nic_helper'
         end
 
         let(:net_lxc) do 
-            { net0: 'eth0=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
+            { net0: 'eth0=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1,ip=192.168.56.100/31' }
         end
 
         let(:net_lxc_create) do 
-            { net0: 'name=eth0,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
+            { net0: 'name=eth0,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1,ip=192.168.56.100/31' }
         end
 
         let(:lxc_nic) do 
-            { id: 'net0', name: 'eth0', macaddr: '66:89:C5:59:AA:96', bridge: 'vmbr0', firewall: 1, link_down: 1, queues: 1, rate: 1, tag: 1 }
+            { id: 'net0', name: 'eth0', macaddr: '66:89:C5:59:AA:96', bridge: 'vmbr0', firewall: 1, link_down: 1, queues: 1, rate: 1, tag: 1, ip: '192.168.56.100/31' }
         end
 
         let(:qemu_nic) do 
@@ -115,8 +115,22 @@ require 'fog/proxmox/helpers/nic_helper'
                 assert_equal flat_qemu ,Fog::Proxmox::NicHelper.flatten(qemu_nic_create)
             end
             it "returns lxc nic string" do
-                flat_lxc = { net0: 'eth0=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1' }
+                flat_lxc = { net0: 'eth0=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1,ip=192.168.56.100/31' }
                 assert_equal flat_lxc ,Fog::Proxmox::NicHelper.flatten(lxc_nic)
+            end
+        end
+
+        describe '#has_ip?' do
+            it "returns true" do
+                ip = Fog::Proxmox::NicHelper.has_ip?(net_lxc[:net0])
+                assert_equal true, ip
+            end
+        end
+
+        describe '#extract_ip' do
+            it "returns lxc ip cidr" do
+                ip = Fog::Proxmox::NicHelper.extract_ip(net_lxc[:net0])
+                assert_equal '192.168.56.100/31', ip
             end
         end
     end
