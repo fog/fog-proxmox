@@ -30,6 +30,8 @@ module Fog
         attribute :name
         attribute :ip
         attribute :ip6
+        attribute :gw
+        attribute :gw6
         attribute :bridge
         attribute :firewall
         attribute :link_down
