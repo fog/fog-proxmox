@@ -17,6 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
+require 'resolv'
 require 'fog/proxmox/hash'
 
 module Fog
@@ -24,38 +25,74 @@ module Fog
     # module IpHelper mixins
     module IpHelper
 
-      CIDR_REGEXP = /^(([0-9]{1,3}\.){3}[0-9]{1,3})(\/([0-9]|[1-2][0-9]|3[0-2]))?$/
-      IP_REGEXP = /^(([0-9]{1,3}\.){3}[0-9]{1,3})$/
-      CIDR_SUFFIX_REGEXP = /^([0-9]|[1-2][0-9]|3[0-2])$/
+      CIDRv4_PREFIX = '([0-9]|[1-2][0-9]|3[0-2])'
+      CIDRv4_PREFIX_REGEXP = /^#{CIDRv4_PREFIX}$/
+      IPv4_SRC = "#{Resolv::IPv4::Regex.source.delete_suffix('\z').delete_prefix('\A')}"
+      CIDRv4_REGEXP = Regexp.new("\\A(#{IPv4_SRC})(\/#{CIDRv4_PREFIX})?\\z")
+      CIDRv6_PREFIX = '(\d+)'
+      CIDRv6_PREFIX_REGEXP = /^#{CIDRv6_PREFIX}$/xi
+      IPv6_SRC = "#{Resolv::IPv6::Regex_8Hex.source.delete_suffix('\z').delete_prefix('\A')}"
+      CIDRv6_REGEXP = Regexp.new("\\A(#{IPv6_SRC})(\/#{CIDRv6_PREFIX})?\\z", Regexp::EXTENDED | Regexp::IGNORECASE)
     
       def self.cidr?(ip)
-        CIDR_REGEXP.match?(ip)
+        CIDRv4_REGEXP.match?(ip)
       end
 
-      def self.suffix(ip)
-        if cidr = CIDR_REGEXP.match(ip)
-          cidr[4]
+      def self.cidr6?(ip)
+        CIDRv6_REGEXP.match?(ip)
+      end
+
+      def self.prefix(ip)
+        if cidr = CIDRv4_REGEXP.match(ip)
+          cidr[7]
+        end
+      end
+
+      def self.prefix6(ip)
+        if cidr = CIDRv6_REGEXP.match(ip)
+          cidr[3]
         end
       end
 
       def self.ip?(ip)
-        IP_REGEXP.match?(ip)
+        Resolv::IPv4::Regex.match?(ip)
       end
 
-      def self.cidr_suffix?(suffix)
-        CIDR_SUFFIX_REGEXP.match?(suffix)
+      def self.ip6?(ip)
+        Resolv::IPv6::Regex.match?(ip)
+      end
+
+      def self.cidr_prefix?(prefix)
+        CIDRv4_PREFIX_REGEXP.match?(prefix)
+      end
+
+      def self.cidr6_prefix?(prefix)
+        CIDRv6_PREFIX_REGEXP.match?(prefix) && prefix.to_i >= 0 && prefix.to_i <= 128
       end
 
       def self.ip(ip)
-        if cidr = CIDR_REGEXP.match(ip)
+        if cidr = CIDRv4_REGEXP.match(ip)
           cidr[1]
         end
       end
 
-      def self.to_cidr(ip,suffix = nil)
-        return nil unless self.ip?(ip) && (!suffix || self.cidr_suffix?(suffix))
+      def self.ip6(ip)
+        if cidr = CIDRv6_REGEXP.match(ip)
+          cidr[1]
+        end
+      end
+
+      def self.to_cidr(ip,prefix = nil)
+        return nil unless self.ip?(ip) && (!prefix || self.cidr_prefix?(prefix))
         cidr = "#{ip}"
-        cidr += "/#{suffix}" if self.cidr_suffix?(suffix)
+        cidr += "/#{prefix}" if self.cidr_prefix?(prefix)
+        cidr
+      end
+
+      def self.to_cidr6(ip,prefix = nil)
+        return nil unless self.ip6?(ip) && (!prefix || self.cidr6_prefix?(prefix))
+        cidr = "#{ip}"
+        cidr += "/#{prefix}" if self.cidr6_prefix?(prefix)
         cidr
       end
     end

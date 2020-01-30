@@ -29,7 +29,7 @@ require 'fog/proxmox/helpers/controller_helper'
             { net0: 'virtio=66:89:C5:59:AA:96' }
         end 
         let(:net_lxc) do 
-            { net0: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1,ip=192.168.56.100/31' }
+            { net0: 'virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1,ip=192.168.56.100/31,ip6=2001:0000:1234:0000:0000:C1C0:ABCD:0876/31' }
         end  
         let(:scsi) do 
             { scsi10: 'local-lvm:1,cache=none' }
@@ -68,6 +68,10 @@ require 'fog/proxmox/helpers/controller_helper'
             it "returns cidr ip" do
                 path = Fog::Proxmox::ControllerHelper.extract('ip',net_lxc[:net0])
                 assert_equal '192.168.56.100/31', path
+            end
+            it "returns cidr ip6" do
+                path = Fog::Proxmox::ControllerHelper.extract('ip6',net_lxc[:net0])
+                assert_equal '2001:0000:1234:0000:0000:C1C0:ABCD:0876/31', path
             end
         end
 
