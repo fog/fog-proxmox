@@ -156,7 +156,6 @@ module Fog
 
         def migrate(target, options = {})
           request(:migrate_server, options.merge(target: target), vmid: vmid)
-          reload
         end
 
         def extend(disk, size, options = {})
