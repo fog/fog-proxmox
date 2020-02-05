@@ -110,6 +110,22 @@ module Fog
         val[0].to_i*1024**m
       end
 
+      def self.modulo_bytes(size)
+        size / 1024
+      end
+
+      def self.to_human_bytes(size)
+        units = ['Kb','Mb','Gb','Tb','Pb']
+        i = 0
+        human_size = size.to_s + 'b'
+        while i < 5 && size >= 1024
+          size = self.modulo_bytes(size)
+          human_size = size.to_s + units[i]
+          i+=1            
+        end
+        human_size
+      end
+
       def self.extract_size(disk_value)
         size=extract_option('size', disk_value)
 	      size ? self.to_bytes(size) : "1G"

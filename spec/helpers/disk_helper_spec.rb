@@ -195,4 +195,16 @@ require 'fog/proxmox/helpers/disk_helper'
                 assert !Fog::Proxmox::DiskHelper.cdrom?('local:iso/alpine-virt-3.7.0-x86_64.iso')
             end
         end
+
+        describe '#to_bytes' do
+            it "1Gb returns 1 073 741 824" do
+                assert_equal Fog::Proxmox::DiskHelper.to_bytes('1Gb'), 1073741824
+            end
+        end
+
+        describe '#to_human_bytes' do
+            it "1 073 741 824 returns 1Gb" do
+                assert_equal '1Gb', Fog::Proxmox::DiskHelper.to_human_bytes(1073741824)
+            end
+        end
     end
