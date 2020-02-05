@@ -46,9 +46,8 @@ module Fog
 
         def initialize(new_attributes = {})
           prepare_service_value(new_attributes)
-          attributes[:node_id] = new_attributes[:node_id] unless new_attributes[:node_id].nil?
-          attributes[:storage] = new_attributes[:storage] unless new_attributes[:storage].nil?
-          attributes[:storage] = new_attributes['storage'] unless new_attributes['storage'].nil?
+          Fog::Proxmox::Attributes.set_attr_and_sym('node_id', attributes, new_attributes)
+          Fog::Proxmox::Attributes.set_attr_and_sym('storage', attributes, new_attributes)
           requires :node_id, :storage
           initialize_volumes
           super(new_attributes)

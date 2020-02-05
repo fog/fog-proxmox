@@ -47,9 +47,8 @@ module Fog
 
         def initialize(new_attributes = {})
           prepare_service_value(new_attributes)
-          attributes[:node_id] = new_attributes[:node_id] unless new_attributes[:node_id].nil?
-          attributes[:upid] = new_attributes[:upid] unless new_attributes[:upid].nil?
-          attributes[:upid] = new_attributes['upid'] unless new_attributes['upid'].nil?
+          Fog::Proxmox::Attributes.set_attr_and_sym('node_id', attributes, new_attributes)
+          Fog::Proxmox::Attributes.set_attr_and_sym('upid', attributes, new_attributes)
           requires :node_id, :upid
           super(new_attributes)
         end

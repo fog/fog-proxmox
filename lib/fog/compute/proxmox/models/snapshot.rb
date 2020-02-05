@@ -41,11 +41,10 @@ module Fog
 
         def initialize(new_attributes = {})
           prepare_service_value(new_attributes)
-          attributes[:node_id] = new_attributes[:node_id] unless new_attributes[:node_id].nil?
-          attributes[:server_id] = new_attributes[:server_id] unless new_attributes[:server_id].nil?
-          attributes[:server_type] = new_attributes[:server_type] unless new_attributes[:server_type].nil?
-          attributes[:name] = new_attributes[:name] unless new_attributes[:name].nil?
-          attributes[:name] = new_attributes['name'] unless new_attributes['name'].nil?
+          Fog::Proxmox::Attributes.set_attr_and_sym('node_id', attributes, new_attributes)
+          Fog::Proxmox::Attributes.set_attr_and_sym('server_id', attributes, new_attributes)
+          Fog::Proxmox::Attributes.set_attr_and_sym('server_type', attributes, new_attributes)
+          Fog::Proxmox::Attributes.set_attr_and_sym('name', attributes, new_attributes)
           requires :node_id, :server_id, :server_type, :name
           super(new_attributes)
         end
