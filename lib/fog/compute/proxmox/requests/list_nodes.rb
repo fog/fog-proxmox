@@ -34,7 +34,14 @@ module Fog
 
       # class Mock list_nodes request
       class Mock
-        def list_nodes; end
+        def list_nodes
+          [
+            {
+              'node' => 'proxmox',
+              'type' => 'node'
+            }
+          ]
+        end
       end
     end
   end

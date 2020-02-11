@@ -35,6 +35,7 @@ module Fog
 
       # class Mock create_backup request
       class Mock
+        def create_backup(_path_params, _body_params); end
       end
     end
   end

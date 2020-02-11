@@ -35,7 +35,7 @@ module Fog
 
       # class Mock get_volume request
       class Mock
-        def get_volume; end
+        def get_volume(_node, _storage, _volume); end
       end
     end
   end

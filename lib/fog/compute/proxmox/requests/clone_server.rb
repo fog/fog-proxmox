@@ -37,6 +37,7 @@ module Fog
 
       # class Mock clone_server request
       class Mock
+        def clone_server(_path_params, _body_params); end
       end
     end
   end

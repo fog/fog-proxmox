@@ -36,7 +36,7 @@ module Fog
 
       # class Mock move_disk request
       class Mock
-        def move_disk; end
+        def move_disk(_path_params, _body_params); end
       end
     end
   end

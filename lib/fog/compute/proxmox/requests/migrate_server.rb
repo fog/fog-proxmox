@@ -37,7 +37,7 @@ module Fog
 
       # class Mock migrate_server request
       class Mock
-        def migrate_server; end
+        def migrate_server(_path_params, _body_params); end
       end
     end
   end

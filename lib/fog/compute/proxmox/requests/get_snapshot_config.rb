@@ -37,7 +37,7 @@ module Fog
 
       # class Mock get_snapshot_config request
       class Mock
-        def get_snapshot_config; end
+        def get_snapshot_config(_path_params); end
       end
     end
   end

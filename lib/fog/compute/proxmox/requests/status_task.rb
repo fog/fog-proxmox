@@ -34,7 +34,7 @@ module Fog
 
       # class Mock status_task
       class Mock
-        def status_task(node, upid); end
+        def status_task(_node, _upid); end
       end
     end
   end

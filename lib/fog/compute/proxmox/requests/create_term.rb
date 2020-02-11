@@ -37,6 +37,7 @@ module Fog
 
       # class Mock create_term request
       class Mock
+        def create_term(_path_params, _body_params); end
       end
     end
   end
