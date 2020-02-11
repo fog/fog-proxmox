@@ -33,6 +33,7 @@ module Fog
 
       # class Mock next_vmid collection
       class Mock
+        def next_vmid; end
       end
     end
   end

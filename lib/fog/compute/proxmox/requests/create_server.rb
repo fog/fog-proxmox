@@ -39,6 +39,7 @@ module Fog
 
       # class Mock create_server request
       class Mock
+        def create_server(_path_params, _body_params); end
       end
     end
   end

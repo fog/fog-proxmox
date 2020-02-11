@@ -37,7 +37,7 @@ module Fog
 
       # class Mock get_storage request
       class Mock
-        def get_storage; end
+        def get_storage(_node, _storage, _options = {}); end
       end
     end
   end

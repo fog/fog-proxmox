@@ -35,6 +35,7 @@ module Fog
 
       # class Mock check_vmid collection
       class Mock
+        def check_vmid(_vmid); end
       end
     end
   end

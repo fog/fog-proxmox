@@ -36,7 +36,30 @@ module Fog
 
       # class Mock list_snapshots request
       class Mock
-        def list_snapshots; end
+        def list_snapshots(_path_params)
+          [
+            {
+              'name' => 'snapshot1',
+              'description' => 'latest snapshot',
+              'snaptime' => 1_578_057_452,
+              'vmstate' => 0,
+              'node_id' => 'proxmox',
+              'server_id' => '100',
+              'server_type' => 'qemu',
+              'vmgenid' => nil
+            },
+            {
+              'name' => 'snapshot2',
+              'description' => 'latest snapshot2',
+              'snaptime' => 1_578_058_452,
+              'vmstate' => 0,
+              'node_id' => 'proxmox',
+              'server_id' => '100',
+              'server_type' => 'qemu',
+              'vmgenid' => nil
+            }
+          ]
+        end
       end
     end
   end

@@ -37,6 +37,7 @@ module Fog
 
       # class Mock template_server request
       class Mock
+        def template_server(_path_params, _body_params); end
       end
     end
   end

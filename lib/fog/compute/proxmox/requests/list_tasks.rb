@@ -35,7 +35,9 @@ module Fog
 
       # class Mock list_tasks request
       class Mock
-        def list_tasks; end
+        def list_tasks(_node, _options = {})
+          []
+        end
       end
     end
   end

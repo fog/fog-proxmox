@@ -39,7 +39,9 @@ module Fog
 
       # class Mock rollback_snapshot request
       class Mock
-        def rollback_snapshot; end
+        def rollback_snapshot(_path_params)
+          'UPID:proxmox:00002EBF:646E2BF3:5E1C7E39:qmrollback:100:root@pam:'
+        end
       end
     end
   end

@@ -41,7 +41,9 @@ module Fog
 
       # class Mock delete_snapshot request
       class Mock
-        def delete_snapshot; end
+        def delete_snapshot(_path_params, _query_params)
+          'UPID:proxmox:00002CC5:646E24B1:5E1C7E26:qmdelsnapshot:100:root@pam:'
+        end
       end
     end
   end

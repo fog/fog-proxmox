@@ -39,7 +39,7 @@ module Fog
 
       # class Mock resize_container request
       class Mock
-        def resize_container; end
+        def resize_container(_path_params, _body_params); end
       end
     end
   end

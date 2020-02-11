@@ -37,7 +37,7 @@ module Fog
 
       # class Mock get_node request
       class Mock
-        def get_node; end
+        def get_node(_node); end
       end
     end
   end

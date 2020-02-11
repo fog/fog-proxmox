@@ -41,6 +41,7 @@ module Fog
 
       # class Mock delete_server request
       class Mock
+        def delete_server(_path_params, _body_params); end
       end
     end
   end

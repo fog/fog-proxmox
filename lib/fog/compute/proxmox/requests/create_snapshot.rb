@@ -40,7 +40,9 @@ module Fog
 
       # class Mock create_snapshot request
       class Mock
-        def create_snapshot; end
+        def create_snapshot(_path_params, _body_params)
+          'UPID:proxmox:00003E13:6F21770F:5E37E2D0:qmsnapshot:100:root@pam:'
+        end
       end
     end
   end

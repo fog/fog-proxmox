@@ -40,6 +40,7 @@ module Fog
 
       # class Mock create_spice request
       class Mock
+        def create_spice(_path_params, _body_params); end
       end
     end
   end

@@ -40,6 +40,7 @@ module Fog
 
       # class Mock get_vnc request
       class Mock
+        def get_vnc(_path_params, _query_params); end
       end
     end
   end
