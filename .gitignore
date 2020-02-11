@@ -5,3 +5,4 @@ spec/debug/
 coverage/
 TAGS
 Gemfile.lock
+*.gem
