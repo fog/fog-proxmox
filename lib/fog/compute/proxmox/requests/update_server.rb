@@ -37,6 +37,7 @@ module Fog
 
       # class Mock update_server request
       class Mock
+        def update_server(_path_params, _body_params); end
       end
     end
   end

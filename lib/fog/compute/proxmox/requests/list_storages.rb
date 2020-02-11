@@ -37,7 +37,9 @@ module Fog
 
       # class Mock list_storages request
       class Mock
-        def list_storages; end
+        def list_storages(_node, _options = {})
+          []
+        end
       end
     end
   end

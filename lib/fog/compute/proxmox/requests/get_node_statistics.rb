@@ -23,7 +23,7 @@ module Fog
     class Compute
       # class Real get_node_statistics request
       class Real
-        def get_node_statistics(path_params,query_params)
+        def get_node_statistics(path_params, query_params)
           node = path_params[:node]
           output = path_params[:output]
           request(
@@ -37,7 +37,7 @@ module Fog
 
       # class Mock get_statistics request
       class Mock
-        def get_node_statistics; end
+        def get_node_statistics(_path_params, _query_params); end
       end
     end
   end

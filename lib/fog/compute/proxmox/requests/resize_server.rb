@@ -36,7 +36,7 @@ module Fog
 
       # class Mock resize_server request
       class Mock
-        def resize_server; end
+        def resize_server(_path_params, _body_params); end
       end
     end
   end

@@ -33,7 +33,7 @@ module Fog
 
       # class Mock delete_volume request
       class Mock
-        def delete_volume; end
+        def delete_volume(_node, _storage, _volume); end
       end
     end
   end

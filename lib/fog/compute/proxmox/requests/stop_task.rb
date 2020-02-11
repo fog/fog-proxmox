@@ -34,7 +34,7 @@ module Fog
 
       # class Mock get_task collection
       class Mock
-        def stop_task(taskid); end
+        def stop_task(_node, _taskid); end
       end
     end
   end

@@ -38,7 +38,7 @@ module Fog
 
       # class Mock update_snapshot request
       class Mock
-        def update_snapshot; end
+        def update_snapshot(_path_params, _body_params); end
       end
     end
   end

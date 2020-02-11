@@ -36,7 +36,7 @@ module Fog
 
       # class Mock move_volume request
       class Mock
-        def move_volume; end
+        def move_volume(_path_params, _body_params); end
       end
     end
   end

@@ -34,7 +34,7 @@ module Fog
 
       # class Mock get_task collection
       class Mock
-        def get_task(node, upid); end
+        def get_task(_node, _upid); end
       end
     end
   end
