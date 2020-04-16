@@ -8,11 +8,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.1.2
+      - fog-core/2.2.0
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5DD802A3::Ad840ZAV0I/Hw2Mss/6AmBSsarT2Kcnvm9ggfSHEhoczEkvmIzFvQKuIY5vP7Vo1LT8IJxr3DsRztep1lwPftQkBQ7ZjEQnvV4wjtywJBpEnrsxuW8diekzF1CYlYqvwEabNQXUHze9bLlgm1Ci7MHA+qYWF4OcyZ3LZT1pq9dnuZzeTW2rLXkcN6VtFwCNHaR+JG0LQQN7JE7HEbzio7OJMhuoBjE5khf5JcbhpbT9+Yf8rPvLOTgOB1if3wMpS5CpHaYbgmS5saAeKaucZFz7x0fR4pE8t3mQfIXrdibCDPhbbzTsIxdXg9u7CiUaewEHgmsskJPNthtB7B2MAfQ==
+      - PVEAuthCookie=PVE:root@pam:5E958C03::rzShk37Ub3qtKCyN6Nu+u4fscN2Piwjy+2iFfOYwkCzIZymIoiroBgBlMYcYUu55uYbbN5m4JeDmdWvSYwIehy13rorhO+418JZVgESgmPvfThcDshmfEI0wZsQWiGe+YyN3HI9a0CJ9yMCrAzj/RRW7jnz20OXGXnh1X0nUn/RQsaVGGgWm/P1sVISf0hcu1G6WXPsGsMAbWGdaFdn0ZC98JUZKBp2OkhZqqHGzzP7KCi7bcCm5zFicEWmhcd4txtJ6Rn60cSss6BMsAqNBd37aHdFdVPU1CyrEQ8fGsFkv8o+05ei9ScSy+mKiKCWOZanRAShAzNnQhl/+O7VR7A==
   response:
     status:
       code: 200
@@ -23,7 +23,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Fri, 22 Nov 2019 15:45:39 GMT
+      - Tue, 14 Apr 2020 10:10:11 GMT
       Pragma:
       - no-cache
       Server:
@@ -33,10 +33,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 22 Nov 2019 15:45:39 GMT
+      - Tue, 14 Apr 2020 10:10:11 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"release":"6.0","version":"6.0-4","keyboard":"fr","repoid":"2a719255"}}'
+      string: '{"data":{"release":"6.1","keyboard":"fr","version":"6.1-3","repoid":"37248ce6"}}'
     http_version: 
-  recorded_at: Fri, 22 Nov 2019 15:45:41 GMT
+  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
 recorded_with: VCR 4.0.0

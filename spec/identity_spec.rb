@@ -300,6 +300,11 @@ describe Fog::Proxmox::Identity do
       # Add storage as member
       pool.add_server 100 # do nothing if server does not exist
       pool.add_storage 'local-lvm'
+      _(pool.members).wont_be_nil
+      _(pool.members).wont_be_empty
+      _(pool.members.size).must_equal 1 # no vm 100
+      _(pool.has_server?(100)).must_equal false
+      _(pool.has_storage?('local-lvm')).must_equal true
       # all pools
       pools_all = @service.pools.all
       _(pools_all).wont_be_nil
@@ -308,6 +313,7 @@ describe Fog::Proxmox::Identity do
       # Delete
       pool.remove_server 100
       pool.remove_storage 'local-lvm'
+      _(pool.members).must_be_empty
       pool.destroy
       pool = @service.pools.get pool_hash[:poolid]
       _(pool).must_be_nil

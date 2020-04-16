@@ -8,7 +8,7 @@ http_interactions:
       string: username=root%40pam&password=proxmox01
     headers:
       User-Agent:
-      - fog-core/2.1.2
+      - fog-core/2.2.0
       Accept:
       - application/json
   response:
@@ -21,20 +21,20 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Fri, 22 Nov 2019 15:45:39 GMT
+      - Tue, 14 Apr 2020 10:10:09 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '1167'
+      - '1191'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Fri, 22 Nov 2019 15:45:39 GMT
+      - Tue, 14 Apr 2020 10:10:09 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"username":"root@pam","cap":{"vms":{"Permissions.Modify":1,"VM.Config.Options":1,"VM.Allocate":1,"VM.Monitor":1,"VM.Config.CDROM":1,"VM.Config.Memory":1,"VM.Console":1,"VM.Migrate":1,"VM.Audit":1,"VM.Snapshot":1,"VM.Clone":1,"VM.Config.HWType":1,"VM.Config.CPU":1,"VM.Config.Disk":1,"VM.Backup":1,"VM.Config.Network":1,"VM.PowerMgmt":1,"VM.Snapshot.Rollback":1},"dc":{"Sys.Audit":1},"access":{"Permissions.Modify":1,"Group.Allocate":1,"User.Modify":1},"storage":{"Permissions.Modify":1,"Datastore.Allocate":1,"Datastore.Audit":1,"Datastore.AllocateSpace":1,"Datastore.AllocateTemplate":1},"nodes":{"Sys.PowerMgmt":1,"Sys.Modify":1,"Sys.Console":1,"Permissions.Modify":1,"Sys.Audit":1,"Sys.Syslog":1}},"ticket":"PVE:root@pam:5DD802A3::Ad840ZAV0I/Hw2Mss/6AmBSsarT2Kcnvm9ggfSHEhoczEkvmIzFvQKuIY5vP7Vo1LT8IJxr3DsRztep1lwPftQkBQ7ZjEQnvV4wjtywJBpEnrsxuW8diekzF1CYlYqvwEabNQXUHze9bLlgm1Ci7MHA+qYWF4OcyZ3LZT1pq9dnuZzeTW2rLXkcN6VtFwCNHaR+JG0LQQN7JE7HEbzio7OJMhuoBjE5khf5JcbhpbT9+Yf8rPvLOTgOB1if3wMpS5CpHaYbgmS5saAeKaucZFz7x0fR4pE8t3mQfIXrdibCDPhbbzTsIxdXg9u7CiUaewEHgmsskJPNthtB7B2MAfQ==","CSRFPreventionToken":"5DD802A3:7GsEda1tvj665kUlEHy4tlBRl/bptJAPrFTbQU0SIKA"}}'
+      string: '{"data":{"cap":{"dc":{"Sys.Audit":1},"nodes":{"Sys.Audit":1,"Sys.Syslog":1,"Sys.PowerMgmt":1,"Sys.Console":1,"Permissions.Modify":1,"Sys.Modify":1},"vms":{"VM.Config.Disk":1,"VM.Config.CPU":1,"VM.Snapshot.Rollback":1,"VM.Migrate":1,"VM.Backup":1,"VM.Config.Memory":1,"VM.PowerMgmt":1,"VM.Monitor":1,"VM.Audit":1,"VM.Console":1,"VM.Config.HWType":1,"VM.Config.Options":1,"VM.Allocate":1,"VM.Config.CDROM":1,"Permissions.Modify":1,"VM.Snapshot":1,"VM.Config.Network":1,"VM.Clone":1},"access":{"User.Modify":1,"Group.Allocate":1,"Permissions.Modify":1},"storage":{"Datastore.Allocate":1,"Datastore.Audit":1,"Permissions.Modify":1,"Datastore.AllocateSpace":1,"Datastore.AllocateTemplate":1}},"ticket":"PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==","CSRFPreventionToken":"5E958C01:OFsOGIgg/oUpxoKFfKhd0HF9fW3yGWZ1Nnxs27ynaRg","username":"root@pam","clustername":"proxmox"}}'
     http_version: 
-  recorded_at: Fri, 22 Nov 2019 15:45:41 GMT
+  recorded_at: Tue, 14 Apr 2020 10:10:10 GMT
 recorded_with: VCR 4.0.0

@@ -65,6 +65,24 @@ module Fog
         def update
           update_with_member(nil, nil, false)
         end
+
+        def has_server?(vmid)
+          has?("vmid", vmid)
+        end
+
+        def has_storage?(storage)
+          has?("storage", storage)
+        end
+        
+        private 
+
+        def has?(key, vmid)
+          result = false
+          attributes[:members].each do |member|
+            result = member[key].to_s.eql?(vmid.to_s) if member.has_key?(key) && member[key] && vmid
+          end
+          result
+        end
       end
     end
   end

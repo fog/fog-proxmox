@@ -69,7 +69,7 @@ module Fog
       private
 
       def request(params)
-        retried = false
+        retried = false     
         begin
           response = @connection.request(params.merge(
                                            headers: headers(params[:method], params[:headers])

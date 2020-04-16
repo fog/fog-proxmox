@@ -27,7 +27,9 @@ module Fog
         model Fog::Proxmox::Identity::Pool
 
         def all
-          load service.list_pools
+          pools_with_members = Array.new
+          service.list_pools.each { |pool| pools_with_members.push(pool.merge(service.get_pool(pool["poolid"]))) }
+          load pools_with_members
         end
    
         def get(id)
