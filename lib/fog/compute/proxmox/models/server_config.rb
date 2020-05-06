@@ -41,7 +41,6 @@ module Fog
         attribute :scsihw
         attribute :sockets
         attribute :memory
-        attribute :min_memory
         attribute :shares
         attribute :balloon
         attribute :name
