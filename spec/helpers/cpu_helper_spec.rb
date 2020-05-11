@@ -23,7 +23,7 @@ require 'fog/proxmox/helpers/cpu_helper'
     describe Fog::Proxmox::CpuHelper do
             
         let(:cpu) do 
-            'cputype=kvm64,flags=+spec-ctrl;+pcid'
+            'cputype=Skylake-Client,flags=+spec-ctrl;+pcid'
         end
         let(:cpu_nocputype) do 
             'kvm64,flags=+spec-ctrl;+pcid'
@@ -38,7 +38,7 @@ require 'fog/proxmox/helpers/cpu_helper'
         describe '#extract_type' do
             it "returns string" do
                 result = Fog::Proxmox::CpuHelper.extract_type(cpu)
-                assert_equal('kvm64', result)
+                assert_equal('Skylake-Client', result)
             end
             it "returns string" do
                 result = Fog::Proxmox::CpuHelper.extract_type(cpu_nocputype)

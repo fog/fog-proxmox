@@ -21,7 +21,7 @@ module Fog
   module Proxmox
     # module Cpu mixins
     module CpuHelper
-      CPU_REGEXP = /(\bcputype=)?(\w+)[,]?(\bflags=)?(\+[\w-]+)?[;]?(\+[\w-]+)?/
+      CPU_REGEXP = /(\bcputype=)?([\w-]+)[,]?(\bflags=)?(\+[\w-]+)?[;]?(\+[\w-]+)?/
       def self.extract(cpu,i)
         cpu ? CPU_REGEXP.match(cpu.to_s)[i] : ''
       end
