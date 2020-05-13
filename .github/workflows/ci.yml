@@ -30,9 +30,11 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: tests
-    - uses: paambaati/codeclimate-action@v2.6.0
-      env:
-        CC_TEST_REPORTER_ID: 1b8ec457c0c30f927f785b4a080eca5164140c5b84716f64809b5ce2f57f3554
-      with:
-        coverageLocations: tests/coverage/lcov.info:lcov
-        debug: true
+    - name: Install Code Climate test-reporter
+      run: |
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        chmod +x ./cc-test-reporter
+    - name: Publish code coverage
+      run: |
+        export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
+        ./cc-test-reporter upload-coverage -i tests/ -r ${{secrets.CC_TEST_REPORTER_ID}}
