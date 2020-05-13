@@ -38,11 +38,13 @@ jobs:
       env:
         GIT_BRANCH: ${{ github.ref }}
         GIT_COMMIT_SHA: ${{ github.sha }}
+        GIT_COMMITTED_AT: ${{ ?? }}
       run: |
         ./cc-test-reporter format-coverage -d -t simplecov -o coverage/codeclimate.json coverage/.resultset.json 
     - name: Publish code coverage
       env:
         GIT_BRANCH: ${{ github.ref }}
         GIT_COMMIT_SHA: ${{ github.sha }}
+        GIT_COMMITTED_AT: ${{ ?? }}
       run: |
         ./cc-test-reporter upload-coverage -d -r ${{secrets.CC_TEST_REPORTER_ID}}
