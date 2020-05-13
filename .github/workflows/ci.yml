@@ -34,25 +34,17 @@ jobs:
       run: |
         curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         chmod +x ./cc-test-reporter
-    - name: Setup git comitted at
-      uses: actions/github-script@0.9.0
-      id: author-date
-      with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        script: |             
-          const commit_details = await github.git.getCommit({owner: context.repo.owner, repo: context.repo.repo, commit_sha: context.sha});
-          return commit_details.data.author.date
     - name: Format code coverage
       env:
         GIT_BRANCH: ${{ github.ref }}
         GIT_COMMIT_SHA: ${{ github.sha }}
-        GIT_COMMITTED_AT: ${{ steps.author-date.outputs.result }}
       run: |
+        export GIT_COMMITTED_AT="$(date +%s)"
         ./cc-test-reporter format-coverage -d -t simplecov -o coverage/codeclimate.json coverage/.resultset.json 
     - name: Publish code coverage
       env:
         GIT_BRANCH: ${{ github.ref }}
         GIT_COMMIT_SHA: ${{ github.sha }}
-        GIT_COMMITTED_AT: ${{ steps.author-date.outputs.result }}
       run: |
+        export GIT_COMMITTED_AT="$(date +%s)"
         ./cc-test-reporter upload-coverage -d -r ${{secrets.CC_TEST_REPORTER_ID}}
