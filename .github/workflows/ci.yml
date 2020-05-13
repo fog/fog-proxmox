@@ -35,10 +35,14 @@ jobs:
         curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         chmod +x ./cc-test-reporter
     - name: Format code coverage
+      env:
+        GIT_BRANCH: ${{ github.ref }}
+        GIT_COMMIT_SHA: ${{ github.sha }}
       run: |
-        export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
-        ./cc-test-reporter format-coverage --debug -t simplecov -o coverage/codeclimate.json coverage/.resultset.json 
+        ./cc-test-reporter format-coverage -d -t simplecov -o coverage/codeclimate.json coverage/.resultset.json 
     - name: Publish code coverage
+      env:
+        GIT_BRANCH: ${{ github.ref }}
+        GIT_COMMIT_SHA: ${{ github.sha }}
       run: |
-        export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
-        ./cc-test-reporter upload-coverage --debug -r ${{secrets.CC_TEST_REPORTER_ID}}
+        ./cc-test-reporter upload-coverage -d -r ${{secrets.CC_TEST_REPORTER_ID}}
