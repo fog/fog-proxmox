@@ -15,15 +15,24 @@ jobs:
       run: bundle install
     - name: Run tests
       run: bundle exec rake test spec audit
+    - name: Upload results for coverage
+      uses: actions/upload-artifact@v1
+      with:
+        name: tests
+        path: coverage/
       
   coverage:
     needs: [ test ]
     name: coverage
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - name: Download tests result from test
+      uses: actions/download-artifact@v1
+      with:
+        name: tests
     - uses: paambaati/codeclimate-action@v2.6.0
       env:
         CC_TEST_REPORTER_ID: 1b8ec457c0c30f927f785b4a080eca5164140c5b84716f64809b5ce2f57f3554
       with:
-        coverageCommand: bundle exec rake test spec audit
+        coverageLocations: tests/coverage/lcov.info:lcov
+        debug: true
