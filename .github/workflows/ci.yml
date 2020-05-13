@@ -56,6 +56,11 @@ jobs:
     runs-on: ubuntu-latest
     if: contains(github.ref, '/tags/') && contains(github.ref, '-release')
     steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby 2.6
+        uses: actions/setup-ruby@v1
+        with:
+          version: 2.6.x
       - name: Publish to RubyGems
         env:
           GEM_HOST_API_KEY: ${{secrets.RUBYGEMS_AUTH_TOKEN}}
