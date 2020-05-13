@@ -33,7 +33,8 @@ jobs:
     - name: Install Code Climate test-reporter
       run: |
         curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-        chmod +x ./cc-test-reporter
+        chmod +x ./cc-test-reporter        
+    - uses: actions/checkout@v2
     - name: Format code coverage
       env:
         GIT_BRANCH: ${{ github.ref }}
