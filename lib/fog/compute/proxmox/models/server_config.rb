@@ -30,6 +30,7 @@ module Fog
         attribute :description
         attribute :ostype
         attribute :smbios1
+        attribute :bios
         attribute :numa
         attribute :kvm
         attribute :vcpus
