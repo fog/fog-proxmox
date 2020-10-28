@@ -58,6 +58,10 @@ require 'fog/proxmox/helpers/disk_helper'
             { ide2: 'local:iso/alpine-virt-3.7.0-x86_64.iso,media=cdrom'}
         end
 
+        let(:template) do 
+            { virtio0: 'local:100/base-100-disk-0.qcow2'}
+        end
+
         describe '#flatten' do
             it "returns creation string" do
                 disk = Fog::Proxmox::DiskHelper.flatten(scsi0)
@@ -205,6 +209,15 @@ require 'fog/proxmox/helpers/disk_helper'
         describe '#to_human_bytes' do
             it "1 073 741 824 returns 1Gb" do
                 assert_equal '1Gb', Fog::Proxmox::DiskHelper.to_human_bytes(1073741824)
+            end
+        end
+
+        describe '#template?' do
+            it "local:100/base-100-disk-0.qcow2 returns true" do
+                assert Fog::Proxmox::DiskHelper.template?(template[:virtio0])
+            end
+            it "local:108/vm-108-disk-1.qcow2 returns false" do
+                assert !Fog::Proxmox::DiskHelper.template?(virtio[:virtio1])
             end
         end
     end
