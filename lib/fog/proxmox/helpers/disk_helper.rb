@@ -29,6 +29,7 @@ module Fog
       MOUNT_POINT_REGEXP = /^(mp)(\d+)$/
       ROOTFS_REGEXP = /^(rootfs)$/
       CDROM_REGEXP = /^(.*)[,]{0,1}(media=cdrom)[,]{0,1}(.*)$/
+      TEMPLATE_REGEXP = /^(.*)(base-)(.*)$/
 
       def self.flatten(disk)
         id = disk[:id]
@@ -153,6 +154,10 @@ module Fog
 
       def self.container_disk?(id)
         rootfs?(id) || mount_point?(id)
+      end
+
+      def self.template?(volid)
+        TEMPLATE_REGEXP.match(volid) ? true : false
       end
     end
   end
