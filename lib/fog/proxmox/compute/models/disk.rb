@@ -63,6 +63,10 @@ module Fog
           id.match(/(scsi|ide|sata|virtio)(\d+)/)
         end
 
+        def template?
+          Fog::Proxmox::DiskHelper.template?(volid)
+        end
+
         def flatten
           Fog::Proxmox::DiskHelper.flatten(attributes)
         end
