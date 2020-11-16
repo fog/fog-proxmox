@@ -24,9 +24,11 @@ module Fog
       class Group < Fog::Model
         identity  :groupid
         attribute :comment
+        attribute :users
+        attribute :members
 
         def save(options = {})
-          service.create_group(attributes.merge(options))
+          service.create_group((attributes.reject { |attribute| [:users, :members].include? attribute }).merge(options))
           reload
         end
 
@@ -38,7 +40,7 @@ module Fog
 
         def update
           requires :groupid
-          service.update_group(identity, attributes.reject { |attribute| [:groupid].include? attribute })
+          service.update_group(identity, attributes.reject { |attribute| [:groupid, :users, :members].include? attribute })
           reload
         end
       end
