@@ -21,6 +21,7 @@ require 'spec_helper'
 require_relative './proxmox_vcr'
 
 describe Fog::Proxmox::Identity do
+  
   before :all do
     Excon.defaults[:ssl_ca_file] = 'spec/fixtures/proxmox/pve.home'
     @proxmox_vcr = ProxmoxVCR.new(
@@ -207,7 +208,7 @@ describe Fog::Proxmox::Identity do
       _(proc do
         @service.domains.create(ldap_hash)
       end).must_raise Excon::Errors::InternalServerError
-      # # Create 2nd time must fails
+      # Create 2nd time must fails
       _(proc do
         @service.domains.create(ad_hash)
       end).must_raise Excon::Errors::InternalServerError
@@ -217,10 +218,10 @@ describe Fog::Proxmox::Identity do
       ldap.update
       # Find by id
       ad = @service.domains.get ad_hash[:realm]
-      # ad.wont_be_nil
+      _(ad).wont_be_nil
       ad.type.tfa = 'type=yubico,id=1,key=2,url=http://localhost'
       ad.update
-      # # all groups
+      # all groups
       domains_all = @service.domains.all
       _(domains_all).wont_be_nil
       _(domains_all).wont_be_empty
@@ -246,8 +247,12 @@ describe Fog::Proxmox::Identity do
         lastname: 'Sinclar',
         email: 'bobsinclar@proxmox.com'
       }
-      @service.roles.create(roleid: 'PVETestAdmin', privs: 'User.Modify,Group.Allocate')
-      role = @service.roles.get('PVETestAdmin')
+      role_hash = {
+        roleid: 'PVETestAdmin', 
+        privs: 'User.Modify,Group.Allocate'
+      }
+      @service.roles.create(role_hash)
+      role = @service.roles.get(role_hash[:roleid])
       _(role).wont_be_nil
       @service.users.create(bob_hash)
       bob = @service.users.get bob_hash[:userid]
@@ -278,6 +283,8 @@ describe Fog::Proxmox::Identity do
       _(permissions).must_be_empty
       group1.destroy
       role.destroy
+      role = @service.roles.get(role_hash[:roleid])
+      _(role).must_be_nil
     end
   end
 
