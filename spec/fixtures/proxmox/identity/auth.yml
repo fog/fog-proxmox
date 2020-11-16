@@ -8,13 +8,13 @@ http_interactions:
       string: username=root%40pam&password=proxmox01&privs=User.Modify&path=access&otp=proxmox01
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C03:wUAHyBlcAlfHjMW3lERh+tuaL/MCw2BYto0Ta3oMOOc
+      - 5FB28287:BRiDEH9+d3TuluVggjLOpKH3F7WsDkE+dHr2vuwRT5c
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C03::rzShk37Ub3qtKCyN6Nu+u4fscN2Piwjy+2iFfOYwkCzIZymIoiroBgBlMYcYUu55uYbbN5m4JeDmdWvSYwIehy13rorhO+418JZVgESgmPvfThcDshmfEI0wZsQWiGe+YyN3HI9a0CJ9yMCrAzj/RRW7jnz20OXGXnh1X0nUn/RQsaVGGgWm/P1sVISf0hcu1G6WXPsGsMAbWGdaFdn0ZC98JUZKBp2OkhZqqHGzzP7KCi7bcCm5zFicEWmhcd4txtJ6Rn60cSss6BMsAqNBd37aHdFdVPU1CyrEQ8fGsFkv8o+05ei9ScSy+mKiKCWOZanRAShAzNnQhl/+O7VR7A==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -25,20 +25,20 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '735'
+      - '711'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"clustername":"proxmox","cap":{"dc":{"Sys.Audit":1},"storage":{"Permissions.Modify":1,"Datastore.Audit":1,"Datastore.Allocate":1,"Datastore.AllocateSpace":1,"Datastore.AllocateTemplate":1},"vms":{"VM.Config.Memory":1,"VM.Backup":1,"VM.PowerMgmt":1,"VM.Config.Disk":1,"VM.Config.CPU":1,"VM.Snapshot.Rollback":1,"VM.Migrate":1,"VM.Config.CDROM":1,"Permissions.Modify":1,"VM.Config.Network":1,"VM.Snapshot":1,"VM.Clone":1,"VM.Monitor":1,"VM.Audit":1,"VM.Console":1,"VM.Config.HWType":1,"VM.Config.Options":1,"VM.Allocate":1},"access":{"Permissions.Modify":1,"Group.Allocate":1,"User.Modify":1},"nodes":{"Sys.Syslog":1,"Sys.Audit":1,"Sys.PowerMgmt":1,"Sys.Console":1,"Sys.Modify":1,"Permissions.Modify":1}},"username":"root@pam"}}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:13 GMT
+      string: '{"data":{"cap":{"storage":{"Permissions.Modify":1,"Datastore.AllocateSpace":1,"Datastore.Audit":1,"Datastore.Allocate":1,"Datastore.AllocateTemplate":1},"vms":{"VM.Audit":1,"VM.Config.HWType":1,"VM.Snapshot":1,"VM.Monitor":1,"VM.Snapshot.Rollback":1,"VM.Config.Options":1,"VM.Config.CPU":1,"VM.Config.Memory":1,"VM.Migrate":1,"VM.Console":1,"VM.Config.Network":1,"VM.Allocate":1,"VM.Config.CDROM":1,"VM.Config.Disk":1,"Permissions.Modify":1,"VM.Clone":1,"VM.Backup":1,"VM.PowerMgmt":1},"nodes":{"Sys.Audit":1,"Permissions.Modify":1,"Sys.Modify":1,"Sys.Syslog":1,"Sys.Console":1,"Sys.PowerMgmt":1},"access":{"User.Modify":1,"Permissions.Modify":1,"Group.Allocate":1},"dc":{"Sys.Audit":1}},"username":"root@pam"}}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 recorded_with: VCR 4.0.0

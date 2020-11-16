@@ -8,13 +8,13 @@ http_interactions:
       string: roleid=PVETestAdmin&privs=User.Modify%2CGroup.Allocate
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C01:OFsOGIgg/oUpxoKFfKhd0HF9fW3yGWZ1Nnxs27ynaRg
+      - 5FB28286:bPo6l3vilhDOr4OPF/4GpZ9UXCIR0fosmKP+4LmCaC8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -25,7 +25,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:09 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -35,12 +35,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:09 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/roles
@@ -49,11 +49,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -64,7 +64,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:09 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -74,12 +74,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:09 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"special":0,"privs":"Group.Allocate,User.Modify","roleid":"PVETestAdmin"},{"roleid":"PVEUserAdmin","privs":"Group.Allocate,Realm.AllocateUser,User.Modify","special":1},{"privs":"VM.Audit,VM.Clone","special":1,"roleid":"PVETemplateUser"},{"roleid":"PVEVMUser","special":1,"privs":"VM.Audit,VM.Backup,VM.Config.CDROM,VM.Console,VM.PowerMgmt"},{"roleid":"PVEPoolAdmin","special":1,"privs":"Pool.Allocate"},{"roleid":"PVEVMAdmin","privs":"VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":1},{"special":1,"privs":"Datastore.AllocateSpace,Datastore.Audit","roleid":"PVEDatastoreUser"},{"special":1,"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.AllocateUser,SDN.Allocate,SDN.Audit,Sys.Audit,Sys.Console,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","roleid":"PVEAdmin"},{"roleid":"PVEAuditor","privs":"Datastore.Audit,SDN.Audit,Sys.Audit,VM.Audit","special":1},{"roleid":"PVESDNAdmin","privs":"SDN.Allocate,SDN.Audit","special":1},{"special":1,"privs":"Permissions.Modify,Sys.Audit,Sys.Console,Sys.Syslog","roleid":"PVESysAdmin"},{"roleid":"PVEDatastoreAdmin","special":1,"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit"},{"roleid":"NoAccess","special":1,"privs":""},{"special":1,"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.Allocate,Realm.AllocateUser,SDN.Allocate,SDN.Audit,Sys.Audit,Sys.Console,Sys.Modify,Sys.PowerMgmt,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","roleid":"Administrator"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+      string: '{"data":[{"special":1,"roleid":"PVEAdmin","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.AllocateUser,SDN.Allocate,SDN.Audit,Sys.Audit,Sys.Console,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback"},{"special":1,"privs":"VM.Audit,VM.Clone","roleid":"PVETemplateUser"},{"privs":"VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","roleid":"PVEVMAdmin","special":1},{"special":1,"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit","roleid":"PVEDatastoreAdmin"},{"privs":"Pool.Allocate","roleid":"PVEPoolAdmin","special":1},{"special":1,"roleid":"PVESysAdmin","privs":"Permissions.Modify,Sys.Audit,Sys.Console,Sys.Syslog"},{"privs":"Group.Allocate,User.Modify","roleid":"PVETestAdmin","special":0},{"special":1,"roleid":"PVEVMUser","privs":"VM.Audit,VM.Backup,VM.Config.CDROM,VM.Console,VM.PowerMgmt"},{"special":1,"roleid":"Administrator","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.Allocate,Realm.AllocateUser,SDN.Allocate,SDN.Audit,Sys.Audit,Sys.Console,Sys.Modify,Sys.PowerMgmt,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback"},{"special":1,"privs":"Datastore.Audit,SDN.Audit,Sys.Audit,VM.Audit","roleid":"PVEAuditor"},{"roleid":"PVEDatastoreUser","privs":"Datastore.AllocateSpace,Datastore.Audit","special":1},{"privs":"SDN.Allocate,SDN.Audit","roleid":"PVESDNAdmin","special":1},{"privs":"Group.Allocate,Realm.AllocateUser,User.Modify","roleid":"PVEUserAdmin","special":1},{"special":1,"privs":"","roleid":"NoAccess"}]}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/roles
@@ -88,11 +88,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -103,7 +103,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:09 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -113,12 +113,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:09 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"privs":"Datastore.Audit,SDN.Audit,Sys.Audit,VM.Audit","special":1,"roleid":"PVEAuditor"},{"special":1,"privs":"SDN.Allocate,SDN.Audit","roleid":"PVESDNAdmin"},{"roleid":"PVESysAdmin","privs":"Permissions.Modify,Sys.Audit,Sys.Console,Sys.Syslog","special":1},{"roleid":"PVEDatastoreAdmin","special":1,"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit"},{"privs":"","special":1,"roleid":"NoAccess"},{"roleid":"Administrator","special":1,"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.Allocate,Realm.AllocateUser,SDN.Allocate,SDN.Audit,Sys.Audit,Sys.Console,Sys.Modify,Sys.PowerMgmt,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback"},{"special":1,"privs":"Group.Allocate,Realm.AllocateUser,User.Modify","roleid":"PVEUserAdmin"},{"roleid":"PVETestAdmin","privs":"Group.Allocate,User.Modify","special":0},{"special":1,"privs":"VM.Audit,VM.Clone","roleid":"PVETemplateUser"},{"roleid":"PVEDatastoreUser","privs":"Datastore.AllocateSpace,Datastore.Audit","special":1},{"roleid":"PVEPoolAdmin","privs":"Pool.Allocate","special":1},{"special":1,"privs":"VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","roleid":"PVEVMAdmin"},{"special":1,"privs":"VM.Audit,VM.Backup,VM.Config.CDROM,VM.Console,VM.PowerMgmt","roleid":"PVEVMUser"},{"special":1,"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.AllocateUser,SDN.Allocate,SDN.Audit,Sys.Audit,Sys.Console,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","roleid":"PVEAdmin"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+      string: '{"data":[{"special":1,"privs":"Datastore.Audit,SDN.Audit,Sys.Audit,VM.Audit","roleid":"PVEAuditor"},{"roleid":"Administrator","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.Allocate,Realm.AllocateUser,SDN.Allocate,SDN.Audit,Sys.Audit,Sys.Console,Sys.Modify,Sys.PowerMgmt,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":1},{"roleid":"PVEVMUser","privs":"VM.Audit,VM.Backup,VM.Config.CDROM,VM.Console,VM.PowerMgmt","special":1},{"roleid":"PVETestAdmin","privs":"Group.Allocate,User.Modify","special":0},{"special":1,"roleid":"NoAccess","privs":""},{"special":1,"roleid":"PVEUserAdmin","privs":"Group.Allocate,Realm.AllocateUser,User.Modify"},{"special":1,"roleid":"PVESDNAdmin","privs":"SDN.Allocate,SDN.Audit"},{"special":1,"privs":"Datastore.AllocateSpace,Datastore.Audit","roleid":"PVEDatastoreUser"},{"special":1,"roleid":"PVEDatastoreAdmin","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit"},{"special":1,"roleid":"PVETemplateUser","privs":"VM.Audit,VM.Clone"},{"special":1,"privs":"VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","roleid":"PVEVMAdmin"},{"special":1,"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.AllocateUser,SDN.Allocate,SDN.Audit,Sys.Audit,Sys.Console,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","roleid":"PVEAdmin"},{"privs":"Permissions.Modify,Sys.Audit,Sys.Console,Sys.Syslog","roleid":"PVESysAdmin","special":1},{"special":1,"privs":"Pool.Allocate","roleid":"PVEPoolAdmin"}]}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: post
     uri: https://192.168.56.101:8006/api2/json/access/users
@@ -127,13 +127,13 @@ http_interactions:
       string: userid=bobsinclar%40pve&password=bobsinclar1&firstname=Bob&lastname=Sinclar&email=bobsinclar%40proxmox.com
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C01:OFsOGIgg/oUpxoKFfKhd0HF9fW3yGWZ1Nnxs27ynaRg
+      - 5FB28286:bPo6l3vilhDOr4OPF/4GpZ9UXCIR0fosmKP+4LmCaC8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -144,7 +144,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -154,12 +154,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/users
@@ -168,11 +168,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -183,7 +183,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -193,12 +193,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"enable":1,"userid":"root@pam","expire":0,"email":"proxmox@proxmox.com"},{"enable":1,"lastname":"Sinclar","userid":"bobsinclar@pve","expire":0,"email":"bobsinclar@proxmox.com","firstname":"Bob"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+      string: '{"data":[{"lastname":"Sinclar","firstname":"Bob","userid":"bobsinclar@pve","enable":1,"expire":0,"email":"bobsinclar@proxmox.com"},{"expire":0,"enable":1,"email":"proxmox@proxmox.com","userid":"root@pam"}]}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/users
@@ -207,11 +207,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -222,7 +222,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -232,12 +232,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"email":"proxmox@proxmox.com","expire":0,"enable":1,"userid":"root@pam"},{"userid":"bobsinclar@pve","lastname":"Sinclar","enable":1,"firstname":"Bob","email":"bobsinclar@proxmox.com","expire":0}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+      string: '{"data":[{"enable":1,"expire":0,"userid":"root@pam","email":"proxmox@proxmox.com"},{"lastname":"Sinclar","userid":"bobsinclar@pve","firstname":"Bob","enable":1,"expire":0,"email":"bobsinclar@proxmox.com"}]}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: put
     uri: https://192.168.56.101:8006/api2/json/access/acl
@@ -246,13 +246,13 @@ http_interactions:
       string: path=%2Faccess&roles=PVETestAdmin&users=bobsinclar%40pve
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C01:OFsOGIgg/oUpxoKFfKhd0HF9fW3yGWZ1Nnxs27ynaRg
+      - 5FB28286:bPo6l3vilhDOr4OPF/4GpZ9UXCIR0fosmKP+4LmCaC8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -263,7 +263,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -273,12 +273,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/acl
@@ -287,11 +287,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -302,7 +302,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -312,12 +312,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"roleid":"PVETestAdmin","ugid":"bobsinclar@pve","path":"/access","propagate":1,"type":"user"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+      string: '{"data":[{"propagate":1,"ugid":"bobsinclar@pve","type":"user","roleid":"PVETestAdmin","path":"/access"}]}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: put
     uri: https://192.168.56.101:8006/api2/json/access/acl
@@ -326,13 +326,13 @@ http_interactions:
       string: path=%2Faccess&roles=PVETestAdmin&users=bobsinclar%40pve&delete=1
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C01:OFsOGIgg/oUpxoKFfKhd0HF9fW3yGWZ1Nnxs27ynaRg
+      - 5FB28286:bPo6l3vilhDOr4OPF/4GpZ9UXCIR0fosmKP+4LmCaC8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -343,7 +343,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -353,12 +353,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/acl
@@ -367,11 +367,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -382,7 +382,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -392,12 +392,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":[]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/users
@@ -406,11 +406,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -421,7 +421,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -431,12 +431,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"expire":0,"email":"proxmox@proxmox.com","enable":1,"userid":"root@pam"},{"userid":"bobsinclar@pve","lastname":"Sinclar","enable":1,"firstname":"Bob","email":"bobsinclar@proxmox.com","expire":0}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+      string: '{"data":[{"expire":0,"enable":1,"email":"proxmox@proxmox.com","userid":"root@pam"},{"email":"bobsinclar@proxmox.com","expire":0,"enable":1,"userid":"bobsinclar@pve","firstname":"Bob","lastname":"Sinclar"}]}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: delete
     uri: https://192.168.56.101:8006/api2/json/access/users/bobsinclar@pve
@@ -445,13 +445,13 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C01:OFsOGIgg/oUpxoKFfKhd0HF9fW3yGWZ1Nnxs27ynaRg
+      - 5FB28286:bPo6l3vilhDOr4OPF/4GpZ9UXCIR0fosmKP+4LmCaC8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -462,7 +462,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -472,12 +472,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: post
     uri: https://192.168.56.101:8006/api2/json/access/groups
@@ -486,13 +486,13 @@ http_interactions:
       string: groupid=group1&comment=Group+1
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C01:OFsOGIgg/oUpxoKFfKhd0HF9fW3yGWZ1Nnxs27ynaRg
+      - 5FB28286:bPo6l3vilhDOr4OPF/4GpZ9UXCIR0fosmKP+4LmCaC8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -503,7 +503,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -513,12 +513,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/groups
@@ -527,11 +527,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -542,22 +542,22 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
       - pve-api-daemon/3.0
       Content-Length:
-      - '51'
+      - '62'
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"comment":"Group 1","groupid":"group1"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+      string: '{"data":[{"comment":"Group 1","groupid":"group1","users":""}]}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: put
     uri: https://192.168.56.101:8006/api2/json/access/acl
@@ -566,13 +566,13 @@ http_interactions:
       string: path=%2Faccess&roles=PVETestAdmin&groups=group1
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C01:OFsOGIgg/oUpxoKFfKhd0HF9fW3yGWZ1Nnxs27ynaRg
+      - 5FB28286:bPo6l3vilhDOr4OPF/4GpZ9UXCIR0fosmKP+4LmCaC8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -583,7 +583,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -593,12 +593,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/acl
@@ -607,11 +607,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -622,7 +622,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -632,12 +632,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"ugid":"group1","roleid":"PVETestAdmin","propagate":1,"type":"group","path":"/access"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+      string: '{"data":[{"path":"/access","roleid":"PVETestAdmin","type":"group","propagate":1,"ugid":"group1"}]}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: put
     uri: https://192.168.56.101:8006/api2/json/access/acl
@@ -646,13 +646,13 @@ http_interactions:
       string: path=%2Faccess&roles=PVETestAdmin&groups=group1&delete=1
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C01:OFsOGIgg/oUpxoKFfKhd0HF9fW3yGWZ1Nnxs27ynaRg
+      - 5FB28286:bPo6l3vilhDOr4OPF/4GpZ9UXCIR0fosmKP+4LmCaC8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -663,7 +663,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -673,12 +673,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/access/acl
@@ -687,11 +687,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -702,7 +702,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -712,12 +712,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":[]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: delete
     uri: https://192.168.56.101:8006/api2/json/access/groups/group1
@@ -726,13 +726,13 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C01:OFsOGIgg/oUpxoKFfKhd0HF9fW3yGWZ1Nnxs27ynaRg
+      - 5FB28286:bPo6l3vilhDOr4OPF/4GpZ9UXCIR0fosmKP+4LmCaC8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -743,7 +743,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -753,12 +753,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 - request:
     method: delete
     uri: https://192.168.56.101:8006/api2/json/access/roles/PVETestAdmin
@@ -767,13 +767,13 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C01:OFsOGIgg/oUpxoKFfKhd0HF9fW3yGWZ1Nnxs27ynaRg
+      - 5FB28286:bPo6l3vilhDOr4OPF/4GpZ9UXCIR0fosmKP+4LmCaC8
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C01::Cw1+S5XHAdgAIFdo0Zy8mtle4ZkVxRqzBrU+jghGV//rMCNiSYtvr+7G2UFLgMncq5CnMTt4qnAar/Fck0JRDMIeGcWBchEkEVtogCw5l6FpMp3o+Bs5vxDrpYAS22f331Xudy2WgiRxkelW1l3+aKpoazoYR6HypJ7VSjC/NKAU81JUEV1aF/Wq4Qa68VDTKsLPNjlrmf2hge0l/RCw5wNgPWRyZnct4+f+YG4lTM50/HD/36RZWw/sEhJN2gdkDWR4TytHNsMmKw1bsnBhoNWmDYfXIwMnbEuy12h8TZbfnyNiyejywewNtFYgPaDuY6NIM6dQM8Pp32HPELkgbw==
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
   response:
     status:
       code: 200
@@ -784,7 +784,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
       Pragma:
       - no-cache
       Server:
@@ -794,10 +794,49 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:42 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/access/roles
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.2.3
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Mon, 16 Nov 2020 13:45:42 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '2198'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 16 Nov 2020 13:45:42 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"special":1,"privs":"Permissions.Modify,Sys.Audit,Sys.Console,Sys.Syslog","roleid":"PVESysAdmin"},{"special":1,"privs":"Pool.Allocate","roleid":"PVEPoolAdmin"},{"privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit","roleid":"PVEDatastoreAdmin","special":1},{"roleid":"PVETemplateUser","privs":"VM.Audit,VM.Clone","special":1},{"special":1,"privs":"VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","roleid":"PVEVMAdmin"},{"roleid":"PVEAdmin","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.AllocateUser,SDN.Allocate,SDN.Audit,Sys.Audit,Sys.Console,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":1},{"roleid":"NoAccess","privs":"","special":1},{"special":1,"privs":"Group.Allocate,Realm.AllocateUser,User.Modify","roleid":"PVEUserAdmin"},{"privs":"Datastore.AllocateSpace,Datastore.Audit","roleid":"PVEDatastoreUser","special":1},{"special":1,"roleid":"PVESDNAdmin","privs":"SDN.Allocate,SDN.Audit"},{"special":1,"privs":"Datastore.Audit,SDN.Audit,Sys.Audit,VM.Audit","roleid":"PVEAuditor"},{"roleid":"Administrator","privs":"Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Permissions.Modify,Pool.Allocate,Realm.Allocate,Realm.AllocateUser,SDN.Allocate,SDN.Audit,Sys.Audit,Sys.Console,Sys.Modify,Sys.PowerMgmt,Sys.Syslog,User.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Console,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback","special":1},{"special":1,"roleid":"PVEVMUser","privs":"VM.Audit,VM.Backup,VM.Config.CDROM,VM.Console,VM.PowerMgmt"}]}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
 recorded_with: VCR 4.0.0

@@ -326,4 +326,49 @@ describe Fog::Proxmox::Identity do
       _(pool).must_be_nil
     end
   end
+
+    it 'CRUD user tokens' do
+      VCR.use_cassette('tokens') do
+        # Get user
+        bob_hash = {
+          userid: 'bobsinclar@pve',
+          password: 'bobsinclar1',
+          firstname: 'Bob',
+          lastname: 'Sinclar',
+          email: 'bobsinclar@proxmox.com'
+        }
+        token_hash = {
+          userid: bob_hash[:userid],
+          tokenid: 'bobsinclar1'
+        }
+        @service.users.create(bob_hash)
+        bob = @service.users.get token_hash[:userid]
+        _(bob).wont_be_nil
+        # Create Token
+        token = bob.tokens.create(token_hash)
+        token_info = token.info
+        _(token_info).wont_be_nil
+        # all user tokens
+        tokens_all = bob.tokens.all
+        _(tokens_all).wont_be_nil
+        _(tokens_all).wont_be_empty
+        _(tokens_all).must_include token
+        # Find token info by tokenid
+        token_get = bob.tokens.get(token_hash[:tokenid])
+        _(token_get).wont_be_nil
+        _(token_get).must_equal token
+        # Update
+        token.comment = 'test'
+        token.expire  = 0
+        token.privsep  = 0
+        token.update
+        # Delete
+        token.destroy
+        token = bob.tokens.get token_hash[:tokenid]
+        _(token).must_be_nil
+        bob.destroy
+        bob= @service.users.get bob_hash[:userid]
+        _(bob).must_be_nil
+      end
+    end
 end

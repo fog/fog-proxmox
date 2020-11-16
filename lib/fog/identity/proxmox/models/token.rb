@@ -17,61 +17,54 @@
 
 # frozen_string_literal: true
 
-require 'fog/proxmox/attributes'
+require 'fog/identity/proxmox/models/token_info'
 
 module Fog
   module Proxmox
     class Identity
-      # class User model
-      class User < Fog::Model
-        identity :userid
-        attribute :firstname
-        attribute :lastname
-        attribute :password
-        attribute :email
-        attribute :expire
+      # class Token model
+      class Token < Fog::Model
+        identity  :tokenid
+        identity  :userid
+        attribute :privsep
         attribute :comment
-        attribute :enable
-        attribute :groups
-        attribute :keys
-        attribute :tokens
+        attribute :expire
+        attribute :info
 
         def initialize(new_attributes = {})
           prepare_service_value(new_attributes)
+          Fog::Proxmox::Attributes.set_attr_and_sym('tokenid', attributes, new_attributes)
           Fog::Proxmox::Attributes.set_attr_and_sym('userid', attributes, new_attributes)
-          requires :userid
-          initialize_tokens
+          requires :userid, :tokenid
+          initialize_info
           super(new_attributes)
         end
 
+
         def save(options = {})
-          service.create_user((attributes.reject { |attribute| [:tokens].include? attribute }).merge(options))
+          requires :tokenid, :userid
+          token_hash = (attributes.reject { |attribute| [:userid, :tokenid, :info].include? attribute }).merge(options)
+          service.create_token(userid, tokenid, token_hash)
           reload
         end
 
         def destroy
-          requires :userid
-          service.delete_user(userid)
+          requires :tokenid, :userid
+          service.delete_token(userid, tokenid)
           true
         end
 
         def update
-          requires :userid
-          service.update_user(userid, attributes.reject { |attribute| [:userid, :tokens].include? attribute })
+          requires :tokenid, :userid
+          service.update_token(userid, tokenid, attributes.reject { |attribute| [:userid, :tokenid, :info].include? attribute })
           reload
-        end
-
-        def change_password
-          requires :userid, :password
-          service.change_password(userid, password)
         end
 
         private
 
-        def initialize_tokens
-          attributes[:tokens] = Fog::Proxmox::Identity::Tokens.new(service: service, userid: userid)
+        def initialize_info
+          attributes[:info] = Fog::Proxmox::Identity::TokenInfo.new(service: service, tokenid: tokenid, userid: userid)
         end
-
       end
     end
   end

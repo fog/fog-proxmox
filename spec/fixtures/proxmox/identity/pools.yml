@@ -1,201 +1,6 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/pools/
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.2.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E9584D9::mNuHsBjAWMz1owXPdLcxH74cUrdqdX0UwXB7Od8ewPQ3gavgwfrY8zzCY1Arp/g3EBi80oAfSR1CnbGVIj8X9OqdROfTS0hl4ZY98RD1m1yPFE3qgAzA2T8+4t7bWf5RJQ+KyU9NQbowcPKSbfZD7HyPQjQXpUkjh61qBiOkNzgvKHaidKvkLAdQaal10xPZDuQ2rNR/MGTIQoxC0NgRIHsUnjuH8wmtv3au46BPSCvlig8a7Au2YYz5+N5QzWxlMOFOehvRUO6sg5Ks1d/0VcSe1ZERXh1dFs/SF8jj6SLI9zVBjtu1V5ogzzXGpxtfpnEEM2seb06nFsKFcyq74A==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive
-      Date:
-      - Tue, 14 Apr 2020 09:39:38 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '29'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 14 Apr 2020 09:39:38 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[{"poolid":"pool1"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 09:39:39 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/pools/
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.2.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E9584D9::mNuHsBjAWMz1owXPdLcxH74cUrdqdX0UwXB7Od8ewPQ3gavgwfrY8zzCY1Arp/g3EBi80oAfSR1CnbGVIj8X9OqdROfTS0hl4ZY98RD1m1yPFE3qgAzA2T8+4t7bWf5RJQ+KyU9NQbowcPKSbfZD7HyPQjQXpUkjh61qBiOkNzgvKHaidKvkLAdQaal10xPZDuQ2rNR/MGTIQoxC0NgRIHsUnjuH8wmtv3au46BPSCvlig8a7Au2YYz5+N5QzWxlMOFOehvRUO6sg5Ks1d/0VcSe1ZERXh1dFs/SF8jj6SLI9zVBjtu1V5ogzzXGpxtfpnEEM2seb06nFsKFcyq74A==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive
-      Date:
-      - Tue, 14 Apr 2020 09:39:38 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '29'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 14 Apr 2020 09:39:38 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[{"poolid":"pool1"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 09:39:39 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/pools/
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.2.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E9584D9::mNuHsBjAWMz1owXPdLcxH74cUrdqdX0UwXB7Od8ewPQ3gavgwfrY8zzCY1Arp/g3EBi80oAfSR1CnbGVIj8X9OqdROfTS0hl4ZY98RD1m1yPFE3qgAzA2T8+4t7bWf5RJQ+KyU9NQbowcPKSbfZD7HyPQjQXpUkjh61qBiOkNzgvKHaidKvkLAdQaal10xPZDuQ2rNR/MGTIQoxC0NgRIHsUnjuH8wmtv3au46BPSCvlig8a7Au2YYz5+N5QzWxlMOFOehvRUO6sg5Ks1d/0VcSe1ZERXh1dFs/SF8jj6SLI9zVBjtu1V5ogzzXGpxtfpnEEM2seb06nFsKFcyq74A==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive
-      Date:
-      - Tue, 14 Apr 2020 09:39:38 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '48'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 14 Apr 2020 09:39:38 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[{"comment":"Pool 1","poolid":"pool1"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 09:39:39 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/pools/
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.2.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E9584D9::mNuHsBjAWMz1owXPdLcxH74cUrdqdX0UwXB7Od8ewPQ3gavgwfrY8zzCY1Arp/g3EBi80oAfSR1CnbGVIj8X9OqdROfTS0hl4ZY98RD1m1yPFE3qgAzA2T8+4t7bWf5RJQ+KyU9NQbowcPKSbfZD7HyPQjQXpUkjh61qBiOkNzgvKHaidKvkLAdQaal10xPZDuQ2rNR/MGTIQoxC0NgRIHsUnjuH8wmtv3au46BPSCvlig8a7Au2YYz5+N5QzWxlMOFOehvRUO6sg5Ks1d/0VcSe1ZERXh1dFs/SF8jj6SLI9zVBjtu1V5ogzzXGpxtfpnEEM2seb06nFsKFcyq74A==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive
-      Date:
-      - Tue, 14 Apr 2020 09:39:38 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '48'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 14 Apr 2020 09:39:38 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[{"comment":"Pool 1","poolid":"pool1"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 09:39:39 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/pools/
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.2.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E9584D9::mNuHsBjAWMz1owXPdLcxH74cUrdqdX0UwXB7Od8ewPQ3gavgwfrY8zzCY1Arp/g3EBi80oAfSR1CnbGVIj8X9OqdROfTS0hl4ZY98RD1m1yPFE3qgAzA2T8+4t7bWf5RJQ+KyU9NQbowcPKSbfZD7HyPQjQXpUkjh61qBiOkNzgvKHaidKvkLAdQaal10xPZDuQ2rNR/MGTIQoxC0NgRIHsUnjuH8wmtv3au46BPSCvlig8a7Au2YYz5+N5QzWxlMOFOehvRUO6sg5Ks1d/0VcSe1ZERXh1dFs/SF8jj6SLI9zVBjtu1V5ogzzXGpxtfpnEEM2seb06nFsKFcyq74A==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive
-      Date:
-      - Tue, 14 Apr 2020 09:39:38 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '48'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 14 Apr 2020 09:39:38 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[{"comment":"Pool 1","poolid":"pool1"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 09:39:39 GMT
-- request:
     method: post
     uri: https://192.168.56.101:8006/api2/json/pools
     body:
@@ -203,13 +8,13 @@ http_interactions:
       string: poolid=pool1
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C02:05lSVaXYIzVPqXegZU1vX/+RjsXaab3qWDQdgc2BHWI
+      - 5FB28287:BRiDEH9+d3TuluVggjLOpKH3F7WsDkE+dHr2vuwRT5c
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -220,7 +25,7 @@ http_interactions:
       Connection:
       - close, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -230,12 +35,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools
@@ -244,11 +49,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -259,7 +64,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -269,12 +74,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":[{"poolid":"pool1"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:11 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools/pool1
@@ -283,11 +88,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -298,7 +103,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -308,12 +113,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":{"members":[]}}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools
@@ -322,11 +127,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -337,7 +142,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -347,12 +152,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":[{"poolid":"pool1"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools/pool1
@@ -361,11 +166,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -376,7 +181,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -386,12 +191,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:10 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":{"members":[]}}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: post
     uri: https://192.168.56.101:8006/api2/json/pools
@@ -400,25 +205,25 @@ http_interactions:
       string: poolid=pool1
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C02:05lSVaXYIzVPqXegZU1vX/+RjsXaab3qWDQdgc2BHWI
+      - 5FB28287:BRiDEH9+d3TuluVggjLOpKH3F7WsDkE+dHr2vuwRT5c
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 500
-      message: 'create pool failed: error with cfs lock ''file-user_cfg'': pool ''pool1''
-        already exists'
+      message: 'create pool failed: error during cfs-locked ''file-user_cfg'' operation:
+        pool ''pool1'' already exists'
     headers:
       Cache-Control:
       - max-age=0
       Connection:
       - close
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -428,12 +233,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: put
     uri: https://192.168.56.101:8006/api2/json/pools/pool1
@@ -442,13 +247,13 @@ http_interactions:
       string: comment=Pool+1
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C02:05lSVaXYIzVPqXegZU1vX/+RjsXaab3qWDQdgc2BHWI
+      - 5FB28287:BRiDEH9+d3TuluVggjLOpKH3F7WsDkE+dHr2vuwRT5c
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -459,7 +264,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -469,12 +274,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools
@@ -483,11 +288,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -498,7 +303,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -508,12 +313,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"poolid":"pool1","comment":"Pool 1"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+      string: '{"data":[{"comment":"Pool 1","poolid":"pool1"}]}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools/pool1
@@ -522,11 +327,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -537,7 +342,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -547,12 +352,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":{"comment":"Pool 1","members":[]}}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: put
     uri: https://192.168.56.101:8006/api2/json/pools/pool1
@@ -561,13 +366,13 @@ http_interactions:
       string: comment=Pool+1&vms=100
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C02:05lSVaXYIzVPqXegZU1vX/+RjsXaab3qWDQdgc2BHWI
+      - 5FB28287:BRiDEH9+d3TuluVggjLOpKH3F7WsDkE+dHr2vuwRT5c
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -578,7 +383,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -588,12 +393,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools
@@ -602,11 +407,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -617,7 +422,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -627,12 +432,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"comment":"Pool 1","poolid":"pool1"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+      string: '{"data":[{"poolid":"pool1","comment":"Pool 1"}]}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools/pool1
@@ -641,11 +446,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -656,7 +461,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -666,12 +471,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"comment":"Pool 1","members":[]}}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+      string: '{"data":{"members":[],"comment":"Pool 1"}}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: put
     uri: https://192.168.56.101:8006/api2/json/pools/pool1
@@ -680,13 +485,13 @@ http_interactions:
       string: comment=Pool+1&storage=local-lvm
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C02:05lSVaXYIzVPqXegZU1vX/+RjsXaab3qWDQdgc2BHWI
+      - 5FB28287:BRiDEH9+d3TuluVggjLOpKH3F7WsDkE+dHr2vuwRT5c
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -697,7 +502,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -707,12 +512,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools
@@ -721,11 +526,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -736,7 +541,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -746,90 +551,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[{"comment":"Pool 1","poolid":"pool1"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.2.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive
-      Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '186'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":{"comment":"Pool 1","members":[{"maxdisk":6438256640,"type":"storage","shared":0,"node":"pve","storage":"local-lvm","id":"storage/pve/local-lvm","disk":0,"status":"available"}]}}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
-- request:
-    method: get
-    uri: https://192.168.56.101:8006/api2/json/pools
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/2.2.0
-      Accept:
-      - application/json
-      Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0
-      Connection:
-      - Keep-Alive
-      Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - pve-api-daemon/3.0
-      Content-Length:
-      - '48'
-      Content-Type:
-      - application/json;charset=UTF-8
-      Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":[{"poolid":"pool1","comment":"Pool 1"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools/pool1
@@ -838,11 +565,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -853,7 +580,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -863,13 +590,90 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"members":[{"disk":0,"status":"available","storage":"local-lvm","id":"storage/pve/local-lvm","shared":0,"node":"pve","maxdisk":6438256640,"type":"storage"}],"comment":"Pool
-        1"}}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+      string: '{"data":{"comment":"Pool 1","members":[{"disk":0,"maxdisk":4290772992,"status":"available","node":"pve","shared":0,"id":"storage/pve/local-lvm","storage":"local-lvm","type":"storage"}]}}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/pools
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.2.3
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Mon, 16 Nov 2020 13:45:43 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '48'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 16 Nov 2020 13:45:43 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"poolid":"pool1","comment":"Pool 1"}]}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.2.3
+      Accept:
+      - application/json
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Mon, 16 Nov 2020 13:45:43 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '186'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Mon, 16 Nov 2020 13:45:43 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"comment":"Pool 1","members":[{"storage":"local-lvm","type":"storage","id":"storage/pve/local-lvm","shared":0,"node":"pve","status":"available","maxdisk":4290772992,"disk":0}]}}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: put
     uri: https://192.168.56.101:8006/api2/json/pools/pool1
@@ -878,13 +682,13 @@ http_interactions:
       string: comment=Pool+1&vms=100&delete=1
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C02:05lSVaXYIzVPqXegZU1vX/+RjsXaab3qWDQdgc2BHWI
+      - 5FB28287:BRiDEH9+d3TuluVggjLOpKH3F7WsDkE+dHr2vuwRT5c
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -895,7 +699,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -905,12 +709,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools
@@ -919,11 +723,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -934,7 +738,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -944,12 +748,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"poolid":"pool1","comment":"Pool 1"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+      string: '{"data":[{"comment":"Pool 1","poolid":"pool1"}]}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools/pool1
@@ -958,11 +762,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -973,7 +777,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -983,12 +787,13 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"comment":"Pool 1","members":[{"node":"pve","shared":0,"maxdisk":6438256640,"type":"storage","disk":0,"status":"available","storage":"local-lvm","id":"storage/pve/local-lvm"}]}}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+      string: '{"data":{"members":[{"disk":0,"maxdisk":4290772992,"status":"available","node":"pve","shared":0,"id":"storage/pve/local-lvm","storage":"local-lvm","type":"storage"}],"comment":"Pool
+        1"}}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: put
     uri: https://192.168.56.101:8006/api2/json/pools/pool1
@@ -997,13 +802,13 @@ http_interactions:
       string: comment=Pool+1&storage=local-lvm&delete=1
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C02:05lSVaXYIzVPqXegZU1vX/+RjsXaab3qWDQdgc2BHWI
+      - 5FB28287:BRiDEH9+d3TuluVggjLOpKH3F7WsDkE+dHr2vuwRT5c
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -1014,7 +819,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -1024,12 +829,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools
@@ -1038,11 +843,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -1053,7 +858,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -1063,12 +868,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"poolid":"pool1","comment":"Pool 1"}]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+      string: '{"data":[{"comment":"Pool 1","poolid":"pool1"}]}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools/pool1
@@ -1077,11 +882,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -1092,7 +897,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -1102,12 +907,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"comment":"Pool 1","members":[]}}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+      string: '{"data":{"members":[],"comment":"Pool 1"}}'
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: delete
     uri: https://192.168.56.101:8006/api2/json/pools/pool1
@@ -1116,13 +921,13 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Csrfpreventiontoken:
-      - 5E958C02:05lSVaXYIzVPqXegZU1vX/+RjsXaab3qWDQdgc2BHWI
+      - 5FB28287:BRiDEH9+d3TuluVggjLOpKH3F7WsDkE+dHr2vuwRT5c
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -1133,7 +938,7 @@ http_interactions:
       Connection:
       - Keep-Alive, Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -1143,12 +948,12 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":null}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 - request:
     method: get
     uri: https://192.168.56.101:8006/api2/json/pools
@@ -1157,11 +962,11 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/2.2.0
+      - fog-core/2.2.3
       Accept:
       - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5E958C02::w6Bdz4VmUFAIBsKvrJAg5mW3z0AZcgMQQVVcpLgVBEgm4DcCkpbjdUMmoN7947EKK+mYVXyJATgz8aUcQqB6jCYLUfH9ZedE1QzVIVnydmFizM+41cd5DZqFmnell9/m5LybDFuCP6zXCQlr8hEO/jxqmvEuZc6/DKEdAHcda8LONGCZX1sXJRS9qaCXb1qNGldUzTuiO1dhS8lPRmGi36RYjthKF6SIssAKd9KNB8zcmEIyUWYkIlrkDRqIqKJXGE7iZl1iJDSzUjxfbESjy+D4qKBNpVtvTw++RxnqCCnUM/TOTpda+hJRACU2/m2kLS08T+JzUMTCxmE1B4vkzg==
+      - PVEAuthCookie=PVE:root@pam:5FB28287::VPbP/icjWpHvjlbjBEyN9TfCEXOvgBI6r4vc1vEyQ1Tn/IAxdlFmVABU4iLKzMUKEMxv4zqrp6PlUV5XGlv+cJcfhONUMuWXPa9nGPQRLZ+gIYoXWoFuzMHdWW1T3dceWOBhTDbbDBPWaonYwfeNFd2HynQvS/9X9WIvCl28A4SjXzNrnkHJLNY/h8+hHDyRdo+fvKVJDH4yfDlfaP6QmeDc4pf/R6h9LFpUuIJ6MB7xC9DHRR1USuqMmgyhMt2iAMB/NBwSv/EUh8ldrQr6qWJsxF1ZCvUpt69qHTMLNebnqCRTmQCoQDhTy9Xtmqkby9sN3ykJTc4ktVvu996cFQ==
   response:
     status:
       code: 200
@@ -1172,7 +977,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
       Pragma:
       - no-cache
       Server:
@@ -1182,10 +987,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Tue, 14 Apr 2020 10:10:11 GMT
+      - Mon, 16 Nov 2020 13:45:43 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":[]}'
-    http_version: 
-  recorded_at: Tue, 14 Apr 2020 10:10:12 GMT
+    http_version:
+  recorded_at: Mon, 16 Nov 2020 13:45:45 GMT
 recorded_with: VCR 4.0.0

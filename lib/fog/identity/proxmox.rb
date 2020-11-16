@@ -32,6 +32,8 @@ module Fog
       model :principal
       model :user
       collection :users
+      model :token
+      collection :tokens
       model :group
       collection :groups
       model :pool
@@ -59,6 +61,13 @@ module Fog
       request :update_user
       request :delete_user
       request :change_password
+
+      # Manage user tokens
+      request :list_tokens
+      request :get_token_info
+      request :create_token
+      request :update_token
+      request :delete_token
 
       # CRUD groups
       request :list_groups
