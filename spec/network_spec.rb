@@ -27,11 +27,11 @@ describe Fog::Proxmox::Network do
       service_class: Fog::Proxmox::Network
     )
     @service = @proxmox_vcr.service
-    @pve_url = @proxmox_vcr.url
+    @proxmox_url = @proxmox_vcr.url
     @username = @proxmox_vcr.username
     @password = @proxmox_vcr.password
-    @ticket = @proxmox_vcr.ticket
-    @csrftoken = @proxmox_vcr.csrftoken
+    @tokenid = @proxmox_vcr.tokenid
+    @token = @proxmox_vcr.token
   end
 
   it 'CRUD networks' do

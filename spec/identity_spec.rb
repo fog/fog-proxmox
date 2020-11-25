@@ -23,18 +23,64 @@ require_relative './proxmox_vcr'
 describe Fog::Proxmox::Identity do
   
   before :all do
-    Excon.defaults[:ssl_ca_file] = 'spec/fixtures/proxmox/pve.home'
     @proxmox_vcr = ProxmoxVCR.new(
       vcr_directory: 'spec/fixtures/proxmox/identity',
       service_class: Fog::Proxmox::Identity
     )
     @service = @proxmox_vcr.service
-    @pve_url = @proxmox_vcr.url
+    @proxmox_url = @proxmox_vcr.url
     @username = @proxmox_vcr.username
     @password = @proxmox_vcr.password
+    @tokenid = @proxmox_vcr.tokenid
+    @token = @proxmox_vcr.token
   end
 
-  it 'checks ticket with path and privs' do
+  it 'authenticates with access ticket' do
+    VCR.use_cassette('auth_access_ticket') do
+      Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME, proxmox_username: @username, proxmox_password: @password)
+      _(proc do
+        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME, proxmox_username: @username, proxmox_password: 'wrong_password')
+      end).must_raise Excon::Errors::Unauthorized  
+      _(proc do
+        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_username: @username, proxmox_password: @password)
+      end).must_raise ArgumentError  
+      _(proc do
+        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME, proxmox_password: @password)
+      end).must_raise Fog::Proxmox::Auth::Token::AccessTicket::URIError 
+      _(proc do
+        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME, proxmox_username: @username)
+      end).must_raise Fog::Proxmox::Auth::Token::AccessTicket::URIError 
+      _(proc do
+        Fog::Proxmox::Identity.new(proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME, proxmox_username: @username, proxmox_password: 'wrong_password')
+      end).must_raise ArgumentError
+    end
+  end
+
+  it 'authenticates with user token' do
+    VCR.use_cassette('auth_user_token') do
+        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_userid: @username, proxmox_tokenid: @tokenid, proxmox_token: @token)
+        _(proc do
+            Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_userid: @username, proxmox_tokenid: @tokenid, proxmox_token: 'wrong_token')
+        end).must_raise Excon::Errors::Unauthorized
+        _(proc do
+          Fog::Proxmox::Identity.new(proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_userid: @username, proxmox_tokenid: @tokenid, proxmox_token: 'wrong_token')
+        end).must_raise ArgumentError
+        _(proc do
+          Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_userid: @username, proxmox_tokenid: @tokenid, proxmox_token: 'wrong_token')
+        end).must_raise ArgumentError
+        _(proc do
+          Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_userid: @username, proxmox_token: @token)
+        end).must_raise Fog::Proxmox::Auth::Token::UserToken::URIError       
+        _(proc do
+          Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_tokenid: @tokenid, proxmox_token: @token)
+        end).must_raise Fog::Proxmox::Auth::Token::UserToken::URIError   
+        _(proc do
+          Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_userid: @username, proxmox_tokenid: @tokenid)
+        end).must_raise Fog::Proxmox::Auth::Token::UserToken::URIError 
+    end
+  end
+
+  it 'checks access ticket with path and privs' do
     VCR.use_cassette('auth') do
       principal = { username: @username, password: @password, privs: ['User.Modify'], path: 'access', otp: 'proxmox01' }
       permissions = @service.check_permissions(principal)
@@ -42,26 +88,6 @@ describe Fog::Proxmox::Identity do
       _(permissions).wont_be_empty
       _(permissions['username']).must_equal @username
       _(permissions['cap']).wont_be_empty
-    end
-  end
-
-  it 'renew expired ticket' do
-    VCR.use_cassette('renew') do
-      @connection_options = {}
-      # ignore enterprise proxy
-      @connection_options[:disable_proxy] = true if ENV['DISABLE_PROXY'] == 'true'
-      # ignore dev certificates on servers
-      @connection_options[:ssl_verify_peer] = false if ENV['SSL_VERIFY_PEER'] == 'false'
-      connection_params = {
-        pve_url: @pve_url,
-        pve_username: @username,
-        pve_password: @password,
-        pve_ticket_lifetime: - (100 * 60 * 60), # ticket has expired from 100 hours
-        connection_options: @connection_options
-      }
-      _(Fog::Proxmox.credentials_has_expired?).must_equal false
-      Fog::Proxmox.authenticate(connection_params)
-      _(Fog::Proxmox.credentials_has_expired?).must_equal true
     end
   end
 
@@ -263,6 +289,10 @@ describe Fog::Proxmox::Identity do
       permissions = @service.permissions.all
       _(permissions).wont_be_empty
       _(permissions).must_include permission
+      # Read user permissions
+      _(bob.permissions).wont_be_empty
+      _(bob.permissions.keys).must_include '/access'
+      _(bob.permissions.keys).must_include '/access/groups'
       # Remove ACL to users
       permissions.destroy(type: 'user', roleid: role.roleid, path: '/access', ugid: bob.userid)
       permission = @service.permissions.get('user', role.roleid, '/access', bob.userid)

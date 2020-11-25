@@ -59,13 +59,19 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 To record your VCR cassettes:
 
 ```shell
-PVE_URL=https://192.168.56.101:8006/api2/json DISABLE_PROXY=true SSL_VERIFY_PEER=false bundle exec rake spec
+PROXMOX_URL=https://192.168.56.101:8006/api2/json DISABLE_PROXY=true SSL_VERIFY_PEER=false bundle exec rake spec
 ```
 
 To replay your recorded tests:
 
 ```shell
 USE_VCR=true bundle exec rake spec
+```
+
+Code formatting:
+
+```shell
+bundle exec bin/rake rubocop  
 ```
 
 ## Contributing

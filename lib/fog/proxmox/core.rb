@@ -25,41 +25,51 @@ module Fog
   module Proxmox
     # Core module
     module Core
-      attr_accessor :pve_ticket
-      attr_reader :pve_csrftoken
-      attr_reader :pve_username
-      attr_reader :deadline
-      attr_reader :principal
+      attr_accessor :token
+      attr_reader :auth_method
+      attr_reader :expires
+      attr_reader :current_user
 
       # fallback
       def self.not_found_class
-        Fog::Proxmox::Compute::NotFound
+        Fog::Proxmox::Core::NotFound
       end
 
-      def initialize_identity(options)
-        @principal = nil
-        @pve_ticket = nil
-        Fog::Proxmox::Variables.to_variables(self, options, 'pve')
-        @pve_uri = URI.parse(@pve_url)
-        missing_credentials = []
-        missing_credentials << :pve_username unless @pve_username
+      def initialize(options = {})
+        setup(options)
+        authenticate
+        @auth_token.missing_credentials(options)
+        @connection = Fog::Core::Connection.new(@proxmox_url, @persistent, @connection_options)
+      end
 
-        unless @pve_ticket
-          missing_credentials << :pve_password unless @pve_password
+      def setup(options)        
+        if options.respond_to?(:config_service?) && options.config_service?
+          configure(options)
+          return
         end
-
-        raise ArgumentError, "Missing required arguments: #{missing_credentials.join(', ')}" unless missing_credentials.empty?
+        Fog::Proxmox::Variables.to_variables(self, options, 'proxmox')
+        @connection_options = options[:connection_options] || {}
+        @connection_options[:disable_proxy] = true if ENV['DISABLE_PROXY'] == 'true'    
+        @connection_options[:ssl_verify_peer] = false if ENV['SSL_VERIFY_PEER'] == 'false'
+        @proxmox_must_reauthenticate = true
+        @persistent = options[:persistent] || false  
+        @token ||= options[:proxmox_token]   
+        @auth_method ||= options[:proxmox_auth_method]   
+        if @token
+          @proxmox_can_reauthenticate = false
+        else
+          @proxmox_can_reauthenticate = true
+        end   
       end
 
       def credentials
         options = {
           provider: 'proxmox',
-          pve_url: @pve_uri.to_s,
-          pve_ticket: @pve_ticket,
-          pve_csrftoken: @pve_csrftoken,
-          pve_username: @pve_username
+          proxmox_auth_method: @auth_method,
+          proxmox_url: @proxmox_uri.to_s,
+          current_user: @current_user
         }
-        pve_options.merge options
+        proxmox_options.merge options
       end
 
       def reload
@@ -71,13 +81,13 @@ module Fog
       def request(params)
         retried = false     
         begin
-          response = @connection.request(params.merge(
-                                           headers: headers(params[:method], params[:headers])
-          ))
+          authenticate! if @expires && (@expires - Time.now.utc).to_i < 60
+          request_options = params.merge(path: "#{@path}/#{params[:path]}", headers: @auth_token.headers(params[:method], params[:headers]))
+          response = @connection.request(request_options)
         rescue Excon::Errors::Unauthorized => error
           # token expiration and token renewal possible
-          if error.response.body != 'Bad username or password' && !retried
-            authenticate
+          if error.response.body != 'Bad username or password' && @proxmox_can_reauthenticate && !retried
+            authenticate!
             retried = true
             retry
           # bad credentials or token renewal not possible
@@ -95,40 +105,29 @@ module Fog
         Fog::Proxmox::Json.get_data(response)
       end
 
-      def headers(method, additional_headers)
-        additional_headers ||= {}
-        headers_hash = { 'Accept' => 'application/json' }
-        # CSRF token is required to PUT, POST and DELETE http requests
-        if %w[PUT POST DELETE].include? method
-          headers_hash.store('CSRFPreventionToken', @pve_csrftoken)
-        end
-        # ticket must be present in cookie
-        headers_hash.store('Cookie', "PVEAuthCookie=#{@pve_ticket}") if @pve_ticket
-        headers_hash.merge additional_headers
-        headers_hash
-      end
-
-      def pve_options
-        Fog::Proxmox::Variables.to_hash(self, 'pve')
+      def proxmox_options
+        Fog::Proxmox::Variables.to_hash(self, 'proxmox')
       end
 
       def authenticate
-        options = pve_options
-        @pve_ticket = options[:pve_ticket]
-        Fog::Proxmox.authenticate(options, @connection_options)
-        @principal = Fog::Proxmox.credentials
-        @pve_username = Fog::Proxmox.credentials[:username]
-        @pve_ticket = Fog::Proxmox.credentials[:ticket]
-        @pve_deadline = Fog::Proxmox.credentials[:deadline]
-        @pve_csrftoken = Fog::Proxmox.credentials[:csrftoken]
-
-        @host       = @pve_uri.host
-        @api_path   = @pve_uri.path
-        @api_path.sub!(%r{/$}, '')
-        @port       = @pve_uri.port
-        @scheme     = @pve_uri.scheme
-
+        if @proxmox_must_reauthenticate
+          @token = nil if @proxmox_must_reauthenticate
+          @auth_token = Fog::Proxmox::Auth::Token.build(proxmox_options, @connection_options)
+          @current_user = proxmox_options[:proxmox_userid] ? proxmox_options[:proxmox_userid] : proxmox_options[:proxmox_username]
+          @token = @auth_token.token
+          @expires = @auth_token.expires
+          @proxmox_must_reauthenticate = false
+        else
+          @token = @proxmox_token
+        end
+        uri = URI.parse(@proxmox_url)
+        @path = uri.path
         true
+      end
+
+      def authenticate!
+        @proxmox_must_reauthenticate = true
+        authenticate
       end
     end
   end

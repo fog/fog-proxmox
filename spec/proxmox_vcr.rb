@@ -20,35 +20,34 @@
 
 # There are basically two modes of operation for these specs.
 #
-# 1. ENV[PVE_URL] exists: talk to an actual Proxmox server and record HTTP
+# 1. ENV[PROXMOX_URL] exists: talk to an actual Proxmox server and record HTTP
 #    traffic in VCRs at "spec/debug" (credentials are read from the conventional
-#    environment variables: PVE_URL, PVE_USERNAME, PVE_PASSWORD)
+#    environment variables: PROXMOX_URL, PROXMOX_USERNAME, PROXMOX_PASSWORD)
 # 2. otherwise (Travis etc.): use VCRs at "spec/fixtures/proxmox/#{service}"
 
 require 'vcr'
+require 'fog/proxmox/auth/token'
 
 class ProxmoxVCR
   attr_reader :username,
               :password,
-              :ticket,
-              :csrftoken,
+              :tokenid,
+              :token,
               :service,
-              :url,
-              :path,
-              :deadline
+              :url
 
   def initialize(options)
     @vcr_directory = options[:vcr_directory]
     @service_class = options[:service_class]
     @connection_options = options[:connection_options] || {}
 
-    use_recorded = !ENV.key?('PVE_URL') || ENV['USE_VCR'] == 'true'
+    use_recorded = !ENV.key?('PROXMOX_URL') || ENV['USE_VCR'] == 'true'
 
     if use_recorded
       Fog.interval = 0
       @url  = 'https://192.168.56.101:8006/api2/json'
     else
-      @url  = ENV['PVE_URL']
+      @url  = ENV['PROXMOX_URL']
     end
 
     VCR.configure do |config|
@@ -65,27 +64,30 @@ class ProxmoxVCR
       config.debug_logger = nil # use $stderr to debug
     end
 
-    # ignore enterprise proxy
-    @connection_options[:disable_proxy] = true if ENV['DISABLE_PROXY'] == 'true'
+    VCR.use_cassette('common_auth') do
+      Fog::Proxmox.clear_token_cache
 
-    # ignore dev certificates on servers
-    @connection_options[:ssl_verify_peer] = false if ENV['SSL_VERIFY_PEER'] == 'false'
-
-    VCR.use_cassette('identity_ticket') do
-      Fog::Proxmox.clear_credentials
-
+      @auth_method = Fog::Proxmox::Auth::Token::AccessTicket::NAME
       @username  = 'root@pam'
       @password  = 'proxmox01'
+      @tokenid  = 'root1'
+      @token  = 'ed6402b4-641d-46b1-b20a-33ba9ba12f54'
 
       unless use_recorded
-        @username = ENV['PVE_USERNAME'] || options[:username] || @username
-        @password = ENV['PVE_PASSWORD'] || options[:password] || @password
+        @auth_method = ENV['PROXMOX_AUTH_METHOD'] || options[:auth_method] || @auth_method
+        @username = ENV['PROXMOX_USERNAME'] || options[:username] || @username
+        @password = ENV['PROXMOX_PASSWORD'] || options[:password] || @password
+        @tokenid = ENV['PROXMOX_TOKENID'] || options[:tokenid] || @tokenid
+        @token = ENV['PROXMOX_TOKEN'] || options[:token] || @token
       end
 
       connection_params = {
-        pve_url: @url,
-        pve_username: @username,
-        pve_password: @password,
+        proxmox_url: @url,
+        proxmox_auth_method: @auth_method,
+        proxmox_username: @username,
+        proxmox_password: @password,
+        proxmox_tokenid: @tokenid,
+        proxmox_token: @token,
         connection_options: @connection_options
       }
 

@@ -9,10 +9,8 @@ http_interactions:
     headers:
       User-Agent:
       - fog-core/2.2.3
-      Accept:
-      - application/json
       Cookie:
-      - PVEAuthCookie=PVE:root@pam:5FB28286::p2+V7pMJOS/bbXYjNxboGWSBmc6Zf/DR75l09BAa3CXFQi8JP/XjyXkNUuUj6HDLxlL9ri95c1gKrEvKvhjEeuXffLGlcckST9e71waa2ew4vBUzM2qXXe0L2WE7llPOdU5MEL4S72sCMrIENfu5kOP/usDXFwS1RNUHbccdgHB6sEtiNW9QLG5SLpSnQRIdJ54PvGfmIXTVwlfPiweifUJmOSn7IHBaXcUYL2rHMHc/6ejwSrlXVWvFWQIQHL5UvKy+lfZx0i54qOW4DsfXx3WKwT2JaKADDhmhCIgLM95px8x2IIhglXb6hd/8nS4tnImhpnr51K6TH362fL0FKw==
+      - PVEAuthCookie=PVE:root@pam:5FBE5C9E::EhfVyMNwMTFijsEKxKntnYvXA0p6/xlCxG0hFU86+DdyenhV9kPrUvThmw7jAySfY0gdVEc1Jit2I8Ud3AEiJgLYMKLfQy2ruKslJXJb+WLct+JkkX9Yc6N4nHvVD0HsTkKPRgw8LSKAfaJRbfJ217GvOXO710IdLauP5QlZLBSatXwOY5AU4YmBN8D5TBAKzFZhzvOl5VwvRqzYlSWpcWVZ0XeNRlC+E9c42ivzQYbhRIZwhH1SlheJPejMzeiy8WsKJXLjbwKgpUUDGTf+RAzufTfss/mbEztqbUMVBQshvD/78my1eDF3x4YN+cuG4hFcCt+/piOMiS/fBCV1xg==
   response:
     status:
       code: 200
@@ -23,7 +21,7 @@ http_interactions:
       Connection:
       - Keep-Alive
       Date:
-      - Mon, 16 Nov 2020 13:45:42 GMT
+      - Wed, 25 Nov 2020 13:31:10 GMT
       Pragma:
       - no-cache
       Server:
@@ -33,10 +31,10 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Expires:
-      - Mon, 16 Nov 2020 13:45:42 GMT
+      - Wed, 25 Nov 2020 13:31:10 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"data":{"release":"6.2","keyboard":"fr","repoid":"9824574a","version":"6.2-4"}}'
     http_version:
-  recorded_at: Mon, 16 Nov 2020 13:45:44 GMT
+  recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 recorded_with: VCR 4.0.0

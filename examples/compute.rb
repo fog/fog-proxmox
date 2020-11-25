@@ -19,22 +19,22 @@
 
 # There are basically two modes of operation for these specs.
 #
-# 1. ENV[PVE_URL] exists: talk to an actual Proxmox server and record HTTP
+# 1. ENV[PROXMOX_URL] exists: talk to an actual Proxmox server and record HTTP
 #    traffic in VCRs at "spec/debug" (credentials are read from the conventional
-#    environment variables: PVE_URL, PVE_USERNAME, PVE_PASSWORD)
+#    environment variables: PROXMOX_URL, PROXMOX_USERNAME, PROXMOX_PASSWORD)
 # 2. otherwise (Travis, etc): use VCRs at "spec/fixtures/proxmox/#{service}"
 
 require 'fog/proxmox'
 
-pve_url = 'https://172.26.49.146:8006/api2/json'
-pve_username = 'root@pam'
-pve_password = 'proxmox01'
+proxmox_url = 'https://172.26.49.146:8006/api2/json'
+proxmox_username = 'root@pam'
+proxmox_password = 'proxmox01'
 
 # Create service compute
 compute = Fog::Proxmox::Compute.new(
-  pve_url: pve_url,
-  pve_username: pve_username,
-  pve_password: pve_password
+  proxmox_url: proxmox_url,
+  proxmox_username: proxmox_username,
+  proxmox_password: proxmox_password
 )
 
 # Create pools
@@ -62,7 +62,7 @@ pool1.destroy
 # Create servers
 
 # Get node owner
-node_name = 'pve'
+node_name = 'proxmox'
 node = compute.nodes.get node_name
 
 # Get next free vmid
@@ -170,7 +170,7 @@ server.config.disks
 server.destroy
 
 # Create containers
-node_name = 'pve'
+node_name = 'proxmox'
 node = compute.nodes.get node_name
 ostemplate = 'local:vztmpl/alpine-3.7-default_20171211_amd64.tar.xz'
 container_hash = {
@@ -267,7 +267,7 @@ container.destroy
 
 # List 1 task
 filters = { limit: 1 }
-node = compute.nodes.get 'pve'
+node = compute.nodes.get 'proxmox'
 tasks = node.tasks.all(filters)
 # Get task
 upid = tasks[0].upid

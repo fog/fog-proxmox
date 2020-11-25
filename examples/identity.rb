@@ -20,22 +20,22 @@
 
 # There are basically two modes of operation for these specs.
 #
-# 1. ENV[PVE_URL] exists: talk to an actual Proxmox server and record HTTP
+# 1. ENV[PROXMOX_URL] exists: talk to an actual Proxmox server and record HTTP
 #    traffic in VCRs at "spec/debug" (credentials are read from the conventional
-#    environment variables: PVE_URL, PVE_USERNAME, PVE_PASSWORD)
+#    environment variables: PROXMOX_URL, PROXMOX_USERNAME, PROXMOX_PASSWORD)
 # 2. otherwise (Travis, etc): use VCRs at "spec/fixtures/proxmox/#{service}"
 
 require 'fog/proxmox'
 
-pve_url = 'https://172.26.49.146:8006/api2/json'
-pve_username = 'root@pam'
-pve_password = 'proxmox01'
+proxmox_url = 'https://172.26.49.146:8006/api2/json'
+proxmox_username = 'root@pam'
+proxmox_password = 'proxmox01'
 
 # Create service identity
 identity = Fog::Proxmox::Identity.new(
-  pve_url: pve_url,
-  pve_username: pve_username,
-  pve_password: pve_password
+  proxmox_url: proxmox_url,
+  proxmox_username: proxmox_username,
+  proxmox_password: proxmox_password
 )
 
 # Get proxmox version
@@ -43,7 +43,7 @@ identity.read_version
 
 # Create a new user
 bob_hash = {
-  userid: 'bobsinclar@pve',
+  userid: 'bobsinclar@proxmox',
   password: 'bobsinclar1',
   firstname: 'Bob',
   lastname: 'Sinclar',
@@ -53,7 +53,7 @@ bob_hash = {
 identity.users.create(bob_hash)
 
 # Get a user by id
-bob = identity.users.get 'bobsinclar@pve'
+bob = identity.users.get 'bobsinclar@proxmox'
 
 # List all users
 identity.users.all
@@ -117,8 +117,8 @@ end
 role1.destroy
 
 # Create a new domain (authentication server)
-# Three types: PAM, PVE, LDAP and ActiveDirectory
-# PAM and PVE already exist by default
+# Three types: PAM, PROXMOX, LDAP and ActiveDirectory
+# PAM and PROXMOX already exist by default
 # LDAP sample:
 ldap_hash = {
   realm: 'LDAP',
@@ -165,14 +165,14 @@ ldap.destroy
 permission_hash = {
   type: 'user'
   path: '/access',
-  roleid: 'PVEUserAdmin',
+  roleid: 'PROXMOXUserAdmin',
   ugid: bob_hash[:userid]
 }
 # Add a group permission
 # permission_hash = {
 #   type: 'group'
 #   path: '/access',
-#   roleid: 'PVEUserAdmin',
+#   roleid: 'PROXMOXUserAdmin',
 #   ugid: 'group1'
 # }
 permission = identity.permissions.create(permission_hash)
