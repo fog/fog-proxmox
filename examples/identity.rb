@@ -31,12 +31,22 @@ proxmox_url = 'https://172.26.49.146:8006/api2/json'
 proxmox_username = 'root@pam'
 proxmox_password = 'proxmox01'
 
-# Create service identity
+# Create service identity with access ticket
 identity = Fog::Proxmox::Identity.new(
   proxmox_url: proxmox_url,
+  proxmox_auth_method: 'access_ticket',
   proxmox_username: proxmox_username,
   proxmox_password: proxmox_password
 )
+
+# or with a user token
+identity = Fog::Proxmox::Identity.new(
+	proxmox_url: proxmox_url, 
+	proxmox_auth_method: 'user_token', 
+	proxmox_userid: proxmox_username, 
+	proxmox_tokenid: 'root1',
+	proxmox_token: 'ed6402b4-641d-46b1-b20a-33ba9ba12f54'
+)      
 
 # Get proxmox version
 identity.read_version
@@ -68,6 +78,9 @@ bob.comment = 'novelist'
 # add groups
 bob.groups = %w[group1]
 bob.update
+
+# List user permissions
+bob.permissions
 
 # Delete user
 bob.destroy

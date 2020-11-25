@@ -18,16 +18,32 @@ require 'fog/proxmox'
 
 ## Create identity service
 
+with access ticket:
+
 ```ruby
 identity = Fog::Proxmox::Identity.new(
-        pve_username: PVE_USERNAME, # your user name
-        pve_password: PVE_PASSWORD, # your password
-        pve_url: PVE_URL, # your server url
-		connection_options: {} # connection options
-)
+	proxmox_url: 'https://localhost:8006/api2/json', 
+	proxmox_auth_method: 'access_ticket', 
+	proxmox_username: 'your_user@your_realm', 
+	proxmox_password: 'his_password',
+	connection_options: { ... }
+)      
 ```
 
-[connection_options](connection_parameters.md) are also available.
+with API user token:
+
+```ruby
+identity = Fog::Proxmox::Identity.new(
+	proxmox_url: 'https://localhost:8006/api2/json', 
+	proxmox_auth_method: 'user_token', 
+	proxmox_userid: 'your_user@your_realm', 
+	proxmox_tokenid: 'his_tokenid',
+	proxmox_token: 'his_token',
+	connection_options: { ... }
+)      
+```
+
+[connection_options](connection_parameters.md) are also available and optional.
 
 ## Fog Abstractions
 
@@ -312,6 +328,15 @@ identity.permissions.remove({
     users: 'bobsinclar@pve'
 })
 ```
+
+User permissions:
+
+
+```ruby
+bob = identity.users.get 'bobsinclar@pve'
+bob.permissions
+```
+
 #### Pools management
 
 Proxmox supports pools management of VMs or storages. It eases managing permissions on these.
