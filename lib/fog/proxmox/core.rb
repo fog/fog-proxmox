@@ -86,7 +86,7 @@ module Fog
           response = @connection.request(request_options)
         rescue Excon::Errors::Unauthorized => error
           # token expiration and token renewal possible
-          if error.response.body != 'Bad username or password' && @proxmox_can_reauthenticate && !retried
+          if !%w[Bad username or password', invalid token value!].include?(error.response.body) && @proxmox_can_reauthenticate && !retried
             authenticate!
             retried = true
             retry
