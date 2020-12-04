@@ -30,6 +30,10 @@ module Fog
       attr_reader :expires
       attr_reader :current_user
 
+      def user_token?
+        @auth_token == 'user_token'
+      end
+
       # fallback
       def self.not_found_class
         Fog::Proxmox::Core::NotFound
@@ -78,11 +82,17 @@ module Fog
 
       private
 
+      def expired?
+        return false if @expires.nil?
+        return false if @expires == 0
+        return @expires - Time.now.utc.to_i < 60
+      end
+
       def request(params)
         retried = false     
         begin
-          authenticate! if @expires && (@expires - Time.now.utc).to_i < 60
-          request_options = params.merge(path: "#{@path}/#{params[:path]}", headers: @auth_token.headers(params[:method], params[:headers]))
+          authenticate! if expired?
+          request_options = params.merge(path: "#{@path}/#{params[:path]}", headers: @auth_token.headers(params[:method], params.respond_to?(:headers) ? params[:headers] : {}, {}))
           response = @connection.request(request_options)
         rescue Excon::Errors::Unauthorized => error
           # token expiration and token renewal possible

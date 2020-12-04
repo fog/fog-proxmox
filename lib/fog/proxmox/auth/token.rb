@@ -38,8 +38,11 @@ module Fog
 
                 def initialize(proxmox_options, options = {})
                     raise URLError, 'No proxmox_url provided' if proxmox_options[:proxmox_url].nil? || proxmox_options[:proxmox_url].empty?                    
-                    @data = authenticate(proxmox_options, options)                    
-                    build_credentials(data)
+                    @token ||= ''
+                    @token_id ||= ''
+                    @userid ||= ''                
+                    @data = authenticate(proxmox_options, options)    
+                    build_credentials(proxmox_options, data)
                 end
 
                 def self.build(proxmox_options, options)

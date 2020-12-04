@@ -31,6 +31,8 @@ module Fog
 
                     NAME = 'user_token'
 
+                    attr_reader :token_id
+
                     class URIError < RuntimeError; end
 
                     def auth_method
@@ -38,7 +40,7 @@ module Fog
                     end
 
                     def auth_path(params = {})
-                        raise URIError, 'URI params is required' if params.nil? || params.empty?
+                        raise URIError, 'URI params are required' if params.nil? || params.empty?
                         raise URIError, 'proxmox_userid is required' if params[:proxmox_userid].nil? || params[:proxmox_userid].empty?
                         raise URIError, 'proxmox_tokenid is required' if params[:proxmox_tokenid].nil? || params[:proxmox_tokenid].empty?
                         "/access/users/#{URI.encode_www_form_component(params[:proxmox_userid])}/token/#{params[:proxmox_tokenid]}"
@@ -46,18 +48,36 @@ module Fog
 
                     def auth_body(params = {})
                         ''
-                    end                
+                    end        
+                    
+                    def no_token?(params)
+                        (params.respond_to?(:proxmox_token) || params[:proxmox_token].nil? || params[:proxmox_token].empty?) && (@token.nil? || @token.empty?)
+                    end
+
+                    def set_credentials(params)
+                        token = @token
+                        token = params[:proxmox_token] if token.empty?
+                        token_id = @token_id
+                        token_id = params[:proxmox_tokenid] if token_id.empty? 
+                        userid = @userid
+                        userid = params[:proxmox_userid] if userid.empty?
+                        {userid: userid, token_id: token_id, token: token }
+                    end
 
                     def headers(method = 'GET', params = {}, additional_headers = {})
-                        raise URIError, 'proxmox_token is required' if params[:proxmox_token].nil? || params[:proxmox_token].empty?
+                        raise URIError, 'User token is required' if no_token?(params)
+                        credentials = set_credentials(params)
                         headers_hash = {}
-                        headers_hash.store('Authorization', "PVEAPIToken=#{params[:proxmox_userid]}!#{params[:proxmox_tokenid]}=#{params[:proxmox_token]}") unless params.empty?
+                        headers_hash.store('Authorization', "PVEAPIToken=#{credentials[:userid]}!#{credentials[:token_id]}=#{credentials[:token]}")
                         headers_hash.merge! additional_headers
                         headers_hash
                     end
 
-                    def build_credentials(data)
+                    def build_credentials(proxmox_options, data)
                         @expires = data['expire']
+                        @token = proxmox_options[:proxmox_token]
+                        @token_id = proxmox_options[:proxmox_tokenid]
+                        @userid = proxmox_options[:proxmox_userid]
                     end
 
                     def missing_credentials(options)

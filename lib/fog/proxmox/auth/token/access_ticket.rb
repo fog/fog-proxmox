@@ -31,6 +31,8 @@ module Fog
 
                     NAME = 'access_ticket'
 
+                    attr_reader :csrf_token
+
                     class URIError < RuntimeError; end
 
                     EXPIRATION_DELAY = 2 * 60 * 60
@@ -63,10 +65,10 @@ module Fog
                         headers_hash
                     end
 
-                    def build_credentials(data)
+                    def build_credentials(proxmox_options, data)
                         @token = data['ticket']
-                        @expires = Time.now + EXPIRATION_DELAY
-                        @user = data['username']
+                        @expires = Time.now.utc.to_i + EXPIRATION_DELAY
+                        @userid = data['username']
                         @csrf_token = data['CSRFPreventionToken']
                     end
 
