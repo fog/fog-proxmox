@@ -37,6 +37,19 @@ module Fog
       def self.has_spectre?(cpu)
         extract(cpu,4) == '+spec-ctrl'
       end
+
+      def self.flatten(cpu_h)
+        return {} unless cpu_h['cpu_type']
+    
+        cpu_type = "cputype=#{cpu_h['cpu_type']}"
+        spectre = cpu_h['spectre'].to_i == 1
+        pcid = cpu_h['pcid'].to_i == 1
+        cpu_type += ',flags=' if spectre || pcid
+        cpu_type += '+spec-ctrl' if spectre
+        cpu_type += ';' if spectre && pcid
+        cpu_type += '+pcid' if pcid
+        cpu_type
+      end
     end
   end
 end
