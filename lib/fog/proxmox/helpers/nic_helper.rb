@@ -84,14 +84,24 @@ module Fog
         end
       end
 
+      def self.set_mac(nic_id, nic_hash)
+        mac_keys = [:macaddr, :hwaddr]
+        nic_value = ''
+        if (nic_hash.keys & mac_keys).empty?
+          nic_value = self.nic_name(nic_hash) + "=" + nic_id
+        else
+          mac_value = nic_hash[mac_keys[0]] if nic_hash.key?(mac_keys[0])
+          mac_value ||= nic_hash[mac_keys[1]] if nic_hash.key?(mac_keys[1])
+          nic_value = nic_id + "=" + mac_value
+        end
+        nic_value
+      end
+
+      # Convert nic attributes hash into API Proxmox parameters string 
       def self.flatten(nic_hash)
         nic_id = nic_hash[self.nic_name(nic_hash).to_sym]
-        if nic_hash.has_key?(:macaddr)
-          nic_value = nic_id + "=" + nic_hash[:macaddr]
-        else
-          nic_value = self.nic_name(nic_hash) + "=" + nic_id
-        end
-        options = nic_hash.reject { |key, _value| [self.nic_name(nic_hash).to_sym,:id,:macaddr].include? key.to_sym }
+        nic_value = self.set_mac(nic_id, nic_hash)
+        options = nic_hash.reject { |key, _value| [self.nic_name(nic_hash).to_sym,:id,:macaddr,:hwaddr].include? key.to_sym }
         nic_value += ',' unless options.empty?
         nic_value += Fog::Proxmox::Hash.stringify(options) unless options.empty?
         { "#{nic_hash[:id]}": nic_value }

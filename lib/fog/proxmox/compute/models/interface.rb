@@ -26,6 +26,7 @@ module Fog
       class Interface < Fog::Model
         identity  :id
         attribute :macaddr
+        attribute :hwaddr
         attribute :model
         attribute :name
         attribute :ip
@@ -38,6 +39,9 @@ module Fog
         attribute :rate
         attribute :queues
         attribute :tag
+        attribute :mtu
+        attribute :trunks
+        attribute :type
 
         def flatten
           Fog::Proxmox::NicHelper.flatten(attributes)
