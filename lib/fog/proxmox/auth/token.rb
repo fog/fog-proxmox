@@ -79,7 +79,7 @@ module Fog
                     if @expires.nil? || @expires.empty?
                         raise ExpiryError, 'Missing token expiration data'
                     end
-                    Time.parse(@expires) < Time.now.utc
+                    Time.at(@expires) < Time.now.utc
                 end
                 
             end

@@ -31,6 +31,7 @@ module Fog
       CDROM_REGEXP = /^(.*)[,]{0,1}(media=cdrom)[,]{0,1}(.*)$/
       TEMPLATE_REGEXP = /^(.*)(base-)(.*)$/
 
+      # Convert disk attributes hash into API Proxmox parameters string 
       def self.flatten(disk)
         id = disk[:id]
         value = ''
@@ -68,14 +69,16 @@ module Fog
         id.scan(/(\w+)(\d+)/).first
       end
 
+      # Convert API Proxmox parameter string into attribute hash value 
       def self.extract_option(name, disk_value)
         values = disk_value.scan(/#{name}=(\w+)/)
         name_value = values.first if values
         name_value&.first
       end
 
+      # Convert API Proxmox volume/disk parameter string into volume/disk attributes hash value 
       def self.extract_storage_volid_size(disk_value)
-        #volid definition: <VOULME_ID>:=<STORAGE_ID>:<storage type dependent volume name>
+        #volid definition: <VOLUME_ID>:=<STORAGE_ID>:<storage type dependent volume name>
         values_a = disk_value.scan(/^(([\w-]+)[:]{0,1}([\w\/\.-]+))/)
         no_cdrom = !disk_value.match(CDROM_REGEXP)
         creation = disk_value.split(',')[0].match(/^(([\w-]+)[:]{1}([\d]+))$/)
