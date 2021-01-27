@@ -26,6 +26,8 @@
 
 # frozen_string_literal: true
 
+require 'fog/proxmox/helpers/disk_helper'
+
 module Fog
   module Proxmox
     class Compute
@@ -54,6 +56,10 @@ module Fog
 
         def restore(vmid, options = {})
           service.create_server(node_id, options.merge(archive: volid, storage: storage_id, vmid: vmid))
+        end
+
+        def template?
+          Fog::Proxmox::DiskHelper.template?(volid)
         end
       end
     end
