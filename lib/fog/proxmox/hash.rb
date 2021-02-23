@@ -23,13 +23,13 @@ module Fog
     module Hash
 
       def self.stringify(hash)
-        filtered = hash.reject { |_key,value| value.to_s.empty? }
+        filtered = hash.reject { |_key, value| value.nil? }
         a = filtered.to_a.collect { |item| item.join('=') }
         a.join(',')
       end
 
       def self.flatten(hash)
-        filtered = hash.reject { |_key,value| value.to_s.empty? }
+        filtered = hash.reject { |_key, value| value.nil? }
         a = filtered.to_a.collect { |item| item.join(': ') }
         a.join(',')
       end

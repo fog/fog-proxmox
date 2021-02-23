@@ -228,7 +228,7 @@ module Fog
           volumes
         end
 
-        protected 
+        protected
 
         def initialize_config(new_attributes = {})
           options = { service: service, vmid: vmid }
@@ -247,7 +247,7 @@ module Fog
 
         def node
           Fog::Proxmox::Compute::Node.new(service: service, node: node_id)
-        end 
+        end
       end
     end
   end

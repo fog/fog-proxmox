@@ -44,12 +44,12 @@ module Fog
           value += 'none'
         end
         opts = disk[:options] if disk[:options]
-        main_a = [:id,:volid,:storage,:size]
-        opts = disk.reject { |key,_value| main_a.include? key } unless opts
+        main_a = [:id, :volid, :storage, :size]
+        opts ||= disk.reject { |key, _value| main_a.include? key }
         options = ''
         options += Fog::Proxmox::Hash.stringify(opts) if opts
-        if id == 'ide2' && !self.cdrom?(options)
-          options += ',' if !options.empty?
+        if id == 'ide2' && !cdrom?(options)
+          options += ',' unless options.empty?
           options += 'media=cdrom'
         end
         value += ',' if !options.empty? && !value.empty?
@@ -69,27 +69,26 @@ module Fog
         id.scan(/(\w+)(\d+)/).first
       end
 
-      # Convert API Proxmox parameter string into attribute hash value 
+      # Convert API Proxmox parameter string into attribute hash value
       def self.extract_option(name, disk_value)
         values = disk_value.scan(/#{name}=(\w+)/)
         name_value = values.first if values
         name_value&.first
       end
 
-      # Convert API Proxmox volume/disk parameter string into volume/disk attributes hash value 
+      # Convert API Proxmox volume/disk parameter string into volume/disk attributes hash value
       def self.extract_storage_volid_size(disk_value)
-        #volid definition: <VOLUME_ID>:=<STORAGE_ID>:<storage type dependent volume name>
+        # volid definition: <VOLUME_ID>:=<STORAGE_ID>:<storage type dependent volume name>
         values_a = disk_value.scan(/^(([\w-]+)[:]{0,1}([\w\/\.-]+))/)
         no_cdrom = !disk_value.match(CDROM_REGEXP)
         creation = disk_value.split(',')[0].match(/^(([\w-]+)[:]{1}([\d]+))$/)
         values = values_a.first if values_a
         if no_cdrom
+          storage = values[1]
           if creation
-            storage = values[1]
             volid = nil
             size = values[2].to_i
           else
-            storage = values[1]
             volid = values[0]
             size = extract_size(disk_value)
           end
@@ -102,16 +101,16 @@ module Fog
       end
 
       def self.to_bytes(size)
-        val=size.match(/\d+(\w?)/)
-        m=0
-        case val[1] 
-          when "K" then m=1
-          when "M" then m=2
-          when "G" then m=3
-          when "T" then m=4
-          when "P" then m=5
+        val = size.match(/\d+(\w?)/)
+        m = 0
+        case val[1]
+          when "K" then m = 1
+          when "M" then m = 2
+          when "G" then m = 3
+          when "T" then m = 4
+          when "P" then m = 5
         end
-        val[0].to_i*1024**m
+        val[0].to_i * 1024**m
       end
 
       def self.modulo_bytes(size)
@@ -119,20 +118,20 @@ module Fog
       end
 
       def self.to_human_bytes(size)
-        units = ['Kb','Mb','Gb','Tb','Pb']
+        units = ['Kb', 'Mb', 'Gb', 'Tb', 'Pb']
         i = 0
         human_size = size.to_s + 'b'
         while i < 5 && size >= 1024
-          size = self.modulo_bytes(size)
+          size = modulo_bytes(size)
           human_size = size.to_s + units[i]
-          i+=1            
+          i += 1
         end
         human_size
       end
 
       def self.extract_size(disk_value)
-        size=extract_option('size', disk_value)
-	      size ? self.to_bytes(size) : "1G"
+        size = extract_option('size', disk_value)
+        size ? to_bytes(size) : "1G"
       end
 
       def self.disk?(id)
