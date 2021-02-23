@@ -21,33 +21,59 @@ module Fog
   module Proxmox
     # module Cpu mixins
     module CpuHelper
-      CPU_REGEXP = /(\bcputype=)?([\w-]+)[,]?(\bflags=)?(\+[\w-]+)?[;]?(\+[\w-]+)?/
-      def self.extract(cpu,i)
-        cpu ? CPU_REGEXP.match(cpu.to_s)[i] : ''
+      CPU_REGEXP = /(\bcputype=)?(?<cputype>[\w-]+)[,]?(\bflags=)?(?<flags>[[\+\-][\w-]+[;]?]*)/
+      FLAGS = { spectre: 'spec-ctrl', pcid: 'pcid', ssbd: 'ssbd', ibpb: 'ibpb', virt_ssbd: 'virt-ssbd', amd_ssbd: 'amd-ssbd', amd_no_ssb: 'amd-no-ssb', md_clear: 'md-clear', pdpe1gb: 'pdpe1gb', hv_tlbflush: 'hv-tlbflush', aes: 'aes', hv_evmcs: 'hv-evmcs' }
+      def self.flags
+        FLAGS
+      end
+      
+      def self.extract(cpu, name)
+        captures_h = cpu ? CPU_REGEXP.match(cpu.to_s) : { cputype: '', flags: '' }
+        captures_h[name]
       end
 
-      def self.extract_type(cpu)
-        extract(cpu,2)
+      def self.extract_cputype(cpu)
+        extract(cpu, :cputype)
       end
 
-      def self.has_pcid?(cpu)
-        extract(cpu,5) == '+pcid'
+      def self.extract_flags(cpu)
+        extract(cpu, :flags)
       end
 
-      def self.has_spectre?(cpu)
-        extract(cpu,4) == '+spec-ctrl'
+      def self.flag_value(cpu, flag_key)
+        flag_value = '0'
+        raw_values = extract_flags(cpu).split(';').select { |flag| ['+' + flag_key, '-' + flag_key].include?(flag) }
+        unless raw_values.empty?
+          flag_value = raw_values[0].start_with?('+') ? '+1' : raw_values[0].start_with?('-') ? '-1' : '0'
+        end
+        flag_value
+      end
+
+      def self.hash_has_no_default_flag?(cpu_h, flag_name)
+        cpu_h.key?(flag_name) && ['-1', '+1'].include?(cpu_h[flag_name])
+      end
+
+      def self.hash_flag(cpu_h, flag_name)
+        flag = ''
+        if cpu_h.key?(flag_name)
+          flag = '+' if cpu_h[flag_name] == '+1'
+          flag = '-' if cpu_h[flag_name] == '-1'
+        end
+        flag
       end
 
       def self.flatten(cpu_h)
-        return {} unless cpu_h['cpu_type']
+        return '' unless cpu_h['cpu_type']
     
         cpu_type = "cputype=#{cpu_h['cpu_type']}"
-        spectre = cpu_h['spectre'].to_i == 1
-        pcid = cpu_h['pcid'].to_i == 1
-        cpu_type += ',flags=' if spectre || pcid
-        cpu_type += '+spec-ctrl' if spectre
-        cpu_type += ';' if spectre && pcid
-        cpu_type += '+pcid' if pcid
+        num_flags = 0
+        FLAGS.each_key { |flag_key| num_flags += 1 if hash_has_no_default_flag?(cpu_h, flag_key.to_s) }
+        cpu_type += ',flags=' if num_flags > 0
+        flags_with_no_default_value = FLAGS.select { |flag_key, _flag_value| hash_has_no_default_flag?(cpu_h, flag_key.to_s) }
+        flags_with_no_default_value.each_with_index do |(flag_key, flag_value), index|
+          cpu_type += hash_flag(cpu_h, flag_key.to_s) + flag_value if hash_has_no_default_flag?(cpu_h, flag_key.to_s)
+          cpu_type += ';' if num_flags > index + 1
+        end
         cpu_type
       end
     end
