@@ -69,6 +69,14 @@ module Fog
         attribute :unprivileged
         attribute :interfaces
         attribute :disks
+        attribute :ciuser
+        attribute :cipassword
+        attribute :cicustom
+        attribute :citype
+        attribute :ipconfigs
+        attribute :sshkeys
+        attribute :searchdomain
+        attribute :nameserver
 
         def initialize(new_attributes = {})
           prepare_service_value(new_attributes)

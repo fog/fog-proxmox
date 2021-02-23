@@ -18,6 +18,7 @@
 # frozen_string_literal: true
 
 require 'fog/proxmox/helpers/disk_helper'
+require 'fog/proxmox/helpers/controller_helper'
 
 module Fog
   module Proxmox
@@ -56,11 +57,19 @@ module Fog
         end
 
         def mount_point?
-          id.match(/(mp)(\d+)/)
+          Fog::Proxmox::DiskHelper.mount_point?(id)
         end
 
         def controller?
-          id.match(/(scsi|ide|sata|virtio)(\d+)/)
+          Fog::Proxmox::DiskHelper.server_disk?(id)
+        end
+
+        def cloud_init?
+          id != 'ide2' && media == 'cdrom'
+        end
+
+        def hard_disk?
+          controller? && !cdrom? && !cloud_init?
         end
 
         def template?

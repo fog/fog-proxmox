@@ -45,6 +45,10 @@ module Fog
         def rootfs
           find(&:rootfs?)
         end
+
+        def cloudinit
+          find(&:cloud_init?)
+        end
       end
     end
   end

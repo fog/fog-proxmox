@@ -23,15 +23,15 @@ module Fog
   module Proxmox
     # module Disk mixins
     module DiskHelper
-      
       DISKS_REGEXP = /^(scsi|sata|mp|rootfs|virtio|ide)(\d+){0,1}$/
       SERVER_DISK_REGEXP = /^(scsi|sata|virtio|ide)(\d+)$/
       MOUNT_POINT_REGEXP = /^(mp)(\d+)$/
       ROOTFS_REGEXP = /^(rootfs)$/
       CDROM_REGEXP = /^(.*)[,]{0,1}(media=cdrom)[,]{0,1}(.*)$/
       TEMPLATE_REGEXP = /^(.*)(base-)(.*)$/
+      CLOUD_INIT_REGEXP = /^(.*)(cloudinit)(.*)$/
 
-      # Convert disk attributes hash into API Proxmox parameters string 
+      # Convert disk attributes hash into API Proxmox parameters string
       def self.flatten(disk)
         id = disk[:id]
         value = ''
@@ -160,6 +160,19 @@ module Fog
 
       def self.template?(volid)
         TEMPLATE_REGEXP.match(volid) ? true : false
+      end
+
+      def self.cloud_init?(volid)
+        CLOUD_INIT_REGEXP.match(volid) ? true : false
+      end
+
+      def self.of_type?(disk_h, vm_type)
+        id = disk_h['id'] if disk_h.key?('id')
+        id = disk_h[:id] if disk_h.key?(:id)
+        result = false
+        result = server_disk?(id) if vm_type == 'qemu'
+        result = container_disk?(id) if vm_type == 'lxc'
+        result
       end
     end
   end
