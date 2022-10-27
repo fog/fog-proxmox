@@ -30,6 +30,7 @@ module Fog
     autoload :Core, 'fog/proxmox/core'
     autoload :Errors, 'fog/proxmox/errors'
     autoload :Identity, 'fog/proxmox/identity'
+    autoload :Cluster, 'fog/proxmox/cluster'
     autoload :Compute, 'fog/proxmox/compute'
     autoload :Storage, 'fog/proxmox/storage'
     autoload :Network, 'fog/proxmox/network'
@@ -37,6 +38,7 @@ module Fog
     extend Fog::Provider
     
     service(:identity, 'Identity')
+    service(:cluster, 'Cluster')
     service(:compute, 'Compute')
     service(:storage, 'Storage')
     service(:network, 'Network')
