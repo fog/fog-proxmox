@@ -33,6 +33,10 @@ module Fog
         def get(id)
           all.find { |resource| resource.identity === id }
         end
+
+        def by_type(type)
+          all.select { |resource| resource.type === type }
+        end
       end
     end
   end

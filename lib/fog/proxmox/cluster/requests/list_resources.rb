@@ -47,10 +47,51 @@ module Fog
 
       # class Mock get_vnc request
       class Mock
-        def get_resources(resource_type); end
-        def list_qemu_resources; end
-        def list_lxc_resources; end
-        def list_storage_resources; end
+        def list_resources(resource_type)
+          case resource_type
+          when 'qemu'
+            list_qemu_resources
+          when 'lxc'
+            list_lxc_resources
+          when 'storage'
+            list_storage_resources
+          else
+            (list_qemu_resources + list_lxc_resources + list_storage_resources)
+          end
+        end
+        def list_qemu_resources
+          [
+            {
+              'node' => 'pve',
+              'type' => 'qemu',
+              'vmid' => '100'
+            }
+          ]
+        end
+
+        def list_lxc_resources
+          [
+            {
+              'node' => 'pve',
+              'type' => 'lxc',
+              'vmid' => '101'
+            }
+          ]
+        end
+        def list_storage_resources
+          [
+            {
+              'node' => 'pve',
+              'type' => 'storage',
+              'storage' => 'local'
+            },
+            {
+              'node' => 'pve',
+              'type' => 'storage',
+              'storage' => 'local'
+            }
+          ]
+        end
       end
     end
   end

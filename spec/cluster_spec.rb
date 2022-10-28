@@ -40,12 +40,12 @@ describe Fog::Proxmox::Cluster do
       resources = @service.resources.all
       _(resources).wont_be_nil
       _(resources).wont_be_empty
-      _(resources.size).must_equal 3 # TODO: add mock resources
+      _(resources.size).must_equal 4
       # List all resources of type qemu
-      qemu_resources = @service.resources.get('qemu')
+      qemu_resources = @service.resources.by_type('qemu')
       _(qemu_resources).wont_be_nil
       _(qemu_resources).wont_be_empty
-      _(qemu_resources.size).must_equal 1 # TODO: add mock resources
+      _(qemu_resources.size).must_equal 1
     end
   end
 end
