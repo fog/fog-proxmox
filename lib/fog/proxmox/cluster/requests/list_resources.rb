@@ -33,11 +33,15 @@ module Fog
         end
 
         def list_qemu_resources
-          list_resources('qemu')
+          list_vm_resources.select { |vm| vm['type'] == 'qemu' }
         end
 
         def list_lxc_resources
-          list_resources('lxc')
+          list_vm_resources.select { |vm| vm['type'] == 'lxc' }
+        end
+
+        def list_vm_resources
+          list_resources('vm')
         end
 
         def list_storage_resources
