@@ -18,6 +18,8 @@
 
 # frozen_string_literal: true
 
+require 'fog/proxmox/hash'
+
 module Fog
   module Proxmox
     class Cluster
@@ -33,6 +35,7 @@ module Fog
         attribute :maxdisk
 
         # vm/lxc specific
+        attribute :vmid
         attribute :status
         attribute :uptime
         attribute :template
@@ -50,7 +53,7 @@ module Fog
         end
 
         def to_s
-          Fog::Proxmox::Hash.flatten(flatten)
+          Fog::Proxmox::Hash.flatten(attributes)
         end
       end
     end
