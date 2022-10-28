@@ -35,7 +35,7 @@ module Fog
       request_path 'fog/proxmox/cluster/requests'
 
       # Manage nodes cluster
-      request :get_resources
+      request :list_resources
 
       # Mock class
       class Mock

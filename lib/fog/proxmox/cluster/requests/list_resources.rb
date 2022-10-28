@@ -22,18 +22,35 @@ module Fog
     class Cluster
       # class Real get_vnc request
       class Real
-        def get_resources
+        def list_resources(resource_type = nil)
+          query = resource_type.nil? ? '' : "type=#{resource_type}"
           request(
             expects: [200],
             method: 'GET',
-            path: 'cluster/resources'
+            path: 'cluster/resources',
+            query: query || ''
           )
+        end
+
+        def list_qemu_resources
+          list_resources('qemu')
+        end
+
+        def list_lxc_resources
+          list_resources('lxc')
+        end
+
+        def list_storage_resources
+          list_resources('storage')
         end
       end
 
       # class Mock get_vnc request
       class Mock
-        def get_resources; end
+        def get_resources(resource_type); end
+        def list_qemu_resources; end
+        def list_lxc_resources; end
+        def list_storage_resources; end
       end
     end
   end

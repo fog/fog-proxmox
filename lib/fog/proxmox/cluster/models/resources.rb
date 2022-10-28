@@ -27,7 +27,7 @@ module Fog
         model Fog::Proxmox::Cluster::Resource
 
         def all
-          self
+          load service.list_resources
         end
 
         def get(id)
