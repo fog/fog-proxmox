@@ -22,8 +22,8 @@ module Fog
     class Cluster
       # class Real get_vnc request
       class Real
-        def list_resources(resource_type = nil)
-          query = resource_type.nil? ? '' : "type=#{resource_type}"
+        def list_resources(resource_type = '')
+          query = resource_type.blank? ? '' : "type=#{resource_type}"
           request(
             expects: [200],
             method: 'GET',
@@ -59,6 +59,7 @@ module Fog
             (list_qemu_resources + list_lxc_resources + list_storage_resources)
           end
         end
+
         def list_qemu_resources
           [
             {
@@ -78,7 +79,8 @@ module Fog
             }
           ]
         end
-        def list_storage_resources
+
+        def list_storage_resources # rubocop:disable Metrics/MethodLength
           [
             {
               'node' => 'pve',
