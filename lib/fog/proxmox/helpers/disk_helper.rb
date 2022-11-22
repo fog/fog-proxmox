@@ -129,9 +129,14 @@ module Fog
         human_size
       end
 
+      def self.to_int_gb(size_bytes)
+        val = to_human_bytes(size_bytes.to_i).match(/\d+(Gb)/)     
+        val ? val[0].to_i : 0
+      end
+
       def self.extract_size(disk_value)
         size = extract_option('size', disk_value)
-        size ? to_bytes(size) : "1G"
+        size ? to_bytes(size) : to_bytes("1G")
       end
 
       def self.disk?(id)

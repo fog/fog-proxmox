@@ -139,6 +139,7 @@ describe Fog::Proxmox::DiskHelper do
       assert_nil size
     end
   end
+  
   describe '#extract_size' do
     it "returns size" do
       size = Fog::Proxmox::DiskHelper.extract_size(scsi[:scsi0])
@@ -216,6 +217,17 @@ describe Fog::Proxmox::DiskHelper do
   describe '#to_human_bytes' do
     it "1 073 741 824 returns 1Gb" do
       assert_equal '1Gb', Fog::Proxmox::DiskHelper.to_human_bytes(1073741824)
+    end
+  end
+
+  describe '#to_int_gb' do
+    it "8589934592 returns 8" do
+      size = Fog::Proxmox::DiskHelper.to_int_gb(8589934592)
+      assert_equal(8, size)
+    end
+    it "2 returns 0" do
+      size = Fog::Proxmox::DiskHelper.to_int_gb(2)
+      assert_equal(0, size)
     end
   end
 
