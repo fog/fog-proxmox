@@ -17,15 +17,9 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'rake/testtask'
+require 'bundler/audit/task'
 
-task_dir = File.expand_path('tasks', __dir__)
-Dir["#{task_dir}/**/*.rake"].each do |task_file|
-  load task_file
-end
+Bundler::Audit::Task.new
 
-desc 'Default Task'
-task default: :spec
-
-desc 'Alias of spec:all'
-task spec: 'spec:all'
+desc 'Run audit vulnerabilities'
+task audit: 'bundle:audit'
