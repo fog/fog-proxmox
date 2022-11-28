@@ -25,34 +25,59 @@ require 'bundler/audit/task'
 Bundler::Audit::Task.new
 RuboCop::RakeTask.new
 
-task default: :test
+task default: :spec
 
-desc 'Run fog-proxmox unit tests with Minitest'
-task :test do
-  mock = ENV['FOG_MOCK'] || 'true'
-  sh("export FOG_MOCK=#{mock} && bundle exec rake tests:unit")
-end
-
-desc 'Run fog-proxmox spec/ tests (VCR)'
-task spec: 'tests:spec'
+desc 'Alias of spec:all'
+task spec: 'spec:all'
 
 desc 'Run audit vulnerabilities'
 task audit: 'bundle:audit'
 
-namespace :tests do
-  desc 'Run fog-proxmox test/'
-  Rake::TestTask.new do |t|
-    t.name = 'unit'
-    t.libs.push %w[lib test]
-    t.test_files = FileList['test/**/*.rb']
-    t.verbose = true
-  end
+namespace :spec do
 
-  desc 'Run fog-proxmox spec/'
+  desc 'Run fog-proxmox spec/*'
   Rake::TestTask.new do |t|
-    t.name = 'spec'
+    t.name = 'all'
+    t.description = "Run all specs"
     t.libs.push %w[lib spec]
     t.pattern = 'spec/**/*_spec.rb'
     t.verbose = true
   end
+
+  desc 'Run fog-proxmox spec/helpers/*'
+  Rake::TestTask.new do |t|
+    t.name = "helpers"
+    t.description = "Run helpers tests"
+    t.libs.push %w[lib spec]
+    t.pattern = 'spec/helpers/**/*_spec.rb'
+    t.verbose = true
+  end
+
+  desc 'Run fog-proxmox spec/compute'
+  Rake::TestTask.new do |t|
+    t.name = "compute"
+    t.description = "Run compute API tests"
+    t.libs.push %w[lib spec]
+    t.pattern = 'spec/**/compute_spec.rb'
+    t.verbose = true
+  end
+
+  desc 'Run fog-proxmox spec/identity'
+  Rake::TestTask.new do |t|
+    t.name = "identity"
+    t.description = "Run identity API tests"
+    t.libs.push %w[lib spec]
+    t.pattern = 'spec/**/identity_spec.rb'
+    t.verbose = true
+  end
+
+  desc 'Run fog-proxmox spec/network'
+  Rake::TestTask.new do |t|
+    t.name = "network"
+    t.description = "Run network API tests"
+    t.libs.push %w[lib spec]
+    t.pattern = 'spec/**/network_spec.rb'
+    t.verbose = true
+  end
+
 end
