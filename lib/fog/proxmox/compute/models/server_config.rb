@@ -24,7 +24,8 @@ require 'fog/proxmox/helpers/controller_helper'
 module Fog
   module Proxmox
     class Compute
-      # ServerConfig model
+      # ServerConfig model: https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/{qemu|lxc}/{vmid}/config
+      # memory, balloon, shares and swap are in Mb
       class ServerConfig < Fog::Model
         identity  :vmid
         attribute :description

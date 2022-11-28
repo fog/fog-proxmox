@@ -136,7 +136,8 @@ module Fog
 
       def self.extract_size(disk_value)
         size = extract_option('size', disk_value)
-        size ? to_bytes(size) : to_bytes("1G")
+        size = to_int_gb(to_bytes(size)).to_s if size.match?(/\d+(G)/)
+        size
       end
 
       def self.disk?(id)

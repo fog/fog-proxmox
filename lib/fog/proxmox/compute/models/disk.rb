@@ -23,7 +23,8 @@ require 'fog/proxmox/helpers/controller_helper'
 module Fog
   module Proxmox
     class Compute
-      # class Disk model
+      # class Disk model: https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/{qemu|lxc}/{vmid}/config
+      # size is in Gb
       class Disk < Fog::Model
         identity  :id
         attribute :volid
@@ -82,6 +83,10 @@ module Fog
 
         def to_s
           Fog::Proxmox::Hash.flatten(flatten)
+        end
+
+        def has_volume?
+          !volid.empty?
         end
       end
     end
