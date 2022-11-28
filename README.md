@@ -71,7 +71,7 @@ USE_VCR=true bundle exec rake spec
 To replay one group (compute, identity or network) of your recorded tests:
 
 ```shell
-USE_VCR=true bundle exec rake tests:compute
+USE_VCR=true bundle exec rake spec:compute
 ```
 
 Code formatting:
