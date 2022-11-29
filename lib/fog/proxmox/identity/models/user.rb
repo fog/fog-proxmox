@@ -57,7 +57,7 @@ module Fog
 
         def update
           requires :userid
-          service.update_user(userid, attributes.reject { |attribute| [:userid, :tokens].include? attribute })
+          service.update_user(userid, attributes.reject { |attribute| %i[userid tokens].include? attribute })
           reload
         end
 
@@ -76,7 +76,6 @@ module Fog
         def initialize_tokens
           attributes[:tokens] = Fog::Proxmox::Identity::Tokens.new(service: service, userid: userid)
         end
-
       end
     end
   end

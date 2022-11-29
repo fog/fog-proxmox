@@ -61,14 +61,13 @@ module Fog
         end
 
         def backup(options = {})
-          task_upid = service.backup({ node: node }, options)
-          task_upid
+          service.backup({ node: node }, options)
         end
 
-        def statistics(output = 'rrddata', options = { timeframe: 'hour', cf: 'AVERAGE'})
+        def statistics(output = 'rrddata', options = { timeframe: 'hour', cf: 'AVERAGE' })
           path_params = { node: node, output: output }
           query_params = options
-          service.get_node_statistics(path_params,query_params)
+          service.get_node_statistics(path_params, query_params)
         end
 
         private
@@ -88,7 +87,6 @@ module Fog
         def initialize_storages
           attributes[:storages] = Fog::Proxmox::Compute::Storages.new(service: service, node_id: node)
         end
-
       end
     end
   end

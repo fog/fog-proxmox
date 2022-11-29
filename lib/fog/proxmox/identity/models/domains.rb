@@ -31,14 +31,13 @@ module Fog
         end
 
         def get(id)
-          all.find { |domain| domain.identity === id }
+          all.find { |domain| domain.identity == id }
         end
 
         def destroy(id)
           domain = get(id)
           domain.destroy
         end
-
       end
     end
   end

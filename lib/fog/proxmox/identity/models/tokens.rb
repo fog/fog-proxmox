@@ -32,24 +32,20 @@ module Fog
         end
 
         def get(tokenid)
-          all.find { |token| token.tokenid === tokenid && token.userid == userid }
+          all.find { |token| token.tokenid == tokenid && token.userid == userid }
         end
 
-        def all(options = {})
-          begin
-            load service.list_tokens(userid)
-          rescue Excon::Error::InternalServerError => error
-            if error.response.status_line.include? "no such user"
-              return []
-            else
-              raise error
-            end
-          end
+        def all(_options = {})
+          load service.list_tokens(userid)
+        rescue Excon::Error::InternalServerError => e
+          raise e unless e.response.status_line.include? 'no such user'
+
+          []
         end
 
         def create(new_attributes = {})
-          object = new(new_attributes.select { |key, _value| [:userid, :tokenid].include? key.to_sym })
-          object.save(new_attributes.reject { |key, _value| [:userid, :tokenid].include? key.to_sym })
+          object = new(new_attributes.select { |key, _value| %i[userid tokenid].include? key.to_sym })
+          object.save(new_attributes.reject { |key, _value| %i[userid tokenid].include? key.to_sym })
           object
         end
       end

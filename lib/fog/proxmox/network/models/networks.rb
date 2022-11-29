@@ -40,7 +40,7 @@ module Fog
         end
 
         def get(id)
-          all.find { |network| network.identity === id }
+          all.find { |network| network.identity == id }
         end
       end
     end

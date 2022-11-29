@@ -71,7 +71,7 @@ USE_VCR=true bundle exec rake spec
 Code formatting:
 
 ```shell
-bundle exec bin/rake rubocop  
+bundle exec rake rubocop
 ```
 
 ## Contributing

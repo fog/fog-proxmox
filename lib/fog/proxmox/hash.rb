@@ -21,7 +21,6 @@ module Fog
   module Proxmox
     # module Hash mixins
     module Hash
-
       def self.stringify(hash)
         filtered = hash.reject { |_key, value| value.nil? }
         a = filtered.to_a.collect { |item| item.join('=') }
@@ -33,7 +32,6 @@ module Fog
         a = filtered.to_a.collect { |item| item.join(': ') }
         a.join(',')
       end
-
     end
   end
 end

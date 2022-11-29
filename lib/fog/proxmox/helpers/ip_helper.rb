@@ -24,7 +24,6 @@ module Fog
   module Proxmox
     # module IpHelper mixins
     module IpHelper
-
       CIDRv4_PREFIX = '([0-9]|[1-2][0-9]|3[0-2])'
       CIDRv4_PREFIX_REGEXP = /^#{CIDRv4_PREFIX}$/
       IPv4_SRC = "#{Resolv::IPv4::Regex.source.delete_suffix('\z').delete_prefix('\A')}"
@@ -33,7 +32,7 @@ module Fog
       CIDRv6_PREFIX_REGEXP = /^#{CIDRv6_PREFIX}$/xi
       IPv6_SRC = "#{Resolv::IPv6::Regex_8Hex.source.delete_suffix('\z').delete_prefix('\A')}"
       CIDRv6_REGEXP = Regexp.new("\\A(#{IPv6_SRC})(\/#{CIDRv6_PREFIX})?\\z", Regexp::EXTENDED | Regexp::IGNORECASE)
-    
+
       def self.cidr?(ip)
         CIDRv4_REGEXP.match?(ip)
       end
@@ -43,15 +42,15 @@ module Fog
       end
 
       def self.prefix(ip)
-        if cidr = CIDRv4_REGEXP.match(ip)
-          cidr[7]
-        end
+        return unless cidr = CIDRv4_REGEXP.match(ip)
+
+        cidr[7]
       end
 
       def self.prefix6(ip)
-        if cidr = CIDRv6_REGEXP.match(ip)
-          cidr[3]
-        end
+        return unless cidr = CIDRv6_REGEXP.match(ip)
+
+        cidr[3]
       end
 
       def self.ip?(ip)
@@ -71,28 +70,30 @@ module Fog
       end
 
       def self.ip(ip)
-        if cidr = CIDRv4_REGEXP.match(ip)
-          cidr[1]
-        end
+        return unless cidr = CIDRv4_REGEXP.match(ip)
+
+        cidr[1]
       end
 
       def self.ip6(ip)
-        if cidr = CIDRv6_REGEXP.match(ip)
-          cidr[1]
-        end
+        return unless cidr = CIDRv6_REGEXP.match(ip)
+
+        cidr[1]
       end
 
-      def self.to_cidr(ip,prefix = nil)
-        return nil unless self.ip?(ip) && (!prefix || self.cidr_prefix?(prefix))
+      def self.to_cidr(ip, prefix = nil)
+        return nil unless ip?(ip) && (!prefix || cidr_prefix?(prefix))
+
         cidr = "#{ip}"
-        cidr += "/#{prefix}" if self.cidr_prefix?(prefix)
+        cidr += "/#{prefix}" if cidr_prefix?(prefix)
         cidr
       end
 
-      def self.to_cidr6(ip,prefix = nil)
-        return nil unless self.ip6?(ip) && (!prefix || self.cidr6_prefix?(prefix))
+      def self.to_cidr6(ip, prefix = nil)
+        return nil unless ip6?(ip) && (!prefix || cidr6_prefix?(prefix))
+
         cidr = "#{ip}"
-        cidr += "/#{prefix}" if self.cidr6_prefix?(prefix)
+        cidr += "/#{prefix}" if cidr6_prefix?(prefix)
         cidr
       end
     end

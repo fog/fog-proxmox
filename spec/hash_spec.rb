@@ -30,7 +30,8 @@ describe Fog::Proxmox::Hash do
 
   describe '#flatten' do
     it 'returns string net_vm' do
-      assert_equal 'net0: virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1', Fog::Proxmox::Hash.flatten(net_vm)
+      assert_equal 'net0: virtio=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1',
+                   Fog::Proxmox::Hash.flatten(net_vm)
     end
   end
 

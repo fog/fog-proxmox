@@ -31,7 +31,9 @@ module Fog
         end
 
         def save(new_attributes = {})
-          service.create_domain(type.attributes.merge(new_attributes).merge(attributes.reject { |attribute| [:type].include? attribute }))
+          service.create_domain(type.attributes.merge(new_attributes).merge(attributes.reject do |attribute|
+                                                                              [:type].include? attribute
+                                                                            end))
           reload
         end
 
@@ -43,7 +45,9 @@ module Fog
 
         def update
           requires :realm
-          service.update_domain(realm, type.attributes.merge(attributes).reject { |attribute| [:type, :realm].include? attribute })
+          service.update_domain(realm, type.attributes.merge(attributes).reject do |attribute|
+                                         %i[type realm].include? attribute
+                                       end)
           reload
         end
 
@@ -52,7 +56,7 @@ module Fog
         def initialize_type(new_attributes = {})
           if new_attributes.has_key? :realm
             realm = new_attributes.delete(:realm)
-          elsif new_attributes.has_key? 'realm'              
+          elsif new_attributes.has_key? 'realm'
             realm = new_attributes.delete('realm')
           end
           attributes[:type] = Fog::Proxmox::Identity::DomainType.new(new_attributes)

@@ -56,7 +56,8 @@ module Fog
         private
 
         def initialize_volumes
-          attributes[:volumes] = Fog::Proxmox::Compute::Volumes.new(service: service, node_id: node_id, storage_id: identity)
+          attributes[:volumes] =
+            Fog::Proxmox::Compute::Volumes.new(service: service, node_id: node_id, storage_id: identity)
         end
       end
     end

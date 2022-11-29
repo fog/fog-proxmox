@@ -39,7 +39,7 @@ module Fog
         end
 
         def get(name)
-          all.find { |snapshot| snapshot.identity === name }
+          all.find { |snapshot| snapshot.identity == name }
         end
       end
     end

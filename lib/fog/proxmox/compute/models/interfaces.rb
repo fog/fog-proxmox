@@ -32,7 +32,7 @@ module Fog
         end
 
         def get(id)
-          all.find { |interface| interface.identity === id }
+          all.find { |interface| interface.identity == id }
         end
 
         def next_nicid

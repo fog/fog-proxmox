@@ -70,8 +70,8 @@ class ProxmoxVCR
       @auth_method = Fog::Proxmox::Auth::Token::AccessTicket::NAME
       @username  = 'root@pam'
       @password  = 'proxmox01'
-      @tokenid  = 'root1'
-      @token  = 'ed6402b4-641d-46b1-b20a-33ba9ba12f54'
+      @tokenid = 'root1'
+      @token = 'ed6402b4-641d-46b1-b20a-33ba9ba12f54'
 
       unless use_recorded
         @auth_method = ENV['PROXMOX_AUTH_METHOD'] || options[:auth_method] || @auth_method
