@@ -1,0 +1,6 @@
+version: "2"
+plugins:
+  rubocop:
+    enabled: true
+  reek:
+    enabled: true
