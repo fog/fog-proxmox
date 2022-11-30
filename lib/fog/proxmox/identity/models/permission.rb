@@ -40,17 +40,18 @@ module Fog
 
         def initialize_roles(new_attributes = {})
           roles = new_attributes.delete(:roleid)
-          new_attributes.store(:roles, roles)       
+          new_attributes.store(:roles, roles)
         end
 
         def initialize_ugid(new_attributes = {})
           ugs = new_attributes.delete(:ugid)
-          if type === 'user'
+          case type
+          when 'user'
             new_attributes.store(:users, ugs)
-          elsif type === 'group'
+          when 'group'
             new_attributes.store(:groups, ugs)
           end
-          new_attributes.delete(:type)          
+          new_attributes.delete(:type)
         end
 
         def to_update

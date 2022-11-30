@@ -41,7 +41,6 @@ module Fog
         attribute :verify
         attribute :step
         attribute :digits
-
       end
     end
   end

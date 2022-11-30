@@ -35,7 +35,7 @@ module Fog
 
       # class Mock status_task
       class Mock
-        def log_task(_node, _upid, options = {})
+        def log_task(_node, _upid, _options = {})
           [{ 't' => 'TASK OK', 'n' => 1 }]
         end
       end

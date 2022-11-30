@@ -31,7 +31,7 @@ module Fog
         end
 
         def get(id)
-          all.find { |role| role.identity === id }
+          all.find { |role| role.identity == id }
         end
 
         def destroy(id)

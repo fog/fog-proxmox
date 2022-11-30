@@ -56,6 +56,7 @@ module Fog
           task.wait_for { finished? }
           message = "Task #{task_upid} failed because #{task.exitstatus}"
           raise Fog::Errors::Error, message unless task.succeeded?
+
           task.succeeded?
         end
       end

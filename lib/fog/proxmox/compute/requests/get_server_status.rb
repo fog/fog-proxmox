@@ -38,23 +38,23 @@ module Fog
       class Mock
         def get_server_status(_path_params)
           {
-            :netout => 0,
-            :ha => { 'managed' => 0 },
-            :mem => 0,
-            :vmid => '100',
-            :maxdisk => 8_589_934_592,
-            :diskread => 0,
-            :template => '',
-            :qmpstatus => 'stopped',
-            :diskwrite => 0,
-            :maxmem => 536_870_912,
-            :pid => nil,
-            :uptime => 0,
-            :status => 'stopped',
-            :cpu => 'cputype=kvm64',
-            :cpus => 1,
-            :disk => 0,
-            :netin => 0
+            netout: 0,
+            ha: { 'managed' => 0 },
+            mem: 0,
+            vmid: '100',
+            maxdisk: 8_589_934_592,
+            diskread: 0,
+            template: '',
+            qmpstatus: 'stopped',
+            diskwrite: 0,
+            maxmem: 536_870_912,
+            pid: nil,
+            uptime: 0,
+            status: 'stopped',
+            cpu: 'cputype=kvm64',
+            cpus: 1,
+            disk: 0,
+            netin: 0
           }
         end
       end

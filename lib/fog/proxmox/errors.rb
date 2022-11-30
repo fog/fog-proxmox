@@ -51,7 +51,8 @@ module Fog
         def self.slurp(error)
           new_error = super(error)
           unless new_error.response_data.nil? || new_error.response_data['badRequest'].nil?
-            new_error.instance_variable_set(:@validation_errors, new_error.response_data['badRequest']['validationErrors'])
+            new_error.instance_variable_set(:@validation_errors,
+                                            new_error.response_data['badRequest']['validationErrors'])
           end
           new_error
         end

@@ -28,7 +28,7 @@ module Fog
         attribute :members
 
         def save(options = {})
-          service.create_group((attributes.reject { |attribute| [:users, :members].include? attribute }).merge(options))
+          service.create_group((attributes.reject { |attribute| %i[users members].include? attribute }).merge(options))
           reload
         end
 
@@ -40,7 +40,9 @@ module Fog
 
         def update
           requires :groupid
-          service.update_group(identity, attributes.reject { |attribute| [:groupid, :users, :members].include? attribute })
+          service.update_group(identity, attributes.reject do |attribute|
+                                           %i[groupid users members].include? attribute
+                                         end)
           reload
         end
       end

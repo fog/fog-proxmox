@@ -31,6 +31,7 @@ module Fog
           )
         end
       end
+
       # class Mock get_user request
       class Mock
         def get_user(userid); end

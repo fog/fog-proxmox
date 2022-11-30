@@ -39,7 +39,7 @@ module Fog
 
         def update
           requires :roleid
-          service.update_role(roleid, attributes.reject { |attribute| [:roleid, :special].include? attribute })
+          service.update_role(roleid, attributes.reject { |attribute| %i[roleid special].include? attribute })
           reload
         end
       end

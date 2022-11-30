@@ -38,20 +38,20 @@ module Fog
       class Mock
         def get_server_config(_path_params)
           {
-            :onboot => 0,
-            :memory => 512,
-            :ostype => 'l26',
-            :cores => 1,
-            :keyboard => 'en-us',
-            :digest => nil,
-            :smbios1 => nil,
-            :vmgenid => nil,
-            :balloon => 0,
-            :kvm => 0,
-            :cpu => 'cputype=kvm64',
-            :sockets => 1,
-            :bootdisk => 'scsi0',
-            :vga => 'std'
+            onboot: 0,
+            memory: 512,
+            ostype: 'l26',
+            cores: 1,
+            keyboard: 'en-us',
+            digest: nil,
+            smbios1: nil,
+            vmgenid: nil,
+            balloon: 0,
+            kvm: 0,
+            cpu: 'cputype=kvm64',
+            sockets: 1,
+            bootdisk: 'scsi0',
+            vga: 'std'
           }
         end
       end

@@ -78,14 +78,11 @@ module Fog
 
         def persisted?
           service.next_vmid(vmid: vmid)
-          persisted = false
-          persisted
+          false
         rescue Excon::Error::InternalServerError
-          persisted = false
-          persisted
+          false
         rescue Excon::Error::BadRequest
-          persisted = true
-          persisted
+          true
         end
 
         # request with async task
@@ -122,6 +119,7 @@ module Fog
           action_known = %w[start stop resume suspend shutdown reset].include? action
           message = "Action #{action} not implemented"
           raise Fog::Errors::Error, message unless action_known
+
           request(:action_server, options, action: action, vmid: vmid)
           reload
         end
@@ -136,11 +134,11 @@ module Fog
         end
 
         def restore(backup, options = {})
-          if container?
-            attr_hash = options.merge(ostemplate: backup.volid, force: 1, restore: 1)
-          else
-            attr_hash = options.merge(archive: backup.volid, force: 1)
-          end
+          attr_hash = if container?
+                        options.merge(ostemplate: backup.volid, force: 1, restore: 1)
+                      else
+                        options.merge(archive: backup.volid, force: 1)
+                      end
           save(attr_hash)
         end
 
@@ -186,14 +184,24 @@ module Fog
         end
 
         def start_console(options = {})
-          raise ::Fog::Proxmox::Errors::ServiceError, "Unable to start console because server not running." unless ready?
+          unless ready?
+            raise ::Fog::Proxmox::Errors::ServiceError,
+                  'Unable to start console because server not running.'
+          end
+
           if container?
             type_console = options[:console]
             options.delete_if { |option| [:console].include? option }
-            raise ::Fog::Proxmox::Errors::ServiceError, "Unable to start console because console container config is not set or unknown." unless type_console
+            unless type_console
+              raise ::Fog::Proxmox::Errors::ServiceError,
+                    'Unable to start console because console container config is not set or unknown.'
+            end
           else
             type_console = config.type_console
-            raise ::Fog::Proxmox::Errors::ServiceError, "Unable to start console because VGA display server config is not set or unknown." unless type_console
+            unless type_console
+              raise ::Fog::Proxmox::Errors::ServiceError,
+                    'Unable to start console because VGA display server config is not set or unknown.'
+            end
           end
           requires :vmid, :node_id, :type
           path_params = { node: node_id, type: type, vmid: vmid }
@@ -238,11 +246,14 @@ module Fog
         private
 
         def initialize_snapshots
-          attributes[:snapshots] = Fog::Proxmox::Compute::Snapshots.new(service: service, server_id: vmid, server_type: type, node_id: node_id)
+          attributes[:snapshots] =
+            Fog::Proxmox::Compute::Snapshots.new(service: service, server_id: vmid, server_type: type, node_id: node_id)
         end
 
         def initialize_tasks
-          attributes[:tasks] = Fog::Proxmox::Compute::Tasks.new(service: service, node_id: node_id).select { |task| task.id == vmid }
+          attributes[:tasks] = Fog::Proxmox::Compute::Tasks.new(service: service, node_id: node_id).select do |task|
+            task.id == vmid
+          end
         end
 
         def node

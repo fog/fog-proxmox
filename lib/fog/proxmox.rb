@@ -24,7 +24,6 @@ require 'fog/json'
 module Fog
   # Proxmox module
   module Proxmox
-
     require 'fog/proxmox/auth/token'
 
     autoload :Core, 'fog/proxmox/core'
@@ -35,7 +34,7 @@ module Fog
     autoload :Network, 'fog/proxmox/network'
 
     extend Fog::Provider
-    
+
     service(:identity, 'Identity')
     service(:compute, 'Compute')
     service(:storage, 'Storage')
@@ -50,6 +49,5 @@ module Fog
     def self.clear_token_cache
       Fog::Proxmox.token_cache = {}
     end
-    
   end
 end

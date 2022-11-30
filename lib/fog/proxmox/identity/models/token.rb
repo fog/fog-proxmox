@@ -40,10 +40,9 @@ module Fog
           super(new_attributes)
         end
 
-
         def save(options = {})
           requires :tokenid, :userid
-          token_hash = (attributes.reject { |attribute| [:userid, :tokenid, :info].include? attribute }).merge(options)
+          token_hash = (attributes.reject { |attribute| %i[userid tokenid info].include? attribute }).merge(options)
           service.create_token(userid, tokenid, token_hash)
           reload
         end
@@ -56,7 +55,9 @@ module Fog
 
         def update
           requires :tokenid, :userid
-          service.update_token(userid, tokenid, attributes.reject { |attribute| [:userid, :tokenid, :info].include? attribute })
+          service.update_token(userid, tokenid, attributes.reject do |attribute|
+                                                  %i[userid tokenid info].include? attribute
+                                                end)
           reload
         end
 

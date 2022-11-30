@@ -22,9 +22,10 @@ module Fog
     # module String mixins
     module String
       def self.to_boolean(text)
-        return true if text == true   || text =~ (/(true|t|yes|y|1)$/i)
-        return false if text == false  || text.empty? || text =~ (/(false|f|no|n|0)$/i)
-        raise ArgumentError.new("invalid value for Boolean: \"#{text}\"")
+        return true if text == true || text =~ (/(true|t|yes|y|1)$/i)
+        return false if text == false || text.empty? || text =~ (/(false|f|no|n|0)$/i)
+
+        raise ArgumentError, "invalid value for Boolean: \"#{text}\""
       end
     end
   end
