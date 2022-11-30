@@ -1,7 +1,0 @@
-version: "2"
-plugins:
-  rubocop:
-    enabled: true
-    channel: rubocop-1-31-0
-  reek:
-    enabled: true
