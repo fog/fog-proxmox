@@ -6,7 +6,19 @@ on:
   pull_request:
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+      - run: bundle install
+      - name: rubocop runs
+        run: bundle exec rake rubocop
   test:
+    needs: [lint]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -19,6 +31,8 @@ jobs:
       run: bundle install
     - name: Run tests with simplecov
       run: bundle exec rake spec
+      env:
+        CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
     - name: Run vulnerabilities check
       run: bundle exec rake audit
     - name: Upload simplecov results for coverage
@@ -28,7 +42,7 @@ jobs:
         path: coverage/
       
   coverage:
-    needs: [ test ]
+    needs: [ lint, test ]
     name: coverage
     runs-on: ubuntu-latest
     steps:
@@ -38,11 +52,13 @@ jobs:
       with:
         name: coverage
     - name: Publish code coverage to codeclimate
-    - uses: paambaati/codeclimate-action@v3.2.0
+      uses: paambaati/codeclimate-action@v3.2.0
       env:
         CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+        GIT_BRANCH: ${{ github.ref }}
+        GIT_COMMIT_SHA: ${{ github.sha }}
       with:
         workingDirectory: coverage
         debug: true
         coverageLocations: |
-          ${{github.workspace}}/coverage/.resultset.json:simplecov
+          ${{github.workspace}}/coverage/coverage.json:simplecov
