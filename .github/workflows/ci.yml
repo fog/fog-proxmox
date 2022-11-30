@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: bundle install
     - name: Run tests
-      run: bundle exec rake test spec audit
+      run: bundle exec rake spec audit
     - name: Upload results for coverage
       uses: actions/upload-artifact@v1
       with:
