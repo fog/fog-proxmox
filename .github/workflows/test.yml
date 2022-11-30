@@ -1,0 +1,48 @@
+name: test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.7'
+        bundler-cache: true
+    - name: Install dependencies
+      run: bundle install
+    - name: Run tests with simplecov
+      run: bundle exec rake spec
+    - name: Run vulnerabilities check
+      run: bundle exec rake audit
+    - name: Upload simplecov results for coverage
+      uses: actions/upload-artifact@v1
+      with:
+        name: coverage
+        path: coverage/
+      
+  coverage:
+    needs: [ test ]
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Download tests result from test
+      uses: actions/download-artifact@v1
+      with:
+        name: coverage
+    - name: Publish code coverage to codeclimate
+    - uses: paambaati/codeclimate-action@v3.2.0
+      env:
+        CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+      with:
+        workingDirectory: coverage
+        debug: true
+        coverageLocations: |
+          ${{github.workspace}}/coverage/.resultset.json:simplecov
