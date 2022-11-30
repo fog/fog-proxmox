@@ -80,6 +80,18 @@ Code formatting:
 bundle exec rake rubocop
 ```
 
+Auto correcting (safe):
+
+```shell
+bundle exec rake rubocop:autocorrect
+```
+
+Exclude cops in todo file:
+
+```shell
+bundle exec rubocop --auto-gen-config
+```
+
 See all available rake tasks:
 
 ```shell
