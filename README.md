@@ -62,16 +62,28 @@ To record your VCR cassettes:
 PROXMOX_URL=https://192.168.56.101:8006/api2/json DISABLE_PROXY=true SSL_VERIFY_PEER=false bundle exec rake spec
 ```
 
-To replay your recorded tests:
+To replay all your recorded tests:
 
 ```shell
 USE_VCR=true bundle exec rake spec
+```
+
+To replay one group (compute, identity or network) of your recorded tests:
+
+```shell
+USE_VCR=true bundle exec rake spec:compute
 ```
 
 Code formatting:
 
 ```shell
 bundle exec rake rubocop
+```
+
+See all available rake tasks:
+
+```shell
+bundle exec rake --tasks
 ```
 
 ## Contributing
