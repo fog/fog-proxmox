@@ -30,15 +30,15 @@ describe Fog::Proxmox::DiskHelper do
   end
 
   let(:scsi) do
-    { scsi0: 'local-lvm:vm-100-disk-1,size=8G,cache=none' }
+    { scsi0: 'local-lvm:vm-100-disk-1,size=8,cache=none' }
   end
 
   let(:virtio1) do
-    { id: 'virtio1', volid: 'local:108/vm-108-disk-1.qcow2,size=15G' }
+    { id: 'virtio1', volid: 'local:108/vm-108-disk-1.qcow2,size=2G' }
   end
 
   let(:virtio) do
-    { virtio1: 'local:108/vm-108-disk-1.qcow2,size=245' }
+    { virtio1: 'local:108/vm-108-disk-1.qcow2,size=2' }
   end
 
   let(:ide2) do
@@ -115,14 +115,21 @@ describe Fog::Proxmox::DiskHelper do
       storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(scsi[:scsi0])
       assert_equal('local-lvm', storage)
       assert_equal('local-lvm:vm-100-disk-1', volid)
-      assert_equal(8_589_934_592, size)
+      assert_equal('8', size)
     end
 
     it 'returns virtio get local storage volid and size' do
       storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(virtio[:virtio1])
       assert_equal('local', storage)
       assert_equal('local:108/vm-108-disk-1.qcow2', volid)
-      assert_equal(245, size)
+      assert_equal('2', size)
+    end
+
+    it 'returns virtio1 get local storage volid and size' do
+      storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(virtio1[:volid])
+      assert_equal('local', storage)
+      assert_equal('local:108/vm-108-disk-1.qcow2', volid)
+      assert_equal('2', size)
     end
 
     it 'returns scsi0 creation storage and volid' do
@@ -149,14 +156,19 @@ describe Fog::Proxmox::DiskHelper do
   end
 
   describe '#extract_size' do
-    it 'returns size' do
+    it 'size=8 returns size 8' do
       size = Fog::Proxmox::DiskHelper.extract_size(scsi[:scsi0])
-      assert_equal(8_589_934_592, size)
+      assert_equal('8', size)
     end
 
-    it 'returns size' do
+    it 'size=2 returns size 2' do
       size = Fog::Proxmox::DiskHelper.extract_size(virtio[:virtio1])
-      assert_equal(245, size)
+      assert_equal('2', size)
+    end
+
+    it 'size=2G returns size 2' do
+      size = Fog::Proxmox::DiskHelper.extract_size(virtio1[:volid])
+      assert_equal('2', size)
     end
   end
 
@@ -237,6 +249,18 @@ describe Fog::Proxmox::DiskHelper do
   describe '#to_human_bytes' do
     it '1 073 741 824 returns 1Gb' do
       assert_equal '1Gb', Fog::Proxmox::DiskHelper.to_human_bytes(1_073_741_824)
+    end
+  end
+
+  describe '#to_int_gb' do
+    it '8589934592 returns 8' do
+      size = Fog::Proxmox::DiskHelper.to_int_gb(8_589_934_592)
+      assert_equal(8, size)
+    end
+
+    it '2 returns 0' do
+      size = Fog::Proxmox::DiskHelper.to_int_gb(2)
+      assert_equal(0, size)
     end
   end
 
