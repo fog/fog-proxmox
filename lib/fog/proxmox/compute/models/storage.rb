@@ -29,7 +29,7 @@
 module Fog
   module Proxmox
     class Compute
-      # class Storage model
+      # class Storage model: https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}
       class Storage < Fog::Model
         identity  :storage
         attribute :node_id, aliases: :node
