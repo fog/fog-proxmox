@@ -58,7 +58,7 @@ jobs:
         GIT_BRANCH: ${{ github.ref }}
         GIT_COMMIT_SHA: ${{ github.sha }}
       with:
-        workingDirectory: coverage
+        workingDirectory: ${{github.workspace}}
         debug: true
         coverageLocations: |
           ${{github.workspace}}/coverage/coverage.json:simplecov
