@@ -277,15 +277,16 @@ describe Fog::Proxmox::Compute do
 
   it 'CRUD snapshots' do
     VCR.use_cassette('snapshots') do
-      node_name = 'pve'
+      node_name = 'proxmox-noris'
       node = @service.nodes.get node_name
       vmid = node.servers.next_id
       server_hash = { vmid: vmid }
       node.servers.create server_hash
       # Create
       snapname = 'snapshot1'
+      vmstate = 0
       server = node.servers.get vmid
-      snapshot_hash = { name: snapname }
+      snapshot_hash = { name: snapname, vmstate: vmstate }
       server.snapshots.create(snapshot_hash)
       # Find by id
       snapshot = server.snapshots.get snapname
