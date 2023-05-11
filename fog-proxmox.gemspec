@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/fog/fog-proxmox'
   spec.license       = 'GPL-3.0'
 
-  spec.files         = `git ls-files -z`.split("\x0")
+  spec.files         = `git ls-files -z CHANGELOG.md LICENSE README.md docs examples lib spec`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.5'
