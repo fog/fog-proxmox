@@ -1,12 +1,15 @@
 inherit_from:
   - .rubocop_todo.yml
-require: 
+require:
   - rubocop-minitest
   - rubocop-rake
   - rubocop-rspec
 
+Migration/DepartmentName:
+  Enabled: false
+
 AllCops:
-  TargetRubyVersion: 2.5 
+  TargetRubyVersion: 2.5
   NewCops: disable
   Exclude:
     - 'examples/**/*'
