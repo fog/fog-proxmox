@@ -54,7 +54,7 @@ module Fog
         end
 
         def succeeded?
-          finished? && exitstatus == 'OK'
+          finished? && (exitstatus == 'OK' || exitstatus.include?('WARNING'))
         end
 
         def finished?
