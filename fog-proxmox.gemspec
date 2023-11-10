@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler', '~> 2.1'
   spec.add_development_dependency 'bundler-audit', '~> 0.6'
-  spec.add_development_dependency 'debase', '~> 0.2.2'
+  spec.add_development_dependency 'debase', '~> 0.2.5.beta1'
   spec.add_development_dependency 'debride', '~> 1.8'
   spec.add_development_dependency 'fasterer', '~> 0.3'
   spec.add_development_dependency 'fastri', '~> 0.3'
