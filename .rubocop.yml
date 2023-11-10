@@ -1,13 +1,17 @@
+inherit_from:
+  - .rubocop_todo.yml
+require:
+  - rubocop-minitest
+  - rubocop-rake
+  - rubocop-rspec
+
+Migration/DepartmentName:
+  Enabled: false
+
 AllCops:
-  TargetRubyVersion: 2.4
-  Include:
-    - '**/Rakefile'
+  TargetRubyVersion: 2.5
+  NewCops: disable
   Exclude:
-    - 'bin/**/*'
+    - 'examples/**/*'
     - 'vendor/**/*'
-    - 'coverage/**/*'
-    - '.bundle/**/*'
-    - '.vscode/**/*'
-    - '**/*.gemspec'
-    - 'Gemfile'
-    - 'spec/**/*'
+    - 'bin/**/*'

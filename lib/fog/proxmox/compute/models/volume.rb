@@ -31,7 +31,8 @@ require 'fog/proxmox/helpers/disk_helper'
 module Fog
   module Proxmox
     class Compute
-      # class Volume model
+      # class Volume model: https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/content/{volume}
+      # size is in bytes
       class Volume < Fog::Model
         identity  :volid
         attribute :content

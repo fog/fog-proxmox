@@ -21,7 +21,6 @@ require 'spec_helper'
 require_relative './proxmox_vcr'
 
 describe Fog::Proxmox::Identity do
-  
   before :all do
     @proxmox_vcr = ProxmoxVCR.new(
       vcr_directory: 'spec/fixtures/proxmox/identity',
@@ -37,46 +36,58 @@ describe Fog::Proxmox::Identity do
 
   it 'authenticates with access ticket' do
     VCR.use_cassette('auth_access_ticket') do
-      Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME, proxmox_username: @username, proxmox_password: @password)
+      Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url,
+                                 proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME, proxmox_username: @username, proxmox_password: @password)
       _(proc do
-        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME, proxmox_username: @username, proxmox_password: 'wrong_password')
-      end).must_raise Excon::Errors::Unauthorized  
+        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url,
+                                   proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME, proxmox_username: @username, proxmox_password: 'wrong_password')
+      end).must_raise Excon::Errors::Unauthorized
       _(proc do
         Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_username: @username, proxmox_password: @password)
-      end).must_raise ArgumentError  
+      end).must_raise ArgumentError
       _(proc do
-        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME, proxmox_password: @password)
-      end).must_raise Fog::Proxmox::Auth::Token::AccessTicket::URIError 
+        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url,
+                                   proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME, proxmox_password: @password)
+      end).must_raise Fog::Proxmox::Auth::Token::AccessTicket::URIError
       _(proc do
-        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME, proxmox_username: @username)
-      end).must_raise Fog::Proxmox::Auth::Token::AccessTicket::URIError 
+        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url,
+                                   proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME, proxmox_username: @username)
+      end).must_raise Fog::Proxmox::Auth::Token::AccessTicket::URIError
       _(proc do
-        Fog::Proxmox::Identity.new(proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME, proxmox_username: @username, proxmox_password: 'wrong_password')
+        Fog::Proxmox::Identity.new(proxmox_auth_method: Fog::Proxmox::Auth::Token::AccessTicket::NAME,
+                                   proxmox_username: @username, proxmox_password: 'wrong_password')
       end).must_raise ArgumentError
     end
   end
 
   it 'authenticates with user token' do
     VCR.use_cassette('auth_user_token') do
-        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_userid: @username, proxmox_tokenid: @tokenid, proxmox_token: @token)
-        _(proc do
-            Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_userid: @username, proxmox_tokenid: @tokenid, proxmox_token: 'wrong_token')
-        end).must_raise Excon::Errors::Unauthorized
-        _(proc do
-          Fog::Proxmox::Identity.new(proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_userid: @username, proxmox_tokenid: @tokenid, proxmox_token: 'wrong_token')
-        end).must_raise ArgumentError
-        _(proc do
-          Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_userid: @username, proxmox_tokenid: @tokenid, proxmox_token: 'wrong_token')
-        end).must_raise ArgumentError
-        _(proc do
-          Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_userid: @username, proxmox_token: @token)
-        end).must_raise Fog::Proxmox::Auth::Token::UserToken::URIError       
-        _(proc do
-          Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_tokenid: @tokenid, proxmox_token: @token)
-        end).must_raise Fog::Proxmox::Auth::Token::UserToken::URIError   
-        _(proc do
-          Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_userid: @username, proxmox_tokenid: @tokenid)
-        end).must_raise Fog::Proxmox::Auth::Token::UserToken::URIError 
+      Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url,
+                                 proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_userid: @username, proxmox_tokenid: @tokenid, proxmox_token: @token)
+      _(proc do
+        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url,
+                                   proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_userid: @username, proxmox_tokenid: @tokenid, proxmox_token: 'wrong_token')
+      end).must_raise Excon::Errors::Unauthorized
+      _(proc do
+        Fog::Proxmox::Identity.new(proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME,
+                                   proxmox_userid: @username, proxmox_tokenid: @tokenid, proxmox_token: 'wrong_token')
+      end).must_raise ArgumentError
+      _(proc do
+        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url, proxmox_userid: @username, proxmox_tokenid: @tokenid,
+                                   proxmox_token: 'wrong_token')
+      end).must_raise ArgumentError
+      _(proc do
+        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url,
+                                   proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_userid: @username, proxmox_token: @token)
+      end).must_raise Fog::Proxmox::Auth::Token::UserToken::URIError
+      _(proc do
+        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url,
+                                   proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_tokenid: @tokenid, proxmox_token: @token)
+      end).must_raise Fog::Proxmox::Auth::Token::UserToken::URIError
+      _(proc do
+        Fog::Proxmox::Identity.new(proxmox_url: @proxmox_url,
+                                   proxmox_auth_method: Fog::Proxmox::Auth::Token::UserToken::NAME, proxmox_userid: @username, proxmox_tokenid: @tokenid)
+      end).must_raise Fog::Proxmox::Auth::Token::UserToken::URIError
     end
   end
 
@@ -274,7 +285,7 @@ describe Fog::Proxmox::Identity do
         email: 'bobsinclar@proxmox.com'
       }
       role_hash = {
-        roleid: 'PVETestAdmin', 
+        roleid: 'PVETestAdmin',
         privs: 'User.Modify,Group.Allocate'
       }
       @service.roles.create(role_hash)
@@ -301,7 +312,8 @@ describe Fog::Proxmox::Identity do
       bob.destroy
       # Add ACL to groups
       group1 = @service.groups.create(groupid: 'group1', comment: 'Group 1')
-      permission = @service.permissions.create(type: 'group', roleid: role.roleid, path: '/access', ugid: group1.groupid)
+      permission = @service.permissions.create(type: 'group', roleid: role.roleid, path: '/access',
+                                               ugid: group1.groupid)
       _(permission).wont_be_nil
       # Read new permission
       permissions = @service.permissions.all
@@ -357,48 +369,48 @@ describe Fog::Proxmox::Identity do
     end
   end
 
-    it 'CRUD user tokens' do
-      VCR.use_cassette('tokens') do
-        # Get user
-        bob_hash = {
-          userid: 'bobsinclar@pve',
-          password: 'bobsinclar1',
-          firstname: 'Bob',
-          lastname: 'Sinclar',
-          email: 'bobsinclar@proxmox.com'
-        }
-        token_hash = {
-          userid: bob_hash[:userid],
-          tokenid: 'bobsinclar1'
-        }
-        @service.users.create(bob_hash)
-        bob = @service.users.get token_hash[:userid]
-        _(bob).wont_be_nil
-        # Create Token
-        token = bob.tokens.create(token_hash)
-        token_info = token.info
-        _(token_info).wont_be_nil
-        # all user tokens
-        tokens_all = bob.tokens.all
-        _(tokens_all).wont_be_nil
-        _(tokens_all).wont_be_empty
-        _(tokens_all).must_include token
-        # Find token info by tokenid
-        token_get = bob.tokens.get(token_hash[:tokenid])
-        _(token_get).wont_be_nil
-        _(token_get).must_equal token
-        # Update
-        token.comment = 'test'
-        token.expire  = 0
-        token.privsep  = 0
-        token.update
-        # Delete
-        token.destroy
-        token = bob.tokens.get token_hash[:tokenid]
-        _(token).must_be_nil
-        bob.destroy
-        bob= @service.users.get bob_hash[:userid]
-        _(bob).must_be_nil
-      end
+  it 'CRUD user tokens' do
+    VCR.use_cassette('tokens') do
+      # Get user
+      bob_hash = {
+        userid: 'bobsinclar@pve',
+        password: 'bobsinclar1',
+        firstname: 'Bob',
+        lastname: 'Sinclar',
+        email: 'bobsinclar@proxmox.com'
+      }
+      token_hash = {
+        userid: bob_hash[:userid],
+        tokenid: 'bobsinclar1'
+      }
+      @service.users.create(bob_hash)
+      bob = @service.users.get token_hash[:userid]
+      _(bob).wont_be_nil
+      # Create Token
+      token = bob.tokens.create(token_hash)
+      token_info = token.info
+      _(token_info).wont_be_nil
+      # all user tokens
+      tokens_all = bob.tokens.all
+      _(tokens_all).wont_be_nil
+      _(tokens_all).wont_be_empty
+      _(tokens_all).must_include token
+      # Find token info by tokenid
+      token_get = bob.tokens.get(token_hash[:tokenid])
+      _(token_get).wont_be_nil
+      _(token_get).must_equal token
+      # Update
+      token.comment = 'test'
+      token.expire  = 0
+      token.privsep = 0
+      token.update
+      # Delete
+      token.destroy
+      token = bob.tokens.get token_hash[:tokenid]
+      _(token).must_be_nil
+      bob.destroy
+      bob = @service.users.get bob_hash[:userid]
+      _(bob).must_be_nil
     end
+  end
 end

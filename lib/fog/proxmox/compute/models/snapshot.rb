@@ -51,7 +51,7 @@ module Fog
 
         def save
           path_params = { node: node_id, type: server_type, vmid: server_id }
-          body_params = { snapname: name }
+          body_params = { snapname: name, vmstate: vmstate }
           server.tasks.wait_for(service.create_snapshot(path_params, body_params))
         end
 

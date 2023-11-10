@@ -27,7 +27,7 @@ module Fog
       SERVER_DISK_REGEXP = /^(scsi|sata|virtio|ide)(\d+)$/
       MOUNT_POINT_REGEXP = /^(mp)(\d+)$/
       ROOTFS_REGEXP = /^(rootfs)$/
-      CDROM_REGEXP = /^(.*)[,]{0,1}(media=cdrom)[,]{0,1}(.*)$/
+      CDROM_REGEXP = /^(.*),{0,1}(media=cdrom),{0,1}(.*)$/
       TEMPLATE_REGEXP = /^(.*)(base-)(.*)$/
       CLOUD_INIT_REGEXP = /^(.*)(cloudinit)(.*)$/
 
@@ -44,7 +44,7 @@ module Fog
           value += 'none'
         end
         opts = disk[:options] if disk[:options]
-        main_a = [:id, :volid, :storage, :size]
+        main_a = %i[id volid storage size]
         opts ||= disk.reject { |key, _value| main_a.include? key }
         options = ''
         options += Fog::Proxmox::Hash.stringify(opts) if opts
@@ -79,9 +79,9 @@ module Fog
       # Convert API Proxmox volume/disk parameter string into volume/disk attributes hash value
       def self.extract_storage_volid_size(disk_value)
         # volid definition: <VOLUME_ID>:=<STORAGE_ID>:<storage type dependent volume name>
-        values_a = disk_value.scan(/^(([\w-]+)[:]{0,1}([\w\/\.-]+))/)
+        values_a = disk_value.scan(%r{^(([\w-]+):{0,1}([\w/.-]+))})
         no_cdrom = !disk_value.match(CDROM_REGEXP)
-        creation = disk_value.split(',')[0].match(/^(([\w-]+)[:]{1}([\d]+))$/)
+        creation = disk_value.split(',')[0].match(/^(([\w-]+):{1}(\d+))$/)
         values = values_a.first if values_a
         if no_cdrom
           storage = values[1]
@@ -104,11 +104,11 @@ module Fog
         val = size.match(/\d+(\w?)/)
         m = 0
         case val[1]
-          when "K" then m = 1
-          when "M" then m = 2
-          when "G" then m = 3
-          when "T" then m = 4
-          when "P" then m = 5
+        when 'K' then m = 1
+        when 'M' then m = 2
+        when 'G' then m = 3
+        when 'T' then m = 4
+        when 'P' then m = 5
         end
         val[0].to_i * 1024**m
       end
@@ -118,7 +118,7 @@ module Fog
       end
 
       def self.to_human_bytes(size)
-        units = ['Kb', 'Mb', 'Gb', 'Tb', 'Pb']
+        units = %w[Kb Mb Gb Tb Pb]
         i = 0
         human_size = size.to_s + 'b'
         while i < 5 && size >= 1024
@@ -129,9 +129,15 @@ module Fog
         human_size
       end
 
+      def self.to_int_gb(size_bytes)
+        val = to_human_bytes(size_bytes.to_i).match(/\d+(Gb)/)
+        val ? val[0].to_i : 0
+      end
+
       def self.extract_size(disk_value)
         size = extract_option('size', disk_value)
-        size ? to_bytes(size) : "1G"
+        size = to_int_gb(to_bytes(size)).to_s if size.match?(/\d+(G)/)
+        size
       end
 
       def self.disk?(id)

@@ -27,13 +27,13 @@ module Fog
         model Fog::Proxmox::Identity::Pool
 
         def all
-          pools_with_members = Array.new
-          service.list_pools.each { |pool| pools_with_members.push(pool.merge(service.get_pool(pool["poolid"]))) }
+          pools_with_members = []
+          service.list_pools.each { |pool| pools_with_members.push(pool.merge(service.get_pool(pool['poolid']))) }
           load pools_with_members
         end
-   
+
         def get(id)
-          all.find { |pool| pool.identity === id }
+          all.find { |pool| pool.identity == id }
         end
 
         def destroy(id)

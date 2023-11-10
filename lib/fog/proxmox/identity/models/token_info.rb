@@ -24,9 +24,9 @@ module Fog
       class TokenInfo < Fog::Model
         identity  :tokenid
         identity  :userid
-        attribute  :fulltokenid
+        attribute :fulltokenid
         attribute :info
-        attribute :value        
+        attribute :value
 
         def initialize(new_attributes = {})
           prepare_service_value(new_attributes)

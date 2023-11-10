@@ -3,8 +3,8 @@
 # Fog::Proxmox
 
 ![CI](https://github.com/fog/fog-proxmox/workflows/CI/badge.svg)
-[![Maintainability](https://api.codeclimate.com/v1/badges/33e619f2167cc9864b61/maintainability)](https://codeclimate.com/github/fog/fog-proxmox/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/33e619f2167cc9864b61/test_coverage)](https://codeclimate.com/github/fog/fog-proxmox/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/dfcdcc32f096abf1b2b4/maintainability)](https://codeclimate.com/github/fog/fog-proxmox/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/dfcdcc32f096abf1b2b4/test_coverage)](https://codeclimate.com/github/fog/fog-proxmox/test_coverage)
 [![Gem Version](https://badge.fury.io/rb/fog-proxmox.svg)](https://badge.fury.io/rb/fog-proxmox)
 
 This is a [FOG](http://fog.io/) (>= 2.1) module gem to support [Proxmox VE](https://www.proxmox.com/en/proxmox-ve)
@@ -62,16 +62,40 @@ To record your VCR cassettes:
 PROXMOX_URL=https://192.168.56.101:8006/api2/json DISABLE_PROXY=true SSL_VERIFY_PEER=false bundle exec rake spec
 ```
 
-To replay your recorded tests:
+To replay all your recorded tests:
 
 ```shell
 USE_VCR=true bundle exec rake spec
 ```
 
+To replay one group (compute, identity or network) of your recorded tests:
+
+```shell
+USE_VCR=true bundle exec rake spec:compute
+```
+
 Code formatting:
 
 ```shell
-bundle exec bin/rake rubocop  
+bundle exec rake rubocop
+```
+
+Auto correcting (safe):
+
+```shell
+bundle exec rake rubocop:autocorrect
+```
+
+Exclude cops in todo file:
+
+```shell
+bundle exec rubocop --auto-gen-config
+```
+
+See all available rake tasks:
+
+```shell
+bundle exec rake --tasks
 ```
 
 ## Contributing

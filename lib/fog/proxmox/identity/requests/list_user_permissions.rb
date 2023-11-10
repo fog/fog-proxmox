@@ -26,7 +26,7 @@ module Fog
         def list_user_permissions(userid, path)
           options = { userid: userid }
           options.store(:path, path) if path
-            request(
+          request(
             expects: [200],
             method: 'GET',
             path: 'access/permissions',

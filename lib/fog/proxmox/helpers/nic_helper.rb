@@ -30,19 +30,19 @@ module Fog
       end
 
       def self.model_regexp
-        /^model=(\w+)[,].+/
+        /^model=(\w+),.+/
       end
 
       def self.name_regexp
-        /^name=(\w+)[,].+/
+        /^name=(\w+),.+/
       end
 
       def self.ip_regexp
-        /^(.+)[,]{1}ip=([\d\.\/]+)[,]?(.+)?$/
+        %r{^(.+),{1}ip=([\d./]+),?(.+)?$}
       end
 
       def self.nic_update_regexp
-        /^(\w+)[=]{1}([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}).+/
+        /^(\w+)={1}([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}).+/
       end
 
       def self.has_model?(nic_value)
@@ -75,33 +75,39 @@ module Fog
 
       def self.nic_name(nic)
         if nic.has_key?(:model)
-          "model"
+          'model'
         elsif nic.has_key?(:name)
-          "name"
+          'name'
         else
-          ""
+          ''
         end
       end
 
       def self.set_mac(nic_id, nic_hash)
-        mac_keys = [:macaddr, :hwaddr]
+        mac_keys = %i[macaddr hwaddr]
         nic_value = ''
         if (nic_hash.keys & mac_keys).empty?
-          nic_value = nic_name(nic_hash) + "=" + nic_id
+          nic_value = nic_name(nic_hash) + '=' + nic_id
         else
           mac_value = nic_hash[mac_keys[0]] if nic_hash.key?(mac_keys[0])
           mac_value ||= nic_hash[mac_keys[1]] if nic_hash.key?(mac_keys[1])
-          nic_value = nic_id + "=" + mac_value
+          nic_value = nic_id + '=' + mac_value
         end
         nic_value
       end
 
       # Convert nic attributes hash into API Proxmox parameters string
       def self.flatten(nic_hash)
-        nic_id = nic_hash[nic_name(nic_hash).to_sym]
-        nic_value = set_mac(nic_id, nic_hash)
-        options = nic_hash.reject { |key, _value| [nic_name(nic_hash).to_sym, :id, :macaddr, :hwaddr].include? key.to_sym }
-        nic_value += ',' + Fog::Proxmox::Hash.stringify(options) unless options.empty?
+        if nic_hash[:hwaddr].nil?
+          nic_id = nic_hash[nic_name(nic_hash).to_sym]
+          nic_value = set_mac(nic_id, nic_hash)
+          options = nic_hash.reject do |key, _value|
+            [nic_name(nic_hash).to_sym, :id, :hwaddr, :macaddr].include? key.to_sym
+          end
+          nic_value += ',' + Fog::Proxmox::Hash.stringify(options) unless options.empty?
+        else
+          nic_value = Fog::Proxmox::Hash.stringify(nic_hash.except(%i[id model macaddr])) unless nic_hash.empty?
+        end
         { "#{nic_hash[:id]}": nic_value }
       end
 

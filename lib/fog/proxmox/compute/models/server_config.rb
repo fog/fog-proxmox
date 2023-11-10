@@ -24,7 +24,8 @@ require 'fog/proxmox/helpers/controller_helper'
 module Fog
   module Proxmox
     class Compute
-      # ServerConfig model
+      # ServerConfig model: https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/{qemu|lxc}/{vmid}/config
+      # memory, balloon, shares and swap are in Mb
       class ServerConfig < Fog::Model
         identity  :vmid
         attribute :description
@@ -99,7 +100,7 @@ module Fog
         end
 
         def flatten
-          flat_hash = attributes.reject { |attribute| [:node_id, :type, :vmid, :disks, :interfaces].include? attribute }
+          flat_hash = attributes.reject { |attribute| %i[node_id type vmid disks interfaces].include? attribute }
           flat_hash.merge(interfaces_flatten)
           flat_hash.merge(disks_flatten)
           flat_hash
@@ -128,7 +129,9 @@ module Fog
               model: Fog::Proxmox::NicHelper.extract_nic_id(value),
               macaddr: Fog::Proxmox::NicHelper.extract_mac_address(value)
             }
-            names = Fog::Proxmox::Compute::Interface.attributes.reject { |attribute| [:id, :macaddr, :model].include? attribute }
+            names = Fog::Proxmox::Compute::Interface.attributes.reject do |attribute|
+              %i[id macaddr model].include? attribute
+            end
             names.each { |name| nic_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
             attributes[:interfaces] << Fog::Proxmox::Compute::Interface.new(nic_hash)
           end
@@ -145,7 +148,9 @@ module Fog
               volid: volid,
               storage: storage
             }
-            names = Fog::Proxmox::Compute::Disk.attributes.reject { |attribute| [:id, :size, :storage, :volid].include? attribute }
+            names = Fog::Proxmox::Compute::Disk.attributes.reject do |attribute|
+              %i[id size storage volid].include? attribute
+            end
             names.each { |name| disk_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
             attributes[:disks] << Fog::Proxmox::Compute::Disk.new(disk_hash)
           end

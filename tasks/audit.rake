@@ -17,16 +17,9 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-module Fog
-  module Proxmox
-    # module String mixins
-    module String
-      def self.to_boolean(text)
-        return true if text == true || text =~ (/(true|t|yes|y|1)$/i)
-        return false if text == false || text.empty? || text =~ (/(false|f|no|n|0)$/i)
+require 'bundler/audit/task'
 
-        raise ArgumentError, "invalid value for Boolean: \"#{text}\""
-      end
-    end
-  end
-end
+Bundler::Audit::Task.new
+
+desc 'Run audit vulnerabilities'
+task audit: 'bundle:audit'

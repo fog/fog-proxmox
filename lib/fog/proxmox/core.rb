@@ -26,9 +26,7 @@ module Fog
     # Core module
     module Core
       attr_accessor :token
-      attr_reader :auth_method
-      attr_reader :expires
-      attr_reader :current_user
+      attr_reader :auth_method, :expires, :current_user
 
       def user_token?
         @auth_token == 'user_token'
@@ -46,24 +44,24 @@ module Fog
         @connection = Fog::Core::Connection.new(@proxmox_url, @persistent, @connection_options)
       end
 
-      def setup(options)        
+      def setup(options)
         if options.respond_to?(:config_service?) && options.config_service?
           configure(options)
           return
         end
         Fog::Proxmox::Variables.to_variables(self, options, 'proxmox')
         @connection_options = options[:connection_options] || {}
-        @connection_options[:disable_proxy] = true if ENV['DISABLE_PROXY'] == 'true'    
+        @connection_options[:disable_proxy] = true if ENV['DISABLE_PROXY'] == 'true'
         @connection_options[:ssl_verify_peer] = false if ENV['SSL_VERIFY_PEER'] == 'false'
         @proxmox_must_reauthenticate = true
-        @persistent = options[:persistent] || false  
-        @token ||= options[:proxmox_token]   
-        @auth_method ||= options[:proxmox_auth_method]   
-        if @token
-          @proxmox_can_reauthenticate = false
-        else
-          @proxmox_can_reauthenticate = true
-        end   
+        @persistent = options[:persistent] || false
+        @token ||= options[:proxmox_token]
+        @auth_method ||= options[:proxmox_auth_method]
+        @proxmox_can_reauthenticate = if @token
+                                        false
+                                      else
+                                        true
+                                      end
       end
 
       def credentials
@@ -85,31 +83,36 @@ module Fog
       def expired?
         return false if @expires.nil?
         return false if @expires == 0
-        return @expires - Time.now.utc.to_i < 60
+
+        @expires - Time.now.utc.to_i < 60
       end
 
       def request(params)
-        retried = false     
+        retried = false
         begin
           authenticate! if expired?
-          request_options = params.merge(path: "#{@path}/#{params[:path]}", headers: @auth_token.headers(params[:method], params.respond_to?(:headers) ? params[:headers] : {}, {}))
+          request_options = params.merge(path: "#{@path}/#{params[:path]}",
+                                         headers: @auth_token.headers(
+                                           params[:method], params.respond_to?(:headers) ? params[:headers] : {}, {}
+                                         ))
           response = @connection.request(request_options)
-        rescue Excon::Errors::Unauthorized => error
+        rescue Excon::Errors::Unauthorized => e
           # token expiration and token renewal possible
-          if !%w[Bad username or password, invalid token value!].include?(error.response.body) && @proxmox_can_reauthenticate && !retried
+          if !%w[Bad username or password, invalid token
+                 value!].include?(e.response.body) && @proxmox_can_reauthenticate && !retried
             authenticate!
             retried = true
             retry
           # bad credentials or token renewal not possible
           else
-            raise error
+            raise e
           end
-        rescue Excon::Errors::HTTPStatusError => error
-          raise case error
+        rescue Excon::Errors::HTTPStatusError => e
+          raise case e
                 when Excon::Errors::NotFound
-                  self.class.not_found_class.slurp(error)
+                  self.class.not_found_class.slurp(e)
                 else
-                  error
+                  e
                 end
         end
         Fog::Proxmox::Json.get_data(response)
@@ -123,7 +126,7 @@ module Fog
         if @proxmox_must_reauthenticate
           @token = nil if @proxmox_must_reauthenticate
           @auth_token = Fog::Proxmox::Auth::Token.build(proxmox_options, @connection_options)
-          @current_user = proxmox_options[:proxmox_userid] ? proxmox_options[:proxmox_userid] : proxmox_options[:proxmox_username]
+          @current_user = proxmox_options[:proxmox_userid] || proxmox_options[:proxmox_username]
           @token = @auth_token.token
           @expires = @auth_token.expires
           @proxmox_must_reauthenticate = false

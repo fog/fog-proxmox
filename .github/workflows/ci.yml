@@ -1,79 +1,64 @@
-name: CI
+name: test
 
 on:
   push:
     branches: [ master ]
   pull_request:
-    branches: [ master ] 
-  release:
-    types: [created]
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+      - run: bundle install
+      - name: rubocop runs
+        run: bundle exec rake rubocop
+  test:
+    needs: [lint]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6
+        ruby-version: '2.7'
+        bundler-cache: true
     - name: Install dependencies
       run: bundle install
-    - name: Run tests
-      run: bundle exec rake test spec audit
-    - name: Upload results for coverage
+    - name: Run tests with simplecov
+      run: bundle exec rake spec
+      env:
+        CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+    - name: Run vulnerabilities check
+      run: bundle exec rake audit
+    - name: Upload simplecov results for coverage
       uses: actions/upload-artifact@v1
       with:
         name: coverage
         path: coverage/
       
   coverage:
-    needs: [ test ]
+    needs: [ lint, test ]
     name: coverage
     runs-on: ubuntu-latest
-    steps: 
-    - uses: actions/checkout@v2
+    steps:
+    - uses: actions/checkout@v3
     - name: Download tests result from test
       uses: actions/download-artifact@v1
       with:
         name: coverage
-    - name: Install Code Climate test-reporter
-      run: |
-        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-        chmod +x ./cc-test-reporter       
-    - name: Format code coverage
+    - name: Publish code coverage to codeclimate
+      uses: paambaati/codeclimate-action@v3.2.0
       env:
+        CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         GIT_BRANCH: ${{ github.ref }}
         GIT_COMMIT_SHA: ${{ github.sha }}
-      run: |
-        export GIT_COMMITTED_AT="$(date +%s)"
-        ./cc-test-reporter format-coverage -d -t simplecov -o coverage/codeclimate.json coverage/.resultset.json 
-    - name: Publish code coverage
-      env:
-        GIT_BRANCH: ${{ github.ref }}
-        GIT_COMMIT_SHA: ${{ github.sha }}
-      run: |
-        export GIT_COMMITTED_AT="$(date +%s)"
-        ./cc-test-reporter upload-coverage -d -r ${{secrets.CC_TEST_REPORTER_ID}}
-
-  publish:
-    needs: [ test ]
-    name: publish
-    runs-on: ubuntu-latest
-    if: contains(github.ref, '/tags/v')
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Ruby 2.6
-        uses: actions/setup-ruby@v1
-        with:
-          version: 2.6.x
-      - name: Publish to RubyGems
-        env:
-          GEM_HOST_API_KEY: ${{secrets.RUBYGEMS_AUTH_TOKEN}}
-        run: |
-          mkdir -p $HOME/.gem
-          touch $HOME/.gem/credentials
-          chmod 0600 $HOME/.gem/credentials
-          printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-          gem build *.gemspec
-          gem push *.gem
+      with:
+        workingDirectory: ${{github.workspace}}
+        debug: true
+        coverageLocations: |
+          ${{github.workspace}}/coverage/coverage.json:simplecov

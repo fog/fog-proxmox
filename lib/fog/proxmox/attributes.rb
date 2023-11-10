@@ -24,9 +24,10 @@ module Fog
       def self.set_attr(attr_name, attributes, new_attributes)
         attributes[attr_name.to_sym] = new_attributes[attr_name] unless new_attributes[attr_name].nil?
       end
+
       def self.set_attr_and_sym(attr_name, attributes, new_attributes)
-        self.set_attr(attr_name, attributes, new_attributes)
-        self.set_attr(attr_name.to_sym, attributes, new_attributes)
+        set_attr(attr_name, attributes, new_attributes)
+        set_attr(attr_name.to_sym, attributes, new_attributes)
       end
     end
   end

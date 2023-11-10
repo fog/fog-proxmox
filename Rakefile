@@ -17,42 +17,15 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-require 'bundler/gem_tasks'
-require 'rubocop/rake_task'
 require 'rake/testtask'
-require 'bundler/audit/task'
 
-Bundler::Audit::Task.new
-RuboCop::RakeTask.new
-
-task default: :test
-
-desc 'Run fog-proxmox unit tests with Minitest'
-task :test do
-  mock = ENV['FOG_MOCK'] || 'true'
-  sh("export FOG_MOCK=#{mock} && bundle exec rake tests:unit")
+task_dir = File.expand_path('tasks', __dir__)
+Dir["#{task_dir}/**/*.rake"].each do |task_file|
+  load task_file
 end
 
-desc 'Run fog-proxmox spec/ tests (VCR)'
-task spec: 'tests:spec'
+desc 'Default Task'
+task default: :spec
 
-desc 'Run audit vulnerabilities'
-task audit: 'bundle:audit'
-
-namespace :tests do
-  desc 'Run fog-proxmox test/'
-  Rake::TestTask.new do |t|
-    t.name = 'unit'
-    t.libs.push %w[lib test]
-    t.test_files = FileList['test/**/*.rb']
-    t.verbose = true
-  end
-
-  desc 'Run fog-proxmox spec/'
-  Rake::TestTask.new do |t|
-    t.name = 'spec'
-    t.libs.push %w[lib spec]
-    t.pattern = 'spec/**/*_spec.rb'
-    t.verbose = true
-  end
-end
+desc 'Alias of spec:all'
+task spec: 'spec:all'

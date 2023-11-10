@@ -21,7 +21,7 @@
 module Fog
   module Proxmox
     class Compute
-      # class Storage model
+      # class Storage model: https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}
       class Storage < Fog::Model
         identity  :storage
         attribute :node_id, aliases: :node
@@ -48,7 +48,8 @@ module Fog
         private
 
         def initialize_volumes
-          attributes[:volumes] = Fog::Proxmox::Compute::Volumes.new(service: service, node_id: node_id, storage_id: identity)
+          attributes[:volumes] =
+            Fog::Proxmox::Compute::Volumes.new(service: service, node_id: node_id, storage_id: identity)
         end
       end
     end

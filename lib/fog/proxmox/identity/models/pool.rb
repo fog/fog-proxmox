@@ -67,14 +67,14 @@ module Fog
         end
 
         def has_server?(vmid)
-          has?("vmid", vmid)
+          has?('vmid', vmid)
         end
 
         def has_storage?(storage)
-          has?("storage", storage)
+          has?('storage', storage)
         end
-        
-        private 
+
+        private
 
         def has?(key, vmid)
           result = false

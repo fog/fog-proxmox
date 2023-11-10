@@ -31,7 +31,9 @@ module Fog
         end
 
         def get(type, path, roleid, ugid)
-          all.find { |permission| permission.type === type && permission.path === path && permission.roleid === roleid && permission.ugid === ugid }
+          all.find do |permission|
+            permission.type == type && permission.path == path && permission.roleid == roleid && permission.ugid == ugid
+          end
         end
 
         def destroy(permission_hash)
