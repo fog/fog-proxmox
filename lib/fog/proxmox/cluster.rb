@@ -36,6 +36,7 @@ module Fog
 
       # Manage nodes cluster
       request :list_resources
+      request :get_nextid
 
       # Mock class
       class Mock
