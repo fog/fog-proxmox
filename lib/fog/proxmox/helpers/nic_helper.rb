@@ -106,7 +106,10 @@ module Fog
           end
           nic_value += ',' + Fog::Proxmox::Hash.stringify(options) unless options.empty?
         else
-          nic_value = Fog::Proxmox::Hash.stringify(nic_hash.except(%i[id model macaddr])) unless nic_hash.empty?
+          options = nic_hash.reject do |key, _value|
+            %i[id model macaddr].include? key.to_sym
+          end
+          nic_value = Fog::Proxmox::Hash.stringify(options) unless options.empty?
         end
         { "#{nic_hash[:id]}": nic_value }
       end
