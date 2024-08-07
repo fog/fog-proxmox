@@ -38,7 +38,7 @@ describe Fog::Proxmox::NicHelper do
   end
 
   let(:lxc_nic) do
-    { id: 'net0', name: 'eth0', macaddr: '66:89:C5:59:AA:96', bridge: 'vmbr0', firewall: 1, link_down: 1, queues: 1,
+    { id: 'net0', name: 'eth0', hwaddr: '66:89:C5:59:AA:96', bridge: 'vmbr0', firewall: 1, link_down: 1, queues: 1,
       rate: 1, tag: 1, ip: '192.168.56.100/31' }
   end
 
@@ -123,7 +123,7 @@ describe Fog::Proxmox::NicHelper do
     end
 
     it 'returns lxc nic string' do
-      flat_lxc = { net0: 'eth0=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1,ip=192.168.56.100/31' }
+      flat_lxc = { net0: 'name=eth0,hwaddr=66:89:C5:59:AA:96,bridge=vmbr0,firewall=1,link_down=1,queues=1,rate=1,tag=1,ip=192.168.56.100/31' }
       assert_equal flat_lxc, Fog::Proxmox::NicHelper.flatten(lxc_nic)
     end
   end
