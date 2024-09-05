@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Copyright 2018 Tristan Robert
 
 # This file is part of Fog::Proxmox.
@@ -16,40 +17,27 @@
 # You should have received a copy of the GNU General Public License
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
-# frozen_string_literal: true
-
-require 'fog/core'
-require 'fog/json'
+require 'fog/proxmox/cluster/models/resource'
 
 module Fog
-  # Proxmox module
   module Proxmox
-    require 'fog/proxmox/auth/token'
+    class Cluster
+      # class Disks Collection of disk
+      class Resources < Fog::Collection
+        model Fog::Proxmox::Cluster::Resource
 
-    autoload :Core, 'fog/proxmox/core'
-    autoload :Errors, 'fog/proxmox/errors'
-    autoload :Identity, 'fog/proxmox/identity'
-    autoload :Cluster, 'fog/proxmox/cluster'
-    autoload :Compute, 'fog/proxmox/compute'
-    autoload :Storage, 'fog/proxmox/storage'
-    autoload :Network, 'fog/proxmox/network'
+        def all
+          load service.list_resources
+        end
 
-    extend Fog::Provider
+        def get(id)
+          all.find { |resource| resource.identity === id }
+        end
 
-    service(:identity, 'Identity')
-    service(:cluster, 'Cluster')
-    service(:compute, 'Compute')
-    service(:storage, 'Storage')
-    service(:network, 'Network')
-
-    @token_cache = {}
-
-    class << self
-      attr_accessor :token_cache
-    end
-
-    def self.clear_token_cache
-      Fog::Proxmox.token_cache = {}
+        def by_type(type)
+          all.select { |resource| resource.type === type }
+        end
+      end
     end
   end
 end
