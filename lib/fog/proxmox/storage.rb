@@ -22,8 +22,57 @@ module Fog
   module Proxmox
     # Procmox storage service
     class Storage < Fog::Service
+      requires :proxmox_url, :proxmox_auth_method
+      recognizes :proxmox_token, :proxmox_tokenid, :proxmox_userid, :persistent, :proxmox_username, :proxmox_password
+
       # Models
-      model_path 'fog/proxmox/storage'
+      model_path 'fog/proxmox/storage/models'
+
+      request_path 'fog/proxmox/storage/requests'
+
+      request :upload
+
+      # Mock class
+      class Mock
+        attr_reader :config
+
+        def initialize(options = {})
+          @proxmox_uri = URI.parse(options[:proxmox_url])
+          @proxmox_auth_method = options[:proxmox_auth_method]
+          @proxmox_tokenid = options[:proxmox_tokenid]
+          @proxmox_userid = options[:proxmox_userid]
+          @proxmox_username = options[:proxmox_username]
+          @proxmox_password = options[:proxmox_password]
+          @proxmox_token = options[:proxmox_token]
+          @proxmox_path = @proxmox_uri.path
+          @config = options
+        end
+      end
+
+      # Real class
+      class Real
+        include Fog::Proxmox::Core
+
+        def self.not_found_class
+          Fog::Proxmox::Storage::NotFound
+        end
+
+        def config
+          self
+        end
+
+        def config_service?
+          true
+        end
+
+        private
+
+        def configure(source)
+          source.instance_variables.each do |v|
+            instance_variable_set(v, source.instance_variable_get(v))
+          end
+        end
+      end
     end
   end
 end
