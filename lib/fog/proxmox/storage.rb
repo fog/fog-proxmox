@@ -31,6 +31,8 @@ module Fog
       request_path 'fog/proxmox/storage/requests'
 
       request :upload
+      request :list_appliances
+      request :download_appliance
 
       # Mock class
       class Mock
