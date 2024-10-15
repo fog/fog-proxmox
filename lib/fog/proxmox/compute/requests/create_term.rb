@@ -26,10 +26,11 @@ module Fog
           node = path_params[:node]
           type = path_params[:type]
           vmid = path_params[:vmid]
+          path = type && vmid ? "nodes/#{node}/#{type}/#{vmid}/termproxy" : "nodes/#{node}/termproxy"
           request(
             expects: [200],
             method: 'POST',
-            path: "nodes/#{node}/#{type}/#{vmid}/termproxy",
+            path: path,
             body: URI.encode_www_form(body_params)
           )
         end
