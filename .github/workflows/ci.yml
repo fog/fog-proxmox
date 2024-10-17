@@ -36,7 +36,7 @@ jobs:
     - name: Run vulnerabilities check
       run: bundle exec rake audit
     - name: Upload simplecov results for coverage
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: coverage
         path: coverage/
