@@ -118,10 +118,10 @@ module Fog
       end
 
       def self.to_human_bytes(size)
-        units = %w[Kb Mb Gb Tb Pb]
+        units = %w[Kb Mb Gb]
         i = 0
         human_size = size.to_s + 'b'
-        while i < 5 && size >= 1024
+        while i < 3 && size >= 1024
           size = modulo_bytes(size)
           human_size = size.to_s + units[i]
           i += 1
