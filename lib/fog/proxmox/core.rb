@@ -53,6 +53,7 @@ module Fog
         @connection_options = options[:connection_options] || {}
         @connection_options[:disable_proxy] = true if ENV['DISABLE_PROXY'] == 'true'
         @connection_options[:ssl_verify_peer] = false if ENV['SSL_VERIFY_PEER'] == 'false'
+        @connection_options[:ignore_unexpected_eof] = true
         @proxmox_must_reauthenticate = true
         @persistent = options[:persistent] || false
         @token ||= options[:proxmox_token]
