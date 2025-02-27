@@ -119,7 +119,7 @@ module Fog
       end
 
       def self.nic?(id)
-        NICS_REGEXP.match(id) ? true : false
+        NICS_REGEXP.match(id) || false
       end
 
       def self.extract_ip(nic_value)

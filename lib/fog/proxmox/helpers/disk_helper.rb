@@ -141,23 +141,23 @@ module Fog
       end
 
       def self.disk?(id)
-        DISKS_REGEXP.match(id) ? true : false
+        DISKS_REGEXP.match(id) || false
       end
 
       def self.cdrom?(value)
-        CDROM_REGEXP.match(value) ? true : false
+        CDROM_REGEXP.match(value) || false
       end
 
       def self.server_disk?(id)
-        SERVER_DISK_REGEXP.match(id) ? true : false
+        SERVER_DISK_REGEXP.match(id) || false
       end
 
       def self.rootfs?(id)
-        ROOTFS_REGEXP.match(id) ? true : false
+        ROOTFS_REGEXP.match(id) || false
       end
 
       def self.mount_point?(id)
-        MOUNT_POINT_REGEXP.match(id) ? true : false
+        MOUNT_POINT_REGEXP.match(id) || false
       end
 
       def self.container_disk?(id)
@@ -165,11 +165,11 @@ module Fog
       end
 
       def self.template?(volid)
-        TEMPLATE_REGEXP.match(volid) ? true : false
+        TEMPLATE_REGEXP.match(volid) || false
       end
 
       def self.cloud_init?(volid)
-        CLOUD_INIT_REGEXP.match(volid) ? true : false
+        CLOUD_INIT_REGEXP.match(volid) || false
       end
 
       def self.of_type?(disk_h, vm_type)
