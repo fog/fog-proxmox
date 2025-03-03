@@ -18,38 +18,44 @@
 
 # frozen_string_literal: true
 
-require 'fog/core'
-require 'fog/json'
+require 'fog/proxmox/hash'
 
 module Fog
-  # Proxmox module
   module Proxmox
-    require 'fog/proxmox/auth/token'
+    class Cluster
+      # class Disk model
+      class Resource < Fog::Model
+        identity  :id
 
-    autoload :Core, 'fog/proxmox/core'
-    autoload :Errors, 'fog/proxmox/errors'
-    autoload :Identity, 'fog/proxmox/identity'
-    autoload :Cluster, 'fog/proxmox/cluster'
-    autoload :Compute, 'fog/proxmox/compute'
-    autoload :Storage, 'fog/proxmox/storage'
-    autoload :Network, 'fog/proxmox/network'
+        attribute :name
+        attribute :type
+        attribute :node
 
-    extend Fog::Provider
+        # generic
+        attribute :maxdisk
 
-    service(:identity, 'Identity')
-    service(:cluster, 'Cluster')
-    service(:compute, 'Compute')
-    service(:storage, 'Storage')
-    service(:network, 'Network')
+        # vm/lxc specific
+        attribute :vmid
+        attribute :status
+        attribute :uptime
+        attribute :template
+        # resources are written in bytes, proxmox displays gibibytes
+        attribute :maxcpu
+        attribute :maxmem
 
-    @token_cache = {}
+        # storage specific
+        attribute :content
+        attribute :shared
+        attribute :storage
 
-    class << self
-      attr_accessor :token_cache
-    end
+        def is_template?
+          template === 1
+        end
 
-    def self.clear_token_cache
-      Fog::Proxmox.token_cache = {}
+        def to_s
+          Fog::Proxmox::Hash.flatten(attributes)
+        end
+      end
     end
   end
 end
