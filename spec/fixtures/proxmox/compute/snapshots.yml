@@ -39,7 +39,7 @@ http_interactions:
   recorded_at: Wed, 10 May 2023 11:52:43 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes
+    uri: https://192.168.56.101:8006/api2/json/nodes
     body:
       encoding: US-ASCII
       string: ''
@@ -76,7 +76,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/cluster/nextid
+    uri: https://192.168.56.101:8006/api2/json/cluster/nextid
     body:
       encoding: US-ASCII
       string: ''
@@ -113,7 +113,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks
     body:
       encoding: US-ASCII
       string: ''
@@ -155,7 +155,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/cluster/nextid?vmid=101
+    uri: https://192.168.56.101:8006/api2/json/cluster/nextid?vmid=101
     body:
       encoding: US-ASCII
       string: ''
@@ -192,7 +192,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: post
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/qemu
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/qemu
     body:
       encoding: US-ASCII
       string: vmid=101
@@ -231,7 +231,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE0:0022900B:645CE78E:qmcreate:101:root@pam:/status
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE0:0022900B:645CE78E:qmcreate:101:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -268,7 +268,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE0:0022900B:645CE78E:qmcreate:101:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE0:0022900B:645CE78E:qmcreate:101:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
@@ -305,7 +305,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE0:0022900B:645CE78E:qmcreate:101:root@pam:/status
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE0:0022900B:645CE78E:qmcreate:101:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -342,7 +342,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE0:0022900B:645CE78E:qmcreate:101:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE0:0022900B:645CE78E:qmcreate:101:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
@@ -379,7 +379,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/qemu/101/status/current
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/qemu/101/status/current
     body:
       encoding: US-ASCII
       string: ''
@@ -417,7 +417,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/qemu/101/config
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/qemu/101/config
     body:
       encoding: US-ASCII
       string: ''
@@ -455,7 +455,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks
     body:
       encoding: US-ASCII
       string: ''
@@ -497,7 +497,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/qemu/101/status/current
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/qemu/101/status/current
     body:
       encoding: US-ASCII
       string: ''
@@ -535,7 +535,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/qemu/101/config
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/qemu/101/config
     body:
       encoding: US-ASCII
       string: ''
@@ -573,7 +573,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks
     body:
       encoding: US-ASCII
       string: ''
@@ -615,7 +615,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:10 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks
     body:
       encoding: US-ASCII
       string: ''
@@ -657,7 +657,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: post
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/qemu/101/snapshot
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/qemu/101/snapshot
     body:
       encoding: US-ASCII
       string: snapname=snapshot1&vmstate=0
@@ -696,7 +696,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE4:00229055:645CE78F:qmsnapshot:101:root@pam:/status
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE4:00229055:645CE78F:qmsnapshot:101:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -733,7 +733,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE4:00229055:645CE78F:qmsnapshot:101:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE4:00229055:645CE78F:qmsnapshot:101:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
@@ -770,7 +770,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE4:00229055:645CE78F:qmsnapshot:101:root@pam:/status
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE4:00229055:645CE78F:qmsnapshot:101:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -807,7 +807,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE4:00229055:645CE78F:qmsnapshot:101:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE4:00229055:645CE78F:qmsnapshot:101:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
@@ -844,7 +844,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/qemu/101/snapshot
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/qemu/101/snapshot
     body:
       encoding: US-ASCII
       string: ''
@@ -882,7 +882,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: put
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/qemu/101/snapshot/snapshot1/config
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/qemu/101/snapshot/snapshot1/config
     body:
       encoding: US-ASCII
       string: description=Snapshot+1
@@ -921,7 +921,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/qemu/101/snapshot
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/qemu/101/snapshot
     body:
       encoding: US-ASCII
       string: ''
@@ -959,7 +959,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks
     body:
       encoding: US-ASCII
       string: ''
@@ -1001,7 +1001,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: delete
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/qemu/101/snapshot/snapshot1?force=0
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/qemu/101/snapshot/snapshot1?force=0
     body:
       encoding: US-ASCII
       string: ''
@@ -1040,7 +1040,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE5:00229093:645CE78F:qmdelsnapshot:101:root@pam:/status
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE5:00229093:645CE78F:qmdelsnapshot:101:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -1077,7 +1077,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE5:00229093:645CE78F:qmdelsnapshot:101:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE5:00229093:645CE78F:qmdelsnapshot:101:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
@@ -1114,7 +1114,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE5:00229093:645CE78F:qmdelsnapshot:101:root@pam:/status
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE5:00229093:645CE78F:qmdelsnapshot:101:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -1151,7 +1151,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE5:00229093:645CE78F:qmdelsnapshot:101:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE5:00229093:645CE78F:qmdelsnapshot:101:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
@@ -1188,7 +1188,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:11 GMT
 - request:
     method: delete
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/qemu/101
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/qemu/101
     body:
       encoding: US-ASCII
       string: ''
@@ -1227,7 +1227,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:12 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE6:002290AF:645CE790:qmdestroy:101:root@pam:/status
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE6:002290AF:645CE790:qmdestroy:101:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -1264,7 +1264,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:12 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE6:002290AF:645CE790:qmdestroy:101:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE6:002290AF:645CE790:qmdestroy:101:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
@@ -1301,7 +1301,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:12 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE6:002290AF:645CE790:qmdestroy:101:root@pam:/status
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE6:002290AF:645CE790:qmdestroy:101:root@pam:/status
     body:
       encoding: US-ASCII
       string: ''
@@ -1338,7 +1338,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2023 13:03:12 GMT
 - request:
     method: get
-    uri: https://proxmox-noris.corp.atix.de/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE6:002290AF:645CE790:qmdestroy:101:root@pam:/log
+    uri: https://192.168.56.101:8006/api2/json/nodes/proxmox-noris/tasks/UPID:proxmox-noris:00011DE6:002290AF:645CE790:qmdestroy:101:root@pam:/log
     body:
       encoding: US-ASCII
       string: ''
