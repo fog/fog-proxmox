@@ -48,11 +48,11 @@ module Fog
           def auth_body(params = {})
             raise URIError, 'URI params is required' if params.nil? || params.empty?
 
-            if params[:proxmox_username].nil? || params[:proxmox_username].empty?
+            if params[:proxmox_username].nil? || params[:proxmox_username].to_s.strip.empty?
               raise URIError,
                     'proxmox_username is required'
             end
-            if params[:proxmox_password].nil? || params[:proxmox_password].empty?
+            if params[:proxmox_password].nil? || params[:proxmox_password].to_s.strip.empty?
               raise URIError,
                     'proxmox_password is required'
             end
