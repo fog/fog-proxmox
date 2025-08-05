@@ -30,7 +30,7 @@ describe Fog::Proxmox::DiskHelper do
   end
 
   let(:scsi) do
-    { scsi0: 'local-lvm:vm-100-disk-1,size=8,cache=none' }
+    { scsi0: 'local-lvm:vm-100-disk-1,size=8,cache=none', scsi1: 'zdata:vm-221-disk-0' }
   end
 
   let(:virtio1) do
@@ -116,6 +116,13 @@ describe Fog::Proxmox::DiskHelper do
       assert_equal('local-lvm', storage)
       assert_equal('local-lvm:vm-100-disk-1', volid)
       assert_equal('8', size)
+    end
+
+    it 'returns scsi get zdata storage and volid with no size' do
+      storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(scsi[:scsi1])
+      assert_equal('zdata', storage)
+      assert_equal('zdata:vm-221-disk-0', volid)
+      assert_nil size
     end
 
     it 'returns virtio get local storage volid and size' do
