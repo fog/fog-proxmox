@@ -28,7 +28,7 @@ module Fog
         attribute :members
 
         def save(options = {})
-          service.create_group((attributes.reject { |attribute| %i[users members].include? attribute }).merge(options))
+          service.create_group(attributes.reject { |attribute| %i[users members].include? attribute }.merge(options))
           reload
         end
 

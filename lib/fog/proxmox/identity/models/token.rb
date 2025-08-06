@@ -42,7 +42,7 @@ module Fog
 
         def save(options = {})
           requires :tokenid, :userid
-          token_hash = (attributes.reject { |attribute| %i[userid tokenid info].include? attribute }).merge(options)
+          token_hash = attributes.reject { |attribute| %i[userid tokenid info].include? attribute }.merge(options)
           service.create_token(userid, tokenid, token_hash)
           reload
         end

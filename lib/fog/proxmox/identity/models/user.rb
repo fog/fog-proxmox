@@ -45,7 +45,7 @@ module Fog
         end
 
         def save(options = {})
-          service.create_user((attributes.reject { |attribute| [:tokens].include? attribute }).merge(options))
+          service.create_user(attributes.reject { |attribute| [:tokens].include? attribute }.merge(options))
           reload
         end
 
