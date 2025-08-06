@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.2](https://github.com/fog/fog-proxmox/compare/v0.15.1...v0.15.2) (2025-08-06)
+
+
+### Miscellaneous Chores
+
+* release 0.15.2 ([#116](https://github.com/fog/fog-proxmox/issues/116)) ([d460740](https://github.com/fog/fog-proxmox/commit/d46074059cc48e0951109850904b8bc6a030da81))
+
 ## [0.15.1](https://github.com/fog/fog-proxmox/compare/v0.15.0...v0.15.1) (2025-02-25)
 
 
