@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/cluster/resources
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.2.3
+      Cookie:
+      - PVEAuthCookie=PVE:root@pam:5FBE5F93::J4UGO/cW6NJLxU0fQy8AnxuJhKDkIa+ZLBLUIxlXYO3Nb1ocZ15jqoPl0EEOQpI2sohhmtGYo9bptqaPPH48rmaNKzIUtHjDAg/c425GgbhkSo2jYVeCWcTTEC+nDskOiMkjdE4HIiFLpk71IMEP93hGWJ4+mnUxOLfHsRDodWdJXoGoBlxiUBu0zirFLXR60i6WCK2oX82nPYXRJbsl4VRLYcOkYXnnfaUxYgOL0veZhKRcAWlVRKQ7/lkdG1iu3XlOvEeynqcT2xHs+Z158zALA+ZzAEQ6GYdvFFKr/xR57Kd8hfOhRumKx5EaDfdeYkZP/8ZVH48tEbTXrOEQHg==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Connection:
+      - Keep-Alive
+      Date:
+      - Wed, 25 Nov 2020 13:43:47 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - pve-api-daemon/3.0
+      Content-Length:
+      - '209'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - Wed, 25 Nov 2020 13:43:47 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"cpu":0.486288911006624,"disk":6172704768,"id":"node/pve","level":"b","maxcpu":32,"maxdisk":773845024768,"maxmem":134936813568,"mem":114900549632,"node":"pve","status":"online","type":"node","uptime":6909898},{"cpu":0.00538129953557645,"disk":1983594496,"diskread":0,"diskwrite":0,"id":"qemu/105","maxcpu":4,"maxdisk":34573647872,"maxmem":17179869184,"mem":0,"name":"test01","netin":0,"netout":0,"node":"pve","status":"stopped","template":0,"type":"qemu","uptime":0,"vmid":100},{"cpu":0.00538129953557645,"disk":1983594496,"diskread":10794659840,"diskwrite":45429886976,"id":"lxc/101","maxcpu":1,"maxdisk":8350298112,"maxmem":2147483648,"mem":116183040,"name":"test02","netin":2258649906,"netout":9957850155,"node":"pve","status":"running","template":0,"type":"lxc","uptime":6907061,"vmid":101},{"content":"vztmpl,iso,backup","disk":5444206592,"id":"storage/pve/local","maxdisk":773845024768,"node":"pve","plugintype":"dir","shared":0,"status":"available","storage":"local","type":"storage"},{"content":"images,rootdir","disk":6525668992656,"id":"storage/pve/storage","maxdisk":31831680352256,"node":"pve","plugintype":"zfspool","shared":0,"status":"available","storage":"storage","type":"storage"}]}'
+    http_version:
+  recorded_at: Wed, 25 Nov 2020 13:43:48 GMT
+recorded_with: VCR 4.0.0
