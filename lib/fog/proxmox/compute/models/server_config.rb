@@ -20,6 +20,7 @@
 require 'fog/proxmox/attributes'
 require 'fog/proxmox/helpers/nic_helper'
 require 'fog/proxmox/helpers/controller_helper'
+require 'fog/proxmox/helpers/efidisk_helper'
 
 module Fog
   module Proxmox
@@ -78,6 +79,7 @@ module Fog
         attribute :sshkeys
         attribute :searchdomain
         attribute :nameserver
+        attribute :efidisk
 
         def initialize(new_attributes = {})
           prepare_service_value(new_attributes)
@@ -85,6 +87,7 @@ module Fog
           requires :vmid
           initialize_interfaces(new_attributes)
           initialize_disks(new_attributes)
+          initialize_efidisk(new_attributes)
           super(new_attributes)
         end
 
@@ -154,6 +157,14 @@ module Fog
             names.each { |name| disk_hash.store(name.to_sym, Fog::Proxmox::ControllerHelper.extract(name, value)) }
             attributes[:disks] << Fog::Proxmox::Compute::Disk.new(disk_hash)
           end
+        end
+
+        def initialize_efidisk(new_attributes)
+          efidisk = new_attributes['efidisk0']
+          return if efidisk.nil?
+
+          efidisk_hash = Fog::Proxmox::EfidiskHelper.extract(efidisk)
+          attributes[:efidisk] = Fog::Proxmox::Compute::Efidisk.new(efidisk_hash)
         end
       end
     end

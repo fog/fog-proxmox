@@ -34,7 +34,8 @@ proxmox_password = 'proxmox01'
 compute = Fog::Proxmox::Compute.new(
   proxmox_url: proxmox_url,
   proxmox_username: proxmox_username,
-  proxmox_password: proxmox_password
+  proxmox_password: proxmox_password,
+  proxmox_auth_method: 'access_ticket'
 )
 
 # Create pools
