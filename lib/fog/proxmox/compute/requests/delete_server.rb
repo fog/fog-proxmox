@@ -23,22 +23,26 @@ module Fog
     class Compute
       # class Real delete_server request
       class Real
-        def delete_server(path_params, body_params)
+        def delete_server(path_params, body_params, query: nil)
           node = path_params[:node]
           type = path_params[:type]
           vmid = path_params[:vmid]
-          request(
+          options = {
             expects: [200],
             method: 'DELETE',
             path: "nodes/#{node}/#{type}/#{vmid}",
             body: URI.encode_www_form(body_params)
-          )
+          }
+
+          options[:query] = query if query&.any?
+
+          request(options)
         end
       end
 
       # class Mock delete_server request
       class Mock
-        def delete_server(_path_params, _body_params); end
+        def delete_server(_path_params, _body_params, query: nil); end
       end
     end
   end
