@@ -34,7 +34,12 @@ module Fog
 
       # class Mock get_pool collection
       class Mock
-        def get_pool(poolid); end
+        def get_pool(poolid)
+          {
+            'members' => [],
+            'comment' => 'This pool is just for testing'
+          }
+        end
       end
     end
   end
