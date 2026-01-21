@@ -53,10 +53,16 @@ module Fog
             status_data = service.get_server_status path_params
             config_data = service.get_server_config path_params
           rescue StandardError => e
-            if e.respond_to?('response') && e.response.respond_to?('data') && e.response.data.has_key?(:reason_phrase) && e.response.data[:reason_phrase].end_with?('does not exist')
-              raise(Fog::Errors::NotFound)
+            if e.respond_to?('response') && e.response.respond_to?('data') && e.response.data.has_key?(:body)
+              begin
+                json = JSON.parse(e.response.body)
+                if json['message']&.include?('does not exist')
+                  raise(Fog::Errors::NotFound)
+                end
+              rescue StandardError
+                raise e
+              end
             end
-
             raise(e)
           else
             data = status_data.merge(config_data).merge(node: node_id, vmid: id)
