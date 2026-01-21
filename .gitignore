@@ -6,3 +6,4 @@ coverage/
 TAGS
 Gemfile.lock
 *.gem
+.bundle/
