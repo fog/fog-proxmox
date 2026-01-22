@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.3](https://github.com/fog/fog-proxmox/compare/v0.15.2...v0.15.3) (2026-01-22)
+
+
+### Bug Fixes
+
+* Add query params instead of body params to support purge option ([dca9c29](https://github.com/fog/fog-proxmox/commit/dca9c294a64d68598436c53172860b72afd3eb89)), closes [#119](https://github.com/fog/fog-proxmox/issues/119)
+
 ## [0.15.2](https://github.com/fog/fog-proxmox/compare/v0.15.1...v0.15.2) (2025-08-06)
 
 
