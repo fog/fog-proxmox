@@ -116,8 +116,8 @@ module Fog
           reload
         end
 
-        def destroy(options = {})
-          request(:delete_server, options, vmid: vmid)
+        def destroy(options = {}, query: nil)
+          request(:delete_server, options, vmid: vmid, query: query)
         end
 
         def action(action, options = {})
