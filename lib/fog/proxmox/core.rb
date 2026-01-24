@@ -94,7 +94,7 @@ module Fog
           authenticate! if expired?
           request_options = params.merge(path: "#{@path}/#{params[:path]}",
                                          headers: @auth_token.headers(
-                                           params[:method], params.respond_to?(:headers) ? params[:headers] : {}, {}
+                                           params[:method], {}, params.key?(:headers) ? params[:headers] : {}
                                          ))
           response = @connection.request(request_options)
         rescue Excon::Errors::Unauthorized => e
