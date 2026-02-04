@@ -66,7 +66,7 @@ describe Fog::Proxmox::CpuHelper do
     end
   end
 
-  describe '#flatten ' do
+  describe '#flatten' do
     it 'returns cputype=kvm64,flags=+pcid;+ibpb;-hv-tlbflush' do
       result = Fog::Proxmox::CpuHelper.flatten('cpu_type' => 'kvm64', 'spectre' => '0', 'pcid' => '+1',
                                                'ssbd' => '0', 'ibpb' => '+1', 'virt_ssbd' => '0', 'amd_ssbd' => '0', 'amd_no_ssb' => '0', 'md_clear' => '0', 'pdpe1gb' => '0', 'hv_tlbflush' => '-1', 'aes' => '0', 'hv_evmcs' => '0')

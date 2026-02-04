@@ -30,7 +30,7 @@ module Fog
       def self.to_hash(instance, prefix)
         hash = {}
         instance.instance_variables.select { |variable| variable.to_s.start_with? '@' + prefix }.each do |param|
-          name = param.to_s[1..-1]
+          name = param.to_s[1..]
           hash.store(name.to_sym, instance.instance_variable_get(param))
         end
         hash
