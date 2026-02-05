@@ -35,7 +35,7 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z CHANGELOG.md LICENSE README.md docs examples lib spec`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
-  spec.required_ruby_version = '>= 2.5'
+  spec.required_ruby_version = '>= 2.7'
 
   spec.add_development_dependency 'bundler', '~> 2.1'
   spec.add_development_dependency 'bundler-audit', '~> 0.6'
@@ -44,11 +44,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'rspec', '~> 3.7'
   spec.add_development_dependency 'rubocop', '~> 1.39'
-  spec.add_development_dependency 'rubocop-factory_bot', '< 2.26.0'
   spec.add_development_dependency 'rubocop-minitest', '~> 0.24'
   spec.add_development_dependency 'rubocop-rake', '~> 0.6'
-  spec.add_development_dependency 'rubocop-rspec', '~> 2.15'
-  spec.add_development_dependency 'rubocop-rspec_rails', '< 2.29.0'
+  spec.add_development_dependency 'rubocop-rspec', '~> 3.5'
+  spec.add_development_dependency 'rubocop-rspec_rails', '~> 2.30'
   spec.add_development_dependency 'simplecov', '~> 0.21'
   spec.add_development_dependency 'vcr', '~> 4.0'
   spec.add_development_dependency 'webmock', '~> 3.5'

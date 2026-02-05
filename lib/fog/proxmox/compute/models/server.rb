@@ -26,7 +26,7 @@ module Fog
   module Proxmox
     class Compute
       # Server model
-      # rubocop:disable ClassLength
+      # rubocop:disable Metrics/ClassLength
       class Server < Fog::Compute::Server
         identity  :vmid
         attribute :type
@@ -265,7 +265,7 @@ module Fog
           Fog::Proxmox::Compute::Node.new(service: service, node: node_id)
         end
       end
-      # rubocop:enable ClassLength
+      # rubocop:enable Metrics/ClassLength
     end
   end
 end

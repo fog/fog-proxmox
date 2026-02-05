@@ -160,7 +160,7 @@ module Fog
         end
 
         def initialize_efidisk(new_attributes)
-          efidisk = new_attributes['efidisk0']
+          efidisk = new_attributes[:efidisk0] || new_attributes['efidisk0']
           return if efidisk.nil?
 
           efidisk_hash = Fog::Proxmox::EfidiskHelper.extract(efidisk)
