@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.4](https://github.com/fog/fog-proxmox/compare/v0.15.3...v0.15.4) (2026-02-06)
+
+
+### Bug Fixes
+
+* Update README ([1854a21](https://github.com/fog/fog-proxmox/commit/1854a215204cd1e42c984b3886206c73bfa3ddf8))
+
 ## [0.15.3](https://github.com/fog/fog-proxmox/compare/v0.15.2...v0.15.3) (2026-01-22)
 
 
