@@ -23,6 +23,7 @@ It is inspired by the great [fog-openstack](https://github.com/fog/fog-openstack
 |>=0.9|>=6.0|>=2.1|>=2.3|
 |>=0.10|>=6.0|>=2.1|>=2.5|
 |>=0.14|>=6.2|>=2.1|>=2.5|
+|>=0.15|>=7.0|>=2.1|>=2.7|
 
 ## Installation
 
