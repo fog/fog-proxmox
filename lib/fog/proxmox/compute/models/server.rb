@@ -91,10 +91,12 @@ module Fog
         end
 
         # request with async task
-        def request(name, body_params = {}, path_params = {})
+        def request(name, body_params = {}, path_params = {}, query = {})
           requires :node_id, :type
           path = path_params.merge(node: node_id, type: type)
-          task_upid = service.send(name, path, body_params)
+          args = [name, path, body_params]
+          args << query if query&.any?
+          task_upid = service.send(*args)
           tasks.wait_for(task_upid)
         end
 
@@ -117,7 +119,16 @@ module Fog
         end
 
         def destroy(options = {}, query: nil)
-          request(:delete_server, options, vmid: vmid, query: query)
+          # stop vm before destroying if it's an HA resource
+          if ha['managed'].to_i == 1 && status == 'running'
+            action('stop')
+            # wait for vm to stop
+            Fog.wait_for(10, 5) do
+              reload
+              status == 'stopped'
+            end
+          end
+          request(:delete_server, options, { vmid: vmid }, query)
         end
 
         def action(action, options = {})
