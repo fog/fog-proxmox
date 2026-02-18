@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.16.0](https://github.com/fog/fog-proxmox/compare/v0.15.4...v0.16.0) (2026-02-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* Add query as optional param to request method ([#127](https://github.com/fog/fog-proxmox/issues/127))
+
+### Bug Fixes
+
+* Add query as optional param to request method ([#127](https://github.com/fog/fog-proxmox/issues/127)) ([e1ea7be](https://github.com/fog/fog-proxmox/commit/e1ea7be08d7550676972fa12bc7299af454ee46e))
+
 ## [0.15.4](https://github.com/fog/fog-proxmox/compare/v0.15.3...v0.15.4) (2026-02-06)
 
 
