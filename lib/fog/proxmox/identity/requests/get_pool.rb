@@ -24,11 +24,20 @@ module Fog
       # class Real get_pool collection
       class Real
         def get_pool(poolid)
-          request(
+          # Use the modern GET /pools?poolid=X endpoint. The historical
+          # GET /pools/{poolid} is deprecated in Proxmox VE and returns
+          # 501 Not Implemented for nested pool ids (e.g. 'foo/bar'),
+          # which breaks Pools#all against any cluster that uses them.
+          # See fog/fog-proxmox#130.
+          response = request(
             expects: [200],
             method: 'GET',
-            path: "pools/#{poolid}"
+            path: 'pools',
+            query: { poolid: poolid }
           )
+          # The endpoint returns an array of matching pools; unwrap the
+          # single element to keep the historical return signature.
+          response.is_a?(Array) ? (response.first || {}) : response
         end
       end
 
