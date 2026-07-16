@@ -93,6 +93,43 @@ describe Fog::Proxmox::Compute do
     end
   end
 
+  # https://github.com/fog/fog-proxmox/issues/118
+  it 'Does not request volumes of a storage inactive on the node' do
+    # Proxmox lists a storage that is disabled or restricted to other nodes with
+    # active = 0, and answers its content endpoint with HTTP 500
+    # "storage 'nas' is not available on node 'pve'", so it must not be queried.
+    calls = []
+    service = Object.new
+    service.define_singleton_method(:list_volumes) do |*args|
+      calls << args
+      []
+    end
+    storage = Fog::Proxmox::Compute::Storage.new(
+      service: service, node_id: 'pve', storage: 'nas',
+      content: 'images,backup', active: 0, enabled: 0
+    )
+    _(storage.active?).must_equal false
+    _(storage.volumes).must_be_empty
+    _(calls).must_be_empty
+  end
+
+  it 'Requests volumes of a storage active on the node' do
+    volid = 'local:vztmpl/debian-10.0-standard_10.0-1_amd64.tar.gz'
+    calls = []
+    service = Object.new
+    service.define_singleton_method(:list_volumes) do |*args|
+      calls << args
+      [{ 'volid' => volid, 'content' => 'vztmpl' }]
+    end
+    storage = Fog::Proxmox::Compute::Storage.new(
+      service: service, node_id: 'pve', storage: 'local',
+      content: 'vztmpl,iso,backup', active: 1, enabled: 1
+    )
+    _(storage.active?).must_equal true
+    _(storage.volumes.map(&:volid)).must_equal [volid]
+    _(calls).must_equal [['pve', 'local', {}]]
+  end
+
   it 'CRUD servers' do
     VCR.use_cassette('servers') do
       node_name = 'pve'

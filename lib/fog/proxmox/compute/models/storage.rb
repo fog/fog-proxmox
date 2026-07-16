@@ -49,15 +49,32 @@ module Fog
           Fog::Proxmox::Attributes.set_attr_and_sym('node_id', attributes, new_attributes)
           Fog::Proxmox::Attributes.set_attr_and_sym('storage', attributes, new_attributes)
           requires :node_id, :storage
-          initialize_volumes
+          # volumes are initialized last, as it depends on the other attributes
+          # having been merged already (see #active?)
           super(new_attributes)
+          initialize_volumes
+        end
+
+        # Proxmox evaluates a storage per node: a storage may be defined
+        # cluster-wide and still be unusable on this node, because it is
+        # disabled or restricted to other nodes. Such a storage is still listed
+        # by GET /nodes/{node}/storage, but with active (and enabled) set to 0.
+        # active is only known for storages built from an API response, so a
+        # missing value is assumed to be active.
+        def active?
+          active.nil? || ![0, '0', false].include?(active)
         end
 
         private
 
+        # Listing the content of a storage that is not active on this node fails
+        # with "storage 'x' is not available on node 'y'" (HTTP 500), so give it
+        # an empty, already loaded collection rather than let it lazily query
+        # the API. See https://github.com/fog/fog-proxmox/issues/118
         def initialize_volumes
-          attributes[:volumes] =
-            Fog::Proxmox::Compute::Volumes.new(service: service, node_id: node_id, storage_id: identity)
+          volumes = Fog::Proxmox::Compute::Volumes.new(service: service, node_id: node_id, storage_id: identity)
+          volumes.load([]) unless active?
+          attributes[:volumes] = volumes
         end
       end
     end
