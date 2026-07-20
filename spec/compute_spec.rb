@@ -71,6 +71,19 @@ describe Fog::Proxmox::Compute do
     end
   end
 
+  it 'Gets cluster status' do
+    VCR.use_cassette('cluster_status') do
+      status = @service.cluster_status
+
+      _(status).wont_be_nil
+      _(status).wont_be_empty
+
+      node = status.find { |entry| entry['type'] == 'node' }
+      _(node).wont_be_nil
+      _(node['ip']).wont_be_nil
+    end
+  end
+
   it 'Manage storages' do
     VCR.use_cassette('storages') do
       # Get node
