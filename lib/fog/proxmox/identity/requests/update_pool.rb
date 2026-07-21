@@ -27,7 +27,8 @@ module Fog
           request(
             expects: [200],
             method: 'PUT',
-            path: "pools/#{poolid}",
+            path: 'pools/',
+            query: URI.encode_www_form(poolid: poolid),
             body: URI.encode_www_form(attributes)
           )
         end
