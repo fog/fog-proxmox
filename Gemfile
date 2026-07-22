@@ -21,3 +21,9 @@ source 'https://rubygems.org'
 
 # Specify your gem's dependencies in fog-proxmox.gemspec
 gemspec
+
+# base64 and ostruct were removed from Ruby's default gems (base64 in 3.4,
+# ostruct in 4.0) and are still required transitively by the test tooling
+# (e.g. VCR), so declare them explicitly.
+gem 'base64'
+gem 'ostruct'

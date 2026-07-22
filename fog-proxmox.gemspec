@@ -37,7 +37,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.7'
 
-  spec.add_development_dependency 'bundler', '~> 2.1'
+  spec.add_development_dependency 'bundler', '>= 2.1'
   spec.add_development_dependency 'bundler-audit', '~> 0.6'
   spec.add_development_dependency 'minitest', '~> 5.11'
   spec.add_development_dependency 'pry', '~> 0.11'
