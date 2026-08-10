@@ -21,3 +21,9 @@ source 'https://rubygems.org'
 
 # Specify your gem's dependencies in fog-proxmox.gemspec
 gemspec
+
+# ostruct used to be loaded from the standard library,
+# but it and cgi are not part of the default gems since Ruby 4.0.0.
+gem 'base64'
+gem 'cgi'
+gem 'ostruct'

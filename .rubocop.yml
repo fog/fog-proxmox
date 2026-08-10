@@ -9,7 +9,7 @@ Migration/DepartmentName:
   Enabled: false
 
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.1
   NewCops: disable
   Exclude:
     - 'examples/**/*'
