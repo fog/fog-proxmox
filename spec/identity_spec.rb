@@ -338,6 +338,11 @@ describe Fog::Proxmox::Identity do
       # Find by id
       pool = @service.pools.get pool_hash[:poolid]
       _(pool).wont_be_nil
+      _(pool.comment).must_equal 'Parent pool'
+      nested_pool = @service.get_pool 'pool1/nested'
+      _(nested_pool).wont_be_nil
+      _(nested_pool['poolid']).must_equal 'pool1/nested'
+      _(nested_pool['comment']).must_equal 'Nested pool'
       # Create 2nd time must fails
       _(proc do
         @service.pools.create(pool_hash)

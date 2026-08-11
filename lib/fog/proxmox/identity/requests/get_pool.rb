@@ -24,11 +24,13 @@ module Fog
       # class Real get_pool collection
       class Real
         def get_pool(poolid)
-          request(
+          pools = request(
             expects: [200],
             method: 'GET',
-            path: "pools/#{poolid}"
+            path: 'pools/',
+            query: URI.encode_www_form(poolid: poolid)
           )
+          pools.first
         end
       end
 

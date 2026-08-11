@@ -78,7 +78,7 @@ http_interactions:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1
     body:
       encoding: US-ASCII
       string: ''
@@ -110,7 +110,7 @@ http_interactions:
       - Wed, 25 Nov 2020 13:31:10 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"members":[]}}'
+      string: '{"data":[{"members":[]}]}'
     http_version:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
@@ -152,7 +152,7 @@ http_interactions:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1
     body:
       encoding: US-ASCII
       string: ''
@@ -184,7 +184,28 @@ http_interactions:
       - Wed, 25 Nov 2020 13:31:10 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"members":[]}}'
+      string: '{"data":[{"comment":"Parent pool","members":[]},{"comment":"Nested pool","members":[],"poolid":"pool1/nested"}]}'
+    http_version:
+  recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
+- request:
+    method: get
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1%2Fnested
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/2.2.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"comment":"Nested pool","members":[],"poolid":"pool1/nested"}]}'
     http_version:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
@@ -229,7 +250,7 @@ http_interactions:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
     method: put
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1
     body:
       encoding: US-ASCII
       string: comment=Pool+1
@@ -305,7 +326,7 @@ http_interactions:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1
     body:
       encoding: US-ASCII
       string: ''
@@ -337,12 +358,12 @@ http_interactions:
       - Wed, 25 Nov 2020 13:31:10 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"comment":"Pool 1","members":[]}}'
+      string: '{"data":[{"comment":"Pool 1","members":[]}]}'
     http_version:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
     method: put
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1
     body:
       encoding: US-ASCII
       string: comment=Pool+1&vms=100
@@ -418,7 +439,7 @@ http_interactions:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1
     body:
       encoding: US-ASCII
       string: ''
@@ -450,12 +471,12 @@ http_interactions:
       - Wed, 25 Nov 2020 13:31:10 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"members":[],"comment":"Pool 1"}}'
+      string: '{"data":[{"members":[],"comment":"Pool 1"}]}'
     http_version:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
     method: put
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1
     body:
       encoding: US-ASCII
       string: comment=Pool+1&storage=local-lvm
@@ -531,7 +552,7 @@ http_interactions:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1
     body:
       encoding: US-ASCII
       string: ''
@@ -563,8 +584,8 @@ http_interactions:
       - Wed, 25 Nov 2020 13:31:10 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"members":[{"status":"available","disk":0,"storage":"local-lvm","shared":0,"maxdisk":4290772992,"id":"storage/pve/local-lvm","type":"storage","node":"pve"}],"comment":"Pool
-        1"}}'
+      string: '{"data":[{"members":[{"status":"available","disk":0,"storage":"local-lvm","shared":0,"maxdisk":4290772992,"id":"storage/pve/local-lvm","type":"storage","node":"pve"}],"comment":"Pool
+        1"}]}'
     http_version:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
@@ -606,7 +627,7 @@ http_interactions:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1
     body:
       encoding: US-ASCII
       string: ''
@@ -638,12 +659,12 @@ http_interactions:
       - Wed, 25 Nov 2020 13:31:10 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"comment":"Pool 1","members":[{"disk":0,"status":"available","shared":0,"storage":"local-lvm","id":"storage/pve/local-lvm","maxdisk":4290772992,"type":"storage","node":"pve"}]}}'
+      string: '{"data":[{"comment":"Pool 1","members":[{"disk":0,"status":"available","shared":0,"storage":"local-lvm","id":"storage/pve/local-lvm","maxdisk":4290772992,"type":"storage","node":"pve"}]}]}'
     http_version:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
     method: put
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1
     body:
       encoding: US-ASCII
       string: comment=Pool+1&vms=100&delete=1
@@ -719,7 +740,7 @@ http_interactions:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1
     body:
       encoding: US-ASCII
       string: ''
@@ -751,12 +772,12 @@ http_interactions:
       - Wed, 25 Nov 2020 13:31:10 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"comment":"Pool 1","members":[{"storage":"local-lvm","shared":0,"status":"available","disk":0,"node":"pve","type":"storage","maxdisk":4290772992,"id":"storage/pve/local-lvm"}]}}'
+      string: '{"data":[{"comment":"Pool 1","members":[{"storage":"local-lvm","shared":0,"status":"available","disk":0,"node":"pve","type":"storage","maxdisk":4290772992,"id":"storage/pve/local-lvm"}]}]}'
     http_version:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
     method: put
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1
     body:
       encoding: US-ASCII
       string: comment=Pool+1&storage=local-lvm&delete=1
@@ -832,7 +853,7 @@ http_interactions:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
     method: get
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1
     body:
       encoding: US-ASCII
       string: ''
@@ -864,12 +885,12 @@ http_interactions:
       - Wed, 25 Nov 2020 13:31:10 GMT
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"comment":"Pool 1","members":[]}}'
+      string: '{"data":[{"comment":"Pool 1","members":[]}]}'
     http_version:
   recorded_at: Wed, 25 Nov 2020 13:31:12 GMT
 - request:
     method: delete
-    uri: https://192.168.56.101:8006/api2/json/pools/pool1
+    uri: https://192.168.56.101:8006/api2/json/pools/?poolid=pool1
     body:
       encoding: US-ASCII
       string: ''

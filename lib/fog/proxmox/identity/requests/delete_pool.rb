@@ -26,7 +26,8 @@ module Fog
           request(
             expects: [200],
             method: 'DELETE',
-            path: "pools/#{poolid}"
+            path: 'pools/',
+            query: URI.encode_www_form(poolid: poolid)
           )
         end
       end
