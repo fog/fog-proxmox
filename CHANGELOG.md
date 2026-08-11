@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.1](https://github.com/fog/fog-proxmox/compare/v0.16.0...v0.16.1) (2026-08-11)
+
+
+### Bug Fixes
+
+* Replace deprecated Proxmox pool endpoints to support nested pools ([#135](https://github.com/fog/fog-proxmox/issues/135)) ([e2bc584](https://github.com/fog/fog-proxmox/commit/e2bc584cd2b2156282bb7fe1dd41bc66b6fe9c55))
+
 ## [0.16.0](https://github.com/fog/fog-proxmox/compare/v0.15.4...v0.16.0) (2026-02-18)
 
 
