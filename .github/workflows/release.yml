@@ -16,11 +16,11 @@ jobs:
           package-name: fog-proxmox
           bump-minor-pre-major: true
           version-file: "lib/fog/proxmox/version.rb"
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
         if: ${{ steps.release.outputs.release_created }}
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7'
+          ruby-version: '3.5' 
           bundler-cache: true
         if: ${{ steps.release.outputs.release_created }}
       - run: bundle install
