@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.2](https://github.com/fog/fog-proxmox/compare/v0.16.1...v0.16.2) (2026-08-12)
+
+
+### Bug Fixes
+
+* Use Ruby version 3.0 instead of 3.1 in order to package in foreman-packaging. ([#146](https://github.com/fog/fog-proxmox/issues/146)) ([987ecc8](https://github.com/fog/fog-proxmox/commit/987ecc812402c1174a87dc086dd3e05842204617))
+
 ## [0.16.1](https://github.com/fog/fog-proxmox/compare/v0.16.0...v0.16.1) (2026-08-11)
 
 
