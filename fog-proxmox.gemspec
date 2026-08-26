@@ -52,7 +52,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'vcr', '~> 4.0'
   spec.add_development_dependency 'webmock', '~> 3.5'
 
-  spec.add_dependency 'fog-core',  '>= 2.1'
-  spec.add_dependency 'fog-json',  '>= 1.2'
+  spec.add_dependency 'fog-core', '>= 2.1'
+  spec.add_dependency 'fog-json', '>= 1.2'
   spec.metadata['rubygems_mfa_required'] = 'true'
 end

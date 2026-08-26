@@ -45,9 +45,9 @@ class ProxmoxVCR
 
     if use_recorded
       Fog.interval = 0
-      @url  = 'https://192.168.56.101:8006/api2/json'
+      @url = 'https://192.168.56.101:8006/api2/json'
     else
-      @url  = ENV['PROXMOX_URL']
+      @url = ENV['PROXMOX_URL']
     end
 
     VCR.configure do |config|
