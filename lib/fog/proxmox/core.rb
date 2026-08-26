@@ -93,8 +93,8 @@ module Fog
         begin
           authenticate! if expired?
           request_options = params.merge(path: "#{@path}/#{params[:path]}",
-                                         headers: @auth_token.headers(
-                                           params[:method], params.respond_to?(:headers) ? params[:headers] : {}, {}
+                                         headers: (params[:headers] || {}).merge(
+                                           @auth_token.headers(params[:method], {}, {})
                                          ))
           response = @connection.request(request_options)
         rescue Excon::Errors::Unauthorized => e
@@ -102,6 +102,7 @@ module Fog
           if !%w[Bad username or password, invalid token
                  value!].include?(e.response.body) && @proxmox_can_reauthenticate && !retried
             authenticate!
+            params[:body].rewind if params[:body].respond_to?(:rewind)
             retried = true
             retry
           # bad credentials or token renewal not possible

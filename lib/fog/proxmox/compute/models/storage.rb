@@ -26,6 +26,8 @@
 
 # frozen_string_literal: true
 
+require 'fog/proxmox/storage/models/iso_upload'
+
 module Fog
   module Proxmox
     class Compute
@@ -51,6 +53,10 @@ module Fog
           requires :node_id, :storage
           initialize_volumes
           super(new_attributes)
+        end
+
+        def upload_iso(path)
+          Fog::Proxmox::Storage::IsoUpload.new(service: service, node_id: node_id, storage_id: identity, path: path).upload
         end
 
         private
