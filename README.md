@@ -9,7 +9,7 @@
 
 This is a [FOG](http://fog.io/) (>= 2.1) module gem to support [Proxmox VE](https://www.proxmox.com/en/proxmox-ve)
 
-It is intended to satisfy this [feature](https://github.com/fog/fog/issues/3644), but Proxmox provider only, and above all this [Foreman](http://www.theforeman.org) [feature](https://projects.theforeman.org/issues/2186).
+It is intended to satisfy this [feature](https://github.com/fog/fog/issues/3644), but Proxmox provider only, and above all this [Foreman](https://www.theforeman.org) [feature](https://projects.theforeman.org/issues/2186).
 
 It is inspired by the great [fog-openstack](https://github.com/fog/fog-openstack) module.
 
@@ -102,7 +102,7 @@ bundle exec rake --tasks
 ## Contributing
 
 You can reach the [contributors](.github/CONTRIBUTORS.md).
-Bug reports and pull requests are welcome on GitHub at [Fog-Proxmox](https://github.com/fog/fog-proxmox/issues). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at [Fog-Proxmox](https://github.com/fog/fog-proxmox/issues). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://www.contributor-covenant.org) code of conduct.
 
 Please read [how to contribute](.github/CONTRIBUTING.md).
 
