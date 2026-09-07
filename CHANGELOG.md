@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.3](https://github.com/fog/fog-proxmox/compare/v0.16.2...v0.16.3) (2026-09-07)
+
+
+### Bug Fixes
+
+* RuboCop extra spacing offenses ([#149](https://github.com/fog/fog-proxmox/issues/149)) ([9a303bc](https://github.com/fog/fog-proxmox/commit/9a303bc03a3d5049ded43d3ad1fa6ea79febd43e))
+
 ## [0.16.2](https://github.com/fog/fog-proxmox/compare/v0.16.1...v0.16.2) (2026-08-12)
 
 
