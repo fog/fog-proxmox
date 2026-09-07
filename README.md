@@ -2,7 +2,7 @@
 
 # Fog::Proxmox
 
-![CI](https://github.com/fog/fog-proxmox/workflows/CI/badge.svg)
+[![CI](https://github.com/fog/fog-proxmox/actions/workflows/ci.yml/badge.svg)](https://github.com/fog/fog-proxmox/actions/workflows/ci.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/dfcdcc32f096abf1b2b4/maintainability)](https://codeclimate.com/github/fog/fog-proxmox/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/dfcdcc32f096abf1b2b4/test_coverage)](https://codeclimate.com/github/fog/fog-proxmox/test_coverage)
 [![Gem Version](https://badge.fury.io/rb/fog-proxmox.svg)](https://badge.fury.io/rb/fog-proxmox)
