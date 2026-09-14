@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.0.0](https://github.com/fog/fog-proxmox/compare/v0.16.2...v1.0.0) (2026-09-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* Add support for ISO uploads via Proxmox API ([#148](https://github.com/fog/fog-proxmox/issues/148))
+
+### Features
+
+* Add support for ISO uploads via Proxmox API ([#148](https://github.com/fog/fog-proxmox/issues/148)) ([396d08c](https://github.com/fog/fog-proxmox/commit/396d08c573feceda8443072d2c76cffd3c2a4918))
+
+
+### Bug Fixes
+
+* RuboCop extra spacing offenses ([#149](https://github.com/fog/fog-proxmox/issues/149)) ([9a303bc](https://github.com/fog/fog-proxmox/commit/9a303bc03a3d5049ded43d3ad1fa6ea79febd43e))
+
+
+### Miscellaneous Chores
+
+* allow major releases before 1.0 ([#156](https://github.com/fog/fog-proxmox/issues/156)) ([0752d55](https://github.com/fog/fog-proxmox/commit/0752d55fcfa0628c452c3bc7d7a137e341c8da4a))
+
 ## [0.16.2](https://github.com/fog/fog-proxmox/compare/v0.16.1...v0.16.2) (2026-08-12)
 
 
