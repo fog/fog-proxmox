@@ -7,7 +7,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/dfcdcc32f096abf1b2b4/test_coverage)](https://codeclimate.com/github/fog/fog-proxmox/test_coverage)
 [![Gem Version](https://badge.fury.io/rb/fog-proxmox.svg)](https://badge.fury.io/rb/fog-proxmox)
 
-This is a [FOG](http://fog.io/) (>= 2.1) module gem to support [Proxmox VE](https://www.proxmox.com/en/proxmox-ve)
+This is a [FOG](https://fog.github.io/) (>= 2.1) module gem to support [Proxmox VE](https://www.proxmox.com/en/proxmox-ve)
 
 It is intended to satisfy this [feature](https://github.com/fog/fog/issues/3644), but Proxmox provider only, and above all this [Foreman](http://www.theforeman.org) [feature](https://projects.theforeman.org/issues/2186).
 
