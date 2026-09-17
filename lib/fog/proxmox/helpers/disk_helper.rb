@@ -76,9 +76,19 @@ module Fog
         name_value&.first
       end
 
+      # A bind mount point references an absolute host directory as its
+      # volume (e.g. mp0: /host/dir,mp=/container/dir) instead of a storage
+      # volume, so it has neither a storage nor a size.
+      def self.bind_mount?(volid)
+        volid.to_s.start_with?('/')
+      end
+
       # Convert API Proxmox volume/disk parameter string into volume/disk attributes hash value
       def self.extract_storage_volid_size(disk_value)
         # volid definition: <VOLUME_ID>:=<STORAGE_ID>:<storage type dependent volume name>
+        volume = disk_value.split(',').first
+        return [nil, volume, nil] if bind_mount?(volume)
+
         values_a = disk_value.scan(%r{^(([\w-]+):{0,1}([\w/.-]+))})
         no_cdrom = !disk_value.match(CDROM_REGEXP)
         creation = disk_value.split(',')[0].match(/^(([\w-]+):{1}(\d+))$/)
