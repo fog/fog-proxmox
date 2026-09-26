@@ -46,6 +46,8 @@ module Fog
       collection :tasks
       model :snapshot
       collection :snapshots
+      model :ha_resource
+      collection :ha_resources
 
       # Requests
       request_path 'fog/proxmox/compute/requests'
@@ -90,6 +92,12 @@ module Fog
       request :update_snapshot
       request :delete_snapshot
       request :rollback_snapshot
+      # CRUD HA resources
+      request :list_ha_resources
+      request :get_ha_resource
+      request :create_ha_resource
+      request :update_ha_resource
+      request :delete_ha_resource
       # Consoles
       request :create_term
       request :create_spice
