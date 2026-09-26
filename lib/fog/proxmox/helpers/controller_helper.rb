@@ -23,7 +23,7 @@ module Fog
     module ControllerHelper
       CONTROLLERS = %w[ide sata scsi virtio mp rootfs].freeze
       def self.extract(name, controller_value)
-        matches = controller_value.match(%r{,{0,1}#{name}={1}(?<name_value>[\w/.:]+)})
+        matches = controller_value.match(%r{,{0,1}#{name}={1}(?<name_value>[\w/.:;-]+)})
         matches ? matches[:name_value] : matches
       end
 
