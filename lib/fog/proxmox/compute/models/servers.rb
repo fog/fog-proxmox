@@ -18,6 +18,7 @@
 # along with Fog::Proxmox. If not, see <http://www.gnu.org/licenses/>.
 
 require 'fog/proxmox/compute/models/server'
+require 'fog/proxmox/errors'
 
 module Fog
   module Proxmox
@@ -53,9 +54,8 @@ module Fog
             status_data = service.get_server_status path_params
             config_data = service.get_server_config path_params
           rescue StandardError => e
-            if e.respond_to?('response') && e.response.respond_to?('data') && e.response.data.has_key?(:reason_phrase) && e.response.data[:reason_phrase].end_with?('does not exist')
-              raise(Fog::Errors::NotFound)
-            end
+            message = Fog::Proxmox::Errors.message(e)
+            raise(Fog::Errors::NotFound) if message&.end_with?('does not exist')
 
             raise(e)
           else
