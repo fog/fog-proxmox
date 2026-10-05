@@ -41,6 +41,7 @@ module Fog
         attribute :onboot
         attribute :boot
         attribute :agent
+        attribute :hotplug
         attribute :scsihw
         attribute :sockets
         attribute :memory
