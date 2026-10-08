@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/fog/fog-proxmox/compare/v1.0.0...v1.0.1) (2026-10-08)
+
+
+### Bug Fixes
+
+* ISO upload task polling ([3dc3c31](https://github.com/fog/fog-proxmox/commit/3dc3c31fe8cd72fc719954917dad39afa6b08ebd))
+
 ## [1.0.0](https://github.com/fog/fog-proxmox/compare/v0.16.2...v1.0.0) (2026-09-14)
 
 
