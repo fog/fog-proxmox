@@ -22,9 +22,10 @@ module Fog
             )
           end
           Fog::Logger.debug("Upload response: #{response.inspect}")
-          raise Fog::Errors::Error, "Unexpected upload response: #{response.inspect}" unless response.to_s.start_with?('UPID:')
+          task_node = response.to_s[/\AUPID:([^:]+):/, 1]
+          raise Fog::Errors::Error, "Unexpected upload response: #{response.inspect}" unless task_node
 
-          service.nodes.get(node_id).tasks.wait_for(response)
+          service.nodes.get(task_node).tasks.wait_for(response)
           response
         end
       end
