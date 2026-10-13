@@ -129,6 +129,7 @@ RSpec/RSpec/SpecFilePathFormat:
     - 'spec/helpers/efidisk_helper_spec.rb'
     - 'spec/helpers/ip_helper_spec.rb'
     - 'spec/helpers/nic_helper_spec.rb'
+    - 'spec/helpers/rng_helper_spec.rb'
     - 'spec/identity_spec.rb'
     - 'spec/network_spec.rb'
 
