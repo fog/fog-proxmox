@@ -70,6 +70,12 @@ module Fog
         attribute :pool
         attribute :bwlimit
         attribute :unprivileged
+        attribute :features
+        attribute :tags
+        attribute :protection
+        attribute :timezone
+        attribute :hookscript
+        attribute :debug
         attribute :interfaces
         attribute :disks
         attribute :ciuser
