@@ -125,6 +125,13 @@ describe Fog::Proxmox::DiskHelper do
       assert_nil size
     end
 
+    it 'returns a bind mount host path as volid with no storage or size' do
+      storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size('/host/dir,mp=/data,ro=1')
+      assert_nil storage
+      assert_equal('/host/dir', volid)
+      assert_nil size
+    end
+
     it 'returns virtio get local storage volid and size' do
       storage, volid, size = Fog::Proxmox::DiskHelper.extract_storage_volid_size(virtio[:virtio1])
       assert_equal('local', storage)
@@ -306,6 +313,20 @@ describe Fog::Proxmox::DiskHelper do
 
     it 'qemu and scsi0 returns false' do
       refute Fog::Proxmox::DiskHelper.of_type?(scsi0, 'lxc')
+    end
+  end
+
+  describe '#bind_mount?' do
+    it '/host/dir returns true' do
+      assert Fog::Proxmox::DiskHelper.bind_mount?('/host/dir')
+    end
+
+    it 'local-lvm:vm-100-disk-0 returns false' do
+      refute Fog::Proxmox::DiskHelper.bind_mount?('local-lvm:vm-100-disk-0')
+    end
+
+    it 'nil returns false' do
+      refute Fog::Proxmox::DiskHelper.bind_mount?(nil)
     end
   end
 end
