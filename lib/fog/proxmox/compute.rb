@@ -37,6 +37,7 @@ module Fog
       model :disk
       collection :disks
       model :efidisk
+      model :rng
       model :server_config
       model :volume
       collection :volumes

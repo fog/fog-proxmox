@@ -21,6 +21,7 @@ require 'fog/proxmox/attributes'
 require 'fog/proxmox/helpers/nic_helper'
 require 'fog/proxmox/helpers/controller_helper'
 require 'fog/proxmox/helpers/efidisk_helper'
+require 'fog/proxmox/helpers/rng_helper'
 
 module Fog
   module Proxmox
@@ -80,6 +81,7 @@ module Fog
         attribute :searchdomain
         attribute :nameserver
         attribute :efidisk
+        attribute :rng
 
         def initialize(new_attributes = {})
           prepare_service_value(new_attributes)
@@ -88,6 +90,7 @@ module Fog
           initialize_interfaces(new_attributes)
           initialize_disks(new_attributes)
           initialize_efidisk(new_attributes)
+          initialize_rng(new_attributes)
           super(new_attributes)
         end
 
@@ -103,9 +106,10 @@ module Fog
         end
 
         def flatten
-          flat_hash = attributes.reject { |attribute| %i[node_id type vmid disks interfaces].include? attribute }
+          flat_hash = attributes.reject { |attribute| %i[node_id type vmid disks interfaces rng].include? attribute }
           flat_hash.merge(interfaces_flatten)
           flat_hash.merge(disks_flatten)
+          flat_hash.merge!(rng.flatten) unless rng.nil?
           flat_hash
         end
 
@@ -165,6 +169,14 @@ module Fog
 
           efidisk_hash = Fog::Proxmox::EfidiskHelper.extract(efidisk)
           attributes[:efidisk] = Fog::Proxmox::Compute::Efidisk.new(efidisk_hash)
+        end
+
+        def initialize_rng(new_attributes)
+          rng = new_attributes[:rng0] || new_attributes['rng0']
+          return if rng.nil?
+
+          rng_hash = Fog::Proxmox::RngHelper.extract(rng)
+          attributes[:rng] = Fog::Proxmox::Compute::Rng.new(rng_hash)
         end
       end
     end
