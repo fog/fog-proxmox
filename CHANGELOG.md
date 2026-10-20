@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/fog/fog-proxmox/compare/v1.0.0...v1.1.0) (2026-10-20)
+
+
+### Features
+
+* Add VirtIO RNG device support ([#160](https://github.com/fog/fog-proxmox/issues/160)) ([a31b9d3](https://github.com/fog/fog-proxmox/commit/a31b9d39927d82b2db9da6c1889b9fd556905b5c))
+
+
+### Bug Fixes
+
+* ISO upload task polling ([3dc3c31](https://github.com/fog/fog-proxmox/commit/3dc3c31fe8cd72fc719954917dad39afa6b08ebd))
+
 ## [1.0.0](https://github.com/fog/fog-proxmox/compare/v0.16.2...v1.0.0) (2026-09-14)
 
 
