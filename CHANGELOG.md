@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/fog/fog-proxmox/compare/v1.1.0...v1.1.1) (2026-11-13)
+
+
+### Bug Fixes
+
+* Fixes NilClass error if nic values are not available ([91ff21c](https://github.com/fog/fog-proxmox/commit/91ff21cf4f27bf4f585bbef1b9297569104f694f))
+
 ## [1.1.0](https://github.com/fog/fog-proxmox/compare/v1.0.0...v1.1.0) (2026-10-21)
 
 
