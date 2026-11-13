@@ -58,12 +58,14 @@ module Fog
       end
 
       def self.extract_nic_id(nic_value)
+        return nil if nic_value.nil? || nic_value.empty?
+
         if has_model?(nic_value)
-          nic_value.scan(model_regexp).first.first
+          nic_value.scan(model_regexp).first&.first
         elsif has_name?(nic_value)
-          nic_value.scan(name_regexp).first.first
+          nic_value.scan(name_regexp).first&.first
         else
-          nic_value.scan(nic_update_regexp).first.first
+          nic_value.scan(nic_update_regexp).first&.first
         end
       end
 

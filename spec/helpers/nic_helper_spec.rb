@@ -51,6 +51,40 @@ describe Fog::Proxmox::NicHelper do
     { id: 'net1', model: 'virtio', bridge: 'vmbr0', firewall: 1, link_down: 1, queues: 1, rate: 1, tag: 1 }
   end
 
+  describe '#extract_nic_id' do
+    it 'returns lxc name' do
+      id = Fog::Proxmox::NicHelper.extract_nic_id(net_lxc[:net0])
+      assert_equal 'eth0', id
+    end
+
+    it 'returns lxc name creation' do
+      id = Fog::Proxmox::NicHelper.extract_nic_id(net_lxc_create[:net0])
+      assert_equal 'eth0', id
+    end
+
+    it 'returns qemu model' do
+      id = Fog::Proxmox::NicHelper.extract_nic_id(net_vm[:net0])
+      assert_equal 'virtio', id
+    end
+
+    it 'returns qemu model creation' do
+      id = Fog::Proxmox::NicHelper.extract_nic_id(net_vm_create[:net0])
+      assert_equal 'virtio', id
+    end
+
+    it 'returns nil when value is nil' do
+      assert_nil Fog::Proxmox::NicHelper.extract_nic_id(nil)
+    end
+
+    it 'returns nil when value is empty' do
+      assert_nil Fog::Proxmox::NicHelper.extract_nic_id('')
+    end
+
+    it 'returns nil when no pattern matches instead of raising NilError' do
+      assert_nil Fog::Proxmox::NicHelper.extract_nic_id('eth0=00:1A:2B:3C:4D:5E')
+    end
+  end
+
   describe '#extract_model' do
     it 'returns model card' do
       model = Fog::Proxmox::NicHelper.extract_nic_id(net_vm[:net0])
