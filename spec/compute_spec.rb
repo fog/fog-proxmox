@@ -34,6 +34,37 @@ describe Fog::Proxmox::Compute do
     @token = @proxmox_vcr.token
   end
 
+  it 'Lists cluster resources filtered by type' do
+    inventory = [
+      { 'vmid' => 103, 'node' => 'pve', 'type' => 'qemu', 'name' => 'test-vm', 'template' => 0 },
+      { 'vmid' => 105, 'node' => 'pve', 'type' => 'qemu', 'name' => 'test-template', 'template' => 1 }
+    ]
+    inventory_request = WebMock.stub_request(:get, "#{@proxmox_url}/cluster/resources")
+                               .with(query: { type: 'vm' })
+                               .to_return(body: Fog::JSON.encode('data' => inventory))
+
+    resources = @service.list_cluster_resources(type: 'vm')
+    _(resources).must_equal inventory
+    template = resources.find { |resource| resource['name'] == 'test-template' }
+    _(template).wont_be_nil
+    _(template['template']).must_equal 1
+    WebMock.assert_requested(inventory_request, times: 1)
+  ensure
+    WebMock.remove_request_stub(inventory_request) if inventory_request
+  end
+
+  it 'Lists cluster resources without a filter' do
+    inventory = [{ 'id' => 'node/pve', 'node' => 'pve', 'type' => 'node', 'status' => 'online' }]
+    inventory_request = WebMock.stub_request(:get, "#{@proxmox_url}/cluster/resources")
+                               .with(query: {})
+                               .to_return(body: Fog::JSON.encode('data' => inventory))
+
+    _(@service.list_cluster_resources).must_equal inventory
+    WebMock.assert_requested(inventory_request, times: 1)
+  ensure
+    WebMock.remove_request_stub(inventory_request) if inventory_request
+  end
+
   it 'Manage tasks' do
     VCR.use_cassette('tasks') do
       # List all tasks
