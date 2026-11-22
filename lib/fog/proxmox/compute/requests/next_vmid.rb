@@ -35,7 +35,9 @@ module Fog
 
       # class Mock next_vmid collection
       class Mock
-        def next_vmid; end
+        def next_vmid(options = {})
+          101
+        end
       end
     end
   end
