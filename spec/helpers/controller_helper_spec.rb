@@ -39,8 +39,17 @@ describe Fog::Proxmox::ControllerHelper do
   let(:mp) do
     { mp0: 'local-lvm:1,mp=/opt/path' }
   end
+  let(:mp_options) do
+    { mp0: 'local-lvm:1,mp=/opt/path,mountoptions=noatime;nodev,acl=1' }
+  end
   let(:rootfs) do
     { rootfs: 'local-lvm:1' }
+  end
+  let(:mp_hyphen) do
+    { mp0: 'local-lvm:1,mp=/opt/my-app' }
+  end
+  let(:net_trunks) do
+    { net0: 'name=eth0,bridge=vmbr0,trunks=10;20;30,tag=5' }
   end
 
   describe '#extract' do
@@ -77,6 +86,21 @@ describe Fog::Proxmox::ControllerHelper do
     it 'returns cidr ip6' do
       path = Fog::Proxmox::ControllerHelper.extract('ip6', net_lxc[:net0])
       assert_equal '2001:0000:1234:0000:0000:C1C0:ABCD:0876/31', path
+    end
+
+    it 'returns multi-value mountoptions' do
+      mountoptions = Fog::Proxmox::ControllerHelper.extract('mountoptions', mp_options[:mp0])
+      assert_equal 'noatime;nodev', mountoptions
+    end
+
+    it 'returns a mount path containing a hyphen' do
+      path = Fog::Proxmox::ControllerHelper.extract('mp', mp_hyphen[:mp0])
+      assert_equal '/opt/my-app', path
+    end
+
+    it 'returns a semicolon-separated vlan trunks list' do
+      trunks = Fog::Proxmox::ControllerHelper.extract('trunks', net_trunks[:net0])
+      assert_equal '10;20;30', trunks
     end
   end
 

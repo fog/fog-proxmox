@@ -40,6 +40,10 @@ module Fog
         attribute :backup
         attribute :aio
         attribute :mp
+        attribute :ro
+        attribute :mountoptions
+        attribute :acl
+        attribute :quota
 
         def controller
           Fog::Proxmox::DiskHelper.extract_controller(id)
@@ -59,6 +63,10 @@ module Fog
 
         def mount_point?
           Fog::Proxmox::DiskHelper.mount_point?(id)
+        end
+
+        def bind_mount?
+          Fog::Proxmox::DiskHelper.bind_mount?(volid)
         end
 
         def controller?
