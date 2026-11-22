@@ -26,10 +26,11 @@ module Fog
           node = path_params[:node]
           type = path_params[:type]
           vmid = path_params[:vmid]
+          path = type && vmid ? "nodes/#{node}/#{type}/#{vmid}/vncwebsocket" : "nodes/#{node}/vncwebsocket"
           request(
             expects: [101, 200],
             method: 'GET',
-            path: "nodes/#{node}/#{type}/#{vmid}/vncwebsocket",
+            path: path,
             query: URI.encode_www_form(query_params)
           )
         end
