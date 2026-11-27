@@ -84,7 +84,7 @@ module Fog
         end
 
         def expired?
-          raise ExpiryError, 'Missing token expiration data' if @expires.nil? || @expires.empty?
+          return false  if @expires.nil? || @expires.empty? || @expires == 0
 
           Time.at(@expires) < Time.now.utc
         end

@@ -39,6 +39,10 @@ module Fog
             'GET'
           end
 
+          def authenticate(_proxmox_options, _connection_options = {})
+            {}
+          end
+
           def auth_path(params = {})
             raise URIError, 'URI params are required' if params.nil? || params.empty?
 
